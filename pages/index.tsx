@@ -118,19 +118,28 @@ export default function NBLHome() {
         </div>
       </div>
 
-      {/* Vision */}
-      <section id="vision" data-testid="vision" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">Next Being ビジョン</h2>
-          <p className="text-gray-700 leading-relaxed">
-            猿 → 人間 → <span className="whitespace-nowrap">人間＋AI</span> → <span className="font-semibold">Next Being</span>。道具と文化が加速してきた人類史の延長に、
-            <span className="font-semibold">人×AI×コミュニティ×環境</span>の協働で生まれる新しい“在り方”を構想します。NBLは、
-            その移行期に必要な <span className="font-semibold">設計・標準・物語</span> を実装します（Designing the Human Next）。
-          </p>
+    {/* Vision */}
+    <section
+      id="vision"
+      data-testid="vision"
+      className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start"
+    >
+      {/* 左：説明＋ロケット（2列） */}
+      <div className="md:col-span-2">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-3">Next Being ビジョン</h2>
+        <p className="text-gray-700 leading-relaxed">
+          猿 → 人間 → <span className="whitespace-nowrap">人間＋AI</span> → <span className="font-semibold">Next Being</span>。道具と文化が加速してきた人類史の延長に、
+          <span className="font-semibold">人×AI×コミュニティ×環境</span>の協働で生まれる新しい“在り方”を構想します。NBLは、
+          その移行期に必要な <span className="font-semibold">設計・標準・物語</span> を実装します（Designing the Human Next）。
+        </p>
         <div className="mt-4">
           <VisionRocket />
         </div>
-        </div>
+      </div>
+    
+      {/* 右：三段ロケットH1/H2/H3＋下に2カード（3列） */}
+      <div className="md:col-span-3 grid gap-4">
+        {/* H1/H2/H3 を3カラムで */}
         <div className="grid md:grid-cols-3 gap-4">
           {/* H1 / Stage 1 */}
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
@@ -149,7 +158,7 @@ export default function NBLHome() {
               <li>KPI とチェックリストで運用</li>
             </ul>
           </div>
-        
+    
           {/* H2 / Stage 2 */}
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
             <div className="flex items-center gap-2 mb-2">
@@ -167,7 +176,7 @@ export default function NBLHome() {
               <li>AIアシストによる負荷調整と可視化</li>
             </ul>
           </div>
-        
+    
           {/* H3 / Stage 3 */}
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
             <div className="flex items-center gap-2 mb-2">
@@ -186,29 +195,32 @@ export default function NBLHome() {
             </ul>
           </div>
         </div>
-          <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">設計原則（Draft）</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-              <li>尊厳を埋め込む（Dignity by Design）</li>
-              <li>支援が自律を拡張する（Autonomy with Assistance）</li>
-              <li>安全・説明責任・反証可能性</li>
-              <li>インクルージョンとアクセシビリティ</li>
-              <li>オープンナレッジと再利用性（CC BY）</li>
-              <li>エビデンス・ファースト、物語で拡張</li>
-              <li>持続可能性と楽しさ（Joy）</li>
-            </ul>
-          </div>
-          <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">探索中のリサーチクエスチョン</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-              <li>症状×タスク×KPIの共通語彙はどこまで一般化できるか</li>
-              <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
-              <li>AIエージェントは個人の自律をどう拡張しうるか</li>
-              <li>公平性の可視化は意思決定のスピードを上げるか</li>
-            </ul>
-          </div>
+    
+        {/* 下に2カードを縦積み（右3列の中） */}
+        <div className="rounded-2xl border p-5 shadow-sm bg-white">
+          <h3 className="font-medium mb-1">設計原則（Draft）</h3>
+          <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+            <li>尊厳を埋め込む（Dignity by Design）</li>
+            <li>支援が自律を拡張する（Autonomy with Assistance）</li>
+            <li>安全・説明責任・反証可能性</li>
+            <li>インクルージョンとアクセシビリティ</li>
+            <li>オープンナレッジと再利用性（CC BY）</li>
+            <li>エビデンス・ファースト、物語で拡張</li>
+            <li>持続可能性と楽しさ（Joy）</li>
+          </ul>
         </div>
-      </section>
+    
+        <div className="rounded-2xl border p-5 shadow-sm bg-white">
+          <h3 className="font-medium mb-1">探索中のリサーチクエスチョン</h3>
+          <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+            <li>症状×タスク×KPIの共通語彙はどこまで一般化できるか</li>
+            <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
+            <li>AIエージェントは個人の自律をどう拡張しうるか</li>
+            <li>公平性の可視化は意思決定のスピードを上げるか</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
       {/* About */}
       <section id="about" data-testid="about" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start">
