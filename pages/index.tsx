@@ -131,7 +131,6 @@ export default function NBLHome() {
           <VisionRocket />
         </div>
         </div>
-        //<div className="md:col-span-3 grid gap-4">
         <div className="grid md:grid-cols-3 gap-4">
           {/* H1 / Stage 1 */}
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
