@@ -279,9 +279,9 @@ export default function NBLHome() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            {title:'難病就労支援：国際比較2025（速報）', desc:'制度と現場のベストプラクティスを8頁で凝縮。', href:'/docs/houkoku126_summary.pdf'},
-            {title:'雇用の質×合理的配慮：設計ガイド', desc:'非同期会議・在宅・温度/騒音配慮の実務手順。', href:'/docs/remote-accommodation.pdf'},
-            {title:'巻頭言：職業リハビリテーションの黄金期はこれから', desc:'2025/07 読み物版。', href:'/docs/01-巻頭言-春名.pdf'},
+            { title: '難病就労支援：国際比較2025（速報）', desc: '制度と現場のベストプラクティスを8頁で凝縮。', href: '/docs/houkoku126_summary.pdf' },
+            { title: '雇用の質×合理的配慮：設計ガイド', desc: '非同期会議・在宅・温度/騒音配慮の実務手順。', href: '/docs/remote-accommodation.pdf' },
+            { title: '巻頭言：職業リハビリテーションの黄金期はこれから', desc: '2025/07 読み物版。', href: '/docs/01-巻頭言-春名.pdf' },
           ].map((r, i) => (
             <article key={i} className="rounded-2xl border overflow-hidden shadow-sm bg-white">
               <div className="aspect-video bg-gradient-to-br from-indigo-50 to-sky-50" />
@@ -289,18 +289,19 @@ export default function NBLHome() {
                 <h3 className="font-medium mb-1">{r.title}</h3>
                 <p className="text-sm text-gray-600 mb-3">{r.desc}</p>
                 <div className="flex gap-3">
-                  <a href={r.href} className="text-sm underline">PDF（CC BY）</a>
+                  <a href={encodeURI(r.href)} className="text-sm underline">PDF（CC BY）</a>
                   <a href="#video" className="text-sm underline">10分講義</a>
                 </div>
               </div>
             </article>
           ))}
         </div>
+        
         <div className="grid md:grid-cols-3 gap-6 mt-6">
           {[
-            {title:'リハ協カフェ講演資料', desc:'2025/07/31 ウェブ講演スライド。', href:'/docs/リハ協カフェ20250731春名2.pdf'},
-            {title:'京都難病2025 プレゼン', desc:'企画スライド案（PPTX）', href:'/docs/京都難病2025.pptx'},
-            {title:'難病患者の雇用促進：研究会まとめ', desc:'議論要旨と提案（DOCX）', href:'/docs/難病患者の雇用促進に関する研究会の議論まとめ.docx'},
+            { title: 'リハ協カフェ講演資料', desc: '2025/07/31 ウェブ講演スライド。', href: '/docs/リハ協カフェ20250731春名2.pdf' },
+            { title: '京都難病2025 プレゼン', desc: '企画スライド案（PPTX）', href: '/docs/京都難病2025.pptx' },
+            { title: '難病患者の雇用促進：研究会まとめ', desc: '議論要旨と提案（DOCX）', href: '/docs/難病患者の雇用促進に関する研究会の議論まとめ.docx' },
           ].map((r, i) => (
             <article key={i} className="rounded-2xl border overflow-hidden shadow-sm bg-white">
               <div className="aspect-video bg-gradient-to-br from-amber-50 to-emerald-50" />
@@ -308,14 +309,14 @@ export default function NBLHome() {
                 <h3 className="font-medium mb-1">{r.title}</h3>
                 <p className="text-sm text-gray-600 mb-3">{r.desc}</p>
                 <div className="flex gap-3">
-                  <a href={r.href} className="text-sm underline">資料</a>
+                  <a href={encodeURI(r.href)} className="text-sm underline">資料</a>
                   <a href="#join" className="text-sm underline">相談する</a>
                 </div>
               </div>
             </article>
           ))}
-        </div>
-      </section>
+        </div> 
+     </section>
 
       {/* Campaign */}
       <section id="campaign" data-testid="campaign" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
