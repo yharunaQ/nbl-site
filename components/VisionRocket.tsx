@@ -13,24 +13,6 @@ export default function VisionRocket() {
 
       <div className="grid md:grid-cols-[1fr_auto] items-center gap-6">
         {/* 3ステージ（テキスト側） */}
-        <ul className="grid sm:grid-cols-3 gap-3 w-full">
-          <li className="rounded-2xl p-4 bg-gradient-to-br from-sky-50 to-indigo-50 border">
-            <div className="text-xs text-gray-500">Stage 1</div>
-            <div className="font-semibold">不公平の見える化</div>
-            <p className="text-xs text-gray-600 mt-1">データ×現場の言語化、指標づくり</p>
-          </li>
-          <li className="rounded-2xl p-4 bg-gradient-to-br from-fuchsia-50 to-rose-50 border">
-            <div className="text-xs text-gray-500">Stage 2</div>
-            <div className="font-semibold">合意可能な設計</div>
-            <p className="text-xs text-gray-600 mt-1">合理的配慮×ワーク設計、チェックリスト</p>
-          </li>
-          <li className="rounded-2xl p-4 bg-gradient-to-br from-amber-50 to-emerald-50 border">
-            <div className="text-xs text-gray-500">Stage 3</div>
-            <div className="font-semibold">Next Being 社会実装</div>
-            <p className="text-xs text-gray-600 mt-1">企業・自治体と実証→標準化</p>
-          </li>
-        </ul>
-
         {/* ロケット（SVG） */}
         <div className="justify-self-center">
           <svg
