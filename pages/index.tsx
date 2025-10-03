@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
+import VisionRocket from "@/components/VisionRocket";
 
 export default function NBLHome() {
   const jsonLd = {
@@ -126,9 +127,9 @@ export default function NBLHome() {
             <span className="font-semibold">人×AI×コミュニティ×環境</span>の協働で生まれる新しい“在り方”を構想します。NBLは、
             その移行期に必要な <span className="font-semibold">設計・標準・物語</span> を実装します（Designing the Human Next）。
           </p>
-          <div className="mt-4 text-sm text-gray-600">
-            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 bg-white">ビジョンの三段ロケット</div>
-          </div>
+        <div className="mt-4">
+          <VisionRocket />
+        </div>
         </div>
         <div className="md:col-span-3 grid gap-4">
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
