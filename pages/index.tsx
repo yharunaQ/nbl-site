@@ -21,7 +21,7 @@ export default function NBLHome() {
     
       <link rel="canonical" href="https://nextbeinglab.org/" />
       <meta name="description" content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。" />
-        <meta name="robots" content="index,follow"> 
+       <meta name="robots" content="index,follow" />
       {/* Open Graph */}
       <meta property="og:site_name" content="Next Being Lab" />
       <meta property="og:locale" content="ja_JP" />
