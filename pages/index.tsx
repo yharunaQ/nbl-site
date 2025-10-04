@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import VisionRocket from "@/components/VisionRocket";
+import VisionRocket from "../components/VisionRocket";
 
 export default function NBLHome() {
   const jsonLd = {
@@ -21,7 +21,7 @@ export default function NBLHome() {
     
       <link rel="canonical" href="https://nextbeinglab.org/" />
       <meta name="description" content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。" />
-    
+        <meta name="robots" content="index,follow"> 
       {/* Open Graph */}
       <meta property="og:site_name" content="Next Being Lab" />
       <meta property="og:locale" content="ja_JP" />
@@ -140,8 +140,9 @@ export default function NBLHome() {
               <span className="text-gray-700">At work, CAN matters.</span>
             </h1>
             <p className="text-base md:text-lg text-gray-700">
-              現場感覚 × 学術の厳密性 × 実装力 × 物語化 × 財務妥当性。難病・慢性疾患・ニューロダイバージェンスを前提に、
-              不公平の見える化を<span className="font-semibold">合意可能な設計</span>へ。政策・職場・当事者の三位一体で進めます。
+              現場感覚 × 学術の厳密性 × 実装力 × 物語化 × 財務妥当性。
+                難病・慢性疾患・ニューロダイバージェンスの**具体課題**を、
+               不公平の見える化→<span className="font-semibold">合意可能な設計</span>→実装KPIまで**一筆書き**でつなげます。
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#product" className="rounded-2xl px-4 py-2 bg-gray-900 text-white shadow">JACを見る</a>
@@ -308,10 +309,13 @@ export default function NBLHome() {
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
             <h3 className="font-medium mb-1">提供物</h3>
             <ul className="list-disc pl-5 text-gray-700 space-y-1">
-              <li>JAC（Job Accommodation Copilot）</li>
-              <li>Accommodation Playbook（日本版）</li>
-              <li>オープンレポート／講義／研修・認定</li>
-            </ul>
+                <li>JAC（Job Accommodation Copilot）</li>
+                <li className="text-xs text-gray-500 ml-5">…配慮案の生成→様式出力→実装KPIを最小UIで</li>
+                <li>Accommodation Playbook（日本版）</li>
+                <li className="text-xs text-gray-500 ml-5">…症状×タスク×KPI の標準手順</li>
+                <li>オープンレポート／講義／研修・認定</li>
+                <li className="text-xs text-gray-500 ml-5">…現場導入の事例と教材をCC BYで公開</li> 
+           </ul>
           </div>
           {/* About セクション内、カード群の中に追加 */}
             <article className="rounded-2xl border p-5 shadow-sm bg-white">
