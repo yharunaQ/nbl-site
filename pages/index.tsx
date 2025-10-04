@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import VisionRocket from '../components/VisionRocket';
+import Image from 'next/image';
 
 export default function NBLHome() {
   const jsonLd = {
