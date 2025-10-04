@@ -172,17 +172,48 @@ export default function NBLHome() {
         </div>
       </header>
 
-      {/* Trust strip */}
-      <div className="border-y bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-6 grid grid-cols-2 md:grid-cols-6 gap-4 text-xs md:text-sm text-gray-600">
-          <div>当事者・企業・支援者協働</div>
-          <div>ICF/EBPM基盤</div>
-          <div>合理的配慮の標準化</div>
-          <div>講義・政策・実装の一体化</div>
-          <div>オープンアクセス（CC BY 4.0）</div>
-          <div>合意形成デザイン</div>
-        </div>
-      </div>
+        {/* Trust strip（リンク付きチップ） */}
+        <section aria-label="信頼の根拠" className="border-y bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-4">
+            <ul className="flex flex-wrap gap-2 md:gap-3 text-xs md:text-sm">
+              <li>
+                <a href="#about" className="inline-flex items-center rounded-full border px-3 py-1 bg-gray-50 hover:bg-gray-100 hover:underline">
+                  当事者・企業・支援者協働
+                </a>
+              </li>
+              <li>
+                <a href="/docs/houkoku126_summary.pdf" className="inline-flex items-center rounded-full border px-3 py-1 bg-gray-50 hover:bg-gray-100 hover:underline">
+                  ICF / EBPM 基盤
+                </a>
+              </li>
+              <li>
+                <a href="#product" className="inline-flex items-center rounded-full border px-3 py-1 bg-gray-50 hover:bg-gray-100 hover:underline">
+                  合理的配慮の標準化（JAC）
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="inline-flex items-center rounded-full border px-3 py-1 bg-gray-50 hover:bg-gray-100 hover:underline">
+                  講義・政策・実装の一体化
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://creativecommons.org/licenses/by/4.0/deed.ja"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-full border px-3 py-1 bg-gray-50 hover:bg-gray-100 hover:underline"
+                >
+                  オープンアクセス（CC BY 4.0）
+                </a>
+              </li>
+              <li>
+                <a href="#vision" className="inline-flex items-center rounded-full border px-3 py-1 bg-gray-50 hover:bg-gray-100 hover:underline">
+                  合意形成デザイン
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
 
         {/* Vision */}
         <section
