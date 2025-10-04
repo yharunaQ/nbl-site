@@ -293,16 +293,24 @@ export default function NBLHome() {
       >
         {/* 左：説明＋ロケット（2列） */}
         <div className="md:col-span-2">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">Next Being ビジョン</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+            Next Being ビジョン — <span className="whitespace-nowrap">AGI前夜に間に合う</span>
+            デザイン
+          </h2>
           <p className="text-gray-700 leading-relaxed">
             猿 → 人間 → <span className="whitespace-nowrap">人間＋AI</span> →{' '}
-            <span className="font-semibold">Next Being</span>
-            。道具と文化が加速してきた人類史の延長に、
-            <span className="font-semibold">人×AI×コミュニティ×環境</span>
-            の協働で生まれる新しい“在り方”を構想します。NBLは、 その移行期に必要な{' '}
-            <span className="font-semibold">設計・標準・物語</span> を実装します（Designing the
-            Human Next）。
+            <span className="font-semibold">Next Being</span>。<br className="hidden md:block" />
+            2027年、汎用AIが社会の基本動作に溶ける<strong className="font-semibold">転回点</strong>
+            が来ると言われます。 NBLはこの前後を跨いで、
+            <span className="font-semibold">人×AI×コミュニティ×環境</span>が協働する
+            “次の在り方”を設計し、<span className="font-semibold">設計・標準・物語</span>
+            を実装します。
           </p>
+          <div className="mt-2 text-xs text-gray-600">
+            シンギュラリティは終着点ではなく、
+            <span className="font-semibold">人間拡張の始動点</span>
+            。尊厳が主軸に残るガードレールを、今つくる。
+          </div>
           <div className="mt-4">
             <VisionRocket />
           </div>
@@ -318,18 +326,18 @@ export default function NBLHome() {
                 <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-sky-50 to-indigo-50">
                   Stage 1
                 </span>
-                <span className="text-xs text-gray-500">H1（いま）</span>
+                <span className="text-xs text-gray-500">H1（2025–2026）</span>
               </div>
-              <h3 className="font-medium mb-1">不公平の見える化 — 公平な働き方を設計する</h3>
+              <h3 className="font-medium mb-1">不公平の見える化 — 公平を“運用可能”に</h3>
               <p className="text-gray-700 text-sm">
                 データ×現場の言語化で指標を整備し、合理的配慮を科学。
-                <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を一筆書きにする{' '}
-                <span className="whitespace-nowrap">（JAC／Playbook）</span>。
+                <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を一筆書きにする（
+                <span className="whitespace-nowrap">JAC／Playbook</span>）。
               </p>
               <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>データ×現場の言語化、指標づくり</li>
-                <li>合理的配慮×ワーク設計の実務化</li>
-                <li>KPI とチェックリストで運用</li>
+                <li>症状×タスク×KPIの語彙統一</li>
+                <li>非同期前提の業務分解と配慮カタログ</li>
+                <li>職場運用チェックリストと監査可能性</li>
               </ul>
             </div>
 
@@ -341,15 +349,16 @@ export default function NBLHome() {
                 </span>
                 <span className="text-xs text-gray-500">H2（2026–2029）</span>
               </div>
-              <h3 className="font-medium mb-1">合意可能な設計 — 人間＋AIの共同行為へ</h3>
+              <h3 className="font-medium mb-1">AGI前夜 — 人間＋AIの共同行為を標準化</h3>
               <p className="text-gray-700 text-sm">
-                協調エージェントが日々の仕事・学び・ケアを共同設計。
-                個人は「存在の物語」で価値創出し、現場の合意形成を加速。
+                協調エージェントが仕事・学び・ケアを共同設計。意思決定は
+                <span className="font-semibold">人が主</span>、AIは
+                <span className="font-semibold">可視化と最適化</span>を担う。
               </p>
               <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>合意形成プロセスの標準化</li>
-                <li>非同期・リモート前提の業務分解</li>
-                <li>AIアシストによる負荷調整と可視化</li>
+                <li>役割分担のガードレール（人が決める／AIが支える）</li>
+                <li>負荷調整・説明責任・偏り検知の自動化</li>
+                <li>「存在の物語」を評価に接続（納得の合意形成）</li>
               </ul>
             </div>
 
@@ -363,37 +372,37 @@ export default function NBLHome() {
               </div>
               <h3 className="font-medium mb-1">Next Being Commons — 社会実装のコモンズ化</h3>
               <p className="text-gray-700 text-sm">
-                公共圏に開かれた支援・学習・労働のコモンズ化。 評価は{' '}
-                <span className="whitespace-nowrap">尊厳・貢献・持続可能性</span> の三軸で。
+                支援・学習・労働が公共圏に開かれ、再利用可能に。評価は
+                <span className="whitespace-nowrap"> 尊厳・貢献・持続可能性 </span>の三軸。
               </p>
               <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>企業・自治体と実証→標準化</li>
-                <li>オープンライセンスと再利用性</li>
-                <li>フェアネス指標の社会合意</li>
+                <li>企業・自治体と実証→標準化（オープン仕様）</li>
+                <li>ライセンスとAPIで再利用性を担保</li>
+                <li>フェアネス指標の社会合意と監査制度</li>
               </ul>
             </div>
           </div>
 
-          {/* 下に2カードを縦積み（右3列の中） */}
+          {/* 下に2カード（設計原則／RQ） */}
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">設計原則（Draft）</h3>
+            <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
             <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
               <li>尊厳を埋め込む（Dignity by Design）</li>
               <li>支援が自律を拡張する（Autonomy with Assistance）</li>
-              <li>安全・説明責任・反証可能性</li>
-              <li>インクルージョンとアクセシビリティ</li>
-              <li>オープンナレッジと再利用性（CC BY）</li>
+              <li>安全・説明責任・反証可能性（可視化とログ）</li>
+              <li>インクルージョンとアクセシビリティ（人中心UI）</li>
+              <li>オープンナレッジと再利用性（CC BY／API）</li>
               <li>エビデンス・ファースト、物語で拡張</li>
               <li>持続可能性と楽しさ（Joy）</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">探索中のリサーチクエスチョン</h3>
+            <h3 className="font-medium mb-1">いま問いたいリサーチクエスチョン</h3>
             <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-              <li>症状×タスク×KPIの共通語彙はどこまで一般化できるか</li>
+              <li>症状×タスク×KPIの語彙はどこまで一般化できるか</li>
               <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
-              <li>AIエージェントは個人の自律をどう拡張しうるか</li>
+              <li>AI協調は個人の自律と創造性をどう拡張しうるか</li>
               <li>公平性の可視化は意思決定のスピードを上げるか</li>
             </ul>
           </div>
