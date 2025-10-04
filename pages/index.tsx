@@ -14,34 +14,98 @@ export default function NBLHome() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-<Head>
-  <title>Next Being Lab | 働くは設計できる。</title>
-  <link rel="canonical" href="https://nextbeinglab.org/" />
-  <meta name="description" content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。" />
-  <meta property="og:title" content="Next Being Lab" />
-  <meta property="og:description" content="働くは設計できる。At work, CAN matters." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nextbeinglab.org/" />
-  <meta property="og:image" content="https://nextbeinglab.org/og.png" />
-  <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <script
-    type="application/ld+json"
-    // Organizationスキーマ（email/同一URL/ロゴも付与）
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: 'Next Being Lab',
-        url: 'https://nextbeinglab.org',
-        email: 'info@nextbeinglab.org',
-        logo: 'https://nextbeinglab.org/og.png',
-        sameAs: ['https://www.youtube.com/@next-being-lab'],
-        description: '難病就労支援・障害者雇用の研究と実装ユニット。合理的配慮を科学し社会実装する。'
-      })
-    }}
-  />
-</Head>
+    <Head>
+      <title>Next Being Lab | 働くは設計できる。</title>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+      <link rel="canonical" href="https://nextbeinglab.org/" />
+      <meta name="description" content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。" />
+    
+      {/* Open Graph */}
+      <meta property="og:site_name" content="Next Being Lab" />
+      <meta property="og:locale" content="ja_JP" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://nextbeinglab.org/" />
+      <meta property="og:title" content="Next Being Lab | 働くは設計できる。" />
+      <meta property="og:description" content="働くは設計できる。At work, CAN matters." />
+      <meta property="og:image" content="https://nextbeinglab.org/og.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Next Being Lab — 働くは設計できる。" />
+    
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Next Being Lab | 働くは設計できる。" />
+      <meta name="twitter:description" content="働くは設計できる。At work, CAN matters." />
+      <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
+    
+      {/* PWA/Chrome UI 小物（任意） */}
+      <meta name="theme-color" content="#111827" />
+      <meta name="format-detection" content="telephone=no" />
+    
+      {/* Icons */}
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+      {/* JSON-LD: Organization */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Next Being Lab",
+            url: "https://nextbeinglab.org",
+            email: "info@nextbeinglab.org",
+            logo: "https://nextbeinglab.org/og.png",
+            sameAs: [
+              "https://blog.nextbeinglab.org",
+              "https://www.youtube.com/@next-being-lab"
+            ],
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                email: "info@nextbeinglab.org",
+                contactType: "customer support",
+                availableLanguage: ["ja", "en"]
+              }
+            ],
+            description:
+              "難病就労支援・障害者雇用の研究と実装ユニット。合理的配慮を科学し社会実装する。"
+          })
+        }}
+      />
+    
+      {/* JSON-LD: Person (Founder) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Yuichiro Haruna",
+            jobTitle: "Founder & Scientist",
+            affiliation: {
+              "@type": "Organization",
+              name: "Next Being Lab",
+              url: "https://nextbeinglab.org"
+            },
+            url: "https://nextbeinglab.org/blog",
+            email: "info@nextbeinglab.org"
+          })
+        }}
+      />
+    
+      {/* RSS（ブログを運用中なら） */}
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="NBL Blog"
+        href="https://blog.nextbeinglab.org/feed"
+      />
+    </Head>
+
       {/* Top Nav */}
       <nav className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur" data-testid="top-nav">
         <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
@@ -84,6 +148,7 @@ export default function NBLHome() {
               <a href="#reports" className="rounded-2xl px-4 py-2 bg-white border shadow-sm">最新レポート</a>
               <a href="#campaign" className="rounded-2xl px-4 py-2 bg-white border shadow-sm">CAN &gt; CAN'T</a>
               <a href="#vision" className="rounded-2xl px-4 py-2 bg-white border shadow-sm" data-testid="hero-vision">ビジョン</a>
+              <a href="/blog" className="rounded-2xl px-4 py-2 bg-white border shadow-sm">Founder’s Blog</a>
             </div>
           </div>
           <div className="rounded-3xl border bg-white shadow-sm p-6">
@@ -248,6 +313,17 @@ export default function NBLHome() {
               <li>オープンレポート／講義／研修・認定</li>
             </ul>
           </div>
+          {/* About セクション内、カード群の中に追加 */}
+            <article className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">Founder’s Note</h3>
+              <p className="text-sm text-gray-600 mb-3">
+                春名由一郎（Founder/Scientist）が、現場の声×研究の気づきを短く更新。
+                合意可能な設計と実装の途中経過を記録します。
+              </p>
+              <a href="/blog" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gray-900 text-white shadow">
+                最新記事を読む
+              </a>
+            </article>
         </div>
       </section>
 
@@ -432,6 +508,7 @@ export default function NBLHome() {
       <a className="underline" href="#reports">レポート</a>
       <a className="underline" href="#campaign">キャンペーン</a>
       <a className="underline" href="#downloads">ドキュメント</a>
+      <a className="underline" href="/blog">Founder’s Blog</a>
     </div>
   </div>
 </footer>
