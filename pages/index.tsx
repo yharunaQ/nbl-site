@@ -314,8 +314,8 @@ export default function NBLHome() {
           <div className="mt-4">
             {/*<VisionRocket />*/}
             <Image
-              src="/images/evolution-nextbeing.webp"
-              alt="猿→人間→人間＋AI→Next Being"
+              src="/images/evolution-nextbeing3.webp"
+              alt="猿→人間→人間＋AGI→Next Being"
               width={1200}
               height={600}
               priority
