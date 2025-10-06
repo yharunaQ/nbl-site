@@ -451,8 +451,7 @@ export default function NBLHome() {
                 最新記事を読む
               </a>
             </article>
-          </div>
-          {/* NBLの4つの柱（Phase 1 に内包） */}
+                      {/* NBLの4つの柱（Phase 1 に内包） */}
             <div className="rounded-2xl border p-5 shadow-sm bg-white">
               <h3 className="font-medium mb-3">NBLの4つの柱（Phase 1 の推進要素）</h3>
             
@@ -491,6 +490,7 @@ export default function NBLHome() {
                 </article>
               </div>
             </div>  
+          </div>
         </section>
 
       {/* The 4 Pillars */}
