@@ -285,141 +285,150 @@ export default function NBLHome() {
         </div>
       </section>
 
-      {/* Vision */}
-      <section
-        id="vision"
-        data-testid="vision"
-        className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start"
-      >
-        {/* 左：説明＋ロケット（2列） */}
-        <div className="md:col-span-2">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-            Next Being ビジョン — <span className="whitespace-nowrap">AGI前夜に間に合う</span>
-            デザイン
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            猿 → 人間 → <span className="whitespace-nowrap">人間＋AI</span> →{' '}
-            <span className="font-semibold">Next Being</span>。<br className="hidden md:block" />
-            2027年、汎用AIが社会の基本動作に溶ける<strong className="font-semibold">転回点</strong>
-            が来ると言われます。 NBLはこの前後を跨いで、
-            <span className="font-semibold">人×AI×コミュニティ×環境</span>が協働する
-            “次の在り方”を設計し、<span className="font-semibold">設計・標準・物語</span>
-            を実装します。
-          </p>
-          <div className="mt-2 text-xs text-gray-600">
-            シンギュラリティは終着点ではなく、
-            <span className="font-semibold">人間拡張の始動点</span>
-            。尊厳が主軸に残るガードレールを、今つくる。
-          </div>
-          <div className="mt-4">
-            {/*<VisionRocket />*/}
-            <Image
-              src="/images/evolution-nextbeing3.webp"
-              alt="猿→人間→人間＋AGI→Next Being"
-              width={1200}
-              height={600}
-              priority
-            />
-          </div>
-        </div>
-
-        {/* 右：三段ロケットH1/H2/H3＋下に2カード（3列） */}
-        <div className="md:col-span-3 grid gap-4">
-          {/* H1/H2/H3 を3カラムで */}
-          <div className="grid md:grid-cols-3 gap-4">
-            {/* H1 / Stage 1 */}
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-sky-50 to-indigo-50">
-                  Stage 1
-                </span>
-                <span className="text-xs text-gray-500">H1（2025–2026）</span>
-              </div>
-              <h3 className="font-medium mb-1">不公平の見える化 — 公平を“運用可能”に</h3>
-              <p className="text-gray-700 text-sm">
-                データ×現場の言語化で指標を整備し、合理的配慮を科学。
-                <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を一筆書きにする（
-                <span className="whitespace-nowrap">JAC／Playbook</span>）。
-              </p>
-              <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>症状×タスク×KPIの語彙統一</li>
-                <li>非同期前提の業務分解と配慮カタログ</li>
-                <li>職場運用チェックリストと監査可能性</li>
-              </ul>
+        /* ============================
+           Vision セクション（5カラム基礎グリッド）
+           - md以上: 左2列 = 説明＋イラスト、右3列 = ステージ3枚＋補助2枚
+           - モバイル: すべて縦積み
+        =============================*/
+        <section
+          id="vision"
+          data-testid="vision"
+          className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start"
+        >
+          {/* LEFT: 説明＋イラスト（md以上で全5列中の2列を使用） */}
+          <div className="md:col-span-2">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+              Next Being ビジョン — <span className="whitespace-nowrap">AGI前夜に間に合う</span>デザイン
+            </h2>
+        
+            {/* リード文：AGI転回点とNBLの役割 */}
+            <p className="text-gray-700 leading-relaxed">
+              猿 → 人間 → <span className="whitespace-nowrap">人間＋AI</span> →{" "}
+              <span className="font-semibold">Next Being</span>。
+              <br className="hidden md:block" />
+              2027年、汎用AIが社会の基本動作に溶ける<strong className="font-semibold">転回点</strong>が来ると言われます。
+              NBLはこの前後を跨いで、
+              <span className="font-semibold">人×AI×コミュニティ×環境</span>が協働する“次の在り方”を設計し、
+              <span className="font-semibold">設計・標準・物語</span>を実装します。
+            </p>
+        
+            {/* サブリード：姿勢の宣言（短文） */}
+            <div className="mt-2 text-xs text-gray-600">
+              シンギュラリティは終着点ではなく、<span className="font-semibold">人間拡張の始動点</span>。
+              尊厳が主軸に残るガードレールを、今つくる。
             </div>
         
-            {/* H2 / Stage 2 */}
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-fuchsia-50 to-rose-50">
-                  Stage 2
-                </span>
-                <span className="text-xs text-gray-500">H2（2026–2029）</span>
-              </div>
-              <h3 className="font-medium mb-1">AGI前夜 — 人間＋AGIの共同行為を標準化</h3>
-              <p className="text-gray-700 text-sm">
-                協調エージェントが仕事・学び・ケアを共同設計。意思決定は
-                <span className="font-semibold">人が主</span>、AGIは
-                <span className="font-semibold">可視化・最適化・安全装置</span>を担う。
-              </p>
-              <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>役割分担のガードレール（人が決める／AGIが支える）</li>
-                <li>負荷調整・説明責任・偏り検知の自動化</li>
-                <li>「存在の物語」を評価へ接続（納得の合意）</li>
-              </ul>
-              <div className="mt-2 text-[11px] text-gray-500">
-                AGIは補助輪。ハンドルは人に。— <span className="font-semibold">Human-in-Command</span>
-              </div>
-            </div>
-        
-            {/* H3 / Stage 3 */}
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-amber-50 to-emerald-50">
-                  Stage 3
-                </span>
-                <span className="text-xs text-gray-500">H3（2030+）</span>
-              </div>
-              <h3 className="font-medium mb-1">Next Being Commons — 社会実装のコモンズ化</h3>
-              <p className="text-gray-700 text-sm">
-                支援・学習・労働が公共圏に開かれ、再利用可能に。評価は
-                <span className="whitespace-nowrap"> 尊厳・貢献・持続可能性 </span>の三軸。
-              </p>
-              <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>企業・自治体と実証→標準化（オープン仕様）</li>
-                <li>ライセンスとAPIで再利用性を担保（AGI可読）</li>
-                <li>フェアネス指標の社会合意と監査制度</li>
-              </ul>
+            {/* イラスト（VisionRocket を使わない時は画像で） */}
+            <div className="mt-4">
+              {/* VisionRocket を使うなら次の1行のコメントを外す */}
+              {/* <VisionRocket /> */}
+              <Image
+                src="/images/evolution-nextbeing3.webp"
+                alt="猿→人間→人間＋AGI→Next Being（AGIで人類・地球がつながるイメージ）"
+                width={1200}
+                height={600}
+                priority
+              />
             </div>
           </div>
         
-          {/* 下に2カード（設計原則／RQ） */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
-              <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-                <li>尊厳を埋め込む（Dignity by Design）</li>
-                <li>支援が自律を拡張する（Autonomy with Assistance）</li>
-                <li>安全・説明責任・反証可能性（可視化とログ）</li>
-                <li>インクルージョンとアクセシビリティ（人中心UI）</li>
-                <li>オープンナレッジと再利用性（CC BY／API）</li>
-                <li>エビデンス・ファースト、物語で拡張</li>
-                <li>持続可能性と楽しさ（Joy）</li>
-              </ul>
+          {/* RIGHT: ステージ3枚（横3カラム）＋補助2枚（横2カラム） = 合計3列領域 */}
+          <div className="md:col-span-3 grid gap-4">
+            {/* ステージカード：md以上で3列グリッド／モバイルは縦積み */}
+            <div className="grid md:grid-cols-3 gap-4">
+              {/* Stage 1 */}
+              <article className="rounded-2xl border p-5 shadow-sm bg-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-sky-50 to-indigo-50">
+                    Stage 1
+                  </span>
+                  <span className="text-xs text-gray-500">H1（2025–2026）</span>
+                </div>
+                <h3 className="font-medium mb-1">不公平の見える化 — 公平を“運用可能”に</h3>
+                <p className="text-gray-700 text-sm">
+                  データ×現場の言語化で指標を整備し、合理的配慮を科学。
+                  <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を一筆書きにする（
+                  <span className="whitespace-nowrap">JAC／Playbook</span>）。
+                </p>
+                <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
+                  <li>症状×タスク×KPIの語彙統一</li>
+                  <li>非同期前提の業務分解と配慮カタログ</li>
+                  <li>職場運用チェックリストと監査可能性</li>
+                </ul>
+              </article>
+        
+              {/* Stage 2 */}
+              <article className="rounded-2xl border p-5 shadow-sm bg-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-fuchsia-50 to-rose-50">
+                    Stage 2
+                  </span>
+                  <span className="text-xs text-gray-500">H2（2026–2029）</span>
+                </div>
+                <h3 className="font-medium mb-1">AGI前夜 — 人間＋AGIの共同行為を標準化</h3>
+                <p className="text-gray-700 text-sm">
+                  協調エージェントが仕事・学び・ケアを共同設計。意思決定は
+                  <span className="font-semibold">人が主</span>、AGIは
+                  <span className="font-semibold">可視化・最適化・安全装置</span>を担う。
+                </p>
+                <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
+                  <li>役割分担のガードレール（人が決める／AGIが支える）</li>
+                  <li>負荷調整・説明責任・偏り検知の自動化</li>
+                  <li>「存在の物語」を評価へ接続（納得の合意）</li>
+                </ul>
+                <div className="mt-2 text-[11px] text-gray-500">
+                  AGIは補助輪。ハンドルは人に。— <span className="font-semibold">Human-in-Command</span>
+                </div>
+              </article>
+        
+              {/* Stage 3 */}
+              <article className="rounded-2xl border p-5 shadow-sm bg-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-amber-50 to-emerald-50">
+                    Stage 3
+                  </span>
+                  <span className="text-xs text-gray-500">H3（2030+）</span>
+                </div>
+                <h3 className="font-medium mb-1">Next Being Commons — 社会実装のコモンズ化</h3>
+                <p className="text-gray-700 text-sm">
+                  支援・学習・労働が公共圏に開かれ、再利用可能に。評価は
+                  <span className="whitespace-nowrap"> 尊厳・貢献・持続可能性 </span>の三軸。
+                </p>
+                <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
+                  <li>企業・自治体と実証→標準化（オープン仕様）</li>
+                  <li>ライセンスとAPIで再利用性を担保（AGI可読）</li>
+                  <li>フェアネス指標の社会合意と監査制度</li>
+                </ul>
+              </article>
             </div>
         
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <h3 className="font-medium mb-1">いま問いたいリサーチクエスチョン</h3>
-              <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-                <li>症状×タスク×KPIの語彙はどこまで一般化できるか</li>
-                <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
-                <li>AGI協調は個人の自律と創造性をどう拡張しうるか</li>
-                <li>公平性の可視化は意思決定のスピードを上げるか</li>
-              </ul>
+            {/* 補助カード：md以上で2列グリッド／モバイルは縦積み */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <article className="rounded-2xl border p-5 shadow-sm bg-white">
+                <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
+                <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                  <li>尊厳を埋め込む（Dignity by Design）</li>
+                  <li>支援が自律を拡張する（Autonomy with Assistance）</li>
+                  <li>安全・説明責任・反証可能性（可視化とログ）</li>
+                  <li>インクルージョンとアクセシビリティ（人中心UI）</li>
+                  <li>オープンナレッジと再利用性（CC BY／API）</li>
+                  <li>エビデンス・ファースト、物語で拡張</li>
+                  <li>持続可能性と楽しさ（Joy）</li>
+                </ul>
+              </article>
+        
+              <article className="rounded-2xl border p-5 shadow-sm bg-white">
+                <h3 className="font-medium mb-1">いま問いたいリサーチクエスチョン</h3>
+                <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                  <li>症状×タスク×KPIの語彙はどこまで一般化できるか</li>
+                  <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
+                  <li>AGI協調は個人の自律と創造性をどう拡張しうるか</li>
+                  <li>公平性の可視化は意思決定のスピードを上げるか</li>
+                </ul>
+              </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* About */}
       <section
