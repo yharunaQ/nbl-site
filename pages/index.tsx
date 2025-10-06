@@ -414,10 +414,10 @@ export default function NBLHome() {
         {/* NBL（Phase 1） */}
         <section id="phase1" data-testid="phase1" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start">
           <div className="md:col-span-2">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-3">NBL（Phase 1）</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">NBLとは（Phase 1）</h2>
             <p className="text-gray-700 leading-relaxed">
-              Phase 1 は、ビジョンStage 1に相当。<span className="font-semibold">不公平の見える化を“運用可能”にする</span>ことに集中します。
-              Next Being Lab（NBL）は、難病を含む多様な身体条件を前提にした働き方・学び方・暮らし方を設計する研究・実装ユニットです。
+              Next Being Lab（NBL）は、Next Beingに向けた哲学x科学xテクノロジーの社会実装ラボです。
+              スタートアップのPhase 1 では、<span className="font-semibold">不公平の見える化を“運用可能”にする</span>ことに集中します。NBLは、難病を含む多様な身体条件を前提にした働き方・学び方・暮らし方を設計する研究・実装ユニットとしてスタートします。
               <span className="block">目的は「不公平の見える化」を、誰もが納得可能な合意設計へ翻訳すること。</span>
             </p>
           </div>
@@ -451,7 +451,7 @@ export default function NBLHome() {
                 最新記事を読む
               </a>
             </article>
-                      {/* NBLの4つの柱（Phase 1 に内包） */}
+             {/* NBLの4つの柱（Phase 1 に内包） */}
             <div className="rounded-2xl border p-5 shadow-sm bg-white">
               <h3 className="font-medium mb-3">NBLの4つの柱（Phase 1 の推進要素）</h3>
             
@@ -492,27 +492,6 @@ export default function NBLHome() {
             </div>  
           </div>
         </section>
-
-      {/* The 4 Pillars */}
-      <section id="pillars" data-testid="pillars" className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6">NBLの4つの柱</h2>
-        <div className="grid md:grid-cols-4 gap-4">
-          {[
-            { title: 'Product', desc: 'JAC：配慮の提案→申請→実装→KPIを一筆書き' },
-            { title: 'Standard', desc: 'Accommodation Playbook：現場で回る標準手順' },
-            { title: 'Research', desc: 'ICF/EBPMに基づく実証とオープンレポート' },
-            { title: 'Narrative', desc: "CAN > CAN'T キャンペーンと学習コンテンツ" },
-          ].map((p, i) => (
-            <div key={i} className="rounded-2xl border p-6 bg-white shadow-sm">
-              <div className="text-xs text-gray-500 mb-1">{p.title}</div>
-              <div className="font-medium mb-1">{p.desc}</div>
-              <a href="#" className="text-sm underline">
-                詳しく
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Product: JAC */}
       <section
