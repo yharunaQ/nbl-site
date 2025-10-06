@@ -347,7 +347,7 @@ export default function NBLHome() {
                 <li>職場運用チェックリストと監査可能性</li>
               </ul>
             </div>
-
+        
             {/* H2 / Stage 2 */}
             <div className="rounded-2xl border p-5 shadow-sm bg-white">
               <div className="flex items-center gap-2 mb-2">
@@ -356,19 +356,22 @@ export default function NBLHome() {
                 </span>
                 <span className="text-xs text-gray-500">H2（2026–2029）</span>
               </div>
-              <h3 className="font-medium mb-1">AGI前夜 — 人間＋AIの共同行為を標準化</h3>
+              <h3 className="font-medium mb-1">AGI前夜 — 人間＋AGIの共同行為を標準化</h3>
               <p className="text-gray-700 text-sm">
                 協調エージェントが仕事・学び・ケアを共同設計。意思決定は
-                <span className="font-semibold">人が主</span>、AIは
-                <span className="font-semibold">可視化と最適化</span>を担う。
+                <span className="font-semibold">人が主</span>、AGIは
+                <span className="font-semibold">可視化・最適化・安全装置</span>を担う。
               </p>
               <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
-                <li>役割分担のガードレール（人が決める／AIが支える）</li>
+                <li>役割分担のガードレール（人が決める／AGIが支える）</li>
                 <li>負荷調整・説明責任・偏り検知の自動化</li>
-                <li>「存在の物語」を評価に接続（納得の合意形成）</li>
+                <li>「存在の物語」を評価へ接続（納得の合意）</li>
               </ul>
+              <div className="mt-2 text-[11px] text-gray-500">
+                AGIは補助輪。ハンドルは人に。— <span className="font-semibold">Human-in-Command</span>
+              </div>
             </div>
-
+        
             {/* H3 / Stage 3 */}
             <div className="rounded-2xl border p-5 shadow-sm bg-white">
               <div className="flex items-center gap-2 mb-2">
@@ -384,38 +387,37 @@ export default function NBLHome() {
               </p>
               <ul className="mt-3 text-xs text-gray-600 list-disc pl-4 space-y-1">
                 <li>企業・自治体と実証→標準化（オープン仕様）</li>
-                <li>ライセンスとAPIで再利用性を担保</li>
+                <li>ライセンスとAPIで再利用性を担保（AGI可読）</li>
                 <li>フェアネス指標の社会合意と監査制度</li>
               </ul>
             </div>
           </div>
-
+        
           {/* 下に2カード（設計原則／RQ） */}
-        <div className="grid md:grid-cols-2 gap-4">
-
-          <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-              <li>尊厳を埋め込む（Dignity by Design）</li>
-              <li>支援が自律を拡張する（Autonomy with Assistance）</li>
-              <li>安全・説明責任・反証可能性（可視化とログ）</li>
-              <li>インクルージョンとアクセシビリティ（人中心UI）</li>
-              <li>オープンナレッジと再利用性（CC BY／API）</li>
-              <li>エビデンス・ファースト、物語で拡張</li>
-              <li>持続可能性と楽しさ（Joy）</li>
-            </ul>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                <li>尊厳を埋め込む（Dignity by Design）</li>
+                <li>支援が自律を拡張する（Autonomy with Assistance）</li>
+                <li>安全・説明責任・反証可能性（可視化とログ）</li>
+                <li>インクルージョンとアクセシビリティ（人中心UI）</li>
+                <li>オープンナレッジと再利用性（CC BY／API）</li>
+                <li>エビデンス・ファースト、物語で拡張</li>
+                <li>持続可能性と楽しさ（Joy）</li>
+              </ul>
+            </div>
+        
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">いま問いたいリサーチクエスチョン</h3>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
+                <li>症状×タスク×KPIの語彙はどこまで一般化できるか</li>
+                <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
+                <li>AGI協調は個人の自律と創造性をどう拡張しうるか</li>
+                <li>公平性の可視化は意思決定のスピードを上げるか</li>
+              </ul>
+            </div>
           </div>
-
-          <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">いま問いたいリサーチクエスチョン</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
-              <li>症状×タスク×KPIの語彙はどこまで一般化できるか</li>
-              <li>配慮の効果を“チーム成果”で測る最小指標は何か</li>
-              <li>AI協調は個人の自律と創造性をどう拡張しうるか</li>
-              <li>公平性の可視化は意思決定のスピードを上げるか</li>
-            </ul>
-          </div>
-        </div>
         </div>
       </section>
 
