@@ -391,6 +391,8 @@ export default function NBLHome() {
           </div>
 
           {/* 下に2カード（設計原則／RQ） */}
+        <div className="md:col-span-2 grid gap-4">
+
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
             <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
             <ul className="list-disc pl-5 text-gray-700 space-y-1 text-sm">
@@ -413,6 +415,7 @@ export default function NBLHome() {
               <li>公平性の可視化は意思決定のスピードを上げるか</li>
             </ul>
           </div>
+        </div>
         </div>
       </section>
 
