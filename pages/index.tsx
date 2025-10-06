@@ -312,7 +312,7 @@ export default function NBLHome() {
             。尊厳が主軸に残るガードレールを、今つくる。
           </div>
           <div className="mt-4">
-            /*<VisionRocket />*/
+            {/*<VisionRocket />*/}
             <Image
               src="/images/evolution-nextbeing.webp"
               alt="猿→人間→人間＋AI→Next Being"
