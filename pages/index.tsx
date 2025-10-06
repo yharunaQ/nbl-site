@@ -107,44 +107,25 @@ export default function NBLHome() {
         />
       </Head>
 
-      {/* Top Nav */}
-      <nav className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur" data-testid="top-nav">
-        <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-full bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-emerald-400" />
-            <span className="font-semibold tracking-wide">Next Being Lab</span>
-          </div>
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#about" className="hover:opacity-80">
-              NBLとは
-            </a>
-            <a href="#pillars" className="hover:opacity-80">
-              4つの柱
-            </a>
-            <a href="#product" className="hover:opacity-80">
-              JAC（製品）
-            </a>
-            <a href="#services" className="hover:opacity-80">
-              サービス
-            </a>
-            <a href="#reports" className="hover:opacity-80">
-              レポート
-            </a>
-            <a href="#campaign" className="hover:opacity-80">
-              キャンペーン
-            </a>
-            <a href="#vision" className="hover:opacity-80" data-testid="nav-vision">
-              ビジョン
-            </a>
-            <a href="#contact" className="hover:opacity-80">
-              連絡
-            </a>
-          </div>
-          <a href="#poc" className="rounded-xl px-3 py-1.5 text-sm bg-gray-900 text-white shadow">
-            PoC募集
-          </a>
+    {/* Top Nav */}
+    <nav className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur" data-testid="top-nav">
+      <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="h-7 w-7 rounded-full bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-emerald-400" />
+          <span className="font-semibold tracking-wide">Next Being Lab</span>
         </div>
-      </nav>
+        <div className="hidden md:flex items-center gap-6 text-sm">
+          <a href="#vision" className="hover:opacity-80" data-testid="nav-vision">ビジョン</a>
+          <a href="#phase1" className="hover:opacity-80">NBL（Phase 1）</a>
+          <a href="#product" className="hover:opacity-80">JACα(製品)</a>
+          <a href="#services" className="hover:opacity-80">サービス</a>
+          <a href="#reports" className="hover:opacity-80">レポート</a>
+          <a href="#campaign" className="hover:opacity-80">キャンペーン</a>
+          <a href="#contact" className="hover:opacity-80">連絡</a>
+        </div>
+        <a href="#poc" className="rounded-xl px-3 py-1.5 text-sm bg-gray-900 text-white shadow">PoC募集</a>
+      </div>
+    </nav>
 
       {/* Hero */}
       <header className="relative overflow-hidden" data-testid="hero">
@@ -336,13 +317,13 @@ export default function NBLHome() {
           <div className="md:col-span-3 grid gap-4">
             {/* ステージカード：md以上で3列グリッド／モバイルは縦積み */}
             <div className="grid md:grid-cols-3 gap-4">
-              {/* Stage 1 */}
+              {/* Phase 1 */}
               <article className="rounded-2xl border p-5 shadow-sm bg-white">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-sky-50 to-indigo-50">
-                    Stage 1
+                    Phase 1
                   </span>
-                  <span className="text-xs text-gray-500">H1（2025–2026）</span>
+                  <span className="text-xs text-gray-500">（2025–2026）</span>
                 </div>
                 <h3 className="font-medium mb-1">不公平の見える化 — 公平を“運用可能”に</h3>
                 <p className="text-gray-700 text-sm">
@@ -357,13 +338,13 @@ export default function NBLHome() {
                 </ul>
               </article>
         
-              {/* Stage 2 */}
+              {/* Phase 2 */}
               <article className="rounded-2xl border p-5 shadow-sm bg-white">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-fuchsia-50 to-rose-50">
-                    Stage 2
+                    Phase 2
                   </span>
-                  <span className="text-xs text-gray-500">H2（2026–2029）</span>
+                  <span className="text-xs text-gray-500">（2026–2029）</span>
                 </div>
                 <h3 className="font-medium mb-1">AGI前夜 — 人間＋AGIの共同行為を標準化</h3>
                 <p className="text-gray-700 text-sm">
@@ -381,13 +362,13 @@ export default function NBLHome() {
                 </div>
               </article>
         
-              {/* Stage 3 */}
+              {/* Phase 3 */}
               <article className="rounded-2xl border p-5 shadow-sm bg-white">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-gradient-to-r from-amber-50 to-emerald-50">
-                    Stage 3
+                    Phase 3
                   </span>
-                  <span className="text-xs text-gray-500">H3（2030+）</span>
+                  <span className="text-xs text-gray-500">（2030+）</span>
                 </div>
                 <h3 className="font-medium mb-1">Next Being Commons — 社会実装のコモンズ化</h3>
                 <p className="text-gray-700 text-sm">
@@ -430,60 +411,87 @@ export default function NBLHome() {
           </div>
         </section>
 
-      {/* About */}
-      <section
-        id="about"
-        data-testid="about"
-        className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start"
-      >
-        <div className="md:col-span-2">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">NBLとは</h2>
-          <p className="text-gray-700 leading-relaxed">
-            Next Being
-            Lab（NBL）は、難病を含む多様な身体条件を前提にした働き方・学び方・暮らし方を設計する研究・実装ユニットです。
-            <span className="block">
-              目的は「不公平の見える化」を、誰もが納得可能な合意設計へ翻訳すること。
-            </span>
-          </p>
-        </div>
-        <div className="md:col-span-3 grid gap-4">
-          <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">フォーカス領域</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-1">
-              <li>難病・慢性疾患×就労の国際比較と政策実装</li>
-              <li>合理的配慮の科学化（症状×タスク×KPI）</li>
-              <li>合意形成／物語化／評価指標の社会実装</li>
-            </ul>
-          </div>
-          <div className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">提供物</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-1">
-              <li>JAC（Job Accommodation Copilot）</li>
-              <li className="text-xs text-gray-500 ml-5">
-                …配慮案の生成→様式出力→実装KPIを最小UIで
-              </li>
-              <li>Accommodation Playbook（日本版）</li>
-              <li className="text-xs text-gray-500 ml-5">…症状×タスク×KPI の標準手順</li>
-              <li>オープンレポート／講義／研修・認定</li>
-              <li className="text-xs text-gray-500 ml-5">…現場導入の事例と教材をCC BYで公開</li>
-            </ul>
-          </div>
-          {/* About セクション内、カード群の中に追加 */}
-          <article className="rounded-2xl border p-5 shadow-sm bg-white">
-            <h3 className="font-medium mb-1">Founder’s Note</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              春名由一郎（Founder/Scientist）が、現場の声×研究の気づきを短く更新。
-              合意可能な設計と実装の途中経過を記録します。
+        {/* NBL（Phase 1） */}
+        <section id="phase1" data-testid="phase1" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start">
+          <div className="md:col-span-2">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">NBL（Phase 1）</h2>
+            <p className="text-gray-700 leading-relaxed">
+              Phase 1 は、ビジョンStage 1に相当。<span className="font-semibold">不公平の見える化を“運用可能”にする</span>ことに集中します。
+              Next Being Lab（NBL）は、難病を含む多様な身体条件を前提にした働き方・学び方・暮らし方を設計する研究・実装ユニットです。
+              <span className="block">目的は「不公平の見える化」を、誰もが納得可能な合意設計へ翻訳すること。</span>
             </p>
-            <a
-              href="/blog"
-              className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gray-900 text-white shadow"
-            >
-              最新記事を読む
-            </a>
-          </article>
-        </div>
-      </section>
+          </div>
+        
+          <div className="md:col-span-3 grid gap-4">
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">フォーカス領域</h3>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                <li>難病・慢性疾患×就労の国際比較と政策実装</li>
+                <li>合理的配慮の科学化（症状×タスク×KPI）</li>
+                <li>合意形成／物語化／評価指標の社会実装</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">提供物</h3>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                <li>JAC（Job Accommodation Copilot）</li>
+                <li>Accommodation Playbook（日本版）</li>
+                <li>オープンレポート／講義／研修・認定</li>
+              </ul>
+            </div>
+        
+            {/* Founder’s Note（リンクだけ） */}
+            <article className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">Founder’s Note</h3>
+              <p className="text-sm text-gray-600 mb-3">
+                春名由一郎（Founder/Scientist）が、現場の声×研究の気づきを短く更新。
+                合意可能な設計と実装の途中経過を記録します。
+              </p>
+              <a href="/blog" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gray-900 text-white shadow">
+                最新記事を読む
+              </a>
+            </article>
+          </div>
+          {/* NBLの4つの柱（Phase 1 に内包） */}
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-3">NBLの4つの柱（Phase 1 の推進要素）</h3>
+            
+              {/* md以上=2列、lg以上=4列。モバイルは縦積み */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Product */}
+                <article className="rounded-xl border p-4 bg-white">
+                  <div className="text-xs text-gray-500 mb-1">Product</div>
+                  <div className="font-medium mb-1">JAC：提案→申請→実装→KPI</div>
+                  <p className="text-xs text-gray-600 mb-2">配慮の一筆書き運用を最小UIで提供。</p>
+                  <a href="#product" className="text-sm underline">JACを見る</a>
+                </article>
+            
+                {/* Standard */}
+                <article className="rounded-xl border p-4 bg-white">
+                  <div className="text-xs text-gray-500 mb-1">Standard</div>
+                  <div className="font-medium mb-1">Accommodation Playbook</div>
+                  <p className="text-xs text-gray-600 mb-2">現場で回る標準手順とテンプレ群。</p>
+                  <a href="#phase1" className="text-sm underline">概要</a>
+                </article>
+            
+                {/* Research */}
+                <article className="rounded-xl border p-4 bg-white">
+                  <div className="text-xs text-gray-500 mb-1">Research</div>
+                  <div className="font-medium mb-1">ICF/EBPM 実証とレポート</div>
+                  <p className="text-xs text-gray-600 mb-2">症状×タスク×KPIの語彙と検証。</p>
+                  <a href="#reports" className="text-sm underline">レポート</a>
+                </article>
+            
+                {/* Narrative */}
+                <article className="rounded-xl border p-4 bg-white">
+                  <div className="text-xs text-gray-500 mb-1">Narrative</div>
+                  <div className="font-medium mb-1">CAN &gt; CAN'T キャンペーン</div>
+                  <p className="text-xs text-gray-600 mb-2">配慮を物語化し合意形成を加速。</p>
+                  <a href="#campaign" className="text-sm underline">キャンペーン</a>
+                </article>
+              </div>
+            </div>  
+        </section>
 
       {/* The 4 Pillars */}
       <section id="pillars" data-testid="pillars" className="mx-auto max-w-7xl px-6 py-16">
@@ -757,63 +765,38 @@ export default function NBLHome() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t">
-        <div className="mx-auto max-w-7xl px-6 py-10 grid md:grid-cols-4 gap-6 items-start text-sm text-gray-600">
-          <div className="md:col-span-2">
-            <div className="font-medium mb-1">Next Being Lab</div>
-            <p>
-              このサイトのコンテンツは、
-              <a
-                className="underline"
-                href="https://creativecommons.org/licenses/by/4.0/deed.ja"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CC BY 4.0
-              </a>
-              で提供しています。
-            </p>
-            <p className="mt-2">
-              お問い合わせ:{' '}
-              <a className="underline" href="mailto:info@nextbeinglab.org">
-                info@nextbeinglab.org
-              </a>
-            </p>
-            <p className="mt-2">
-              © {new Date().getFullYear()} Next Being Lab — Justice & Innovation for a Generative,
-              Equitable Era.
-            </p>
+        {/* Footer */}
+        <footer className="border-t">
+          <div className="mx-auto max-w-7xl px-6 py-10 grid md:grid-cols-4 gap-6 items-start text-sm text-gray-600">
+            <div className="md:col-span-2">
+              <div className="font-medium mb-1">Next Being Lab</div>
+              <p>
+                このサイトのコンテンツは、
+                <a className="underline" href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank" rel="noreferrer">CC BY 4.0</a>
+                で提供しています。
+              </p>
+              <p className="mt-2">
+                お問い合わせ: <a className="underline" href="mailto:info@nextbeinglab.org">info@nextbeinglab.org</a>
+              </p>
+              <p className="mt-2">© {new Date().getFullYear()} Next Being Lab — Justice & Innovation for a Generative, Equitable Era.</p>
+            </div>
+        
+            <div className="flex flex-col gap-1">
+              <div className="font-medium mb-1">利用ガイド</div>
+              <a className="underline" href="#phase1">NBL（Phase 1）</a>
+              <a className="underline" href="#product">JAC</a>
+              <a className="underline" href="#services">サービス</a>
+            </div>
+        
+            <div className="flex flex-col gap-1">
+              <div className="font-medium mb-1">リソース</div>
+              <a className="underline" href="#reports">レポート</a>
+              <a className="underline" href="#campaign">キャンペーン</a>
+              <a className="underline" href="#downloads">ドキュメント</a>
+              <a className="underline" href="/blog">Founder’s Blog</a>
+            </div>
           </div>
-          <div className="flex flex-col gap-1">
-            <div className="font-medium mb-1">利用ガイド</div>
-            <a className="underline" href="#about">
-              NBLとは
-            </a>
-            <a className="underline" href="#product">
-              JAC
-            </a>
-            <a className="underline" href="#services">
-              サービス
-            </a>
-          </div>
-          <div className="flex flex-col gap-1">
-            <div className="font-medium mb-1">リソース</div>
-            <a className="underline" href="#reports">
-              レポート
-            </a>
-            <a className="underline" href="#campaign">
-              キャンペーン
-            </a>
-            <a className="underline" href="#downloads">
-              ドキュメント
-            </a>
-            <a className="underline" href="/blog">
-              Founder’s Blog
-            </a>
-          </div>
-        </div>
-      </footer>
+        </footer>
     </div>
   );
 }
