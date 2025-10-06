@@ -324,7 +324,7 @@ export default function NBLHome() {
         </div>
 
         {/* 右：三段ロケットH1/H2/H3＋下に2カード（3列） */}
-        <div className="md:col-span-3 grid gap-4">
+        <div className="md:col-span-2 grid gap-4">
           {/* H1/H2/H3 を3カラムで */}
           <div className="grid md:grid-cols-3 gap-4">
             {/* H1 / Stage 1 */}
@@ -391,7 +391,7 @@ export default function NBLHome() {
           </div>
 
           {/* 下に2カード（設計原則／RQ） */}
-        <div className="md:col-span-3 grid gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
 
           <div className="rounded-2xl border p-5 shadow-sm bg-white">
             <h3 className="font-medium mb-1">AGI時代の設計原則</h3>
