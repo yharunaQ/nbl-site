@@ -557,7 +557,7 @@ export default function NBLHome() {
               <Image
                 src="/images/ICF.webp"
                 alt="職種、就業条件、職場環境、専門支援等、多様な要素のダイナミックな相互作用による「障害」の詳細な理解の必要性。"
-                width={1200}
+                width={900}
                 priority
               />
             </div>
