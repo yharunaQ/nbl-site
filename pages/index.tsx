@@ -659,12 +659,7 @@ export default function NBLHome() {
                 <span className="text-gray-600 text-xs">価格レンジ：<span className="italic">要相談</span></span>
               </p>
             </div>
-          </div>
-        
-          <div className="mt-5 flex flex-wrap gap-3">
-            <a href="#contact" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">見積り相談</a>
-            <a href="#product" className="rounded-xl px-4 py-2 border text-sm">JACに戻る</a>
-          </div>
+          </div>        
         </section>
 
       {/* CTA */}
