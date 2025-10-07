@@ -562,24 +562,18 @@ export default function NBLHome() {
               </div>
         
               {/* ICF図 */}
-              <figure className="mt-6">
+              <figure className="mt-4 md:max-w-[400px] mx-auto">
                 <Image
                   src="/images/ICF.webp"
                   alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
                   width={672}
                   height={420}
-                  sizes="(min-width: 768px) 672px, 100vw"
+                  sizes="(min-width: 768px) 400px, 100vw"
                   className="rounded-2xl border shadow-sm w-full h-auto"
                   priority
                 />
               </figure>
         
-              {/* 料金案内（#pricing へ誘導） */}
-              <div className="mt-6 rounded-2xl border p-4 bg-gray-50">
-                <div className="text-sm">
-                  導入オプションと価格目安は <a href="#pricing" className="underline">こちら（料金を見る）</a> をご参照ください。
-                </div>
-              </div>
             </div> {/* ←←← ここで左カラムを確実に閉じる */}
         
             {/* 右カラム：サンプル配慮 */}
@@ -602,6 +596,13 @@ export default function NBLHome() {
                 ].map((t, i) => (
                   <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
                 ))}
+              </div>
+
+              {/* 料金案内（#pricing へ誘導） */}
+              <div className="mt-6 rounded-2xl border p-4 bg-gray-50">
+                <div className="text-sm">
+                  導入オプションと価格目安は <a href="#pricing" className="underline">こちら（料金を見る）</a> をご参照ください。
+                </div>
               </div>
         
               <div className="mt-4 flex flex-wrap gap-3">
@@ -653,7 +654,7 @@ export default function NBLHome() {
         
             <div className="rounded-2xl border p-5 bg-white shadow-sm">
               <div className="text-xs text-gray-500 mb-1">研修／単発</div>
-              <div className="font-medium">研修・認定（職場配慮実装士 ほか）</div>
+              <div className="font-medium">研修・認定（職場配慮デザイン認定（仮） ほか）</div>
               <p className="text-sm text-gray-700 mt-2">
                 現場導入の標準手順と評価設計。<br/>
                 <span className="text-gray-600 text-xs">価格レンジ：<span className="italic">要相談</span></span>
