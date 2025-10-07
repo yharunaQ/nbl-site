@@ -152,7 +152,7 @@ export default function NBLHome() {
                 レポート（PDF）
               </a>
               <a href="#campaign" className="rounded-2xl px-4 py-2 bg-white border shadow-sm">
-                CAN &gt; CAN'T
+                CAN BY DESIGN
               </a>
               <a href="#vision" className="rounded-2xl px-4 py-2 bg-white border shadow-sm">
                 ビジョン
@@ -474,8 +474,8 @@ export default function NBLHome() {
                 {/* Narrative */}
                 <article className="rounded-xl border p-4 bg-white">
                   <div className="text-xs text-gray-500 mb-1">Narrative</div>
-                  <div className="font-medium mb-1">CAN &gt; CAN'T キャンペーン</div>
-                  <p className="text-xs text-gray-600 mb-2">配慮を物語化し合意形成を加速。</p>
+                  <div className="font-medium mb-1">CAN BY DESIGN キャンペーンと学習コンテンツ</div>
+                  <p className="text-xs text-gray-600 mb-2">配慮を仕様化し、合意を加速。</p>
                   <a href="#campaign" className="text-sm underline">キャンペーン</a>
                 </article>
               </div>
