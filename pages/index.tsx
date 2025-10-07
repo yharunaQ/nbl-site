@@ -542,13 +542,13 @@ export default function NBLHome() {
               </div>
         
               {/* ICF図 */}
-              <figure className="mt-4 md:max-w-[400px] mx-auto">
+              <figure className="mt-4 md:max-w-[500px] mx-auto">
                 <Image
                   src="/images/ICF.webp"
                   alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
                   width={672}
                   height={420}
-                  sizes="(min-width: 768px) 400px, 100vw"
+                  sizes="(min-width: 768px) 500px, 100vw"
                   className="rounded-2xl border shadow-sm w-full h-auto"
                   priority
                 />
