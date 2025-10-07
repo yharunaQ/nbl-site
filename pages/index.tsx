@@ -578,14 +578,14 @@ export default function NBLHome() {
             </div>
         
             {/* ビジュアル（任意画像） */}
-            <figure className="mt-4 max-w-2xl mx-auto">
+            <figure className="mt-4 md:max-w-[600px] mx-auto">
               <Image
                 src="/images/ICF.webp"
                 alt="職務・就業条件・環境・支援の相互作用から配慮を設計する概念図"
                 width={960}
                 height={540}
                 className="rounded-2xl border shadow-sm w-full h-auto"
-                sizes="(min-width: 768px) 400px, 100vw"
+                sizes="(min-width: 768px) 600px, 100vw"
                 priority
               />
               <figcaption className="text-xs text-gray-500 mt-2">
