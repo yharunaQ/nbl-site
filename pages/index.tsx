@@ -632,7 +632,7 @@ export default function NBLHome() {
       </p>
 
       {/* Services */}
-      <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6 py-16">
+      <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6 py-6">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6">サービス</h2>
         <div className="grid md:grid-cols-3 gap-4">
           <div className="rounded-2xl border p-6 bg-white shadow-sm">
@@ -665,7 +665,7 @@ export default function NBLHome() {
       </section>
     
         {/* Pricing */}
-        <section id="pricing" className="mx-auto max-w-7xl px-6 py-16">
+        <section id="pricing" className="mx-auto max-w-7xl px-6 py-6">
           <h2 className="text-2xl md:text-3xl font-semibold mb-3">料金（目安）</h2>
           <p className="text-gray-700 mb-5 text-sm">
             実施規模・対象人数・データ連携の有無などで変動します。ここは「目安」です。
