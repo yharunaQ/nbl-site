@@ -812,38 +812,79 @@ export default function NBLHome() {
         </div>
       </section>
 
-      {/* Campaign */}
-      <section
-        id="campaign"
-        data-testid="campaign"
-        className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center"
-      >
-        <div className="rounded-3xl border overflow-hidden shadow-sm bg-white">
-          <div className="aspect-video">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/7aD6tQn3qW8"
-              title="CAN > CAN'T ダイジェスト"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
+        {/* Campaign */}
+        <section
+          id="campaign"
+          data-testid="campaign"
+          className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center"
+        >
+          {/* 左：ビジュアル（静止画。動画に差し替え可） */}
+          <div className="rounded-3xl border overflow-hidden shadow-sm bg-white">
+            {/* 静止画版（/public/images/can-by-design-hero.webp を置く） */}
+            <Image
+              src="/images/can-by-design-hero.webp"
+              alt="作業UIのスイッチ（温度・騒音・非同期・ペース）をONにして“CAN”が点灯するビジュアル"
+              width={1280}
+              height={720}
+              sizes="(min-width: 768px) 672px, 100vw"
+              className="w-full h-auto"
+              priority
             />
+            {/* 動画埋め込みにするなら、上の <Image> をコメントアウトして下を使う
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/7aD6tQn3qW8"
+                title="CAN BY DESIGN ダイジェスト"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            */}
           </div>
-        </div>
-        <div>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">CAN &gt; CAN'T キャンペーン</h2>
-          <p className="text-gray-700 mb-4">
-            職場の“できない前提”を“できる設計”へ。60秒ショートで配慮の具体を可視化し、企業の配慮担当者をヒーローにします。
-          </p>
-          <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-4">
-            <li>ショート動画：非同期会議／温度配慮／NCヘッドホン</li>
-            <li>『合理的配慮100の実装』図鑑（写真＋1枚1配慮）</li>
-            <li>“開示の言語”テンプレ：本人→上長→人事→産業医</li>
-          </ul>
-          <a href="#reports" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
-            図鑑（準備中）を見る
-          </a>
-        </div>
-      </section>
+        
+          {/* 右：コピー＋要点＋CTA */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+              CAN BY DESIGN
+              <span className="block text-base text-gray-600">できるは、設計で生まれる</span>
+            </h2>
+        
+            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs bg-white mb-3">
+              <span className="font-medium">Design → Agreement → Implementation → KPI</span>
+              <span className="text-gray-600">“運用できる公平”を標準機能に</span>
+            </div>
+        
+            <p className="text-gray-700 mb-4">
+              診断名ではなく、<span className="font-semibold">タスク条件×症状像</span>で配慮を設計。
+              UIのスイッチをONにするように「温度・騒音・非同期・ペース」を調整し、
+              <span className="font-semibold">調整後の実力（Adjusted Merit）</span>で評価します。
+            </p>
+        
+            <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-4">
+              <li>配慮は“善意”ではなく“仕様”へ：誰でも再現できる手順に</li>
+              <li>合意文書を自動整形、KPIで透明化（欠勤・疲労NRS・自己生産性・実装率）</li>
+              <li>人が決める／AIが支える（可視化・最適化・安全装置）</li>
+            </ul>
+        
+            <div className="flex flex-wrap gap-3">
+              <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
+                PoCに参加する
+              </a>
+              <a href="/docs/CAN_BY_DESIGN_Brief.pdf" className="rounded-xl px-4 py-2 border text-sm">
+                キャンペーン概要PDF
+              </a>
+              <a href="/docs/Accommodation_Case_Deck.pdf" className="rounded-xl px-4 py-2 border text-sm">
+                事例スライド（準備中）
+              </a>
+            </div>
+        
+            {/* アクセシビリティ用補助説明（画面には非表示） */}
+            <p className="sr-only">
+              「CAN BY DESIGN」は、合理的配慮を標準機能として設計し、合意・実装・KPIまで一貫して運用するキャンペーンです。
+            </p>
+          </div>
+        </section>
 
       {/* Join / Contact */}
       <section id="contact" data-testid="contact" className="mx-auto max-w-7xl px-6 py-16">
