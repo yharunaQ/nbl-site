@@ -558,52 +558,68 @@ export default function NBLHome() {
                 
             </div> {/* ←←← ここで左カラムを確実に閉じる */}
         
-            {/* 右カラム：サンプル配慮 */}
-            <div className="rounded-3xl border bg-white shadow-sm p-6">
-                          {/* 3ステップ */}
-              <div className="grid sm:grid-cols-3 gap-4 mt-5">
-                <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                  <div className="text-xs text-gray-500 mb-1">Step 1</div>
-                  <div className="font-medium">設計</div>
-                  <p className="text-xs text-gray-600">症状×タスクを分解し、配慮候補をレコメンド（カタログ連動）。</p>
-                </div>
-                <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                  <div className="text-xs text-gray-500 mb-1">Step 2</div>
-                  <div className="font-medium">合意</div>
-                  <p className="text-xs text-gray-600">本人・上長・人事の文章を自動整形し、合意文書を生成。</p>
-                </div>
-                <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                  <div className="text-xs text-gray-500 mb-1">Step 3</div>
-                  <div className="font-medium">KPI</div>
-                  <p className="text-xs text-gray-600">欠勤・疲労NRS・自己生産性・実装率などを軽量に記録。</p>
+            {/* 右カラム：3ステップ（上）＋ サンプル配慮（下） */}
+            <div className="grid gap-4">
+              {/* 3ステップ（カード） */}
+              <div className="rounded-3xl border bg-white shadow-sm p-6">
+                <div className="text-sm text-gray-600 mb-3">JACの流れ（3ステップ）</div>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                    <div className="text-xs text-gray-500 mb-1">Step 1</div>
+                    <div className="font-medium">設計</div>
+                    <p className="text-xs text-gray-600">
+                      症状×タスクを分解し、配慮候補をレコメンド（カタログ連動）。
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                    <div className="text-xs text-gray-500 mb-1">Step 2</div>
+                    <div className="font-medium">合意</div>
+                    <p className="text-xs text-gray-600">
+                      本人・上長・人事の文章を自動整形し、合意文書を生成。
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                    <div className="text-xs text-gray-500 mb-1">Step 3</div>
+                    <div className="font-medium">KPI</div>
+                    <p className="text-xs text-gray-600">
+                      欠勤・疲労NRS・自己生産性・実装率などを軽量に記録。
+                    </p>
+                  </div>
                 </div>
               </div>
-                          
-              <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  '短時間勤務＋可変コアタイム',
-                  '在宅・ハイブリッド',
-                  '作業ペース配分',
-                  '温度調整',
-                  'ノイズコントロール',
-                  '音声入力・読み上げ',
-                  'タスク・ローテーション',
-                  '席の近接配慮',
-                  '会議の非同期化',
-                  '通勤配慮',
-                  '安全優先のタスク制限',
-                  '視覚負荷軽減',
-                ].map((t, i) => (
-                  <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
-                ))}
-              </div>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">実証パイロット（PoC）の相談をする</a>
-                <a href="#pricing" className="rounded-xl px-4 py-2 border text-sm">料金を見る</a>
+            
+              {/* サンプル配慮（カード） */}
+              <div className="rounded-3xl border bg-white shadow-sm p-6">
+                <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {[
+                    '短時間勤務＋可変コアタイム',
+                    '在宅・ハイブリッド',
+                    '作業ペース配分',
+                    '温度調整',
+                    'ノイズコントロール',
+                    '音声入力・読み上げ',
+                    'タスク・ローテーション',
+                    '席の近接配慮',
+                    '会議の非同期化',
+                    '通勤配慮',
+                    '安全優先のタスク制限',
+                    '視覚負荷軽減',
+                  ].map((t, i) => (
+                    <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
+                  ))}
+                </div>
+            
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
+                    実証パイロット（PoC）の相談をする
+                  </a>
+                  <a href="#pricing" className="rounded-xl px-4 py-2 border text-sm">
+                    料金を見る
+                  </a>
+                </div>
               </div>
             </div>
-          </div> {/* ← grid ラッパーを閉じる */}
         </section>
 
     {/* PoC / Pilot */}
