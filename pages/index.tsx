@@ -511,88 +511,131 @@ export default function NBLHome() {
           </div>
         </section>
 
-      {/* Product: JAC */}
-      <section
-        id="product"
-        data-testid="product"
-        className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-2 gap-10 items-start"
-      >
-        <div>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-            JAC（Job Accommodation Copilot）
-          </h2>
-          <p className="text-gray-700 mb-4">
-            症状や診断名ではなく、<span className="font-semibold">タスク条件×症状像</span>
-            で合理的配慮を設計。
-            提案・申請テンプレ・実装チェック・KPIトラッキングまでを最小UIで提供します（α）。
-          </p>
-          <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-5">
-            <li>レコメンド：症状×タスクから配慮案（カタログ連動）</li>
-            <li>テンプレ出力：本人／上長／人事のPDF様式</li>
-            <li>KPI：欠勤・疲労NRS・自己生産性・実装率</li>
-            <li>プライバシー：病名を扱わない抽象度で設計</li>
-          </ul>
-          <div className="flex flex-wrap gap-3" id="downloads">
-            <a
-              href="/docs/JAC_Alpha_Requirements_1Pager.md"
-              className="rounded-xl px-3 py-2 border text-sm"
-            >
-              α要件1-Pager
-            </a>
-            <a
-              href="/docs/JAC_Accommodation_Catalog_v0_3.yaml"
-              className="rounded-xl px-3 py-2 border text-sm"
-            >
-              配慮カタログ（YAML）
-            </a>
-            <a
-              href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md"
-              className="rounded-xl px-3 py-2 border text-sm"
-            >
-              開示の言語テンプレ
-            </a>
-          </div>
-            <div className="mt-4">
-              {/* <VisionRocket /> */}
+        {/* Product: JAC */}
+        <section
+          id="product"
+          data-testid="product"
+          className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-2 gap-10 items-start"
+        >
+          {/* 左：JACの目的と流れ */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+              JAC（Job Accommodation Copilot）— 合理的配慮を“運用”する相棒
+            </h2>
+        
+            <p className="text-gray-700 mb-4">
+              診断名ではなく <span className="font-semibold">タスク条件 × 症状像</span> で配慮を設計。
+              <span className="whitespace-nowrap">設計 → 合意 → 実装 → KPI</span> を
+              <span className="font-semibold">一筆書き</span>で回すことで、
+              <span className="font-semibold">調整後の実力</span>（Design-Adjusted Merit）を正しく評価できます。
+              人が主で、AIは可視化・最適化・安全装置を担う <span className="whitespace-nowrap">Human-in-Command</span>。
+            </p>
+        
+            {/* 3ステップの要約 */}
+            <ol className="grid sm:grid-cols-3 gap-3 mb-5">
+              <li className="rounded-2xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500">Step 1</div>
+                <div className="font-medium mb-1">設計</div>
+                <p className="text-sm text-gray-700">
+                  症状×タスクを分解し、配慮候補をレコメンド（カタログ連動）。
+                </p>
+              </li>
+              <li className="rounded-2xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500">Step 2</div>
+                <div className="font-medium mb-1">合意</div>
+                <p className="text-sm text-gray-700">
+                  本人・上長・人事の<span className="whitespace-nowrap">言語テンプレ</span>で合意文書を生成。
+                </p>
+              </li>
+              <li className="rounded-2xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500">Step 3</div>
+                <div className="font-medium mb-1">KPI</div>
+                <p className="text-sm text-gray-700">
+                  欠勤・疲労NRS・自己生産性・実装率などを<span className="whitespace-nowrap">軽量に</span>記録。
+                </p>
+              </li>
+            </ol>
+        
+            {/* 機能リスト */}
+            <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-5">
+              <li>レコメンド：症状×タスクから配慮案（カタログ連動）</li>
+              <li>合意テンプレ：本人／上長／人事／産業医の文面を自動整形</li>
+              <li>KPI：欠勤・疲労NRS・自己生産性・配慮実装率（監査可能なログ）</li>
+              <li>プライバシー：病名は扱わず抽象度で設計（最小限データ）</li>
+            </ul>
+        
+            {/* ダウンロード */}
+            <div className="flex flex-wrap gap-3" id="downloads">
+              <a href="/docs/JAC_Alpha_Requirements_1Pager.md" className="rounded-xl px-3 py-2 border text-sm">
+                仕様1-Pager（α）
+              </a>
+              <a href="/docs/JAC_Accommodation_Catalog_v0_3.yaml" className="rounded-xl px-3 py-2 border text-sm">
+                配慮カタログ（YAML）
+              </a>
+              <a href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md" className="rounded-xl px-3 py-2 border text-sm">
+                合意の言語テンプレ
+              </a>
+            </div>
+        
+            {/* ビジュアル（任意画像） */}
+            <figure className="mt-4">
               <Image
                 src="/images/ICF.webp"
-                alt="職種、就業条件、職場環境、専門支援等、多様な要素のダイナミックな相互作用による「障害」の詳細な理解の必要性。"
-                width={500}
+                alt="職務・就業条件・環境・支援の相互作用から配慮を設計する概念図"
+                width={960}
+                height={540}
+                className="rounded-2xl border shadow-sm w-full h-auto"
                 priority
               />
-            </div>
-        </div>
-        <div className="rounded-3xl border bg-white shadow-sm p-6">
-          <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              '短時間勤務＋可変コアタイム',
-              '在宅・ハイブリッド',
-              '作業ペース配分',
-              '温度調整',
-              'ノイズコントロール',
-              '音声入力・読み上げ',
-              'タスク・ローテーション',
-              '席の近接配慮',
-              '会議の非同期化',
-              '通勤配慮',
-              '安全優先のタスク制限',
-              '視覚負荷軽減',
-            ].map((t, i) => (
-              <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">
-                {t}
-              </div>
-            ))}
+              <figcaption className="text-xs text-gray-500 mt-2">
+                * タスク条件 × 症状像 × 環境の交差から “方法は違っても本質業務は果たす” を設計
+              </figcaption>
+            </figure>
           </div>
-          <a
-            id="poc"
-            href="#contact"
-            className="mt-4 inline-flex rounded-xl px-4 py-2 bg-gray-900 text-white text-sm"
-          >
-            PoCの相談をする
-          </a>
-        </div>
-      </section>
+        
+          {/* 右：サンプル配慮＆CTA */}
+          <div className="rounded-3xl border bg-white shadow-sm p-6">
+            <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                '短時間勤務＋可変コアタイム',
+                '在宅・ハイブリッド',
+                '作業ペース配分',
+                '温度調整',
+                'ノイズコントロール',
+                '音声入力・読み上げ',
+                'タスク・ローテーション',
+                '席の近接配慮',
+                '会議の非同期化',
+                '通勤配慮',
+                '安全優先のタスク制限',
+                '視覚負荷軽減',
+              ].map((t, i) => (
+                <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
+              ))}
+            </div>
+        
+            <div className="mt-4 rounded-xl border p-4 bg-gray-50">
+              <div className="text-xs text-gray-500 mb-1">評価の原則</div>
+              <p className="text-sm text-gray-700">
+                評価は<span className="font-semibold">調整後の成果</span>で行います（Design-Adjusted Merit）。
+                方法は人それぞれでOK。到達を問うのが公平です。
+              </p>
+            </div>
+        
+            <div className="flex flex-wrap gap-3 mt-4">
+              <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
+                2–4週間で試す（PoCへ）
+              </a>
+              <a href="#contact" className="rounded-xl px-4 py-2 border text-sm">
+                問い合わせ
+              </a>
+              <a href="/docs/JAC_Alpha_Requirements_1Pager.md" className="rounded-xl px-4 py-2 border text-sm">
+                仕様1-Pager
+              </a>
+            </div>
+          </div>
+        </section>
 
     {/* PoC / Pilot */}
     <section id="poc" data-testid="poc" className="mx-auto max-w-7xl px-6 py-16">
