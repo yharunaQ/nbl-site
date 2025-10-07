@@ -540,24 +540,6 @@ export default function NBLHome() {
                 />
               </figure>
         
-              {/* 3ステップ */}
-              <div className="grid sm:grid-cols-3 gap-4 mt-5">
-                <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                  <div className="text-xs text-gray-500 mb-1">Step 1</div>
-                  <div className="font-medium">設計</div>
-                  <p className="text-xs text-gray-600">症状×タスクを分解し、配慮候補をレコメンド（カタログ連動）。</p>
-                </div>
-                <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                  <div className="text-xs text-gray-500 mb-1">Step 2</div>
-                  <div className="font-medium">合意</div>
-                  <p className="text-xs text-gray-600">本人・上長・人事の文章を自動整形し、合意文書を生成。</p>
-                </div>
-                <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                  <div className="text-xs text-gray-500 mb-1">Step 3</div>
-                  <div className="font-medium">KPI</div>
-                  <p className="text-xs text-gray-600">欠勤・疲労NRS・自己生産性・実装率などを軽量に記録。</p>
-                </div>
-              </div>
         
               {/* 特徴 */}
               <ul className="list-disc pl-5 text-gray-700 space-y-1 my-5">
@@ -578,6 +560,25 @@ export default function NBLHome() {
         
             {/* 右カラム：サンプル配慮 */}
             <div className="rounded-3xl border bg-white shadow-sm p-6">
+                          {/* 3ステップ */}
+              <div className="grid sm:grid-cols-3 gap-4 mt-5">
+                <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                  <div className="text-xs text-gray-500 mb-1">Step 1</div>
+                  <div className="font-medium">設計</div>
+                  <p className="text-xs text-gray-600">症状×タスクを分解し、配慮候補をレコメンド（カタログ連動）。</p>
+                </div>
+                <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                  <div className="text-xs text-gray-500 mb-1">Step 2</div>
+                  <div className="font-medium">合意</div>
+                  <p className="text-xs text-gray-600">本人・上長・人事の文章を自動整形し、合意文書を生成。</p>
+                </div>
+                <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                  <div className="text-xs text-gray-500 mb-1">Step 3</div>
+                  <div className="font-medium">KPI</div>
+                  <p className="text-xs text-gray-600">欠勤・疲労NRS・自己生産性・実装率などを軽量に記録。</p>
+                </div>
+              </div>
+                          
               <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
