@@ -437,18 +437,6 @@ export default function NBLHome() {
                 priority
               />
             </div>
-            {/* Founder’s Note（リンクだけ） */}
-            <article className="rounded-2xl border p-5 shadow-sm bg-white">
-              <h3 className="font-medium mb-1">Founder’s Note</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                春名由一郎（Founder/Scientist）が、現場の声×研究の気づきを短く更新。
-                合意可能な設計と実装の途中経過を記録します。
-              </p>
-              <a href="/blog" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gray-900 text-white shadow">
-                最新記事を読む
-              </a>
-            </article>
-
           </div>
         
           <div className="md:col-span-3 grid gap-4">
@@ -493,6 +481,18 @@ export default function NBLHome() {
               </div>
             </div>  
           
+          {/* Founder’s Note（リンクだけ） */}
+            <article className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">Founder’s Note</h3>
+              <p className="text-sm text-gray-600 mb-3">
+                春名由一郎（Founder/Scientist）が、現場の声×研究の気づきを短く更新。
+                合意可能な設計と実装の途中経過を記録します。
+              </p>
+              <a href="/blog" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-gray-900 text-white shadow">
+                最新記事を読む
+              </a>
+            </article>
+             
             <div className="rounded-2xl border p-5 shadow-sm bg-white">
               <h3 className="font-medium mb-1">フォーカス領域</h3>
               <ul className="list-disc pl-5 text-gray-700 space-y-1">
