@@ -514,32 +514,17 @@ export default function NBLHome() {
         {/* Product: JAC */}
         <section id="product" data-testid="product" className="mx-auto max-w-7xl px-6 py-16">
           <div className="grid md:grid-cols-2 gap-10 items-start">
-            {/* 左カラム：要点と手順 */}
+            {/* 左カラム：要点と資料 */}
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold mb-2">
                 JAC（Job Accommodation Copilot）
               </h2>
               <p className="text-gray-700">
                 診断名ではなく <span className="font-semibold">タスク条件 × 症状像</span> で配慮を設計。
-                設計→合意→実装→KPIを一筆書きで回し、調整後の実力
-                （Design-Adjusted Merit）で評価します。主役は人、AIは
-                <span className="whitespace-nowrap"> 可視化・最適化・安全装置 </span>
-                を担う <span className="whitespace-nowrap">Human-in-Command</span>。
+                設計→合意→実装→KPIを一筆書きで回し、調整後の実力（Design-Adjusted Merit）で評価します。
+                主役は人、AIは<span className="whitespace-nowrap"> 可視化・最適化・安全装置 </span>を担う
+                <span className="whitespace-nowrap"> Human-in-Command</span>。
               </p>
-
-              {/* ICF図 */}
-              <figure className="mt-4 md:max-w-[400px] mx-auto">
-                <Image
-                  src="/images/ICF.webp"
-                  alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
-                  width={672}
-                  height={420}
-                  sizes="(min-width: 768px) 400px, 100vw"
-                  className="rounded-2xl border shadow-sm w-full h-auto"
-                  priority
-                />
-              </figure>
-        
         
               {/* 特徴 */}
               <ul className="list-disc pl-5 text-gray-700 space-y-1 my-5">
@@ -549,18 +534,37 @@ export default function NBLHome() {
                 <li>プライバシー：病名を扱わず抽象度で設計（最小限データ）</li>
               </ul>
         
-              {/* ダウンロード */}
+              {/* ドキュメント */}
               <div className="flex flex-wrap gap-3" id="downloads">
                 <a href="/docs/JAC_Alpha_Requirements_1Pager.md" className="rounded-xl px-3 py-2 border text-sm">仕様1-Pager（α）</a>
                 <a href="/docs/JAC_Accommodation_Catalog_v0_3.yaml" className="rounded-xl px-3 py-2 border text-sm">配慮カタログ（YAML）</a>
-                <a href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md" className="rounded-xl px-3 py-2 border text-sm">開示の言語テンプレ</a>
+                <a href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md" className="rounded-xl px-3 py-2 border text-sm">合意・開示テンプレ</a>
               </div>
-                
-            </div> {/* ←←← ここで左カラムを確実に閉じる */}
+        
+              {/* ICF図 */}
+              <figure className="mt-6">
+                <Image
+                  src="/images/ICF.webp"
+                  alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
+                  width={672}
+                  height={420}
+                  sizes="(min-width: 768px) 672px, 100vw"
+                  className="rounded-2xl border shadow-sm w-full h-auto"
+                  priority
+                />
+              </figure>
+        
+              {/* 料金案内（#pricing へ誘導） */}
+              <div className="mt-6 rounded-2xl border p-4 bg-gray-50">
+                <div className="text-sm">
+                  導入オプションと価格目安は <a href="#pricing" className="underline">こちら（料金を見る）</a> をご参照ください。
+                </div>
+              </div>
+            </div>
         
             {/* 右カラム：3ステップ（上）＋ サンプル配慮（下） */}
             <div className="grid gap-4">
-              {/* 3ステップ（カード） */}
+              {/* 3ステップ */}
               <div className="rounded-3xl border bg-white shadow-sm p-6">
                 <div className="text-sm text-gray-600 mb-3">JACの流れ（3ステップ）</div>
                 <div className="grid sm:grid-cols-3 gap-4">
@@ -587,8 +591,8 @@ export default function NBLHome() {
                   </div>
                 </div>
               </div>
-            
-              {/* サンプル配慮（カード） */}
+        
+              {/* サンプル配慮 */}
               <div className="rounded-3xl border bg-white shadow-sm p-6">
                 <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
                 <div className="grid sm:grid-cols-2 gap-3">
@@ -609,7 +613,7 @@ export default function NBLHome() {
                     <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
                   ))}
                 </div>
-            
+        
                 <div className="mt-4 flex flex-wrap gap-3">
                   <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
                     実証パイロット（PoC）の相談をする
@@ -620,6 +624,7 @@ export default function NBLHome() {
                 </div>
               </div>
             </div>
+          </div>
         </section>
 
     {/* PoC / Pilot */}
