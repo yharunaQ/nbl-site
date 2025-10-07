@@ -585,7 +585,7 @@ export default function NBLHome() {
                 width={960}
                 height={540}
                 className="rounded-2xl border shadow-sm w-full h-auto"
-                sizes="(min-width: 768px) 672px, 100vw"
+                sizes="(min-width: 768px) 400px, 100vw"
                 priority
               />
               <figcaption className="text-xs text-gray-500 mt-2">
