@@ -420,6 +420,27 @@ export default function NBLHome() {
               スタートアップのPhase 1 では、<span className="font-semibold">不公平の見える化を“運用可能”にする</span>ことに集中します。NBLは、難病を含む多様な身体条件を前提にした働き方・学び方・暮らし方を設計する研究・実装ユニットとしてスタートします。
               <span className="block">目的は「不公平の見える化」を、誰もが納得可能な合意設計へ翻訳すること。</span>
             </p>
+            <div className="mt-4">
+              {/* <VisionRocket /> */}
+              <Image
+                src="/images/EEJ.webp"
+                alt="Equality: 同じ踏み台でも背の低い人は見えない。Equity: 必要な数の踏み台で全員が見える。Justice: 塀を網フェンスに替え、踏み台なしでも全員見える。"
+                width={1200}
+                height={600}
+                priority
+              />
+            </div>
+            <div className="mt-4">
+              {/* <VisionRocket /> */}
+              <Image
+                src="/images/ICF.webp"
+                alt="職種、就業条件、職場環境、専門支援等、多様な要素のダイナミックな相互作用による「障害」の詳細な理解の必要性。"
+                width={1200}
+                height={600}
+                priority
+              />
+            </div>
+
           </div>
         
           <div className="md:col-span-3 grid gap-4">
