@@ -426,7 +426,6 @@ export default function NBLHome() {
                 src="/images/EEJ.webp"
                 alt="Equality: 同じ踏み台でも背の低い人は見えない。Equity: 必要な数の踏み台で全員が見える。Justice: 塀を網フェンスに替え、踏み台なしでも全員見える。"
                 width={1200}
-                height={600}
                 priority
               />
             </div>
@@ -436,7 +435,6 @@ export default function NBLHome() {
                 src="/images/ICF.webp"
                 alt="職種、就業条件、職場環境、専門支援等、多様な要素のダイナミックな相互作用による「障害」の詳細な理解の必要性。"
                 width={1200}
-                height={600}
                 priority
               />
             </div>
