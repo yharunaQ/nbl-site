@@ -279,7 +279,7 @@ export default function NBLHome() {
           {/* LEFT: 説明＋イラスト（md以上で全5列中の2列を使用） */}
           <div className="md:col-span-2">
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-              Next Being ビジョン — <span className="whitespace-nowrap">AGI前夜に間に合う</span>デザイン
+              Next Being ビジョン — <span className="whitespace-nowrap">AGI前夜に間に合う</span>人間中心の社会実装
             </h2>
         
             {/* リード文：AGI転回点とNBLの役割 */}
@@ -415,7 +415,7 @@ export default function NBLHome() {
         <section id="phase1" data-testid="phase1" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start">
           <div className="md:col-span-2">
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-              Next Being Lab（Phase 1）— 運用可能な公平性
+              Next Being Lab（Phase 1）— 合意可能な公平性の社会インフラ
             </h2>
             <p className="text-gray-700 leading-relaxed">
               Next Being Lab（NBL）は、人×AI×コミュニティが共創する次の社会に向けた研究・実装ラボです。
