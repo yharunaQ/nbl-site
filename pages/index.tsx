@@ -542,24 +542,18 @@ export default function NBLHome() {
               </div>
         
               {/* ICF図 */}
-              <figure className="mt-6">
+              <figure className="mt-4 md:max-w-[400px] mx-auto">
                 <Image
                   src="/images/ICF.webp"
                   alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
                   width={672}
                   height={420}
-                  sizes="(min-width: 768px) 672px, 100vw"
+                  sizes="(min-width: 768px) 400px, 100vw"
                   className="rounded-2xl border shadow-sm w-full h-auto"
                   priority
                 />
               </figure>
         
-              {/* 料金案内（#pricing へ誘導） */}
-              <div className="mt-6 rounded-2xl border p-4 bg-gray-50">
-                <div className="text-sm">
-                  導入オプションと価格目安は <a href="#pricing" className="underline">こちら（料金を見る）</a> をご参照ください。
-                </div>
-              </div>
             </div>
         
             {/* 右カラム：3ステップ（上）＋ サンプル配慮（下） */}
