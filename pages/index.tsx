@@ -597,16 +597,8 @@ export default function NBLHome() {
                   <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
                 ))}
               </div>
-
-              {/* 料金案内（#pricing へ誘導） */}
-              <div className="mt-6 rounded-2xl border p-4 bg-gray-50">
-                <div className="text-sm">
-                  導入オプションと価格目安は <a href="#pricing" className="underline">こちら（料金を見る）</a> をご参照ください。
-                </div>
-              </div>
-        
               <div className="mt-4 flex flex-wrap gap-3">
-                <a id="poc" href="#contact" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">PoCの相談をする</a>
+                <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">実証パイロット（PoC）の相談をする</a>
                 <a href="#pricing" className="rounded-xl px-4 py-2 border text-sm">料金を見る</a>
               </div>
             </div>
