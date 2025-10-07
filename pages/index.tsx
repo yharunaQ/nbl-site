@@ -287,7 +287,7 @@ export default function NBLHome() {
               猿 → 人間 → <span className="whitespace-nowrap">人間＋AI</span> →{" "}
               <span className="font-semibold">Next Being</span>。
               <br className="hidden md:block" />
-              2027年、汎用AIが社会の基本動作に溶ける<strong className="font-semibold">転回点</strong>が来ると言われます。
+              2027年、汎用AI(AGI)が社会の基本動作に溶ける<strong className="font-semibold">転回点</strong>が来ると言われます。
               NBLはこの前後を跨いで、
               <span className="font-semibold">人×AI×コミュニティ×環境</span>が協働する“次の在り方”を設計し、
               <span className="font-semibold">設計・標準・物語</span>を実装します。
