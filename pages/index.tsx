@@ -582,9 +582,9 @@ export default function NBLHome() {
               <Image
                 src="/images/ICF.webp"
                 alt="職務・就業条件・環境・支援の相互作用から配慮を設計する概念図"
-                width={160}
-                height={90}
-                className="rounded-2xl border shadow-sm w-full h-auto"
+                width={960}
+                height={540}
+                className="rounded-2xl border shadow-sm"
                 priority
               />
               <figcaption className="text-xs text-gray-500 mt-2">
