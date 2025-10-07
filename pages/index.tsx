@@ -526,6 +526,19 @@ export default function NBLHome() {
                 <span className="whitespace-nowrap"> 可視化・最適化・安全装置 </span>
                 を担う <span className="whitespace-nowrap">Human-in-Command</span>。
               </p>
+
+              {/* ICF図 */}
+              <figure className="mt-4 md:max-w-[400px] mx-auto">
+                <Image
+                  src="/images/ICF.webp"
+                  alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
+                  width={672}
+                  height={420}
+                  sizes="(min-width: 768px) 400px, 100vw"
+                  className="rounded-2xl border shadow-sm w-full h-auto"
+                  priority
+                />
+              </figure>
         
               {/* 3ステップ */}
               <div className="grid sm:grid-cols-3 gap-4 mt-5">
@@ -560,20 +573,7 @@ export default function NBLHome() {
                 <a href="/docs/JAC_Accommodation_Catalog_v0_3.yaml" className="rounded-xl px-3 py-2 border text-sm">配慮カタログ（YAML）</a>
                 <a href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md" className="rounded-xl px-3 py-2 border text-sm">開示の言語テンプレ</a>
               </div>
-        
-              {/* ICF図 */}
-              <figure className="mt-4 md:max-w-[400px] mx-auto">
-                <Image
-                  src="/images/ICF.webp"
-                  alt="職種・就業条件・職場環境・支援等が相互作用するモデル（ICF）"
-                  width={672}
-                  height={420}
-                  sizes="(min-width: 768px) 400px, 100vw"
-                  className="rounded-2xl border shadow-sm w-full h-auto"
-                  priority
-                />
-              </figure>
-        
+                
             </div> {/* ←←← ここで左カラムを確実に閉じる */}
         
             {/* 右カラム：サンプル配慮 */}
