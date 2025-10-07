@@ -622,63 +622,6 @@ export default function NBLHome() {
         <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を2〜4週間で一筆書きに回します。
       </p>
     
-      <div className="grid md:grid-cols-3 gap-4">
-        {/* プランA */}
-        <article className="rounded-2xl border p-6 bg-white shadow-sm">
-          <div className="flex items-baseline justify-between">
-            <div className="text-xs text-gray-500">Starter（2週間）</div>
-            <span className="rounded-full border px-2 py-0.5 text-xs bg-gray-50">目安 ¥30–60万円</span>
-          </div>
-          <div className="font-medium mb-2">最小構成で“効く”を確認</div>
-          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-            <li>対象1チーム（3–8名）ヒアリング</li>
-            <li>タスク分解／配慮カタログ適用</li>
-            <li>試行実装＆KPIベースライン取得</li>
-          </ul>
-          <div className="text-xs text-gray-500 mt-3">成果：改善仮説・次の一手</div>
-        </article>
-    
-        {/* プランB */}
-        <article className="rounded-2xl border p-6 bg-white shadow-sm">
-          <div className="flex items-baseline justify-between">
-            <div className="text-xs text-gray-500">Standard（4週間）</div>
-            <span className="rounded-full border px-2 py-0.5 text-xs bg-gray-50">目安 ¥80–150万円</span>
-          </div>
-          <div className="font-medium mb-2">実装検証＋合意形成テンプレ</div>
-          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-            <li>JAC α デモ運用（提案→申請→実装）</li>
-            <li>合意の言語テンプレ／チェックリスト</li>
-            <li>KPI比較（欠勤・疲労NRS・実装率 など）</li>
-          </ul>
-          <div className="text-xs text-gray-500 mt-3">成果：PoCレポート草案</div>
-        </article>
-    
-        {/* カスタム */}
-        <article className="rounded-2xl border p-6 bg-white shadow-sm">
-          <div className="flex items-baseline justify-between">
-            <div className="text-xs text-gray-500">Custom</div>
-            <span className="rounded-full border px-2 py-0.5 text-xs bg-gray-50">個別見積（例：¥150–300万円）</span>
-          </div>
-          <div className="font-medium mb-2">現場要件に合わせて設計</div>
-          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-            <li>対象部署拡大／在宅・非同期会議対応</li>
-            <li>評価設計（監査可能性・ログ）</li>
-            <li>ガバナンス／NDA／個人情報配慮</li>
-          </ul>
-          <div className="text-xs text-gray-500 mt-3">成果：導入ロードマップ</div>
-        </article>
-      </div>
-    
-      {/* 料金注記 */}
-      <div className="rounded-2xl border p-5 bg-white shadow-sm mt-6 text-sm text-gray-700">
-        <h3 className="font-medium mb-2">料金について</h3>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>想定規模：1チーム（3–15名）・オンライン中心。価格は規模／現地日数で変動します。</li>
-          <li>表記は税別。現地対応時は交通費・宿泊費を実費精算。</li>
-          <li>オプション：合意文書テンプレ強化、評価設計の拡張、助成金申請サポート。</li>
-        </ul>
-      </div>
-
         {/* Pricing */}
         <section id="pricing" className="mx-auto max-w-7xl px-6 py-16">
           <h2 className="text-2xl md:text-3xl font-semibold mb-3">料金（目安）</h2>
@@ -724,8 +667,6 @@ export default function NBLHome() {
           </div>
         </section>
 
-
-    
       {/* CTA */}
       <div className="flex flex-wrap gap-3 mt-6">
         <a
