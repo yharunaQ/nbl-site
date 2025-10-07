@@ -414,11 +414,19 @@ export default function NBLHome() {
         {/* NBL（Phase 1） */}
         <section id="phase1" data-testid="phase1" className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-5 gap-8 items-start">
           <div className="md:col-span-2">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-3">NBLとは（Phase 1）</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+              Next Being Lab（Phase 1）— 運用可能な公平性
+            </h2>
             <p className="text-gray-700 leading-relaxed">
-              Next Being Lab（NBL）は、Next Beingに向けた哲学x科学xテクノロジーの社会実装ラボです。
-              スタートアップのPhase 1 では、<span className="font-semibold">不公平の見える化を“運用可能”にする</span>ことに集中します。NBLは、難病を含む多様な身体条件を前提にした働き方・学び方・暮らし方を設計する研究・実装ユニットとしてスタートします。
-              <span className="block">目的は「不公平の見える化」を、誰もが納得可能な合意設計へ翻訳すること。</span>
+              Next Being Lab（NBL）は、人×AI×コミュニティが共創する次の社会に向けた研究・実装ラボです。
+              Phase 1では、難病・慢性疾患・ニューロダイバージェンスを前提に、現場の“不公平”をデータで可視化し、
+              <span className="font-semibold">誰もが運用できる合意設計</span>へ翻訳します。
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              <span className="font-semibold">JAC（Job Accommodation Copilot）</span> と
+              <span className="font-semibold">Accommodation Playbook</span> を核に、
+              <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を一筆書きにし、
+              働き方・学び方・暮らし方の標準を現場からつくります。
             </p>
             <div className="mt-4">
               {/* <VisionRocket /> */}
