@@ -123,7 +123,7 @@ export default function NBLHome() {
           <a href="#campaign" className="hover:opacity-80">キャンペーン</a>
           <a href="#contact" className="hover:opacity-80">連絡</a>
         </div>
-        <a href="#poc" className="rounded-xl px-3 py-1.5 text-sm bg-gray-900 text-white shadow">PoC募集</a>
+        <a href="#poc" className="rounded-2xl px-4 py-2 bg-white border shadow-sm" aria-label="実証パイロット（PoC）の詳細へ">実証パイロット（PoC）とは？</a>
       </div>
     </nav>
 
@@ -167,7 +167,7 @@ export default function NBLHome() {
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">JAC α（2025-10開始）</span>
                 <span className="rounded-full bg-emerald-50 text-emerald-700 px-2.5 py-0.5 text-xs border">
-                  PoC募集
+                  実証パイロット（PoC）募集
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-2">
@@ -197,7 +197,7 @@ export default function NBLHome() {
               </div>
               <div className="flex gap-3 pt-2">
                 <a href="#poc" className="rounded-xl px-3 py-2 bg-gray-900 text-white text-sm">
-                  PoC相談
+                  実証パイロット（PoC）相談
                 </a>
                 <a href="#downloads" className="rounded-xl px-3 py-2 border text-sm">
                   ドキュメント
@@ -586,6 +586,99 @@ export default function NBLHome() {
         </div>
       </section>
 
+    {/* PoC / Pilot */}
+    <section id="poc" data-testid="poc" className="mx-auto max-w-7xl px-6 py-16">
+      <h2 className="text-2xl md:text-3xl font-semibold mb-3">実証パイロット（PoC）とは？</h2>
+      <p className="text-gray-700 mb-5">
+        小さく早く検証して、<span className="font-semibold">“できる”を証明</span>する短期プロジェクトです。
+        NBLの <span className="font-semibold">JAC（Job Accommodation Copilot）</span> と
+        <span className="font-semibold">Accommodation Playbook</span> を使い、
+        <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を2〜4週間で一筆書きに回します。
+      </p>
+    
+      <div className="grid md:grid-cols-3 gap-4">
+        {/* プランA */}
+        <article className="rounded-2xl border p-6 bg-white shadow-sm">
+          <div className="flex items-baseline justify-between">
+            <div className="text-xs text-gray-500">Starter（2週間）</div>
+            <span className="rounded-full border px-2 py-0.5 text-xs bg-gray-50">目安 ¥30–60万円</span>
+          </div>
+          <div className="font-medium mb-2">最小構成で“効く”を確認</div>
+          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+            <li>対象1チーム（3–8名）ヒアリング</li>
+            <li>タスク分解／配慮カタログ適用</li>
+            <li>試行実装＆KPIベースライン取得</li>
+          </ul>
+          <div className="text-xs text-gray-500 mt-3">成果：改善仮説・次の一手</div>
+        </article>
+    
+        {/* プランB */}
+        <article className="rounded-2xl border p-6 bg-white shadow-sm">
+          <div className="flex items-baseline justify-between">
+            <div className="text-xs text-gray-500">Standard（4週間）</div>
+            <span className="rounded-full border px-2 py-0.5 text-xs bg-gray-50">目安 ¥80–150万円</span>
+          </div>
+          <div className="font-medium mb-2">実装検証＋合意形成テンプレ</div>
+          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+            <li>JAC α デモ運用（提案→申請→実装）</li>
+            <li>合意の言語テンプレ／チェックリスト</li>
+            <li>KPI比較（欠勤・疲労NRS・実装率 など）</li>
+          </ul>
+          <div className="text-xs text-gray-500 mt-3">成果：PoCレポート草案</div>
+        </article>
+    
+        {/* カスタム */}
+        <article className="rounded-2xl border p-6 bg-white shadow-sm">
+          <div className="flex items-baseline justify-between">
+            <div className="text-xs text-gray-500">Custom</div>
+            <span className="rounded-full border px-2 py-0.5 text-xs bg-gray-50">個別見積（例：¥150–300万円）</span>
+          </div>
+          <div className="font-medium mb-2">現場要件に合わせて設計</div>
+          <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+            <li>対象部署拡大／在宅・非同期会議対応</li>
+            <li>評価設計（監査可能性・ログ）</li>
+            <li>ガバナンス／NDA／個人情報配慮</li>
+          </ul>
+          <div className="text-xs text-gray-500 mt-3">成果：導入ロードマップ</div>
+        </article>
+      </div>
+    
+      {/* 料金注記 */}
+      <div className="rounded-2xl border p-5 bg-white shadow-sm mt-6 text-sm text-gray-700">
+        <h3 className="font-medium mb-2">料金について</h3>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>想定規模：1チーム（3–15名）・オンライン中心。価格は規模／現地日数で変動します。</li>
+          <li>表記は税別。現地対応時は交通費・宿泊費を実費精算。</li>
+          <li>オプション：合意文書テンプレ強化、評価設計の拡張、助成金申請サポート。</li>
+        </ul>
+      </div>
+    
+      {/* CTA */}
+      <div className="flex flex-wrap gap-3 mt-6">
+        <a
+          className="rounded-2xl px-4 py-2 bg-gray-900 text-white shadow"
+          href="mailto:info@nextbeinglab.org?subject=NBL%20PoC%E7%9B%B8%E8%AB%87&body=%E3%80%90%E6%A1%88%E4%BB%B6%E5%90%8D%E3%80%91%0A%E3%80%90%E5%AF%BE%E8%B1%A1%E9%83%A8%E7%BD%B2%E3%83%BB%E4%BA%BA%E6%95%B0%E3%80%91%0A%E3%80%90%E5%B0%8F%E5%88%86%E9%A1%9E%E3%80%91Starter%20(30-60%E4%B8%87%E5%86%86)%2FStandard%20(80-150%E4%B8%87%E5%86%86)%2FCustom%0A%E3%80%90%E6%9C%9F%E9%96%93%E3%80%912%E9%80%B1%E9%96%93%2F4%E9%80%B1%E9%96%93%2F%E3%81%9D%E3%81%AE%E4%BB%96%0A%E3%80%90%E4%BA%88%E7%AE%97%E6%84%9F%E3%80%91%0A%E3%80%90NDA%E3%80%91%E6%9C%89%E3%82%8A%2F%E7%84%A1%E3%81%97"
+          aria-label="メールでPoC相談"
+        >
+          料金の相談・見積依頼（メール）
+        </a>
+        <a className="rounded-2xl px-4 py-2 border shadow-sm" href="#contact">フォームで連絡</a>
+        <a className="rounded-2xl px-4 py-2 border shadow-sm" href="/docs/JAC_Alpha_Requirements_1Pager.md">1-Pagerを読む</a>
+      </div>
+    
+      {/* FAQ */}
+      <details className="mt-6 rounded-2xl border p-5 bg-white shadow-sm">
+        <summary className="cursor-pointer font-medium">よくある質問</summary>
+        <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1 mt-3">
+          <li>対象：企業／自治体／NPO。部署単位の小規模からOK。</li>
+          <li>データ：個人情報は扱わず、タスク条件×症状像で設計します。</li>
+          <li>NDA：必要に応じて締結可能。ログと監査可能性を重視。</li>
+          <li>期間：2〜4週間（意思決定の速さを優先）。</li>
+        </ul>
+      </details>
+    </section>
+
+
       {/* Services */}
       <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6">サービス</h2>
@@ -602,7 +695,7 @@ export default function NBLHome() {
           </div>
           <div className="rounded-2xl border p-6 bg-white shadow-sm">
             <div className="text-xs text-gray-500 mb-1">研修・講義・認定</div>
-            <div className="font-medium mb-2">職場配慮実装士（仮）</div>
+            <div className="font-medium mb-2">職場配慮デザイン認定（仮）</div>
             <p className="text-sm text-gray-700 mb-3">現場導入の標準手順と評価設計を習得。</p>
             <a href="#reports" className="text-sm underline">
               教材と資料
