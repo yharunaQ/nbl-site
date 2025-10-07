@@ -431,7 +431,7 @@ export default function NBLHome() {
             <div className="mt-4">
               {/* <VisionRocket /> */}
               <Image
-                src="/images/EEJ.webp"
+                src="/images/EEJ2.webp"
                 alt="Equality: 同じ踏み台でも背の低い人は見えない。Equity: 必要な数の踏み台で全員が見える。Justice: 塀を網フェンスに替え、踏み台なしでも全員見える。"
                 width={1200}
                 priority
