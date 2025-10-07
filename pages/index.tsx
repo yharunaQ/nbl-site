@@ -437,15 +437,6 @@ export default function NBLHome() {
                 priority
               />
             </div>
-            <div className="mt-4">
-              {/* <VisionRocket /> */}
-              <Image
-                src="/images/ICF.webp"
-                alt="職種、就業条件、職場環境、専門支援等、多様な要素のダイナミックな相互作用による「障害」の詳細な理解の必要性。"
-                width={1200}
-                priority
-              />
-            </div>
 
           </div>
         
@@ -561,6 +552,15 @@ export default function NBLHome() {
               開示の言語テンプレ
             </a>
           </div>
+            <div className="mt-4">
+              {/* <VisionRocket /> */}
+              <Image
+                src="/images/ICF.webp"
+                alt="職種、就業条件、職場環境、専門支援等、多様な要素のダイナミックな相互作用による「障害」の詳細な理解の必要性。"
+                width={1200}
+                priority
+              />
+            </div>
         </div>
         <div className="rounded-3xl border bg-white shadow-sm p-6">
           <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
