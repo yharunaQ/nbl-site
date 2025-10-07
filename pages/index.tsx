@@ -437,27 +437,6 @@ export default function NBLHome() {
                 priority
               />
             </div>
-
-          </div>
-        
-          <div className="md:col-span-3 grid gap-4">
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <h3 className="font-medium mb-1">フォーカス領域</h3>
-              <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                <li>難病・慢性疾患×就労の国際比較と政策実装</li>
-                <li>合理的配慮の科学化（症状×タスク×KPI）</li>
-                <li>合意形成／物語化／評価指標の社会実装</li>
-              </ul>
-            </div>
-            <div className="rounded-2xl border p-5 shadow-sm bg-white">
-              <h3 className="font-medium mb-1">提供物</h3>
-              <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                <li>JAC（Job Accommodation Copilot）</li>
-                <li>Accommodation Playbook（日本版）</li>
-                <li>オープンレポート／講義／研修・認定</li>
-              </ul>
-            </div>
-        
             {/* Founder’s Note（リンクだけ） */}
             <article className="rounded-2xl border p-5 shadow-sm bg-white">
               <h3 className="font-medium mb-1">Founder’s Note</h3>
@@ -469,6 +448,11 @@ export default function NBLHome() {
                 最新記事を読む
               </a>
             </article>
+
+          </div>
+        
+          <div className="md:col-span-3 grid gap-4">
+
              {/* NBLの4つの柱（Phase 1 に内包） */}
             <div className="rounded-2xl border p-5 shadow-sm bg-white">
               <h3 className="font-medium mb-3">NBLの4つの柱（Phase 1 の推進要素）</h3>
@@ -508,6 +492,23 @@ export default function NBLHome() {
                 </article>
               </div>
             </div>  
+          
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">フォーカス領域</h3>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                <li>難病・慢性疾患×就労の国際比較と政策実装</li>
+                <li>合理的配慮の科学化（症状×タスク×KPI）</li>
+                <li>合意形成／物語化／評価指標の社会実装</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl border p-5 shadow-sm bg-white">
+              <h3 className="font-medium mb-1">提供物</h3>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                <li>JAC（Job Accommodation Copilot）</li>
+                <li>Accommodation Playbook（日本版）</li>
+                <li>オープンレポート／講義／研修・認定</li>
+              </ul>
+            </div>
           </div>
         </section>
 
