@@ -630,6 +630,39 @@ export default function NBLHome() {
         <span className="font-semibold">Accommodation Playbook</span> を使い、
         <span className="whitespace-nowrap">提案→申請→実装→KPI</span> を2〜4週間で一筆書きに回します。
       </p>
+
+      {/* Services */}
+      <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6 py-16">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-6">サービス</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="rounded-2xl border p-6 bg-white shadow-sm">
+            <div className="text-xs text-gray-500 mb-1">30日クイックアセスメント</div>
+            <div className="font-medium mb-2">現状把握と改善優先度の可視化</div>
+            <p className="text-sm text-gray-700 mb-3">
+              ヒアリング→タスク分解→配慮実装余地→KPI合意。
+            </p>
+            <a href="#contact" className="text-sm underline">
+              相談する
+            </a>
+          </div>
+          <div className="rounded-2xl border p-6 bg-white shadow-sm">
+            <div className="text-xs text-gray-500 mb-1">研修・講義・認定</div>
+            <div className="font-medium mb-2">職場配慮デザイン認定（仮）</div>
+            <p className="text-sm text-gray-700 mb-3">現場導入の標準手順と評価設計を習得。</p>
+            <a href="#reports" className="text-sm underline">
+              教材と資料
+            </a>
+          </div>
+          <div className="rounded-2xl border p-6 bg-white shadow-sm">
+            <div className="text-xs text-gray-500 mb-1">PoC/共同研究</div>
+            <div className="font-medium mb-2">JAC α/β 導入サポート</div>
+            <p className="text-sm text-gray-700 mb-3">2〜4週間の小さな試行から開始できます。</p>
+            <a href="#contact" className="text-sm underline">
+              問い合わせ
+            </a>
+          </div>
+        </div>
+      </section>
     
         {/* Pricing */}
         <section id="pricing" className="mx-auto max-w-7xl px-6 py-16">
@@ -696,39 +729,6 @@ export default function NBLHome() {
       </details>
     </section>
 
-
-      {/* Services */}
-      <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6">サービス</h2>
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="rounded-2xl border p-6 bg-white shadow-sm">
-            <div className="text-xs text-gray-500 mb-1">30日クイックアセスメント</div>
-            <div className="font-medium mb-2">現状把握と改善優先度の可視化</div>
-            <p className="text-sm text-gray-700 mb-3">
-              ヒアリング→タスク分解→配慮実装余地→KPI合意。
-            </p>
-            <a href="#contact" className="text-sm underline">
-              相談する
-            </a>
-          </div>
-          <div className="rounded-2xl border p-6 bg-white shadow-sm">
-            <div className="text-xs text-gray-500 mb-1">研修・講義・認定</div>
-            <div className="font-medium mb-2">職場配慮デザイン認定（仮）</div>
-            <p className="text-sm text-gray-700 mb-3">現場導入の標準手順と評価設計を習得。</p>
-            <a href="#reports" className="text-sm underline">
-              教材と資料
-            </a>
-          </div>
-          <div className="rounded-2xl border p-6 bg-white shadow-sm">
-            <div className="text-xs text-gray-500 mb-1">PoC/共同研究</div>
-            <div className="font-medium mb-2">JAC α/β 導入サポート</div>
-            <p className="text-sm text-gray-700 mb-3">2〜4週間の小さな試行から開始できます。</p>
-            <a href="#contact" className="text-sm underline">
-              問い合わせ
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Reports */}
       <section id="reports" data-testid="reports" className="mx-auto max-w-7xl px-6 py-16">
