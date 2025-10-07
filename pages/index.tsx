@@ -511,90 +511,91 @@ export default function NBLHome() {
           </div>
         </section>
 
-        {/* Product: JAC */}
+        {/* Product: JAC（シンプル版） */}
         <section
           id="product"
           data-testid="product"
           className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-2 gap-10 items-start"
         >
-          {/* 左：JACの目的と流れ */}
+          {/* 左カラム：要点と手順 */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-              JAC（Job Accommodation Copilot）— 合理的配慮を“運用”する相棒
+            <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+              JAC（Job Accommodation Copilot）
             </h2>
-        
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-5">
               診断名ではなく <span className="font-semibold">タスク条件 × 症状像</span> で配慮を設計。
               <span className="whitespace-nowrap">設計 → 合意 → 実装 → KPI</span> を
-              <span className="font-semibold">一筆書き</span>で回すことで、
-              <span className="font-semibold">調整後の実力</span>（Design-Adjusted Merit）を正しく評価できます。
-              人が主で、AIは可視化・最適化・安全装置を担う <span className="whitespace-nowrap">Human-in-Command</span>。
+              ひと続きで回す相棒です。人が主、AIは可視化・最適化・安全装置を担う
+              <span className="whitespace-nowrap font-semibold"> Human-in-Command</span>。
             </p>
         
-            {/* 3ステップの要約 */}
-            <ol className="grid sm:grid-cols-3 gap-3 mb-5">
-              <li className="rounded-2xl border p-4 bg-white shadow-sm">
-                <div className="text-xs text-gray-500">Step 1</div>
-                <div className="font-medium mb-1">設計</div>
-                <p className="text-sm text-gray-700">
+            {/* 3 Step */}
+            <div className="grid sm:grid-cols-3 gap-3 mb-5">
+              <div className="rounded-xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500 mb-1">Step 1</div>
+                <div className="font-medium">設計</div>
+                <p className="text-xs text-gray-600 mt-1">
                   症状×タスクを分解し、配慮候補をレコメンド（カタログ連動）。
                 </p>
-              </li>
-              <li className="rounded-2xl border p-4 bg-white shadow-sm">
-                <div className="text-xs text-gray-500">Step 2</div>
-                <div className="font-medium mb-1">合意</div>
-                <p className="text-sm text-gray-700">
-                  本人・上長・人事の<span className="whitespace-nowrap">言語テンプレ</span>で合意文書を生成。
+              </div>
+              <div className="rounded-xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500 mb-1">Step 2</div>
+                <div className="font-medium">合意</div>
+                <p className="text-xs text-gray-600 mt-1">
+                  本人・上長・人事の文章テンプレで合意文書を自動整形。
                 </p>
-              </li>
-              <li className="rounded-2xl border p-4 bg-white shadow-sm">
-                <div className="text-xs text-gray-500">Step 3</div>
-                <div className="font-medium mb-1">KPI</div>
-                <p className="text-sm text-gray-700">
-                  欠勤・疲労NRS・自己生産性・実装率などを<span className="whitespace-nowrap">軽量に</span>記録。
+              </div>
+              <div className="rounded-xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500 mb-1">Step 3</div>
+                <div className="font-medium">KPI</div>
+                <p className="text-xs text-gray-600 mt-1">
+                  欠勤・疲労NRS・自己生産性・実装率を軽量ログで可視化。
                 </p>
-              </li>
-            </ol>
+              </div>
+            </div>
         
-            {/* 機能リスト */}
+            {/* 価値ポイント（最小3点） */}
             <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-5">
               <li>レコメンド：症状×タスクから配慮案（カタログ連動）</li>
-              <li>合意テンプレ：本人／上長／人事／産業医の文面を自動整形</li>
-              <li>KPI：欠勤・疲労NRS・自己生産性・配慮実装率（監査可能なログ）</li>
-              <li>プライバシー：病名は扱わず抽象度で設計（最小限データ）</li>
+              <li>テンプレ出力：本人／上長／人事のPDF様式</li>
+              <li>KPI：欠勤・疲労NRS・自己生産性・実装率（監査可能ログ）</li>
+              {/* プライバシーは1行に凝縮 */}
+              <li>プライバシー：病名を扱わない抽象度で設計（最小限データ）</li>
             </ul>
         
-            {/* ダウンロード */}
+            {/* ドキュメントリンク */}
             <div className="flex flex-wrap gap-3" id="downloads">
-              <a href="/docs/JAC_Alpha_Requirements_1Pager.md" className="rounded-xl px-3 py-2 border text-sm">
+              <a
+                href="/docs/JAC_Alpha_Requirements_1Pager.md"
+                className="rounded-xl px-3 py-2 border text-sm"
+              >
                 仕様1-Pager（α）
               </a>
-              <a href="/docs/JAC_Accommodation_Catalog_v0_3.yaml" className="rounded-xl px-3 py-2 border text-sm">
+              <a
+                href="/docs/JAC_Accommodation_Catalog_v0_3.yaml"
+                className="rounded-xl px-3 py-2 border text-sm"
+              >
                 配慮カタログ（YAML）
               </a>
-              <a href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md" className="rounded-xl px-3 py-2 border text-sm">
-                合意の言語テンプレ
+              <a
+                href="/docs/JAC_DisclosureLanguage_Templates_v0_3.md"
+                className="rounded-xl px-3 py-2 border text-sm"
+              >
+                合意・開示テンプレ
               </a>
             </div>
         
-            {/* ビジュアル（任意画像） */}
-            <figure className="mt-4 md:max-w-[400px] mx-auto">
-              <Image
-                src="/images/ICF.webp"
-                alt="職務・就業条件・環境・支援の相互作用から配慮を設計する概念図"
-                width={960}
-                height={540}
-                className="rounded-2xl border shadow-sm w-full h-auto"
-                sizes="(min-width: 768px) 400px, 100vw"
-                priority
-              />
-              <figcaption className="text-xs text-gray-500 mt-2">
-                * タスク条件 × 症状像 × 環境の交差から “方法は違っても本質業務は果たす” を設計
-              </figcaption>
-            </figure>
-          </div>
+            {/* JAC 内：価格枠の代わりにワンライナー案内 */}
+            <div className="mt-6 rounded-2xl border p-4 bg-gray-50">
+              <div className="text-sm">
+                導入オプションと価格目安は
+                {' '}
+                <a href="#pricing" className="underline">こちら（料金を見る）</a>
+                をご参照ください。
+              </div>
+            </div>
         
-          {/* 右：サンプル配慮＆CTA */}
+          {/* 右カラム：配慮例 → 評価の原則 → CTA */}
           <div className="rounded-3xl border bg-white shadow-sm p-6">
             <div className="text-sm text-gray-600 mb-3">サンプル配慮（抜粋）</div>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -605,27 +606,25 @@ export default function NBLHome() {
                 '温度調整',
                 'ノイズコントロール',
                 '音声入力・読み上げ',
-                'タスク・ローテーション',
-                '席の近接配慮',
                 '会議の非同期化',
-                '通勤配慮',
                 '安全優先のタスク制限',
-                '視覚負荷軽減',
               ].map((t, i) => (
                 <div key={i} className="rounded-xl border p-4 text-sm bg-gray-50">{t}</div>
               ))}
             </div>
         
-            <div className="mt-4 rounded-xl border p-4 bg-gray-50">
-              <div className="text-xs text-gray-500 mb-1">評価の原則</div>
-              <p className="text-sm text-gray-700">
-                評価は<span className="font-semibold">調整後の成果</span>で行います（Design-Adjusted Merit）。
-                方法は人それぞれでOK。到達を問うのが公平です。
+            {/* 評価の原則（Design-Adjusted Merit） */}
+            <div className="mt-4 rounded-xl border p-4 bg-gray-50 text-xs text-gray-700">
+              <div className="font-medium mb-1">評価の原則</div>
+              <p>
+                評価は <span className="font-semibold">調整後の成果（Design-Adjusted Merit）</span> を基準にします。
+                方法は人それぞれでOK。到達を問うのが公正です。
               </p>
             </div>
         
-            <div className="flex flex-wrap gap-3 mt-4">
-              <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
+            {/* CTA */}
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a href="#contact" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
                 2–4週間で試す（PoCへ）
               </a>
               <a href="#contact" className="rounded-xl px-4 py-2 border text-sm">
@@ -704,6 +703,53 @@ export default function NBLHome() {
           <li>オプション：合意文書テンプレ強化、評価設計の拡張、助成金申請サポート。</li>
         </ul>
       </div>
+
+        {/* Pricing */}
+        <section id="pricing" className="mx-auto max-w-7xl px-6 py-16">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3">料金（目安）</h2>
+          <p className="text-gray-700 mb-5 text-sm">
+            実施規模・対象人数・データ連携の有無などで変動します。ここは「目安」です。
+            詳細は <a href="#contact" className="underline">お問い合わせ</a> ください。
+          </p>
+        
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="rounded-2xl border p-5 bg-white shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">2–4週間</div>
+              <div className="font-medium">PoC（小規模検証）</div>
+              <p className="text-sm text-gray-700 mt-2">
+                少人数・1部門で仮説検証。<br/>
+                <span className="text-gray-600 text-xs">
+                  価格レンジ：<span className="italic">要相談（数値が決まり次第ここに記載）</span>
+                </span>
+              </p>
+            </div>
+        
+            <div className="rounded-2xl border p-5 bg-white shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">約3か月</div>
+              <div className="font-medium">Pilot（実装テスト）</div>
+              <p className="text-sm text-gray-700 mt-2">
+                複数部署での標準手順・評価設計の検証。<br/>
+                <span className="text-gray-600 text-xs">価格レンジ：<span className="italic">要相談</span></span>
+              </p>
+            </div>
+        
+            <div className="rounded-2xl border p-5 bg-white shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">研修／単発</div>
+              <div className="font-medium">研修・認定（職場配慮実装士 ほか）</div>
+              <p className="text-sm text-gray-700 mt-2">
+                現場導入の標準手順と評価設計。<br/>
+                <span className="text-gray-600 text-xs">価格レンジ：<span className="italic">要相談</span></span>
+              </p>
+            </div>
+          </div>
+        
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a href="#contact" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">見積り相談</a>
+            <a href="#product" className="rounded-xl px-4 py-2 border text-sm">JACに戻る</a>
+          </div>
+        </section>
+
+
     
       {/* CTA */}
       <div className="flex flex-wrap gap-3 mt-6">
