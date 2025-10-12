@@ -812,6 +812,111 @@ export default function NBLHome() {
         </div>
       </section>
 
+        {/* Market Vision */}
+        <section id="market" className="mx-auto max-w-7xl px-6 py-16">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3">
+            AI × 包摂テック｜市場ビジョン（TAM / SAM / SOM）
+          </h2>
+          <p className="text-gray-700 mb-6">
+            NBLは「AI×包摂（Inclusion Tech）」の社会実装と市場化を推進するラボです。
+            配慮の <span className="font-semibold">設計→合意→実装→KPI</span> をSaaSで一筆書きにし、
+            監査可能性まで担保します（<span className="font-semibold">JAC Core / Plus</span>）。
+          </p>
+        
+          {/* 横棒インフォグラフィック：配列を書き換えるだけで更新 */}
+          <div className="rounded-3xl border bg-white shadow-sm p-6">
+            {[
+              {
+                key: 'TAM',
+                title: 'TAM（世界アドレス可能市場）',
+                // 目安の幅（相対値）。視覚比率だけ作る：TAM=100, SAM=45, SOM=3 など
+                width: 100,
+                desc: '数千億〜1兆円級（①配慮オペレーティング層＋②支援AI＋③監査/評価までを含む外形）',
+                note: '例: 就業者×配慮必要率×導入率×ARPU = ~6,000億円→周辺含め最大1–2兆円級'
+              },
+              {
+                key: 'SAM',
+                title: 'SAM（当面の対象国・業種）',
+                width: 45,
+                desc: '2,000–3,000億円（日本＋英語圏のB2B、知識労働・公共分野）',
+                note: 'JACの主戦場：配慮オペレーティング＋KPI/監査'
+              },
+              {
+                key: 'SOM',
+                title: 'SOM（3年目の到達目安）',
+                width: 6,
+                desc: '年商 5–25億円レンジ（50–150社 × 500–5,000席/社）',
+                note: 'PoC→本導入の転換率・座席単価の積み上げで算定'
+              }
+            ].map((row, i) => (
+              <figure key={row.key} className="mb-5">
+                <figcaption className="flex items-baseline justify-between mb-2">
+                  <div className="font-medium">{row.title}</div>
+                  <div className="text-xs text-gray-500">{row.key}</div>
+                </figcaption>
+                <div className="w-full h-4 rounded-full bg-gray-100 border overflow-hidden">
+                  {/* バー本体：色でレイヤ差別化 */}
+                  <div
+                    className={[
+                      'h-full',
+                      i === 0 && 'bg-gradient-to-r from-indigo-200 to-indigo-500',
+                      i === 1 && 'bg-gradient-to-r from-fuchsia-200 to-rose-500',
+                      i === 2 && 'bg-gradient-to-r from-amber-200 to-emerald-500'
+                    ].filter(Boolean).join(' ')}
+                    style={{ width: `${row.width}%` }}
+                    aria-hidden="true"
+                  />
+                </div>
+                <p className="mt-2 text-sm text-gray-700">{row.desc}</p>
+                <p className="text-[11px] text-gray-500">{row.note}</p>
+              </figure>
+            ))}
+        
+            {/* 定義ブロック：何を「AI×包摂テック」と呼ぶかを明示 */}
+            <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">
+              <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500 mb-1">① オペレーティング層</div>
+                <div className="font-medium mb-1">配慮の設計・合意・実装・KPI</div>
+                <p className="text-gray-700">JAC Core/Plus。配慮を“善意”から“仕様”へ。</p>
+              </div>
+              <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500 mb-1">② 支援AI</div>
+                <div className="font-medium mb-1">UI変換／要約／翻訳／負荷調整</div>
+                <p className="text-gray-700">外部連携で取り込み（音声・視線・認知負荷など）。</p>
+              </div>
+              <div className="rounded-2xl border p-4 bg-white shadow-sm">
+                <div className="text-xs text-gray-500 mb-1">③ 監査・評価</div>
+                <div className="font-medium mb-1">ログ／説明責任／レポーティング</div>
+                <p className="text-gray-700">AI時代の合意可能性と監査可能性を担保。</p>
+              </div>
+            </div>
+        
+            {/* CTA */}
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
+                PoC相談（導入と検証）
+              </a>
+              <a href="/docs/NBL_InclusionTech_Market_Brief.pdf" className="rounded-xl px-4 py-2 border text-sm">
+                市場ブリーフPDF
+              </a>
+              <a href="/docs/JAC_Pricing_Sheet.pdf" className="rounded-xl px-4 py-2 border text-sm">
+                価格表（ドラフト）
+              </a>
+            </div>
+        
+            {/* SR-only：読み上げ用説明 */}
+            <p className="sr-only">
+              TAMは最大市場、SAMは当面の焦点領域、SOMは3年目の売上到達目安を示す比較図です。
+            </p>
+          </div>
+        
+          {/* 免責・前提（小さく） */}
+          <p className="mt-3 text-[11px] text-gray-500">
+            ※ 表示はNBLの仮説レンジ。規制・普及率・ARPUにより変動します。正式見通しは投資家資料をご参照ください。
+          </p>
+        </section>
+
+
         {/* Campaign */}
         <section
           id="campaign"
