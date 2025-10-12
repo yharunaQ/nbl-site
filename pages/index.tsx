@@ -815,47 +815,47 @@ export default function NBLHome() {
         {/* Market Vision */}
         <section id="market" className="mx-auto max-w-7xl px-6 py-16">
           <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-            AI × 包摂テック｜市場ビジョン（TAM / SAM / SOM）
+            AI × 包摂テック｜社会実装と市場ビジョン（TAM / SAM / SOM）
           </h2>
-          <p className="text-gray-700 mb-6">
-            NBLは「AI×包摂（Inclusion Tech）」の社会実装と市場化を推進するラボです。
-            配慮の <span className="font-semibold">設計→合意→実装→KPI</span> をSaaSで一筆書きにし、
-            監査可能性まで担保します（<span className="font-semibold">JAC Core / Plus</span>）。
+        
+          <p className="text-gray-700 leading-relaxed mb-6">
+            NBLは「AI×包摂（Inclusion Tech）」を、人とAIと環境が共進化する
+            <span className="font-semibold">新しい社会インフラ層</span>として構築します。
+            <span className="whitespace-nowrap">人間拡張（Human-in-Command）</span>の理念に基づき、
+            <span className="font-semibold">合理的配慮を“仕様化”</span>し、  
+            <span className="font-semibold">設計→合意→実装→KPI</span>を一筆書きで運用可能にします。
           </p>
         
-          {/* 横棒インフォグラフィック：配列を書き換えるだけで更新 */}
           <div className="rounded-3xl border bg-white shadow-sm p-6">
             {[
               {
                 key: 'TAM',
-                title: 'TAM（世界アドレス可能市場）',
-                // 目安の幅（相対値）。視覚比率だけ作る：TAM=100, SAM=45, SOM=3 など
+                title: 'TAM（Total Addressable Market）— 世界全体のポテンシャル',
                 width: 100,
-                desc: '数千億〜1兆円級（①配慮オペレーティング層＋②支援AI＋③監査/評価までを含む外形）',
-                note: '例: 就業者×配慮必要率×導入率×ARPU = ~6,000億円→周辺含め最大1–2兆円級'
+                desc: '約1〜2兆円級。AI×包摂がクラウド・セキュリティ並みの基盤層へ拡張。',
+                note: '就業人口×配慮必要率×導入率×ARPUをベースに算定。'
               },
               {
                 key: 'SAM',
-                title: 'SAM（当面の対象国・業種）',
+                title: 'SAM（Serviceable Available Market）— 当面の焦点領域',
                 width: 45,
-                desc: '2,000–3,000億円（日本＋英語圏のB2B、知識労働・公共分野）',
-                note: 'JACの主戦場：配慮オペレーティング＋KPI/監査'
+                desc: '約2,000〜3,000億円。日本＋英語圏のB2B、知識労働・公共分野を中心。',
+                note: '職場合理的配慮SaaS＋支援AI＋監査・KPIレポートを含む。'
               },
               {
                 key: 'SOM',
-                title: 'SOM（3年目の到達目安）',
-                width: 6,
-                desc: '年商 5–25億円レンジ（50–150社 × 500–5,000席/社）',
-                note: 'PoC→本導入の転換率・座席単価の積み上げで算定'
+                title: 'SOM（Serviceable Obtainable Market）— 3年目の現実レンジ',
+                width: 8,
+                desc: '年商5〜25億円規模。PoC→本導入×50〜150社、500〜5,000席/社を想定。',
+                note: 'PoC転換率40〜60%、座席単価¥300〜450/月＋監査オプションで積み上げ。'
               }
             ].map((row, i) => (
-              <figure key={row.key} className="mb-5">
+              <figure key={row.key} className="mb-6">
                 <figcaption className="flex items-baseline justify-between mb-2">
                   <div className="font-medium">{row.title}</div>
                   <div className="text-xs text-gray-500">{row.key}</div>
                 </figcaption>
                 <div className="w-full h-4 rounded-full bg-gray-100 border overflow-hidden">
-                  {/* バー本体：色でレイヤ差別化 */}
                   <div
                     className={[
                       'h-full',
@@ -864,7 +864,6 @@ export default function NBLHome() {
                       i === 2 && 'bg-gradient-to-r from-amber-200 to-emerald-500'
                     ].filter(Boolean).join(' ')}
                     style={{ width: `${row.width}%` }}
-                    aria-hidden="true"
                   />
                 </div>
                 <p className="mt-2 text-sm text-gray-700">{row.desc}</p>
@@ -872,29 +871,48 @@ export default function NBLHome() {
               </figure>
             ))}
         
-            {/* 定義ブロック：何を「AI×包摂テック」と呼ぶかを明示 */}
-            <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">
+            {/* 概念3層ブロック */}
+            <div className="mt-8 grid md:grid-cols-3 gap-4 text-sm">
               <div className="rounded-2xl border p-4 bg-white shadow-sm">
                 <div className="text-xs text-gray-500 mb-1">① オペレーティング層</div>
                 <div className="font-medium mb-1">配慮の設計・合意・実装・KPI</div>
-                <p className="text-gray-700">JAC Core/Plus。配慮を“善意”から“仕様”へ。</p>
+                <p className="text-gray-700">
+                  JAC Core / Plus。配慮を“善意”から“仕様”へ。
+                  合理的配慮を業務フローに直接埋め込む。
+                </p>
               </div>
               <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                <div className="text-xs text-gray-500 mb-1">② 支援AI</div>
-                <div className="font-medium mb-1">UI変換／要約／翻訳／負荷調整</div>
-                <p className="text-gray-700">外部連携で取り込み（音声・視線・認知負荷など）。</p>
+                <div className="text-xs text-gray-500 mb-1">② 支援AI層</div>
+                <div className="font-medium mb-1">UI変換・要約・翻訳・負荷調整</div>
+                <p className="text-gray-700">
+                  個人特性に応じた“適応型”支援。外部API連携で音声・視線・認知支援まで拡張。
+                </p>
               </div>
               <div className="rounded-2xl border p-4 bg-white shadow-sm">
-                <div className="text-xs text-gray-500 mb-1">③ 監査・評価</div>
-                <div className="font-medium mb-1">ログ／説明責任／レポーティング</div>
-                <p className="text-gray-700">AI時代の合意可能性と監査可能性を担保。</p>
+                <div className="text-xs text-gray-500 mb-1">③ 監査・評価層</div>
+                <div className="font-medium mb-1">フェアネスログ／説明責任／再利用性</div>
+                <p className="text-gray-700">
+                  合意可能性と監査可能性を担保。人×AIの協働を“社会的に検証可能”にする。
+                </p>
               </div>
+            </div>
+        
+            {/* フッター：NBLの立ち位置 */}
+            <div className="mt-8 text-sm text-gray-700 leading-relaxed">
+              <p>
+                NBLは、これら三層の交点に立ち、<span className="font-semibold">“AI×包摂”を社会インフラ化</span>する
+                実証と標準化のラボです。
+              </p>
+              <p className="mt-2">
+                私たちは「公平性を測る指標」と「配慮を運用する仕様」を公開し、
+                <span className="font-semibold">倫理×経済×テクノロジーの三角形</span>を統合します。
+              </p>
             </div>
         
             {/* CTA */}
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#poc" className="rounded-xl px-4 py-2 bg-gray-900 text-white text-sm">
-                PoC相談（導入と検証）
+                PoC相談（導入・検証）
               </a>
               <a href="/docs/NBL_InclusionTech_Market_Brief.pdf" className="rounded-xl px-4 py-2 border text-sm">
                 市場ブリーフPDF
@@ -903,19 +921,12 @@ export default function NBLHome() {
                 価格表（ドラフト）
               </a>
             </div>
-        
-            {/* SR-only：読み上げ用説明 */}
-            <p className="sr-only">
-              TAMは最大市場、SAMは当面の焦点領域、SOMは3年目の売上到達目安を示す比較図です。
-            </p>
           </div>
         
-          {/* 免責・前提（小さく） */}
           <p className="mt-3 text-[11px] text-gray-500">
-            ※ 表示はNBLの仮説レンジ。規制・普及率・ARPUにより変動します。正式見通しは投資家資料をご参照ください。
+            ※ 推計値はNBLの独自モデルによる仮説レンジ。社会的要請・規制・AI技術の成熟度により変動します。
           </p>
         </section>
-
 
         {/* Campaign */}
         <section
