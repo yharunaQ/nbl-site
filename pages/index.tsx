@@ -31,7 +31,7 @@ export default function NBLHome() {
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nextbeinglab.org/" />
-        <meta property="og:title" content="Next Being Lab | 働くは設計できる！！！" />
+        <meta property="og:title" content="Next Being Lab | 働くは設計できる。" />
         <meta property="og:description" content="働くは設計できる。At work, CAN matters." />
         <meta property="og:image" content="https://nextbeinglab.org/og.png" />
         <meta property="og:image:width" content="1200" />
@@ -156,7 +156,7 @@ export default function NBLHome() {
               Next Being Lab — 人間の存在意義を拡張する社会インフラ
             </span>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-              働くは設計できる。
+              働くは設計できる！
               <br className="hidden md:block" />
               <span className="text-gray-700">At work, CAN matters.</span>
             </h1>
