@@ -111,7 +111,21 @@ export default function NBLHome() {
       <nav className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur" data-testid="top-nav">
         <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-full bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-emerald-400" />
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-shrink-0"
+            >
+              {/* 外側の円：薄い青緑の輪郭 */}
+              <circle cx="14" cy="14" r="13" stroke="#7DD3FC" strokeWidth="1" fill="none" />
+              {/* 中間の円：ティールブルーのリング */}
+              <circle cx="14" cy="14" r="10" stroke="#14B8A6" strokeWidth="2" fill="none" />
+              {/* 内側の円：白い円 */}
+              <circle cx="14" cy="14" r="6" fill="white" />
+            </svg>
             <span className="font-semibold tracking-wide">Next Being Lab</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm">
