@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "check": "npm run lint && npm run typecheck",
     "prepare": "husky",
-    "dev:watch": "concurrently -k \"next dev\" \"tsc -w --noEmit\""
+    "dev:watch": "concurrently -k \"next dev\" \"tsc -w --noEmit\"",
+    "deploy": "./deploy.sh"
   },
   "prettier": {
     "singleQuote": true,
