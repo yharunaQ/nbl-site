@@ -59,6 +59,29 @@ function extractToken(req: NextApiRequest): string {
     return '';
 }
 
+function normalizeToken(raw: string): string {
+    const trimmed = raw.trim();
+    if (
+        (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+        (trimmed.startsWith("'") && trimmed.endsWith("'"))
+    ) {
+        return trimmed.slice(1, -1).trim().replace(/\s+/g, '');
+    }
+    return trimmed.replace(/\s+/g, '');
+}
+
+function getAcceptedTokens(): string[] {
+    const single = normalizeToken(process.env.JAC_ACCESS_TOKEN || '');
+    const multi = (process.env.JAC_ACCESS_TOKENS || '')
+        .split(',')
+        .map((item) => normalizeToken(item))
+        .filter(Boolean);
+    const set = new Set<string>();
+    if (single) set.add(single);
+    for (const token of multi) set.add(token);
+    return Array.from(set);
+}
+
 function enforceRateLimit(ip: string, route: string): GuardResult {
     const perMinuteLimit = numEnv('JAC_RATE_LIMIT_PER_MINUTE', 8);
     const perDayLimit = numEnv('JAC_RATE_LIMIT_PER_DAY', 120);
@@ -113,17 +136,17 @@ function enforceRateLimit(ip: string, route: string): GuardResult {
 
 export function guardJacApiRequest(req: NextApiRequest, options: GuardOptions): GuardResult {
     const publicEnabled = boolEnv('JAC_PUBLIC_ENABLED', false);
-    const requiredToken = (process.env.JAC_ACCESS_TOKEN || '').trim();
-    const tokenProvided = extractToken(req);
+    const acceptedTokens = getAcceptedTokens();
+    const tokenProvided = normalizeToken(extractToken(req));
     const forceFastWhenHighUsage = boolEnv('JAC_FORCE_FAST_WHEN_HIGH_USAGE', true);
     const globalFastThreshold = numEnv('JAC_FORCE_FAST_THRESHOLD_PER_DAY', 1800);
 
     if (!publicEnabled) {
-        if (!requiredToken) {
+        if (acceptedTokens.length === 0) {
             return {
                 ok: false,
                 status: 503,
-                error: 'JAC API is private. Set JAC_ACCESS_TOKEN on server.',
+                error: 'JAC API is private. Set JAC_ACCESS_TOKEN or JAC_ACCESS_TOKENS on server.',
             };
         }
         if (!tokenProvided) {
@@ -133,11 +156,15 @@ export function guardJacApiRequest(req: NextApiRequest, options: GuardOptions): 
                 error: 'Access token required.',
             };
         }
-        if (tokenProvided !== requiredToken) {
+        if (!acceptedTokens.includes(tokenProvided)) {
+            const devHint =
+                process.env.NODE_ENV !== 'production'
+                    ? ` (provided length: ${tokenProvided.length}, expected length: ${acceptedTokens[0]?.length || 0})`
+                    : '';
             return {
                 ok: false,
                 status: 403,
-                error: 'Invalid access token.',
+                error: `Invalid access token.${devHint}`,
             };
         }
     }

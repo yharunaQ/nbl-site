@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
 
@@ -295,6 +295,17 @@ const buildDraftText = (
 type AccommodationSelectionMap = Record<string, AccommodationSelection>;
 type DraftViewMode = 'selected' | 'all';
 
+function normalizeAccessToken(raw: string): string {
+    const trimmed = raw.trim();
+    if (
+        (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+        (trimmed.startsWith("'") && trimmed.endsWith("'"))
+    ) {
+        return trimmed.slice(1, -1).trim();
+    }
+    return trimmed;
+}
+
 export default function JacTrial() {
     const [step, setStep] = useState(1);
     const [consultation, setConsultation] = useState('');
@@ -319,7 +330,11 @@ export default function JacTrial() {
     const [tagSuggestionLoading, setTagSuggestionLoading] = useState(false);
     const [tagSuggestionError, setTagSuggestionError] = useState<string | null>(null);
     const [tagSuggestionQuery, setTagSuggestionQuery] = useState('');
+    const [tagSuggestionBlocked, setTagSuggestionBlocked] = useState(false);
     const [accessToken, setAccessToken] = useState('');
+    const [tokenSavedNotice, setTokenSavedNotice] = useState<string | null>(null);
+    const tagSuggestionInFlightRef = useRef(false);
+    const tagSuggestionAttemptedRef = useRef('');
 
     const followUpQuestions = useMemo(() => {
         const groups = Object.entries(selectedTags) as [TagGroupKey, string[]][];
@@ -352,13 +367,29 @@ export default function JacTrial() {
         }
     }, []);
 
+    useEffect(() => {
+        try {
+            const normalized = normalizeAccessToken(accessToken);
+            window.localStorage.setItem('jac_access_token', normalized);
+        } catch {
+            // ignore
+        }
+    }, [accessToken]);
+
     const buildAuthHeaders = useCallback(() => {
         const headers: Record<string, string> = {};
-        const token = accessToken.trim();
+        const token = normalizeAccessToken(accessToken);
         if (token) {
             headers['x-jac-access-token'] = token;
         }
         return headers;
+    }, [accessToken]);
+
+    const buildApiUrlWithToken = useCallback((path: string) => {
+        const token = normalizeAccessToken(accessToken);
+        if (!token) return path;
+        const separator = path.includes('?') ? '&' : '?';
+        return `${path}${separator}accessToken=${encodeURIComponent(token)}`;
     }, [accessToken]);
 
     useEffect(() => {
@@ -376,6 +407,9 @@ export default function JacTrial() {
         setTagSuggestion(null);
         setTagSuggestionError(null);
         setTagSuggestionQuery('');
+        tagSuggestionAttemptedRef.current = '';
+        tagSuggestionInFlightRef.current = false;
+        setTagSuggestionBlocked(false);
     }, [consultation]);
 
     useEffect(() => {
@@ -440,40 +474,50 @@ export default function JacTrial() {
         });
     };
 
-    const fetchTagSuggestion = useCallback(async () => {
+    const fetchTagSuggestion = useCallback(async (force = false) => {
         const query = consultation.trim();
         if (!query) return;
+        if (tagSuggestionInFlightRef.current) return;
+        if (!force && tagSuggestionAttemptedRef.current === query) return;
+        tagSuggestionInFlightRef.current = true;
+        tagSuggestionAttemptedRef.current = query;
         setTagSuggestionLoading(true);
         setTagSuggestionError(null);
         try {
-            const response = await fetch('/api/jac-tag-suggest', {
+            const response = await fetch(buildApiUrlWithToken('/api/jac-tag-suggest'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', ...buildAuthHeaders() },
                 body: JSON.stringify({ consultation: query }),
             });
             if (!response.ok) {
                 const err = await response.json().catch(() => ({}));
+                if ([401, 403, 503].includes(response.status)) {
+                    setTagSuggestionBlocked(true);
+                }
                 throw new Error(err?.error || 'タグ提案に失敗しました。');
             }
             const data = (await response.json()) as TagSuggestionResponse;
             setTagSuggestion(data);
             setTagSuggestionQuery(query);
+            setTagSuggestionBlocked(false);
         } catch (error) {
             const message = error instanceof Error ? error.message : 'タグ提案の取得中にエラーが発生しました。';
             setTagSuggestionError(message);
         } finally {
+            tagSuggestionInFlightRef.current = false;
             setTagSuggestionLoading(false);
         }
-    }, [consultation, buildAuthHeaders]);
+    }, [consultation, buildAuthHeaders, buildApiUrlWithToken]);
 
     useEffect(() => {
         if (step !== 2) return;
         const query = consultation.trim();
         if (!query) return;
         if (tagSuggestionLoading) return;
+        if (tagSuggestionBlocked) return;
         if (tagSuggestion && tagSuggestionQuery === query) return;
         void fetchTagSuggestion();
-    }, [step, consultation, tagSuggestion, tagSuggestionLoading, tagSuggestionQuery, fetchTagSuggestion]);
+    }, [step, consultation, tagSuggestion, tagSuggestionLoading, tagSuggestionBlocked, tagSuggestionQuery, fetchTagSuggestion]);
 
     const handleCopy = async () => {
         if (!draftText) return;
@@ -515,7 +559,8 @@ export default function JacTrial() {
         setRefining(false);
         setRefineMessage(null);
         try {
-            const fastResponse = await fetch('/api/jac-assess', {
+            const fastUrl = buildApiUrlWithToken('/api/jac-assess');
+            const fastResponse = await fetch(fastUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', ...buildAuthHeaders() },
                 body: JSON.stringify({
@@ -552,7 +597,7 @@ export default function JacTrial() {
                     await new Promise((resolve) => setTimeout(resolve, 1500));
                     try {
                         const statusResponse = await fetch(
-                            `/api/jac-assess-refinement?jobId=${encodeURIComponent(jobId)}`,
+                            buildApiUrlWithToken(`/api/jac-assess-refinement?jobId=${encodeURIComponent(jobId)}`),
                             {
                                 headers: {
                                     ...buildAuthHeaders(),
@@ -637,8 +682,12 @@ export default function JacTrial() {
                         <button
                             type="button"
                             onClick={() => {
+                                const normalized = normalizeAccessToken(accessToken);
+                                setAccessToken(normalized);
                                 try {
-                                    window.localStorage.setItem('jac_access_token', accessToken.trim());
+                                    window.localStorage.setItem('jac_access_token', normalized);
+                                    setTokenSavedNotice(normalized ? '保存しました' : 'トークンをクリアしました');
+                                    window.setTimeout(() => setTokenSavedNotice(null), 1800);
                                 } catch {
                                     // ignore
                                 }
@@ -647,6 +696,9 @@ export default function JacTrial() {
                         >
                             保存
                         </button>
+                        {tokenSavedNotice && (
+                            <span className="text-[11px] text-emerald-700 font-semibold">{tokenSavedNotice}</span>
+                        )}
                     </div>
                 </div>
             </header>
@@ -714,7 +766,10 @@ export default function JacTrial() {
                                         <div className="flex items-center gap-2">
                                             <button
                                                 type="button"
-                                                onClick={fetchTagSuggestion}
+                                                onClick={() => {
+                                                    setTagSuggestionBlocked(false);
+                                                    void fetchTagSuggestion(true);
+                                                }}
                                                 className="rounded-lg border border-indigo-200 bg-white px-3 py-1 text-xs font-semibold text-indigo-700 hover:bg-indigo-50"
                                                 disabled={tagSuggestionLoading || !consultation.trim()}
                                             >
