@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { buildAgenticPlan } from '@/lib/knowledge/agenticPlanner';
 import { executeAgenticPlan } from '@/lib/knowledge/agenticExecutor';
+import { buildGlmInsights, GlmInsight, GlmInsightResult, GLM_INTERACTION_MEANINGS } from '@/lib/knowledge/glmInsights';
+import { createRefinementJob } from '@/lib/jac/refinementJobStore';
 import { getKnowledgeSourceById } from '@/lib/knowledge/sourceRegistry';
 
 type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
@@ -31,6 +33,7 @@ type RequestBody = {
     additionalConsultation?: string;
     selectedAccommodations?: Record<string, AccommodationSelection>;
     enabledSourceIds?: string[];
+    responseMode?: 'fast' | 'full';
 };
 
 const SUGGESTION_LIBRARY: Suggestion[] = [
@@ -128,6 +131,8 @@ const SUGGESTION_LIBRARY: Suggestion[] = [
 ];
 
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
+const OPENAI_CHAT_TIMEOUT_MS_DEFAULT = 45000;
+const EXECUTION_TIMEOUT_MS = 7000;
 
 function buildComposedQuery(payload: RequestBody): string {
     const tagText = Object.values(payload.selectedTags || {})
@@ -157,6 +162,8 @@ function buildSystemPrompt(): string {
 - 医療診断は行わず、職業場面・タスク条件・環境条件・本人希望に基づいて整理する。
 - 追加相談や配慮候補の選択結果を踏まえて、見立てを更新する。
 - 提案は合意形成の材料であり、断定的な医療助言は避ける。
+- planner_context.glm_context はGLM分析の実証的知見。関連する場合は優先的に配慮案へ反映する。
+- GLM根拠に対応する配慮案を、理由に「どの状況を下げる/上げるためか」を含めて明示する。
 
 出力ルール:
 - JSONのみを出力する。
@@ -243,47 +250,202 @@ function buildSchema() {
     };
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== 'POST') {
-        res.setHeader('Allow', 'POST');
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
-
-    if (!process.env.OPENAI_API_KEY) {
-        return res.status(500).json({ error: 'OPENAI_API_KEY が設定されていません。' });
-    }
-
-    const body = req.body as RequestBody;
-    if (!body?.consultation) {
-        return res.status(400).json({ error: 'consultation が必要です。' });
-    }
-
-    const composedQuery = buildComposedQuery(body);
-
-    const plan = buildAgenticPlan({
-        query: composedQuery,
-        enabledSourceIds: body.enabledSourceIds,
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, timeoutMessage: string): Promise<T> {
+    return new Promise<T>((resolve, reject) => {
+        const timeoutId = setTimeout(() => reject(new Error(timeoutMessage)), timeoutMs);
+        promise
+            .then((result) => resolve(result))
+            .catch((error) => reject(error))
+            .finally(() => clearTimeout(timeoutId));
     });
+}
 
-    const execution = await executeAgenticPlan(plan, {
-        query: composedQuery,
-        keywords: [
-            body.consultation,
-            body.additionalConsultation || '',
-            ...Object.values(body.selectedTags || {}).flat(),
-            ...(body.followUpAnswers || []).map((item) => item.value),
-        ],
-    });
+type ParsedAssessment = {
+    summary: string;
+    task_conditions: string;
+    cause: string[];
+    impact: string[];
+    aggravators: string[];
+    protectors: string[];
+    accommodations: Array<{
+        title: string;
+        reason: string;
+        examples: string;
+        priority: number;
+    }>;
+    agreement: string;
+    kpi: string;
+    causal_summary: string;
+    causal_chain: string[];
+    citations: Array<{
+        claim: string;
+        evidence_ids: string[];
+    }>;
+};
 
-    const plannerContext = {
-        selected_sources: plan.selectedSources,
-        plan_warnings: plan.warnings,
-        execution_progress: execution.stepProgress,
-        evidence: execution.evidence,
-        structured_summary: execution.structuredSummary,
-        policy_notes: execution.policyNotes,
+function mergeAssessmentWithGlm(
+    assessment: ParsedAssessment,
+    glmInsights: GlmInsight[],
+): ParsedAssessment {
+    const merged = {
+        ...assessment,
+        cause: [...assessment.cause],
+        aggravators: [...assessment.aggravators],
+        accommodations: [...assessment.accommodations],
+        citations: [...assessment.citations],
     };
 
+    const existingTitles = new Set(merged.accommodations.map((item) => item.title));
+    const actionByTitle = new Map<
+        string,
+        { title: string; reason: string; examples: string; priority: number; evidenceId: string }
+    >();
+
+    glmInsights.forEach((insight) => {
+        insight.actionTitles.forEach((title) => {
+            if (actionByTitle.has(title)) return;
+            actionByTitle.set(title, {
+                title,
+                reason: `GLM根拠: ${insight.summary}`,
+                examples: `根拠: ${insight.predictor} → ${insight.outcome}（B=${insight.effect.toFixed(3)}${insight.pValue !== null ? `, p=${insight.pValue}` : ''}）`,
+                priority: insight.confidence === 'high' ? 1 : 2,
+                evidenceId: insight.evidenceId,
+            });
+        });
+    });
+
+    for (const candidate of actionByTitle.values()) {
+        if (!existingTitles.has(candidate.title)) {
+            merged.accommodations.push({
+                title: candidate.title,
+                reason: candidate.reason,
+                examples: candidate.examples,
+                priority: candidate.priority,
+            });
+        } else {
+            merged.accommodations = merged.accommodations.map((item) =>
+                item.title === candidate.title
+                    ? {
+                          ...item,
+                          priority: Math.min(item.priority, candidate.priority),
+                      }
+                    : item,
+            );
+        }
+
+        if (!merged.citations.some((citation) => citation.evidence_ids.includes(candidate.evidenceId))) {
+            merged.citations.push({
+                claim: `${candidate.title}を優先候補に採用`,
+                evidence_ids: [candidate.evidenceId],
+            });
+        }
+    }
+
+    const highRiskSummaries = glmInsights
+        .filter((item) => item.effect < 0)
+        .map((item) => `${item.summary}（${item.evidenceId}）`);
+
+    highRiskSummaries.slice(0, 2).forEach((summary) => {
+        if (!merged.aggravators.includes(summary)) {
+            merged.aggravators.push(summary);
+        }
+    });
+
+    merged.accommodations = merged.accommodations
+        .sort((a, b) => a.priority - b.priority)
+        .slice(0, 8);
+
+    return merged;
+}
+
+function normalizeRequestBody(body?: Partial<RequestBody> | null): RequestBody {
+    return {
+        consultation: body?.consultation || '',
+        selectedTags: body?.selectedTags || {
+            task: [],
+            symptom: [],
+            environment: [],
+            preference: [],
+        },
+        followUpAnswers: body?.followUpAnswers || [],
+        additionalConsultation: body?.additionalConsultation || '',
+        selectedAccommodations: body?.selectedAccommodations || {},
+        enabledSourceIds: body?.enabledSourceIds || [],
+        responseMode: body?.responseMode || 'full',
+    };
+}
+
+function buildFallbackAssessment(
+    body: RequestBody,
+    glmResult: GlmInsightResult,
+): ParsedAssessment {
+    const selectedTags = Object.values(body.selectedTags || {}).flat();
+    const pickedByTag = SUGGESTION_LIBRARY.filter((item) =>
+        item.relatedTags.some((tag) => selectedTags.includes(tag)),
+    );
+    const pickedByGlm = SUGGESTION_LIBRARY.filter((item) =>
+        glmResult.recommendedActions.includes(item.title),
+    );
+    const accommodations = Array.from(
+        new Map(
+            [...pickedByGlm, ...pickedByTag, ...SUGGESTION_LIBRARY.slice(0, 3)].map((item) => [item.title, item]),
+        ).values(),
+    )
+        .slice(0, 8)
+        .map((item) => ({
+            title: item.title,
+            reason: item.reason,
+            examples: item.examples,
+            priority: item.priority,
+        }));
+
+    const aggravators = glmResult.topInsights
+        .filter((item) => item.effect < 0)
+        .slice(0, 3)
+        .map((item) => item.summary);
+
+    const protectors = glmResult.topInsights
+        .filter((item) => item.effect > 0)
+        .slice(0, 2)
+        .map((item) => item.summary);
+
+    return {
+        summary: '入力された相談内容をもとに、症状・業務・環境要因を統合して配慮案を生成しました。',
+        task_conditions: selectedTags.length > 0 ? selectedTags.join('、') : '相談文および追加回答を基に整理。',
+        cause:
+            body.followUpAnswers
+                .map((item) => item.value.trim())
+                .filter(Boolean)
+                .slice(0, 3) || [],
+        impact: ['業務遂行の安定性低下', '疲労蓄積による作業品質・継続性の低下'],
+        aggravators: aggravators.length > 0 ? aggravators : ['業務設計と体調管理のミスマッチ'],
+        protectors:
+            protectors.length > 0
+                ? protectors
+                : ['業務調整、休憩導線、情報共有の設計で改善余地がある'],
+        accommodations,
+        agreement: '配慮案を2〜4週間の試行運用とし、本人・上長・人事で週次レビューを実施。',
+        kpi: '欠勤/早退、自己評価疲労、業務完了率、通院継続率を週次で確認。',
+        causal_summary:
+            '症状と業務条件の不一致が就労困難を増幅しやすいため、業務調整・休憩導線・共有方法の同時実装が有効です。',
+        causal_chain: [
+            '症状変動・疲労',
+            '特定タスク/環境で負荷増大',
+            '業務遂行の不安定化',
+            '配慮実装で安定性を回復',
+        ],
+        citations: glmResult.topInsights.map((item) => ({
+            claim: item.summary,
+            evidence_ids: [item.evidenceId],
+        })),
+    };
+}
+
+async function requestOpenAiAssessment(
+    body: RequestBody,
+    plannerContext: Record<string, unknown>,
+    timeoutMs: number,
+): Promise<ParsedAssessment> {
     const response = await fetch(OPENAI_URL, {
         method: 'POST',
         headers: {
@@ -305,22 +467,171 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 },
             },
         }),
+        signal: AbortSignal.timeout(timeoutMs),
     });
 
     if (!response.ok) {
-        const errorText = await response.text();
-        return res.status(500).json({ error: errorText || 'OpenAI API error' });
+        throw new Error((await response.text()) || 'OpenAI API error');
     }
-
     const json = await response.json();
     const content = json?.choices?.[0]?.message?.content;
-
     if (!content) {
-        return res.status(500).json({ error: 'OpenAI 応答が空です。' });
+        throw new Error('OpenAI 応答が空です。');
+    }
+    return JSON.parse(content) as ParsedAssessment;
+}
+
+function buildFreeTextEvidenceSummary(
+    evidence: Array<{ filePath: string; excerpt: string; sourceId: string; score: number }>,
+) {
+    const freeTextHits = evidence.filter((item) => item.filePath.includes('/raw_data/') && item.filePath.endsWith('.txt'));
+    return {
+        hitCount: freeTextHits.length,
+        samples: freeTextHits.slice(0, 3).map((item) => ({
+            sourceId: item.sourceId,
+            filePath: item.filePath,
+            excerpt: item.excerpt,
+            score: item.score,
+        })),
+    };
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    if (req.method !== 'POST') {
+        res.setHeader('Allow', 'POST');
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+    try {
+        const body = normalizeRequestBody(req.body as RequestBody);
+        const responseMode = body.responseMode || 'full';
+        const isFastMode = responseMode === 'fast';
+        const openAiTimeoutMs = Number(process.env.OPENAI_CHAT_TIMEOUT_MS || OPENAI_CHAT_TIMEOUT_MS_DEFAULT);
+        if (!body?.consultation) {
+            return res.status(400).json({ error: 'consultation が必要です。' });
+        }
+
+    const composedQuery = buildComposedQuery(body);
+    const glmResult = buildGlmInsights({
+        consultation: body.consultation,
+        additionalConsultation: body.additionalConsultation,
+        selectedTags: body.selectedTags,
+        followUpAnswers: body.followUpAnswers,
+    });
+
+    const plan = buildAgenticPlan({
+        query: composedQuery,
+        enabledSourceIds: body.enabledSourceIds,
+    });
+
+    const safeExecution = await withTimeout(
+        executeAgenticPlan(plan, {
+            query: composedQuery,
+            keywords: [
+                body.consultation,
+                body.additionalConsultation || '',
+                ...Object.values(body.selectedTags || {}).flat(),
+                ...(body.followUpAnswers || []).map((item) => item.value),
+            ],
+        }),
+        EXECUTION_TIMEOUT_MS,
+        'Agentic execution timeout',
+    ).catch(() => ({
+        stepProgress: [],
+        evidence: [],
+        structuredSummary: ['Execution fallback: structured summary unavailable due to timeout/error.'],
+        policyNotes: [],
+    }));
+
+    const plannerContext = {
+        selected_sources: plan.selectedSources,
+        plan_warnings: plan.warnings,
+        execution_progress: safeExecution.stepProgress,
+        evidence: safeExecution.evidence,
+        structured_summary: safeExecution.structuredSummary,
+        policy_notes: safeExecution.policyNotes,
+        glm_context: {
+            interaction_meanings: GLM_INTERACTION_MEANINGS,
+            top_insights: glmResult.topInsights.map((item) => ({
+                evidence_id: item.evidenceId,
+                summary: item.summary,
+                predictor: item.predictor,
+                outcome: item.outcome,
+                effect_b: item.effect,
+                p_value: item.pValue,
+                confidence: item.confidence,
+                matched_keywords: item.matchedKeywords,
+                action_titles: item.actionTitles,
+            })),
+            recommended_actions: glmResult.recommendedActions,
+        },
+    };
+
+    let assessment: ParsedAssessment;
+    let fallbackReason: string | null = null;
+    let refinementJobId: string | null = null;
+    const freeTextEvidence = buildFreeTextEvidenceSummary(safeExecution.evidence);
+    const planWarnings = [...plan.warnings];
+    if (safeExecution.evidence.length === 0) {
+        planWarnings.push(
+            'Evidence hit count is 0. Try adding concrete scenes (meeting/load/time/environment) or selecting more tags.',
+        );
     }
 
-    try {
-        const assessment = JSON.parse(content);
+    if (isFastMode) {
+        assessment = mergeAssessmentWithGlm(
+            buildFallbackAssessment(body, glmResult),
+            glmResult.topInsights,
+        );
+        fallbackReason = '初回表示モード: ローカル推論を即時返却しました。精密見立てはバックグラウンド更新されます。';
+        if (process.env.OPENAI_API_KEY) {
+            refinementJobId = createRefinementJob(async () => {
+                const fullAssessmentRaw = await requestOpenAiAssessment(body, plannerContext, openAiTimeoutMs);
+                const fullAssessment = mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights);
+                const process = {
+                    selectedSources: plan.selectedSources.map((source) => ({
+                        id: source.id,
+                        name: source.name,
+                        kind: source.kind,
+                        enabled: source.enabled,
+                    })),
+                    stepProgress: safeExecution.stepProgress,
+                    planWarnings,
+                    evidenceCount: safeExecution.evidence.length,
+                    evidencePreview: safeExecution.evidence.slice(0, 6),
+                    glmInsights: glmResult.topInsights,
+                    glmInteractionMeanings: GLM_INTERACTION_MEANINGS,
+                    freeTextEvidence,
+                    responseMode: 'full',
+                    pendingRefinement: false,
+                    refinementJobId: null,
+                    sourceNotes: plan.selectedSources
+                        .map((source) => getKnowledgeSourceById(source.id)?.notes)
+                        .filter(Boolean),
+                    fallbackReason: null,
+                };
+                return {
+                    assessment: fullAssessment,
+                    process,
+                };
+            });
+        }
+    } else if (!process.env.OPENAI_API_KEY) {
+        assessment = buildFallbackAssessment(body, glmResult);
+        fallbackReason = 'OPENAI_API_KEY が未設定のため、ローカル推論にフォールバックしました。';
+    } else {
+        try {
+            const fullAssessmentRaw = await requestOpenAiAssessment(body, plannerContext, openAiTimeoutMs);
+            assessment = mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights);
+        } catch (error) {
+            const rawMessage = error instanceof Error ? error.message : 'OpenAI 呼び出しに失敗しました。';
+            fallbackReason =
+                rawMessage.includes('aborted') || rawMessage.toLowerCase().includes('timeout')
+                    ? '精密見立ては時間上限を超えたため、初回結果を継続表示しています。'
+                    : rawMessage;
+            assessment = buildFallbackAssessment(body, glmResult);
+        }
+    }
+
         return res.status(200).json({
             assessment,
             process: {
@@ -330,16 +641,52 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     kind: source.kind,
                     enabled: source.enabled,
                 })),
-                stepProgress: execution.stepProgress,
-                planWarnings: plan.warnings,
-                evidenceCount: execution.evidence.length,
-                evidencePreview: execution.evidence.slice(0, 6),
+                stepProgress: safeExecution.stepProgress,
+                planWarnings,
+                evidenceCount: safeExecution.evidence.length,
+                evidencePreview: safeExecution.evidence.slice(0, 6),
+                glmInsights: glmResult.topInsights,
+                glmInteractionMeanings: GLM_INTERACTION_MEANINGS,
+                freeTextEvidence,
+                responseMode,
+                pendingRefinement: isFastMode,
+                refinementJobId,
                 sourceNotes: plan.selectedSources
                     .map((source) => getKnowledgeSourceById(source.id)?.notes)
                     .filter(Boolean),
+                fallbackReason,
             },
         });
-    } catch {
-        return res.status(500).json({ error: 'JSON 解析に失敗しました。' });
+    } catch (error) {
+        const body = normalizeRequestBody((req.body || {}) as Partial<RequestBody>);
+        if (!body.consultation) {
+            return res.status(400).json({ error: 'consultation が必要です。' });
+        }
+        const glmResult = buildGlmInsights({
+            consultation: body.consultation,
+            additionalConsultation: body.additionalConsultation,
+            selectedTags: body.selectedTags,
+            followUpAnswers: body.followUpAnswers,
+        });
+        const assessment = mergeAssessmentWithGlm(buildFallbackAssessment(body, glmResult), glmResult.topInsights);
+        const errorMessage = error instanceof Error ? error.message : 'unexpected error';
+        return res.status(200).json({
+            assessment,
+            process: {
+                selectedSources: [],
+                stepProgress: [],
+                planWarnings: ['Internal error fallback was used.'],
+                evidenceCount: 0,
+                evidencePreview: [],
+                glmInsights: glmResult.topInsights,
+                glmInteractionMeanings: GLM_INTERACTION_MEANINGS,
+                freeTextEvidence: { hitCount: 0, samples: [] },
+                responseMode: body.responseMode || 'fast',
+                pendingRefinement: false,
+                refinementJobId: null,
+                sourceNotes: [],
+                fallbackReason: `内部例外のため安全フォールバックを返却しました: ${errorMessage}`,
+            },
+        });
     }
 }

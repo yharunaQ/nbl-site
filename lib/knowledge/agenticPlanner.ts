@@ -9,7 +9,8 @@ import { listEnabledKnowledgeSources } from '@/lib/knowledge/sourceRegistry';
 function selectSources(input: PlannerInput): KnowledgeSource[] {
     const enabled = listEnabledKnowledgeSources();
     if (!input.enabledSourceIds || input.enabledSourceIds.length === 0) {
-        return enabled;
+        // Default to local-only sources unless user explicitly opts into websites.
+        return enabled.filter((source) => source.kind !== 'website');
     }
 
     const selected = enabled.filter((source) => input.enabledSourceIds?.includes(source.id));
@@ -54,10 +55,14 @@ function buildSteps(sourceIds: string[]): PlannerStep[] {
 export function buildAgenticPlan(input: PlannerInput): PlannerOutput {
     const selectedSources = selectSources(input);
     const sourceIds = selectedSources.map((source) => source.id);
+    const allEnabled = listEnabledKnowledgeSources();
 
     const warnings: string[] = [];
     if (selectedSources.length === 0) {
         warnings.push('No enabled knowledge sources matched.');
+    }
+    if ((!input.enabledSourceIds || input.enabledSourceIds.length === 0) && allEnabled.some((source) => source.kind === 'website')) {
+        warnings.push('Website sources were excluded by default. Pass enabledSourceIds to include them explicitly.');
     }
 
     const hasExternalDisabled = input.query.toLowerCase().includes('web');

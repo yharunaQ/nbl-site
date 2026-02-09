@@ -53,6 +53,7 @@ const NORMALIZED_RECORDS_PATH = path.join(process.cwd(), 'references', 'index', 
 const EMBEDDINGS_PATH = path.join(process.cwd(), 'references', 'index', 'embeddings.jsonl');
 const MANIFEST_PATH = path.join(process.cwd(), 'references', 'index', 'normalized-manifest.json');
 const EMBEDDINGS_URL = 'https://api.openai.com/v1/embeddings';
+const EMBEDDING_TIMEOUT_MS = 6000;
 const BM25_K1 = 1.5;
 const BM25_B = 0.75;
 
@@ -63,6 +64,27 @@ function normalizeKeywords(input: string[]): string[] {
         .filter((value) => value.length >= 2);
 
     return Array.from(new Set(compact)).slice(0, 40);
+}
+
+function generateLooseKeywords(input: string[]): string[] {
+    const seeds = input
+        .map((value) => value.replace(/\s+/g, ' ').trim())
+        .filter((value) => value.length >= 2)
+        .slice(0, 8);
+
+    const chunks: string[] = [];
+    for (const seed of seeds) {
+        const plain = seed.replace(/[、。,.()\[\]「」]/g, '');
+        if (plain.length < 2) continue;
+        for (let i = 0; i < plain.length - 1 && chunks.length < 120; i += 1) {
+            chunks.push(plain.slice(i, i + 2));
+        }
+        for (let i = 0; i < plain.length - 2 && chunks.length < 180; i += 2) {
+            chunks.push(plain.slice(i, i + 3));
+        }
+    }
+
+    return Array.from(new Set(chunks)).filter((term) => term.length >= 2).slice(0, 120);
 }
 
 function countTermOccurrences(content: string, term: string): number {
@@ -222,6 +244,9 @@ async function getQueryEmbedding(query: string): Promise<number[] | null> {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) return null;
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), EMBEDDING_TIMEOUT_MS);
+
     try {
         const response = await fetch(EMBEDDINGS_URL, {
             method: 'POST',
@@ -233,6 +258,7 @@ async function getQueryEmbedding(query: string): Promise<number[] | null> {
                 model: process.env.OPENAI_EMBED_MODEL || 'text-embedding-3-small',
                 input: query.slice(0, 6000),
             }),
+            signal: controller.signal,
         });
 
         if (!response.ok) return null;
@@ -240,6 +266,8 @@ async function getQueryEmbedding(query: string): Promise<number[] | null> {
         return json?.data?.[0]?.embedding || null;
     } catch {
         return null;
+    } finally {
+        clearTimeout(timeoutId);
     }
 }
 
@@ -250,7 +278,7 @@ function runKeywordSearch(
     maxRecords?: number,
 ): EvidenceItem[] {
     const candidates = pickSearchCandidates(records, keywords, maxRecords);
-    return candidates
+    const primary = candidates
         .map((record) => {
             const score = scoreByBm25(record.text, keywords, lexicalContext);
             return {
@@ -259,6 +287,27 @@ function runKeywordSearch(
                 filePath: record.filePath,
                 excerpt: extractBestExcerpt(record.text, keywords),
                 score,
+            };
+        })
+        .filter((item) => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 8);
+
+    if (primary.length > 0) return primary;
+
+    const looseKeywords = generateLooseKeywords(keywords);
+    if (looseKeywords.length === 0) return [];
+    const looseLexical = buildLexicalContext(candidates, looseKeywords);
+
+    return candidates
+        .map((record) => {
+            const score = scoreByBm25(record.text, looseKeywords, looseLexical);
+            return {
+                id: record.id,
+                sourceId: record.sourceId,
+                filePath: record.filePath,
+                excerpt: extractBestExcerpt(record.text, looseKeywords),
+                score: Number((score * 0.6).toFixed(6)),
             };
         })
         .filter((item) => item.score > 0)
@@ -312,7 +361,28 @@ async function runHybridSemanticSearch(
         .sort((a, b) => b.score - a.score)
         .slice(0, 6);
 
-    return { hits: fallback, mode: 'lexical_fallback' };
+    if (fallback.length > 0) {
+        return { hits: fallback, mode: 'lexical_fallback' };
+    }
+
+    const looseKeywords = generateLooseKeywords([query, ...keywords]);
+    if (looseKeywords.length === 0) {
+        return { hits: [], mode: 'lexical_fallback' };
+    }
+    const looseLexical = buildLexicalContext(candidates, looseKeywords);
+    const looseFallback = candidates
+        .map((record) => ({
+            id: record.id,
+            sourceId: record.sourceId,
+            filePath: record.filePath,
+            excerpt: extractBestExcerpt(record.text, looseKeywords),
+            score: Number((scoreByBm25(record.text, looseKeywords, looseLexical) * 0.6).toFixed(6)),
+        }))
+        .filter((item) => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 6);
+
+    return { hits: looseFallback, mode: 'lexical_fallback' };
 }
 
 function summarizeStructuredAssets(manifest: Manifest | null, records: NormalizedRecord[]): string[] {

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
 
@@ -74,13 +74,45 @@ type AssessmentProcess = {
         excerpt: string;
         score: number;
     }[];
+    glmInsights: {
+        evidenceId: string;
+        sheet: string;
+        summary: string;
+        predictor: string;
+        outcome: string;
+        effect: number;
+        pValue: number | null;
+        confidence: 'high' | 'medium';
+        matchedKeywords: string[];
+        actionTitles: string[];
+    }[];
+    glmInteractionMeanings: string[];
+    freeTextEvidence: {
+        hitCount: number;
+        samples: {
+            sourceId: string;
+            filePath: string;
+            excerpt: string;
+            score: number;
+        }[];
+    };
+    responseMode?: 'fast' | 'full';
+    pendingRefinement?: boolean;
+    refinementJobId?: string | null;
+    fallbackReason?: string | null;
     sourceNotes: string[];
 };
 
-type TagHint = {
-    keyword: string;
-    group: TagGroupKey;
+type TagSuggestion = {
     tag: string;
+    reason: string;
+    score: number;
+};
+
+type TagSuggestionResponse = {
+    source: 'llm' | 'fallback';
+    summary: string;
+    suggestions: Record<TagGroupKey, TagSuggestion[]>;
 };
 
 type AccommodationSelection = {
@@ -201,39 +233,6 @@ const followUpLibrary: Record<TagGroupKey, FollowUpQuestion[]> = {
     ],
 };
 
-const tagHints: TagHint[] = [
-    { keyword: '会議', group: 'task', tag: '会議・対話' },
-    { keyword: 'ミーティング', group: 'task', tag: '会議・対話' },
-    { keyword: '集中', group: 'task', tag: '集中作業・思考作業' },
-    { keyword: '資料', group: 'task', tag: '文章作成・読解' },
-    { keyword: '読解', group: 'task', tag: '文章作成・読解' },
-    { keyword: '締切', group: 'task', tag: '時間制約・納期' },
-    { keyword: '納期', group: 'task', tag: '時間制約・納期' },
-    { keyword: '外出', group: 'task', tag: '移動・外出・現場' },
-    { keyword: '出張', group: 'task', tag: '移動・外出・現場' },
-    { keyword: 'PC', group: 'task', tag: '画面作業（視認性/長時間PC）' },
-    { keyword: '画面', group: 'task', tag: '画面作業（視認性/長時間PC）' },
-    { keyword: '疲労', group: 'symptom', tag: '疲労・倦怠（慢性疲労含む）' },
-    { keyword: '倦怠', group: 'symptom', tag: '疲労・倦怠（慢性疲労含む）' },
-    { keyword: '痛み', group: 'symptom', tag: '痛み・体調変動（波がある）' },
-    { keyword: '不安', group: 'symptom', tag: '不安・緊張・メンタル負荷' },
-    { keyword: '緊張', group: 'symptom', tag: '不安・緊張・メンタル負荷' },
-    { keyword: '眠', group: 'symptom', tag: '睡眠リズム・通院/治療スケジュール' },
-    { keyword: '通院', group: 'symptom', tag: '睡眠リズム・通院/治療スケジュール' },
-    { keyword: '音', group: 'environment', tag: '騒音・音環境' },
-    { keyword: '騒音', group: 'environment', tag: '騒音・音環境' },
-    { keyword: '光', group: 'environment', tag: '光・画面の明るさ/反射' },
-    { keyword: '温度', group: 'environment', tag: '温度・空調' },
-    { keyword: '空調', group: 'environment', tag: '温度・空調' },
-    { keyword: '椅子', group: 'environment', tag: '姿勢・椅子・机（エルゴノミクス）' },
-    { keyword: '席', group: 'environment', tag: '同席人数・密度' },
-    { keyword: '通勤', group: 'environment', tag: '通勤負荷（時間/混雑/距離）' },
-    { keyword: '在宅', group: 'environment', tag: 'リモート/出社' },
-    { keyword: 'リモート', group: 'environment', tag: 'リモート/出社' },
-    { keyword: '希望', group: 'preference', tag: '裁量・自己決定を重視' },
-    { keyword: '成長', group: 'preference', tag: '成長機会・挑戦を続けたい' },
-];
-
 const formatList = (items: string[]) => items.map((item) => `- ${item}`).join('\n');
 
 const buildDraftText = (
@@ -314,6 +313,12 @@ export default function JacTrial() {
     const [accommodationSelections, setAccommodationSelections] = useState<AccommodationSelectionMap>({});
     const [draftViewMode, setDraftViewMode] = useState<DraftViewMode>('selected');
     const [assessmentProcess, setAssessmentProcess] = useState<AssessmentProcess | null>(null);
+    const [refining, setRefining] = useState(false);
+    const [refineMessage, setRefineMessage] = useState<string | null>(null);
+    const [tagSuggestion, setTagSuggestion] = useState<TagSuggestionResponse | null>(null);
+    const [tagSuggestionLoading, setTagSuggestionLoading] = useState(false);
+    const [tagSuggestionError, setTagSuggestionError] = useState<string | null>(null);
+    const [tagSuggestionQuery, setTagSuggestionQuery] = useState('');
 
     const followUpQuestions = useMemo(() => {
         const groups = Object.entries(selectedTags) as [TagGroupKey, string[]][];
@@ -344,7 +349,15 @@ export default function JacTrial() {
         setAccommodationSelections({});
         setAdditionalConsultation('');
         setAssessmentProcess(null);
+        setRefining(false);
+        setRefineMessage(null);
     }, [consultation, selectedTags, followUpAnswers]);
+
+    useEffect(() => {
+        setTagSuggestion(null);
+        setTagSuggestionError(null);
+        setTagSuggestionQuery('');
+    }, [consultation]);
 
     useEffect(() => {
         if (!aiAssessment) return;
@@ -389,6 +402,60 @@ export default function JacTrial() {
         }));
     };
 
+    const applyTagSuggestion = (group: TagGroupKey, tag: string) => {
+        setSelectedTags((prev) => ({
+            ...prev,
+            [group]: prev[group].includes(tag) ? prev[group] : [...prev[group], tag],
+        }));
+    };
+
+    const applyAllTagSuggestions = () => {
+        if (!tagSuggestion) return;
+        setSelectedTags((prev) => {
+            const next = { ...prev };
+            (Object.keys(tagSuggestion.suggestions) as TagGroupKey[]).forEach((group) => {
+                const combined = new Set([...next[group], ...tagSuggestion.suggestions[group].map((item) => item.tag)]);
+                next[group] = Array.from(combined);
+            });
+            return next;
+        });
+    };
+
+    const fetchTagSuggestion = useCallback(async () => {
+        const query = consultation.trim();
+        if (!query) return;
+        setTagSuggestionLoading(true);
+        setTagSuggestionError(null);
+        try {
+            const response = await fetch('/api/jac-tag-suggest', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ consultation: query }),
+            });
+            if (!response.ok) {
+                const err = await response.json().catch(() => ({}));
+                throw new Error(err?.error || 'タグ提案に失敗しました。');
+            }
+            const data = (await response.json()) as TagSuggestionResponse;
+            setTagSuggestion(data);
+            setTagSuggestionQuery(query);
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'タグ提案の取得中にエラーが発生しました。';
+            setTagSuggestionError(message);
+        } finally {
+            setTagSuggestionLoading(false);
+        }
+    }, [consultation]);
+
+    useEffect(() => {
+        if (step !== 2) return;
+        const query = consultation.trim();
+        if (!query) return;
+        if (tagSuggestionLoading) return;
+        if (tagSuggestion && tagSuggestionQuery === query) return;
+        void fetchTagSuggestion();
+    }, [step, consultation, tagSuggestion, tagSuggestionLoading, tagSuggestionQuery, fetchTagSuggestion]);
+
     const handleCopy = async () => {
         if (!draftText) return;
         try {
@@ -414,37 +481,22 @@ export default function JacTrial() {
         setAccommodationSelections({});
         setDraftViewMode('selected');
         setAssessmentProcess(null);
-    };
-
-    const handleAutoTag = () => {
-        if (!consultation.trim()) return;
-        const nextTags: Record<TagGroupKey, Set<string>> = {
-            task: new Set(),
-            symptom: new Set(),
-            environment: new Set(),
-            preference: new Set(),
-        };
-
-        tagHints.forEach((hint) => {
-            if (consultation.includes(hint.keyword)) {
-                nextTags[hint.group].add(hint.tag);
-            }
-        });
-
-        setSelectedTags((prev) => ({
-            task: Array.from(new Set([...prev.task, ...Array.from(nextTags.task)])),
-            symptom: Array.from(new Set([...prev.symptom, ...Array.from(nextTags.symptom)])),
-            environment: Array.from(new Set([...prev.environment, ...Array.from(nextTags.environment)])),
-            preference: Array.from(new Set([...prev.preference, ...Array.from(nextTags.preference)])),
-        }));
+        setRefining(false);
+        setRefineMessage(null);
+        setTagSuggestion(null);
+        setTagSuggestionLoading(false);
+        setTagSuggestionError(null);
+        setTagSuggestionQuery('');
     };
 
     const generateAssessment = async () => {
         setAiLoading(true);
         setAiError(null);
         setAssessmentProcess(null);
+        setRefining(false);
+        setRefineMessage(null);
         try {
-            const response = await fetch('/api/jac-assess', {
+            const fastResponse = await fetch('/api/jac-assess', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -453,24 +505,64 @@ export default function JacTrial() {
                     followUpAnswers,
                     additionalConsultation,
                     selectedAccommodations: accommodationSelections,
+                    responseMode: 'fast',
                 }),
             });
 
-            if (!response.ok) {
-                const errorBody = await response.json().catch(() => ({}));
+            if (!fastResponse.ok) {
+                const errorBody = await fastResponse.json().catch(() => ({}));
                 throw new Error(errorBody?.error || '専門家見立ての生成に失敗しました。');
             }
 
-            const data = await response.json();
-            setAiAssessment(data.assessment as AiAssessment);
-            setAssessmentProcess((data.process as AssessmentProcess) || null);
+            const fastData = await fastResponse.json();
+            setAiAssessment(fastData.assessment as AiAssessment);
+            setAssessmentProcess((fastData.process as AssessmentProcess) || null);
+            setRefining(true);
+            setRefineMessage('初回結果を表示しました。精密見立てをバックグラウンドで更新中...');
+            setAiLoading(false);
+            const jobId = (fastData.process as AssessmentProcess | null)?.refinementJobId || null;
+            if (!jobId) {
+                setRefining(false);
+                setRefineMessage('初回結果を表示中です（精密更新ジョブなし）。');
+                return true;
+            }
+
+            void (async () => {
+                const maxAttempts = 45;
+                for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+                    await new Promise((resolve) => setTimeout(resolve, 1500));
+                    try {
+                        const statusResponse = await fetch(
+                            `/api/jac-assess-refinement?jobId=${encodeURIComponent(jobId)}`,
+                        );
+                        if (!statusResponse.ok) continue;
+                        const statusJson = await statusResponse.json();
+                        if (statusJson.status === 'completed') {
+                            setAiAssessment(statusJson.assessment as AiAssessment);
+                            setAssessmentProcess((statusJson.process as AssessmentProcess) || null);
+                            setRefineMessage('精密見立てに更新しました。');
+                            setRefining(false);
+                            return;
+                        }
+                        if (statusJson.status === 'failed') {
+                            setRefineMessage('初回結果を表示中です（精密更新は失敗）。');
+                            setRefining(false);
+                            return;
+                        }
+                    } catch {
+                        // Keep polling until attempts are exhausted.
+                    }
+                }
+                setRefineMessage('初回結果を表示中です（精密更新は時間超過）。');
+                setRefining(false);
+            })();
             return true;
         } catch (error) {
             const message = error instanceof Error ? error.message : '予期せぬエラーが発生しました。';
             setAiError(message);
-            return false;
-        } finally {
             setAiLoading(false);
+            setRefining(false);
+            return false;
         }
     };
 
@@ -511,7 +603,7 @@ export default function JacTrial() {
             </header>
 
             <main className="mx-auto max-w-6xl px-6 py-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
-                <section className="space-y-6">
+                <section className="space-y-6 min-w-0">
                     <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm space-y-6">
                         <div>
                             <span className="inline-flex items-center rounded-full bg-indigo-50 text-indigo-700 px-3 py-1 text-xs font-semibold">
@@ -538,17 +630,17 @@ export default function JacTrial() {
                                 <div className="flex flex-wrap gap-3 justify-end">
                                     <button
                                         type="button"
-                                        onClick={handleAutoTag}
+                                        onClick={() => setStep(2)}
                                         className="rounded-xl border border-gray-200 px-5 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
                                     >
-                                        相談内容からタグ候補を推定
+                                        AI分析してタグ提案へ
                                     </button>
                                     <button
                                         type="button"
                                         onClick={() => setStep(2)}
                                         className="rounded-xl bg-gray-900 px-5 py-2 text-sm font-semibold text-white hover:bg-black"
                                     >
-                                        次へ
+                                        手動で次へ
                                     </button>
                                 </div>
                             </div>
@@ -561,6 +653,78 @@ export default function JacTrial() {
                                     <p className="text-sm text-gray-600 mt-1">
                                         相談内容をもとに該当しそうなタグを選んでください。複数選択できます。
                                     </p>
+                                </div>
+                                <div className="rounded-2xl border border-indigo-100 bg-indigo-50 p-4 space-y-3">
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div>
+                                            <p className="text-sm font-semibold text-indigo-900">AI提案タグ</p>
+                                            <p className="text-xs text-indigo-700">
+                                                相談文を読んだ上で、理由つきで候補を提案します。
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                type="button"
+                                                onClick={fetchTagSuggestion}
+                                                className="rounded-lg border border-indigo-200 bg-white px-3 py-1 text-xs font-semibold text-indigo-700 hover:bg-indigo-50"
+                                                disabled={tagSuggestionLoading || !consultation.trim()}
+                                            >
+                                                {tagSuggestionLoading ? '分析中...' : '再分析'}
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={applyAllTagSuggestions}
+                                                className="rounded-lg bg-indigo-600 px-3 py-1 text-xs font-semibold text-white hover:bg-indigo-700"
+                                                disabled={!tagSuggestion}
+                                            >
+                                                まとめて適用
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {tagSuggestionError && (
+                                        <div className="rounded-lg border border-rose-200 bg-rose-50 p-2 text-xs text-rose-700">
+                                            {tagSuggestionError}
+                                        </div>
+                                    )}
+                                    {tagSuggestion && (
+                                        <div className="space-y-2">
+                                            <p className="text-xs text-indigo-800">
+                                                {tagSuggestion.summary}（source: {tagSuggestion.source}）
+                                            </p>
+                                            {(Object.keys(tagSuggestion.suggestions) as TagGroupKey[]).map((group) => (
+                                                <div key={`suggest-${group}`} className="rounded-lg border border-indigo-100 bg-white p-3">
+                                                    <p className="text-xs font-semibold text-indigo-800 mb-2">
+                                                        {tagGroups.find((item) => item.key === group)?.label}
+                                                    </p>
+                                                    <div className="space-y-2">
+                                                        {tagSuggestion.suggestions[group].length === 0 && (
+                                                            <p className="text-[11px] text-gray-500">候補なし</p>
+                                                        )}
+                                                        {tagSuggestion.suggestions[group].map((item) => (
+                                                            <div key={`${group}-${item.tag}`} className="flex items-start justify-between gap-2">
+                                                                <div className="min-w-0">
+                                                                    <p className="text-xs font-semibold text-gray-900">
+                                                                        {item.tag}
+                                                                        <span className="ml-2 text-[10px] text-indigo-600">
+                                                                            score {item.score.toFixed(2)}
+                                                                        </span>
+                                                                    </p>
+                                                                    <p className="text-[11px] text-gray-600">{item.reason}</p>
+                                                                </div>
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => applyTagSuggestion(group, item.tag)}
+                                                                    className="shrink-0 rounded-md border border-gray-200 px-2 py-1 text-[11px] font-semibold text-gray-700 hover:bg-gray-50"
+                                                                >
+                                                                    適用
+                                                                </button>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="space-y-6">
                                     {tagGroups.map((group) => (
@@ -617,8 +781,9 @@ export default function JacTrial() {
                                     <p className="text-sm text-gray-600 mt-1">
                                         追加質問に答えた後、AIカウンセラーが因果関係を整理して見立てを生成します。
                                     </p>
+                                    {refineMessage && <p className="text-xs text-indigo-700 mt-2">{refineMessage}</p>}
                                 </div>
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4 space-y-3">
+                                <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4 space-y-3 min-w-0">
                                     <div className="flex items-center justify-between">
                                         <p className="text-sm font-semibold text-gray-900">処理進捗（Agentic Search）</p>
                                         <span className="text-xs text-gray-500">
@@ -634,14 +799,14 @@ export default function JacTrial() {
                                         <div className="space-y-3">
                                             <div className="space-y-2">
                                                 {assessmentProcess.stepProgress.map((stepItem) => (
-                                                    <div
-                                                        key={stepItem.stepId}
-                                                        className="rounded-lg border border-gray-200 bg-white px-3 py-2 flex items-center justify-between gap-3"
-                                                    >
-                                                        <div className="min-w-0">
-                                                            <p className="text-xs font-semibold text-gray-900 truncate">{stepItem.purpose}</p>
-                                                            <p className="text-[11px] text-gray-500 truncate">{stepItem.message}</p>
-                                                        </div>
+                                                        <div
+                                                            key={stepItem.stepId}
+                                                            className="rounded-lg border border-gray-200 bg-white px-3 py-2 flex items-center justify-between gap-3 min-w-0"
+                                                        >
+                                                            <div className="min-w-0">
+                                                                <p className="text-xs font-semibold text-gray-900 break-words">{stepItem.purpose}</p>
+                                                                <p className="text-[11px] text-gray-500 break-words">{stepItem.message}</p>
+                                                            </div>
                                                         <span
                                                             className={`text-[10px] px-2 py-1 rounded-full font-semibold ${
                                                                 stepItem.status === 'completed'
@@ -657,26 +822,76 @@ export default function JacTrial() {
                                                 ))}
                                             </div>
                                             {assessmentProcess.sourceNotes.length > 0 && (
-                                                <div className="rounded-lg border border-gray-200 bg-white p-3">
+                                                <div className="rounded-lg border border-gray-200 bg-white p-3 min-w-0">
                                                     <p className="text-[11px] font-semibold text-gray-700 mb-1">データ取り込み状況</p>
                                                     <div className="space-y-1">
                                                         {assessmentProcess.sourceNotes.map((note, index) => (
-                                                            <p key={`${note}-${index}`} className="text-[11px] text-gray-600">
+                                                            <p key={`${note}-${index}`} className="text-[11px] text-gray-600 break-words">
                                                                 {note}
                                                             </p>
                                                         ))}
                                                     </div>
                                                 </div>
                                             )}
+                                            {assessmentProcess.fallbackReason && (
+                                                <div className="rounded-lg border border-amber-200 bg-amber-50 p-3">
+                                                    <p className="text-[11px] font-semibold text-amber-800 mb-1">
+                                                        実行モード
+                                                    </p>
+                                                    <p className="text-[11px] text-amber-700 break-words">
+                                                        {assessmentProcess.fallbackReason}
+                                                    </p>
+                                                </div>
+                                            )}
                                             {assessmentProcess.evidencePreview.length > 0 && (
-                                                <div className="rounded-lg border border-gray-200 bg-white p-3">
+                                                <div className="rounded-lg border border-gray-200 bg-white p-3 min-w-0">
                                                     <p className="text-[11px] font-semibold text-gray-700 mb-1">根拠プレビュー</p>
                                                     <div className="space-y-2">
                                                         {assessmentProcess.evidencePreview.slice(0, 3).map((item) => (
-                                                            <div key={`${item.id}-${item.sourceId}`} className="border border-gray-100 rounded-md px-2 py-1">
-                                                                <p className="text-[11px] text-gray-700 truncate">{item.excerpt || 'n/a'}</p>
-                                                                <p className="text-[10px] text-gray-500">{item.sourceId}</p>
+                                                            <div key={`${item.id}-${item.sourceId}`} className="border border-gray-100 rounded-md px-2 py-1 min-w-0">
+                                                                <p className="text-[11px] text-gray-700 break-words">{item.excerpt || 'n/a'}</p>
+                                                                <p className="text-[10px] text-gray-500 break-all">{item.sourceId}</p>
                                                             </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {assessmentProcess.glmInsights.length > 0 && (
+                                                <div className="rounded-lg border border-violet-200 bg-violet-50 p-3 min-w-0">
+                                                    <p className="text-[11px] font-semibold text-violet-800 mb-1">
+                                                        GLM実証根拠（優先反映）
+                                                    </p>
+                                                    <div className="space-y-2">
+                                                        {assessmentProcess.glmInsights.map((insight) => (
+                                                            <div
+                                                                key={insight.evidenceId}
+                                                                className="rounded-md border border-violet-100 bg-white px-2 py-2 min-w-0"
+                                                            >
+                                                                <p className="text-[11px] font-semibold text-violet-900 break-words">
+                                                                    {insight.summary}
+                                                                </p>
+                                                                <p className="text-[10px] text-violet-700 mt-1 break-words">
+                                                                    {insight.predictor} → {insight.outcome}
+                                                                </p>
+                                                                <p className="text-[10px] text-violet-600 mt-1">
+                                                                    {insight.evidenceId} / B={insight.effect.toFixed(3)}
+                                                                    {insight.pValue !== null ? ` / p=${insight.pValue}` : ''}
+                                                                </p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {assessmentProcess.glmInteractionMeanings.length > 0 && (
+                                                <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3">
+                                                    <p className="text-[11px] font-semibold text-indigo-800 mb-1">
+                                                        相互作用モデルの解釈
+                                                    </p>
+                                                    <div className="space-y-1">
+                                                        {assessmentProcess.glmInteractionMeanings.map((item, index) => (
+                                                            <p key={`${item}-${index}`} className="text-[11px] text-indigo-700">
+                                                                {index + 1}. {item}
+                                                            </p>
                                                         ))}
                                                     </div>
                                                 </div>
@@ -716,7 +931,7 @@ export default function JacTrial() {
                                                 className="rounded-lg bg-indigo-600 px-3 py-1 text-xs font-semibold text-white hover:bg-indigo-700"
                                                 disabled={aiLoading}
                                             >
-                                                {aiLoading ? '生成中...' : '見立てを生成'}
+                                                {aiLoading ? '初回生成中...' : refining ? '精密更新中...' : '見立てを生成'}
                                             </button>
                                         </div>
                                         {aiError && (
@@ -942,7 +1157,7 @@ export default function JacTrial() {
                     </div>
                 </section>
 
-                <section className="space-y-6">
+                <section className="space-y-6 min-w-0">
                     <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
                         <h2 className="text-lg font-bold text-gray-900">現在の整理状況</h2>
                         <p className="text-sm text-gray-600 mt-2">
@@ -1026,6 +1241,26 @@ export default function JacTrial() {
                                                 {note}
                                             </p>
                                         ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-gray-700 mt-1">未実行</p>
+                                )}
+                            </div>
+                            <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
+                                <p className="text-xs text-gray-500">自由記述データ利用状況</p>
+                                {assessmentProcess ? (
+                                    <div className="mt-1 space-y-1">
+                                        <p className="text-sm font-semibold text-gray-900">
+                                            ヒット件数: {assessmentProcess.freeTextEvidence.hitCount}
+                                        </p>
+                                        {assessmentProcess.freeTextEvidence.samples.map((sample, index) => (
+                                            <p key={`${sample.filePath}-${index}`} className="text-xs text-gray-700 break-words">
+                                                {sample.filePath.split('/').slice(-1)[0]} / score={sample.score.toFixed(3)}
+                                            </p>
+                                        ))}
+                                        {assessmentProcess.freeTextEvidence.hitCount === 0 && (
+                                            <p className="text-xs text-gray-700">今回の入力では自由記述への一致なし</p>
+                                        )}
                                     </div>
                                 ) : (
                                     <p className="text-sm text-gray-700 mt-1">未実行</p>

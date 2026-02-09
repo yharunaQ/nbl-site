@@ -19,3 +19,6 @@ references/index/local-catalog.json
 references/index/normalized-records.jsonl
 references/index/normalized-manifest.json
 references/index/embeddings.jsonl
+
+# Runtime cache
+.tmp/
