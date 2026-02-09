@@ -5,7 +5,7 @@ export default function TrustStrip() {
     const links = [
         { label: '当事者・企業・支援者協働', href: '#vision' },
         { label: 'ICF / EBPM 基盤', href: '/docs/houkoku126_summary.pdf' },
-        { label: '合理的配慮の標準化 (JAC)', href: '#product' },
+        { label: '合理的配慮の標準化 (JAC)', href: '/jac' },
         { label: '講義・政策・実装の一体化', href: '#services' },
         { label: 'オープンアクセス (CC BY 4.0)', href: 'https://creativecommons.org/licenses/by/4.0/deed.ja' },
         { label: '合意形成デザイン', href: '#vision' },

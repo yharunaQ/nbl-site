@@ -5,7 +5,7 @@ export default function Services() {
     return (
         <div className="space-y-16">
             {/* PoC Description */}
-            <section id="poc" data-testid="poc" className="mx-auto max-w-7xl px-6 pt-16">
+            <section id="poc" data-testid="poc" className="mx-auto max-w-7xl px-6 pt-16 scroll-mt-24">
                 <div className="max-w-3xl mx-auto text-center mb-10">
                     <span className="inline-block py-1 px-3 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-100">
                         Proof of Concept
@@ -21,7 +21,7 @@ export default function Services() {
             </section>
 
             {/* Services Grid */}
-            <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6">
+            <section id="services" data-testid="services" className="mx-auto max-w-7xl px-6 scroll-mt-24">
                 <div className="grid md:grid-cols-3 gap-6">
                     <article className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
                         <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-4">
@@ -59,7 +59,7 @@ export default function Services() {
             </section>
 
             {/* Pricing */}
-            <section id="pricing" className="mx-auto max-w-7xl px-6 bg-gray-50/50 py-12 rounded-3xl">
+            <section id="pricing" className="mx-auto max-w-7xl px-6 bg-gray-50/50 py-12 rounded-3xl scroll-mt-24">
                 <div className="text-center mb-8">
                     <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900">料金モデル (目安)</h2>
                     <p className="text-sm text-gray-500">実施規模・対象人数により変動します。</p>

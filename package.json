@@ -12,7 +12,11 @@
     "check": "npm run lint && npm run typecheck",
     "prepare": "husky",
     "dev:watch": "concurrently -k \"next dev\" \"tsc -w --noEmit\"",
-    "deploy": "./deploy.sh"
+    "deploy": "./deploy.sh",
+    "knowledge:catalog": "node ./scripts/knowledge/build-local-catalog.mjs",
+    "knowledge:fetch-web": "node ./scripts/knowledge/fetch-web-sources.mjs",
+    "knowledge:normalize": "node ./scripts/knowledge/build-normalized-records.mjs",
+    "knowledge:embed": "node ./scripts/knowledge/build-embeddings.mjs"
   },
   "prettier": {
     "singleQuote": true,

@@ -34,7 +34,7 @@ export default function MarketVision() {
     ];
 
     return (
-        <section id="market" className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <section id="market" className="mx-auto max-w-7xl px-6 py-16 md:py-24 scroll-mt-24">
             <div className="max-w-3xl mx-auto text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                     AI × 包摂テック｜市場ビジョン

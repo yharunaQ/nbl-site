@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, FileText, Zap } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 export default function Hero() {
@@ -26,11 +27,11 @@ export default function Hero() {
                         成果の評価までを<span className="font-semibold text-indigo-600 bg-indigo-50 px-1 rounded">一本化</span>。現場と科学で進めます。
                     </p>
                     <div className="flex flex-wrap gap-3 mt-2">
-                        <a href="#product" className="group inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-gray-900 text-white shadow-lg hover:bg-gray-800 transition-all hover:scale-105 active:scale-95">
-                            JAC α を見る <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </a>
-                        <a href="#reports" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-all text-gray-700">
-                            <FileText size={18} /> レポート（PDF）
+                        <Link href="/jac" className="group inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-gray-900 text-white shadow-lg hover:bg-gray-800 transition-all hover:scale-105 active:scale-95">
+                            JAC試用版を使う <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                        <a href="#poc" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-all text-gray-700">
+                            <FileText size={18} /> PoC相談
                         </a>
                         <a href="#campaign" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 shadow-sm hover:shadow transition-all text-teal-800 font-medium">
                             <Zap size={18} fill="currentColor" className="text-teal-500" /> CAN BY DESIGN
@@ -69,9 +70,9 @@ export default function Hero() {
                                 ))}
                         </div>
                         <div className="flex gap-3 pt-4">
-                            <a href="#poc" className="flex-1 text-center rounded-xl px-4 py-2 bg-gray-900 text-white text-sm font-medium hover:bg-black transition-colors">
-                                PoC相談
-                            </a>
+                            <Link href="/jac" className="flex-1 text-center rounded-xl px-4 py-2 bg-gray-900 text-white text-sm font-medium hover:bg-black transition-colors">
+                                試用版へ
+                            </Link>
                             <a href="#downloads" className="flex-1 text-center rounded-xl px-4 py-2 border bg-white text-gray-600 text-sm hover:bg-gray-50 transition-colors">
                                 ドキュメント
                             </a>

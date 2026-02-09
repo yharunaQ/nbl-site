@@ -5,5 +5,17 @@ npm-debug.log*
 yarn.lock
 pnpm-lock.yaml
 
+# Local env files (never commit secrets)
+.env*.local
+
 # TypeScript build cache
 tsconfig.tsbuildinfo
+
+# Local knowledge assets (large/private)
+references/raw_data/
+references/documents/
+references/web-cache/
+references/index/local-catalog.json
+references/index/normalized-records.jsonl
+references/index/normalized-manifest.json
+references/index/embeddings.jsonl

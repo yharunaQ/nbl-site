@@ -1,0 +1,49 @@
+[
+  {
+    "id": "nbl_local_research",
+    "name": "NBL Local Research Data",
+    "kind": "local_fs",
+    "enabled": true,
+    "trustLevel": "primary",
+    "refresh": "manual",
+    "location": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references",
+    "notes": "Structured and unstructured local research assets."
+  },
+  {
+    "id": "nbl_guidelines",
+    "name": "NBL Guideline Documents",
+    "kind": "guideline_pdf",
+    "enabled": true,
+    "trustLevel": "primary",
+    "refresh": "manual",
+    "location": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/documents",
+    "notes": "Domestic guideline and handbook PDFs."
+  },
+  {
+    "id": "askjan_website",
+    "name": "AskJAN Website",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://askjan.org/",
+    "notes": "Enable when web crawler connector is configured.",
+    "seedUrls": [
+      "https://askjan.org/sitsol/index.cfm",
+      "https://askjan.org/a-to-z.cfm"
+    ]
+  },
+  {
+    "id": "jeed_reference",
+    "name": "JEED Reference Website",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.ref.jeed.go.jp/",
+    "notes": "Enable when web crawler connector is configured.",
+    "seedUrls": [
+      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=*&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02"
+    ]
+  }
+]

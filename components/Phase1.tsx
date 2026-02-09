@@ -7,7 +7,7 @@ export default function Phase1() {
         <section
             id="phase1"
             data-testid="phase1"
-            className="mx-auto max-w-7xl px-6 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-start"
+            className="mx-auto max-w-7xl px-6 py-16 md:py-24 grid md:grid-cols-5 gap-12 items-start scroll-mt-24"
         >
             <div className="md:col-span-2 space-y-6">
                 <h2 className="text-3xl md:text-3xl font-bold text-gray-900">

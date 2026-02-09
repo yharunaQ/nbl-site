@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import React from 'react';
 import Campaign from '../components/Campaign';
 import Footer from '../components/Footer';
@@ -71,14 +72,15 @@ export default function NBLHome() {
             <a href="#vision" className="hover:text-indigo-600 transition-colors">ビジョン</a>
             <a href="#phase1" className="hover:text-indigo-600 transition-colors">NBL(Phase1)</a>
             <a href="#product" className="hover:text-indigo-600 transition-colors">JAC</a>
+            <Link href="/jac" className="hover:text-indigo-600 transition-colors">JAC試用版</Link>
             <a href="#services" className="hover:text-indigo-600 transition-colors">サービス</a>
             <a href="#reports" className="hover:text-indigo-600 transition-colors">レポート</a>
             <a href="#campaign" className="hover:text-indigo-600 transition-colors">CAN BY DESIGN</a>
             <a href="#contact" className="hover:text-indigo-600 transition-colors">Contact</a>
           </div>
-          <a href="#poc" className="rounded-full px-5 py-2 bg-gray-900 text-white text-sm font-bold shadow-md hover:bg-black transition-all">
-            PoC相談
-          </a>
+          <Link href="/jac" className="rounded-full px-5 py-2 bg-gray-900 text-white text-sm font-bold shadow-md hover:bg-black transition-all">
+            JAC試用版
+          </Link>
         </div>
       </nav>
 

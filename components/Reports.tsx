@@ -45,7 +45,7 @@ export default function Reports() {
     ];
 
     return (
-        <section id="reports" data-testid="reports" className="mx-auto max-w-7xl px-6 py-16">
+        <section id="reports" data-testid="reports" className="mx-auto max-w-7xl px-6 py-16 scroll-mt-24">
             <div className="flex items-end justify-between mb-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 border-l-4 border-indigo-500 pl-4">最新レポート・資料</h2>
                 <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-800 hover:underline">

@@ -1,10 +1,11 @@
 import { Check, Download, FileText, Settings, Shield } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 export default function ProductJac() {
     return (
-        <section id="product" data-testid="product" className="mx-auto max-w-7xl px-6 py-16 md:py-24 bg-gray-50/50 -mx-6 md:-mx-8 lg:-mx-12 xl:mx-auto rounded-3xl my-8">
+        <section id="product" data-testid="product" className="mx-auto max-w-7xl px-6 py-16 md:py-24 bg-gray-50/50 -mx-6 md:-mx-8 lg:-mx-12 xl:mx-auto rounded-3xl my-8 scroll-mt-24">
             <div className="grid md:grid-cols-2 gap-12 items-start">
                 {/* LEFT */}
                 <div className="space-y-8">
@@ -37,7 +38,7 @@ export default function ProductJac() {
                             <div className="p-2 bg-teal-50 rounded-lg text-teal-600"><FileText size={20} /></div>
                             <div>
                                 <h4 className="font-bold text-gray-900">Document Generator</h4>
-                                <p className="text-sm text-gray-600 mt-1">本人・上長・人事の合意文書を自動整形しPDF出力。</p>
+                                <p className="text-sm text-gray-600 mt-1">本人・上長・人事の合意文書を自動整形しドラフトを生成。</p>
                             </div>
                         </div>
                         <div className="flex gap-4 items-start p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
@@ -49,7 +50,7 @@ export default function ProductJac() {
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-3" id="downloads">
+                    <div className="flex flex-wrap gap-3 scroll-mt-24" id="downloads">
                         <a
                             href="/docs/JAC_Alpha_Requirements_1Pager.md"
                             className="flex items-center gap-2 rounded-xl px-4 py-3 bg-white border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
@@ -122,11 +123,11 @@ export default function ProductJac() {
                             ))}
                         </div>
                         <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                            <a href="#poc" className="flex-1 text-center rounded-xl px-4 py-3 bg-gray-900 text-white text-sm font-bold shadow-lg hover:shadow-xl hover:bg-black transition-all">
-                                PoC相談・見積もり
-                            </a>
-                            <a href="#pricing" className="flex-1 text-center rounded-xl px-4 py-3 bg-white border border-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors">
-                                料金プラン
+                            <Link href="/jac" className="flex-1 text-center rounded-xl px-4 py-3 bg-gray-900 text-white text-sm font-bold shadow-lg hover:shadow-xl hover:bg-black transition-all">
+                                JAC試用版を使う
+                            </Link>
+                            <a href="#poc" className="flex-1 text-center rounded-xl px-4 py-3 bg-white border border-gray-200 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors">
+                                PoC相談
                             </a>
                         </div>
                     </div>
