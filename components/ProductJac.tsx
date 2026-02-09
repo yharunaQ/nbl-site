@@ -5,10 +5,14 @@ import React from 'react';
 
 export default function ProductJac() {
     return (
-        <section id="product" data-testid="product" className="mx-auto max-w-7xl px-6 py-16 md:py-24 bg-gray-50/50 -mx-6 md:-mx-8 lg:-mx-12 xl:mx-auto rounded-3xl my-8 scroll-mt-24">
+        <section
+            id="product"
+            data-testid="product"
+            className="mx-auto w-full max-w-7xl px-6 py-16 md:py-24 bg-gray-50/50 rounded-3xl my-8 scroll-mt-24 overflow-x-clip"
+        >
             <div className="grid md:grid-cols-2 gap-12 items-start">
                 {/* LEFT */}
-                <div className="space-y-8">
+                <div className="space-y-8 min-w-0">
                     <div>
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4">
                             Job Accommodation Copilot
@@ -76,7 +80,7 @@ export default function ProductJac() {
                 </div>
 
                 {/* RIGHT */}
-                <div className="space-y-6">
+                <div className="space-y-6 min-w-0">
                     <div className="rounded-3xl border border-gray-200 bg-white shadow-xl overflow-hidden">
                         <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
                             <h4 className="font-semibold text-gray-900">JAC ワークフロー</h4>
