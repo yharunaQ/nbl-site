@@ -319,6 +319,7 @@ export default function JacTrial() {
     const [tagSuggestionLoading, setTagSuggestionLoading] = useState(false);
     const [tagSuggestionError, setTagSuggestionError] = useState<string | null>(null);
     const [tagSuggestionQuery, setTagSuggestionQuery] = useState('');
+    const [accessToken, setAccessToken] = useState('');
 
     const followUpQuestions = useMemo(() => {
         const groups = Object.entries(selectedTags) as [TagGroupKey, string[]][];
@@ -341,6 +342,24 @@ export default function JacTrial() {
         if (!assessmentProcess) return 0;
         return assessmentProcess.stepProgress.filter((item) => item.status === 'completed').length;
     }, [assessmentProcess]);
+
+    useEffect(() => {
+        try {
+            const saved = window.localStorage.getItem('jac_access_token') || '';
+            setAccessToken(saved);
+        } catch {
+            // ignore
+        }
+    }, []);
+
+    const buildAuthHeaders = useCallback(() => {
+        const headers: Record<string, string> = {};
+        const token = accessToken.trim();
+        if (token) {
+            headers['x-jac-access-token'] = token;
+        }
+        return headers;
+    }, [accessToken]);
 
     useEffect(() => {
         setAiAssessment(null);
@@ -429,7 +448,7 @@ export default function JacTrial() {
         try {
             const response = await fetch('/api/jac-tag-suggest', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', ...buildAuthHeaders() },
                 body: JSON.stringify({ consultation: query }),
             });
             if (!response.ok) {
@@ -445,7 +464,7 @@ export default function JacTrial() {
         } finally {
             setTagSuggestionLoading(false);
         }
-    }, [consultation]);
+    }, [consultation, buildAuthHeaders]);
 
     useEffect(() => {
         if (step !== 2) return;
@@ -498,7 +517,7 @@ export default function JacTrial() {
         try {
             const fastResponse = await fetch('/api/jac-assess', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', ...buildAuthHeaders() },
                 body: JSON.stringify({
                     consultation,
                     selectedTags,
@@ -534,6 +553,11 @@ export default function JacTrial() {
                     try {
                         const statusResponse = await fetch(
                             `/api/jac-assess-refinement?jobId=${encodeURIComponent(jobId)}`,
+                            {
+                                headers: {
+                                    ...buildAuthHeaders(),
+                                },
+                            },
                         );
                         if (!statusResponse.ok) continue;
                         const statusJson = await statusResponse.json();
@@ -598,6 +622,31 @@ export default function JacTrial() {
                         >
                             トップへ戻る
                         </Link>
+                    </div>
+                </div>
+                <div className="mx-auto max-w-6xl px-6 pb-3">
+                    <div className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 flex flex-wrap items-center gap-2">
+                        <span className="text-[11px] font-semibold text-gray-600">Access Token</span>
+                        <input
+                            type="password"
+                            value={accessToken}
+                            onChange={(event) => setAccessToken(event.target.value)}
+                            className="flex-1 min-w-[220px] rounded-md border border-gray-200 bg-white px-2 py-1 text-xs"
+                            placeholder="JAC_ACCESS_TOKEN"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => {
+                                try {
+                                    window.localStorage.setItem('jac_access_token', accessToken.trim());
+                                } catch {
+                                    // ignore
+                                }
+                            }}
+                            className="rounded-md bg-gray-900 px-3 py-1 text-xs font-semibold text-white hover:bg-black"
+                        >
+                            保存
+                        </button>
                     </div>
                 </div>
             </header>

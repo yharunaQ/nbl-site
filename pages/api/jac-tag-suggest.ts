@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { guardJacApiRequest } from '@/lib/security/jacAccessGuard';
 
 type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
 
@@ -77,6 +78,89 @@ const FALLBACK_HINTS: Array<{ keyword: string; group: TagGroupKey; tag: string; 
     { keyword: '裁量', group: 'preference', tag: '裁量・自己決定を重視', reason: '自己決定性を重視しているため' },
 ];
 
+const TAG_SIGNAL_RULES: Array<{
+    group: TagGroupKey;
+    tag: string;
+    patterns: string[];
+    boost?: number;
+}> = [
+    { group: 'task', tag: '会議・対話', patterns: ['会議', '打合せ', '面談', 'コミュニケーション'] },
+    { group: 'task', tag: '集中作業・思考作業', patterns: ['集中', '考える', '思考', '頭が回ら', '判断'] },
+    { group: 'task', tag: '文章作成・読解', patterns: ['文章', '資料', '読解', 'メール', '文書'] },
+    { group: 'task', tag: 'マルチタスク・切替', patterns: ['同時', '切替', '並行', '複数業務'] },
+    { group: 'task', tag: '時間制約・納期', patterns: ['納期', '締切', '急ぎ', '期限', '応募', '求人'] },
+    { group: 'task', tag: '移動・外出・現場', patterns: ['移動', '外出', '出張', '現場'] },
+    { group: 'task', tag: '画面作業（視認性/長時間PC）', patterns: ['pc', '画面', 'モニタ', '目が疲れ'] },
+    { group: 'task', tag: '対人調整・感情労働', patterns: ['調整', '対人', '気を遣', '感情', '言い方'] },
+    { group: 'symptom', tag: '疲労・倦怠（慢性疲労含む）', patterns: ['疲労', '倦怠', 'だる', 'しんど', '消耗'] },
+    { group: 'symptom', tag: '痛み・体調変動（波がある）', patterns: ['体調の波', '波が大き', '体調変動', '波がある', '体調が不安定', '痛み'], boost: 0.08 },
+    { group: 'symptom', tag: '注意集中の波・認知負荷', patterns: ['集中が落ち', '認知負荷', '頭がぼんやり', '注意散漫'] },
+    { group: 'symptom', tag: '不安・緊張・メンタル負荷', patterns: ['不安', '緊張', 'ストレス', 'メンタル'] },
+    { group: 'symptom', tag: '睡眠リズム・通院/治療スケジュール', patterns: ['睡眠', '通院', '治療', '服薬'] },
+    { group: 'symptom', tag: '感覚過敏（音・光・温度）', patterns: ['過敏', '刺激に弱', '感覚'] },
+    { group: 'symptom', tag: '視覚負荷（見えづらさ/眼精疲労）', patterns: ['見えづら', '眼精疲労', 'まぶし'] },
+    { group: 'symptom', tag: '聴覚負荷（聞き取り困難/雑音）', patterns: ['聞き取り', '雑音', '騒がし'] },
+    { group: 'environment', tag: 'リモート/出社', patterns: ['リモート', '在宅', '出社', '完全在宅', 'フルリモート'], boost: 0.05 },
+    { group: 'environment', tag: '休憩の取りやすさ・休養導線', patterns: ['休憩', '短時間', '時短', '休みながら'] },
+    { group: 'environment', tag: '騒音・音環境', patterns: ['音', '騒音', 'うるさい'] },
+    { group: 'environment', tag: '光・画面の明るさ/反射', patterns: ['光', '明るさ', '反射', 'まぶしい'] },
+    { group: 'environment', tag: '温度・空調', patterns: ['温度', '空調', '暑い', '寒い'] },
+    { group: 'environment', tag: '姿勢・椅子・机（エルゴノミクス）', patterns: ['椅子', '姿勢', '机', '腰痛'] },
+    { group: 'environment', tag: '作業スペース/動線', patterns: ['スペース', '動線', '座席配置'] },
+    { group: 'environment', tag: '同席人数・密度', patterns: ['人数', '密度', '人が多い'] },
+    { group: 'environment', tag: '通勤負荷（時間/混雑/距離）', patterns: ['通勤', '混雑', '距離', '満員電車'] },
+    { group: 'preference', tag: '生活リズムを守りたい', patterns: ['生活リズム', '無理なく', '安定して働きたい'] },
+    { group: 'preference', tag: '収入・雇用条件を守りたい', patterns: ['収入', '雇用条件', '給与', '契約'] },
+    { group: 'preference', tag: '成長機会・挑戦を続けたい', patterns: ['成長', '挑戦', 'キャリア'] },
+    { group: 'preference', tag: '裁量・自己決定を重視', patterns: ['自己決定', '裁量', '自分で決めたい'] },
+    { group: 'preference', tag: '対人関係の安定を重視', patterns: ['対人関係', '人間関係', '言い方', '伝え方'] },
+    { group: 'preference', tag: '役割・専門性を維持したい', patterns: ['役割', '専門性', '強みを活かす'] },
+];
+
+const STRONG_SIGNAL_RULES: Array<{
+    patterns: string[];
+    group: TagGroupKey;
+    tag: string;
+    reason: string;
+    score: number;
+}> = [
+    {
+        patterns: ['体調の波', '波が大き', '体調変動', '波がある'],
+        group: 'symptom',
+        tag: '痛み・体調変動（波がある）',
+        reason: '体調の波に関する明示表現があるため',
+        score: 0.96,
+    },
+    {
+        patterns: ['完全在宅', 'フルリモート', '在宅じゃないと', '在宅でないと'],
+        group: 'environment',
+        tag: 'リモート/出社',
+        reason: '勤務場所条件（在宅）が就労成立条件として示されているため',
+        score: 0.95,
+    },
+    {
+        patterns: ['短時間', '時短', '短い時間', '短時間勤務'],
+        group: 'environment',
+        tag: '休憩の取りやすさ・休養導線',
+        reason: '就業時間調整ニーズが明確なため',
+        score: 0.9,
+    },
+    {
+        patterns: ['求人', '探し方', '就職活動', '応募'],
+        group: 'task',
+        tag: '時間制約・納期',
+        reason: '就職活動の段取り・進行管理ニーズがあるため',
+        score: 0.78,
+    },
+    {
+        patterns: ['一緒に整理', '相談したい', '言い方', '伝え方'],
+        group: 'preference',
+        tag: '対人関係の安定を重視',
+        reason: 'コミュニケーションの安定化を重視しているため',
+        score: 0.75,
+    },
+];
+
 function emptySuggestions(): Record<TagGroupKey, TagSuggestion[]> {
     return { task: [], symptom: [], environment: [], preference: [] };
 }
@@ -100,20 +184,100 @@ function buildFallback(consultation: string): SuggestResponse {
         });
     }
 
-    const suggestions = emptySuggestions();
+    const suggestions = mergeSignals(emptySuggestions(), buildSignalSuggestions(consultation));
     (Object.keys(TAG_GROUPS) as TagGroupKey[]).forEach((key) => {
-        const items = Array.from(grouped.get(key)?.values() || [])
+        const hintItems = Array.from(grouped.get(key)?.values() || [])
             .sort((a, b) => b.score - a.score)
-            .slice(0, 3);
-        suggestions[key] = items;
+            .slice(0, 5);
+        const merged = mergeTagLists(suggestions[key], hintItems);
+        suggestions[key] = merged.sort((a, b) => b.score - a.score).slice(0, 3);
     });
 
     return {
         source: 'fallback',
         summary:
             '相談文に一致した論点を抽出してタグ候補を提案しました。詳細化すると提案精度が上がります。',
-        suggestions,
+        suggestions: applyStrongSignalRules(consultation, suggestions),
     };
+}
+
+function buildSignalSuggestions(consultation: string): Record<TagGroupKey, TagSuggestion[]> {
+    const lower = consultation.toLowerCase();
+    const byGroup = emptySuggestions();
+
+    const bucket = new Map<TagGroupKey, Map<string, TagSuggestion>>();
+    (Object.keys(TAG_GROUPS) as TagGroupKey[]).forEach((key) => bucket.set(key, new Map()));
+
+    for (const rule of TAG_SIGNAL_RULES) {
+        const matched = rule.patterns.filter((pattern) => lower.includes(pattern.toLowerCase()));
+        if (matched.length === 0) continue;
+        const score = clampScore(0.45 + Math.min(0.42, matched.length * 0.17 + (rule.boost || 0)));
+        bucket.get(rule.group)?.set(rule.tag, {
+            tag: rule.tag,
+            reason: `相談文の表現「${matched.slice(0, 2).join(' / ')}」と一致`,
+            score,
+        });
+    }
+
+    (Object.keys(TAG_GROUPS) as TagGroupKey[]).forEach((group) => {
+        byGroup[group] = Array.from(bucket.get(group)?.values() || [])
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3);
+    });
+
+    return byGroup;
+}
+
+function mergeTagLists(primary: TagSuggestion[], secondary: TagSuggestion[]): TagSuggestion[] {
+    const map = new Map<string, TagSuggestion>();
+    for (const item of [...primary, ...secondary]) {
+        const prev = map.get(item.tag);
+        if (!prev) {
+            map.set(item.tag, item);
+            continue;
+        }
+        map.set(item.tag, {
+            tag: item.tag,
+            reason: prev.reason.length >= item.reason.length ? prev.reason : item.reason,
+            score: clampScore(Math.max(prev.score, item.score)),
+        });
+    }
+    return Array.from(map.values());
+}
+
+function mergeSignals(
+    llmBase: Record<TagGroupKey, TagSuggestion[]>,
+    signalBase: Record<TagGroupKey, TagSuggestion[]>,
+): Record<TagGroupKey, TagSuggestion[]> {
+    const merged = emptySuggestions();
+    for (const group of Object.keys(merged) as TagGroupKey[]) {
+        const m = new Map<string, TagSuggestion>();
+        for (const item of llmBase[group]) {
+            m.set(item.tag, {
+                ...item,
+                score: clampScore(item.score * 0.55),
+            });
+        }
+        for (const signal of signalBase[group]) {
+            const prev = m.get(signal.tag);
+            if (!prev) {
+                m.set(signal.tag, {
+                    ...signal,
+                    score: clampScore(signal.score * 0.65),
+                });
+                continue;
+            }
+            m.set(signal.tag, {
+                tag: signal.tag,
+                reason: `${prev.reason} / ${signal.reason}`,
+                score: clampScore(prev.score + signal.score * 0.45),
+            });
+        }
+        merged[group] = Array.from(m.values())
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3);
+    }
+    return merged;
 }
 
 function normalizeLlmSuggestions(raw: unknown): Record<TagGroupKey, TagSuggestion[]> {
@@ -146,10 +310,55 @@ function normalizeLlmSuggestions(raw: unknown): Record<TagGroupKey, TagSuggestio
     return byGroup;
 }
 
+function applyStrongSignalRules(
+    consultation: string,
+    base: Record<TagGroupKey, TagSuggestion[]>,
+): Record<TagGroupKey, TagSuggestion[]> {
+    const lower = consultation.toLowerCase();
+    const next: Record<TagGroupKey, TagSuggestion[]> = {
+        task: [...base.task],
+        symptom: [...base.symptom],
+        environment: [...base.environment],
+        preference: [...base.preference],
+    };
+
+    for (const rule of STRONG_SIGNAL_RULES) {
+        const matched = rule.patterns.some((pattern) => lower.includes(pattern.toLowerCase()));
+        if (!matched) continue;
+        const exists = next[rule.group].some((item) => item.tag === rule.tag);
+        if (!exists) {
+            next[rule.group].push({
+                tag: rule.tag,
+                reason: rule.reason,
+                score: rule.score,
+            });
+        } else {
+            next[rule.group] = next[rule.group].map((item) =>
+                item.tag === rule.tag
+                    ? {
+                          ...item,
+                          score: Math.max(item.score, rule.score),
+                          reason: rule.reason,
+                      }
+                    : item,
+            );
+        }
+        next[rule.group] = next[rule.group]
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3);
+    }
+
+    return next;
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<SuggestResponse | { error: string }>) {
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
         return res.status(405).json({ error: 'Method not allowed' });
+    }
+    const guard = guardJacApiRequest(req, { route: 'jac-tag-suggest', costly: true });
+    if (!guard.ok) {
+        return res.status(guard.status).json({ error: guard.error });
     }
 
     const consultation = String(req.body?.consultation || '').trim();
@@ -235,10 +444,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             return res.status(200).json(buildFallback(consultation));
         }
         const parsed = JSON.parse(content) as { summary?: string; suggestions?: unknown };
+        const normalized = normalizeLlmSuggestions(parsed.suggestions);
+        const signal = buildSignalSuggestions(consultation);
+        const merged = mergeSignals(normalized, signal);
+        const corrected = applyStrongSignalRules(consultation, merged);
         return res.status(200).json({
             source: 'llm',
-            summary: parsed.summary || '相談文から関連の高いタグを提案しました。',
-            suggestions: normalizeLlmSuggestions(parsed.suggestions),
+            summary:
+                parsed.summary ||
+                '相談文の意味解釈（LLM）と症状/環境シグナル（ルールベース）を統合して提案しました。',
+            suggestions: corrected,
         });
     } catch {
         return res.status(200).json(buildFallback(consultation));

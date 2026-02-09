@@ -3,6 +3,7 @@ import { buildAgenticPlan } from '@/lib/knowledge/agenticPlanner';
 import { executeAgenticPlan } from '@/lib/knowledge/agenticExecutor';
 import { buildGlmInsights, GlmInsight, GlmInsightResult, GLM_INTERACTION_MEANINGS } from '@/lib/knowledge/glmInsights';
 import { createRefinementJob } from '@/lib/jac/refinementJobStore';
+import { guardJacApiRequest } from '@/lib/security/jacAccessGuard';
 import { getKnowledgeSourceById } from '@/lib/knowledge/sourceRegistry';
 
 type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
@@ -501,9 +502,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.setHeader('Allow', 'POST');
         return res.status(405).json({ error: 'Method not allowed' });
     }
+    const guard = guardJacApiRequest(req, { route: 'jac-assess', costly: true });
+    if (!guard.ok) {
+        return res.status(guard.status).json({ error: guard.error });
+    }
     try {
         const body = normalizeRequestBody(req.body as RequestBody);
-        const responseMode = body.responseMode || 'full';
+        const responseMode = guard.forceFast ? 'fast' : body.responseMode || 'full';
         const isFastMode = responseMode === 'fast';
         const openAiTimeoutMs = Number(process.env.OPENAI_CHAT_TIMEOUT_MS || OPENAI_CHAT_TIMEOUT_MS_DEFAULT);
         if (!body?.consultation) {

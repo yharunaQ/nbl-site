@@ -1,10 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getRefinementJob } from '@/lib/jac/refinementJobStore';
+import { guardJacApiRequest } from '@/lib/security/jacAccessGuard';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'GET') {
         res.setHeader('Allow', 'GET');
         return res.status(405).json({ error: 'Method not allowed' });
+    }
+    const guard = guardJacApiRequest(req, { route: 'jac-assess-refinement', costly: false });
+    if (!guard.ok) {
+        return res.status(guard.status).json({ error: guard.error });
     }
 
     const jobId = String(req.query.jobId || '').trim();
