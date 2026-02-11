@@ -60,3 +60,7 @@ Decision checkpoint:
 1. Citation required only.
 2. Citation + confidence score.
 3. Citation + confidence + policy-rule violation reports.
+
+Planned sprint task:
+- Reduce boilerplate claim noise in `knowledge-claims.jsonl`:
+  - see `/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/next-sprint-claims-quality-task.md`
