@@ -16,7 +16,10 @@
     "knowledge:catalog": "node ./scripts/knowledge/build-local-catalog.mjs",
     "knowledge:fetch-web": "node ./scripts/knowledge/fetch-web-sources.mjs",
     "knowledge:normalize": "node ./scripts/knowledge/build-normalized-records.mjs",
-    "knowledge:embed": "node ./scripts/knowledge/build-embeddings.mjs"
+    "knowledge:claims": "node ./scripts/knowledge/build-claims.mjs",
+    "knowledge:embed": "node ./scripts/knowledge/build-embeddings.mjs",
+    "knowledge:test-safety-gate": "node ./scripts/knowledge/test-safety-gate.mjs",
+    "jac:audit:summary": "node ./scripts/jac/summarize-safety-audit.mjs"
   },
   "prettier": {
     "singleQuote": true,

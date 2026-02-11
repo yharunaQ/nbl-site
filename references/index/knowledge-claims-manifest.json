@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-02-11T08:57:05.402Z",
+  "inputPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/index/normalized-records.jsonl",
+  "outputPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/index/knowledge-claims.jsonl",
+  "inputRecordCount": 2294,
+  "eligibleRecordCount": 448,
+  "candidateCount": 1741,
+  "claimCount": 1487,
+  "dedupReductionPct": 14.6,
+  "partialClaimCount": 912,
+  "byClaimType": {
+    "interaction_signal": 918,
+    "outcome_signal": 248,
+    "accommodation_action": 321
+  },
+  "bySignal": {
+    "support_needs": 298,
+    "difficulty_occurrence": 162,
+    "difficulty_resolution": 232,
+    "symptom_exacerbation": 226
+  },
+  "byRiskLevel": {
+    "high": 173,
+    "medium": 1296,
+    "low": 18
+  },
+  "byConfidenceLevel": {
+    "medium": 1310,
+    "high": 17,
+    "low": 160
+  },
+  "bySourceId": {
+    "jeed_reference": 876,
+    "askjan_website": 371,
+    "australia_jobaccess_guidance": 13,
+    "eu_reasonable_accommodation": 24,
+    "germany_antidiscrimination_work": 12,
+    "uk_gov_disability_employment": 15,
+    "nbl_local_research": 91,
+    "canada_duty_to_accommodate": 78,
+    "germany_agg_legal": 7
+  },
+  "byCountry": {
+    "JP": 876,
+    "US": 371,
+    "AU": 13,
+    "EU": 24,
+    "DE": 19,
+    "UK": 15,
+    "unknown": 91,
+    "CA": 78
+  },
+  "byLegalContext": {
+    "japan_disability_employment_policy": 876,
+    "ada_title_i": 371,
+    "australia_disability_discrimination_act": 13,
+    "eu_employment_equality_framework": 24,
+    "germany_agg": 19,
+    "equality_act_2010": 15,
+    "unspecified": 91,
+    "canada_human_rights_duty_to_accommodate": 78
+  },
+  "byEvidenceScope": {
+    "aggregated_index": 173,
+    "specific_case": 1223,
+    "unknown": 91
+  }
+}
