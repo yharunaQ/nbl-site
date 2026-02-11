@@ -9,8 +9,7 @@ import { listEnabledKnowledgeSources } from '@/lib/knowledge/sourceRegistry';
 function selectSources(input: PlannerInput): KnowledgeSource[] {
     const enabled = listEnabledKnowledgeSources();
     if (!input.enabledSourceIds || input.enabledSourceIds.length === 0) {
-        // Default to local-only sources unless user explicitly opts into websites.
-        return enabled.filter((source) => source.kind !== 'website');
+        return enabled;
     }
 
     const selected = enabled.filter((source) => input.enabledSourceIds?.includes(source.id));
@@ -33,9 +32,9 @@ function buildSteps(sourceIds: string[]): PlannerStep[] {
         },
         {
             stepId: 'step_structured',
-            purpose: 'Query structured survey/model data for quantitative support.',
+            purpose: 'Summarize structured survey/model and web-derived interaction signals.',
             tool: 'structured_query',
-            sourceIds: sourceIds.filter((id) => id.includes('local') || id.includes('research')),
+            sourceIds,
         },
         {
             stepId: 'step_policy_gate',
@@ -61,13 +60,12 @@ export function buildAgenticPlan(input: PlannerInput): PlannerOutput {
     if (selectedSources.length === 0) {
         warnings.push('No enabled knowledge sources matched.');
     }
-    if ((!input.enabledSourceIds || input.enabledSourceIds.length === 0) && allEnabled.some((source) => source.kind === 'website')) {
-        warnings.push('Website sources were excluded by default. Pass enabledSourceIds to include them explicitly.');
-    }
 
-    const hasExternalDisabled = input.query.toLowerCase().includes('web');
-    if (hasExternalDisabled) {
-        warnings.push('Web sources are currently disabled in registry and must be enabled explicitly.');
+    const asksExternalKnowledge =
+        /web|website|海外|international|global|askjan|jeed|合理的配慮/.test(input.query.toLowerCase());
+    const hasEnabledWebsite = allEnabled.some((source) => source.kind === 'website');
+    if (asksExternalKnowledge && !hasEnabledWebsite) {
+        warnings.push('Website sources are not enabled in registry. Enable website sources to include external evidence.');
     }
 
     return {

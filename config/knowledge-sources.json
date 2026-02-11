@@ -28,6 +28,16 @@
     "refresh": "weekly",
     "location": "https://askjan.org/",
     "notes": "Enable when web crawler connector is configured.",
+    "crawlDepth": 2,
+    "maxPages": 80,
+    "allowPathPrefixes": [
+      "/sitsol/",
+      "/a-to-z.cfm",
+      "/disabilities/",
+      "/limitations/",
+      "/soar/",
+      "/topics/"
+    ],
     "seedUrls": [
       "https://askjan.org/sitsol/index.cfm",
       "https://askjan.org/a-to-z.cfm"
@@ -42,8 +52,173 @@
     "refresh": "weekly",
     "location": "https://www.ref.jeed.go.jp/",
     "notes": "Enable when web crawler connector is configured.",
+    "crawlDepth": 3,
+    "maxPages": 320,
+    "allowPathPrefixes": [
+      "/detail.php",
+      "/search_result.php"
+    ],
+    "seedUrlTemplate": "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page={page}&search=1&query=*&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02",
+    "seedPageStart": 1,
+    "seedPageEnd": 24,
+    "seedPageStep": 1,
     "seedUrls": [
       "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=*&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02"
+    ]
+  },
+  {
+    "id": "uk_gov_disability_employment",
+    "name": "UK GOV Disability Employment Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.gov.uk/",
+    "notes": "UK public guidance on reasonable adjustments and employment support.",
+    "crawlDepth": 1,
+    "maxPages": 16,
+    "allowPathPrefixes": [
+      "/reasonable-adjustments-for-disabled-workers",
+      "/access-to-work",
+      "/guidance/equality-act-2010-guidance",
+      "/guidance/disability-confident"
+    ],
+    "seedUrls": [
+      "https://www.gov.uk/reasonable-adjustments-for-disabled-workers",
+      "https://www.gov.uk/access-to-work",
+      "https://www.gov.uk/guidance/equality-act-2010-guidance",
+      "https://www.gov.uk/disability-confident"
+    ]
+  },
+  {
+    "id": "eu_reasonable_accommodation",
+    "name": "EU Reasonable Accommodation Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://employment-social-affairs.ec.europa.eu/",
+    "notes": "EU-level guidance and practical resources on workplace reasonable accommodation.",
+    "crawlDepth": 1,
+    "maxPages": 24,
+    "allowedHosts": [
+      "https://op.europa.eu/",
+      "https://europa.eu/"
+    ],
+    "allowPathPrefixes": [
+      "/reasonable-accommodation-work-guidelines-and-good-practices_en",
+      "/webpub/empl/reasonable-accommodation-at-work/",
+      "/youreurope/business/human-resources/"
+    ],
+    "seedUrls": [
+      "https://employment-social-affairs.ec.europa.eu/reasonable-accommodation-work-guidelines-and-good-practices_en",
+      "https://op.europa.eu/webpub/empl/reasonable-accommodation-at-work/en/",
+      "https://europa.eu/youreurope/business/human-resources/equal-treatment-qualifications/reasonable-accommodation/index_en.htm"
+    ]
+  },
+  {
+    "id": "germany_agg_legal",
+    "name": "Germany AGG Legal Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.gesetze-im-internet.de/",
+    "notes": "German anti-discrimination legal text (AGG) relevant to workplace accommodation baseline.",
+    "crawlDepth": 1,
+    "maxPages": 12,
+    "allowPathPrefixes": [
+      "/englisch_agg/"
+    ],
+    "seedUrls": [
+      "https://www.gesetze-im-internet.de/englisch_agg/",
+      "https://www.gesetze-im-internet.de/englisch_agg/englisch_agg.html"
+    ]
+  },
+  {
+    "id": "germany_antidiscrimination_work",
+    "name": "Germany Anti-Discrimination Work Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.antidiskriminierungsstelle.de/",
+    "notes": "German anti-discrimination office and labor ministry pages related to work and inclusion.",
+    "crawlDepth": 1,
+    "maxPages": 24,
+    "allowedHosts": [
+      "https://www.bmas.de/"
+    ],
+    "allowPathPrefixes": [
+      "/DE/startseite/",
+      "/DE/ueber-diskriminierung/lebensbereiche/arbeitsleben/",
+      "/DE/ueber-diskriminierung/recht-und-gesetz/allgemeines-gleichbehandlungsgesetz/",
+      "/DE/Soziales/Teilhabe-und-Inklusion/"
+    ],
+    "seedUrls": [
+      "https://www.antidiskriminierungsstelle.de/DE/startseite/startseite-node.html",
+      "https://www.antidiskriminierungsstelle.de/DE/ueber-diskriminierung/lebensbereiche/arbeitsleben/arbeitsleben-node.html",
+      "https://www.antidiskriminierungsstelle.de/DE/ueber-diskriminierung/recht-und-gesetz/allgemeines-gleichbehandlungsgesetz/allgemeines-gleichbehandlungsgesetz-node.html",
+      "https://www.bmas.de/DE/Soziales/Teilhabe-und-Inklusion/teilhabe-und-inklusion.html"
+    ]
+  },
+  {
+    "id": "australia_jobaccess_guidance",
+    "name": "Australia JobAccess Employer Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://jobaccess.gov.au/",
+    "notes": "Australian employer guidance on reasonable adjustment and disability employment.",
+    "crawlDepth": 1,
+    "maxPages": 10,
+    "allowPathPrefixes": [
+      "/i-am-an-employer/know-rights-responsibilities/"
+    ],
+    "seedUrls": [
+      "https://jobaccess.gov.au/i-am-an-employer/know-rights-responsibilities/guidelines-reasonable-adjustment"
+    ]
+  },
+  {
+    "id": "canada_duty_to_accommodate",
+    "name": "Canada Duty to Accommodate Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.canada.ca/",
+    "notes": "Government of Canada guidance on duty to accommodate and workplace disability inclusion.",
+    "crawlDepth": 1,
+    "maxPages": 20,
+    "allowPathPrefixes": [
+      "/en/government/publicservice/wellness-inclusion-diversity-public-service/"
+    ],
+    "seedUrls": [
+      "https://www.canada.ca/en/government/publicservice/wellness-inclusion-diversity-public-service/diversity-inclusion-public-service/working-government-canada-duty-accommodate-right-non-discrimination.html",
+      "https://www.canada.ca/en/government/publicservice/wellness-inclusion-diversity-public-service/health-wellness-public-servants/disability-management/fundamentals-duty-accommodate-roles-responsibilities.html",
+      "https://www.canada.ca/en/government/publicservice/wellness-inclusion-diversity-public-service/diversity-inclusion-public-service/working-government-canada-duty-accommodate-right-non-discrimination/duty-accommodate-general-process-managers.html"
+    ]
+  },
+  {
+    "id": "ilo_workplace_adjustments",
+    "name": "ILO Workplace Adjustments (Candidate)",
+    "kind": "website",
+    "enabled": false,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.ilo.org/",
+    "notes": "Candidate source. Current environment receives 403 from ILO pages; keep disabled until reachable.",
+    "crawlDepth": 0,
+    "maxPages": 2,
+    "allowPathPrefixes": [
+      "/publications/promoting-diversity-and-inclusion-through-workplace-adjustments-practical",
+      "/topics/disability-and-work",
+      "/global/topics/disability-and-work/"
+    ],
+    "seedUrls": [
+      "https://www.ilo.org/publications/promoting-diversity-and-inclusion-through-workplace-adjustments-practical",
+      "https://www.ilo.org/topics/disability-and-work"
     ]
   }
 ]
