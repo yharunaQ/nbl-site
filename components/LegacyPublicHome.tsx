@@ -1,0 +1,142 @@
+import Head from 'next/head';
+import Link from 'next/link';
+import React from 'react';
+import Campaign from './Campaign';
+import Footer from './Footer';
+import Hero from './Hero';
+import MarketVision from './MarketVision';
+import Phase1 from './Phase1';
+import ProductJac from './ProductJac';
+import Reports from './Reports';
+import Services from './Services';
+import TrustStrip from './TrustStrip';
+import Vision from './Vision';
+
+export default function LegacyPublicHome() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Next Being Lab',
+    url: 'https://nextbeinglab.org',
+    sameAs: ['https://www.youtube.com/@next-being-lab'],
+    description: '難病就労支援・障害者雇用の研究と実装ユニット。合理的配慮を科学し社会実装する。',
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-gray-900 font-sans">
+      <Head>
+        <title>Next Being Lab | 働くは設計できる。</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://nextbeinglab.org/" />
+        <meta
+          name="description"
+          content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。"
+        />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:site_name" content="Next Being Lab" />
+        <meta property="og:locale" content="ja_JP" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nextbeinglab.org/" />
+        <meta property="og:title" content="Next Being Lab | 働くは設計できる。" />
+        <meta property="og:description" content="働くは設計できる。At work, CAN matters." />
+        <meta property="og:image" content="https://nextbeinglab.org/og.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Next Being Lab - 働くは設計できる。" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Next Being Lab | 働くは設計できる。" />
+        <meta name="twitter:description" content="働くは設計できる。At work, CAN matters." />
+        <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
+        <meta name="theme-color" content="#0f172a" />
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+
+      <nav
+        className="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md"
+        data-testid="top-nav"
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+          <div className="flex items-center gap-2">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-shrink-0"
+            >
+              <circle cx="14" cy="14" r="13" stroke="#7DD3FC" strokeWidth="1" fill="none" />
+              <circle cx="14" cy="14" r="10" stroke="#14B8A6" strokeWidth="2" fill="none" />
+              <circle cx="14" cy="14" r="6" fill="white" />
+            </svg>
+            <span className="font-bold tracking-wide text-gray-900">Next Being Lab</span>
+          </div>
+          <div className="hidden items-center gap-6 text-sm font-medium text-gray-600 md:flex">
+            <a href="#vision" className="transition-colors hover:text-indigo-600">
+              ビジョン
+            </a>
+            <a href="#phase1" className="transition-colors hover:text-indigo-600">
+              NBL(Phase1)
+            </a>
+            <a href="#product" className="transition-colors hover:text-indigo-600">
+              JAC
+            </a>
+            <Link href="/jac" className="transition-colors hover:text-indigo-600">
+              JAC試用版
+            </Link>
+            <Link href="/jac/guide" className="transition-colors hover:text-indigo-600">
+              JACガイド
+            </Link>
+            <a href="#services" className="transition-colors hover:text-indigo-600">
+              サービス
+            </a>
+            <a href="#reports" className="transition-colors hover:text-indigo-600">
+              レポート
+            </a>
+            <a href="#campaign" className="transition-colors hover:text-indigo-600">
+              CAN BY DESIGN
+            </a>
+            <a href="#contact" className="transition-colors hover:text-indigo-600">
+              Contact
+            </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/jac/guide"
+              className="rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-bold text-gray-800 transition-all hover:bg-gray-50"
+            >
+              JACガイド
+            </Link>
+            <Link
+              href="/jac"
+              className="rounded-full bg-gray-900 px-5 py-2 text-sm font-bold text-white shadow-md transition-all hover:bg-black"
+            >
+              JAC試用版
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <Hero />
+        <TrustStrip />
+        <Campaign />
+        <Phase1 />
+        <Reports />
+        <ProductJac />
+        <Services />
+        <Vision />
+        <MarketVision />
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

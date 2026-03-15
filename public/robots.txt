@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /review/
+Disallow: /jac
+Disallow: /dao-participation-lab
+Disallow: /site-update
 Sitemap: https://nextbeinglab.org/sitemap.xml
