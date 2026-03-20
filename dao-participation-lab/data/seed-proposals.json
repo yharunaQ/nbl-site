@@ -1,0 +1,54 @@
+{
+  "proposals": [
+    {
+      "id": "proposal-jac-first-impression",
+      "title": "JAC初回利用フローの違和感レビュー",
+      "summary": "JACプロトタイプを初めて開いた人が、最初の3分で何に迷うかを観察し、導線の違和感を3点までメモする。NBL内の改善議論に渡す前の粗いフィードバックを集めたい。",
+      "proposer": "NBL Lab Host",
+      "status": "active",
+      "createdAt": "2026-03-09T08:30:00.000Z",
+      "updatedAt": "2026-03-09T10:15:00.000Z",
+      "comments": [
+        {
+          "id": "comment-jac-1",
+          "author": "Reviewer A",
+          "body": "最初に何を入力すればよいかが少し曖昧でした。導入文が一文短くなると入りやすそうです。",
+          "createdAt": "2026-03-09T09:15:00.000Z"
+        },
+        {
+          "id": "comment-jac-2",
+          "author": "Reviewer B",
+          "body": "選択肢の意味は分かるけれど、先に利用目的が見えた方が安心感があります。",
+          "createdAt": "2026-03-09T10:15:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "proposal-site-copy-review",
+      "title": "NBLサイトの冒頭説明文を読みやすくする実験",
+      "summary": "トップページや実験紹介文の説明が抽象に寄りすぎていないか確認する。専門用語の圧を下げつつ、NBLらしさを残せるかを見る。",
+      "proposer": "Content Steward",
+      "status": "review",
+      "createdAt": "2026-03-08T13:00:00.000Z",
+      "updatedAt": "2026-03-09T07:20:00.000Z",
+      "comments": [
+        {
+          "id": "comment-site-1",
+          "author": "Reader 1",
+          "body": "最初の見出しは強いですが、その次の文で何をしている組織なのかをもっと早く知りたいです。",
+          "createdAt": "2026-03-09T07:20:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": "proposal-exit-protocol",
+      "title": "退出しやすい共同体プロトコルの確認",
+      "summary": "DAO Participation Lab の退出導線が本当に軽いかを確認する。引き継ぎ不要のケース、記録匿名化、再参加時の扱いを机上で点検する。",
+      "proposer": "Safety Pair",
+      "status": "draft",
+      "createdAt": "2026-03-07T05:40:00.000Z",
+      "updatedAt": "2026-03-07T05:40:00.000Z",
+      "comments": []
+    }
+  ]
+}

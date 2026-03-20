@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JACガイドブック 第1冊（体調レイヤー）初稿</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --subtle: #6b7280;
+      --line: #d1d5db;
+      --accent: #0f766e;
+      --paper: #ffffff;
+      --bg: #f8fafc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+      line-height: 1.85;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .book {
+      width: 210mm;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 6px 30px rgba(15, 23, 42, 0.08);
+      min-height: 100vh;
+      padding: 24mm 18mm 20mm;
+    }
+    .cover {
+      min-height: 220mm;
+      display: grid;
+      align-content: center;
+      gap: 10mm;
+      border: 1px solid var(--line);
+      padding: 16mm;
+      background: linear-gradient(160deg, #f0fdfa, #ffffff 56%, #ecfeff);
+    }
+    .cover .eyebrow {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .cover h1 {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 33px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+    .cover p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--subtle);
+    }
+    .meta-block {
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .toc {
+      margin-top: 14mm;
+      padding-top: 10mm;
+      border-top: 1px solid var(--line);
+    }
+    .toc h2 {
+      margin: 0 0 6mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 20px;
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 16mm;
+      font-size: 12px;
+    }
+    .toc-list li {
+      break-inside: avoid;
+      margin: 0 0 4px;
+      padding-right: 10px;
+    }
+    .toc-list a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .toc-list a:hover {
+      border-bottom-color: var(--line);
+    }
+    .content {
+      margin-top: 16mm;
+      font-size: 13px;
+    }
+    .chapter {
+      break-before: page;
+      page-break-before: always;
+      padding-top: 2mm;
+    }
+    h2, h3, h4 {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 4mm;
+    }
+    h2 {
+      font-size: 24px;
+      border-bottom: 2px solid #99f6e4;
+      padding-bottom: 3mm;
+    }
+    h3 { font-size: 17px; margin-top: 7mm; }
+    h4 { font-size: 14px; margin-top: 5mm; }
+    p { margin: 0 0 3.4mm; }
+    ul, ol {
+      margin: 0 0 4mm;
+      padding-left: 20px;
+    }
+    li { margin-bottom: 2mm; }
+    blockquote {
+      margin: 0 0 4.2mm;
+      padding: 4mm 4.5mm;
+      border-left: 4px solid #99f6e4;
+      background: #f0fdfa;
+      color: #334155;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 8mm 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+    pre {
+      margin: 0 0 4mm;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 4mm;
+      border-radius: 8px;
+      overflow: auto;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    figure.illustration {
+      margin: 0 0 6mm;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 3mm;
+      background: #f8fafc;
+    }
+    figure.illustration img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #eef2ff;
+    }
+    figure.illustration figcaption {
+      margin-top: 2mm;
+      font-size: 11px;
+      color: var(--subtle);
+      text-align: center;
+    }
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 10mm 14mm;
+      }
+      body {
+        background: white;
+      }
+      .book {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .cover {
+        min-height: 0;
+        border: 0;
+        padding: 0;
+        background: white;
+      }
+      .content {
+        margin-top: 10mm;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="book">
+    <section class="cover">
+      <p class="eyebrow">JAC GUIDEBOOK / READABLE EDITION</p>
+      <h1>JACガイドブック 第1冊（体調レイヤー）初稿</h1>
+      <p>Web版ガイドを、現場で読み進めやすい章構成に再編集した版</p>
+      <div class="meta-block">
+        <span>発行: Next Being Lab</span>
+        <span>形式: 試作レイアウト</span>
+      </div>
+    </section>
+    <section class="toc">
+      <h2>目次</h2>
+      <ol class="toc-list"><li><a href="#sec-001">この原稿の使い方</a></li>
+<li><a href="#sec-002">章一覧（体調レイヤー）</a></li>
+<li><a href="#sec-003">第01章 会議疲れを減らす会議設計</a></li>
+<li><a href="#sec-015">第02章 体調の波を前提にした業務配分</a></li>
+<li><a href="#sec-027">第03章 通院と勤務を両立する時間設計</a></li>
+<li><a href="#sec-039">第04章 音・光・温度ストレスを下げる職場調整</a></li>
+<li><a href="#sec-051">第05章 通勤消耗を減らす働き方設計</a></li>
+<li><a href="#sec-063">第06章 配慮に必要な情報だけ共有する</a></li>
+<li><a href="#sec-075">第07章 復職初期を守る段階復帰</a></li>
+<li><a href="#sec-087">第08章 睡眠・服薬リズムを守るシフト設計</a></li>
+<li><a href="#sec-099">第09章 配慮を続ける相談運用の定着</a></li>
+<li><a href="#sec-111">付録: レビュー時の確認観点</a></li></ol>
+    </section>
+    <article class="content">
+      <ul>
+<li>対象: 体調レイヤー 9フレーム（第01章〜第09章）</li>
+<li>生成日: 2026-02-18T13:37:06.338Z</li>
+<li>目的: Webカードを読み物として連続理解できる初稿を作る（レビュー用）</li>
+<li>注意: 個別助言ではなく、職場設計の叩き台として利用する。</li>
+</ul>
+<section class="chapter">
+<h2 id="sec-001">この原稿の使い方</h2>
+<ol>
+<li>近い章を1つ選び、「最初の7日」だけ先に実施する。</li>
+<li>4週間運用し、章内KPIで再評価する。</li>
+<li>境界に当たる場合は「この章を選ぶ条件」を優先して章を切り替える。</li>
+</ol>
+</section>
+<section class="chapter">
+<h2 id="sec-002">章一覧（体調レイヤー）</h2>
+<ol>
+<li>第01章 会議同時処理負荷が主因: 理解遅延が午後疲労へ連鎖する</li>
+<li>第02章 体調変動が主因: 日ごとの業務達成度が安定しない</li>
+<li>第03章 通院日程の衝突が主因: 通院・治療と勤務スケジュールが噛み合わない</li>
+<li>第04章 環境刺激が主因: 音・光・温度で症状が悪化する</li>
+<li>第05章 通勤負荷が主因: 始業前消耗で日中稼働が崩れる</li>
+<li>第06章 情報開示の設計不足が主因: 配慮実装とプライバシーが両立しにくい</li>
+<li>第07章 復職初期の負荷復帰が主因: 早戻しで再不調が起きやすい</li>
+<li>第08章 勤務時刻の不整合が主因: 生活・服薬リズムが崩れる</li>
+<li>第09章 相談運用の欠如が主因: 配慮が単発で定着しない</li>
+</ol>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-003">第01章 会議疲れを減らす会議設計</h2>
+<blockquote><p>元フレーム名: 会議同時処理負荷が主因: 理解遅延が午後疲労へ連鎖する</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch01.svg" alt="第01章イラスト（仮）" /><figcaption>第01章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-meeting-overload</code></li>
+<li>推奨モード: <code>conditional_only</code></li>
+</ul>
+<h3 id="sec-004">章の核心（因果）</h3>
+<p>長時間会議・即時応答・資料の同時読解が重なると、理解遅延と疲労蓄積が同時に起きやすい。</p>
+<h3 id="sec-005">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 主困りごとが会議中の同時処理（聞く・読む・即答）なら本カード。会議外の割込み切替が中心なら「タスク切替過多が主因」カード、聞こえ/見えのアクセス不足が中心なら各アクセスカードを優先。</p>
+<h3 id="sec-006">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>会議を30分単位に分割し、論点を1テーマずつ固定する</li>
+<li>事前資料を前日配布し、当日は意思決定項目だけに集中する</li>
+<li>同期会議の一部を非同期コメントに置き換える</li>
+<li>会議後15分の回復バッファを勤務設計に組み込む</li>
+</ol>
+<h3 id="sec-007">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-008">パッケージ1: 会議再設計パッケージ</h4>
+<ul>
+<li>目的: 同時処理負荷を減らし、会議中の理解精度を上げる。</li>
+<li>実施:</li>
+<li>会議を「共有」「判断」「調整」に分離して別枠化</li>
+<li>事前資料は24時間前配布し、当日は決定論点のみ扱う</li>
+<li>会議後15分の回復バッファを標準運用にする</li>
+<li>運用:</li>
+<li>4週間の試行期間を設定し、毎週運用レビューを実施する</li>
+<li>司会者が議題逸脱を止める責任を持つ</li>
+<li>指標:</li>
+<li>会議後の再説明依頼件数</li>
+<li>会議後30分の疲労自己評価</li>
+<li>会議内意思決定率</li>
+<li>再評価トリガー: 2週間連続で疲労自己評価が悪化した場合、会議数と密度を再設計する。</li>
+</ul>
+<h4 id="sec-009">パッケージ2: 同期→非同期シフトパッケージ</h4>
+<ul>
+<li>目的: 即時応答ストレスを下げつつ、合意速度を維持する。</li>
+<li>実施:</li>
+<li>情報共有は非同期スレッドへ移行し、会議は意思決定のみ</li>
+<li>返信SLA（例: 4営業時間以内）を合意する</li>
+<li>非同期議論のテンプレート（論点/懸念/提案）を固定化する</li>
+<li>運用:</li>
+<li>レスポンス遅延を個人責任化しない</li>
+<li>会議と非同期の役割境界を明文化する</li>
+<li>指標:</li>
+<li>非同期スレッド完結率</li>
+<li>会議時間総量</li>
+<li>締切遅延件数</li>
+<li>再評価トリガー: 締切遅延が増えた場合、非同期対象タスクを再分類する。</li>
+</ul>
+<h3 id="sec-010">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>職務上、会議参加が必須である</li>
+<li>会議目的（共有/意思決定/調整）が区別されている</li>
+<li>上長・司会者が進行設計を変更できる</li>
+</ul>
+<h3 id="sec-011">失敗を防ぐポイント</h3>
+<ul>
+<li>会議時間だけ短縮して論点密度を下げないと、効果が出にくい</li>
+<li>非同期化しても返信SLAを決めないと逆に負荷が増える</li>
+</ul>
+<h3 id="sec-012">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>理解遅延は「どの会議」で最も起きやすいか？</li>
+<li>会議後に落ちる業務（文章作成/判断/対人調整）は何か？</li>
+<li>短縮と非同期化のどちらが現場文化に適合するか？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-013">関連章（次に見る候補）</h3>
+<ul>
+<li>対人即時応答負荷が主因: 接客場面でミスと疲労が増える（p-customer-facing-load）</li>
+<li>タスク切替過多が主因: 認知負荷が急上昇する（p-developmental-switch-load）</li>
+<li>記憶・遂行機能負荷が主因: 業務が分断され手戻りが増える（p-higher-brain-memory-support）</li>
+</ul>
+<h3 id="sec-014">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S3-002, GLM-S1-001</li>
+<li>claim IDs: 9a810f34c89b02b2, 627977e3fd538fe0</li>
+<li>source regions: JP, US, UK</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-015">第02章 体調の波を前提にした業務配分</h2>
+<blockquote><p>元フレーム名: 体調変動が主因: 日ごとの業務達成度が安定しない</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch02.svg" alt="第02章イラスト（仮）" /><figcaption>第02章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-fatigue-pacing</code></li>
+<li>推奨モード: <code>conditional_only</code></li>
+</ul>
+<h3 id="sec-016">章の核心（因果）</h3>
+<p>症状の波・疲労・回復遅延がある場合、同じ業務量でも日ごとの達成度が大きく変動しやすい。</p>
+<h3 id="sec-017">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 日ごとの体調波で同一業務量を維持しにくいなら本カード。通院日の当て込み不足は「通院日程の衝突が主因」、治療後の回復時間不足は「回復時間不足が主因」、勤務時刻制度の不整合は「勤務時刻の不整合が主因」を優先。</p>
+<h3 id="sec-018">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>業務量を週単位で平準化し、ピーク日を作らない</li>
+<li>90分ごとの短休憩を標準運用にする</li>
+<li>重要タスクを体調の安定時間帯へ再配置する</li>
+<li>週次レビューで負荷の上げ下げを事前合意する</li>
+</ol>
+<h3 id="sec-019">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-020">パッケージ1: ペーシング運用パッケージ</h4>
+<ul>
+<li>目的: 体調波がある前提で、負荷を可変制御する。</li>
+<li>実施:</li>
+<li>業務を高負荷/中負荷/低負荷で分類して日次配分する</li>
+<li>90分ごとに強制マイクロ休憩を入れる</li>
+<li>安定時間帯に重要判断タスクを配置する</li>
+<li>運用:</li>
+<li>週次で業務密度を再調整する</li>
+<li>自己申告を評価不利益に結びつけない</li>
+<li>指標:</li>
+<li>週次完了率</li>
+<li>疲労ピーク頻度</li>
+<li>体調要因による遅延件数</li>
+<li>再評価トリガー: 完了率低下が2週続いたら、目標設定を再調整する。</li>
+</ul>
+<h4 id="sec-021">パッケージ2: 負荷バッファ設計パッケージ</h4>
+<ul>
+<li>目的: 症状悪化日の影響を翌日以降に連鎖させない。</li>
+<li>実施:</li>
+<li>予備日を週1回設ける</li>
+<li>納期を中間締切付きの二段階にする</li>
+<li>代替担当ルールを明文化する</li>
+<li>運用:</li>
+<li>繁忙期は前倒し着手を標準化する</li>
+<li>調整履歴を記録し翌月設計に反映する</li>
+<li>指標:</li>
+<li>中間締切遵守率</li>
+<li>突発残業時間</li>
+<li>代替発動件数</li>
+<li>再評価トリガー: 突発残業が増加した場合は中間締切の設計を見直す。</li>
+</ul>
+<h3 id="sec-022">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>日内/週内で体調波の傾向が把握できる</li>
+<li>業務の優先順位づけが可能</li>
+<li>レビューで調整する運用責任者がいる</li>
+</ul>
+<h3 id="sec-023">失敗を防ぐポイント</h3>
+<ul>
+<li>根性論でカバーすると再発・離脱リスクが上がる</li>
+<li>本人の自己申告チャネルがないと調整が後手になる</li>
+</ul>
+<h3 id="sec-024">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>体調が崩れる直前の業務パターンは何か？</li>
+<li>休憩で回復するのか、タスク変更が必要なのか？</li>
+<li>調整後に改善を測るKPIは何か？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-025">関連章（次に見る候補）</h3>
+<ul>
+<li>通勤負荷が主因: 始業前消耗で日中稼働が崩れる（p-commute-hybrid）</li>
+<li>勤務時刻の不整合が主因: 生活・服薬リズムが崩れる（p-shift-rhythm-guard）</li>
+<li>会議同時処理負荷が主因: 理解遅延が午後疲労へ連鎖する（p-meeting-overload）</li>
+</ul>
+<h3 id="sec-026">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S3-001, GLM-S2-001</li>
+<li>claim IDs: d2033f3551357dd0, 55b623ad4146f8b9</li>
+<li>source regions: US, JP, NBL-local</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-027">第03章 通院と勤務を両立する時間設計</h2>
+<blockquote><p>元フレーム名: 通院日程の衝突が主因: 通院・治療と勤務スケジュールが噛み合わない</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch03.svg" alt="第03章イラスト（仮）" /><figcaption>第03章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-medical-schedule</code></li>
+<li>推奨モード: <code>questions_first</code></li>
+</ul>
+<h3 id="sec-028">章の核心（因果）</h3>
+<p>主課題が「通院日・受診時刻の調整不足」にある場合のカード。受診予定と業務ピークが重なると、欠勤不安・有給消費不安・心理的負荷が重なり、就業継続の見通しが下がりやすい。</p>
+<h3 id="sec-029">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 課題の中心が日程衝突（いつ通院するか）なら本カード。定期治療でも、主課題が通院時刻・勤務調整ならこちらを優先。治療後の長い回復時間や体力低下が主因なら「回復時間不足が主因」カードを優先。</p>
+<h3 id="sec-030">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>通院日を固定し、前後で業務負荷を調整する</li>
+<li>始業/終業時刻の可変枠を設定する</li>
+<li>引き継ぎテンプレートを作り、突発時の業務穴を最小化する</li>
+<li>治療ピーク期だけ短期運用ルールを別立てにする</li>
+</ol>
+<h3 id="sec-031">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-032">パッケージ1: 治療ウィンドウ確保パッケージ</h4>
+<ul>
+<li>目的: 治療継続と業務継続を両立する時間枠を作る。</li>
+<li>実施:</li>
+<li>通院日を先に固定し、納期計画を逆算する</li>
+<li>始業/終業の可変枠を定義する</li>
+<li>通院当日・翌日の負荷上限を明文化する</li>
+<li>運用:</li>
+<li>適用対象の法域と雇用区分を必ず確認する</li>
+<li>運用開始前に本人同意範囲を確認する</li>
+<li>指標:</li>
+<li>通院実施率</li>
+<li>治療関連欠勤率</li>
+<li>納期遅延率</li>
+<li>再評価トリガー: 通院実施率が下がった場合、業務配分と時間枠を優先的に再設計する。</li>
+</ul>
+<h4 id="sec-033">パッケージ2: 欠勤影響最小化パッケージ</h4>
+<ul>
+<li>目的: 急な不調時でも業務穴を最小化する。</li>
+<li>実施:</li>
+<li>引き継ぎテンプレートを1ページ化する</li>
+<li>代替担当を事前合意する</li>
+<li>未完了タスクの優先順位ルールを設定する</li>
+<li>運用:</li>
+<li>代替担当への負担偏りを週次で点検する</li>
+<li>引き継ぎ記録は更新責任者を固定する</li>
+<li>指標:</li>
+<li>代替起動から再開までの時間</li>
+<li>引き継ぎ漏れ件数</li>
+<li>周囲負担自己評価</li>
+<li>再評価トリガー: 引き継ぎ漏れが月2件を超えたらテンプレート項目を見直す。</li>
+</ul>
+<h3 id="sec-034">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>通院予定と業務ピークの重なりが見える化されている</li>
+<li>代替担当・先送り基準が運用で合意されている</li>
+</ul>
+<h3 id="sec-035">失敗を防ぐポイント</h3>
+<ul>
+<li>制度だけ作って案件優先ルールを変えないと、現場で形骸化する</li>
+<li>本人の開示範囲が未整理のまま運用すると対人摩擦が増える</li>
+</ul>
+<h3 id="sec-036">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>適用法域（JP/US/EUなど）と雇用区分は何か？</li>
+<li>通院直後に難しくなる具体タスクは何か？</li>
+<li>既に試した配慮で効いたもの/逆効果だったものは何か？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-037">関連章（次に見る候補）</h3>
+<ul>
+<li>通勤負荷が主因: 始業前消耗で日中稼働が崩れる（p-commute-hybrid）</li>
+<li>体調変動が主因: 日ごとの業務達成度が安定しない（p-fatigue-pacing）</li>
+<li>復職初期の負荷復帰が主因: 早戻しで再不調が起きやすい（p-return-to-work-ramp）</li>
+</ul>
+<h3 id="sec-038">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S4-001, GLM-S1-003</li>
+<li>claim IDs: 5991a785430975cb, 86f336fb9e05cec8</li>
+<li>source regions: JP, NBL-local</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-039">第04章 音・光・温度ストレスを下げる職場調整</h2>
+<blockquote><p>元フレーム名: 環境刺激が主因: 音・光・温度で症状が悪化する</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch04.svg" alt="第04章イラスト（仮）" /><figcaption>第04章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-environment-sensory</code></li>
+<li>推奨モード: <code>conditional_only</code></li>
+</ul>
+<h3 id="sec-040">章の核心（因果）</h3>
+<p>感覚刺激が強い環境では、集中低下と疲労増幅が重なり、業務継続性が下がることがある。</p>
+<h3 id="sec-041">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 音・光・温度など刺激そのものが主トリガーなら本カード。資料や画面の見え方が主因なら「視覚アクセス障壁が主因」、音声情報の欠落が主因なら「音声アクセス障壁が主因」を優先。</p>
+<h3 id="sec-042">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>静音席・照明調整・通知制御をセットで導入する</li>
+<li>作業ゾーン（集中/連絡）を分離する</li>
+<li>在宅/出社の使い分け基準を業務ごとに定義する</li>
+<li>環境調整の効果を2週間単位で測定する</li>
+</ol>
+<h3 id="sec-043">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-044">パッケージ1: 感覚刺激制御パッケージ</h4>
+<ul>
+<li>目的: 音・光・通知刺激を下げ、集中維持を改善する。</li>
+<li>実施:</li>
+<li>静音席/遮光/通知制御を同時導入する</li>
+<li>必要に応じて耳栓・ノイズキャンセル機器を許容する</li>
+<li>会議室・執務席で刺激量基準を設定する</li>
+<li>運用:</li>
+<li>単一施策で終わらせず、複合導入を前提とする</li>
+<li>周囲に運用意図を説明し誤解を防ぐ</li>
+<li>指標:</li>
+<li>集中中断回数</li>
+<li>刺激要因による離席回数</li>
+<li>終業時疲労スコア</li>
+<li>再評価トリガー: 刺激要因離席が減らない場合、席配置とタスク設計を同時に見直す。</li>
+</ul>
+<h4 id="sec-045">パッケージ2: 作業ゾーニングパッケージ</h4>
+<ul>
+<li>目的: 環境とタスクのミスマッチを減らす。</li>
+<li>実施:</li>
+<li>集中ゾーンと連絡ゾーンを分ける</li>
+<li>在宅/出社の使い分け基準を業務単位で定義する</li>
+<li>高集中時間帯に割込連絡を制限する</li>
+<li>運用:</li>
+<li>チーム全体でゾーニングルールを共有する</li>
+<li>例外処理手順を先に決める</li>
+<li>指標:</li>
+<li>高集中タスクの完了時間</li>
+<li>割込件数</li>
+<li>業務再開までの平均時間</li>
+<li>再評価トリガー: 割込件数が増える場合は例外運用の範囲を再設定する。</li>
+</ul>
+<h3 id="sec-046">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>刺激要因（音/光/温度）の特定ができている</li>
+<li>座席・設備・勤務形態の調整権限がある</li>
+</ul>
+<h3 id="sec-047">失敗を防ぐポイント</h3>
+<ul>
+<li>単一施策（例: イヤホンのみ）では十分な改善にならないことがある</li>
+<li>周囲説明なしの個別運用は運用摩擦につながる</li>
+</ul>
+<h3 id="sec-048">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>どの刺激がどの時間帯に影響するか？</li>
+<li>環境変更後に改善を測る指標は何か？</li>
+<li>在宅化と現場要件の境界線はどこか？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-049">関連章（次に見る候補）</h3>
+<ul>
+<li>会議同時処理負荷が主因: 理解遅延が午後疲労へ連鎖する（p-meeting-overload）</li>
+<li>体調変動が主因: 日ごとの業務達成度が安定しない（p-fatigue-pacing）</li>
+<li>通勤負荷が主因: 始業前消耗で日中稼働が崩れる（p-commute-hybrid）</li>
+</ul>
+<h3 id="sec-050">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S3-003, GLM-S4-002</li>
+<li>claim IDs: 030f6c25bee7e726, 8a704d1bd91c999b</li>
+<li>source regions: US, EU, AU</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-051">第05章 通勤消耗を減らす働き方設計</h2>
+<blockquote><p>元フレーム名: 通勤負荷が主因: 始業前消耗で日中稼働が崩れる</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch05.svg" alt="第05章イラスト（仮）" /><figcaption>第05章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-commute-hybrid</code></li>
+<li>推奨モード: <code>conditional_only</code></li>
+</ul>
+<h3 id="sec-052">章の核心（因果）</h3>
+<p>混雑・移動時間・気温差が大きいと、業務開始前にエネルギーを消耗し、日中の集中維持が難しくなる。</p>
+<h3 id="sec-053">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 混雑・移動時間・気温差など通勤そのものが主因なら本カード。職場内の段差や動線負荷が主因なら「動線・移動負荷が主因」を優先。</p>
+<h3 id="sec-054">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>時差出勤と在宅勤務をタスク単位で使い分ける</li>
+<li>出社日は高協働タスク、在宅日は高集中タスクに再編する</li>
+<li>遠距離移動・連続出張の回避ルールを明文化する</li>
+<li>通勤負荷が高い日の代替KPI（成果基準）を定義する</li>
+</ol>
+<h3 id="sec-055">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-056">パッケージ1: 通勤負荷分散ハイブリッドパッケージ</h4>
+<ul>
+<li>目的: 移動負荷を抑えつつ成果を維持する。</li>
+<li>実施:</li>
+<li>時差出勤と在宅勤務をタスク別に割り当てる</li>
+<li>出社日は協働タスク、在宅日は集中タスクへ再編する</li>
+<li>移動が重い日は業務開始前の高負荷作業を避ける</li>
+<li>運用:</li>
+<li>ハイブリッド対象業務を四半期ごとに棚卸しする</li>
+<li>評価は拘束時間より成果基準を優先する</li>
+<li>指標:</li>
+<li>通勤後1時間の生産性指標</li>
+<li>移動要因の欠勤率</li>
+<li>タスク完了率</li>
+<li>再評価トリガー: 通勤後パフォーマンス低下が続く場合、勤務開始時刻を再設計する。</li>
+</ul>
+<h4 id="sec-057">パッケージ2: 移動制約ガードレールパッケージ</h4>
+<ul>
+<li>目的: 連続移動による症状悪化を予防する。</li>
+<li>実施:</li>
+<li>遠距離出張の除外基準を定義する</li>
+<li>連続移動日の翌日は回復重視タスクにする</li>
+<li>代替参加（オンライン参加）ルールを明文化する</li>
+<li>運用:</li>
+<li>例外承認フローを短くし、無理な出張を防ぐ</li>
+<li>業務都合のみで除外基準を崩さない</li>
+<li>指標:</li>
+<li>連続移動後の体調悪化報告件数</li>
+<li>出張代替実施率</li>
+<li>翌日欠勤率</li>
+<li>再評価トリガー: 悪化報告が続く場合は移動上限と参加方式を再定義する。</li>
+</ul>
+<h3 id="sec-058">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>業務を出社必須/非必須に分解できる</li>
+<li>成果評価を時間拘束中心から調整できる</li>
+</ul>
+<h3 id="sec-059">失敗を防ぐポイント</h3>
+<ul>
+<li>在宅化だけで業務設計を変えないと、生産性が不安定になる</li>
+<li>同僚負担の再設計がないと長期運用しにくい</li>
+</ul>
+<h3 id="sec-060">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>通勤で最も消耗する要因（距離/混雑/乗換/気温）は何か？</li>
+<li>出社必須タスクは本当に必須か？</li>
+<li>在宅時の成果確認基準は合意されているか？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-061">関連章（次に見る候補）</h3>
+<ul>
+<li>体調変動が主因: 日ごとの業務達成度が安定しない（p-fatigue-pacing）</li>
+<li>通院日程の衝突が主因: 通院・治療と勤務スケジュールが噛み合わない（p-medical-schedule）</li>
+<li>勤務時刻の不整合が主因: 生活・服薬リズムが崩れる（p-shift-rhythm-guard）</li>
+</ul>
+<h3 id="sec-062">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S1-001, GLM-S3-001</li>
+<li>claim IDs: dafcf53e7fe87f2c, d9d2a5f228f59eef</li>
+<li>source regions: JP, NBL-local, US</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-063">第06章 配慮に必要な情報だけ共有する</h2>
+<blockquote><p>元フレーム名: 情報開示の設計不足が主因: 配慮実装とプライバシーが両立しにくい</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch06.svg" alt="第06章イラスト（仮）" /><figcaption>第06章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-disclosure-boundary</code></li>
+<li>推奨モード: <code>questions_first</code></li>
+</ul>
+<h3 id="sec-064">章の核心（因果）</h3>
+<p>必要配慮の実装には情報共有が必要だが、開示過多はプライバシー侵害リスクを高める。</p>
+<h3 id="sec-065">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 課題が「誰に何をどこまで共有するか」の設計なら本カード。面接での伝え方が主課題なら「面接時自己説明不足が主因」、相談運用の定着が主課題なら「相談運用の欠如が主因」を優先。</p>
+<h3 id="sec-066">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>「共有する情報」と「共有しない情報」を二層で定義する</li>
+<li>職務遂行に必要な配慮情報だけをチーム共有する</li>
+<li>個人情報は管理責任者ルートで限定管理する</li>
+<li>定期面談で開示範囲を見直す</li>
+</ol>
+<h3 id="sec-067">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-068">パッケージ1: 開示レイヤー設計パッケージ</h4>
+<ul>
+<li>目的: 配慮実装に必要な情報だけを適切に共有する。</li>
+<li>実施:</li>
+<li>共有情報を「業務必要」「本人限定」「管理者限定」に分ける</li>
+<li>チーム共有は配慮実施に必要な事実のみとする</li>
+<li>同意取得と更新タイミングを明示する</li>
+<li>運用:</li>
+<li>共有範囲の変更は本人同意を必須にする</li>
+<li>目的外利用を禁止し記録を残す</li>
+<li>指標:</li>
+<li>配慮実装までのリードタイム</li>
+<li>情報共有トラブル件数</li>
+<li>本人納得度</li>
+<li>再評価トリガー: トラブル発生時は共有範囲とアクセス権限を即時見直す。</li>
+</ul>
+<h4 id="sec-069">パッケージ2: 面談・見直しループパッケージ</h4>
+<ul>
+<li>目的: 開示と配慮のバランスを継続的に調整する。</li>
+<li>実施:</li>
+<li>月次面談で開示範囲と配慮効果を評価する</li>
+<li>配慮情報の更新履歴を管理責任者が保持する</li>
+<li>異動・業務変更時は再評価を必須化する</li>
+<li>運用:</li>
+<li>面談未実施を放置しない</li>
+<li>担当者依存を避けて複線管理する</li>
+<li>指標:</li>
+<li>面談実施率</li>
+<li>配慮更新反映率</li>
+<li>再発トラブル率</li>
+<li>再評価トリガー: 組織変更や担当変更が起きた時点で再設計する。</li>
+</ul>
+<h3 id="sec-070">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>情報共有ポリシーと責任者が定義されている</li>
+<li>現場が目的限定の情報共有ルールを運用できる</li>
+</ul>
+<h3 id="sec-071">失敗を防ぐポイント</h3>
+<ul>
+<li>開示を本人任せにしすぎると配慮が実装されない</li>
+<li>逆に過剰開示すると信頼損失と二次被害が起きる</li>
+</ul>
+<h3 id="sec-072">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>配慮実装に必須な情報は何で、不要な情報は何か？</li>
+<li>どの役割まで共有する必要があるか？</li>
+<li>本人同意と見直しタイミングをどう設計するか？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-073">関連章（次に見る候補）</h3>
+<ul>
+<li>相談運用の欠如が主因: 配慮が単発で定着しない（p-manager-checkin）</li>
+<li>指示の曖昧さが主因: 作業再現性が下がる（p-intellectual-task-clarity）</li>
+<li>悪化前対応の欠如が主因: 精神・心理面の症状の波に先手を打てない（p-mental-fluctuation-plan）</li>
+</ul>
+<h3 id="sec-074">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S4-001, GLM-S2-001</li>
+<li>claim IDs: 39c93a1d04fe9955, d2f92a0d8af18ab3</li>
+<li>source regions: JP, UK, CA</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-075">第07章 復職初期を守る段階復帰</h2>
+<blockquote><p>元フレーム名: 復職初期の負荷復帰が主因: 早戻しで再不調が起きやすい</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch07.svg" alt="第07章イラスト（仮）" /><figcaption>第07章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-return-to-work-ramp</code></li>
+<li>推奨モード: <code>questions_first</code></li>
+</ul>
+<h3 id="sec-076">章の核心（因果）</h3>
+<p>復職初期は「できる業務」と「継続できる業務」が一致しないことが多く、段階設計がないと再不調が起きやすい。</p>
+<h3 id="sec-077">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 休職・病休からの復職初期に負荷段階設計がないことが主因なら本カード。通常運用時の悪化予防手順不足が主因なら「悪化前対応の欠如が主因」を優先。</p>
+<h3 id="sec-078">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>復職初月は段階負荷（例: 60%→80%→100%）で設定する</li>
+<li>体調・勤務・業務進捗を同じシートで見える化する</li>
+<li>復職面談を週次で実施し、配慮を微調整する</li>
+<li>支援機関・産業保健との連携窓口を固定する</li>
+</ol>
+<h3 id="sec-079">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-080">パッケージ1: 段階復職ランプパッケージ</h4>
+<ul>
+<li>目的: 復職初期の再不調リスクを下げ、定着確率を上げる。</li>
+<li>実施:</li>
+<li>週単位で業務負荷上限を設定する</li>
+<li>復職後4週間は週次面談を固定する</li>
+<li>症状悪化時の即時調整ルールを明示する</li>
+<li>運用:</li>
+<li>短期の生産性低下を許容し長期安定を優先する</li>
+<li>面談結果を業務計画に反映する責任者を定める</li>
+<li>指標:</li>
+<li>復職後8週間の継続率</li>
+<li>再不調による離脱件数</li>
+<li>計画負荷遵守率</li>
+<li>再評価トリガー: 欠勤・早退が増加した場合、負荷段階を一段戻して再設計する。</li>
+</ul>
+<h4 id="sec-081">パッケージ2: 支援連携ブリッジパッケージ</h4>
+<ul>
+<li>目的: 職場外支援と職場運用を接続し、情報断絶を防ぐ。</li>
+<li>実施:</li>
+<li>支援機関/産業保健/現場責任者の連絡窓口を一本化する</li>
+<li>共有情報を目的限定で定義する</li>
+<li>月次で連携評価会を実施する</li>
+<li>運用:</li>
+<li>本人同意範囲を超える共有をしない</li>
+<li>共有は配慮実装に必要な最小限に留める</li>
+<li>指標:</li>
+<li>連携会実施率</li>
+<li>情報連携遅延件数</li>
+<li>配慮反映までの日数</li>
+<li>再評価トリガー: 連携遅延が続く場合は窓口設計を再編する。</li>
+</ul>
+<h3 id="sec-082">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>復職計画の合意がある</li>
+<li>調整責任者と面談スケジュールが確定している</li>
+</ul>
+<h3 id="sec-083">失敗を防ぐポイント</h3>
+<ul>
+<li>本人の一時的回復を恒常能力と誤認すると再不調につながる</li>
+<li>面談だけで業務計画を変えないと実質改善しない</li>
+</ul>
+<h3 id="sec-084">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>復職初期に崩れやすいタスクは何か？</li>
+<li>負荷を戻す判断基準はどの指標か？</li>
+<li>連携先（支援機関/産業保健）の役割分担は明確か？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-085">関連章（次に見る候補）</h3>
+<ul>
+<li>勤務時刻の不整合が主因: 生活・服薬リズムが崩れる（p-shift-rhythm-guard）</li>
+<li>相談運用の欠如が主因: 配慮が単発で定着しない（p-manager-checkin）</li>
+<li>回復時間不足が主因: 定期治療の回復リズムと業務密度が衝突する（p-internal-treatment-compatibility）</li>
+</ul>
+<h3 id="sec-086">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S2-001, GLM-S4-001</li>
+<li>claim IDs: 1bc1228c08504dbb, 3dfea629344d20c3</li>
+<li>source regions: JP, NBL-local</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-087">第08章 睡眠・服薬リズムを守るシフト設計</h2>
+<blockquote><p>元フレーム名: 勤務時刻の不整合が主因: 生活・服薬リズムが崩れる</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch08.svg" alt="第08章イラスト（仮）" /><figcaption>第08章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-shift-rhythm-guard</code></li>
+<li>推奨モード: <code>conditional_only</code></li>
+</ul>
+<h3 id="sec-088">章の核心（因果）</h3>
+<p>早出/遅出/夜勤や連続残業があると、睡眠・服薬・通院リズムが崩れやすく、症状悪化を引き起こしやすい。</p>
+<h3 id="sec-089">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 早出/遅出/夜勤/連勤など勤務時刻そのものが悪化要因なら本カード。通院日の当て込み不足が主因なら「通院日程の衝突が主因」を優先。</p>
+<h3 id="sec-090">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>固定シフト優先と残業上限の設定</li>
+<li>夜勤・連続勤務の除外条件を明文化</li>
+<li>セルフチェック（睡眠/体調）を日次で記録</li>
+<li>体調指標に応じて勤務時間を段階調整</li>
+</ol>
+<h3 id="sec-091">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-092">パッケージ1: 生活リズム保護パッケージ</h4>
+<ul>
+<li>目的: 勤務設計で症状悪化トリガーを減らす。</li>
+<li>実施:</li>
+<li>固定シフトを基本とし、急な時刻変更を抑える</li>
+<li>残業・夜勤の上限ルールを設定する</li>
+<li>睡眠・体調のセルフチェックを運用する</li>
+<li>運用:</li>
+<li>シフト変更時は本人確認を必須化する</li>
+<li>業務都合による例外を乱用しない</li>
+<li>指標:</li>
+<li>睡眠不足日数</li>
+<li>体調悪化報告件数</li>
+<li>シフト逸脱件数</li>
+<li>再評価トリガー: 体調悪化報告が増えた週はシフト設計を即時見直す。</li>
+</ul>
+<h4 id="sec-093">パッケージ2: 勤務形態フォールバックパッケージ</h4>
+<ul>
+<li>目的: 悪化兆候が出た時に勤務を安全側へ切り替える。</li>
+<li>実施:</li>
+<li>悪化サイン時の短時間勤務ルールを事前定義する</li>
+<li>業務引き継ぎ先を先に決める</li>
+<li>回復後の復帰ステップを明文化する</li>
+<li>運用:</li>
+<li>本人申告の遅れを責めない</li>
+<li>フォールバック適用記録を残す</li>
+<li>指標:</li>
+<li>フォールバック起動時間</li>
+<li>復帰までの日数</li>
+<li>再悪化率</li>
+<li>再評価トリガー: 再悪化が続く場合は基本勤務設計を再定義する。</li>
+</ul>
+<h3 id="sec-094">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>シフト編成権限がある</li>
+<li>体調記録の運用が受け入れられている</li>
+</ul>
+<h3 id="sec-095">失敗を防ぐポイント</h3>
+<ul>
+<li>例外運用の常態化でルールが形骸化する</li>
+<li>データ記録だけで勤務を調整しないと効果が出ない</li>
+</ul>
+<h3 id="sec-096">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>どの勤務帯で悪化しやすいか？</li>
+<li>夜勤・残業の代替手段はあるか？</li>
+<li>悪化兆候の閾値をどう定義するか？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-097">関連章（次に見る候補）</h3>
+<ul>
+<li>体調変動が主因: 日ごとの業務達成度が安定しない（p-fatigue-pacing）</li>
+<li>通勤負荷が主因: 始業前消耗で日中稼働が崩れる（p-commute-hybrid）</li>
+<li>復職初期の負荷復帰が主因: 早戻しで再不調が起きやすい（p-return-to-work-ramp）</li>
+</ul>
+<h3 id="sec-098">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S3-001, GLM-S1-003</li>
+<li>claim IDs: 344f20a67c246bb1, 9823aa9bed509b53</li>
+<li>source regions: JP</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-099">第09章 配慮を続ける相談運用の定着</h2>
+<blockquote><p>元フレーム名: 相談運用の欠如が主因: 配慮が単発で定着しない</p></blockquote>
+<figure class="illustration"><img src="file:///Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/guidebook/assets/book1/ch09.svg" alt="第09章イラスト（仮）" /><figcaption>第09章イラスト（仮）</figcaption></figure>
+<ul>
+<li>フレームID: <code>p-manager-checkin</code></li>
+<li>推奨モード: <code>conditional_only</code></li>
+</ul>
+<h3 id="sec-100">章の核心（因果）</h3>
+<p>相談窓口が曖昧だと、困りごとが蓄積してから顕在化し、調整が後手になりやすい。</p>
+<h3 id="sec-101">この章を選ぶ条件（境界）</h3>
+<p>選ぶ目安: 定期面談・エスカレーション・更新責任がなく配慮運用が続かないなら本カード。開示範囲の判断が主課題なら「情報開示の設計不足が主因」を優先。</p>
+<h3 id="sec-102">最初の7日（まずここだけ実装）</h3>
+<ol>
+<li>相談窓口を固定し、週次チェックインを定例化する</li>
+<li>本人申告が苦手でも拾える声かけ運用を設計する</li>
+<li>現場→人事→支援機関のエスカレーション経路を明文化する</li>
+<li>相談内容を業務設計変更に反映する運用責任者を置く</li>
+</ol>
+<h3 id="sec-103">4週間の定着運用（チーム運用に落とす）</h3>
+<h4 id="sec-104">パッケージ1: チェックイン定着パッケージ</h4>
+<ul>
+<li>目的: 問題を早期検知し、配慮の微調整を継続する。</li>
+<li>実施:</li>
+<li>週次15分チェックインを固定化する</li>
+<li>相談項目テンプレート（体調/業務/環境）を使う</li>
+<li>未対応項目に期限と責任者を設定する</li>
+<li>運用:</li>
+<li>単なる傾聴で終わらせず、次アクションを必ず決める</li>
+<li>申告しづらい人向けに代替入力手段を用意する</li>
+<li>指標:</li>
+<li>相談実施率</li>
+<li>未対応項目滞留日数</li>
+<li>配慮更新件数</li>
+<li>再評価トリガー: 未対応滞留が増えた場合は会議体と責任分担を再設計する。</li>
+</ul>
+<h4 id="sec-105">パッケージ2: 支援連携エスカレーションパッケージ</h4>
+<ul>
+<li>目的: 現場だけで抱え込まない運用を作る。</li>
+<li>実施:</li>
+<li>エスカレーション条件を明文化する</li>
+<li>人事・産業保健・支援機関の接続点を定義する</li>
+<li>連携結果を現場運用へ戻す</li>
+<li>運用:</li>
+<li>目的外共有をしない</li>
+<li>連携結果を現場で実装したか確認する</li>
+<li>指標:</li>
+<li>エスカレーション適時率</li>
+<li>連携後の再発率</li>
+<li>現場納得度</li>
+<li>再評価トリガー: 再発率が下がらない場合は連携プロトコルを改定する。</li>
+</ul>
+<h3 id="sec-106">前提条件チェック（実装前に確認）</h3>
+<ul>
+<li>相談窓口の担当が明確</li>
+<li>業務変更権限を持つ管理者が関与できる</li>
+</ul>
+<h3 id="sec-107">失敗を防ぐポイント</h3>
+<ul>
+<li>相談だけ増えて実装が伴わない</li>
+<li>担当者依存で運用継続性が落ちる</li>
+</ul>
+<h3 id="sec-108">追加確認質問（不足コンテキスト補完）</h3>
+<ul>
+<li>現在の相談導線は誰が担っているか？</li>
+<li>相談内容が業務変更へ反映されるまでの遅延は何日か？</li>
+<li>連携先へのエスカレーション条件は明確か？</li>
+<li>person: 本人の強み・疲労サイン・回復手段は何か。</li>
+<li>job: 必須業務と代替可能業務の境界はどこか。</li>
+<li>environment: トリガーになっている環境要因は何か。</li>
+<li>support: 誰が調整責任者か。支援機関連携は必要か。</li>
+<li>time: いつ悪化し、いつ回復するか。週内パターンはあるか。</li>
+<li>institution: 法域・就業規則・制度制約は何か。</li>
+<li>evidence: 導入後に何を指標として改善判定するか。</li>
+</ul>
+<h3 id="sec-109">関連章（次に見る候補）</h3>
+<ul>
+<li>情報開示の設計不足が主因: 配慮実装とプライバシーが両立しにくい（p-disclosure-boundary）</li>
+<li>復職初期の負荷復帰が主因: 早戻しで再不調が起きやすい（p-return-to-work-ramp）</li>
+<li>悪化前対応の欠如が主因: 精神・心理面の症状の波に先手を打てない（p-mental-fluctuation-plan）</li>
+</ul>
+<h3 id="sec-110">根拠メモ（監修・監査用）</h3>
+<ul>
+<li>GLM: GLM-S4-001, GLM-S2-002</li>
+<li>claim IDs: c496569b9ed0b484, bc5b77049ad3cbbd</li>
+<li>source regions: JP, NBL-local</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-111">付録: レビュー時の確認観点</h2>
+<ul>
+<li>章タイトルがデータ根拠に沿って過不足なく表現されているか。</li>
+<li>似た章との境界が読者に分かるか。</li>
+<li>7日プランが「誰が、いつ、何を」実行する単位になっているか。</li>
+<li>測定指標が現場で実際に記録できる粒度か。</li>
+<li>追加質問で person/job/environment/support/time/institution/evidence を埋められるか。</li>
+</ul>
+</section>
+    </article>
+  </main>
+</body>
+</html>

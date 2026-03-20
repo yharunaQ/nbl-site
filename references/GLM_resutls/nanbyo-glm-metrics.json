@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-02-17T06:10:21.934087Z",
+  "sourceFile": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/GLM_resutls/NanbyoGLM.xlsx",
+  "sheetCount": 4,
+  "sheets": [
+    {
+      "sheet": "1 就労困難性発生",
+      "predictorRows": 52,
+      "pColumns": 19,
+      "significantRelations": 146,
+      "predictorsWithSignificantRelation": 51
+    },
+    {
+      "sheet": "2 就労困難性（解決可能性）",
+      "predictorRows": 68,
+      "pColumns": 19,
+      "significantRelations": 142,
+      "predictorsWithSignificantRelation": 67
+    },
+    {
+      "sheet": "3 難病の症状に影響する仕事や職場の状況",
+      "predictorRows": 57,
+      "pColumns": 12,
+      "significantRelations": 170,
+      "predictorsWithSignificantRelation": 56
+    },
+    {
+      "sheet": "4 必要な配慮・理解・支援に関わる要因",
+      "predictorRows": 36,
+      "pColumns": 40,
+      "significantRelations": 81,
+      "predictorsWithSignificantRelation": 35
+    }
+  ],
+  "totals": {
+    "significantRelations": 539,
+    "uniquePredictorsWithSignificantRelation": 209
+  }
+}

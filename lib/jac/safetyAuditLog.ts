@@ -59,6 +59,10 @@ type JacSafetyAuditEvent = {
     warningCount: number;
     fallbackReason: string | null;
   };
+  signals: {
+    requiresImmediateReview: boolean;
+    immediateReviewReasons: string[];
+  };
 };
 
 const AUDIT_DIR = path.join(process.cwd(), '.tmp', 'jac-safety-audit');
@@ -145,6 +149,48 @@ function buildAuditEvent(input: RecordSafetyAuditInput): JacSafetyAuditEvent {
       warningCount: input.warningCount,
       fallbackReason: input.fallbackReason || null,
     },
+    signals: buildAuditSignals(input),
+  };
+}
+
+function buildAuditSignals(input: RecordSafetyAuditInput): JacSafetyAuditEvent['signals'] {
+  const reasons = new Set<string>();
+
+  if (input.outcome === 'error') {
+    reasons.add('outcome_error');
+  }
+  if (input.outcome === 'fallback') {
+    reasons.add('outcome_fallback');
+  }
+  if (input.safetyGate.mode === 'strict') {
+    reasons.add('strict_mode');
+  }
+
+  const strongReasonCodes = new Set([
+    'high_risk_without_specific_case',
+    'high_risk_dominant',
+    'aggregated_evidence_dominant',
+  ]);
+  for (const code of input.safetyGate.reasonCodes || []) {
+    if (strongReasonCodes.has(code)) {
+      reasons.add(`reason_code:${code}`);
+    }
+  }
+
+  if (input.safetyGate.missingContextCount >= 3) {
+    reasons.add('missing_context_high');
+  }
+  if (input.warningCount >= 3) {
+    reasons.add('warning_count_high');
+  }
+  if (input.selectedSourceCount > 0 && input.evidenceCount === 0) {
+    reasons.add('evidence_zero_with_sources');
+  }
+
+  const immediateReviewReasons = Array.from(reasons);
+  return {
+    requiresImmediateReview: immediateReviewReasons.length > 0,
+    immediateReviewReasons,
   };
 }
 

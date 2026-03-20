@@ -1,0 +1,134 @@
+[
+  {
+    "id": "hearing_meeting_phone",
+    "consultation": "難聴があり、会議や電話対応で聞き取りが難しい。騒音があるとさらに負荷が上がる。",
+    "expectedTags": {
+      "task": ["会議・対話"],
+      "symptom": ["聴覚負荷（聞き取り困難/雑音）"],
+      "environment": ["騒音・音環境"],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["難聴"]
+  },
+  {
+    "id": "low_vision_screen_commute",
+    "consultation": "弱視・視野障害があり、画面のまぶしさで眼精疲労が強い。通勤時の混雑も負担が大きい。",
+    "expectedTags": {
+      "task": ["画面作業（視認性/長時間PC）"],
+      "symptom": ["視覚負荷（見えづらさ/眼精疲労）"],
+      "environment": ["光・画面の明るさ/反射", "通勤負荷（時間/混雑/距離）"],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["弱視", "視野障害"]
+  },
+  {
+    "id": "epilepsy_clinic_break",
+    "consultation": "てんかんで定期通院が必要。疲労がたまると集中が落ちるので、休憩と勤務時間調整が必要。",
+    "expectedTags": {
+      "task": ["集中作業・思考作業"],
+      "symptom": ["睡眠リズム・通院/治療スケジュール", "疲労・倦怠（慢性疲労含む）"],
+      "environment": ["休憩の取りやすさ・休養導線"],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["てんかん"]
+  },
+  {
+    "id": "mood_disorder_deadline",
+    "consultation": "気分障害（うつ、そううつ等）で不安が強く、納期が重なると体調の波が大きくなる。",
+    "expectedTags": {
+      "task": ["時間制約・納期"],
+      "symptom": ["不安・緊張・メンタル負荷", "痛み・体調変動（波がある）"],
+      "environment": [],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["気分障害", "うつ"]
+  },
+  {
+    "id": "physical_posture_pain",
+    "consultation": "切断、その他の肢体不自由があり、長時間座位で腰痛が悪化する。椅子や机の調整が必要。",
+    "expectedTags": {
+      "task": [],
+      "symptom": ["痛み・体調変動（波がある）"],
+      "environment": ["姿勢・椅子・机（エルゴノミクス）"],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["肢体不自由", "切断"]
+  },
+  {
+    "id": "asperger_communication",
+    "consultation": "アスペルガー障害があり、会話や議論で意図が伝わりにくい。対人調整のストレスが高い。",
+    "expectedTags": {
+      "task": ["会議・対話", "対人調整・感情労働"],
+      "symptom": ["不安・緊張・メンタル負荷"],
+      "environment": [],
+      "preference": ["対人関係の安定を重視"]
+    },
+    "expectedDisabilityAny": ["アスペルガー障害"]
+  },
+  {
+    "id": "schizophrenia_sleep_remote",
+    "consultation": "統合失調症の治療継続中で、生活リズムと睡眠が崩れると就労継続が難しい。在宅と出社の調整が必要。",
+    "expectedTags": {
+      "task": [],
+      "symptom": ["睡眠リズム・通院/治療スケジュール"],
+      "environment": ["リモート/出社"],
+      "preference": ["生活リズムを守りたい"]
+    },
+    "expectedDisabilityAny": ["統合失調症"]
+  },
+  {
+    "id": "nf1_pain_treatment",
+    "consultation": "レックリングハウゼン病で痛みと通院が続く。通院日の業務配慮と休みの取りやすさが必要。",
+    "expectedTags": {
+      "task": [],
+      "symptom": ["痛み・体調変動（波がある）", "睡眠リズム・通院/治療スケジュール"],
+      "environment": ["休憩の取りやすさ・休養導線"],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["レックリングハウゼン病"]
+  },
+  {
+    "id": "blind_document_support",
+    "consultation": "全盲で文書の読み取りに時間がかかる。説明を文章と音声で補完してもらえると助かる。",
+    "expectedTags": {
+      "task": ["文章作成・読解"],
+      "symptom": [],
+      "environment": [],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["全盲"]
+  },
+  {
+    "id": "adhd_multitask_deadline",
+    "consultation": "注意欠陥多動性障害で複数業務の切替が重なるとミスが増える。優先順位と締切の見える化が必要。",
+    "expectedTags": {
+      "task": ["マルチタスク・切替", "時間制約・納期"],
+      "symptom": ["注意集中の波・認知負荷"],
+      "environment": [],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["注意欠陥多動性障害"]
+  },
+  {
+    "id": "deaf_email_meeting",
+    "consultation": "ろうあで電話対応が難しい。連絡はメール中心にして、会議の情報保障が必要。",
+    "expectedTags": {
+      "task": ["会議・対話"],
+      "symptom": ["聴覚負荷（聞き取り困難/雑音）"],
+      "environment": [],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["ろうあ"]
+  },
+  {
+    "id": "panic_commute_remote",
+    "consultation": "不安障害・パニック障害があり、満員電車の通勤で発作リスクが高い。時差出勤や在宅勤務が必要。",
+    "expectedTags": {
+      "task": [],
+      "symptom": ["不安・緊張・メンタル負荷"],
+      "environment": ["通勤負荷（時間/混雑/距離）", "リモート/出社"],
+      "preference": []
+    },
+    "expectedDisabilityAny": ["不安障害", "パニック障害"]
+  }
+]

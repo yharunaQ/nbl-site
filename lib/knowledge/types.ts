@@ -66,7 +66,10 @@ export type KnowledgeClaim = {
     trustTiers: string[];
     pageTypes: string[];
     evidenceScopes: string[];
+    evidenceLane?: string;
     disabilityFacets: string[];
+    conditionLabels?: string[];
+    disabilityLabels?: string[];
     industryFacets: string[];
     companySizeFacets: string[];
     accommodationFacets: string[];
@@ -100,6 +103,7 @@ export type KnowledgeSafetyGate = {
   partialClaimCount: number;
   missingContextCount: number;
   sampleClaimIds: string[];
+  evidenceLaneCounts: Record<string, number>;
   followUpQuestions: string[];
 };
 

@@ -1,0 +1,124 @@
+{
+  "updatedAt": "2026-03-07",
+  "status": "proposed",
+  "principle": {
+    "legalPolicyGuardrail": "法政策差は26フレーム本体へ厚く混ぜず、原則は共通ガードレール層で扱う。カード内には適用条件を誤らないための短い補助線だけ残す。",
+    "regionalSupportOverlay": "地域支援オーケストレーションはJACの実施しやすさ判断に必要な範囲だけカードへ残し、詳細運用は共通レイヤーまたは別ガイドへ逃がす。"
+  },
+  "dispositionLabels": {
+    "keep_in_card": "カード内に残す",
+    "move_to_shared_layer": "共通レイヤーへ寄せる",
+    "move_to_separate_guide": "別ガイドへ寄せる"
+  },
+  "cards": [
+    {
+      "cardId": "p-support-service-navigation",
+      "legalPolicy": {
+        "disposition": "move_to_shared_layer",
+        "keepInCard": [
+          "制度要件は法域・自治体確認前提で使う"
+        ],
+        "detailTarget": "法政策ガードレール層"
+      },
+      "regionalSupport": {
+        "disposition": "move_to_separate_guide",
+        "keepInCard": [
+          "支援接続案は期限・責任者つきで見る"
+        ],
+        "detailTarget": "地域支援オーケストレーション別ガイド"
+      },
+      "rationale": "支援接続そのものはカード主題だが、窓口間連携やケース会議の詳細は地域支援者向け運用に寄る。カードには実施可否の判断線だけ残す。",
+      "nextArtifact": [
+        "法政策ガードレール層",
+        "地域支援オーケストレーション別ガイド"
+      ]
+    },
+    {
+      "cardId": "p-worktrial-transition",
+      "legalPolicy": {
+        "disposition": "move_to_shared_layer",
+        "keepInCard": [
+          "実習制度の要件確認は法域前提で行う"
+        ],
+        "detailTarget": "法政策ガードレール層"
+      },
+      "regionalSupport": {
+        "disposition": "keep_in_card",
+        "keepInCard": [
+          "採用後1から4週の支援体制を実習評価とセットで見る"
+        ],
+        "detailTarget": "JACカード本文"
+      },
+      "rationale": "移行失敗リスクは支援体制の有無で大きく変わるため、地域支援の存在はカード内で見える必要がある。一方で制度差の詳細は共通層で足りる。",
+      "nextArtifact": [
+        "法政策ガードレール層",
+        "JACカード本文"
+      ]
+    },
+    {
+      "cardId": "p-manager-checkin",
+      "legalPolicy": {
+        "disposition": "move_to_shared_layer",
+        "keepInCard": [
+          "社内責任線と相談導線を可視化する"
+        ],
+        "detailTarget": "法政策ガードレール層"
+      },
+      "regionalSupport": {
+        "disposition": "move_to_shared_layer",
+        "keepInCard": [
+          "外部エスカレーション先があるかだけ示す"
+        ],
+        "detailTarget": "地域支援オーケストレーション共通レイヤー"
+      },
+      "rationale": "相談運用やエスカレーション責務は多カードに共通する。ここへ詳細を書き込むと、運用ガバナンスの共通部が重複して肥大化しやすい。",
+      "nextArtifact": [
+        "法政策ガードレール層",
+        "地域支援オーケストレーション共通レイヤー"
+      ]
+    },
+    {
+      "cardId": "p-disclosure-boundary",
+      "legalPolicy": {
+        "disposition": "keep_in_card",
+        "keepInCard": [
+          "共有目的・共有範囲・見直し時点を最小共有で設計する"
+        ],
+        "detailTarget": "JACカード本文"
+      },
+      "regionalSupport": {
+        "disposition": "keep_in_card",
+        "keepInCard": [
+          "支援体制とセットで開示量を判断する"
+        ],
+        "detailTarget": "JACカード本文"
+      },
+      "rationale": "このカードの境界そのものが法政策条件と役割分担で決まる。外へ逃がしすぎると、何を判断するカードかが分からなくなる。",
+      "nextArtifact": [
+        "JACカード本文"
+      ]
+    },
+    {
+      "cardId": "p-mental-fluctuation-plan",
+      "legalPolicy": {
+        "disposition": "move_to_shared_layer",
+        "keepInCard": [
+          "初期サインと段階調整の閾値を明文化する"
+        ],
+        "detailTarget": "法政策ガードレール層"
+      },
+      "regionalSupport": {
+        "disposition": "keep_in_card",
+        "keepInCard": [
+          "再評価導線と戻し先を示す"
+        ],
+        "detailTarget": "JACカード本文"
+      },
+      "rationale": "悪化時の実行可能性は再評価導線の有無に左右されるため、地域支援の接続はカード内で見える必要がある。法政策の詳細は共通ガードレールへ寄せた方が読みやすい。",
+      "nextArtifact": [
+        "法政策ガードレール層",
+        "JACカード本文"
+      ]
+    }
+  ]
+}

@@ -45,7 +45,7 @@ export const GLM_INTERACTION_MEANINGS = [
     '必要支援の形成: 本人が必要と感じる配慮/支援は、病気特性・就労困難の経験・本人特性の相互作用で決まる。',
 ];
 
-const GLM_EVIDENCE: GlmEvidence[] = [
+export const GLM_EVIDENCE: GlmEvidence[] = [
     {
         id: 'GLM-S1-001',
         sheet: '1 就労困難性発生',

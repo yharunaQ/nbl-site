@@ -20,6 +20,16 @@
     "notes": "Domestic guideline and handbook PDFs."
   },
   {
+    "id": "nbl_curated_local_notes",
+    "name": "NBL Curated Local Notes",
+    "kind": "local_fs",
+    "enabled": true,
+    "trustLevel": "primary",
+    "refresh": "manual",
+    "location": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references",
+    "notes": "Curated markdown notes that reorganize raw sources for JAC operational use via sidecar metadata."
+  },
+  {
     "id": "askjan_website",
     "name": "AskJAN Website",
     "kind": "website",
@@ -29,7 +39,7 @@
     "location": "https://askjan.org/",
     "notes": "Enable when web crawler connector is configured.",
     "crawlDepth": 2,
-    "maxPages": 80,
+    "maxPages": 140,
     "allowPathPrefixes": [
       "/sitsol/",
       "/a-to-z.cfm",
@@ -40,7 +50,41 @@
     ],
     "seedUrls": [
       "https://askjan.org/sitsol/index.cfm",
-      "https://askjan.org/a-to-z.cfm"
+      "https://askjan.org/a-to-z.cfm",
+      "https://askjan.org/disabilities/Brain-Injury.cfm",
+      "https://askjan.org/disabilities/Stroke.cfm",
+      "https://askjan.org/limitations/Executive-Functioning-Deficits.cfm"
+    ]
+  },
+  {
+    "id": "askearn_employer_guidance",
+    "name": "AskEARN Employer Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://askearn.org/",
+    "notes": "US employer-side disability inclusion guidance focused on hiring, retention, advancement, mental health, neurodiversity, and workplace policy/toolkits.",
+    "crawlDepth": 1,
+    "maxPages": 72,
+    "allowPathPrefixes": [
+      "/page/",
+      "/publication/",
+      "/learning-center/course/",
+      "/publications",
+      "/courses",
+      "/mentalhealth"
+    ],
+    "seedUrls": [
+      "https://askearn.org/page/disability-at-work-framework",
+      "https://askearn.org/page/mental-health-toolkit",
+      "https://askearn.org/page/accommodation-and-accessibility-toolkit",
+      "https://askearn.org/page/neurodiversity-in-the-workplace",
+      "https://askearn.org/page/learning-guide-mental-well-being-of-gen-z-workers",
+      "https://askearn.org/page/small-business-toolkit",
+      "https://askearn.org/publications",
+      "https://askearn.org/courses",
+      "https://askearn.org/mentalhealth"
     ]
   },
   {
@@ -54,16 +98,17 @@
     "notes": "Enable when web crawler connector is configured.",
     "crawlDepth": 3,
     "maxPages": 320,
-    "allowPathPrefixes": [
-      "/detail.php",
-      "/search_result.php"
-    ],
+    "allowPathPrefixes": ["/detail.php", "/search_result.php"],
     "seedUrlTemplate": "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page={page}&search=1&query=*&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02",
     "seedPageStart": 1,
     "seedPageEnd": 24,
     "seedPageStep": 1,
     "seedUrls": [
-      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=*&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02"
+      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=*&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02",
+      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=%E9%AB%98%E6%AC%A1%E8%84%B3%E6%A9%9F%E8%83%BD%E9%9A%9C%E5%AE%B3&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02",
+      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=%E8%84%B3%E5%8D%92%E4%B8%AD&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02",
+      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=%E8%A8%98%E6%86%B6%E9%9A%9C%E5%AE%B3&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02",
+      "https://www.ref.jeed.go.jp/search_result.php?collection=jeed&page=1&search=1&query=%E5%A4%B1%E8%AA%9E%E7%97%87&ref_jirei=1&ref_publish_year_from=2002&ref_publish_year_to=2025&gnavIsAction=jirei02"
     ]
   },
   {
@@ -101,10 +146,7 @@
     "notes": "EU-level guidance and practical resources on workplace reasonable accommodation.",
     "crawlDepth": 1,
     "maxPages": 24,
-    "allowedHosts": [
-      "https://op.europa.eu/",
-      "https://europa.eu/"
-    ],
+    "allowedHosts": ["https://op.europa.eu/", "https://europa.eu/"],
     "allowPathPrefixes": [
       "/reasonable-accommodation-work-guidelines-and-good-practices_en",
       "/webpub/empl/reasonable-accommodation-at-work/",
@@ -127,9 +169,7 @@
     "notes": "German anti-discrimination legal text (AGG) relevant to workplace accommodation baseline.",
     "crawlDepth": 1,
     "maxPages": 12,
-    "allowPathPrefixes": [
-      "/englisch_agg/"
-    ],
+    "allowPathPrefixes": ["/englisch_agg/"],
     "seedUrls": [
       "https://www.gesetze-im-internet.de/englisch_agg/",
       "https://www.gesetze-im-internet.de/englisch_agg/englisch_agg.html"
@@ -146,9 +186,7 @@
     "notes": "German anti-discrimination office and labor ministry pages related to work and inclusion.",
     "crawlDepth": 1,
     "maxPages": 24,
-    "allowedHosts": [
-      "https://www.bmas.de/"
-    ],
+    "allowedHosts": ["https://www.bmas.de/"],
     "allowPathPrefixes": [
       "/DE/startseite/",
       "/DE/ueber-diskriminierung/lebensbereiche/arbeitsleben/",
@@ -172,12 +210,37 @@
     "location": "https://jobaccess.gov.au/",
     "notes": "Australian employer guidance on reasonable adjustment and disability employment.",
     "crawlDepth": 1,
-    "maxPages": 10,
+    "maxPages": 16,
     "allowPathPrefixes": [
-      "/i-am-an-employer/know-rights-responsibilities/"
+      "/i-am-an-employer/know-rights-responsibilities/",
+      "/i-am-a-person-with-disability/working-or-about-start-work/"
     ],
     "seedUrls": [
-      "https://jobaccess.gov.au/i-am-an-employer/know-rights-responsibilities/guidelines-reasonable-adjustment"
+      "https://jobaccess.gov.au/i-am-an-employer/know-rights-responsibilities/guidelines-reasonable-adjustment",
+      "https://jobaccess.gov.au/i-am-a-person-with-disability/working-or-about-start-work/returning-work-after-injury"
+    ]
+  },
+  {
+    "id": "uk_headway_brain_injury_work",
+    "name": "UK Headway Brain Injury Work Guidance",
+    "kind": "website",
+    "enabled": true,
+    "trustLevel": "external",
+    "refresh": "weekly",
+    "location": "https://www.headway.org.uk/",
+    "notes": "UK brain injury charity guidance focused on cognitive effects and return-to-work practice.",
+    "crawlDepth": 1,
+    "maxPages": 18,
+    "allowPathPrefixes": [
+      "/about-brain-injury/individuals/brain-injury-and-me/",
+      "/about-brain-injury/individuals/effects-of-brain-injury/",
+      "/about-brain-injury/individuals/practical-issues/"
+    ],
+    "seedUrls": [
+      "https://www.headway.org.uk/about-brain-injury/individuals/brain-injury-and-me/making-returning-to-work-work-for-you/",
+      "https://www.headway.org.uk/about-brain-injury/individuals/brain-injury-and-me/6-strategies-for-getting-back-to-work-after-brain-injury/",
+      "https://www.headway.org.uk/about-brain-injury/individuals/effects-of-brain-injury/cognitive-effects-of-brain-injury/",
+      "https://www.headway.org.uk/about-brain-injury/individuals/practical-issues/welfare-benefits/employment-and-support-allowance-esa/"
     ]
   },
   {

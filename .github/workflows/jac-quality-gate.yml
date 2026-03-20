@@ -1,0 +1,48 @@
+name: JAC Quality Gate
+
+on:
+  pull_request:
+    paths:
+      - 'lib/jac/**'
+      - 'pages/jac/**'
+      - 'pages/api/jac-tag-suggest.ts'
+      - 'scripts/jac/**'
+      - 'references/data2/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/jac-quality-gate.yml'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'lib/jac/**'
+      - 'pages/jac/**'
+      - 'pages/api/jac-tag-suggest.ts'
+      - 'scripts/jac/**'
+      - 'references/data2/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/jac-quality-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run JAC quality gate
+        run: npm run jac:quality:gate
