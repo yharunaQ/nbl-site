@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JAC 重点5フレーム カード見本</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --subtle: #6b7280;
+      --line: #d1d5db;
+      --accent: #0f766e;
+      --paper: #ffffff;
+      --bg: #f8fafc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+      line-height: 1.85;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .book {
+      width: 210mm;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 6px 30px rgba(15, 23, 42, 0.08);
+      min-height: 100vh;
+      padding: 24mm 18mm 20mm;
+    }
+    .cover {
+      min-height: 220mm;
+      display: grid;
+      align-content: center;
+      gap: 10mm;
+      border: 1px solid var(--line);
+      padding: 16mm;
+      background: linear-gradient(160deg, #f0fdfa, #ffffff 56%, #ecfeff);
+    }
+    .cover .eyebrow {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .cover h1 {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 33px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+    .cover p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--subtle);
+    }
+    .meta-block {
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .toc {
+      margin-top: 14mm;
+      padding-top: 10mm;
+      border-top: 1px solid var(--line);
+    }
+    .toc h2 {
+      margin: 0 0 6mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 20px;
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 16mm;
+      font-size: 12px;
+    }
+    .toc-list li {
+      break-inside: avoid;
+      margin: 0 0 4px;
+      padding-right: 10px;
+    }
+    .toc-list a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .toc-list a:hover {
+      border-bottom-color: var(--line);
+    }
+    .content {
+      margin-top: 16mm;
+      font-size: 13px;
+    }
+    .chapter {
+      break-before: page;
+      page-break-before: always;
+      padding-top: 2mm;
+    }
+    h2, h3, h4 {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 4mm;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 1.5mm;
+    }
+    .chapter > h2 + p {
+      border-bottom: 2px solid #99f6e4;
+      padding-bottom: 3mm;
+      margin-bottom: 4.6mm;
+    }
+    h3 { font-size: 17px; margin-top: 7mm; }
+    h4 { font-size: 14px; margin-top: 5mm; }
+    p { margin: 0 0 3.4mm; }
+    ul, ol {
+      margin: 0 0 4mm;
+      padding-left: 20px;
+    }
+    li { margin-bottom: 2mm; }
+    blockquote {
+      margin: 0 0 4.2mm;
+      padding: 4mm 4.5mm;
+      border-left: 4px solid #99f6e4;
+      background: #f0fdfa;
+      color: #334155;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 8mm 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+    pre {
+      margin: 0 0 4mm;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 4mm;
+      border-radius: 8px;
+      overflow: auto;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    figure.illustration {
+      margin: 0 0 6mm;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 3mm;
+      background: #f8fafc;
+    }
+    figure.illustration img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #eef2ff;
+    }
+    figure.illustration figcaption {
+      margin-top: 2mm;
+      font-size: 11px;
+      color: var(--subtle);
+      text-align: center;
+    }
+    body.theme-focus-card-editorial {
+      color: #2f261d;
+      background:
+        radial-gradient(circle at top left, #e8decf 0, #f4eee5 42%, #edf3f0 100%);
+    }
+    body.theme-focus-card-editorial .book {
+      width: 206mm;
+      background: linear-gradient(180deg, #fbf8f1 0, #f7f1e7 100%);
+      box-shadow: 0 22px 56px rgba(60, 42, 18, 0.14);
+      padding: 18mm 14mm 16mm;
+    }
+    body.theme-focus-card-editorial .cover {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      padding: 18mm 18mm 16mm;
+      border: 1px solid #d7c7b0;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.10), rgba(15, 23, 42, 0.04) 46%, rgba(183, 131, 56, 0.11) 100%),
+        linear-gradient(180deg, #fffdf8 0, #f7efe1 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+    }
+    body.theme-focus-card-editorial .cover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 38mm;
+      background: linear-gradient(180deg, #0f766e 0, #164e63 100%);
+      opacity: 0.92;
+    }
+    body.theme-focus-card-editorial .cover::after {
+      content: "EDITORIAL SAMPLE";
+      position: absolute;
+      top: 18mm;
+      right: -14mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.88);
+      transform: rotate(90deg);
+      transform-origin: center;
+    }
+    body.theme-focus-card-editorial .cover .eyebrow,
+    body.theme-focus-card-editorial .cover h1,
+    body.theme-focus-card-editorial .cover p,
+    body.theme-focus-card-editorial .cover .meta-block {
+      position: relative;
+      z-index: 1;
+      max-width: 126mm;
+    }
+    body.theme-focus-card-editorial .cover .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: #0f766e;
+    }
+    body.theme-focus-card-editorial .cover h1 {
+      font-size: 41px;
+      line-height: 1.22;
+      letter-spacing: 0.02em;
+      color: #1f2b26;
+    }
+    body.theme-focus-card-editorial .cover p:not(.eyebrow) {
+      font-size: 14px;
+      line-height: 1.85;
+      color: #645645;
+    }
+    body.theme-focus-card-editorial .meta-block {
+      gap: 4px;
+      margin-top: 3mm;
+      padding-top: 4mm;
+      border-top: 1px solid rgba(112, 95, 66, 0.26);
+      color: #6d5c49;
+    }
+    body.theme-focus-card-editorial .toc {
+      margin-top: 10mm;
+      padding: 8mm 9mm 7mm;
+      border-top: 0;
+      border: 1px solid #d8c9b3;
+      border-radius: 18px;
+      background: rgba(255, 252, 246, 0.86);
+    }
+    body.theme-focus-card-editorial .toc h2 {
+      margin-bottom: 5mm;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: #0f766e;
+    }
+    body.theme-focus-card-editorial .toc-list {
+      columns: initial;
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2mm 10mm;
+      counter-reset: toc;
+      font-size: 12px;
+    }
+    body.theme-focus-card-editorial .toc-list li {
+      counter-increment: toc;
+      position: relative;
+      margin: 0;
+      padding: 3mm 0 3mm 11mm;
+      border-top: 1px solid #e3d7c5;
+      break-inside: avoid;
+    }
+    body.theme-focus-card-editorial .toc-list li::before {
+      content: counter(toc, decimal-leading-zero);
+      position: absolute;
+      top: 3mm;
+      left: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: #0f766e;
+      font-weight: 700;
+    }
+    body.theme-focus-card-editorial .toc-list a {
+      display: inline-block;
+      color: #2f261d;
+    }
+    body.theme-focus-card-editorial .content {
+      margin-top: 10mm;
+    }
+    body.theme-focus-card-editorial .content > p:first-child {
+      margin-bottom: 3mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #776655;
+      text-transform: uppercase;
+    }
+    body.theme-focus-card-editorial .content > p:nth-child(2) {
+      max-width: 142mm;
+      margin-bottom: 8mm;
+      padding: 5mm 6mm;
+      border: 1px solid #ded0bc;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+      line-height: 1.95;
+      color: #4d4134;
+    }
+    body.theme-focus-card-editorial .content > hr:first-of-type {
+      display: none;
+    }
+    body.theme-focus-card-editorial .chapter {
+      --frame-accent: #0f766e;
+      --frame-accent-2: #2563eb;
+      --frame-accent-soft: #e9f5f1;
+      --frame-accent-line: #9bd8d4;
+      --frame-marker: #d7b271;
+      padding: 12mm 11mm 10mm 13mm;
+      border: 1px solid #ddceb7;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 243, 234, 0.98));
+      box-shadow: 0 14px 34px rgba(58, 42, 20, 0.09);
+      position: relative;
+      overflow: hidden;
+    }
+    body.theme-focus-card-editorial .chapter::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11mm;
+      bottom: 11mm;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--frame-accent) 0, var(--frame-accent-2) 100%);
+    }
+    body.theme-focus-card-editorial .chapter.frame-route {
+      --frame-accent: #0f766e;
+      --frame-accent-2: #1d4ed8;
+      --frame-accent-soft: #e6f6f2;
+      --frame-accent-line: #9bd8d4;
+      --frame-marker: #b7791f;
+    }
+    body.theme-focus-card-editorial .chapter.frame-bridge {
+      --frame-accent: #b45309;
+      --frame-accent-2: #d97706;
+      --frame-accent-soft: #fbeddc;
+      --frame-accent-line: #efc48a;
+      --frame-marker: #8c5a16;
+    }
+    body.theme-focus-card-editorial .chapter.frame-governance {
+      --frame-accent: #1d4ed8;
+      --frame-accent-2: #0f766e;
+      --frame-accent-soft: #e8efff;
+      --frame-accent-line: #b8c7f0;
+      --frame-marker: #4f46e5;
+    }
+    body.theme-focus-card-editorial .chapter.frame-boundary {
+      --frame-accent: #9a3412;
+      --frame-accent-2: #be123c;
+      --frame-accent-soft: #fbe9e4;
+      --frame-accent-line: #efb6a8;
+      --frame-marker: #b45309;
+    }
+    body.theme-focus-card-editorial .chapter.frame-signal {
+      --frame-accent: #047857;
+      --frame-accent-2: #b91c1c;
+      --frame-accent-soft: #e7f6ef;
+      --frame-accent-line: #9fd7bf;
+      --frame-marker: #b91c1c;
+    }
+    body.theme-focus-card-editorial .chapter > hr {
+      display: none;
+    }
+    body.theme-focus-card-editorial .chapter > h2:not(.frame-heading) {
+      font-size: 26px;
+      margin-bottom: 4mm;
+      padding-bottom: 3mm;
+      border-bottom: 2px solid #9bd8d4;
+      color: #1e2d2a;
+    }
+    body.theme-focus-card-editorial .frame-heading {
+      display: grid;
+      gap: 1.6mm;
+      margin-bottom: 1.8mm;
+    }
+    body.theme-focus-card-editorial .frame-kicker {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--frame-accent);
+      font-weight: 700;
+    }
+    body.theme-focus-card-editorial .frame-meta {
+      display: inline-flex;
+      width: fit-content;
+      padding: 1mm 2.8mm;
+      border-radius: 999px;
+      border: 1px solid var(--frame-accent-line);
+      background: var(--frame-accent-soft);
+      color: var(--frame-accent);
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+    body.theme-focus-card-editorial .frame-title {
+      display: block;
+      font-size: 29px;
+      line-height: 1.24;
+      letter-spacing: 0.01em;
+      color: #1d2b28;
+    }
+    body.theme-focus-card-editorial .chapter > h2 + p {
+      max-width: 136mm;
+      padding-bottom: 4mm;
+      margin-bottom: 7mm;
+      border-bottom: 2px solid var(--frame-accent-line);
+      font-size: 15px;
+      line-height: 1.86;
+      color: #4c4035;
+    }
+    body.theme-focus-card-editorial h3 {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 8mm;
+      margin-bottom: 3mm;
+      padding: 1.2mm 4mm;
+      border-radius: 999px;
+      border: 1px solid var(--frame-accent-line);
+      background: var(--frame-accent-soft);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--frame-accent);
+    }
+    body.theme-focus-card-editorial h3.section-heading::before {
+      margin-right: 2.4mm;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      opacity: 0.82;
+    }
+    body.theme-focus-card-editorial h3.section-scene::before {
+      content: "SCENE";
+    }
+    body.theme-focus-card-editorial h3.section-diagnosis::before {
+      content: "TRIAGE";
+    }
+    body.theme-focus-card-editorial h3.section-action::before {
+      content: "ACTION";
+    }
+    body.theme-focus-card-editorial h3.section-action {
+      background: #f6ecdc;
+      border-color: #e2c79b;
+      color: #8a5a15;
+    }
+    body.theme-focus-card-editorial h4 {
+      margin-top: 4.8mm;
+      margin-bottom: 2.2mm;
+      padding-left: 3.2mm;
+      border-left: 3px solid var(--frame-marker);
+      font-size: 13px;
+      color: #6c4f25;
+    }
+    body.theme-focus-card-editorial h4.sub-diff {
+      border-left-color: var(--frame-accent);
+      color: var(--frame-accent);
+    }
+    body.theme-focus-card-editorial h4.sub-first {
+      border-left-color: #b45309;
+      color: #8a5a15;
+    }
+    body.theme-focus-card-editorial h4.sub-risk {
+      border-left-color: #b91c1c;
+      color: #8a1c1c;
+    }
+    body.theme-focus-card-editorial h4.sub-support {
+      border-left-color: #1d4ed8;
+      color: #1e40af;
+    }
+    body.theme-focus-card-editorial p {
+      max-width: 136mm;
+      font-size: 13.2px;
+    }
+    body.theme-focus-card-editorial .content ul,
+    body.theme-focus-card-editorial .content ol {
+      margin: 0 0 4.4mm;
+      padding-left: 0;
+      list-style: none;
+    }
+    body.theme-focus-card-editorial .content li {
+      position: relative;
+      margin-bottom: 2.6mm;
+      padding-left: 5mm;
+    }
+    body.theme-focus-card-editorial .content li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.92em;
+      width: 2.2mm;
+      height: 2.2mm;
+      border-radius: 50%;
+      background: var(--frame-accent);
+      transform: translateY(-50%);
+    }
+    body.theme-focus-card-editorial code {
+      background: #f3ede3;
+      border: 1px solid #e5d8c4;
+      color: #43352a;
+    }
+    @media print {
+      body.theme-focus-card-editorial {
+        background: white;
+      }
+      body.theme-focus-card-editorial .book {
+        width: auto;
+        box-shadow: none;
+        padding: 0;
+        background: white;
+      }
+      body.theme-focus-card-editorial .cover,
+      body.theme-focus-card-editorial .toc,
+      body.theme-focus-card-editorial .chapter,
+      body.theme-focus-card-editorial .content > p:nth-child(2) {
+        box-shadow: none;
+      }
+      body.theme-focus-card-editorial .cover {
+        border-radius: 0;
+      }
+      body.theme-focus-card-editorial .chapter {
+        border-radius: 12px;
+        background: white;
+      }
+    }
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 10mm 14mm;
+      }
+      body {
+        background: white;
+      }
+      .book {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .cover {
+        min-height: 0;
+        border: 0;
+        padding: 0;
+        background: white;
+      }
+      .content {
+        margin-top: 10mm;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body class="theme-focus-card-editorial">
+  <main class="book">
+    <section class="cover">
+      <p class="eyebrow">JAC FIELD GUIDE / CARD EDITION</p>
+      <h1>JAC 重点5フレーム カード見本</h1>
+      <p>重点5フレームの編集試作。内容の流れだけでなく、カードとしての見え方と判断しやすさを検討するための版。</p>
+      <div class="meta-block">
+        <span>発行: Next Being Lab</span>
+        <span>形式: 編集試作レイアウト</span>
+      </div>
+    </section>
+    <section class="toc">
+      <h2>目次</h2>
+      <ol class="toc-list"><li><a href="#sec-001">フレーム1 支援接続アーキテクチャ</a></li>
+<li><a href="#sec-011">フレーム2 実習採用ブリッジ</a></li>
+<li><a href="#sec-021">フレーム3 相談運用ガバナンス</a></li>
+<li><a href="#sec-031">フレーム4 情報開示レイヤー設計</a></li>
+<li><a href="#sec-041">フレーム5 悪化予兆ハンドリング</a></li>
+<li><a href="#sec-051">この形で確認したいこと</a></li></ol>
+    </section>
+    <article class="content">
+      <p>更新日: 2026-03-07 状態: card-sample</p>
+<p>この見本は、26フレームを <code>章</code> として読むのではなく、<code>カード / フレーム</code> として一目でつかめる形に寄せた試作です。 ただし、見出しと箇条書きだけでは理解が浅くなりやすいので、各フレームに <code>短い具体説明</code> を入れて、読めば状況が想像できる形にしています。 また、<code>関連フレーム</code> は末尾の参照一覧ではなく、<code>このフレームを使うとき</code> とセットで <code>近いフレームとの見分け方</code> として示します。</p>
+<ul>
+<li>この文書の主目的は、<code>重点5カードで内容と誌面の型を先に確かめ、その後26カード全体へ広げること</code> です。</li>
+<li>したがって、現時点では <code>独立した最終成果物</code> ではなく、26カード本体へ進む前の <code>先行実装プロトタイプ</code> として扱います。</li>
+<li>ただし、重点論点だけを抜粋して共有したい場面があるなら、将来的に <code>重点5カード抜粋版</code> を派生物として切り出すことはできます。</li>
+<li><code>3レイヤー</code> は、26フレーム全体を <code>体調レイヤー / 就職移行レイヤー / 職場運用レイヤー</code> で見るための地図です。</li>
+<li><code>5つの色や型</code> は、今回の重点5カード見本で <code>どう読むと理解しやすいか</code> を試すための誌面分類です。3レイヤーを置き換えるものではありません。</li>
+<li>つまり、<code>3レイヤー = 情報構造</code>、<code>5つの色や型 = 誌面上の読み分け</code> です。</li>
+</ul>
+<hr />
+<section class="chapter frame-route">
+<h2 id="sec-001" class="frame-heading"><span class="frame-kicker">FRAME 1</span><span class="frame-meta">支援接続型</span><span class="frame-title">支援接続アーキテクチャ</span></h2>
+<p>使える制度が分からないのではなく、<code>いまどこで止まっているか</code> が見えていないと支援につながりにくい。</p>
+<h3 id="sec-002" class="section-heading section-scene">こんな場面で起きやすい</h3>
+<p>本人は相談しているつもりでも、企業、JAC、地域支援者、制度窓口のあいだで話が分かれてしまい、同じ説明を何度も繰り返している。誰も何もしていないわけではないのに、次に何が起こるのかが見えず、結果として支援接続だけが遅れていく。</p>
+<p>このとき詰まっているのは、制度の数そのものではない。多くは、窓口の順番、期限、責任者、戻り先が一枚で見えていないことにある。</p>
+<h3 id="sec-003" class="section-heading section-diagnosis">鑑別診断 / 問題の切り分け</h3>
+<h4 id="sec-004" class="subheading sub-use">このフレームを使うとき</h4>
+<ul>
+<li>支援制度や相談機関の探索と接続が主課題になっている</li>
+<li>同じ説明を複数窓口で繰り返している</li>
+<li>次に誰が動くか、期限がいつか、責任者が誰かが曖昧</li>
+</ul>
+<h4 id="sec-005" class="subheading sub-diff">近いフレームとの見分け方</h4>
+<ul>
+<li>支援制度・相談機関の探索と接続が主課題なら本カード</li>
+<li>契約条件や収入見通しそのものの整合が主課題なら <code>契約収入の安定設計</code> を優先する</li>
+<li>実習評価を採用後の運用へ渡すことが主課題なら <code>実習採用ブリッジ</code> を優先する</li>
+</ul>
+<h3 id="sec-006" class="section-heading section-action">具体的な取組み内容</h3>
+<h4 id="sec-007" class="subheading sub-first">最初にやること</h4>
+<ul>
+<li>本人 / JAC / 就労移行支援事業所 / 企業採用担当 / 自治体窓口を一枚に並べ、<code>いま止まっている手続き</code> を1つ丸で囲む</li>
+<li>その場で <code>3営業日以内に見学候補日を返すのは企業</code>、<code>制度要件を一覧化するのは支援員</code> のように、次の一手の責任者と期限を書く</li>
+<li>本人へ渡す行動メモは、<code>今週やること3つ</code> までに絞る</li>
+</ul>
+<h4 id="sec-008" class="subheading sub-risk">見落としやすい点</h4>
+<ul>
+<li>制度一覧を増やしても、<code>見学日調整</code> や <code>申請順序</code> を誰が引き取るかが見えなければ実際の動きは変わらない</li>
+<li>法域や自治体で条件が変わるので、制度名だけで判断せず、<code>必要書類</code> と <code>期限</code> まで確かめる</li>
+</ul>
+<h4 id="sec-009" class="subheading sub-context">補足して理解したいこと</h4>
+<p>たとえば、就労移行支援を使いながら応募準備を進めている人でも、<code>企業見学の日程</code>、<code>自治体への確認</code>、<code>応募書類の準備</code> が別々に止まると、本人は動いているのに全体は進まない。このカードは、そうしたバラバラの停滞を1枚に戻すために使う。</p>
+<p>このフレームは、制度を覚えるためのカードではない。<code>支援が止まる場所を見つけて、次の一手を固定するカード</code> として使うと意味が出やすい。</p>
+<h4 id="sec-010" class="subheading sub-support">外部と一緒に考える場面</h4>
+<ul>
+<li>自治体要件の確認、申請順序の整理、同行支援の要否など、企業単独では持ちにくい実務がある</li>
+<li>窓口間で止まり、<code>次回いつ誰が連絡するか</code> が消えそうなときに、地域支援者と一緒に責任線を引き直す</li>
+</ul>
+<hr />
+</section>
+<section class="chapter frame-bridge">
+<h2 id="sec-011" class="frame-heading"><span class="frame-kicker">FRAME 2</span><span class="frame-meta">移行設計型</span><span class="frame-title">実習採用ブリッジ</span></h2>
+<p>実習でうまくいった条件が採用後に引き継がれないと、採用後に急に崩れやすい。</p>
+<h3 id="sec-012" class="section-heading section-scene">こんな場面で起きやすい</h3>
+<p>実習中は、担当者も周囲も「この人はどの条件なら安定するか」を意識して見ている。ところが採用後は通常運用に戻り、実習でうまくいっていた条件が言葉にされないまま消えてしまう。</p>
+<p>その結果、実習では順調だったのに、採用後に急に負荷が上がり、「実習ではできていたのに、なぜ続かないのか」というズレが生まれやすい。</p>
+<h3 id="sec-013" class="section-heading section-diagnosis">鑑別診断 / 問題の切り分け</h3>
+<h4 id="sec-014" class="subheading sub-use">このフレームを使うとき</h4>
+<ul>
+<li>実習評価を採用後運用に接続できていない</li>
+<li>実習では安定していたのに採用後に急に負荷が上がる</li>
+<li>初月の担当者、見直し時点、不調時の戻し先が曖昧</li>
+</ul>
+<h4 id="sec-015" class="subheading sub-diff">近いフレームとの見分け方</h4>
+<ul>
+<li>実習評価を採用後運用に接続できないことが中心なら本カード</li>
+<li>応募前後の連絡や書類の詰まりが中心なら <code>応募オペレーション設計</code> を優先する</li>
+<li>休職や病休からの復帰初期の戻し方が主課題なら <code>復職ランプ設計</code> を優先する</li>
+</ul>
+<h3 id="sec-016" class="section-heading section-action">具体的な取組み内容</h3>
+<h4 id="sec-017" class="subheading sub-first">最初にやること</h4>
+<ul>
+<li>実習評価表から、<code>連続作業時間</code>、<code>質問しやすい相手</code>、<code>疲れやすい時間帯</code> など、採用後に持ち込む条件を3つ抜き出す</li>
+<li>初月1から4週の負荷上限を週ごとに書く。たとえば <code>1週目は午前中心</code>、<code>2週目から電話対応を1件追加</code> のように段階を刻む</li>
+<li>不調時の戻し先を、<code>現場担当 → 人事 → 地域支援担当</code> の順で固定し、実習で有効だった支援をそのまま採用後の運用表へ移す</li>
+</ul>
+<h4 id="sec-018" class="subheading sub-risk">見落としやすい点</h4>
+<ul>
+<li>実習担当者しか知らない <code>声かけのタイミング</code> や <code>確認の入れ方</code> が採用担当へ渡らないと、採用日に橋が切れる</li>
+<li>評価が高くても、<code>どの条件なら安定したか</code> を採用後へ持ち帰らなければ、実習の結果は再現しにくい</li>
+</ul>
+<h4 id="sec-019" class="subheading sub-context">補足して理解したいこと</h4>
+<p>実習で見るべきなのは「できた / できない」だけではない。たとえば <code>午前中は集中しやすい</code>、<code>最初の確認相手が固定されるとミスが減る</code> といった条件が分かっていれば、それを採用後の勤務表や指導体制に移せる。</p>
+<p><code>どの条件ならできたか</code> を採用後へ持ち込んで初めて、実習は橋になる。</p>
+<h4 id="sec-020" class="subheading sub-support">外部と一緒に考える場面</h4>
+<ul>
+<li>実習中に使っていた定着支援や同行支援を、採用後の初月にも残したい</li>
+<li>採用後に負荷が跳ねたとき、実習評価へ戻して <code>どの条件が外れたか</code> を地域支援者と一緒に見直したい</li>
+</ul>
+<hr />
+</section>
+<section class="chapter frame-governance">
+<h2 id="sec-021" class="frame-heading"><span class="frame-kicker">FRAME 3</span><span class="frame-meta">運用設計型</span><span class="frame-title">相談運用ガバナンス</span></h2>
+<p>相談窓口があっても、<code>誰が受けるか / 誰が決めるか / どこへ戻すか</code> が見えていないと調整は遅れる。</p>
+<h3 id="sec-022" class="section-heading section-scene">こんな場面で起きやすい</h3>
+<p>「困ったら相談してください」と言われていても、その相談が業務設計の変更まで届かなければ、本人は話しているのに職場は動いていない、という状態になりやすい。現場、管理者、人事、外部支援の役割が重なったり抜けたりすると、このズレはさらに大きくなる。</p>
+<p>相談が遅れる職場では、本人の遠慮や管理者の忙しさだけでなく、責任線そのものが設計されていないことを疑った方がよい。</p>
+<p>さらに、相談受付が各管理者に分散し、配慮コストを各チーム予算で抱える設計だと、必要な調整が「その上司が分かるか」「その部署に余力があるか」に左右されやすい。相談の入口と予算の持ち方が分散していること自体が、調整遅延の原因になる。</p>
+<h3 id="sec-023" class="section-heading section-diagnosis">鑑別診断 / 問題の切り分け</h3>
+<h4 id="sec-024" class="subheading sub-use">このフレームを使うとき</h4>
+<ul>
+<li>定期面談やエスカレーションの責任線が曖昧</li>
+<li>相談はされているのに業務変更まで届かない</li>
+<li>管理者だけに相談負荷が集中している</li>
+</ul>
+<h4 id="sec-025" class="subheading sub-diff">近いフレームとの見分け方</h4>
+<ul>
+<li>定期面談・エスカレーション・更新責任がなく配慮運用が続かないなら本カード</li>
+<li>共有範囲や共有先の設計が主課題なら <code>情報開示レイヤー設計</code> を優先する</li>
+<li>悪化サインへの段階調整手順が主課題なら <code>悪化予兆ハンドリング</code> を優先する</li>
+</ul>
+<h3 id="sec-026" class="section-heading section-action">具体的な取組み内容</h3>
+<h4 id="sec-027" class="subheading sub-first">最初にやること</h4>
+<ul>
+<li>日々の困りごとは <code>直属上司</code>、制度や費用判断は <code>人事・専門担当</code>、外部支援接続は <code>JAC</code> のように、一次窓口と判断責任者を分けて書く</li>
+<li><code>受信確認は24時間以内</code>、<code>調整方針は3営業日以内</code> など、相談から業務変更までの目安日数を決める</li>
+<li><code>定型の小さな配慮は現場で即答</code>、<code>費用や制度判断が要るものは人事・専門担当へ上げる</code> など、相談の分岐ルールを先に決める</li>
+<li><code>連絡遅延が2回続いたら外部支援へ戻す</code>、<code>部署予算で止まりそうなら共通予算や上位決裁へ戻す</code> など、外部支援と予算判断の戻し先を先に決める</li>
+</ul>
+<h4 id="sec-028" class="subheading sub-risk">見落としやすい点</h4>
+<ul>
+<li><code>困ったら相談してください</code> だけでは、誰も次の判断を引き取らず、相談だけが溜まりやすい</li>
+<li>管理者が <code>配慮判断</code> と <code>健康情報の管理</code> を一人で抱えると詰まりやすいので、役割を分ける</li>
+<li>配慮コストを各チーム予算に閉じると、必要性よりも部署余力で判断が左右されやすい</li>
+</ul>
+<h4 id="sec-029" class="subheading sub-context">補足して理解したいこと</h4>
+<p>相談しやすさの問題に見えても、実際には <code>話を受けたあと誰が動くか</code> が決まっていないために遅れることが多い。面談回数を増やすだけでなく、業務変更まで届く線を作れているかを確認したい。</p>
+<p>参考にした海外実務では、askEARN の雇用主向けツールキットが、<code>集中相談窓口</code> や <code>集中予算</code> を持つかどうかを確認項目として置いている。JAN は、雇用主が困った時に戻せる外部の専門相談先として位置づいており、社内の管理者判断だけに閉じない発想を支えている。</p>
+<p>このフレームは、面談の雰囲気を整えるためのものではない。<code>相談が遅れない責任線を作るカード</code> として使うと焦点がぶれにくい。</p>
+<h4 id="sec-030" class="subheading sub-support">外部と一緒に考える場面</h4>
+<ul>
+<li>管理者だけで判断しきれず、ケース会議や定着支援を組み込みたい</li>
+<li>相談内容が、業務調整だけでなく医療・福祉・就労支援にもまたがり、社内だけでは整理しきれない</li>
+<li>社内に専門担当や共通予算がなく、難しい事例を JAN のような外部専門相談や地域支援機関へ戻したい</li>
+</ul>
+<hr />
+</section>
+<section class="chapter frame-boundary">
+<h2 id="sec-031" class="frame-heading"><span class="frame-kicker">FRAME 4</span><span class="frame-meta">共有境界型</span><span class="frame-title">情報開示レイヤー設計</span></h2>
+<p>「全部話す / 何も話さない」ではなく、<code>何のために / 誰に / どこまで</code> 共有するかを設計するフレーム。</p>
+<h3 id="sec-032" class="section-heading section-scene">こんな場面で起きやすい</h3>
+<p>配慮を動かしたいので情報は必要だが、話しすぎると本人の不安や二次的な負担が大きくなる。反対に、共有が少なすぎると必要な配慮は動かない。難しいのは、情報の量そのものより、共有目的を決めないまま話が始まってしまうことにある。</p>
+<p>このフレームでは、何を隠すかより先に、何のために、誰へ、どこまで共有するのかを整理する。</p>
+<h3 id="sec-033" class="section-heading section-diagnosis">鑑別診断 / 問題の切り分け</h3>
+<h4 id="sec-034" class="subheading sub-use">このフレームを使うとき</h4>
+<ul>
+<li>共有範囲、共有先、更新責任の設計が主課題</li>
+<li>開示が少なすぎて配慮が動かない</li>
+<li>開示が多すぎて本人の不安や二次負担が増えている</li>
+</ul>
+<h4 id="sec-035" class="subheading sub-diff">近いフレームとの見分け方</h4>
+<ul>
+<li>社内運用段階での <code>共有範囲・共有先・更新責任</code> の設計が主課題なら本カード</li>
+<li>採用選考の面接で伝え方そのものが詰まるなら <code>面接合意形成デザイン</code> を優先する</li>
+<li>定例面談やエスカレーション運用が回らないなら <code>相談運用ガバナンス</code> を優先する</li>
+</ul>
+<h3 id="sec-036" class="section-heading section-action">具体的な取組み内容</h3>
+<h4 id="sec-037" class="subheading sub-first">最初にやること</h4>
+<ul>
+<li>何を共有するかより先に、<code>朝の立ち上がりに合わせて始業30分を調整するため</code> のように、共有目的を先に書く</li>
+<li>情報を <code>本人だけが持つ</code>、<code>管理責任者が持つ</code>、<code>チーム共有する</code> の3層に分け、どの情報がどこまで必要かを決める</li>
+<li>共有先ごとに、目的、記録責任、見直し時点を書く。たとえば <code>実習終了時に見直す</code>、<code>初月2週目で更新する</code> など時点まで置く</li>
+</ul>
+<h4 id="sec-038" class="subheading sub-risk">見落としやすい点</h4>
+<ul>
+<li>病名や通院歴まで共有しても、配慮実装に必要な情報でなければ現場はかえって扱いに困る</li>
+<li>法域差があるので、健康情報や個人情報を <code>チーム共有メモ</code> に広げる前に、目的と制度条件を確認する</li>
+</ul>
+<h4 id="sec-039" class="subheading sub-context">補足して理解したいこと</h4>
+<p>たとえば、<code>週の後半に疲労が強まりやすいので木曜午後は確認回数を増やす</code> という情報なら、チーム共有で足りることが多い。一方、診療内容の詳細は、配慮実装に不要なら共有しない方が安全である。</p>
+<p>このフレームの主役は病名ではなく <code>共有目的</code> である。本人だけが持つ情報、管理責任者が持つ情報、チーム共有する情報を分けると、話すべきことが整理しやすい。</p>
+<h4 id="sec-040" class="subheading sub-support">外部と一緒に考える場面</h4>
+<ul>
+<li>本人が <code>話しすぎてしまう不安</code> や <code>話さなさすぎて配慮が動かない不安</code> を持っていて、企業内だけで線引きしづらい</li>
+<li>必要配慮はあるが、どの情報を共有せずに済ませられるかを地域支援者と一緒に整理したい</li>
+</ul>
+<hr />
+</section>
+<section class="chapter frame-signal">
+<h2 id="sec-041" class="frame-heading"><span class="frame-kicker">FRAME 5</span><span class="frame-meta">予兆対応型</span><span class="frame-title">悪化予兆ハンドリング</span></h2>
+<p>危機対応だけでなく、<code>初期サイン → 段階調整 → 再評価</code> の戻り道を先に持つフレーム。</p>
+<h3 id="sec-042" class="section-heading section-scene">こんな場面で起きやすい</h3>
+<p>不調が重くなってから慌てて対応する職場では、その前に小さな変化が出ていても、「まだ大丈夫」と流されていることが少なくない。連絡が遅れる、作業の立ち上がりが鈍る、休憩後も戻りにくい。こうした変化を誰も <code>調整の入口</code> として扱えていないと、対応は重くなりやすい。</p>
+<p>このフレームで整えたいのは、危機対応そのものより、早い段階で戻せる仕組みである。</p>
+<h3 id="sec-043" class="section-heading section-diagnosis">鑑別診断 / 問題の切り分け</h3>
+<h4 id="sec-044" class="subheading sub-use">このフレームを使うとき</h4>
+<ul>
+<li>悪化兆候の定義や連絡手順がない</li>
+<li>小さな変化を流したまま、対応が遅れやすい</li>
+<li>緊急時の共有範囲や戻し先が曖昧</li>
+</ul>
+<h4 id="sec-045" class="subheading sub-diff">近いフレームとの見分け方</h4>
+<ul>
+<li>悪化兆候の定義や連絡・負荷調整手順の不在が中心なら本カード</li>
+<li>日常的な体調波全般のペーシングが主課題なら <code>体調変動マネジメント</code> を優先する</li>
+<li>相談責任線が曖昧で、情報が上に上がらないことが主課題なら <code>相談運用ガバナンス</code> を優先する</li>
+</ul>
+<h3 id="sec-046" class="section-heading section-action">具体的な取組み内容</h3>
+<h4 id="sec-047" class="subheading sub-first">最初にやること</h4>
+<ul>
+<li>初期サインを、<code>返信が半日以上遅れる</code>、<code>朝会で発言が減る</code>、<code>休憩後に戻りにくい</code> のような観察できる言葉に置き換える</li>
+<li>サインごとに段階調整を決める。たとえば <code>2回続いたら当日の業務量を2割減らす</code>、<code>週内に2回出たら翌週の会議で再評価する</code> のように閾値を書く</li>
+<li>緊急時だけでなく、再評価まで含めて戻り道を書く。<code>直属上司 → 人事 → 地域支援担当</code> の順で誰に戻すかを明記する</li>
+</ul>
+<h4 id="sec-048" class="subheading sub-risk">見落としやすい点</h4>
+<ul>
+<li>救急レベルの手順だけ整えても、軽い悪化で戻す導線がないと対応は毎回重くなる</li>
+<li>初期サインを <code>本人の頑張り不足</code> と見てしまうと、連絡も調整も遅れやすい</li>
+</ul>
+<h4 id="sec-049" class="subheading sub-context">補足して理解したいこと</h4>
+<p>たとえば、欠勤してから相談するのでは遅い。<code>連絡が遅れる</code>、<code>締切直前の焦りが増える</code>、<code>休憩後に戻りにくい</code> といった小さな変化を入口にして、早い段階で業務量や確認頻度を調整できる方が実務では使いやすい。</p>
+<p>このフレームは <code>悪くなったときのカード</code> ではなく、<code>悪くなる前に戻すカード</code> として見る方が使いやすい。</p>
+<h4 id="sec-050" class="subheading sub-support">外部と一緒に考える場面</h4>
+<ul>
+<li>連絡遅延や欠勤前兆が2回続き、社内だけの調整では戻しにくくなってきた</li>
+<li>再評価や定着支援の導線を最初から入れて、悪化時に <code>誰へ戻すか</code> を明確にしたい</li>
+</ul>
+<hr />
+</section>
+<section class="chapter frame-common">
+<h2 id="sec-051">この形で確認したいこと</h2>
+<ul>
+<li>タイトルだけで、そのフレームの中身が想像しやすいか</li>
+<li>タイトル直下の補足説明で、<code>何のカードか</code> がすぐつかめるか</li>
+<li><code>近いフレームとの見分け方</code> を見ると、鑑別診断のように選び分けられるか</li>
+<li><code>具体的な取組み内容</code> を見ると、相談や実装の入口が分かるか</li>
+<li>長い章より、カードとして並んでいる方が使いやすいか</li>
+</ul>
+</section>
+    </article>
+  </main>
+</body>
+</html>

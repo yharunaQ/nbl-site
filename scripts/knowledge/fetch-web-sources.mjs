@@ -22,6 +22,7 @@ const DEFAULT_MAX_DISCOVERED_LINKS_PER_PAGE = 40;
 
 const includeDisabled = process.env.KNOWLEDGE_FETCH_INCLUDE_DISABLED === '1';
 const forceRefresh = process.env.KNOWLEDGE_FETCH_FORCE === '1';
+const sourceIdFilter = parseCsvSet(process.env.KNOWLEDGE_FETCH_SOURCE_IDS || '');
 
 const requestTimeoutMs = parseBoundedIntegerEnv('KNOWLEDGE_FETCH_TIMEOUT_MS', DEFAULT_TIMEOUT_MS, {
     min: 1000,
@@ -89,6 +90,16 @@ function parseBoundedIntegerEnv(name, fallback, { min, max }) {
         throw new Error(`${name} must be an integer in [${min}, ${max}], received: ${raw}`);
     }
     return value;
+}
+
+function parseCsvSet(raw) {
+    if (!raw) return null;
+    const values = String(raw)
+        .split(',')
+        .map((value) => value.trim())
+        .filter(Boolean);
+    if (values.length === 0) return null;
+    return new Set(values);
 }
 
 function parseOptionalBoundedInteger(value, fallback, { min, max }) {
@@ -490,6 +501,16 @@ function scoreDiscoveredUrl(url, policy) {
         if (isJeedCasePath(pathname)) score += 140;
         if (pathname.includes('/detail.php')) score += 120;
         if (pathname.includes('/disabilities/') || pathname.includes('/limitations/')) score += 35;
+        if (pathname.includes('/publication/')) score += 32;
+        if (pathname.includes('/learning-center/course/')) score += 28;
+        if (
+            pathname.startsWith('/page/') &&
+            /(toolkit|framework|guide|checklist|playbook|neurodiversity|mental-health|accommodation|accessibility)/i.test(pathname)
+        ) {
+            score += 24;
+        }
+        if (pathname === '/publications' || pathname === '/courses' || pathname === '/mentalhealth') score += 12;
+        if (pathname.startsWith('/page/') && /(newsletter|news|events|archive)/i.test(pathname)) score -= 10;
         if (pathname.includes('/search_result.php') && query.includes('page=')) score -= 20;
     } catch {
         // Keep default score.
@@ -505,10 +526,16 @@ function prioritizeDiscoveredUrls(urls, policy) {
 async function loadSources() {
     const raw = await fs.readFile(configPath, 'utf8');
     const list = JSON.parse(raw);
-    return list.filter((source) => {
+    const selectable = list.filter((source) => {
         if (source.kind !== 'website') return false;
         return includeDisabled ? true : Boolean(source.enabled);
     });
+
+    if (!sourceIdFilter) {
+        return selectable;
+    }
+
+    return selectable.filter((source) => sourceIdFilter.has(source.id));
 }
 
 async function fetchWithTimeout(url, timeoutMs) {
@@ -1165,6 +1192,16 @@ async function main() {
         });
         console.log('No website sources selected. Nothing fetched.');
         return;
+    }
+
+    if (sourceIdFilter) {
+        const selected = Array.from(sourceIdFilter);
+        const actual = new Set(sources.map((source) => source.id));
+        const missing = selected.filter((id) => !actual.has(id));
+        if (missing.length > 0) {
+            console.warn(`Requested source IDs were not selected: ${missing.join(', ')}`);
+        }
+        console.log(`Source filter: ${selected.join(', ')}`);
     }
 
     const allResults = [];

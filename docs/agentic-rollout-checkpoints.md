@@ -22,6 +22,11 @@
 Current status:
 - local normalizer script implemented (`npm run knowledge:normalize`)
 - website connector scaffold implemented (`npm run knowledge:fetch-web`)
+- external website onboarding standard documented:
+  - `/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/knowledge-source-onboarding.md`
+- source mix now includes:
+  - `AskJAN` for accommodation/case guidance
+  - `askEARN` for employer-side operational guidance
 - extractor hardening added:
   - pdf: `pdftotext` primary + `strings` fallback
   - xlsm: worksheet/table xml extraction (not only `sharedStrings`)
@@ -39,8 +44,8 @@ Current status:
 
 Decision checkpoint:
 1. Keep web sources disabled and continue local-only quality tuning.
-2. Enable AskJAN / JEED seeds and run scheduled fetch into `references/web-cache`.
-3. Add multi-page crawling/rules (robots-aware, dedupe, refresh) before enabling web.
+2. Enable curated external sources (`AskJAN` / `askEARN` / JEED etc.) and run scheduled fetch into `references/web-cache`.
+3. Add multi-page crawling/rules (robots-aware, dedupe, refresh) before broader source expansion.
 
 ## Phase 5: Retrieval Quality (In Progress)
 Current status:
@@ -64,3 +69,9 @@ Decision checkpoint:
 Planned sprint task:
 - Reduce boilerplate claim noise in `knowledge-claims.jsonl`:
   - see `/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/next-sprint-claims-quality-task.md`
+
+## Phase 7: Public Guidebook (Proposed)
+- Build JAC intro guidebook as an evidence-driven public knowledge product.
+- Use global web + GLM + local narrative evidence with explicit context boundaries.
+- Planning doc:
+  - `/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/docs/jac-guidebook-planning.md`

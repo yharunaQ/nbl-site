@@ -99,13 +99,54 @@ const INTERACTION_SIGNAL_HINTS: Record<string, string[]> = {
 };
 
 const DISABILITY_FACET_HINTS: Record<string, string[]> = {
-  physical: ['肢体', 'physical', 'mobility'],
-  visual: ['視覚', 'visual', 'blind'],
-  hearing: ['聴覚', 'hearing', 'deaf'],
-  mental: ['精神', 'mental', 'depression', 'anxiety'],
-  developmental: ['発達', 'developmental', 'autism', 'adhd'],
-  intellectual: ['知的', 'intellectual'],
-  internal: ['内部', '難病', 'chronic', 'autoimmune'],
+  physical: ['肢体', 'physical', 'mobility', 'wheelchair', '車いす', '歩行'],
+  visual: ['視覚', 'visual', 'blind', 'low vision', '弱視'],
+  hearing: ['聴覚', 'hearing', 'deaf', '難聴', '手話', 'caption'],
+  mental: [
+    '精神',
+    'mental',
+    'depression',
+    'anxiety',
+    '統合失調症',
+    '気分障害',
+    'bipolar',
+    'psychosis',
+  ],
+  developmental: ['発達', 'developmental', 'autism', 'adhd', 'asd', '神経発達'],
+  intellectual: ['知的', 'intellectual', '認知的支援'],
+  internal: ['内部', '難病', 'chronic', 'autoimmune', '透析', 'dialysis', 'ペースメーカー', 'pacemaker'],
+  higher_brain: [
+    '高次脳',
+    '高次脳機能',
+    '脳卒中',
+    '脳血管',
+    '脳梗塞',
+    '脳出血',
+    '外傷性脳損傷',
+    '頭部外傷',
+    '失語',
+    '注意障害',
+    '注意機能障害',
+    '記憶障害',
+    '記憶機能障害',
+    '見当識障害',
+    '遂行機能',
+    '半側空間無視',
+    'brain injury',
+    'traumatic brain injury',
+    'tbi',
+    'stroke',
+    'cerebrovascular',
+    'aphasia',
+    'cognitive impairment',
+    'neurocognitive',
+    'attention impairment',
+    'attention deficit',
+    'memory impairment',
+    'orientation disorder',
+    'executive dysfunction',
+    'hemispatial neglect',
+  ],
 };
 
 const INDUSTRY_FACET_HINTS: Record<string, string[]> = {
@@ -148,6 +189,7 @@ type KnowledgeClaimRow = {
   };
   interactionContextSummary?: {
     evidenceScopes?: string[];
+    evidenceLane?: string;
   };
 };
 
@@ -552,6 +594,7 @@ function buildSafetyGate(
       partialClaimCount: 0,
       missingContextCount: 0,
       sampleClaimIds: [],
+      evidenceLaneCounts: {},
       followUpQuestions: [
         '今回の相談で影響が出ている具体タスクと就業条件は何ですか？',
         '適用したい国・法域（日本、米国、EU など）はどこですか？',
@@ -574,6 +617,7 @@ function buildSafetyGate(
       partialClaimCount: 0,
       missingContextCount: 0,
       sampleClaimIds: [],
+      evidenceLaneCounts: {},
       followUpQuestions: ['相談対象の国・法域と職場の前提条件を先に確認してください。'],
     };
   }
@@ -581,9 +625,11 @@ function buildSafetyGate(
   let highRiskClaimCount = 0;
   let mediumRiskClaimCount = 0;
   let aggregatedEvidenceClaimCount = 0;
+  let legalPolicyClaimCount = 0;
   let specificCaseClaimCount = 0;
   let partialClaimCount = 0;
   const missingContextSet = new Set<string>();
+  const evidenceLaneCounts: Record<string, number> = {};
 
   for (const claim of matchedClaims) {
     const riskLevel = claim.risk?.level;
@@ -593,6 +639,11 @@ function buildSafetyGate(
     const scopes = claim.interactionContextSummary?.evidenceScopes || [];
     if (scopes.includes('aggregated_index')) aggregatedEvidenceClaimCount += 1;
     if (scopes.includes('specific_case')) specificCaseClaimCount += 1;
+    if (claim.interactionContextSummary?.evidenceLane === 'legal_policy') {
+      legalPolicyClaimCount += 1;
+    }
+    const lane = String(claim.interactionContextSummary?.evidenceLane || 'unknown');
+    evidenceLaneCounts[lane] = (evidenceLaneCounts[lane] || 0) + 1;
 
     const missing = claim.applicability?.missingContexts || [];
     if (claim.applicability?.isPartial || missing.length > 0) partialClaimCount += 1;
@@ -602,14 +653,17 @@ function buildSafetyGate(
   }
 
   const matchedClaimCount = matchedClaims.length;
+  const aggregatedGeneralClaimCount = Math.max(0, aggregatedEvidenceClaimCount - legalPolicyClaimCount);
   const aggregatedDominant =
-    aggregatedEvidenceClaimCount >= Math.max(2, Math.ceil(matchedClaimCount * 0.6));
+    aggregatedGeneralClaimCount >= Math.max(2, Math.ceil(matchedClaimCount * 0.6));
+  const legalPolicyDominant = legalPolicyClaimCount >= Math.max(2, Math.ceil(matchedClaimCount * 0.6));
   const highRiskDominant = highRiskClaimCount >= Math.max(2, Math.ceil(matchedClaimCount * 0.3));
   const strictWithoutSpecificCase = highRiskClaimCount > 0 && specificCaseClaimCount === 0;
   const cautionCandidate =
     mediumRiskClaimCount > 0 ||
     partialClaimCount > 0 ||
-    aggregatedEvidenceClaimCount > specificCaseClaimCount ||
+    aggregatedGeneralClaimCount > specificCaseClaimCount ||
+    legalPolicyDominant ||
     missingContextSet.size > 0;
 
   let mode: KnowledgeSafetyGateMode = 'normal';
@@ -624,8 +678,9 @@ function buildSafetyGate(
     if (mediumRiskClaimCount > 0) reasonCodes.push('medium_risk_present');
     if (partialClaimCount > 0 || missingContextSet.size > 0)
       reasonCodes.push('partial_context_present');
-    if (aggregatedEvidenceClaimCount > specificCaseClaimCount)
+    if (aggregatedGeneralClaimCount > specificCaseClaimCount)
       reasonCodes.push('aggregated_exceeds_specific_case');
+    if (legalPolicyDominant) reasonCodes.push('legal_policy_evidence_dominant');
   } else {
     reasonCodes.push('risk_balanced');
   }
@@ -662,6 +717,7 @@ function buildSafetyGate(
     partialClaimCount,
     missingContextCount: missingContextSet.size,
     sampleClaimIds: matchedClaims.slice(0, 6).map((claim) => claim.id),
+    evidenceLaneCounts,
     followUpQuestions,
   };
 }

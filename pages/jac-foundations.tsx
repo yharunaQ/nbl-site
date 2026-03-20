@@ -1,10 +1,14 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Layers3, Map, ShieldCheck, Sparkles } from 'lucide-react';
 import React from 'react';
+import ZoomableImage from '@/components/ZoomableImage';
 import {
+  jacFoundationConsultationBridge,
   jacFoundationContextAxes,
+  jacFoundationDevelopmentIntro,
+  jacFoundationDevelopmentStats,
+  jacFoundationDevelopmentSteps,
   jacFoundationEnterpriseSignals,
   jacFoundationGuardrails,
   jacFoundationInfographics,
@@ -16,16 +20,14 @@ import {
   jacFoundationsHero,
 } from '@/lib/content/jacFoundations';
 
-const CONTACT_EMAIL = 'info@nextbeinglab.org';
-
 export default function JacFoundationsPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_48%,#eef2ff_100%)] text-slate-900">
       <Head>
-        <title>JAC 26フレームの3レイヤー | Next Being Lab</title>
+        <title>仕事設計の見取り図 | Next Being Lab</title>
         <meta
           name="description"
-          content="JAC 26フレームの3レイヤー構成と、その背景にある職場設計の考え方を、企業担当者にも読みやすい形で紹介するページ。"
+          content="仕事設計の見取り図の3レイヤー構成と、その背景にある職場設計の考え方を、企業担当者にも読みやすい形で紹介するページ。"
         />
         <link rel="canonical" href="https://nextbeinglab.org/jac-foundations" />
       </Head>
@@ -36,7 +38,7 @@ export default function JacFoundationsPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
               Next Being Lab
             </p>
-            <p className="mt-2 text-sm text-slate-600">JAC foundations</p>
+            <p className="mt-2 text-sm text-slate-600">仕事設計の見取り図</p>
           </div>
           <Link
             href="/"
@@ -60,6 +62,10 @@ export default function JacFoundationsPage() {
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-700">
               {jacFoundationsHero.subheadline}
+            </p>
+            <p className="mt-4 max-w-3xl rounded-[1.4rem] border border-sky-200 bg-sky-50 px-4 py-4 text-sm leading-7 text-slate-700">
+              このページは、困りごとを「本人の問題」だけでなく、体調・移行・職場運用の
+              3レイヤーと、仕事・環境・支援の条件で読むための基礎ページです。
             </p>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
               {jacFoundationsHero.audience}
@@ -104,7 +110,7 @@ export default function JacFoundationsPage() {
               <h2 className="text-2xl font-black text-slate-900">なぜ3レイヤーで見るのか</h2>
             </div>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-700">
-              JAC は、困りごとをひとまとめにせず、どこで詰まりが生まれているかを切り分けて見ます。
+              仕事設計の見取り図は、困りごとをひとまとめにせず、どこで詰まりが生まれているかを切り分けて見ます。
               体調、移行、職場運用を分けて捉えることで、本人の努力不足に還元しない見立てがしやすくなります。
             </p>
           </div>
@@ -126,11 +132,14 @@ export default function JacFoundationsPage() {
             <article className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm shadow-slate-200/60">
               <div className="flex items-center gap-3">
                 <Sparkles size={18} className="text-sky-700" />
-                <h2 className="text-2xl font-black text-slate-900">JACを読む前提</h2>
+                <h2 className="text-2xl font-black text-slate-900">この見取り図を読む前提</h2>
               </div>
               <div className="mt-5 grid gap-5 md:grid-cols-2">
                 {jacFoundationPrinciples.map((item) => (
-                  <article key={item.title} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                  <article
+                    key={item.title}
+                    className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5"
+                  >
                     <h3 className="text-lg font-black text-slate-900">{item.title}</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-700">{item.detail}</p>
                   </article>
@@ -148,7 +157,10 @@ export default function JacFoundationsPage() {
               </p>
               <div className="mt-5 grid gap-4 md:grid-cols-2">
                 {jacFoundationContextAxes.map((axis) => (
-                  <article key={axis.title} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                  <article
+                    key={axis.title}
+                    className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5"
+                  >
                     <h3 className="text-lg font-black text-slate-900">{axis.title}</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-700">{axis.detail}</p>
                   </article>
@@ -159,12 +171,80 @@ export default function JacFoundationsPage() {
         </section>
 
         <section className="border-t border-slate-200 py-12">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr,1.1fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">
+                {jacFoundationDevelopmentIntro.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-black text-slate-900">
+                この見取り図は、どう開発されてきたか
+              </h2>
+              <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-700">
+                {jacFoundationDevelopmentIntro.headline}
+              </p>
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
+                {jacFoundationDevelopmentIntro.summary}
+              </p>
+              <p className="mt-4 max-w-3xl rounded-[1.5rem] border border-sky-200 bg-sky-50 px-5 py-5 text-sm leading-7 text-slate-700">
+                {jacFoundationDevelopmentIntro.note}
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {jacFoundationDevelopmentStats.map((item) => (
+                <article
+                  key={`${item.value}-${item.label}`}
+                  className="rounded-[1.7rem] border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60"
+                >
+                  <p className="text-2xl font-black tracking-tight text-slate-950">{item.value}</p>
+                  <p className="mt-2 text-sm font-semibold text-slate-900">{item.label}</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-700">{item.detail}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {jacFoundationDevelopmentSteps.map((item) => (
+              <article
+                key={item.step}
+                className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                  Step {item.step}
+                </p>
+                <h3 className="mt-3 text-xl font-black text-slate-900">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-700">{item.detail}</p>
+                <p className="mt-4 rounded-[1.3rem] border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-700">
+                  {item.evidence}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <article className="mt-8 rounded-[2rem] border border-emerald-200 bg-emerald-50 p-8 shadow-sm shadow-emerald-100/60">
+            <h3 className="text-2xl font-black text-slate-900">
+              {jacFoundationConsultationBridge.title}
+            </h3>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
+              {jacFoundationConsultationBridge.detail}
+            </p>
+            <ul className="mt-5 space-y-2 text-sm leading-7 text-slate-700">
+              {jacFoundationConsultationBridge.bullets.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section className="border-t border-slate-200 py-12">
           <div className="flex items-center gap-3">
             <Layers3 size={18} className="text-sky-700" />
             <h2 className="text-2xl font-black text-slate-900">3レイヤーの全体像</h2>
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
-            まずは 3レイヤーを並べて見て、論点がどこに偏っているかを掴みます。その後に各レイヤーの詳細を見ると、図版がギャラリーではなく地図として読みやすくなります。
+            まずは
+            3レイヤーを並べて見て、論点がどこに偏っているかを掴みます。その後に各レイヤーの詳細を見ると、図版がギャラリーではなく地図として読みやすくなります。
           </p>
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
             {jacFoundationLayers.map((layer) => (
@@ -205,12 +285,18 @@ export default function JacFoundationsPage() {
                     <p className="mt-5 text-sm leading-7 text-slate-700">{layer.purpose}</p>
 
                     <div className="mt-5 rounded-[1.5rem] border border-sky-200 bg-sky-50 px-5 py-5">
-                      <p className="text-sm font-semibold text-slate-900">企業担当者にとっての意味</p>
-                      <p className="mt-3 text-sm leading-7 text-slate-700">{layer.businessMeaning}</p>
+                      <p className="text-sm font-semibold text-slate-900">
+                        企業担当者にとっての意味
+                      </p>
+                      <p className="mt-3 text-sm leading-7 text-slate-700">
+                        {layer.businessMeaning}
+                      </p>
                     </div>
 
                     <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5">
-                      <p className="text-sm font-semibold text-slate-900">このレイヤーで見たい問い</p>
+                      <p className="text-sm font-semibold text-slate-900">
+                        このレイヤーで見たい問い
+                      </p>
                       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
                         {layer.typicalQuestions.map((question) => (
                           <li key={question}>• {question}</li>
@@ -226,12 +312,12 @@ export default function JacFoundationsPage() {
 
                   <figure className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-4">
                     <div className="overflow-hidden rounded-[1.3rem] bg-white p-2">
-                      <Image
+                      <ZoomableImage
                         src={layer.imageSrc}
                         alt={layer.imageAlt}
                         width={2464}
                         height={1728}
-                        className="h-auto max-h-[32rem] w-full object-contain"
+                        imageClassName="h-auto max-h-[32rem] w-full object-contain"
                       />
                     </div>
                     <figcaption className="mt-4 text-xs leading-6 text-slate-500">
@@ -247,7 +333,7 @@ export default function JacFoundationsPage() {
         <section className="border-t border-slate-200 py-12">
           <div className="flex items-center gap-3">
             <Map size={18} className="text-sky-700" />
-            <h2 className="text-2xl font-black text-slate-900">JACを支える基礎図解</h2>
+            <h2 className="text-2xl font-black text-slate-900">この見取り図を支える基礎図解</h2>
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
             次の図は、3レイヤーを読むときの土台になる見方です。図版そのものを覚えるというより、どの前提を補っているのかを先に押さえると読みやすくなります。
@@ -256,6 +342,7 @@ export default function JacFoundationsPage() {
             {jacFoundationInfographics.map((item) => (
               <article
                 key={item.title}
+                id={item.slug}
                 className="grid gap-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60 lg:grid-cols-[0.88fr,1.12fr] md:p-8"
               >
                 <div>
@@ -273,12 +360,12 @@ export default function JacFoundationsPage() {
 
                 <figure className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-4">
                   <div className="overflow-hidden rounded-[1.3rem] bg-white p-2">
-                    <Image
+                    <ZoomableImage
                       src={item.imageSrc}
                       alt={item.imageAlt}
                       width={2400}
                       height={1600}
-                      className="h-auto max-h-[30rem] w-full object-contain"
+                      imageClassName="h-auto max-h-[30rem] w-full object-contain"
                     />
                   </div>
                 </figure>
@@ -317,7 +404,8 @@ export default function JacFoundationsPage() {
           <div className="mt-8 rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
             <h2 className="text-2xl font-black">次に見られるもの</h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
-              JAC の基礎を押さえたうえで、職場設計と合理的配慮の補足ページや、YouTube の基礎説明へ進めます。個別事情の整理や連携相談が必要な場合のみ、お問い合わせへつなげてください。
+              この基礎説明を押さえたうえで、職場設計と合理的配慮の補足ページや、YouTube
+              の基礎説明へ進めます。個別事情の整理や連携相談が必要な場合のみ、お問い合わせへつなげてください。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
@@ -332,12 +420,12 @@ export default function JacFoundationsPage() {
               >
                 公開動画を見る
               </Link>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
+              <Link
+                href="/contact"
                 className="rounded-full border border-slate-500 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-300 hover:bg-slate-800"
               >
-                お問い合わせ
-              </a>
+                連携・お問い合わせ
+              </Link>
             </div>
           </div>
         </section>

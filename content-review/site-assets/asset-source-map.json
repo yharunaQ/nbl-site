@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "generatedContext": "Site asset source-of-truth map. Source should stay in content-inbox unless explicitly noted otherwise.",
+  "assets": [
+    {
+      "id": "jac-health-layer",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/標準職場設計26フレーム/体調レイヤー.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/health-layer.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations layer image"
+    },
+    {
+      "id": "jac-transition-layer",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/標準職場設計26フレーム/就職移行レイヤー.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/transition-layer.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations layer image"
+    },
+    {
+      "id": "jac-operation-layer",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/標準職場設計26フレーム/職場運用レイヤー.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/operation-layer.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations layer image"
+    },
+    {
+      "id": "jac-place-design",
+      "source": "content-inbox/地平2_エンゲージメント/多様な個人が働きやすい社会設計メモ.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/place-design.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations infographic"
+    },
+    {
+      "id": "jac-condition-map",
+      "source": "content-inbox/地平2_エンゲージメント/仕事のコンディションマップA3.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/condition-map.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations infographic"
+    },
+    {
+      "id": "jac-employment-normalization",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/日本における変革課題/障害者雇用の正常化（企業へのしわ寄せ解消）.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/employment-normalization.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations infographic"
+    },
+    {
+      "id": "jac-quality-metrics",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/障害者雇用支援の世界標準/障害者雇用の質の指標.png",
+      "targets": [
+        {
+          "path": "public/jac-foundations/quality-metrics.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "JAC foundations infographic"
+    },
+    {
+      "id": "invisible-common-overview",
+      "source": "content-inbox/難病理解/難病就労支援ニーズ/難病患者の共通する経験/難病患者に共通した経験.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/common-overview.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/common-overview.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-internal-weather",
+      "source": "content-inbox/難病理解/膠原病（からだの中の天気予報）.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/internal-weather.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/internal-weather.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-backpack",
+      "source": "content-inbox/難病理解/IBD（バッグパック）.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/invisible-backpack.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/invisible-backpack.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-work-friction",
+      "source": "content-inbox/難病理解/難病就労支援ニーズ/難病患者の共通する経験/難病×仕事あるあるトップ10.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/work-friction.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/work-friction.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-medical-care-is-work",
+      "source": "content-inbox/難病理解/膠原病コミック４コマ/03 通院も、仕事の一部.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/medical-care-is-work.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/medical-care-is-work.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-explanation-burden",
+      "source": "content-inbox/難病理解/膠原病コミック４コマ/09 病名説明ルーレット.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/explanation-burden.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/explanation-burden.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-support-friction",
+      "source": "content-inbox/難病理解/難病就労支援ニーズ/難病患者の共通する経験/難病×支援機関あるある.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/support-friction.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/support-friction.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    },
+    {
+      "id": "invisible-energy-wave",
+      "source": "content-inbox/難病理解/体調の波のある人.png",
+      "targets": [
+        {
+          "path": "public/resources/invisible-disability/energy-wave.png",
+          "channel": "public"
+        },
+        {
+          "path": "public/review/invisible-disability/energy-wave.png",
+          "channel": "review"
+        }
+      ],
+      "notes": "Invisible disability series"
+    }
+  ]
+}

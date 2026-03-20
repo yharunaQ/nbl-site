@@ -1,4 +1,7 @@
 export const TEMPORARY_PUBLIC_SITE_ENABLED = true;
+export type PublicHomeVariant = 'relaunch' | 'temporary';
+
+export const PUBLIC_HOME_VARIANT: PublicHomeVariant = 'temporary';
 
 type RouteConfig = {
   prefix: string;

@@ -29,11 +29,11 @@ export default function PublicVideosPage() {
             <p className="mt-2 text-sm text-slate-600">Public videos</p>
           </div>
           <Link
-            href="/"
+            href="/resources"
             className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
           >
             <ArrowLeft size={16} />
-            トップへ戻る
+            Resourcesへ戻る
           </Link>
         </div>
 
@@ -104,10 +104,10 @@ export default function PublicVideosPage() {
                       <ExternalLink size={16} />
                     </a>
                     <Link
-                      href="/jac-foundations"
+                      href={video.relatedResource.href}
                       className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
                     >
-                      JACの考え方を見る
+                      {video.relatedResource.label}
                     </Link>
                   </div>
                 </div>

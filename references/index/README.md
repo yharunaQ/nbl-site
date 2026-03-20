@@ -10,6 +10,31 @@ npm run knowledge:catalog
 
 This writes `local-catalog.json` with file inventory metadata under `references/`.
 
+Catalog targets:
+
+- `.txt`
+- `.md` (except `README.md`)
+- `.pdf`
+- `.xlsm`
+- `.sav`
+
+Curated local note convention:
+
+- Source-specific reorganized knowledge should be stored as a single canonical `.md` file under that source directory.
+- Use a descriptive filename such as `JAC活用向け再整理.md`; do not duplicate the same content into `.txt`.
+- Reserve `README.md` for operational notes only. It is intentionally excluded from cataloging and normalization.
+- When a curated note needs explicit retrieval semantics, add a sibling `.meta.json` with at least:
+  - `sourceId`
+  - `title`
+  - `fetchedAt`
+  - `structuredMetadata.pageType`
+  - `structuredMetadata.evidenceScope`
+  - `structuredMetadata.country`
+  - `structuredMetadata.legalContext`
+  - `structuredMetadata.trustTier`
+  - `structuredMetadata.updatedAt`
+  - `structuredMetadata.riskLevel`
+
 ## Generate normalized records
 
 ```bash
@@ -29,6 +54,7 @@ This writes:
 
 Extractor behavior:
 
+- `.md`: UTF-8 text extraction for curated local notes (`README.md` is skipped)
 - `.pdf`: `pdftotext` primary, `strings` fallback
 - `.xlsm`: workbook xml extraction (`worksheets/`, `tables/`, `sharedStrings`)
 - `.sav`: `strings` fallback (metadata/noisy text possible)

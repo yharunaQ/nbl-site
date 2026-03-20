@@ -1,15 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import {
-  ArrowLeft,
-  BriefcaseBusiness,
-  ListChecks,
-  ShieldCheck,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowLeft, BriefcaseBusiness, ListChecks, ShieldCheck, Sparkles } from 'lucide-react';
 import { publicEnterpriseEntry } from '@/lib/content/publicEnterpriseEntry';
-
-const CONTACT_EMAIL = 'info@nextbeinglab.org';
 
 export default function EnterpriseEntryPage() {
   return (
@@ -59,7 +51,7 @@ export default function EnterpriseEntryPage() {
                 href="/jac-foundations"
                 className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
               >
-                JACの考え方を見る
+                仕事設計の見取り図を見る
               </Link>
               <Link
                 href="/videos"
@@ -67,12 +59,12 @@ export default function EnterpriseEntryPage() {
               >
                 公開動画を見る
               </Link>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
+              <Link
+                href="/contact"
                 className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
-                お問い合わせ
-              </a>
+                連携・お問い合わせ
+              </Link>
             </div>
           </div>
 
@@ -111,7 +103,10 @@ export default function EnterpriseEntryPage() {
           </div>
           <div className="mt-5 grid gap-5 md:grid-cols-3">
             {publicEnterpriseEntry.audiences.map((audience) => (
-              <article key={audience.title} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+              <article
+                key={audience.title}
+                className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5"
+              >
                 <h3 className="text-lg font-black text-slate-900">{audience.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-700">{audience.summary}</p>
               </article>
@@ -125,7 +120,8 @@ export default function EnterpriseEntryPage() {
             <h2 className="text-2xl font-black text-slate-900">先に共有したい実務テーマ</h2>
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
-            次の論点は、記事を読んだ後に `で、実務では何を見るのか` へ進むための起点です。タイトルだけでなく、どこから見始めるかまで書いています。
+            次の論点は、記事を読んだ後に `で、実務では何を見るのか`
+            へ進むための起点です。タイトルだけでなく、どこから見始めるかまで書いています。
           </p>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {publicEnterpriseEntry.practicalThemes.map((item) => (
@@ -151,7 +147,10 @@ export default function EnterpriseEntryPage() {
             </div>
             <div className="mt-5 space-y-4">
               {publicEnterpriseEntry.firstSteps.map((step) => (
-                <article key={step.title} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                <article
+                  key={step.title}
+                  className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5"
+                >
                   <h3 className="text-lg font-black text-slate-900">{step.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-700">{step.detail}</p>
                 </article>
@@ -176,7 +175,10 @@ export default function EnterpriseEntryPage() {
           <h2 className="text-2xl font-black">次に見る入口</h2>
           <div className="mt-5 grid gap-5 md:grid-cols-2">
             {publicEnterpriseEntry.resourceLinks.map((item) => (
-              <article key={item.title} className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
+              <article
+                key={item.title}
+                className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5"
+              >
                 <h3 className="text-xl font-black text-white">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">{item.summary}</p>
                 <Link

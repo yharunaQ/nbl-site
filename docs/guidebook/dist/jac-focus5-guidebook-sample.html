@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JAC ガイドブック 重点5章 試作版</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --subtle: #6b7280;
+      --line: #d1d5db;
+      --accent: #0f766e;
+      --paper: #ffffff;
+      --bg: #f8fafc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+      line-height: 1.85;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .book {
+      width: 210mm;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 6px 30px rgba(15, 23, 42, 0.08);
+      min-height: 100vh;
+      padding: 24mm 18mm 20mm;
+    }
+    .cover {
+      min-height: 220mm;
+      display: grid;
+      align-content: center;
+      gap: 10mm;
+      border: 1px solid var(--line);
+      padding: 16mm;
+      background: linear-gradient(160deg, #f0fdfa, #ffffff 56%, #ecfeff);
+    }
+    .cover .eyebrow {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .cover h1 {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 33px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+    .cover p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--subtle);
+    }
+    .meta-block {
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .toc {
+      margin-top: 14mm;
+      padding-top: 10mm;
+      border-top: 1px solid var(--line);
+    }
+    .toc h2 {
+      margin: 0 0 6mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 20px;
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 16mm;
+      font-size: 12px;
+    }
+    .toc-list li {
+      break-inside: avoid;
+      margin: 0 0 4px;
+      padding-right: 10px;
+    }
+    .toc-list a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .toc-list a:hover {
+      border-bottom-color: var(--line);
+    }
+    .content {
+      margin-top: 16mm;
+      font-size: 13px;
+    }
+    .chapter {
+      break-before: page;
+      page-break-before: always;
+      padding-top: 2mm;
+    }
+    h2, h3, h4 {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 4mm;
+    }
+    h2 {
+      font-size: 24px;
+      border-bottom: 2px solid #99f6e4;
+      padding-bottom: 3mm;
+    }
+    h3 { font-size: 17px; margin-top: 7mm; }
+    h4 { font-size: 14px; margin-top: 5mm; }
+    p { margin: 0 0 3.4mm; }
+    ul, ol {
+      margin: 0 0 4mm;
+      padding-left: 20px;
+    }
+    li { margin-bottom: 2mm; }
+    blockquote {
+      margin: 0 0 4.2mm;
+      padding: 4mm 4.5mm;
+      border-left: 4px solid #99f6e4;
+      background: #f0fdfa;
+      color: #334155;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 8mm 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+    pre {
+      margin: 0 0 4mm;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 4mm;
+      border-radius: 8px;
+      overflow: auto;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    figure.illustration {
+      margin: 0 0 6mm;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 3mm;
+      background: #f8fafc;
+    }
+    figure.illustration img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #eef2ff;
+    }
+    figure.illustration figcaption {
+      margin-top: 2mm;
+      font-size: 11px;
+      color: var(--subtle);
+      text-align: center;
+    }
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 10mm 14mm;
+      }
+      body {
+        background: white;
+      }
+      .book {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .cover {
+        min-height: 0;
+        border: 0;
+        padding: 0;
+        background: white;
+      }
+      .content {
+        margin-top: 10mm;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="book">
+    <section class="cover">
+      <p class="eyebrow">JAC GUIDEBOOK / READABLE EDITION</p>
+      <h1>JAC ガイドブック 重点5章 試作版</h1>
+      <p>Web版ガイドを、現場で読み進めやすい章構成に再編集した版</p>
+      <div class="meta-block">
+        <span>発行: Next Being Lab</span>
+        <span>形式: 試作レイアウト</span>
+      </div>
+    </section>
+    <section class="toc">
+      <h2>目次</h2>
+      <ol class="toc-list"><li><a href="#sec-001">第1章 支援接続アーキテクチャ</a></li>
+<li><a href="#sec-005">第2章 実習採用ブリッジ</a></li>
+<li><a href="#sec-009">第3章 相談運用ガバナンス</a></li>
+<li><a href="#sec-013">第4章 情報開示レイヤー設計</a></li>
+<li><a href="#sec-017">第5章 悪化予兆ハンドリング</a></li></ol>
+    </section>
+    <article class="content">
+      <p>更新日: 2026-03-07 状態: sample-manuscript</p>
+<p>この文書は、重点5章だけを先に <code>実際のガイドブック本文</code> として書き起こした試作版です。 仕様書や編集メモではなく、読者がそのまま読めることを優先して整えています。</p>
+<hr />
+<section class="chapter">
+<h2 id="sec-001">第1章 支援接続アーキテクチャ</h2>
+<p>制度や支援機関がたくさんあるのに、なぜ必要な支援につながらないのか。多くの場合、足りないのは制度名の知識ではなく、いまどこで止まっているのかを一枚で見渡す地図である。</p>
+<p>相談先を増やすほど安心になるように見えて、実際には、同じ説明を別の窓口で繰り返し、次に誰が動くのかが曖昧なまま時間だけが過ぎていくことがある。支援につながりにくいときに詰まっているのは、制度そのものよりも、窓口の順番、期限、責任者、そして戻り先であることが少なくない。</p>
+<p>この章で大切なのは、「使える制度を全部知ること」ではない。まず、いま止まっている工程を見つけること。次に、その工程を動かすために、誰が、いつまでに、何をするのかを固定すること。その順番が見えるだけで、支援接続はかなり進みやすくなる。</p>
+<p>制度の条件は法域や自治体で変わるため、制度名だけを本文で覚えるより、まず <code>どの法域で読むのか</code> と <code>対象要件や期限は何か</code> を先に確かめておく方がよい。企業単独で抱えにくい論点は、JAC の提案と地域支援体制をセットで示した方が、実施のハードルが下がりやすい。</p>
+<h3 id="sec-002">まず先に決めること</h3>
+<ul>
+<li>使える制度を探す前に、いま止まっている工程を特定する。</li>
+<li>法域、自治体条件、期限、支給条件を先に確認する。</li>
+<li>JAC が整理することと、地域支援者に頼むことを分けて書く。</li>
+<li>止まったときは、責任者と次回接点をその場で再固定する。</li>
+</ul>
+<h3 id="sec-003">この章で見落としやすいこと</h3>
+<p>制度一覧は、読んだだけでは動きに変わらない。動きに変えるのは、工程表と責任者の明記である。制度名が増えるほど迷うなら、情報が足りないのではなく、順番が見えていない可能性が高い。</p>
+<h3 id="sec-004">最初の一歩</h3>
+<p>本人、JAC、企業、地域支援者、制度窓口を一枚に並べ、いま止まっている場所に印を付ける。そこに期限と責任者を書き込むだけでも、次の一手はかなり見えやすくなる。</p>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-005">第2章 実習採用ブリッジ</h2>
+<p>実習ではうまくいったのに、採用後に急に崩れることがある。これは、実習で見えていた条件が、採用後の運用へ引き継がれていないときに起こりやすい。</p>
+<p>実習の場では、周囲の配慮や負荷調整が比較的ていねいに行われることが多い。ところが採用後は、通常運用に戻るなかで、その条件が言葉にされないまま消えてしまう。実習では「できていた」のに、採用後は「なぜか続かない」と感じるとき、その間で落ちているのは能力ではなく、条件の橋渡しであることが多い。</p>
+<p>本来、実習で見るべきなのは評価点だけではない。どの業務なら安定したか、どこで負荷が跳ねたか、不調になったとき誰がどう戻したか。その情報が採用後1か月の運用へ持ち込まれてはじめて、実習は本採用に役立つ。</p>
+<p>制度や実習枠の条件には法域差があるので、制度の細かな説明は別に確認すればよい。その代わり本文では、採用後1から4週の運用へ何を引き継ぐのかをはっきりさせる。地域支援者が入るなら、定着支援や再評価のタイミングまで最初から組み込んでおくと、橋が途中で切れにくい。</p>
+<h3 id="sec-006">まず先に決めること</h3>
+<ul>
+<li>実習評価を、採用可否ではなく採用後に持ち込む条件として整理する。</li>
+<li>初月の負荷上限、担当者、見直し時点、不調時の戻し先を決める。</li>
+<li>実習で有効だった支援を、採用後の通常運用にどう移すかを明文化する。</li>
+<li>地域支援者が入るなら、再評価のタイミングを最初から入れておく。</li>
+</ul>
+<h3 id="sec-007">この章で見落としやすいこと</h3>
+<p>採用時に消えやすいのは、配慮そのものよりも、配慮が必要だった条件の説明である。評価だけを引き継ぎ、条件を引き継がないと、採用後に「期待だけが高く、支えは薄い」状態になりやすい。</p>
+<h3 id="sec-008">最初の一歩</h3>
+<p>実習で安定した条件、不安定になった条件、有効だった支援、不調時の戻し方を4項目で書き出し、そのまま採用後4週間の運用表へ移す。橋渡しは、その一枚から始まる。</p>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-009">第3章 相談運用ガバナンス</h2>
+<p>相談窓口があるのに調整が遅れる職場では、相談の量が足りないのではなく、誰が受け止め、誰が次の一手を決め、どこへ戻すのかが見えていないことが多い。</p>
+<p>「困ったら相談してください」と言われていても、その相談が業務設計の変更まで届かなければ、相談は安心材料にはなっても、調整の仕組みにはならない。現場、管理者、人事、外部支援の役割が重なったり抜けたりしていると、本人は話しているのに、職場は動いていないという状態が生まれやすい。</p>
+<p>この章で整えたいのは、面談の雰囲気ではない。相談が遅れない責任線である。誰が一次窓口になるのか。誰が業務変更を判断するのか。どこから外部支援へつなぐのか。その流れが見えてはじめて、相談は「話す場」から「動く仕組み」へ変わる。</p>
+<p>健康情報や共有範囲には制度上の制約があるため、本文ではまず <code>相談を止めない設計</code> を扱い、詳細な制度差は別に確認する。管理者だけに負荷を集めず、外部支援へつなぐ条件を先に決めておくと、相談が形骸化しにくい。</p>
+<h3 id="sec-010">まず先に決めること</h3>
+<ul>
+<li>一次窓口と、次の一手を決める責任者を分けて見える化する。</li>
+<li>健康情報の共有は、配慮実装に必要な最小限へ絞る。</li>
+<li>管理者だけで抱えず、外部支援につなぐ条件を決める。</li>
+<li>相談が止まったときに戻る先を、最初から用意しておく。</li>
+</ul>
+<h3 id="sec-011">この章で見落としやすいこと</h3>
+<p>相談の仕組みは、窓口があるだけでは機能しない。次の一手を決める人が曖昧なままだと、相談は増えても調整は進まない。相談が遅れる職場では、本人の遠慮よりも、責任線の不在を先に疑った方がよい。</p>
+<h3 id="sec-012">最初の一歩</h3>
+<p>現場、管理者、人事、外部支援を横に並べ、誰が受けるか、誰が決めるか、どこへ戻すかを一本の線で書いてみる。相談の導線は、文章より線で見た方が穴が見つかりやすい。</p>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-013">第4章 情報開示レイヤー設計</h2>
+<p>どこまで伝えれば配慮につながり、どこからが伝えすぎになるのか。この問いに対して、「全部話す」か「何も話さない」かで考え始めると、ほとんどの場合うまくいかない。</p>
+<p>配慮の実装には情報共有が必要である。しかし、共有が増えすぎれば、本人の不安や二次的な負担も増える。難しいのは、情報の量そのものよりも、何のために、誰へ、どこまで共有するのかを先に決めないまま話が始まってしまうことである。</p>
+<p>この章で目指すのは、開示の是非を決めることではない。共有目的、共有相手、共有量、見直し時点を、最小共有の考え方で設計することである。本人だけが持つ情報、管理責任者が持つ情報、チーム共有する情報を分けて考えると、話すべきことと話さなくてよいことが整理しやすい。</p>
+<p>制度面では、健康情報や個人情報の扱いに法域差がある。だからこそ、制度差の説明を増やすより先に、本文では <code>共有目的を先に決める</code> ことを前に置く。開示量の判断は企業内だけで抱えず、必要に応じて支援体制と一緒に設計した方が安全である。</p>
+<h3 id="sec-014">まず先に決めること</h3>
+<ul>
+<li>何を共有するかより先に、何のために共有するかを決める。</li>
+<li>共有量は、配慮実装に必要な最小限で設計する。</li>
+<li>共有先ごとに、目的、記録責任、見直し時点を分ける。</li>
+<li>迷いが続くときは、支援体制とセットで考え直す。</li>
+</ul>
+<h3 id="sec-015">この章で見落としやすいこと</h3>
+<p>共有量が多ければ安心とは限らない。むしろ、目的が曖昧な共有ほど、本人の不安を増やしやすい。開示で迷うときは、まず <code>この情報がないと何の配慮が動かないのか</code> に戻ると整理しやすい。</p>
+<h3 id="sec-016">最初の一歩</h3>
+<p>本人だけが持つ情報、管理責任者が持つ情報、チーム共有する情報の三つに分けて、一度書き出してみる。量の議論より先に、層の議論をすると、開示の設計は落ち着きやすい。</p>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-017">第5章 悪化予兆ハンドリング</h2>
+<p>不調への対応が遅れる職場では、「気づけなかった」ことだけが問題なのではない。小さな変化を、どの段階で、誰が、何に変えるかが決まっていないことが多い。</p>
+<p>悪化は突然の出来事として語られやすいが、実際には、その前に小さなサインが出ていることが少なくない。連絡が遅れる、作業の立ち上がりが鈍る、休憩後も戻りにくい。そうした変化を <code>まだ大丈夫</code> と流しているうちに、調整の手は打ちにくくなる。</p>
+<p>この章で大切なのは、危機対応だけを作ることではない。初期サインを観察できる言葉に置き換え、段階ごとの負荷調整ルールを決め、再評価の戻り道を最初から持っておくことである。戻り道が見えているだけで、本人も職場も、変化を早めに扱いやすくなる。</p>
+<p>健康情報の扱いには制度上の制約があるため、共有範囲は目的限定で考える必要がある。また、企業単独で担えない場面では、地域支援者の再評価導線を最初から入れておいた方が、重くなる前に戻しやすい。</p>
+<h3 id="sec-018">まず先に決めること</h3>
+<ul>
+<li>初期サインを、観察できる言葉で置き換える。</li>
+<li>段階ごとの負荷調整ルールを先に決める。</li>
+<li>緊急時だけでなく、再評価まで含めて戻り道を設計する。</li>
+<li>企業単独で抱えにくい場面は、地域支援者の導線を最初から入れる。</li>
+</ul>
+<h3 id="sec-019">この章で見落としやすいこと</h3>
+<p>危機対応だけを厚くすると、早い段階の微調整が抜け落ちる。悪化予兆の章で整えたいのは、最終局面ではなく、その手前で戻せる仕組みである。</p>
+<h3 id="sec-020">最初の一歩</h3>
+<p>「いつも通り」「少し変化」「調整が必要」「いったん止める」の四段階だけでもよいので、誰が確認し、何を変え、どこへ戻すかを書いてみる。段階が見えると、慌てて重い対応に飛びにくくなる。</p>
+</section>
+    </article>
+  </main>
+</body>
+</html>

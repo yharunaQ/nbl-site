@@ -1,0 +1,111 @@
+{
+  "version": "2026-03-02",
+  "defaultExpectedTier": "B",
+  "cards": {
+    "p-meeting-overload": {
+      "expectedTier": "A",
+      "rationale": "認知負荷と症状悪化の連鎖が難病GLMの相互作用知見と接続しやすい中核領域。"
+    },
+    "p-fatigue-pacing": {
+      "expectedTier": "A",
+      "rationale": "疲労・体調変動と業務密度の衝突は難病GLMの中核領域。"
+    },
+    "p-medical-schedule": {
+      "expectedTier": "A",
+      "rationale": "通院・治療スケジュールと勤務の衝突は難病GLMの中核領域。"
+    },
+    "p-environment-sensory": {
+      "expectedTier": "B",
+      "rationale": "幅広い障害で成立するため、data2とweb-cacheを軸に三角測量で扱う。"
+    },
+    "p-commute-hybrid": {
+      "expectedTier": "B",
+      "rationale": "通勤・在宅設計は法制度・運用条件差が大きく、三角測量で扱う。"
+    },
+    "p-disclosure-boundary": {
+      "expectedTier": "B",
+      "rationale": "開示境界は文脈依存が強く、制度・事例・本人条件の統合が必要。"
+    },
+    "p-return-to-work-ramp": {
+      "expectedTier": "A",
+      "rationale": "復帰速度と再悪化リスクの関係は難病GLMの相互作用と親和性が高い。"
+    },
+    "p-shift-rhythm-guard": {
+      "expectedTier": "A",
+      "rationale": "勤務時刻と体調・治療リズムの整合は難病GLMで重視される領域。"
+    },
+    "p-manager-checkin": {
+      "expectedTier": "B",
+      "rationale": "運用設計の要素が中心で、広い障害類型を三角測量で扱う。"
+    },
+    "p-customer-facing-load": {
+      "expectedTier": "B",
+      "rationale": "対人応答負荷は職務設計要因の比重が高く、GLM非依存で扱う。"
+    },
+    "p-visual-document-access": {
+      "expectedTier": "B",
+      "rationale": "視覚アクセシビリティ設計はGLM対象外領域が多く、三角測量で扱う。"
+    },
+    "p-hearing-meeting-access": {
+      "expectedTier": "B",
+      "rationale": "聴覚情報保障はGLM対象外領域が多く、三角測量で扱う。"
+    },
+    "p-physical-mobility-route": {
+      "expectedTier": "B",
+      "rationale": "動線・移動設計は環境改修要因が中心で、三角測量が適切。"
+    },
+    "p-safety-critical-operations": {
+      "expectedTier": "B",
+      "rationale": "安全クリティカル業務は制度・手順・訓練要件を含む統合推論が必要。"
+    },
+    "p-internal-treatment-compatibility": {
+      "expectedTier": "A",
+      "rationale": "治療リズムと業務要求の衝突は難病GLMの中心仮説と一致。"
+    },
+    "p-intellectual-task-clarity": {
+      "expectedTier": "B",
+      "rationale": "手順明確化は認知支援設計として広範な障害類型で三角測量が必要。"
+    },
+    "p-developmental-switch-load": {
+      "expectedTier": "B",
+      "rationale": "発達特性起点の切替負荷はGLM外が多く、事例・運用・制度で補完。"
+    },
+    "p-mental-fluctuation-plan": {
+      "expectedTier": "A",
+      "rationale": "精神・心理面の波と職場要因の相互作用は難病GLMと接続が強い。"
+    },
+    "p-higher-brain-memory-support": {
+      "expectedTier": "B",
+      "rationale": "高次脳機能支援は作業設計と補助具設計の統合推論が中核。"
+    },
+    "p-jobmatch-exploration": {
+      "expectedTier": "B",
+      "rationale": "就職探索は制度・情報アクセス・支援導線の統合が主。"
+    },
+    "p-application-contact-flow": {
+      "expectedTier": "B",
+      "rationale": "応募実務は文書・連絡・支援導線設計の統合推論で扱う。"
+    },
+    "p-interview-self-advocacy": {
+      "expectedTier": "B",
+      "rationale": "面接での自己説明は運用とコミュニケーション文脈依存が大きい。"
+    },
+    "p-skill-building-path": {
+      "expectedTier": "B",
+      "rationale": "技能獲得は訓練経路設計が主で、GLM外データの統合が中心。"
+    },
+    "p-worktrial-transition": {
+      "expectedTier": "B",
+      "rationale": "実習から定着は支援導線と職場運用設計の統合推論が中心。"
+    },
+    "p-income-condition-stability": {
+      "expectedTier": "B",
+      "rationale": "契約・収入条件は制度・職務設計・生活条件の統合で扱う。"
+    },
+    "p-support-service-navigation": {
+      "expectedTier": "B",
+      "rationale": "支援接続は制度ナビゲーション領域で、三角測量が基本。"
+    }
+  }
+}
+

@@ -1,0 +1,297 @@
+{
+  "generatedAt": "2026-03-02T03:37:15.534Z",
+  "config": {
+    "kMin": 22,
+    "kMax": 30,
+    "restarts": 2,
+    "maxIters": 12,
+    "maxClaims": 650,
+    "minTokenDf": 3,
+    "featureMaxPerDoc": 60
+  },
+  "sampleSnapshot": {
+    "rawSamples": 2265,
+    "vectorizedSamples": 2264,
+    "sourceCounts": {
+      "data2_issue": 1076,
+      "claim": 649,
+      "glm_relation": 539
+    },
+    "vocabSize": 26331
+  },
+  "bestK": {
+    "k": 26,
+    "objective": 0.39102,
+    "silhouetteProxy": 0.3608,
+    "weightedPurity": 0.273,
+    "dominantCardCount": 12,
+    "ssePerSample": 1.268935
+  },
+  "bestParsimoniousK": {
+    "k": 26,
+    "objective": 0.39102,
+    "parsimonyObjective": 0.00102,
+    "silhouetteProxy": 0.3608,
+    "weightedPurity": 0.273,
+    "dominantCardCount": 12
+  },
+  "k26": {
+    "objective": 0.39102,
+    "silhouetteProxy": 0.3608,
+    "weightedPurity": 0.273,
+    "dominantCardCount": 12,
+    "ssePerSample": 1.268935
+  },
+  "comparison": {
+    "objectiveGap26": 0,
+    "nearOptimal26": 1,
+    "bestKIs26": true,
+    "bestKNear26": true,
+    "bestParsimoniousKIs26": true,
+    "configuredComplexityPenalty": 0.015,
+    "requiredPenaltyFor26OverBestK": 0,
+    "robustAt26": true,
+    "cardBoundarySignalAt26": {
+      "dominantCardCount": 12,
+      "weightedPurity": 0.273,
+      "note": "これはカード境界の分離度指標であり、k最適性とは別軸。"
+    },
+    "interpretation": "26は固定前提を外しても最適帯にあり、カード数として頑強。"
+  },
+  "topCandidates": [
+    {
+      "k": 26,
+      "objective": 0.39102,
+      "silhouetteProxy": 0.3608,
+      "weightedPurity": 0.273,
+      "dominantCardCount": 12,
+      "ssePerSample": 1.268935
+    },
+    {
+      "k": 27,
+      "objective": 0.34646,
+      "silhouetteProxy": 0.3285,
+      "weightedPurity": 0.2789,
+      "dominantCardCount": 8,
+      "ssePerSample": 1.316302
+    },
+    {
+      "k": 29,
+      "objective": 0.34597,
+      "silhouetteProxy": 0.3358,
+      "weightedPurity": 0.2539,
+      "dominantCardCount": 13,
+      "ssePerSample": 1.263202
+    },
+    {
+      "k": 25,
+      "objective": 0.33353,
+      "silhouetteProxy": 0.318,
+      "weightedPurity": 0.2672,
+      "dominantCardCount": 11,
+      "ssePerSample": 1.29798
+    },
+    {
+      "k": 30,
+      "objective": 0.33118,
+      "silhouetteProxy": 0.3265,
+      "weightedPurity": 0.2544,
+      "dominantCardCount": 11,
+      "ssePerSample": 1.278832
+    },
+    {
+      "k": 28,
+      "objective": 0.30416,
+      "silhouetteProxy": 0.3042,
+      "weightedPurity": 0.2614,
+      "dominantCardCount": 11,
+      "ssePerSample": 1.327773
+    },
+    {
+      "k": 24,
+      "objective": 0.26889,
+      "silhouetteProxy": 0.2951,
+      "weightedPurity": 0.2192,
+      "dominantCardCount": 12,
+      "ssePerSample": 1.354607
+    },
+    {
+      "k": 22,
+      "objective": 0.26317,
+      "silhouetteProxy": 0.279,
+      "weightedPurity": 0.2539,
+      "dominantCardCount": 10,
+      "ssePerSample": 1.35686
+    }
+  ],
+  "around26Band": [
+    {
+      "k": 26,
+      "objective": 0.39102,
+      "silhouetteProxy": 0.3608,
+      "weightedPurity": 0.273,
+      "dominantCardCount": 12
+    },
+    {
+      "k": 27,
+      "objective": 0.34646,
+      "silhouetteProxy": 0.3285,
+      "weightedPurity": 0.2789,
+      "dominantCardCount": 8
+    },
+    {
+      "k": 25,
+      "objective": 0.33353,
+      "silhouetteProxy": 0.318,
+      "weightedPurity": 0.2672,
+      "dominantCardCount": 11
+    },
+    {
+      "k": 28,
+      "objective": 0.30416,
+      "silhouetteProxy": 0.3042,
+      "weightedPurity": 0.2614,
+      "dominantCardCount": 11
+    },
+    {
+      "k": 24,
+      "objective": 0.26889,
+      "silhouetteProxy": 0.2951,
+      "weightedPurity": 0.2192,
+      "dominantCardCount": 12
+    }
+  ],
+  "clusterPreviewAt26": [
+    {
+      "clusterId": 0,
+      "size": 544,
+      "topCard": "p-meeting-overload",
+      "topCardCount": 104,
+      "purity": 0.191,
+      "sourceMix": [
+        "data2_issue:300",
+        "glm_relation:210",
+        "claim:34"
+      ]
+    },
+    {
+      "clusterId": 20,
+      "size": 213,
+      "topCard": "p-fatigue-pacing",
+      "topCardCount": 26,
+      "purity": 0.122,
+      "sourceMix": [
+        "claim:213"
+      ]
+    },
+    {
+      "clusterId": 17,
+      "size": 176,
+      "topCard": "p-meeting-overload",
+      "topCardCount": 32,
+      "purity": 0.182,
+      "sourceMix": [
+        "claim:169",
+        "glm_relation:4",
+        "data2_issue:3"
+      ]
+    },
+    {
+      "clusterId": 24,
+      "size": 136,
+      "topCard": "p-worktrial-transition",
+      "topCardCount": 59,
+      "purity": 0.434,
+      "sourceMix": [
+        "data2_issue:134",
+        "claim:2"
+      ]
+    },
+    {
+      "clusterId": 15,
+      "size": 101,
+      "topCard": "p-jobmatch-exploration",
+      "topCardCount": 25,
+      "purity": 0.248,
+      "sourceMix": [
+        "data2_issue:101"
+      ]
+    },
+    {
+      "clusterId": 21,
+      "size": 82,
+      "topCard": "p-internal-treatment-compatibility",
+      "topCardCount": 8,
+      "purity": 0.098,
+      "sourceMix": [
+        "glm_relation:80",
+        "claim:2"
+      ]
+    },
+    {
+      "clusterId": 1,
+      "size": 81,
+      "topCard": "p-meeting-overload",
+      "topCardCount": 16,
+      "purity": 0.198,
+      "sourceMix": [
+        "claim:46",
+        "glm_relation:23",
+        "data2_issue:12"
+      ]
+    },
+    {
+      "clusterId": 8,
+      "size": 74,
+      "topCard": "p-fatigue-pacing",
+      "topCardCount": 16,
+      "purity": 0.216,
+      "sourceMix": [
+        "claim:74"
+      ]
+    },
+    {
+      "clusterId": 5,
+      "size": 65,
+      "topCard": "p-medical-schedule",
+      "topCardCount": 32,
+      "purity": 0.492,
+      "sourceMix": [
+        "glm_relation:59",
+        "claim:6"
+      ]
+    },
+    {
+      "clusterId": 11,
+      "size": 65,
+      "topCard": "p-meeting-overload",
+      "topCardCount": 31,
+      "purity": 0.477,
+      "sourceMix": [
+        "data2_issue:65"
+      ]
+    },
+    {
+      "clusterId": 25,
+      "size": 63,
+      "topCard": "p-income-condition-stability",
+      "topCardCount": 17,
+      "purity": 0.27,
+      "sourceMix": [
+        "data2_issue:39",
+        "claim:24"
+      ]
+    },
+    {
+      "clusterId": 4,
+      "size": 62,
+      "topCard": "p-meeting-overload",
+      "topCardCount": 18,
+      "purity": 0.29,
+      "sourceMix": [
+        "data2_issue:58",
+        "claim:4"
+      ]
+    }
+  ]
+}

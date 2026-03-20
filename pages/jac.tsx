@@ -14,6 +14,7 @@ type FollowUpQuestion = {
   key: string;
   label: string;
   placeholder: string;
+  source?: 'tag' | 'guide';
 };
 
 type TagGroup = {
@@ -45,6 +46,11 @@ type AiAssessment = {
   citations: {
     claim: string;
     evidence_ids: string[];
+    evidence_lanes?: Array<{
+      evidence_id: string;
+      lane: string;
+      label: string;
+    }>;
   }[];
 };
 
@@ -70,6 +76,7 @@ type AssessmentSafetyGate = {
   partialClaimCount: number;
   missingContextCount: number;
   sampleClaimIds?: string[];
+  evidenceLaneCounts?: Record<string, number>;
   followUpQuestions: string[];
 };
 
@@ -115,9 +122,24 @@ type AssessmentProcess = {
   responseMode?: 'fast' | 'full';
   pendingRefinement?: boolean;
   refinementJobId?: string | null;
+  data2InsightCount?: number;
+  data2Preview?: Array<{
+    id: number;
+    disability: string;
+    issues: string[];
+  }>;
   fallbackReason?: string | null;
   sourceNotes: string[];
   safetyGate?: AssessmentSafetyGate;
+};
+
+const EVIDENCE_LANE_LABEL: Record<string, string> = {
+  case_practice: '事例実践',
+  legal_policy: '制度根拠',
+  employer_guidance: '雇用主ガイダンス',
+  aggregated_general: '集計一般',
+  mixed: '混合',
+  unknown: '不明',
 };
 
 type TagSuggestion = {
@@ -137,6 +159,16 @@ type AccommodationSelection = {
   priority: number;
 };
 
+type GuideDeepDiveCard = {
+  id: string;
+  title: string;
+  triggerTags: string[];
+  triggerKeywords: string[];
+  mode: 'conditional_only' | 'questions_first';
+  followUpQuestions: string[];
+  failureRisks: string[];
+};
+
 const tagGroups: TagGroup[] = [
   {
     key: 'task',
@@ -151,6 +183,9 @@ const tagGroups: TagGroup[] = [
       '移動・外出・現場',
       '時間制約・納期',
       '画面作業（視認性/長時間PC）',
+      '反復手順作業（工程順守・確認）',
+      '接客・電話・窓口対応',
+      '記憶保持が必要な作業（抜け漏れリスク）',
     ],
   },
   {
@@ -166,6 +201,12 @@ const tagGroups: TagGroup[] = [
       '視覚負荷（見えづらさ/眼精疲労）',
       '聴覚負荷（聞き取り困難/雑音）',
       '睡眠リズム・通院/治療スケジュール',
+      '精神症状の波（気分・幻覚妄想・陰性症状等）',
+      '発達特性（切替・実行機能・段取り）',
+      '知的特性（理解速度・手順保持）',
+      '高次脳機能（記憶・注意・遂行）',
+      '内部障害（透析・循環器・呼吸器等）',
+      '発作・急変リスク（てんかん等）',
     ],
   },
   {
@@ -182,6 +223,9 @@ const tagGroups: TagGroup[] = [
       'リモート/出社',
       '休憩の取りやすさ・休養導線',
       '通勤負荷（時間/混雑/距離）',
+      '段差・エレベータ・トイレ等の物理アクセス',
+      '字幕・文字起こし・テキスト連絡導線',
+      '機器/ソフトのアクセシビリティ（読み上げ・拡大等）',
     ],
   },
   {
@@ -249,6 +293,153 @@ const followUpLibrary: Record<TagGroupKey, FollowUpQuestion[]> = {
     },
   ],
 };
+
+const TAG_SHORT_LABELS: Record<string, string> = {
+  '集中作業・思考作業': '集中作業',
+  '会議・対話': '会議',
+  '文章作成・読解': '読み書き',
+  'マルチタスク・切替': '切替・並行',
+  '対人調整・感情労働': '対人調整',
+  '移動・外出・現場': '移動・現場',
+  '時間制約・納期': '納期',
+  '画面作業（視認性/長時間PC）': '画面作業',
+  '反復手順作業（工程順守・確認）': '反復手順',
+  '接客・電話・窓口対応': '接客・電話',
+  '記憶保持が必要な作業（抜け漏れリスク）': '記憶保持作業',
+  '疲労・倦怠（慢性疲労含む）': '疲労・倦怠',
+  '痛み・体調変動（波がある）': '痛み・体調波',
+  '注意集中の波・認知負荷': '集中の波',
+  '不安・緊張・メンタル負荷': '不安・メンタル',
+  '感覚過敏（音・光・温度）': '感覚過敏',
+  '視覚負荷（見えづらさ/眼精疲労）': '視覚負荷',
+  '聴覚負荷（聞き取り困難/雑音）': '聴覚負荷',
+  '睡眠リズム・通院/治療スケジュール': '睡眠・通院',
+  '精神症状の波（気分・幻覚妄想・陰性症状等）': '精神症状の波',
+  '発達特性（切替・実行機能・段取り）': '発達特性',
+  '知的特性（理解速度・手順保持）': '知的特性',
+  '高次脳機能（記憶・注意・遂行）': '高次脳機能',
+  '内部障害（透析・循環器・呼吸器等）': '内部障害',
+  '発作・急変リスク（てんかん等）': '発作・急変',
+  '騒音・音環境': '騒音',
+  '光・画面の明るさ/反射': '光・反射',
+  '温度・空調': '温度・空調',
+  '姿勢・椅子・机（エルゴノミクス）': '姿勢・机椅子',
+  '作業スペース/動線': 'スペース・動線',
+  '同席人数・密度': '人数・密度',
+  'リモート/出社': '在宅・出社',
+  '休憩の取りやすさ・休養導線': '休憩しやすさ',
+  '通勤負荷（時間/混雑/距離）': '通勤負荷',
+  '段差・エレベータ・トイレ等の物理アクセス': '物理アクセス',
+  '字幕・文字起こし・テキスト連絡導線': '字幕・文字起こし',
+  '機器/ソフトのアクセシビリティ（読み上げ・拡大等）': '機器アクセシビリティ',
+  '役割・専門性を維持したい': '役割を維持',
+  '成長機会・挑戦を続けたい': '成長・挑戦',
+  '生活リズムを守りたい': '生活リズム',
+  '収入・雇用条件を守りたい': '収入・雇用条件',
+  '対人関係の安定を重視': '人間関係の安定',
+  '裁量・自己決定を重視': '裁量・自己決定',
+};
+
+const shortTagLabel = (tag: string) => TAG_SHORT_LABELS[tag] || tag;
+
+const GUIDE_DEEP_DIVE_LIBRARY: GuideDeepDiveCard[] = [
+  {
+    id: 'p-visual-document-access',
+    title: '視覚情報アクセス（文書・画面）',
+    triggerTags: ['視覚負荷（見えづらさ/眼精疲労）', '画面作業（視認性/長時間PC）'],
+    triggerKeywords: ['視覚', '見え', 'low vision', 'screen reader', 'contrast'],
+    mode: 'conditional_only',
+    followUpQuestions: [
+      '最も読み取りづらい資料形式は何か（PDF/画像/表/小さい文字）？',
+      '拡大・読み上げ・配色変更のうち、現場で実装可能なものはどれか？',
+      '資料の事前配布と代替形式（テキスト版）を誰が担保するか？',
+    ],
+    failureRisks: [
+      '見えづらさを本人努力で補う運用だけにすると疲労とミスが増える',
+      '資料フォーマットを変えずに拡大だけ行うと実運用で詰まりやすい',
+    ],
+  },
+  {
+    id: 'p-hearing-communication',
+    title: '聴覚・会議コミュニケーション',
+    triggerTags: ['聴覚負荷（聞き取り困難/雑音）', '会議・対話', '騒音・音環境'],
+    triggerKeywords: ['聴覚', '聞き取り', 'caption', '字幕', 'deaf', 'hearing'],
+    mode: 'conditional_only',
+    followUpQuestions: [
+      '聞き取り困難が強いのは会議のどの場面か（複数話者/雑音/速度）？',
+      '字幕・議事録・発話ルールのうち、どれを優先すると効果が高いか？',
+      '緊急連絡を音声依存にしない代替導線はあるか？',
+    ],
+    failureRisks: [
+      '会議中の即時口頭合意だけに依存すると情報欠落が起きやすい',
+      '通訳・文字化なしで人数だけ減らしても負荷は残りやすい',
+    ],
+  },
+  {
+    id: 'p-mobility-access',
+    title: '肢体不自由・移動と作業導線',
+    triggerTags: ['移動・外出・現場', '作業スペース/動線', '姿勢・椅子・机（エルゴノミクス）'],
+    triggerKeywords: ['肢体', '車いす', 'mobility', 'transfer', '段差', '導線'],
+    mode: 'conditional_only',
+    followUpQuestions: [
+      '負荷が高い導線はどこか（入口/席/トイレ/会議室/現場）？',
+      '必須タスクと現地移動を分けて再設計できるか？',
+      '設備改修までの暫定運用（席配置/動線変更）を誰が管理するか？',
+    ],
+    failureRisks: [
+      '座席調整だけで建物導線を放置すると実作業が止まる',
+      '一時的な人的介助を常態化すると継続性が落ちる',
+    ],
+  },
+  {
+    id: 'p-internal-treatment-rhythm',
+    title: '内部障害（透析・循環器等）と治療両立',
+    triggerTags: ['睡眠リズム・通院/治療スケジュール', '時間制約・納期', '疲労・倦怠（慢性疲労含む）'],
+    triggerKeywords: ['透析', 'ペースメーカー', '内部障害', 'chronic', 'treatment'],
+    mode: 'questions_first',
+    followUpQuestions: [
+      '治療日・回復時間を前提に、不可業務帯を明示できているか？',
+      '納期設計を中間締切化して体調波を吸収できるか？',
+      '不調時のフォールバック手順（代替担当/連絡先）は定義済みか？',
+    ],
+    failureRisks: [
+      '通常勤務への早期復帰を優先しすぎると再悪化しやすい',
+      '通院配慮を個別善意に依存すると継続運用できない',
+    ],
+  },
+  {
+    id: 'p-neurocognitive-structure',
+    title: '知的・発達・高次脳機能の手順化支援',
+    triggerTags: ['注意集中の波・認知負荷', 'マルチタスク・切替', '文章作成・読解'],
+    triggerKeywords: ['発達', '知的', '高次脳', 'executive', 'memory', 'adhd', 'autism'],
+    mode: 'conditional_only',
+    followUpQuestions: [
+      '曖昧な指示で止まりやすい工程はどこか？',
+      '手順書・チェックリスト・見本提示の優先順位はどうするか？',
+      '評価基準を速度偏重から品質/再現性へ調整できるか？',
+    ],
+    failureRisks: [
+      '抽象指示のまま運用すると再現性が上がらない',
+      '一律の多能工化を要求すると負荷過多になりやすい',
+    ],
+  },
+  {
+    id: 'p-mental-stability',
+    title: '精神障害（気分/統合失調症等）の波と安全運用',
+    triggerTags: ['不安・緊張・メンタル負荷', '対人調整・感情労働', '同席人数・密度'],
+    triggerKeywords: ['精神', '統合失調症', '気分', 'depression', 'anxiety', 'psychosis'],
+    mode: 'questions_first',
+    followUpQuestions: [
+      '再悪化の初期サインと対応手順はチームで共有できているか？',
+      '高刺激タスクの連続配置を避ける業務順序にできるか？',
+      '緊急時連絡フローと職場内共有範囲は明確か？',
+    ],
+    failureRisks: [
+      '本人申告のみを前提にすると兆候検知が遅れやすい',
+      '開示範囲を曖昧にすると二次被害リスクが上がる',
+    ],
+  },
+];
 
 const formatList = (items: string[]) => items.map((item) => `- ${item}`).join('\n');
 
@@ -354,13 +545,65 @@ export default function JacTrial() {
   const tagSuggestionInFlightRef = useRef(false);
   const tagSuggestionAttemptedRef = useRef('');
 
-  const followUpQuestions = useMemo(() => {
+  const tagFollowUpQuestions = useMemo(() => {
     const groups = Object.entries(selectedTags) as [TagGroupKey, string[]][];
     return groups.flatMap(([key, tags]) => {
       if (tags.length === 0) return [];
-      return followUpLibrary[key];
+      return followUpLibrary[key].map((question) => ({ ...question, source: 'tag' as const }));
     });
   }, [selectedTags]);
+
+  const guideDeepDiveCards = useMemo(() => {
+    const selectedTagSet = new Set(Object.values(selectedTags).flat());
+    const normalizedConsultation = consultation.toLowerCase();
+
+    const scored = GUIDE_DEEP_DIVE_LIBRARY.map((card) => {
+      const tagScore = card.triggerTags.reduce(
+        (count, tag) => count + (selectedTagSet.has(tag) ? 2 : 0),
+        0,
+      );
+      const keywordScore = card.triggerKeywords.reduce(
+        (count, keyword) => count + (normalizedConsultation.includes(keyword.toLowerCase()) ? 1 : 0),
+        0,
+      );
+      return {
+        card,
+        score: tagScore + keywordScore,
+      };
+    })
+      .filter((item) => item.score > 0)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.card.mode !== b.card.mode) return a.card.mode === 'questions_first' ? -1 : 1;
+        return a.card.title.localeCompare(b.card.title, 'ja');
+      });
+
+    return scored.slice(0, 3).map((item) => item.card);
+  }, [consultation, selectedTags]);
+
+  const guideFollowUpQuestions = useMemo(() => {
+    return guideDeepDiveCards.flatMap((card) =>
+      card.followUpQuestions.map((question, index) => ({
+        key: `guide_${card.id}_${index}`,
+        label: question,
+        placeholder:
+          '例：どの場面で起きるか、誰が運用責任者か、いつ再評価するかを具体化',
+        source: 'guide' as const,
+      })),
+    );
+  }, [guideDeepDiveCards]);
+
+  const followUpQuestions = useMemo(() => {
+    const merged = [...tagFollowUpQuestions, ...guideFollowUpQuestions];
+    const dedup = new Map<string, FollowUpQuestion>();
+    merged.forEach((question) => {
+      const key = `${question.label}|${question.placeholder}`;
+      if (!dedup.has(key)) {
+        dedup.set(key, question);
+      }
+    });
+    return Array.from(dedup.values());
+  }, [tagFollowUpQuestions, guideFollowUpQuestions]);
 
   const draftText = useMemo(() => {
     if (!aiAssessment) return '';
@@ -745,6 +988,12 @@ export default function JacTrial() {
               初期化
             </button>
             <Link
+              href="/jac/guide"
+              className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-semibold text-indigo-700 hover:bg-indigo-100"
+            >
+              JACガイド
+            </Link>
+            <Link
               href="/"
               className="inline-flex items-center rounded-full border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50"
             >
@@ -797,6 +1046,31 @@ export default function JacTrial() {
               <p className="text-sm text-gray-600 mt-2">
                 相談内容を入力 → タグで整理 → 専門家の見立て → 合意文書を生成。
                 納得がいくまで、見立てと配慮案を更新できます。
+              </p>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                <div className="rounded-xl border border-cyan-200 bg-cyan-50 p-3">
+                  <p className="text-xs font-semibold text-cyan-900">JACガイド（導入）でできること</p>
+                  <ul className="mt-1 list-disc pl-4 space-y-1 text-xs text-cyan-800">
+                    <li>困りごとに近い配慮パターンを短時間で掴む</li>
+                    <li>逆効果リスクと追加確認観点を把握する</li>
+                    <li>まず試すべき方向性を整理する</li>
+                  </ul>
+                </div>
+                <div className="rounded-xl border border-indigo-200 bg-indigo-50 p-3">
+                  <p className="text-xs font-semibold text-indigo-900">JAC個別相談で追加される価値</p>
+                  <ul className="mt-1 list-disc pl-4 space-y-1 text-xs text-indigo-800">
+                    <li>あなたの条件に合わせて因果関係を再構成</li>
+                    <li>安全ゲートで断定提案のリスクを抑制</li>
+                    <li>運用可能な合意文書ドラフトまで一気通貫で作成</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 mt-3">
+                まだ論点が曖昧な場合は
+                <Link href="/jac/guide" className="mx-1 font-semibold text-indigo-700 hover:text-indigo-900">
+                  JACガイド
+                </Link>
+                で先に整理してから、このページで個別条件を詰める流れが効果的です。
               </p>
             </div>
 
@@ -899,7 +1173,7 @@ export default function JacTrial() {
                               >
                                 <div className="min-w-0">
                                   <p className="text-xs font-semibold text-gray-900">
-                                    {item.tag}
+                                    <span title={item.tag}>{shortTagLabel(item.tag)}</span>
                                     <span className="ml-2 text-[10px] text-indigo-600">
                                       score {item.score.toFixed(2)}
                                     </span>
@@ -939,13 +1213,14 @@ export default function JacTrial() {
                               type="button"
                               key={tag}
                               onClick={() => updateTag(group.key, tag)}
+                              title={tag}
                               className={`rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
                                 active
                                   ? 'border-indigo-500 bg-indigo-600 text-white'
                                   : 'border-gray-200 bg-white text-gray-700 hover:border-indigo-200'
                               }`}
                             >
-                              {tag}
+                              {shortTagLabel(tag)}
                             </button>
                           );
                         })}
@@ -988,7 +1263,7 @@ export default function JacTrial() {
                     </p>
                     <span className="text-xs text-gray-500">
                       {assessmentProcess
-                        ? `${completedStepCount}/${assessmentProcess.stepProgress.length} 完了・${assessmentProcess.evidenceCount} 根拠`
+                        ? `${completedStepCount}/${assessmentProcess.stepProgress.length} 完了・${assessmentProcess.evidenceCount} 根拠・data2参照 ${assessmentProcess.data2InsightCount ?? 0}件`
                         : '未実行'}
                     </span>
                   </div>
@@ -1025,6 +1300,21 @@ export default function JacTrial() {
                               reason: {assessmentProcess.safetyGate.reasonCodes.join(', ')}
                             </p>
                           )}
+                          {assessmentProcess.safetyGate.evidenceLaneCounts &&
+                            Object.keys(assessmentProcess.safetyGate.evidenceLaneCounts).length > 0 && (
+                              <div className="mt-2 flex flex-wrap gap-1.5">
+                                {Object.entries(assessmentProcess.safetyGate.evidenceLaneCounts)
+                                  .sort((a, b) => b[1] - a[1])
+                                  .map(([lane, count]) => (
+                                    <span
+                                      key={`safety-lane-${lane}`}
+                                      className="rounded-full border border-gray-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-gray-700"
+                                    >
+                                      {EVIDENCE_LANE_LABEL[lane] || lane}: {count}
+                                    </span>
+                                  ))}
+                              </div>
+                            )}
                         </div>
                       )}
                       <div className="space-y-2">
@@ -1072,6 +1362,29 @@ export default function JacTrial() {
                           </div>
                         </div>
                       )}
+                      {assessmentProcess.data2Preview &&
+                        assessmentProcess.data2Preview.length > 0 && (
+                          <div className="rounded-lg border border-sky-200 bg-sky-50 p-3 min-w-0">
+                            <p className="text-[11px] font-semibold text-sky-800 mb-1">
+                              data2 障害別知見（参照プレビュー）
+                            </p>
+                            <div className="space-y-2">
+                              {assessmentProcess.data2Preview.map((item) => (
+                                <div
+                                  key={`data2-preview-${item.id}`}
+                                  className="rounded-md border border-sky-100 bg-white px-2 py-2"
+                                >
+                                  <p className="text-[11px] font-semibold text-sky-900 break-words">
+                                    #{item.id} {item.disability}
+                                  </p>
+                                  <p className="text-[10px] text-sky-700 break-words mt-1">
+                                    {item.issues.join(' / ')}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       {assessmentProcess.fallbackReason && (
                         <div className="rounded-lg border border-amber-200 bg-amber-50 p-3">
                           <p className="text-[11px] font-semibold text-amber-800 mb-1">
@@ -1148,6 +1461,71 @@ export default function JacTrial() {
                   )}
                 </div>
                 <div className="space-y-4">
+                  {guideDeepDiveCards.length > 0 && (
+                    <div className="rounded-2xl border border-indigo-200 bg-indigo-50 p-4 space-y-3">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-sm font-semibold text-indigo-900">
+                          JACガイド連携: 深掘り質問と逆効果リスク
+                        </p>
+                        <p className="text-[11px] text-indigo-700">
+                          個別相談で見落としやすい論点を先に確認
+                        </p>
+                      </div>
+                      <div className="space-y-3">
+                        {guideDeepDiveCards.map((card) => (
+                          <div
+                            key={card.id}
+                            className="rounded-xl border border-indigo-100 bg-white p-3"
+                          >
+                            <div className="flex flex-wrap items-center justify-between gap-2">
+                              <p className="text-xs font-semibold text-indigo-900">{card.title}</p>
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                                    card.mode === 'questions_first'
+                                      ? 'bg-rose-100 text-rose-700'
+                                      : 'bg-amber-100 text-amber-700'
+                                  }`}
+                                >
+                                  {card.mode === 'questions_first'
+                                    ? 'QUESTIONS FIRST'
+                                    : 'CONDITIONAL'}
+                                </span>
+                                <Link
+                                  href={`/jac/guide#${card.id}`}
+                                  className="text-[10px] font-semibold text-indigo-700 hover:text-indigo-900"
+                                >
+                                  ガイド詳細へ
+                                </Link>
+                              </div>
+                            </div>
+                            <div className="mt-2 grid gap-2 md:grid-cols-2">
+                              <div>
+                                <p className="text-[11px] font-semibold text-gray-700">
+                                  追加確認質問
+                                </p>
+                                <ul className="mt-1 list-disc pl-4 space-y-1 text-[11px] text-gray-700">
+                                  {card.followUpQuestions.slice(0, 2).map((item) => (
+                                    <li key={item}>{item}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div>
+                                <p className="text-[11px] font-semibold text-gray-700">
+                                  逆効果リスク
+                                </p>
+                                <ul className="mt-1 list-disc pl-4 space-y-1 text-[11px] text-gray-700">
+                                  {card.failureRisks.slice(0, 2).map((item) => (
+                                    <li key={item}>{item}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   {safetyGate && safetyGate.mode === 'strict' && (
                     <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 space-y-3">
                       <div>
@@ -1189,7 +1567,14 @@ export default function JacTrial() {
                   )}
                   {followUpQuestions.map((question) => (
                     <label key={question.key} className="block">
-                      <span className="text-sm font-semibold text-gray-800">{question.label}</span>
+                      <span className="text-sm font-semibold text-gray-800 flex flex-wrap items-center gap-2">
+                        {question.label}
+                        {question.source === 'guide' && (
+                          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-semibold text-indigo-700">
+                            ガイド連携
+                          </span>
+                        )}
+                      </span>
                       <textarea
                         className="mt-2 w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-200 min-h-[110px]"
                         placeholder={question.placeholder}
@@ -1258,6 +1643,26 @@ export default function JacTrial() {
                         <p className="text-sm text-indigo-900 leading-relaxed bg-white border border-indigo-200 rounded-xl p-3">
                           {aiAssessment.causal_summary}
                         </p>
+                        {assessmentProcess?.safetyGate?.evidenceLaneCounts &&
+                          Object.keys(assessmentProcess.safetyGate.evidenceLaneCounts).length > 0 && (
+                            <div className="rounded-xl border border-indigo-200 bg-white p-3">
+                              <p className="text-xs font-semibold text-indigo-700 mb-2">
+                                根拠レーン内訳（回答生成に使用）
+                              </p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {Object.entries(assessmentProcess.safetyGate.evidenceLaneCounts)
+                                  .sort((a, b) => b[1] - a[1])
+                                  .map(([lane, count]) => (
+                                    <span
+                                      key={`assessment-lane-${lane}`}
+                                      className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-800"
+                                    >
+                                      {EVIDENCE_LANE_LABEL[lane] || lane}: {count}
+                                    </span>
+                                  ))}
+                              </div>
+                            </div>
+                          )}
                         {aiAssessment.citations.length > 0 && (
                           <div className="rounded-xl border border-indigo-200 bg-white p-3">
                             <p className="text-xs font-semibold text-indigo-700 mb-2">
@@ -1273,6 +1678,18 @@ export default function JacTrial() {
                                   <p className="text-[11px] text-indigo-600">
                                     Evidence: {citation.evidence_ids.join(', ') || 'n/a'}
                                   </p>
+                                  {Array.isArray(citation.evidence_lanes) &&
+                                    citation.evidence_lanes.length > 0 && (
+                                      <p className="text-[11px] text-indigo-600">
+                                        Lanes:{' '}
+                                        {citation.evidence_lanes
+                                          .map(
+                                            (item) =>
+                                              `${item.evidence_id}:${item.label || EVIDENCE_LANE_LABEL[item.lane] || item.lane}`,
+                                          )
+                                          .join(' / ')}
+                                      </p>
+                                    )}
                                 </div>
                               ))}
                             </div>
@@ -1481,7 +1898,7 @@ export default function JacTrial() {
                   <p className="text-xs font-semibold text-gray-500">{group.label}</p>
                   <p className="text-sm text-gray-700 mt-1">
                     {selectedTags[group.key].length > 0
-                      ? selectedTags[group.key].join('、')
+                      ? selectedTags[group.key].map((tag) => shortTagLabel(tag)).join('、')
                       : '（未選択）'}
                   </p>
                 </div>
@@ -1521,6 +1938,17 @@ export default function JacTrial() {
                     <p className="text-xs text-gray-700 break-words">
                       {assessmentProcess.safetyGate.summary}
                     </p>
+                    {assessmentProcess.safetyGate.evidenceLaneCounts &&
+                      Object.keys(assessmentProcess.safetyGate.evidenceLaneCounts).length > 0 && (
+                        <p className="text-[11px] text-gray-600 break-words">
+                          レーン: {Object.entries(assessmentProcess.safetyGate.evidenceLaneCounts)
+                            .sort((a, b) => b[1] - a[1])
+                            .map(
+                              ([lane, count]) => `${EVIDENCE_LANE_LABEL[lane] || lane} ${count}`,
+                            )
+                            .join(' / ')}
+                        </p>
+                      )}
                   </div>
                 ) : (
                   <p className="text-sm text-gray-700 mt-1">未実行</p>

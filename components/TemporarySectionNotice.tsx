@@ -6,8 +6,6 @@ type TemporarySectionNoticeProps = {
   sectionNote: string;
 };
 
-const CONTACT_EMAIL = 'info@nextbeinglab.org';
-
 export default function TemporarySectionNotice({
   sectionLabel,
   sectionNote,
@@ -49,12 +47,12 @@ export default function TemporarySectionNotice({
               >
                 トップへ戻る
               </Link>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
+              <Link
+                href="/contact"
                 className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
               >
-                お問い合わせ
-              </a>
+                連携・お問い合わせ
+              </Link>
             </div>
           </div>
         </div>

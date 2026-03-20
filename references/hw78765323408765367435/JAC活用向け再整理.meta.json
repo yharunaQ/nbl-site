@@ -1,0 +1,34 @@
+{
+  "sourceId": "nbl_curated_local_notes",
+  "title": "JAC活用向け再整理: ハローワーク障害者雇用支援ノウハウの普遍化",
+  "fetchedAt": "2026-03-07T00:00:00+09:00",
+  "structuredMetadata": {
+    "noteType": "curated_local_note",
+    "pageType": "curated_local_note",
+    "evidenceScope": "aggregated_index",
+    "country": "JP",
+    "legalContext": "japan_disability_employment_policy",
+    "trustTier": "primary",
+    "updatedAt": "2026-03-07",
+    "sourceScope": "historical_case_collection",
+    "sourceYears": [2006, 2007],
+    "riskLevel": "medium",
+    "mustPairWithRegionalSupport": true,
+    "audiences": ["jac_consultation", "employer_support", "regional_support_coordination"],
+    "operationalTags": [
+      "support_access",
+      "case_conference",
+      "employer_job_design",
+      "trial_matching",
+      "retention_support",
+      "regional_support_system"
+    ],
+    "applicability": {
+      "withConditions": [
+        "日本の障害者雇用支援実践を普遍機能へ翻訳する際の骨格として使う",
+        "企業単独で難しい配慮を地域支援体制とセットで提示する際の設計指針として使う"
+      ],
+      "notFor": ["現行制度の最新情報として使う", "診断名だけで支援内容を決める根拠として使う"]
+    }
+  }
+}

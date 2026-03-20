@@ -1,68 +1,135 @@
 {
-  "generatedAt": "2026-02-11T08:57:05.402Z",
+  "generatedAt": "2026-03-07T01:47:41.650Z",
   "inputPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/index/normalized-records.jsonl",
   "outputPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/index/knowledge-claims.jsonl",
-  "inputRecordCount": 2294,
-  "eligibleRecordCount": 448,
-  "candidateCount": 1741,
-  "claimCount": 1487,
-  "dedupReductionPct": 14.6,
-  "partialClaimCount": 912,
+  "inputRecordCount": 7426,
+  "eligibleRecordCount": 4504,
+  "attemptedCandidateCount": 19697,
+  "candidateCount": 19692,
+  "boilerplateRejectedCount": 40607,
+  "sentenceSelectionRejectedCount": 40573,
+  "candidateEmissionRejectedCount": 5,
+  "claimCount": 4914,
+  "dedupReductionPct": 75,
+  "partialClaimCount": 4126,
   "byClaimType": {
-    "interaction_signal": 918,
-    "outcome_signal": 248,
-    "accommodation_action": 321
+    "interaction_signal": 3011,
+    "accommodation_action": 1055,
+    "outcome_signal": 848
   },
   "bySignal": {
-    "support_needs": 298,
-    "difficulty_occurrence": 162,
-    "difficulty_resolution": 232,
-    "symptom_exacerbation": 226
+    "symptom_exacerbation": 523,
+    "support_needs": 1198,
+    "difficulty_resolution": 1012,
+    "difficulty_occurrence": 278
   },
   "byRiskLevel": {
-    "high": 173,
-    "medium": 1296,
-    "low": 18
+    "medium": 4771,
+    "high": 102,
+    "low": 41
   },
   "byConfidenceLevel": {
-    "medium": 1310,
-    "high": 17,
-    "low": 160
+    "high": 1515,
+    "medium": 2980,
+    "low": 419
   },
   "bySourceId": {
-    "jeed_reference": 876,
-    "askjan_website": 371,
-    "australia_jobaccess_guidance": 13,
-    "eu_reasonable_accommodation": 24,
-    "germany_antidiscrimination_work": 12,
-    "uk_gov_disability_employment": 15,
-    "nbl_local_research": 91,
-    "canada_duty_to_accommodate": 78,
-    "germany_agg_legal": 7
+    "nbl_local_research": 3114,
+    "jeed_reference": 873,
+    "askjan_website": 446,
+    "eu_reasonable_accommodation": 26,
+    "germany_antidiscrimination_work": 19,
+    "uk_headway_brain_injury_work": 85,
+    "askearn_employer_guidance": 129,
+    "canada_duty_to_accommodate": 75,
+    "germany_agg_legal": 7,
+    "uk_gov_disability_employment": 23,
+    "australia_jobaccess_guidance": 70,
+    "nbl_curated_local_notes": 47
   },
   "byCountry": {
-    "JP": 876,
-    "US": 371,
-    "AU": 13,
-    "EU": 24,
-    "DE": 19,
-    "UK": 15,
-    "unknown": 91,
-    "CA": 78
+    "unknown": 3114,
+    "JP": 920,
+    "US": 575,
+    "EU": 26,
+    "DE": 26,
+    "UK": 108,
+    "CA": 75,
+    "AU": 70
   },
   "byLegalContext": {
-    "japan_disability_employment_policy": 876,
-    "ada_title_i": 371,
-    "australia_disability_discrimination_act": 13,
-    "eu_employment_equality_framework": 24,
-    "germany_agg": 19,
-    "equality_act_2010": 15,
-    "unspecified": 91,
-    "canada_human_rights_duty_to_accommodate": 78
+    "unspecified": 3114,
+    "japan_disability_employment_policy": 920,
+    "ada_title_i": 575,
+    "eu_employment_equality_framework": 26,
+    "germany_agg": 26,
+    "equality_act_2010": 108,
+    "canada_human_rights_duty_to_accommodate": 75,
+    "australia_disability_discrimination_act": 70
   },
   "byEvidenceScope": {
-    "aggregated_index": 173,
-    "specific_case": 1223,
-    "unknown": 91
+    "unknown": 3114,
+    "aggregated_index": 454,
+    "specific_case": 1346
+  },
+  "byEvidenceLane": {
+    "mixed": 3114,
+    "aggregated_general": 101,
+    "case_practice": 1346,
+    "legal_policy": 224,
+    "employer_guidance": 129
+  },
+  "rejectedByReason": {
+    "too_short": 21306,
+    "question_like_statement": 10329,
+    "repeated_token_dominance": 187,
+    "low_lexical_diversity": 138,
+    "empty_canonical_statement": 1,
+    "global_boilerplate_pattern": 5816,
+    "source_page_boilerplate_pattern": 1572,
+    "source_statement_noise_pattern": 1185,
+    "source_record_url_skip": 28,
+    "source_record_page_type_skip": 1,
+    "low_content_token_ratio": 40,
+    "navigation_density_high": 4
+  },
+  "rejectedBySourceId": {
+    "nbl_local_research": 17384,
+    "nbl_curated_local_notes": 2,
+    "askearn_employer_guidance": 2990,
+    "askjan_website": 7245,
+    "australia_jobaccess_guidance": 754,
+    "canada_duty_to_accommodate": 330,
+    "eu_reasonable_accommodation": 1396,
+    "germany_agg_legal": 61,
+    "germany_antidiscrimination_work": 741,
+    "jeed_reference": 4890,
+    "uk_gov_disability_employment": 188,
+    "uk_headway_brain_injury_work": 4626
+  },
+  "rejectedByPageType": {
+    "unknown": 17384,
+    "curated_local_note": 2,
+    "employer_guidance_page": 2572,
+    "employer_toolkit": 401,
+    "resource_hub": 1,
+    "employer_publication": 16,
+    "case_guide": 6782,
+    "document": 4703,
+    "finder": 16,
+    "index": 18,
+    "search_index": 381,
+    "case_detail": 8095,
+    "policy_guide": 236
+  },
+  "rejectedByEvidenceScope": {
+    "unknown": 17384,
+    "aggregated_index": 8346,
+    "specific_case": 14877
+  },
+  "rejectedByStage": {
+    "sentence_selection": 40573,
+    "candidate_emission": 5,
+    "record_gate": 29
   }
 }

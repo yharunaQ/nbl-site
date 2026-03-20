@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { founderProfile } from '@/lib/content/founderProfile';
 
 const CONTACT_EMAIL = 'info@nextbeinglab.org';
+const JAC_PUBLIC_LABEL = '仕事設計の見取り図';
+const CONTACT_GUIDE_HREF = '/contact';
 const CURRENT_TOPICS = [
   {
     title: '合理的配慮を職場設計として考える',
@@ -42,17 +45,18 @@ const CORE_POSITIONS = [
 const PUBLIC_NOW = [
   'NBL の考え方と全体方向',
   '公開中の動画一覧',
-  'JAC 26フレームの考え方と 3レイヤー紹介',
-  'JAC を含む方法論の位置づけ',
-  'お問い合わせによる連携相談',
+  '仕事設計の見取り図の基礎説明',
+  '3レイヤーと 26フレームの紹介',
+  '連携・お問い合わせの入口',
 ];
 
 const ENTRY_POINTS = [
   {
-    title: 'JACの基礎説明',
-    detail: '3レイヤー、読み方、基礎図解を含めて JAC の考え方を整理した入口です。',
+    title: JAC_PUBLIC_LABEL,
+    detail:
+      '困りごとを「本人の問題」だけにせず、体調・移行・職場運用の 3レイヤーで読むための基礎ページです。',
     href: '/jac-foundations',
-    cta: 'JACの考え方を見る',
+    cta: '仕事設計の見取り図を見る',
   },
   {
     title: '公開中の動画',
@@ -87,7 +91,7 @@ export default function TemporaryPublicHome() {
         <link rel="canonical" href="https://nextbeinglab.org/" />
         <meta
           name="description"
-          content="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、JAC の基礎説明をまとめた入口ページ。"
+          content="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、仕事設計の見取り図をまとめた入口ページ。"
         />
         <meta name="robots" content="index,follow" />
         <meta property="og:site_name" content="Next Being Lab" />
@@ -97,14 +101,14 @@ export default function TemporaryPublicHome() {
         <meta property="og:title" content="Next Being Lab | 公開中の案内" />
         <meta
           property="og:description"
-          content="内容を整理・再構築しながら、現在公開している考え方、動画、JAC の基礎説明を見られる入口です。"
+          content="内容を整理・再構築しながら、現在公開している考え方、動画、仕事設計の見取り図を見られる入口です。"
         />
         <meta property="og:image" content="https://nextbeinglab.org/og.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Next Being Lab | 公開中の案内" />
         <meta
           name="twitter:description"
-          content="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、JAC の基礎説明を見られる入口です。"
+          content="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、仕事設計の見取り図を見られる入口です。"
         />
         <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
         <script
@@ -121,12 +125,12 @@ export default function TemporaryPublicHome() {
             </p>
             <p className="mt-2 text-sm text-slate-600">公開中の案内</p>
           </div>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
+          <Link
+            href={CONTACT_GUIDE_HREF}
             className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
           >
-            お問い合わせ
-          </a>
+            連携・お問い合わせ
+          </Link>
         </header>
 
         <section className="grid flex-1 items-start gap-10 py-12 md:grid-cols-[1.2fr,0.8fr] md:py-16">
@@ -138,28 +142,29 @@ export default function TemporaryPublicHome() {
               NBL は現在、公開面を整理しながら、使いやすい入口から順に組み直しています。
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-700">
-              合理的配慮、継続就労、ニューロダイバーシティ、相談導線、方法論の基礎など、NBL が扱う内容を、
-              読みやすい順序で段階的に公開しています。
+              合理的配慮、継続就労、ニューロダイバーシティ、相談導線、方法論の基礎など、NBL
+              が扱う内容を、 読みやすい順序で段階的に公開しています。
             </p>
             <p className="mt-4 max-w-2xl text-base leading-8 text-slate-700">
               公開面も、AIネイティブな運営と実装の前提に合わせて整理・再構築を進めています。いまは、考え方の骨格と、
               実際に見られる入口を先に揃えています。
             </p>
             <p className="mt-4 max-w-2xl text-base leading-8 text-slate-700">
-              障害就労は重要な実装領域ですが、NBL の関心はそこだけに留まりません。AI が働く時代に、人が機械のように働く以外の形でも参加できる仕事や社会の設計を、少しずつ形にしていこうとしています。
+              障害就労は重要な実装領域ですが、NBL の関心はそこだけに留まりません。AI
+              が働く時代に、人が機械のように働く以外の形でも参加できる仕事や社会の設計を、少しずつ形にしていこうとしています。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
+              <Link
+                href={CONTACT_GUIDE_HREF}
                 className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
-                お問い合わせ
-              </a>
+                連携・お問い合わせ
+              </Link>
               <Link
                 href="/jac-foundations"
                 className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
               >
-                JACの考え方を見る
+                仕事設計の見取り図を見る
               </Link>
               <Link
                 href="/videos"
@@ -188,13 +193,52 @@ export default function TemporaryPublicHome() {
             </section>
 
             <section className="rounded-3xl border border-slate-200 bg-slate-950 p-6 text-slate-50 shadow-sm shadow-slate-300/50">
-              <p className="text-sm font-semibold">この間に受け付けること</p>
+              <p className="text-sm font-semibold">この段階でも話を始められること</p>
               <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-200">
-                <li>内容確認や連携相談のお問い合わせ</li>
-                <li>登壇、研究、実装、伴走のご相談</li>
-                <li>公開準備中コンテンツに関する確認連絡</li>
+                <li>公開中コンテンツの内容確認や連携の打診</li>
+                <li>登壇、研究、実装、伴走に関する相談</li>
+                <li>公開準備中コンテンツについての問い合わせ</li>
               </ul>
             </section>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 py-10">
+          <div className="rounded-[2rem] border border-sky-200 bg-sky-50/80 p-8 shadow-sm shadow-sky-100">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-900">
+              最重要の基礎説明
+            </p>
+            <h2 className="mt-3 text-3xl font-black text-slate-900">{JAC_PUBLIC_LABEL}とは</h2>
+            <p className="mt-4 max-w-3xl text-sm leading-8 text-slate-700">
+              困りごとを「本人の問題」だけで片づけず、仕事・環境・支援の条件と、
+              体調・移行・職場運用の 3レイヤーで読むための地図です。
+            </p>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              <div className="rounded-[1.5rem] border border-white/80 bg-white/80 p-5">
+                <h3 className="text-lg font-black text-slate-900">体調レイヤー</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  体調変動、治療、疲労、生活リズムなど、働く前提条件を見る。
+                </p>
+              </div>
+              <div className="rounded-[1.5rem] border border-white/80 bg-white/80 p-5">
+                <h3 className="text-lg font-black text-slate-900">移行レイヤー</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  採用、復職、オンボーディング、定着の工程で詰まりが出る場所を見る。
+                </p>
+              </div>
+              <div className="rounded-[1.5rem] border border-white/80 bg-white/80 p-5">
+                <h3 className="text-lg font-black text-slate-900">職場運用レイヤー</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  指示、会議、情報共有、評価、相談導線など日常の運用設計を見る。
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/jac-foundations"
+              className="mt-6 inline-flex rounded-full border border-sky-300 bg-white px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
+            >
+              仕事設計の見取り図を見る
+            </Link>
           </div>
         </section>
 
@@ -203,7 +247,8 @@ export default function TemporaryPublicHome() {
             <h2 className="text-2xl font-black text-slate-900">NBLの基本的な考え方</h2>
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
-            NBL は、障害者雇用だけの narrow なサイトではなく、AI が働く時代に人間の参加をどう設計し直すかを考えるプロジェクトです。いま公開している障害就労や合理的配慮の内容も、その大きな問いの中に位置づいています。
+            NBL は、障害者雇用だけの narrow なサイトではなく、AI
+            が働く時代に人間の参加をどう設計し直すかを考えるプロジェクトです。いま公開している障害就労や合理的配慮の内容も、その大きな問いの中に位置づいています。
           </p>
           <div className="mt-5 grid gap-5 md:grid-cols-3">
             {CORE_POSITIONS.map((item) => (
@@ -255,13 +300,65 @@ export default function TemporaryPublicHome() {
           </div>
         </section>
 
+        <section className="border-t border-slate-200 py-10">
+          <div className="grid gap-5 lg:grid-cols-[1.05fr,0.95fr]">
+            <article className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Founder / NBL
+              </p>
+              <h2 className="mt-3 text-2xl font-black text-slate-900">{founderProfile.name}</h2>
+              <p className="mt-2 text-sm font-semibold text-slate-700">{founderProfile.role}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-700">{founderProfile.summary}</p>
+              <p className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/70 px-4 py-4 text-sm leading-7 text-slate-700">
+                {founderProfile.stance}
+              </p>
+              <Link
+                href="/about"
+                className="mt-5 inline-flex rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-white hover:text-slate-950"
+              >
+                Founder と NBL の背景を見る
+              </Link>
+            </article>
+
+            <article className="rounded-[1.8rem] border border-slate-200 bg-slate-950 p-6 text-slate-50 shadow-sm shadow-slate-300/50">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">
+                Contact
+              </p>
+              <h2 className="mt-3 text-2xl font-black">連絡前に分かること</h2>
+              <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-200">
+                <li>• どんなテーマで話を始めやすいか</li>
+                <li>• 初回の連絡がどの形か</li>
+                <li>• Founder と NBL の背景</li>
+                <li>• まだ固定していない約束</li>
+              </ul>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href={CONTACT_GUIDE_HREF}
+                  className="rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
+                >
+                  連携・お問い合わせ
+                </Link>
+              </div>
+            </article>
+          </div>
+        </section>
+
         <footer className="border-t border-slate-200 pt-6 text-sm text-slate-600">
           <p>Next Being Lab</p>
           <p className="mt-2">
             障害就労、合理的配慮、働き方設計、AI時代の組織運用に関わる内容を段階的に整備しています。
           </p>
           <p className="mt-2">
-            Contact:{' '}
+            連携・お問い合わせ:{' '}
+            <Link
+              href={CONTACT_GUIDE_HREF}
+              className="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4"
+            >
+              /contact
+            </Link>
+          </p>
+          <p className="mt-2">
+            Mail:{' '}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="font-medium text-slate-900 underline decoration-slate-300 underline-offset-4"

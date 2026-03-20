@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
 import { buildAgenticPlan } from '@/lib/knowledge/agenticPlanner';
 import { executeAgenticPlan } from '@/lib/knowledge/agenticExecutor';
+import { buildGlmInsights } from '@/lib/knowledge/glmRuntimeInsights';
 import {
-  buildGlmInsights,
   GlmInsight,
   GlmInsightResult,
   GLM_INTERACTION_MEANINGS,
@@ -12,6 +14,10 @@ import { guardJacApiRequest } from '@/lib/security/jacAccessGuard';
 import { getKnowledgeSourceById } from '@/lib/knowledge/sourceRegistry';
 import type { KnowledgeSafetyGate } from '@/lib/knowledge/types';
 import { recordJacSafetyAudit, type JacSafetyGateAuditSnapshot } from '@/lib/jac/safetyAuditLog';
+import {
+  getData2KnowledgeBundle,
+  type SuggestionSeed as Data2SuggestionSeed,
+} from '@/lib/jac/data2Knowledge';
 
 type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
 
@@ -183,7 +189,42 @@ function buildSystemPrompt(): string {
 - citations は claim と evidence_ids で根拠トレースを返す。`;
 }
 
-function buildUserPrompt(payload: RequestBody, plannerContext: Record<string, unknown>): string {
+function dedupeSuggestionLibrary(suggestions: Suggestion[], maxCount = 28): Suggestion[] {
+  const byTitle = new Map<string, Suggestion>();
+  for (const item of suggestions) {
+    const key = item.title.trim();
+    if (!key) continue;
+    if (!byTitle.has(key)) {
+      byTitle.set(key, item);
+      continue;
+    }
+    const prev = byTitle.get(key)!;
+    byTitle.set(key, {
+      ...prev,
+      priority: Math.min(prev.priority, item.priority),
+      relatedTags: Array.from(new Set([...(prev.relatedTags || []), ...(item.relatedTags || [])])),
+    });
+  }
+  return [...byTitle.values()]
+    .sort((a, b) => a.priority - b.priority)
+    .slice(0, maxCount);
+}
+
+function mapData2Suggestions(rows: Data2SuggestionSeed[]): Suggestion[] {
+  return rows.map((row) => ({
+    title: row.title,
+    reason: row.reason,
+    examples: row.examples,
+    relatedTags: row.relatedTags,
+    priority: row.priority,
+  }));
+}
+
+function buildUserPrompt(
+  payload: RequestBody,
+  plannerContext: Record<string, unknown>,
+  knowledgeBase: Suggestion[],
+): string {
   return JSON.stringify(
     {
       consultation: payload.consultation,
@@ -191,7 +232,7 @@ function buildUserPrompt(payload: RequestBody, plannerContext: Record<string, un
       follow_up_answers: payload.followUpAnswers,
       additional_consultation: payload.additionalConsultation || '',
       selected_accommodations: payload.selectedAccommodations || {},
-      knowledge_base: SUGGESTION_LIBRARY,
+      knowledge_base: knowledgeBase,
       planner_context: plannerContext,
     },
     null,
@@ -292,8 +333,103 @@ type ParsedAssessment = {
   citations: Array<{
     claim: string;
     evidence_ids: string[];
+    evidence_lanes?: Array<{
+      evidence_id: string;
+      lane: string;
+      label: string;
+    }>;
   }>;
 };
+
+const CLAIMS_PATH = path.join(process.cwd(), 'references', 'index', 'knowledge-claims.jsonl');
+
+const EVIDENCE_LANE_LABEL: Record<string, string> = {
+  case_practice: '事例実践',
+  legal_policy: '制度根拠',
+  employer_guidance: '雇用主ガイダンス',
+  aggregated_general: '集計一般',
+  mixed: '混合',
+  glm_model: 'GLMモデル',
+  safety_gate: '安全ゲート',
+  unknown: '不明',
+};
+
+let claimLaneMapPromise: Promise<Map<string, string>> | null = null;
+
+function normalizeEvidenceLane(value: unknown): string {
+  const lane = String(value || '').trim();
+  if (!lane) return 'unknown';
+  return EVIDENCE_LANE_LABEL[lane] ? lane : 'unknown';
+}
+
+async function readClaimLaneMap(): Promise<Map<string, string>> {
+  if (claimLaneMapPromise) return claimLaneMapPromise;
+
+  claimLaneMapPromise = fs
+    .readFile(CLAIMS_PATH, 'utf8')
+    .then((raw) => {
+      type ClaimLaneRow = {
+        id?: string;
+        interactionContextSummary?: {
+          evidenceLane?: string;
+        };
+      };
+
+      const map = new Map<string, string>();
+      const lines = raw
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean);
+      for (const line of lines) {
+        let row: ClaimLaneRow;
+        try {
+          row = JSON.parse(line) as ClaimLaneRow;
+        } catch {
+          continue;
+        }
+        const id = String(row?.id || '').trim();
+        if (!id) continue;
+        const lane = normalizeEvidenceLane(row?.interactionContextSummary?.evidenceLane);
+        map.set(id, lane);
+      }
+      return map;
+    })
+    .catch(() => new Map<string, string>());
+
+  return claimLaneMapPromise;
+}
+
+function resolveEvidenceLane(evidenceId: string, claimLaneMap: Map<string, string>): string {
+  const id = String(evidenceId || '').trim();
+  if (!id) return 'unknown';
+  if (id.startsWith('GLM-')) return 'glm_model';
+  if (id === 'safety_gate') return 'safety_gate';
+  return normalizeEvidenceLane(claimLaneMap.get(id) || 'unknown');
+}
+
+async function attachCitationEvidenceLanes(assessment: ParsedAssessment): Promise<ParsedAssessment> {
+  const claimLaneMap = await readClaimLaneMap();
+  const citations = (assessment.citations || []).map((citation) => {
+    const evidenceIds = Array.isArray(citation.evidence_ids) ? citation.evidence_ids : [];
+    const evidence_lanes = evidenceIds.map((evidenceId) => {
+      const lane = resolveEvidenceLane(evidenceId, claimLaneMap);
+      return {
+        evidence_id: evidenceId,
+        lane,
+        label: EVIDENCE_LANE_LABEL[lane] || lane,
+      };
+    });
+    return {
+      ...citation,
+      evidence_lanes,
+    };
+  });
+
+  return {
+    ...assessment,
+    citations,
+  };
+}
 
 function mergeAssessmentWithGlm(
   assessment: ParsedAssessment,
@@ -384,6 +520,7 @@ function buildDefaultSafetyGate(summary: string): KnowledgeSafetyGate {
     partialClaimCount: 0,
     missingContextCount: 0,
     sampleClaimIds: [],
+    evidenceLaneCounts: {},
     followUpQuestions: ['相談対象の法域・職場条件・既存配慮を確認してから提案を適用してください。'],
   };
 }
@@ -470,17 +607,21 @@ function normalizeRequestBody(body?: Partial<RequestBody> | null): RequestBody {
   };
 }
 
-function buildFallbackAssessment(body: RequestBody, glmResult: GlmInsightResult): ParsedAssessment {
+function buildFallbackAssessment(
+  body: RequestBody,
+  glmResult: GlmInsightResult,
+  suggestionLibrary: Suggestion[],
+): ParsedAssessment {
   const selectedTags = Object.values(body.selectedTags || {}).flat();
-  const pickedByTag = SUGGESTION_LIBRARY.filter((item) =>
+  const pickedByTag = suggestionLibrary.filter((item) =>
     item.relatedTags.some((tag) => selectedTags.includes(tag)),
   );
-  const pickedByGlm = SUGGESTION_LIBRARY.filter((item) =>
+  const pickedByGlm = suggestionLibrary.filter((item) =>
     glmResult.recommendedActions.includes(item.title),
   );
   const accommodations = Array.from(
     new Map(
-      [...pickedByGlm, ...pickedByTag, ...SUGGESTION_LIBRARY.slice(0, 3)].map((item) => [
+      [...pickedByGlm, ...pickedByTag, ...suggestionLibrary.slice(0, 3)].map((item) => [
         item.title,
         item,
       ]),
@@ -538,6 +679,7 @@ function buildFallbackAssessment(body: RequestBody, glmResult: GlmInsightResult)
 async function requestOpenAiAssessment(
   body: RequestBody,
   plannerContext: Record<string, unknown>,
+  suggestionLibrary: Suggestion[],
   timeoutMs: number,
 ): Promise<ParsedAssessment> {
   const response = await fetch(OPENAI_URL, {
@@ -550,7 +692,7 @@ async function requestOpenAiAssessment(
       model: process.env.OPENAI_MODEL || 'gpt-4.1-mini',
       messages: [
         { role: 'system', content: buildSystemPrompt() },
-        { role: 'user', content: buildUserPrompt(body, plannerContext) },
+        { role: 'user', content: buildUserPrompt(body, plannerContext, suggestionLibrary) },
       ],
       response_format: {
         type: 'json_schema',
@@ -619,6 +761,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       selectedTags: body.selectedTags,
       followUpAnswers: body.followUpAnswers,
     });
+    const data2Bundle = await getData2KnowledgeBundle(composedQuery, body.selectedTags, {
+      maxInsights: 6,
+      maxSuggestions: 10,
+    }).catch(() => ({ suggestions: [], promptInsights: [] }));
+    const suggestionLibrary = dedupeSuggestionLibrary([
+      ...mapData2Suggestions(data2Bundle.suggestions),
+      ...SUGGESTION_LIBRARY,
+    ]);
+    const data2Preview = data2Bundle.promptInsights.slice(0, 3).map((insight) => ({
+      id: insight.id,
+      disability: insight.disability,
+      issues: insight.matchedIssues.map((item) => item.issue).slice(0, 2),
+    }));
 
     const plan = buildAgenticPlan({
       query: composedQuery,
@@ -672,6 +827,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })),
         recommended_actions: glmResult.recommendedActions,
       },
+      data2_context: data2Bundle.promptInsights,
     };
 
     let assessment: ParsedAssessment;
@@ -689,9 +845,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     if (isFastMode) {
-      assessment = applySafetyGateToAssessment(
-        mergeAssessmentWithGlm(buildFallbackAssessment(body, glmResult), glmResult.topInsights),
-        safeExecution.safetyGate,
+      assessment = await attachCitationEvidenceLanes(
+        applySafetyGateToAssessment(
+          mergeAssessmentWithGlm(
+            buildFallbackAssessment(body, glmResult, suggestionLibrary),
+            glmResult.topInsights,
+          ),
+          safeExecution.safetyGate,
+        ),
       );
       fallbackReason =
         '初回表示モード: ローカル推論を即時返却しました。精密見立てはバックグラウンド更新されます。';
@@ -700,11 +861,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const fullAssessmentRaw = await requestOpenAiAssessment(
             body,
             plannerContext,
+            suggestionLibrary,
             openAiTimeoutMs,
           );
-          const fullAssessment = applySafetyGateToAssessment(
-            mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights),
-            safeExecution.safetyGate,
+          const fullAssessment = await attachCitationEvidenceLanes(
+            applySafetyGateToAssessment(
+              mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights),
+              safeExecution.safetyGate,
+            ),
           );
           const refinementProcess = {
             selectedSources: plan.selectedSources.map((source) => ({
@@ -723,6 +887,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             responseMode: 'full',
             pendingRefinement: false,
             refinementJobId: null,
+            data2InsightCount: data2Bundle.promptInsights.length,
+            data2Preview,
             safetyGate: safeExecution.safetyGate,
             sourceNotes: plan.selectedSources
               .map((source) => getKnowledgeSourceById(source.id)?.notes)
@@ -736,9 +902,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
       }
     } else if (!process.env.OPENAI_API_KEY) {
-      assessment = applySafetyGateToAssessment(
-        buildFallbackAssessment(body, glmResult),
-        safeExecution.safetyGate,
+      assessment = await attachCitationEvidenceLanes(
+        applySafetyGateToAssessment(
+          buildFallbackAssessment(body, glmResult, suggestionLibrary),
+          safeExecution.safetyGate,
+        ),
       );
       fallbackReason = 'OPENAI_API_KEY が未設定のため、ローカル推論にフォールバックしました。';
     } else {
@@ -746,11 +914,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const fullAssessmentRaw = await requestOpenAiAssessment(
           body,
           plannerContext,
+          suggestionLibrary,
           openAiTimeoutMs,
         );
-        assessment = applySafetyGateToAssessment(
-          mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights),
-          safeExecution.safetyGate,
+        assessment = await attachCitationEvidenceLanes(
+          applySafetyGateToAssessment(
+            mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights),
+            safeExecution.safetyGate,
+          ),
         );
       } catch (error) {
         const rawMessage =
@@ -759,9 +930,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           rawMessage.includes('aborted') || rawMessage.toLowerCase().includes('timeout')
             ? '精密見立ては時間上限を超えたため、初回結果を継続表示しています。'
             : rawMessage;
-        assessment = applySafetyGateToAssessment(
-          buildFallbackAssessment(body, glmResult),
-          safeExecution.safetyGate,
+        assessment = await attachCitationEvidenceLanes(
+          applySafetyGateToAssessment(
+            buildFallbackAssessment(body, glmResult, suggestionLibrary),
+            safeExecution.safetyGate,
+          ),
         );
       }
     }
@@ -784,6 +957,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       responseMode,
       pendingRefinement: isFastMode,
       refinementJobId,
+      data2InsightCount: data2Bundle.promptInsights.length,
+      data2Preview,
       sourceNotes: plan.selectedSources
         .map((source) => getKnowledgeSourceById(source.id)?.notes)
         .filter(Boolean),
@@ -821,10 +996,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       selectedTags: body.selectedTags,
       followUpAnswers: body.followUpAnswers,
     });
+    const data2Bundle = await getData2KnowledgeBundle(
+      buildComposedQuery(body),
+      body.selectedTags,
+    ).catch(() => ({ suggestions: [], promptInsights: [] }));
+    const suggestionLibrary = dedupeSuggestionLibrary([
+      ...mapData2Suggestions(data2Bundle.suggestions),
+      ...SUGGESTION_LIBRARY,
+    ]);
+    const data2Preview = data2Bundle.promptInsights.slice(0, 3).map((insight) => ({
+      id: insight.id,
+      disability: insight.disability,
+      issues: insight.matchedIssues.map((item) => item.issue).slice(0, 2),
+    }));
     const safetyGate = buildDefaultSafetyGate('安全ゲート: 内部例外のため追加確認を優先します。');
-    const assessment = applySafetyGateToAssessment(
-      mergeAssessmentWithGlm(buildFallbackAssessment(body, glmResult), glmResult.topInsights),
-      safetyGate,
+    const assessment = await attachCitationEvidenceLanes(
+      applySafetyGateToAssessment(
+        mergeAssessmentWithGlm(
+          buildFallbackAssessment(body, glmResult, suggestionLibrary),
+          glmResult.topInsights,
+        ),
+        safetyGate,
+      ),
     );
     const errorMessage = error instanceof Error ? error.message : 'unexpected error';
     await recordJacSafetyAudit({
@@ -857,6 +1050,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         responseMode: body.responseMode || 'fast',
         pendingRefinement: false,
         refinementJobId: null,
+        data2InsightCount: data2Bundle.promptInsights.length,
+        data2Preview,
         sourceNotes: [],
         fallbackReason: `内部例外のため安全フォールバックを返却しました: ${errorMessage}`,
       },

@@ -1,0 +1,477 @@
+{
+  "generatedAt": "2026-03-09T13:00:07.952Z",
+  "glmRelationsTotal": 539,
+  "cards": [
+    {
+      "cardId": "p-fatigue-pacing",
+      "title": "体調変動マネジメント",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 51,
+      "predictorTop": [
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "好酸球性副鼻腔炎",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S3-P44-C005",
+        "GLM-S3-P44-C004",
+        "GLM-S2-P36-C010",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-medical-schedule",
+      "title": "治療スケジュール同期",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 18,
+      "predictorTop": [
+        "パーキンソン病",
+        "重症筋無力症",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)"
+      ],
+      "relationIdsTop": [
+        "GLM-S3-P30-C003",
+        "GLM-S3-P31-C003",
+        "GLM-S3-P44-C003",
+        "GLM-S3-P44-C002"
+      ]
+    },
+    {
+      "cardId": "p-internal-treatment-compatibility",
+      "title": "回復時間バッファ設計",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 16,
+      "predictorTop": [
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "クローン病",
+        "潰瘍性大腸炎"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P44-C001",
+        "GLM-S2-P25-C001",
+        "GLM-S2-P23-C011",
+        "GLM-S3-P44-C002"
+      ]
+    },
+    {
+      "cardId": "p-shift-rhythm-guard",
+      "title": "勤務リズム整合",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 45,
+      "predictorTop": [
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症",
+        "もやもや病"
+      ],
+      "relationIdsTop": [
+        "GLM-S3-P44-C007",
+        "GLM-S3-P31-C011",
+        "GLM-S3-P44-C009",
+        "GLM-S3-P34-C007"
+      ]
+    },
+    {
+      "cardId": "p-return-to-work-ramp",
+      "title": "復職の段階設計",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 20,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "潰瘍性大腸炎"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S1-P23-C009"
+      ]
+    },
+    {
+      "cardId": "p-mental-fluctuation-plan",
+      "title": "悪化の予兆対応",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 39,
+      "predictorTop": [
+        "ＩｇＡ腎症",
+        "クローン病",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P32-C014",
+        "GLM-S2-P25-C003",
+        "GLM-S3-P44-C007",
+        "GLM-S3-P31-C011"
+      ]
+    },
+    {
+      "cardId": "p-environment-sensory",
+      "title": "感覚環境の調整",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 37,
+      "predictorTop": [
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症",
+        "もやもや病"
+      ],
+      "relationIdsTop": [
+        "GLM-S3-P44-C007",
+        "GLM-S3-P31-C011",
+        "GLM-S3-P44-C009",
+        "GLM-S3-P34-C007"
+      ]
+    },
+    {
+      "cardId": "p-commute-hybrid",
+      "title": "通勤負荷分散",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 20,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "潰瘍性大腸炎"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S1-P23-C009"
+      ]
+    },
+    {
+      "cardId": "p-physical-mobility-route",
+      "title": "移動動線最適化",
+      "layer": "health",
+      "layerLabel": "体調レイヤー",
+      "glmIndividualDiseaseMatchCount": 8,
+      "predictorTop": [
+        "潰瘍性大腸炎",
+        "シェーグレン症候群",
+        "クローン病"
+      ],
+      "relationIdsTop": [
+        "GLM-S1-P23-C009",
+        "GLM-S1-P27-C006",
+        "GLM-S1-P23-C013",
+        "GLM-S1-P25-C009"
+      ]
+    },
+    {
+      "cardId": "p-jobmatch-exploration",
+      "title": "職務探索の道筋",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-application-contact-flow",
+      "title": "応募段取り設計",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 20,
+      "predictorTop": [
+        "潰瘍性大腸炎",
+        "シェーグレン症候群",
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)"
+      ],
+      "relationIdsTop": [
+        "GLM-S1-P23-C007",
+        "GLM-S1-P27-C006",
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001"
+      ]
+    },
+    {
+      "cardId": "p-interview-self-advocacy",
+      "title": "面接での伝え方設計",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-skill-building-path",
+      "title": "学習から仕事への接続",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-worktrial-transition",
+      "title": "実習から採用への橋渡し",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 20,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "潰瘍性大腸炎"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S1-P23-C009"
+      ]
+    },
+    {
+      "cardId": "p-income-condition-stability",
+      "title": "契約収入の安定設計",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 16,
+      "predictorTop": [
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症",
+        "シェーグレン症候群",
+        "下垂体前葉機能低下症"
+      ],
+      "relationIdsTop": [
+        "GLM-S3-P44-C004",
+        "GLM-S3-P31-C004",
+        "GLM-S3-P27-C004",
+        "GLM-S3-P29-C004"
+      ]
+    },
+    {
+      "cardId": "p-support-service-navigation",
+      "title": "支援につながる道筋",
+      "layer": "transition",
+      "layerLabel": "就職移行レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-meeting-overload",
+      "title": "会議処理容量設計",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 57,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S3-P44-C007",
+        "GLM-S3-P31-C011",
+        "GLM-S3-P44-C009"
+      ]
+    },
+    {
+      "cardId": "p-disclosure-boundary",
+      "title": "情報共有の線引き",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-manager-checkin",
+      "title": "相談ルートの整備",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "ＩｇＡ腎症",
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P32-C014",
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019"
+      ]
+    },
+    {
+      "cardId": "p-customer-facing-load",
+      "title": "対人応答の負荷調整",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 20,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "潰瘍性大腸炎"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S1-P23-C009"
+      ]
+    },
+    {
+      "cardId": "p-visual-document-access",
+      "title": "資料の見やすさ設計",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-hearing-meeting-access",
+      "title": "聞き取りやすさ設計",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-intellectual-task-clarity",
+      "title": "指示の明確化",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-developmental-switch-load",
+      "title": "タスク切替の負荷調整",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 45,
+      "predictorTop": [
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症",
+        "もやもや病"
+      ],
+      "relationIdsTop": [
+        "GLM-S3-P44-C007",
+        "GLM-S3-P31-C011",
+        "GLM-S3-P44-C009",
+        "GLM-S3-P34-C007"
+      ]
+    },
+    {
+      "cardId": "p-higher-brain-memory-support",
+      "title": "記憶と段取りの支援設計",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 12,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S2-P44-C001",
+        "GLM-S2-P44-C019",
+        "GLM-S2-P31-C010"
+      ]
+    },
+    {
+      "cardId": "p-safety-critical-operations",
+      "title": "安全重視業務の運用設計",
+      "layer": "operation",
+      "layerLabel": "職場運用レイヤー",
+      "glmIndividualDiseaseMatchCount": 57,
+      "predictorTop": [
+        "好酸球性副鼻腔炎",
+        "筋痛性脳脊髄炎／慢性疲労症候群(ME/CFS)",
+        "重症筋無力症"
+      ],
+      "relationIdsTop": [
+        "GLM-S2-P36-C010",
+        "GLM-S3-P44-C007",
+        "GLM-S3-P31-C011",
+        "GLM-S3-P44-C009"
+      ]
+    }
+  ]
+}
