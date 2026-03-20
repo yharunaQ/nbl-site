@@ -29,7 +29,7 @@ function optionalEnv(name: string, fallback: string): string {
 
 export function getEbookRuntimeConfig(): EbookRuntimeConfig {
   const ebookFilePath = path.resolve(
-    process.cwd(),
+    /* turbopackIgnore: true */ process.cwd(),
     optionalEnv('JAC_GUIDEBOOK_FILE_PATH', 'public/ebooks/jac-guidebook.pdf'),
   );
 
