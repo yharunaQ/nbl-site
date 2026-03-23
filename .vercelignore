@@ -1,6 +1,9 @@
 content-inbox
 content-review
-docs
+docs/*
+!docs/guidebook/
+docs/guidebook/*
+!docs/guidebook/jac-26-card-edition.md
 scripts
 __tests__
 dao-participation-lab
