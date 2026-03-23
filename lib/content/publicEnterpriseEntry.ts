@@ -15,6 +15,12 @@ export type EnterpriseStep = {
   detail: string;
 };
 
+export type EnterpriseLayer = {
+  title: string;
+  summary: string;
+  note: string;
+};
+
 export type EnterpriseResourceLink = {
   title: string;
   summary: string;
@@ -27,12 +33,14 @@ export const publicEnterpriseEntry = {
     eyebrow: 'Enterprise And Organizational Readers',
     headline: '働きづらさを、個人の問題だけでなく職場設計の課題として捉え直す。',
     subheadline:
-      'Next Being Lab は、障害や病気のある人の働きづらさを重要な実装領域として扱いながら、仕事・情報・運用の設計を見直し、継続就労や組織運用の質を高める入口をつくる AI-native なチームです。',
+      'Next Being Lab は、障害や病気のある人の働きづらさを重要な実装領域として扱いながら、公開コレクション、仕事設計プロダクト、private layer を積み上げる社会OS事業です。このページはその中でも、企業・組織の読者が、支援者や行政との連携も含めて実務へ引きつけて読むための入口にあたります。',
   },
   pageReturns: [
+    '企業向け整理が、支援者・行政も含む NBL 全体の社会OS事業の中でどこにあるか',
     '合理的配慮を、特別対応ではなく職場設計として捉える見方',
     '企業担当者が最初に見直しやすい実務テーマ',
     '次に読むべき「仕事設計の見取り図」と公開動画への入口',
+    '公開入口と private layer の線引き',
   ],
   framingPoints: [
     {
@@ -50,11 +58,11 @@ export const publicEnterpriseEntry = {
         '採用人数だけでなく、継続就労、相談しやすさ、現場での運用定着まで見ないと質は分かりません。',
     },
     {
-      title: 'まず職場設計、その次に支援連携',
+      title: '企業だけで抱えず、まず職場設計、その次に支援連携',
       summary:
-        '最初から外部へ丸投げするのではなく、まず職場側で改善できる領域を取り、その次に必要な支援を接続します。',
+        '最初から外部へ丸投げするのでも、企業だけに負担を抱え込むのでもなく、まず職場側で改善できる領域を取り、その次に必要な支援や行政上の接続を整理します。',
       implication:
-        '企業内で変えられる条件を見ずに支援連携だけ増やすと、根本の運用課題が残りやすくなります。',
+        '企業内で変えられる条件を見ずに支援連携だけ増やすと根本の運用課題が残りやすく、逆に企業だけで抱えると支援設計の土台が弱くなります。',
     },
   ] as EnterpriseCard[],
   audiences: [
@@ -101,6 +109,26 @@ export const publicEnterpriseEntry = {
         '最初に見るなら: 定例会議、報連相の流れ、例外時の判断、エスカレーション、現場の暗黙知。',
     },
   ] as EnterpriseTheme[],
+  engagementLayers: [
+    {
+      title: '公開フレームワークとコレクション',
+      summary:
+        '仕事設計の見取り図、就労支援設計の変革テーマ群、Resources のような free-first の入口で、考え方と論点を先に返します。',
+      note: 'ここは trust と理解のレイヤーで、企業向けの小売商品棚にはしません。社会OSの公開層として育てます。',
+    },
+    {
+      title: '有償の private layer',
+      summary:
+        'initial design pack、private workspace、workflow setup、継続更新のような private layer で、実装と運用を支えます。',
+      note: '収益の主軸は `startup fee + recurring fee + bounded private usage` に置きます。',
+    },
+    {
+      title: '内部ツール',
+      summary:
+        '条件整理ドラフトは、当面は Founder が外部依頼対応の中で使う internal tool として扱い、公開 product にはしません。',
+      note: '将来の operator-assisted / self-serve の可能性は、内部運用の蓄積から順に判断します。',
+    },
+  ] as EnterpriseLayer[],
   firstSteps: [
     {
       title: '1. いま一番詰まっている場面を一つに絞る',
@@ -122,19 +150,31 @@ export const publicEnterpriseEntry = {
     'このページは、個別ケースの最終判断や法的結論を示すページではありません。',
     '診断名だけで必要な配慮や働き方を決め打ちするためのページではありません。',
     '支援機関への丸投げや、販売優先の導線を主目的にしたページではありません。',
+    '条件整理ドラフトを公開相談商品として案内するページではありません。',
+  ],
+  notReplacing: [
+    '既存支援機関や社内責任者を置き換えるものではありません。',
+    '法的判断、医療判断、就労可否の最終判断を AI に委ねるものではありません。',
+    '高リスクの個別判断を単独で引き受ける相談窓口ではありません。',
   ],
   resourceLinks: [
+    {
+      title: 'What We Do',
+      summary: 'NBL がいま外部に約束している範囲と、どこから話を始められるかを確認したいときの入口です。',
+      href: '/what-we-do',
+      cta: 'What We Do を見る',
+    },
+    {
+      title: '就労支援設計の変革テーマ群',
+      summary: '企業課題だけでなく、制度、専門支援、慢性疾患支援まで含めた problem framing を先に押さえたいときの入口です。',
+      href: '/resources/work-support-transformation',
+      cta: '変革テーマ群を見る',
+    },
     {
       title: '仕事設計の見取り図',
       summary: '3レイヤー、読み方、基礎図解を含めて、方法論の土台を先に押さえたいときの入口です。',
       href: '/jac-foundations',
       cta: '仕事設計の見取り図を見る',
-    },
-    {
-      title: '公開中の動画',
-      summary: '合理的配慮、障害者雇用の質、全体マップなどを短く掴みたいときの入口です。',
-      href: '/videos',
-      cta: '公開動画を見る',
     },
   ] as EnterpriseResourceLink[],
 };

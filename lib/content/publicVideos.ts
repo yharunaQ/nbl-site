@@ -31,6 +31,51 @@ export function getYouTubeThumbnailSrc(youtubeId: string) {
 
 export const publicVideos: PublicVideo[] = [
   {
+    id: 'ability-meritocracy-traps',
+    title: '障害者雇用の「能力主義」に潜む3つの罠',
+    topic: '企業・支援・行政 / 啓発',
+    summary:
+      '人数合わせや即戦力視点に偏ると、雇用の設計そのものが歪みやすいことを、能力主義批判の観点から整理する動画です。',
+    whyNow:
+      '障害者雇用の質や正常化の図解に入る前に、何が問題設定としてずれているのかを短時間で共有しやすいためです。',
+    href: 'https://youtu.be/-6PJlEa9DeQ',
+    thumbnailSrc: getYouTubeThumbnailSrc('-6PJlEa9DeQ'),
+    relatedResource: {
+      href: '/resources/work-support-transformation',
+      label: '就労支援設計の変革テーマ群を見る',
+    },
+  },
+  {
+    id: 'accommodation-fatigue-myths',
+    title: '「配慮疲れ」を終わらせる3つの神話とシステム転換',
+    topic: '企業・支援・行政 / 啓発',
+    summary:
+      '配慮を現場の善意や負担感の問題として扱うのではなく、運用設計とシステム転換の問題として読み替える動画です。',
+    whyNow:
+      '合理的配慮や企業向け実践ガイドを、単発配慮ではなく仕組みの話として見てもらう補助線になりやすいためです。',
+    href: 'https://youtu.be/muwEfKS420U',
+    thumbnailSrc: getYouTubeThumbnailSrc('muwEfKS420U'),
+    relatedResource: {
+      href: '/resources/work-support-transformation',
+      label: '就労支援設計の変革テーマ群を見る',
+    },
+  },
+  {
+    id: 'quota-debate',
+    title: '障害者雇用の「枠」は撤廃すべきか？',
+    topic: '制度・支援 / 啓発',
+    summary:
+      '中途障害の現実や DEI の逆説も踏まえながら、障害者雇用の枠組みをどう捉え直すべきかを対論形式で考える動画です。',
+    whyNow:
+      '制度批評だけで終わらず、企業・制度・専門支援のねじれを同じ地図で読む必要があることを共有しやすいためです。',
+    href: 'https://youtu.be/sQ0zoIZaO4w',
+    thumbnailSrc: getYouTubeThumbnailSrc('sQ0zoIZaO4w'),
+    relatedResource: {
+      href: '/resources/work-support-transformation',
+      label: '就労支援設計の変革テーマ群を見る',
+    },
+  },
+  {
     id: 'reasonable-accommodation',
     title: '合理的配慮2.0入門',
     topic: '合理的配慮 / 入門',
@@ -71,8 +116,8 @@ export const publicVideos: PublicVideo[] = [
     href: 'https://youtu.be/Ef9Bu1rXtKQ',
     thumbnailSrc: getYouTubeThumbnailSrc('Ef9Bu1rXtKQ'),
     relatedResource: {
-      href: '/for-enterprise',
-      label: '企業・組織向けの整理を見る',
+      href: '/resources/work-support-transformation',
+      label: '就労支援設計の変革テーマ群を見る',
     },
   },
   {
@@ -86,22 +131,23 @@ export const publicVideos: PublicVideo[] = [
     href: 'https://youtu.be/0aUjkKUrIP4',
     thumbnailSrc: getYouTubeThumbnailSrc('0aUjkKUrIP4'),
     relatedResource: {
-      href: '/jac-foundations#quality-metrics',
-      label: '障害者雇用の基礎図解を見る',
+      href: '/resources/work-support-transformation',
+      label: '就労支援設計の変革テーマ群を見る',
     },
   },
   {
     id: 'whole-map',
     title: '難病就労連携「全体マップ」活用セミナー',
-    topic: '方法論 / 全体マップ',
-    summary: '難病就労連携の全体像をどう見るかを、導入編として掴みやすくしたセミナー動画です。',
+    topic: '支援連携 / 全体マップ',
+    summary:
+      '難病就労連携の全体像をどう見るかを、支援者、行政、企業の連携導入編として掴みやすくしたセミナー動画です。',
     whyNow:
-      '仕事設計の見取り図や関連図解を読む前後で、NBL の方法論がどこを見ようとしているかを掴みやすいためです。',
+      '仕事設計の見取り図や関連図解を読む前後で、NBL の方法論が企業だけでなく支援連携全体の設計を見ていることを掴みやすいためです。',
     href: 'https://youtu.be/dgO_MYf2T8A',
     thumbnailSrc: getYouTubeThumbnailSrc('dgO_MYf2T8A'),
     relatedResource: {
-      href: '/jac-foundations',
-      label: '仕事設計の見取り図を見る',
+      href: '/resources/work-support-transformation',
+      label: '就労支援設計の変革テーマ群を見る',
     },
   },
 ];

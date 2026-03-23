@@ -1,33 +1,35 @@
 export const TEMPORARY_PUBLIC_SITE_ENABLED = true;
 export type PublicHomeVariant = 'relaunch' | 'temporary';
 
-export const PUBLIC_HOME_VARIANT: PublicHomeVariant = 'temporary';
+export const PUBLIC_HOME_VARIANT: PublicHomeVariant = 'relaunch';
 
 type RouteConfig = {
   prefix: string;
   slug: string;
   label: string;
   note: string;
+  match?: 'exact' | 'prefix';
 };
 
 const TEMPORARY_PUBLIC_ROUTE_CONFIGS: RouteConfig[] = [
   {
     prefix: '/jac/guidebook',
     slug: 'jac-guidebook',
-    label: 'JAC Guidebook',
-    note: 'guidebook and checkout flow',
+    label: '先行5章版アーカイブ',
+    note: 'inactive pilot archive kept outside the active public path',
   },
   {
     prefix: '/jac/guide',
     slug: 'jac-guide',
-    label: 'JAC Guide',
-    note: 'extended guide and reference materials',
+    label: '仕事設計ガイド',
+    note: 'internal review surface, not ready for public use',
   },
   {
     prefix: '/jac',
     slug: 'jac',
-    label: 'JAC prototype',
-    note: 'interactive prototype and consultation support tools',
+    label: '条件整理ドラフト',
+    note: 'founder-operated internal tool under review',
+    match: 'exact',
   },
   {
     prefix: '/dao-participation-lab',
@@ -45,13 +47,18 @@ const TEMPORARY_PUBLIC_API_PREFIXES = [
   '/api/ebook',
 ] as const;
 
-function matchesPrefix(pathname: string, prefix: string): boolean {
+function matchesRoute(pathname: string, route: RouteConfig): boolean {
+  if (route.match === 'exact') {
+    return pathname === route.prefix;
+  }
+
+  const prefix = route.prefix;
   return pathname === prefix || pathname.startsWith(`${prefix}/`);
 }
 
 export function getTemporaryPublicRoute(pathname: string): RouteConfig | null {
   for (const route of TEMPORARY_PUBLIC_ROUTE_CONFIGS) {
-    if (matchesPrefix(pathname, route.prefix)) {
+    if (matchesRoute(pathname, route)) {
       return route;
     }
   }
@@ -60,7 +67,9 @@ export function getTemporaryPublicRoute(pathname: string): RouteConfig | null {
 }
 
 export function isTemporarilyDisabledApiPath(pathname: string): boolean {
-  return TEMPORARY_PUBLIC_API_PREFIXES.some((prefix) => matchesPrefix(pathname, prefix));
+  return TEMPORARY_PUBLIC_API_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
 }
 
 export function getTemporaryPublicRouteBySlug(slug: string): RouteConfig | null {

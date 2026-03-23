@@ -6,7 +6,7 @@ import {
   isTemporarilyDisabledApiPath,
 } from './lib/publicSiteMode';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (!TEMPORARY_PUBLIC_SITE_ENABLED) {
     return NextResponse.next();
   }

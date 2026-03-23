@@ -2,6 +2,8 @@ export type RelaunchPublicHero = {
   eyebrow: string;
   headline: string;
   subheadline: string;
+  supportingCopy: string;
+  operatingNote: string;
   primaryCta: string;
   secondaryCta: string;
 };
@@ -83,29 +85,28 @@ export type RelaunchPublicFirstVisitPath = {
 
 export const relaunchPublicHero: RelaunchPublicHero = {
   eyebrow: 'Next Being Lab',
-  headline: 'AIが働く時代に、人間の参加を設計し直す。',
+  headline: '障害・難病と仕事設計から始める、AI時代の研究と実装のスタジオ',
   subheadline:
-    'NBL は、障害・難病の雇用支援を重要な実装領域として扱いながら、仕事設計、参加設計、方法論、共有資源を再利用可能な部品として積み上げる AI-native team です。',
-  primaryCta: 'NBLが今できることを見る',
+    '働きづらさを個人の問題で終わらせず、仕事・情報・運用・支援・制度の設計課題として読み替える。',
+  supportingCopy:
+    'Next Being Lab の現在のコアは、働きづらさを仕事設計の課題として読み替えるプロダクト群と、企業・支援者・行政が同じ地図で読める公開コレクションです。いま利用者向けに見せる本線は、仕事設計の見取り図と 26フレームカード版、そして就労支援設計の変革テーマ群です。その他のガイドや個別整理の面は、まだ内部で検証しながら境界を整えています。',
+  operatingNote: 'AIが整理と叩き台を進め、人が公開約束と高リスク判断を持つ。',
+  primaryCta: 'What We Do から見る',
   secondaryCta: '仕事設計の見取り図を見る',
 };
 
 export const relaunchPublicSignals: RelaunchPublicSignal[] = [
   {
-    label: '定常ループ',
-    value: '5 loops',
+    label: '現在のコア',
+    value: '見取り図 -> 26カード版',
   },
   {
-    label: '現在の旗艦領域',
-    value: '障害・難病と仕事設計',
+    label: 'Human-in-Command',
+    value: '高リスク判断と対外責任',
   },
   {
-    label: '高リスク判断',
-    value: 'Human-in-Command',
-  },
-  {
-    label: '更新単位',
-    value: 'artifact / decision / resource',
+    label: '蓄積単位',
+    value: '資料 / 判断メモ / 公開資源',
   },
 ];
 
@@ -119,17 +120,18 @@ export const relaunchPublicFirstVisitPaths: RelaunchPublicFirstVisitPath[] = [
     cta: '企業向け整理を見る',
   },
   {
-    title: '当事者・家族・支援者の方へ',
-    audience: '見えにくい困りごとや背景を知りたい',
-    detail: '見えない障害シリーズ、基礎図解、公開動画の入口から、理解と実装の橋渡しを見られます。',
+    title: '支援者・行政・当事者の方へ',
+    audience: '制度・支援・現場の全体像をつなぎたい',
+    detail:
+      '見えない障害シリーズ、就労支援設計の変革テーマ群、支援連携の図解、公開動画の入口から、理解と実装の橋渡しを見られます。',
     href: '/resources',
     cta: 'Resourcesを見る',
   },
   {
-    title: '方法論から知りたい方へ',
-    audience: 'NBLがどんな単位で読んでいるか知りたい',
+    title: '現在のコアから知りたい方へ',
+    audience: 'NBLがいま何を中核に積み上げているか知りたい',
     detail:
-      '困りごとを職場設計として読むための 3レイヤーの地図と、条件読み取りの基礎説明を公開向けにまとめています。',
+      '困りごとを職場設計として読むための 3レイヤーの地図と、条件読み取りの基礎説明を、NBL の現在のコアとして公開向けにまとめています。',
     href: '/jac-foundations',
     cta: '仕事設計の見取り図を見る',
   },
@@ -153,7 +155,7 @@ export const relaunchPublicTensions: RelaunchPublicTension[] = [
     bullets: [
       '状況を読む単位をそろえる',
       '介入や運用を設計単位へ落とす',
-      '次に再利用できる artifact と decision を残す',
+      '次に再利用できる資源と判断境界を残す',
     ],
   },
 ];
@@ -172,7 +174,7 @@ export const relaunchPublicManifesto: RelaunchPublicManifesto[] = [
   {
     title: '個別対応で終わらず、方法と資源を残す',
     detail:
-      '条件マップ、仕事設計の見取り図、workflow、基礎図解、説明パック、境界メモを残し、毎回ゼロから始めない運営へ寄せます。',
+      '条件マップ、仕事設計の見取り図、手順、基礎図解、説明パック、境界メモを残し、毎回ゼロから始めない運営へ寄せます。',
   },
 ];
 
@@ -187,13 +189,13 @@ export const relaunchPublicMoves: RelaunchPublicMove[] = [
     step: '02',
     title: '介入を設計する',
     detail: '仕事、情報、運用、相談導線、秘密保持、支援連携を、無理のない実装単位に落とします。',
-    proof: 'workflow、運用メモ、説明文、見取り図を使った設計の叩き台',
+    proof: '手順、運用メモ、説明文、見取り図を使った設計の叩き台',
   },
   {
     step: '03',
     title: '再利用可能な部品を残す',
     detail: '1件だけで終わらせず、次の現場でも使える資源と意思決定の境界を残します。',
-    proof: '図解、動画、boundary memo、guide、series として蓄積',
+    proof: '図解、動画、境界メモ、ガイド、シリーズとして蓄積',
   },
 ];
 
@@ -206,7 +208,7 @@ export const relaunchPublicArtifacts: RelaunchPublicArtifact[] = [
     cta: '仕事設計の地図を見る',
   },
   {
-    title: 'workflow / protocol',
+    title: '運用の手順',
     detail: '相談導線、配慮運用、説明の順序を、現場で回る手順へ落としたもの。',
     note: '単発助言より、繰り返し使える形を優先。',
     href: '/review/what-we-do',
@@ -214,46 +216,46 @@ export const relaunchPublicArtifacts: RelaunchPublicArtifact[] = [
     cta: 'What We Do を見る',
   },
   {
-    title: 'explainer / resource pack',
+    title: '図解と説明資源',
     detail: '図解、動画、4コマ、基礎資料を、文脈つきの理解資源として束ねたもの。',
-    note: '啓発だけで終わらず、次の対話へつなぐ。',
+    note: '見えない障害シリーズや変革テーマ群のように、啓発だけで終わらず次の対話へつなぐ。',
     href: '/review/resources-first-release',
     publicHref: '/resources',
     cta: 'Resources を見る',
   },
   {
-    title: 'boundary / governance note',
-    detail: 'どこまで AI が進め、どこで人が決めるかを明示する判断メモ。',
+    title: '判断境界のメモ',
+    detail: 'どこまで AI が進め、どこで人が決めるかを明示する公開上のメモ。',
     note: 'Human-in-Command を運用で見えるようにする。',
     href: '/review/operating-loops',
     publicHref: '/operating-model',
-    cta: 'Operating Loops を見る',
+    cta: 'Operating Model を見る',
   },
 ];
 
 export const relaunchPublicLenses: RelaunchPublicLens[] = [
   {
-    title: 'Person',
+    title: '本人',
     detail: '症状の揺れ、得意なこと、本人の希望や無理の出やすさを見る。',
   },
   {
-    title: 'Job',
+    title: '仕事',
     detail: '何の仕事を、どの精度と速度で、どこまで担う前提なのかを見る。',
   },
   {
-    title: 'Environment',
+    title: '環境',
     detail: '情報の流れ、対人関係、感覚負荷、管理の仕方など職場環境を見る。',
   },
   {
-    title: 'Support',
+    title: '支援',
     detail: '配慮、ツール、外部支援、相談導線、秘密保持の設計を見る。',
   },
   {
-    title: 'Time',
+    title: '時間',
     detail: 'いま一時的なのか、移行期なのか、再発や変動をどう見るかを含める。',
   },
   {
-    title: 'Institution',
+    title: '制度',
     detail: '制度、社内ルール、法的枠組み、責任分担の境界を確認する。',
   },
 ];
@@ -269,34 +271,27 @@ export const relaunchPublicStreams: RelaunchPublicStream[] = [
   },
   {
     id: 'methods',
-    title: 'Methods',
-    detail: '仕事設計の見取り図、3レイヤー、条件読み取りなどの方法論。',
-    question: 'どう考え、どう読むのか。',
+    title: '仕事設計の見取り図',
+    detail:
+      'NBL の現在のコアである仕事設計プロダクト群の起点。3レイヤー、条件読み取り、そして 26カード版へどうつながるかを見る。',
+    question: 'いまのコアは何か。',
     href: '/jac-foundations',
   },
   {
     id: 'resources',
     title: 'Resources',
-    detail: '動画、図解、見えない障害シリーズ、基礎資料などの公開資源。',
+    detail: '動画、図解、見えない障害シリーズ、就労支援設計の変革テーマ群などの公開資源。',
     question: 'まず何を使えるのか。',
     href: '/review/resources-first-release',
     publicHref: '/resources',
   },
   {
     id: 'vision',
-    title: 'Vision',
+    title: 'About',
     detail: 'AI時代の人間参加、新しい仕事、participation design の方向。',
     question: 'どこへ向かうのか。',
     href: '/review/about',
     publicHref: '/about',
-  },
-  {
-    id: 'operating-model',
-    title: 'Operating Model',
-    detail: 'AIチームがどう回り、どこで人が決め、何を記録として残すのか。',
-    question: 'どう運営されるのか。',
-    href: '/review/operating-loops',
-    publicHref: '/operating-model',
   },
 ];
 
@@ -320,22 +315,22 @@ export const relaunchPublicBoundaries: RelaunchPublicBoundary[] = [
 
 export const relaunchPublicLearningSignals: RelaunchPublicLearningSignal[] = [
   {
-    title: '更新が部品として残る',
+    title: '速く試す',
     detail:
-      'サイトの改善は、その場しのぎの文言修正で終わらず、decision、template、resource、method として残る単位で進める。',
-    proof: 'artifact / decision / resource が更新単位になる',
+      'AIが比較、整理、下書き、再構成を高速に回し、人は止めるべき判断だけを持つことで、試行の回転数を上げます。',
+    proof: '指摘 -> 比較 -> 修正 -> 公開 のサイクルを短く回す',
   },
   {
-    title: '改善理由が追える',
+    title: '判断を残す',
     detail:
-      '気づき、比較、統合、public-safe な更新という順で進め、なぜ変わったかを後から追える状態を保つ。',
-    proof: 'feedback -> round -> synthesis -> artifact の流れを固定する',
+      'なぜ直したか、どこまで公開するか、どこで人が境界を持つかを、あとから追える形で残します。',
+    proof: '判断境界、review、公開文言の変更理由が追える',
   },
   {
-    title: '速さより境界を見せる',
+    title: '次が速くなる',
     detail:
-      'すべてを自動公開するのでなく、public promise、高リスク判断、外部行動は人が止める前提を visible にする。',
-    proof: 'Human-in-Command と weekly red-signal review を維持する',
+      'ページ、図解、手順、判断メモが資産として残るので、次の仕事が毎回ゼロから始まらず、精度も速度も上がっていきます。',
+    proof: '見取り図、Resources、運用メモが次のラウンドの土台になる',
   },
 ];
 
@@ -351,14 +346,14 @@ export const relaunchPublicQuestionPaths: RelaunchPublicQuestionPath[] = [
   {
     title: '方法論から入る',
     question: '困りごとをどんな単位で読んでいるのか。',
-    detail: '仕事設計の見取り図、3レイヤー、設計課題への読み替え方を見る。',
+    detail: '仕事設計の見取り図、3レイヤー、そして次に 26カード版で何を確認できるかを見る。',
     href: '/jac-foundations',
-    cta: 'Methods',
+    cta: '仕事設計の見取り図',
   },
   {
     title: '公開資源から入る',
     question: 'まず役立つものを見たい。',
-    detail: '動画や図解など、理解資源の入口から入る。',
+    detail: '見えない障害シリーズ、変革テーマ群、動画や図解など、理解資源の入口から入る。',
     href: '/review/resources-first-release',
     publicHref: '/resources',
     cta: 'Resources',
@@ -369,14 +364,6 @@ export const relaunchPublicQuestionPaths: RelaunchPublicQuestionPath[] = [
     detail: 'AI時代の人間参加と、新しい仕事・社会設計の本丸を見る。',
     href: '/review/about',
     publicHref: '/about',
-    cta: 'Vision',
-  },
-  {
-    title: '運営モデルから入る',
-    question: 'AI中心といっても、どう回るのか。',
-    detail: '定常ループ、判断境界、Founder が止まる条件を確認する。',
-    href: '/review/operating-loops',
-    publicHref: '/operating-model',
-    cta: 'Operating Model',
+    cta: 'About',
   },
 ];

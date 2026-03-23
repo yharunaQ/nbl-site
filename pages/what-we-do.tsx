@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   Boxes,
   BriefcaseBusiness,
+  CircleDollarSign,
   ShieldCheck,
   Sparkles,
   Users,
@@ -12,6 +13,7 @@ import {
 import {
   whatWeDoArtifacts,
   whatWeDoAudiences,
+  whatWeDoCommercialLanes,
   whatWeDoCopy,
   whatWeDoGuardrails,
   whatWeDoOffers,
@@ -78,10 +80,10 @@ export default function WhatWeDoPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/contact"
+                href="/resources/work-support-transformation"
                 className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
-                連携・お問い合わせ
+                変革テーマ群を見る
               </Link>
               <Link
                 href="/jac-foundations"
@@ -90,12 +92,23 @@ export default function WhatWeDoPage() {
                 仕事設計の見取り図を見る
               </Link>
               <Link
-                href="/videos"
+                href="/for-enterprise"
                 className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
               >
-                公開動画を見る
+                企業向け整理を見る
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
+              >
+                連携・お問い合わせ
               </Link>
             </div>
+            <p className="mt-5 max-w-3xl rounded-[1.4rem] border border-emerald-200 bg-emerald-50/70 px-4 py-4 text-sm leading-7 text-slate-700">
+              AIが論点整理と叩き台生成を進め、高リスク判断と対外責任は人が持つ。NBL は
+              `何でも相談できる窓口` ではなく、仕事設計、公開コレクション、private layer を往復させながら、
+              次にも使える社会OSの部品を残す translation layer として動きます。
+            </p>
           </div>
 
           <aside className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-sm shadow-slate-200/60">
@@ -174,6 +187,31 @@ export default function WhatWeDoPage() {
 
         <section className="border-t border-slate-200 py-12">
           <div className="flex items-center gap-3">
+            <CircleDollarSign size={18} className="text-sky-700" />
+            <h2 className="text-2xl font-black text-slate-900">公開コレクションと private layer の分け方</h2>
+          </div>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
+            NBL は、公開物そのものを小売商品として積み上げるのではなく、free-first の公開コレクションで理解を返し、
+            private layer で実装と運用を支える形を基本にしています。
+          </p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {whatWeDoCommercialLanes.map((lane) => (
+              <article
+                key={lane.title}
+                className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60"
+              >
+                <h3 className="text-xl font-black text-slate-900">{lane.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-700">{lane.summary}</p>
+                <p className="mt-4 rounded-2xl border border-sky-200 bg-sky-50/70 px-4 py-3 text-sm leading-6 text-slate-700">
+                  {lane.note}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 py-12">
+          <div className="flex items-center gap-3">
             <Boxes size={18} className="text-sky-700" />
             <h2 className="text-2xl font-black text-slate-900">1ラウンドの後に残すもの</h2>
           </div>
@@ -239,7 +277,7 @@ export default function WhatWeDoPage() {
         <section className="py-12">
           <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
             <h2 className="text-2xl font-black">次に見る入口</h2>
-            <div className="mt-5 grid gap-5 md:grid-cols-3">
+            <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
                 <h3 className="text-xl font-black text-white">Methods</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">
@@ -255,26 +293,37 @@ export default function WhatWeDoPage() {
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
                 <h3 className="text-xl font-black text-white">Resources</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">
-                  まず役立つ動画や説明資源から入りたい場合はこちらです。
+                  まず役立つ図解、シリーズ、動画の入口から入りたい場合はこちらです。
                 </p>
                 <Link
-                  href="/videos"
+                  href="/resources"
                   className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
                 >
-                  公開動画を見る
+                  Resources を見る
                 </Link>
               </article>
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
-                <h3 className="text-xl font-black text-white">Contact</h3>
+                <h3 className="text-xl font-black text-white">For Enterprise</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">
-                  いきなりメールではなく、Founder と NBL
-                  の背景、話を始めやすいテーマ、連絡の目安を先に確認できます。
+                  企業や組織の担当者向けに、実務テーマをどう整理しているかを確認できます。
                 </p>
                 <Link
-                  href="/contact"
+                  href="/for-enterprise"
                   className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
                 >
-                  連携・お問い合わせ
+                  企業向け整理を見る
+                </Link>
+              </article>
+              <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
+                <h3 className="text-xl font-black text-white">Operating Model</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-200">
+                  AI がどこまで進め、人がどこで止めるかという公開上の原則を確認できます。
+                </p>
+                <Link
+                  href="/operating-model"
+                  className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
+                >
+                  Operating Model を見る
                 </Link>
               </article>
             </div>

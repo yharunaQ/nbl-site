@@ -26,7 +26,8 @@ export type ResourceThemeTrack = {
 export const resourcesIntro = {
   eyebrow: 'NBL Resources',
   headline: '理解を深めるだけでなく、実装につながる resources を束ねる。',
-  subheadline: '図解、4コマ、動画、レポートを、理解と方法論の series として整理して見せる。',
+  subheadline:
+    '図解、4コマ、動画、レポートを、企業、支援者、行政、当事者が同じ地図で読める理解と方法論の series として整理して見せる。',
 };
 
 export const resourcesEditorialRules = [
@@ -52,7 +53,7 @@ export const resourcesReadingPaths: ResourceReadingPath[] = [
 ];
 
 export const resourcesThemeMapIntro =
-  'content-inbox の整理軸を、そのまま公開ナビの下書きとして見える形にしました。すでに public に出せるもの、次に出せるもの、まだ文脈づけが必要なものを分けて扱います。';
+  'content-inbox の整理軸を、そのまま公開ナビの下書きとして見える形にしました。すでに public に出せるもの、次に出せるもの、まだ文脈づけが必要なものを分けて扱います。特に雇用設計まわりは、企業課題だけでなく、制度、専門支援、慢性疾患支援まで含むテーマとして整理します。';
 
 export const resourcesThemeTracks: ResourceThemeTrack[] = [
   {
@@ -81,17 +82,20 @@ export const resourcesThemeTracks: ResourceThemeTrack[] = [
     ctaLabel: 'シリーズを見る',
   },
   {
-    title: '地平1: 隔離・分離から包摂へ',
-    status: 'next_up',
+    title: '就労支援設計の変革テーマ',
+    status: 'public_now',
     summary:
-      '障害者雇用支援の世界標準、慢性疾患支援、就労選択支援、標準職場設計26フレームなど、制度と実装をつなぐ変革テーマ群です。',
+      '障害者雇用支援の世界標準、日本における変革課題、慢性疾患の支援、就労選択支援、標準職場設計26フレームなどを、企業、制度、専門支援、慢性疾患支援を同じ地図で読むテーマ群として整理する。',
     signals: [
       '障害者雇用支援の世界標準',
       '慢性疾患の支援',
       '日本における変革課題',
       '標準職場設計26フレーム',
     ],
-    note: '素材整理はかなり進んだので、次の collection 候補として公開順を設計します。',
+    note:
+      '企業向け説明だけに閉じず、制度・支援・慢性疾患支援まで含む public collection として公開しました。仕事設計の見取り図や見えない障害シリーズと往復しながら読む想定です。',
+    publicHref: '/resources/work-support-transformation',
+    ctaLabel: '変革テーマを見る',
   },
   {
     title: '地平2: エンゲージメント',
@@ -110,15 +114,16 @@ export const resourcesThemeTracks: ResourceThemeTrack[] = [
     title: '公開動画',
     status: 'public_now',
     summary:
-      'youtube-links の最新判断に合わせて、今 public-safe に案内できる explainers だけを選び、Resources 配下で束ねています。',
+      'youtube-links の最新判断に合わせて、企業向け説明だけでなく、支援者や行政にも重要な explainers を選び、Resources 配下で束ねています。',
     signals: [
       '合理的配慮2.0',
       '相互作用モデル入門',
-      '企業向け実践ガイド',
-      '障害者雇用の質',
       '全体マップ',
+      '能力主義の罠',
+      '配慮疲れの神話',
     ],
-    note: 'チャンネルへ丸投げせず、現在 public_now と判断した動画だけを入口化しています。',
+    note:
+      'チャンネルへ丸投げせず、現在 public_now と判断した動画だけを入口化しています。啓発系動画は企業、支援者、行政に共通する前提整理の入口として扱います。',
     publicHref: '/videos',
     ctaLabel: '動画を見る',
   },
@@ -148,6 +153,17 @@ export const resourcesCollections: ResourceCollection[] = [
     note: '企業向けには、まず「障害者雇用の正常化」を入口に置き、その次に「質の指標」へ進める順がよい。',
     href: '/jac-foundations',
     publicHref: '/jac-foundations',
+  },
+  {
+    title: '就労支援設計の変革テーマ群',
+    status: 'build_now',
+    summary:
+      '障害者雇用支援の世界標準、日本における変革課題、慢性疾患の支援を、企業課題だけでなく制度・専門支援の課題まで含む public collection として整理したシリーズ。',
+    assets: ['障害者雇用支援の世界標準', '日本における変革課題', '慢性疾患の支援'],
+    note:
+      '単発の制度批評や啓発画像としてではなく、NBL の社会OS事業における公開知識層として、仕事設計や Resources の他系列と接続して公開する。',
+    href: '/review/employment-design',
+    publicHref: '/resources/work-support-transformation',
   },
   {
     title: 'Selected Explainers',

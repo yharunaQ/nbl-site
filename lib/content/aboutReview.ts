@@ -38,7 +38,7 @@ export const aboutReviewHero: AboutHero = {
   eyebrow: 'NBL Purpose',
   headline: 'AIで人を不要にするのではない。人間が人間として参加できる社会を増やす。',
   subheadline:
-    'NBL は、AIで人間の限界を超える事業を動かし、その余力で、障害や病気の有無にかかわらず個性や強みを発揮できる新しい仕事と社会設計の受け皿をつくる。',
+    'NBL は、AIで比較・整理・叩き台生成を進め、人が高リスク判断と対外責任を持つ事業を動かし、その余力で、障害や病気の有無にかかわらず個性や強みを発揮できる新しい仕事と社会設計の受け皿をつくる。',
 };
 
 export const aboutReviewKeyPoints: AboutKeyPoint[] = [
@@ -54,6 +54,11 @@ export const aboutReviewKeyPoints: AboutKeyPoint[] = [
     title: 'What The Core Mission Is',
     summary:
       '障害や病気の有無にかかわらず、個性や強みを発揮して社会参加できる新しい仕事と社会設計を生み出すこと。',
+  },
+  {
+    title: 'What Builds Trust',
+    summary:
+      'AI-native だから信頼できるのではなく、どこで AI が進み、どこで人が責任を持つかを先に見せることで trust をつくる。',
   },
 ];
 

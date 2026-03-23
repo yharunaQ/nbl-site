@@ -39,6 +39,23 @@ export type JacFoundationDevelopmentStep = {
   evidence: string;
 };
 
+export type JacFoundationPathwayStep = {
+  step: string;
+  title: string;
+  status: '公開中' | '整備中' | '内部検証' | '個別連携';
+  detail: string;
+  businessMeaning: string;
+  routeNote: string;
+  href?: string;
+  cta?: string;
+};
+
+export type JacFoundationPathwaySupport = {
+  title: string;
+  detail: string;
+  bullets: string[];
+};
+
 export type JacFoundationLayer = {
   title: string;
   frameCount: string;
@@ -185,93 +202,127 @@ export const jacFoundationPrinciples: JacFoundationPrinciple[] = [
 ];
 
 export const jacFoundationDevelopmentIntro = {
-  eyebrow: 'この地図の開発背景',
+  eyebrow: 'NBLの最初のAIプロダクト',
   headline:
-    'この見取り図は、古い障害観に汚染された情報をそのまま並べるのではなく、ICFに基づく相互作用モデルで批判的に読み替えたうえで、AI で再統合し、監査しながら単純化したものです。',
+    'この見取り図は、思いつきの26フレームではなく、AIで再統合してつくった、NBLの最初のプロダクトです。',
   summary:
-    '障害に関する既存情報は中立ではなく、古い障害概念モデル、偏見、差別、診断名による決め打ちに強く影響されていることがあります。NBL ではまず、ICF に基づく相互作用モデルと条件つき因果の見方で、何が本人要因で、何が仕事・環境・支援・制度との相互作用なのかを批判的かつ限定的に整理します。そのうえで、現在の生成AIの文脈理解を使って複数の情報源を再統合し、3レイヤーと26フレームへ絞り込んでいます。',
+    '障害・難病・継続就労・職場運用に関する知識や経験は、そのままでは現場で使いにくい断片のまま散らばっています。NBL はそれらを相互作用モデルで読み替え、AIで比較・統合し、最初の対話で使える3レイヤー・26フレームへ圧縮しました。',
   note:
-    '公開中の見取り図は完成済みの最終形というより、今後の個別整理や AI 支援へつなぐための土台です。フレームだけで結論を固定せず、個別事情を重ねる前提で使います。特に、既存情報に含まれる偏見や差別の再生産を避けるため、診断名だけの説明や欠陥中心の説明をそのまま使わないことを前提にしています。',
+    '見せたいのは枚数の多さではなく、ばらばらの論点を AI で束ね、人が境界を持って公開できる地図まで持っていったことです。ここが、NBLらしさの最初の形です。',
 };
 
 export const jacFoundationDevelopmentStats: JacFoundationDevelopmentStat[] = [
   {
     value: '52 類型',
-    label: '統合した知識類型',
-    detail: 'data2 index に整理された類型の数。異なる障害や難病の論点を横断して見られる土台です。',
+    label: '横断整理した知識類型',
+    detail: 'ばらばらの障害・難病テーマを、同じ土俵で比較できるところまでそろえました。',
   },
   {
     value: '1076 課題行',
-    label: '見落とし確認の元データ',
-    detail: '仕事上の詰まりを行単位で保持し、未カバーが出ていないかを監査しています。',
-  },
-  {
-    value: '201 件',
-    label: '経験の断片',
-    detail: '本人側の経験や声を narrative highlights として残し、抽象論だけに寄らないようにしています。',
+    label: '見落とし確認した職場課題',
+    detail: '「なんとなく26個にした」のではなく、抜け漏れを点検するための土台を持っています。',
   },
   {
     value: '4914 件',
     label: '再整理した知識断片',
-    detail: '公開知識を claims として保持し、言い回しがどこに根拠を持つかを追える形にしています。',
-  },
-  {
-    value: '539 関連',
-    label: 'GLM の有意関連',
-    detail: '難病GLMの有意関連を、どのフレームに厚みがあるかを見る手掛かりにしています。',
+    detail: '図の言い回しが空中戦にならないよう、根拠をたどれる単位まで再整理しています。',
   },
   {
     value: '26 / 26 整合',
-    label: 'フレーム整合の監査結果',
-    detail: '26フレームの Tier 設計は現在 26/26 で整合。未カバー課題行は 0 件です。',
+    label: 'フレーム整合の監査',
+    detail: '3レイヤーと26フレームが噛み合うかを点検し、公開できる地図として整えています。',
   },
 ];
 
 export const jacFoundationDevelopmentSteps: JacFoundationDevelopmentStep[] = [
   {
     step: '01',
-    title: '集める',
+    title: '材料を同じ土俵にそろえる',
     detail:
-      '公開知識、調査結果、実務記述、ガイド原稿を、そのままでは使わず、同じ形式で読める形へ整えます。',
-    evidence: 'raw から sanitized、index へ整え、追加知識を同じ形で読めるようにします。',
+      '公開知識、調査、実務記述、経験断片を、そのまま貼り合わせず、横断して比較できる形へ整えます。',
+    evidence: '知識類型と課題行の形にそろえることで、同じ詰まりを別資料どうしで見比べられるようにしています。',
   },
   {
     step: '02',
-    title: '批判的にふるい直す',
+    title: '古い障害観をそのまま使わない',
     detail:
-      '障害概念モデルの古さや欠陥中心の見方をそのまま受け取らず、ICF に基づく相互作用モデルで、条件つきの情報だけを残します。',
+      '診断名だけの決め打ちや欠陥中心の説明を避け、本人・仕事・環境・支援の相互作用として読み替えます。',
     evidence:
       '原因を個人属性の固定説明ではなく、条件 × 業務 × 運用の相互作用で読むことを原則にしています。',
   },
   {
     step: '03',
-    title: 'AIで再統合する',
+    title: 'AIで束ねて地図に圧縮する',
     detail:
-      'AI が issue、support、claim、relation を横断し、別々の資料に出てくる同種の詰まりを照合しながら、文脈つきで再統合します。',
-    evidence: 'data2、claims、GLM relations を照合し、別資料にある同種の課題を見比べます。',
+      'AI が似た論点を横断して照合し、ばらばらの知識を3レイヤー・26フレームへ圧縮します。',
+    evidence: '人手だけでは重くなりがちな比較と再編を AI で進め、最初の対話で使える地図まで持っていきます。',
   },
   {
     step: '04',
-    title: '単純化する',
+    title: '人が境界を持って公開する',
     detail:
-      '複雑な論点を、そのまま羅列せず、3レイヤー、26フレーム、条件軸へ絞って、最初の対話で使える地図へ落とします。',
-    evidence: 'カード数のゆらぎと、残す論点・外へ逃がす論点を別に点検します。',
-  },
-  {
-    step: '05',
-    title: '境界を監査する',
-    detail:
-      'どこまでカード本体に残し、どこから法政策や支援接続の別レイヤーへ逃がすかを明示します。',
-    evidence: 'Tier alignment 26/26、未カバー課題行 0、希少記述の未カバー 0 を確認しています。',
-  },
-  {
-    step: '06',
-    title: '個別化へつなぐ',
-    detail:
-      '実際のケースでは、本人、仕事、環境、支援、時間、制度の条件を重ねて、個別事情に近い整理へ進みます。',
-    evidence: 'この見取り図は入口であり、個別事情や高リスク判断を単独で処理しません。',
+      '地図だけで結論を出さず、どこまで公開し、どこから個別判断や外部支援へ戻すかを明示します。',
+    evidence: 'AIに丸投げせず、人が境界を持つことで、公開できるプロダクトとして成立させています。',
   },
 ];
+
+export const jacFoundationPathwayIntro = {
+  eyebrow: 'この先の道筋',
+  headline:
+    'まずは、見取り図から 26フレームカード版までを確かな公開本線として整えます。',
+  summary:
+    '公開面では、3レイヤーの全体像を返す見取り図と、その詳細内容を確認できる 26フレームカード版をまず固めます。仕事設計ガイドはまだ内部チェック段階で、先行5章版は役割を終えた試作として本線から外します。',
+};
+
+export const jacFoundationPathwaySteps: JacFoundationPathwayStep[] = [
+  {
+    step: '01',
+    title: '仕事設計の見取り図',
+    status: '公開中',
+    detail:
+      '3レイヤーと 26フレームの全体像を共有し、困りごとを診断名だけでなく仕事設計の課題として読む共通地図を返します。',
+    businessMeaning:
+      '記事流入や初見訪問でも、まず同じ地図で話せる状態をつくる trust layer です。',
+    routeNote: 'このページが現在の公開入口です。',
+    href: '#layers-overview',
+    cta: '3レイヤーを見る',
+  },
+  {
+    step: '02',
+    title: '26フレームカード版',
+    status: '整備中',
+    detail:
+      '各フレームが何を見るための枠か、どこで詰まりやすいか、最初の一手をどう決めるかを、利用者向けのカード版として整理します。',
+    businessMeaning:
+      '地図だけでは浅い読者が、個別判断へ飛ぶ前に共通語彙と読み方を揃えられる main surface になります。',
+    routeNote: '3/9 時点の 26カード版を土台に、公開向けの見せ方を整えています。',
+    href: '/jac/frames',
+    cta: '26カード版を見る',
+  },
+  {
+    step: '03',
+    title: '仕事設計ガイド',
+    status: '内部検証',
+    detail:
+      '条件の抜けや debug 出力を確認するための内部チェック用の面です。現時点では利用者向け導線に載せません。',
+    businessMeaning:
+      '公開前に論点の抜けや危険な案内がないかを見るための内部検証面として扱います。',
+    routeNote: '利用者には出さず、内部レビューでのみ使います。',
+  },
+];
+
+export const jacFoundationPathwaySupport: JacFoundationPathwaySupport = {
+  title: '公開本線の外側に置くもの',
+  detail:
+    '条件整理ドラフトは Founder-operated internal tool として使い、質問の抜け、仮説、境界を整理します。仕事設計ガイドは内部チェック用のままにし、先行5章版は役割を終えた試作として静かに退避します。',
+  bullets: [
+    '利用者向けの公開本線は、見取り図と 26フレームカード版までに絞る。',
+    '仕事設計ガイドは debug と内部チェックの段階に留める。',
+    '先行5章版は、現在の導線では役割を持たせない。',
+    '個別ルートでは、人が person / job / environment / support / time / institution を重ねて扱う。',
+    '内部ツールは Founder の運用支援が先で、いきなり open self-serve にはしない。',
+  ],
+};
 
 export const jacFoundationConsultationBridge = {
   title: '今後の個別整理へどうつながるか',
