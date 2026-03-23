@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, Compass, RefreshCcw, ShieldCheck, Users, Waypoints } from 'lucide-react';
+import { ArrowLeft, Compass, ShieldCheck, Users, Waypoints } from 'lucide-react';
 import {
   founderBoundaries,
   operatingLoops,
@@ -16,7 +16,7 @@ export default function OperatingModelPage() {
         <title>Operating Model | Next Being Lab</title>
         <meta
           name="description"
-          content="Next Being Lab が、AI中心の運営をどの定常ループで回し、どこで人が判断境界を持つかを整理したページ。"
+          content="Next Being Lab が、公開更新をどこまで AI で進め、どこで人が判断境界を持つかを整理したページ。"
         />
         <link rel="canonical" href="https://nextbeinglab.org/operating-model" />
       </Head>
@@ -60,10 +60,10 @@ export default function OperatingModelPage() {
                 What We Do を見る
               </Link>
               <Link
-                href="/about"
+                href="/jac-foundations"
                 className="rounded-full border border-cyan-300 bg-cyan-50 px-5 py-3 text-sm font-semibold text-cyan-950 transition hover:border-cyan-400 hover:bg-cyan-100"
               >
-                About を見る
+                仕事設計の見取り図を見る
               </Link>
               <Link
                 href="/contact"
@@ -75,63 +75,50 @@ export default function OperatingModelPage() {
           </div>
 
           <aside className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-sm shadow-slate-200/60">
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">
-              <RefreshCcw size={16} />
-              Goal
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">
+              このページの要点
+            </p>
+            <div className="mt-5 space-y-3">
+              <article className="rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-4">
+                <p className="text-sm font-bold text-slate-900">AIが進めること</p>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  比較、整理、下書き、公開資源の更新を止めずに回すこと。
+                </p>
+              </article>
+              <article className="rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-4">
+                <p className="text-sm font-bold text-slate-900">人が決めること</p>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  公開約束、高リスク判断、外部への正式な回答と責任です。
+                </p>
+              </article>
+              <article className="rounded-[1.4rem] border border-cyan-200 bg-cyan-50 px-4 py-4">
+                <p className="text-sm font-bold text-slate-900">公開面で見せること</p>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  いま公開している範囲と、その更新原則だけを先に見せます。
+                </p>
+              </article>
             </div>
-            <p className="mt-5 text-2xl font-black text-slate-900">
-              AI中心の運営を、
-              <br />
-              気分ではなく定常ループで回す。
-            </p>
-            <p className="mt-4 text-sm leading-7 text-slate-700">
-              すべてを Founder
-              の逐次指示に戻さず、問いの選定、比較、統合、公開判断、記録が繰り返し回る状態を目指します。
-            </p>
           </aside>
         </section>
 
         <section className="border-t border-slate-200 py-12">
           <div className="flex items-center gap-3">
             <Waypoints size={18} className="text-sky-700" />
-            <h2 className="text-2xl font-black text-slate-900">定常ループ</h2>
+            <h2 className="text-2xl font-black text-slate-900">公開面で見える3つの運営原則</h2>
           </div>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
+            公開サイトから見えるのは、NBL が何を更新し、どこで人が止まるかという最小単位です。内部の細かな運用ではなく、外から見て重要な原則だけを載せています。
+          </p>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             {operatingLoops.map((loop) => (
               <article
                 key={loop.title}
                 className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60"
               >
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-sky-800">
-                    {loop.cadence}
-                  </span>
-                  <span className="rounded-full border border-slate-300 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                    {loop.owner}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-xl font-black text-slate-900">{loop.title}</h3>
+                <h3 className="text-xl font-black text-slate-900">{loop.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-700">{loop.purpose}</p>
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl bg-slate-50 p-4">
-                    <p className="text-sm font-bold text-slate-900">Inputs</p>
-                    <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                      {loop.inputs.map((item) => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="rounded-2xl bg-emerald-50 p-4">
-                    <p className="text-sm font-bold text-slate-900">Outputs</p>
-                    <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                      {loop.outputs.map((item) => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
                 <p className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-slate-700">
-                  Founder boundary: {loop.founderNeeded}
+                  人が確認するのは: {loop.founderNeeded}
                 </p>
               </article>
             ))}
@@ -163,7 +150,7 @@ export default function OperatingModelPage() {
                   ) : null}
                   {boundary.founderDecides.length > 0 ? (
                     <>
-                      <p className="mt-4 text-sm font-bold text-slate-900">Founderが決めること</p>
+                      <p className="mt-4 text-sm font-bold text-slate-900">人が決めること</p>
                       <ul className="mt-2 space-y-2 text-sm leading-7 text-slate-700">
                         {boundary.founderDecides.map((item) => (
                           <li key={item}>• {item}</li>
@@ -180,7 +167,7 @@ export default function OperatingModelPage() {
         <section className="border-t border-slate-200 py-12">
           <div className="flex items-center gap-3">
             <Compass size={18} className="text-indigo-700" />
-            <h2 className="text-2xl font-black text-slate-900">止めるべきタイミング</h2>
+            <h2 className="text-2xl font-black text-slate-900">人が確認する場面</h2>
           </div>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             {operatingTriggers.map((trigger) => (
@@ -190,10 +177,10 @@ export default function OperatingModelPage() {
               >
                 <h3 className="text-xl font-black text-slate-900">{trigger.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-700">
-                  <span className="font-semibold text-slate-900">When:</span> {trigger.when}
+                  <span className="font-semibold text-slate-900">場面:</span> {trigger.when}
                 </p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
-                  <span className="font-semibold text-slate-900">Action:</span> {trigger.action}
+                  <span className="font-semibold text-slate-900">対応:</span> {trigger.action}
                 </p>
               </article>
             ))}
@@ -204,7 +191,7 @@ export default function OperatingModelPage() {
           <div className="py-14">
             <div className="flex items-center gap-3">
               <ShieldCheck size={18} className="text-emerald-700" />
-              <h2 className="text-2xl font-black text-slate-900">避けたい失敗モード</h2>
+              <h2 className="text-2xl font-black text-slate-900">公開上の注意点</h2>
             </div>
             <div className="mt-6 grid gap-5 lg:grid-cols-2">
               {operatingRisks.map((risk) => (
@@ -216,6 +203,35 @@ export default function OperatingModelPage() {
                   <p className="mt-4 text-sm leading-7 text-slate-700">{risk.detail}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 py-12">
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
+            <h2 className="text-2xl font-black">次に見るページ</h2>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
+              このページで運営原則を掴んだら、次は NBL が今何を公開しているか、方法論をどう読んでいるか、実際に連携を始められるかへ進めます。
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/what-we-do"
+                className="rounded-full border border-slate-500 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
+              >
+                What We Do を見る
+              </Link>
+              <Link
+                href="/jac-foundations"
+                className="rounded-full border border-slate-500 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
+              >
+                仕事設計の見取り図を見る
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-full border border-slate-500 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-300 hover:bg-slate-800"
+              >
+                連携・お問い合わせ
+              </Link>
             </div>
           </div>
         </section>

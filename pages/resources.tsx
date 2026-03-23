@@ -43,6 +43,15 @@ const trackStatusLabel: Record<string, string> = {
   organizing: '整理中',
 };
 
+const readingPathLinks: Record<string, { href: string; cta: string }> = {
+  基礎の地図から入る: { href: '/jac-foundations', cta: '仕事設計の見取り図を見る' },
+  シリーズで理解を深める: {
+    href: '/resources/invisible-disability',
+    cta: 'シリーズを見る',
+  },
+  '動画や資料で文脈を広げる': { href: '/videos', cta: '公開動画を見る' },
+};
+
 export default function ResourcesPage() {
   const publicCollections = resourcesCollections.filter((collection) => collection.status !== 'hold');
 
@@ -93,7 +102,7 @@ export default function ResourcesPage() {
           <aside className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-sm shadow-slate-200/60">
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">
               <LibraryBig size={16} />
-              Editorial Rules
+              公開ルール
             </div>
             <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
               {resourcesEditorialRules.map((rule) => (
@@ -109,22 +118,34 @@ export default function ResourcesPage() {
             <h2 className="text-2xl font-black text-slate-900">読み方の入口</h2>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {resourcesReadingPaths.map((path) => (
-              <article
-                key={path.title}
-                className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60"
-              >
-                <h3 className="text-xl font-black text-slate-900">{path.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-slate-700">{path.summary}</p>
-              </article>
-            ))}
+            {resourcesReadingPaths.map((path) => {
+              const link = readingPathLinks[path.title];
+
+              return (
+                <article
+                  key={path.title}
+                  className="rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60"
+                >
+                  <h3 className="text-xl font-black text-slate-900">{path.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-700">{path.summary}</p>
+                  {link ? (
+                    <Link
+                      href={link.href}
+                      className="mt-5 inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+                    >
+                      {link.cta}
+                    </Link>
+                  ) : null}
+                </article>
+              );
+            })}
           </div>
         </section>
 
         <section className="border-t border-slate-200 py-12">
           <div className="flex items-center gap-3">
             <Waypoints size={18} className="text-violet-700" />
-            <h2 className="text-2xl font-black text-slate-900">整理済みの inbox map</h2>
+            <h2 className="text-2xl font-black text-slate-900">整理済みのテーママップ</h2>
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">{resourcesThemeMapIntro}</p>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
@@ -251,9 +272,53 @@ export default function ResourcesPage() {
           <div className="rounded-[1.8rem] border border-slate-200 bg-white p-6 text-sm leading-8 text-slate-700 shadow-sm shadow-slate-200/60">
             <div className="flex items-center gap-3">
               <FolderKanban size={18} className="text-rose-700" />
-              <h2 className="text-2xl font-black text-slate-900">Release Rule</h2>
+              <h2 className="text-2xl font-black text-slate-900">公開ルールの前提</h2>
             </div>
             <p className="mt-4">{resourcesReleaseRule}</p>
+          </div>
+        </section>
+
+        <section className="pb-12">
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
+            <h2 className="text-2xl font-black">次に進む入口</h2>
+            <div className="mt-5 grid gap-5 md:grid-cols-3">
+              <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
+                <h3 className="text-xl font-black text-white">What We Do</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-200">
+                  NBL がいま何を公開し、どこから話を始められるかを確認できます。
+                </p>
+                <Link
+                  href="/what-we-do"
+                  className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
+                >
+                  What We Do を見る
+                </Link>
+              </article>
+              <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
+                <h3 className="text-xl font-black text-white">For Enterprise</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-200">
+                  企業や組織の担当者向けに、実務テーマをどう整理しているかを確認できます。
+                </p>
+                <Link
+                  href="/for-enterprise"
+                  className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
+                >
+                  企業向け整理を見る
+                </Link>
+              </article>
+              <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
+                <h3 className="text-xl font-black text-white">Contact</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-200">
+                  公開面を見たうえで内容確認や連携を始めたい場合の入口です。
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
+                >
+                  連携・お問い合わせ
+                </Link>
+              </article>
+            </div>
           </div>
         </section>
       </main>

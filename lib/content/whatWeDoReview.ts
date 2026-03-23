@@ -25,19 +25,27 @@ export type WhatWeDoStep = {
   summary: string;
 };
 
+export type WhatWeDoCommercialLane = {
+  title: string;
+  summary: string;
+  note: string;
+};
+
 export type WhatWeDoGuardrail = {
   title: string;
   detail: string;
 };
 
 export const whatWeDoPrimaryCta = {
-  label: 'いま一緒に整理を始められること',
+  label: '社会OS事業として、いま公開していること',
   summary:
-    '初期公開では、人が常時対応する相談窓口を前面に出すのではなく、AI チームが論点整理や叩き台生成を担い、それを次にも使える形へ残していく入口を中心に案内しています。',
+    'NBL の現在のコアは、働きづらさを仕事設計へ読み替えるプロダクト群と、企業・支援者・行政が共通言語を持てる公開資源です。事業の中心は、人が件数で受ける個別相談ではなく、AI チームが図解、方法論、判断境界、workflow を積み上げる社会OSの公開層と private layer を育てることにあります。',
   signals: [
-    '公開情報や状況メモをもとに論点を整理する',
+    '公開コレクションと仕事設計プロダクト群を free-first で返す',
+    '企業だけでなく、支援者・行政も動きやすくする共通地図を返す',
     '重要な判断や外部への約束は人が持つ',
-    '1件で終わらず、次にも使える形を残す',
+    '有償は private layer で実装と運用を支える',
+    '1件で終わらず、次にも使える社会OSの部品を残す',
   ],
 };
 
@@ -48,17 +56,18 @@ export const whatWeDoAudiences: WhatWeDoAudience[] = [
     need: '障害者雇用に閉じない仕事設計や組織運用の課題にも関係ある AI チームか、どこから始められるかを知りたい。',
   },
   {
-    priority: 'P2',
-    title: '支援者・実務者',
-    need: '方法論や支援設計を AI チームでどう整理できるかを知りたい。',
+    priority: 'P1',
+    title: '障害者就労支援・障害者支援・難病支援の専門支援者と行政担当者',
+    need:
+      '企業だけに負担を押し戻さず、制度、支援連携、仕事設計を同じ地図でどう整理できるかを知りたい。',
   },
   {
-    priority: 'P3',
-    title: '当事者・周囲の人',
+    priority: 'P2',
+    title: '当事者・家族・周囲の人',
     need: 'NBL がどんな考え方で働きづらさを扱うのかを知りたい。',
   },
   {
-    priority: 'P4',
+    priority: 'P3',
     title: '研究・政策関係者',
     need: '信頼性や背景にある研究・制度整理の位置づけを知りたい。',
   },
@@ -66,39 +75,39 @@ export const whatWeDoAudiences: WhatWeDoAudience[] = [
 
 export const whatWeDoOffers: WhatWeDoOffer[] = [
   {
+    id: 'training',
+    state: 'offer_now',
+    title: '公開resources と変革コレクション',
+    summary:
+      '仕事設計の見取り図、就労支援設計の変革テーマ群、動画、図解、レポートを文脈付きで束ね、企業、支援者、行政が同じ地図で読める NBL の社会OSの公開知識層として返す。',
+    includes: ['仕事設計の見取り図', '就労支援設計の変革テーマ群', '支援者向け図解', '動画', '説明素材'],
+    caution: 'ここは trust と共通言語の層であり、単体コンテンツ販売を主軸にはしません。',
+  },
+  {
+    id: 'jac',
+    state: 'explain_only',
+    title: '仕事設計の見取り図と26カード版',
+    summary: '仕事設計の見取り図と 26カード版は、NBL の現在のコアとして説明する。',
+    includes: ['条件の読み方', '26フレームの詳細確認', '現在のコアとしての位置づけ'],
+    caution: '公開名は仕事設計系にそろえ、旧称を前面には出しません。',
+  },
+  {
     id: 'discovery',
     state: 'offer_now',
     title: 'AIチームによる論点整理',
     summary:
-      '公開情報や状況メモをもとに、何が論点か、どこから始めるかを AI チームが整理し、再利用可能な設計単位へ落とす。',
-    includes: ['課題の見立て', '導入対象の整理', '進め方の叩き台'],
-    caution: '人が常時対応する個別相談窓口として運営しているわけではありません。',
+      '公開情報や状況メモをもとに、企業内の課題、支援連携、制度上の論点を AI チームが整理し、再利用可能な設計単位へ落とす。',
+    includes: ['課題の見立て', '導入対象の整理', '支援連携の論点整理', '進め方の叩き台'],
+    caution: '人が件数で受ける常設相談窓口として運営しているわけではありません。',
   },
   {
     id: 'pilot',
     state: 'offer_now',
     title: 'AIチームによる実装設計・試行',
     summary:
-      '配慮、運用、文書、手順の叩き台を AI チームが組み立て、小さな試行と再利用可能な workflow の形に落とす。',
-    includes: ['試行の設計', '運用ルールの叩き台', '見直し観点の共有'],
-    caution: '期間や価格、人の伴走体制は案件ごとに整理します。',
-  },
-  {
-    id: 'training',
-    state: 'offer_now',
-    title: '公開resources と AI教材',
-    summary:
-      '合理的配慮、仕事設計、働き方の見直しに関する図解、動画、レポートを AI チームが文脈付きで束ね、社会OSの共有資源にする。',
-    includes: ['図解', '動画', 'レポート', '説明素材'],
-    caution: '現時点では、公開中の図解・動画・資料を中心に案内しています。',
-  },
-  {
-    id: 'jac',
-    state: 'explain_only',
-    title: '仕事設計の見取り図と方法論',
-    summary: '仕事設計の見取り図は、NBL の中核にある方法論の一つとして説明する。',
-    includes: ['条件の読み方', '進め方の考え方', 'NBL 全体との関係'],
-    caution: '初回の入口というより、方法論の基礎説明として位置づけています。',
+      '配慮、運用、文書、手順、支援連携の叩き台を AI チームが組み立て、小さな試行と再利用可能な workflow の形に落とす。',
+    includes: ['試行の設計', '運用ルールの叩き台', '支援連携の叩き台', '見直し観点の共有'],
+    caution: '期間や価格、人の伴走体制は案件ごとに整理します。これは社会OSの private layer 側です。',
   },
   {
     id: 'hold',
@@ -140,6 +149,27 @@ export const whatWeDoWorkflow: WhatWeDoStep[] = [
   },
 ];
 
+export const whatWeDoCommercialLanes: WhatWeDoCommercialLane[] = [
+  {
+    title: '社会OSの公開層',
+    summary:
+      '仕事設計の見取り図、26カード版、就労支援設計の変革テーマ群、公開 resources のような free-first の入口で、企業、支援者、行政に先に共通言語を返す。',
+    note: 'ここは trust と理解のレイヤー。小売相談や単発売りより、社会OSの公開知識層として育てる。',
+  },
+  {
+    title: '有償の private layer',
+    summary:
+      'initial design pack、private workspace、workflow setup、recurring updates のような private layer で実装と運用を支える。',
+    note: '収益の主軸は `startup fee + recurring fee + bounded private usage` に置く。',
+  },
+  {
+    title: '内部ツール',
+    summary:
+      '条件整理ドラフトは、当面は Founder が外部依頼対応の中で使う internal tool として扱い、外向け商品にはしない。',
+    note: '将来は operator-assisted、その先で self-serve の順に評価する。',
+  },
+];
+
 export const whatWeDoArtifacts: WhatWeDoArtifact[] = [
   {
     title: '条件の見取り図',
@@ -173,8 +203,19 @@ export const whatWeDoGuardrails: WhatWeDoGuardrail[] = [
     detail: '固定期間や価格カードは、整備前の promise に見えるため初期公開では出さない。',
   },
   {
-    title: 'この方法論を NBL 全体に吸収させない',
-    detail: '仕事設計の見取り図は重要だが、NBL 全体の支援を代表しきるものとしては見せない。',
+    title: '単体コンテンツ販売を主軸にしない',
+    detail:
+      '26カード版や各種資料は理解と trust の入口に使い、収益の主軸は private workspace や recurring 運用に置く。',
+  },
+  {
+    title: '条件整理ドラフトを公開商品にしない',
+    detail:
+      '条件整理ドラフトは、当面 Founder-operated internal tool として扱い、open trial や常設サービスとして見せない。',
+  },
+  {
+    title: '現在のコアとして前面に出す',
+    detail:
+      '仕事設計プロダクト群は NBL の現在のコアとして明示する。ただし、研究、理解資源、運営モデルとの接続も同時に見えるようにする。',
   },
   {
     title: '障害者雇用だけに閉じた組織と誤解させない',
@@ -192,7 +233,7 @@ export const whatWeDoGuardrails: WhatWeDoGuardrail[] = [
 ];
 
 export const whatWeDoWordsToAvoid = [
-  'JAC α',
+  'alpha / beta language',
   'PoC 募集中',
   '診断名不要',
   '病名を扱わず',
@@ -201,7 +242,7 @@ export const whatWeDoWordsToAvoid = [
 ];
 
 export const whatWeDoCopy = {
-  headline: '合理的配慮と仕事設計を、単発対応で終わらせず次に使える部品へ。',
+  headline: '仕事設計、公開コレクション、支援連携のOSを積み上げる社会OS事業。',
   subheadline:
-    'NBL は、AI運営のバーチャルチームとして、論点整理、仕事設計の見取り図、workflow、図解や説明資源を積み上げ、AI時代の社会OSを設計します。',
+    'NBL の現在のコアは、働きづらさを仕事・環境・支援・時間・制度の条件で読み直す仕事設計プロダクト群です。そこに、就労支援設計の変革テーマ群のような公開コレクションと、企業・支援者・行政が動きやすくなる支援連携のOSを重ねて、再利用可能な知識、workflow、判断境界を増やしていきます。AI が比較・下書き・記録化を進め、人が高リスク判断と対外責任を持つことで、AI時代の社会OSを設計します。',
 };

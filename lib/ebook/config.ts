@@ -27,9 +27,30 @@ function optionalEnv(name: string, fallback: string): string {
   return value || fallback;
 }
 
+function resolveDefaultEbookPath() {
+  return path.join(process.cwd(), 'public', 'ebooks', 'jac-guidebook.pdf');
+}
+
+function resolveConfiguredEbookPath(configuredPath: string) {
+  if (!configuredPath) {
+    return resolveDefaultEbookPath();
+  }
+
+  if (path.isAbsolute(configuredPath)) {
+    return configuredPath;
+  }
+
+  const normalized = configuredPath.replace(/\\/g, '/').replace(/^\.\//, '');
+  if (normalized.startsWith('public/')) {
+    const subpath = normalized.slice('public/'.length);
+    return path.join(process.cwd(), 'public', subpath);
+  }
+
+  return path.resolve(/* turbopackIgnore: true */ process.cwd(), normalized);
+}
+
 export function getEbookRuntimeConfig(): EbookRuntimeConfig {
-  const ebookFilePath = path.resolve(
-    /* turbopackIgnore: true */ process.cwd(),
+  const ebookFilePath = resolveConfiguredEbookPath(
     optionalEnv('JAC_GUIDEBOOK_FILE_PATH', 'public/ebooks/jac-guidebook.pdf'),
   );
 

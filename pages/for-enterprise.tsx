@@ -1,6 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { ArrowLeft, BriefcaseBusiness, ListChecks, ShieldCheck, Sparkles } from 'lucide-react';
+import {
+  ArrowLeft,
+  BriefcaseBusiness,
+  CircleDollarSign,
+  ListChecks,
+  ShieldCheck,
+  Sparkles,
+} from 'lucide-react';
 import { publicEnterpriseEntry } from '@/lib/content/publicEnterpriseEntry';
 
 export default function EnterpriseEntryPage() {
@@ -48,24 +55,34 @@ export default function EnterpriseEntryPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
+                href="/what-we-do"
+                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+              >
+                What We Do を見る
+              </Link>
+              <Link
                 href="/jac-foundations"
                 className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
               >
                 仕事設計の見取り図を見る
               </Link>
               <Link
-                href="/videos"
+                href="/resources/work-support-transformation"
                 className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
               >
-                公開動画を見る
+                変革テーマ群を見る
               </Link>
               <Link
                 href="/contact"
-                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
               >
                 連携・お問い合わせ
               </Link>
             </div>
+            <p className="mt-5 max-w-3xl rounded-[1.4rem] border border-sky-200 bg-sky-50/80 px-4 py-4 text-sm leading-7 text-slate-700">
+              AIが状況整理と叩き台生成を進め、高リスク判断と対外責任は人が持つ。NBL は既存支援や法的最終判断を置き換えるのでなく、
+              仕事設計、公開コレクション、private layer をつなぐ社会OSの一部として、この企業向け入口を運用しています。
+            </p>
           </div>
 
           <aside className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-sm shadow-slate-200/60">
@@ -139,6 +156,31 @@ export default function EnterpriseEntryPage() {
           </div>
         </section>
 
+        <section className="mt-10 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm shadow-slate-200/60">
+          <div className="flex items-center gap-3">
+            <CircleDollarSign size={18} className="text-sky-700" />
+            <h2 className="text-2xl font-black text-slate-900">公開コレクションと private layer の分け方</h2>
+          </div>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
+            公開面は free-first の入口として信頼と共通言語を返し、有償は private layer で実装と運用を支えます。
+            相談件数そのものを売るより、再利用可能な設計と運用のレイヤーを整える方を重視しています。
+          </p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {publicEnterpriseEntry.engagementLayers.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-6"
+              >
+                <h3 className="text-xl font-black text-slate-900">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-700">{item.summary}</p>
+                <p className="mt-4 rounded-2xl border border-sky-200 bg-white px-4 py-4 text-sm leading-7 text-slate-700">
+                  {item.note}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-10 grid gap-6 lg:grid-cols-[1.05fr,0.95fr]">
           <article className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm shadow-slate-200/60">
             <div className="flex items-center gap-3">
@@ -168,12 +210,20 @@ export default function EnterpriseEntryPage() {
                 <li key={item}>• {item}</li>
               ))}
             </ul>
+            <div className="mt-6 rounded-[1.5rem] border border-sky-200 bg-sky-50/70 p-5">
+              <h3 className="text-lg font-black text-slate-900">NBLが置き換えないもの</h3>
+              <ul className="mt-3 space-y-3 text-sm leading-7 text-slate-700">
+                {publicEnterpriseEntry.notReplacing.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         </section>
 
         <section className="mt-10 rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
           <h2 className="text-2xl font-black">次に見る入口</h2>
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
+          <div className="mt-5 grid gap-5 md:grid-cols-3">
             {publicEnterpriseEntry.resourceLinks.map((item) => (
               <article
                 key={item.title}

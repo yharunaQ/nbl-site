@@ -22,8 +22,8 @@ import { founderProfile } from '@/lib/content/founderProfile';
 
 const STREAM_LINKS: Record<string, { href: string; cta: string }> = {
   'What We Do': { href: '/what-we-do', cta: 'What We Do を見る' },
-  Methods: { href: '/jac-foundations', cta: 'Methods を見る' },
-  Resources: { href: '/videos', cta: 'Resources を見る' },
+  Methods: { href: '/jac-foundations', cta: '仕事設計の見取り図を見る' },
+  Resources: { href: '/resources', cta: 'Resources を見る' },
   'Operating Model': { href: '/operating-model', cta: 'Operating Model を見る' },
 };
 
@@ -78,6 +78,12 @@ export default function AboutPage() {
                 What We Do を見る
               </Link>
               <Link
+                href="/for-enterprise"
+                className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
+              >
+                企業向け整理を見る
+              </Link>
+              <Link
                 href="/operating-model"
                 className="rounded-full border border-amber-300 bg-amber-50 px-5 py-3 text-sm font-semibold text-amber-950 transition hover:border-amber-400 hover:bg-amber-100"
               >
@@ -90,6 +96,10 @@ export default function AboutPage() {
                 連携・お問い合わせ
               </Link>
             </div>
+            <p className="mt-5 max-w-3xl rounded-[1.4rem] border border-amber-200 bg-amber-50/80 px-4 py-4 text-sm leading-7 text-slate-700">
+              AI-native だから信頼できるのではなく、どこで AI が進み、どこで人が止めるかが見えるから
+              trust が積み上がる。NBL はその境界ごと public に設計します。
+            </p>
           </div>
 
           <aside className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-sm shadow-slate-200/60">
@@ -166,6 +176,12 @@ export default function AboutPage() {
                   className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
                 >
                   What We Do を見る
+                </Link>
+                <Link
+                  href="/for-enterprise"
+                  className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
+                >
+                  企業向け整理を見る
                 </Link>
               </div>
             </article>

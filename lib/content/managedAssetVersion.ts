@@ -1,8 +1,9 @@
-const MANAGED_ASSET_VERSION = '2026-03-20-1';
+const MANAGED_ASSET_VERSION = '2026-03-23-1';
 
 const MANAGED_ASSET_PREFIXES = [
   '/jac-foundations/',
   '/resources/invisible-disability/',
+  '/resources/work-support-transformation/',
   '/review/invisible-disability/',
 ];
 
