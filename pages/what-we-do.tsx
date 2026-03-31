@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -20,6 +19,7 @@ import {
   whatWeDoPrimaryCta,
   whatWeDoWorkflow,
 } from '@/lib/content/whatWeDoReview';
+import PageSeo from '@/components/PageSeo';
 
 const offerTone = {
   offer_now: 'border-emerald-200 bg-emerald-50 text-emerald-900',
@@ -38,14 +38,11 @@ export default function WhatWeDoPage() {
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_55%,#ecfdf5_100%)] text-slate-900">
-      <Head>
-        <title>What We Do | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab が現在 public に案内している支援の入り口、AIチームが担う範囲、残していく成果物をまとめたページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/what-we-do" />
-      </Head>
+      <PageSeo
+        title="What We Do | Next Being Lab"
+        description="Next Being Lab が現在 public に案内している支援の入り口、AIチームが担う範囲、残していく成果物をまとめたページ。"
+        path="/what-we-do"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

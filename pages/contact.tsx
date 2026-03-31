@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { ArrowLeft, Mail, ShieldCheck, Sparkles, UserRound, Waypoints } from 'lucide-react';
+import PageSeo from '@/components/PageSeo';
 import { contactEntry } from '@/lib/content/contactEntry';
 import { founderProfile } from '@/lib/content/founderProfile';
 
@@ -9,14 +9,11 @@ const CONTACT_EMAIL = 'info@nextbeinglab.org';
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_50%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>連携・お問い合わせ | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab とどんな話を始められるか、Founder と NBL の背景、扱うテーマ、初回連絡の目安を確認できる案内ページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/contact" />
-      </Head>
+      <PageSeo
+        title="連携・お問い合わせ | Next Being Lab"
+        description="Next Being Lab とどんな話を始められるか、Founder と NBL の背景、扱うテーマ、初回連絡の目安を確認できる案内ページ。"
+        path="/contact"
+      />
 
       <main className="mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

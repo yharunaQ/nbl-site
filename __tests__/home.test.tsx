@@ -2,17 +2,21 @@ import { render, screen } from '@testing-library/react';
 import Home from '@/pages/index';
 
 describe('NBL Home', () => {
-  it('renders the temporary public-safe home', () => {
+  it('renders the relaunch public home', () => {
     render(<Home />);
-    expect(screen.getByText('公開中の案内')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: '障害・難病と仕事設計から始める、AI時代の研究と実装のスタジオ',
+      }),
+    ).toBeInTheDocument();
     expect(
       screen.getByText(
-        'NBL は現在、公開面を整理しながら、使いやすい入口から順に組み直しています。',
+        '働きづらさを個人の問題で終わらせず、仕事・情報・運用・支援・制度の設計課題として読み替える。',
       ),
     ).toBeInTheDocument();
-    expect(screen.getByText('仕事設計の見取り図とは')).toBeInTheDocument();
+    expect(screen.getByText('ここから入れば、何をしているかが分かる。')).toBeInTheDocument();
     expect(screen.getAllByText('仕事設計の見取り図を見る').length).toBeGreaterThan(0);
-    expect(screen.queryByText(/JAC/)).not.toBeInTheDocument();
   });
 
   it('does not expose review routes from the public home', () => {
@@ -30,9 +34,8 @@ describe('NBL Home', () => {
   it('shows the current public entry points', () => {
     render(<Home />);
 
-    expect(screen.getByText('公開中の入口')).toBeInTheDocument();
-    expect(screen.getAllByRole('link', { name: '連携・お問い合わせ' }).length).toBeGreaterThan(0);
-    expect(screen.getByRole('link', { name: '企業向けの整理を見る' })).toHaveAttribute(
+    expect(screen.getByText('公開中の入口一覧')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: '企業向け整理を見る' })).toHaveAttribute(
       'href',
       '/for-enterprise',
     );
@@ -41,6 +44,9 @@ describe('NBL Home', () => {
         .getAllByRole('link', { name: '仕事設計の見取り図を見る' })
         .some((link) => link.getAttribute('href') === '/jac-foundations'),
     ).toBe(true);
-    expect(screen.getByRole('link', { name: '動画一覧を見る' })).toHaveAttribute('href', '/videos');
+    expect(screen.getAllByRole('link', { name: 'Resources' })[0]).toHaveAttribute(
+      'href',
+      '/resources',
+    );
   });
 });

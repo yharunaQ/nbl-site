@@ -1,8 +1,8 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Layers3, Map, ShieldCheck, Sparkles } from 'lucide-react';
 import React from 'react';
+import PageSeo from '@/components/PageSeo';
 import ZoomableImage from '@/components/ZoomableImage';
 import {
   jacFoundationContextAxes,
@@ -32,14 +32,11 @@ export default function JacFoundationsPage() {
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_48%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>仕事設計の見取り図 | Next Being Lab</title>
-        <meta
-          name="description"
-          content="仕事設計の見取り図の3レイヤー構成と、その背景にある職場設計の考え方を、企業担当者にも読みやすい形で紹介するページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/jac-foundations" />
-      </Head>
+      <PageSeo
+        title="仕事設計の見取り図 | Next Being Lab"
+        description="仕事設計の見取り図の3レイヤー構成と、その背景にある職場設計の考え方を、企業担当者にも読みやすい形で紹介するページ。"
+        path="/jac-foundations"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

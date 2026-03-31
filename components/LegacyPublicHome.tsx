@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
+import PageSeo from '@/components/PageSeo';
 import Campaign from './Campaign';
 import Footer from './Footer';
 import Hero from './Hero';
@@ -24,32 +25,13 @@ export default function LegacyPublicHome() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
+      <PageSeo
+        title="Next Being Lab | 働くは設計できる。"
+        description="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。"
+        path="/"
+        imageAlt="Next Being Lab - 働くは設計できる。"
+      />
       <Head>
-        <title>Next Being Lab | 働くは設計できる。</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://nextbeinglab.org/" />
-        <meta
-          name="description"
-          content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。"
-        />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:site_name" content="Next Being Lab" />
-        <meta property="og:locale" content="ja_JP" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://nextbeinglab.org/" />
-        <meta property="og:title" content="Next Being Lab | 働くは設計できる。" />
-        <meta property="og:description" content="働くは設計できる。At work, CAN matters." />
-        <meta property="og:image" content="https://nextbeinglab.org/og.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Next Being Lab - 働くは設計できる。" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Next Being Lab | 働くは設計できる。" />
-        <meta name="twitter:description" content="働くは設計できる。At work, CAN matters." />
-        <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
-        <meta name="theme-color" content="#0f172a" />
-        <meta name="format-detection" content="telephone=no" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script

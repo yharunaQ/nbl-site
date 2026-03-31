@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -9,6 +8,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import React from 'react';
+import PageSeo from '@/components/PageSeo';
 import ZoomableImage from '@/components/ZoomableImage';
 import {
   workSupportTransformationGuardrails,
@@ -27,14 +27,11 @@ function aspectClass(imageOrientation: 'landscape' | 'portrait') {
 export default function WorkSupportTransformationPage() {
   return (
     <div className="min-h-screen bg-stone-50 text-slate-900">
-      <Head>
-        <title>就労支援設計の変革テーマ群 | Next Being Lab</title>
-        <meta
-          name="description"
-          content="障害者雇用支援の世界標準、日本における変革課題、慢性疾患の支援を、制度・専門支援・仕事設計をつなぐ公開 collection としてまとめた Next Being Lab のページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/resources/work-support-transformation" />
-      </Head>
+      <PageSeo
+        title="就労支援設計の変革テーマ群 | Next Being Lab"
+        description="障害者雇用支援の世界標準、日本における変革課題、慢性疾患の支援を、制度・専門支援・仕事設計をつなぐ公開 collection としてまとめた Next Being Lab のページ。"
+        path="/resources/work-support-transformation"
+      />
 
       <main>
         <section className="relative overflow-hidden border-b border-stone-200 bg-[radial-gradient(circle_at_top_left,_rgba(186,230,253,0.45),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(167,243,208,0.25),_transparent_30%),linear-gradient(180deg,_#fffdf8_0%,_#f8fafc_55%,_#f5f5f4_100%)]">
