@@ -1,6 +1,4 @@
-export const TEMPORARY_PUBLIC_SITE_ENABLED =
-  process.env.NEXT_PUBLIC_TEMPORARY_PUBLIC_SITE_ENABLED === 'true' ||
-  process.env.TEMPORARY_PUBLIC_SITE_ENABLED === 'true';
+export const TEMPORARY_PUBLIC_SITE_ENABLED = true;
 export type PublicHomeVariant = 'relaunch' | 'temporary';
 
 export const PUBLIC_HOME_VARIANT: PublicHomeVariant = 'relaunch';
