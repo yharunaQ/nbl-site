@@ -254,8 +254,8 @@ export const getStaticProps: GetStaticProps<WorkDesignWorkbookPageProps> = async
   const cardEditionPath = path.join(process.cwd(), 'docs', 'guidebook', 'jac-26-card-edition.md');
 
   const [sampleMarkdown, cardEditionMarkdown] = await Promise.all([
-    fs.readFile(samplePath, 'utf8'),
-    fs.readFile(cardEditionPath, 'utf8'),
+    fs.readFile(samplePath, 'utf8').catch(() => ''),
+    fs.readFile(cardEditionPath, 'utf8').catch(() => ''),
   ]);
 
   return {
