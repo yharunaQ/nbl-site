@@ -134,6 +134,192 @@ const SUPPORT_TYPE_HINTS = [
   },
 ];
 
+const STEP4_CANONICAL_SOURCE_IDS = new Set([
+  'askjan_website',
+  'askearn_employer_guidance',
+  'australia_jobaccess_guidance',
+  'canada_duty_to_accommodate',
+  'uk_gov_disability_employment',
+  'uk_headway_brain_injury_work',
+  'eu_reasonable_accommodation',
+  'jeed_reference',
+]);
+
+const CANONICAL_ACTION_PATTERNS = [
+  /written instructions?|task lists?|checklists?|labels?|reminders?/i,
+  /flexible working(?: time| arrangements?)?|work schedules?|fewer days|fewer duties|break times?/i,
+  /changes? to work tasks?|workplace adjustments?|equipment|technology|workspace/i,
+  /meet with your employee|review the essential tasks|return to work plan/i,
+  /monitor and review|follow-?up|reassess|ongoing communication/i,
+  /ask your employee|talk about|find timely solutions|gather relevant information/i,
+  /作業手順|正誤表|写真を使用|休憩時間|相談の窓口|意見箱|支援センター/i,
+  /面接時に.*同席|業務指導や相談に関し.*担当者|業務指示やスケジュールを明確/i,
+];
+
+const CANONICAL_DIALOGUE_PATTERNS = [
+  /meet with your employee|talk about|discuss their situation|ask your employee/i,
+  /ongoing communication|gather relevant information|review for understanding/i,
+  /相談|面接|話し合い|同席|窓口|連絡を取り合い/i,
+];
+
+const CANONICAL_REVIEW_PATTERNS = [
+  /monitor and review|follow-?up|reassess|periodically|review the accommodation/i,
+  /見直し|再評価|フォローアップ|定期/i,
+];
+
+const CANONICAL_WORK_CONTEXT_PATTERNS = [
+  /employee|employer|manager|workplace|job|task|duties|accommodation|adjustments?/i,
+  /従業員|職場|業務|職務|配慮|支援|上司|担当者/i,
+];
+
+const CANONICAL_SEGMENT_NOISE_PATTERNS = [
+  /^listen solutions:/i,
+  /^skip to /i,
+  /^search /i,
+  /^menu /i,
+  /^home\b/i,
+  /^contact us\b/i,
+  /^privacy\b/i,
+  /^site map\b/i,
+  /^copyright\b/i,
+  /^page details\b/i,
+  /^about this site\b/i,
+  /^using this site\b/i,
+  /^languages\b/i,
+  /^accessibility\b/i,
+  /^subscribe\b/i,
+  /^saved items?\b/i,
+  /^secure login\b/i,
+  /^other languages\b/i,
+  /^emergency contacts\b/i,
+  /^complaints or report abuse\b/i,
+  /^go to saved items\b/i,
+  /^would you like to talk to us\b/i,
+  /^have any questions about the employment of people with disability\?/i,
+  /^contact us complaints\b/i,
+  /^all contacts departments and agencies\b/i,
+  /^employer live chat\b/i,
+  /^add page to myjan\b/i,
+  /\bAccommodation and Accessibility Policy Toolkit\b/i,
+  /\bOther ODEP Funded Centers\b/i,
+  /\bNews & Events\b/i,
+  /^vendors and products\b/i,
+  /^please visit vendor site for product links and pricing\b/i,
+  /^no products listed\b/i,
+  /^前ページへ\b/i,
+  /^アンケートのお願い\b/i,
+  /^アンケートに答える\b/i,
+  /^サイトポリシー\b/i,
+  /^プライバシーポリシー\b/i,
+  /^独立行政法人 高齢・障害・求職者雇用支援機構\b/i,
+];
+
+const CANONICAL_VENDOR_PATTERNS = [
+  /\bamazon\.com\b/i,
+  /\bwalmart\b/i,
+  /\bstaples\b/i,
+  /\bglobal industrial\b/i,
+  /\bhayneedle\b/i,
+  /\bhumanscale\b/i,
+  /\bherman miller\b/i,
+  /\bergotron\b/i,
+  /\bsteelcase\b/i,
+  /\bknoll\b/i,
+  /\bmaxiaids\b/i,
+  /\bbodybilt\b/i,
+  /\balimed\b/i,
+  /\bminerva beauty\b/i,
+  /\bmedline\b/i,
+  /\bwheelchair accessible vans\b/i,
+];
+
+const SOURCE_CANONICAL_TRIM_RULES = {
+  askjan_website: {
+    startMarkers: [/\bhome\s+(?:limitations|disabilities)\b/i, /\blisten\s+solutions:/i],
+    endMarkers: [/\bEmployer Live Chat Show Reader\b/i, /\bAdd Page to MyJAN\b/i],
+  },
+  askearn_employer_guidance: {
+    startMarkers: [
+      /\bLearn more about disability statistics\b/i,
+      /\bGetting Started \/ Resources This page discusses\b/i,
+      /\bStatistics on Disability\b/i,
+      /\bContact Us Contact Us\b/i,
+    ],
+    endMarkers: [/\bSubscribe for EARN News and Updates\b/i, /\bUser Agreement Accessibility Statement Privacy\b/i],
+  },
+  australia_jobaccess_guidance: {
+    startMarkers: [/\bYou are here:\b/i, /\bListen\b/i],
+    endMarkers: [/\bUseful Downloads\b/i, /\bWould you like to talk to us\?\b/i],
+  },
+  canada_duty_to_accommodate: {
+    startMarkers: [/\bAccommodation Disability Management in the Federal Public Service\b/i, /\bDuty to Accommodate\b/i],
+    endMarkers: [/\bPage details\b/i, /\bAbout this site\b/i],
+  },
+  jeed_reference: {
+    startMarkers: [/\b\d{4}年度掲載\b/i, /\b就労上の課題\b/i],
+    endMarkers: [/\b前ページへ\b/i, /\bアンケートのお願い\b/i],
+  },
+};
+
+const PRACTICAL_FOCUS_RULES = [
+  {
+    key: 'schedule_pacing',
+    label: '勤務時間・休憩・治療スケジュール',
+    patterns: [
+      /work schedules?|working time|fewer days|fewer hours|break times?|rest breaks?|treatment schedules?/i,
+      /勤務時間|短時間|休憩|通院|体調|出退勤時刻/i,
+    ],
+  },
+  {
+    key: 'coordination_process',
+    label: '相談・合意・見直し',
+    patterns: [
+      /meet with your employee|agree on a .* plan|ongoing communication|gather relevant information/i,
+      /相談|合意|面接|同席|窓口|支援センター/i,
+    ],
+  },
+  {
+    key: 'cognitive_instruction',
+    label: '手順・優先順位・確認方法',
+    patterns: [
+      /written instructions?|task lists?|checklists?|labels?|reminders?/i,
+      /作業手順|図等を活用したマニュアル|正誤表|スケジュールを明確/i,
+    ],
+  },
+  {
+    key: 'physical_access',
+    label: '姿勢・椅子・机・動線',
+    patterns: [
+      /physical changes?|work area|chair|desk|ergonomic|lifting|standing|mobility|transport/i,
+      /姿勢|椅子|机|動線|物理アクセス|持ち運び|立ち仕事/i,
+    ],
+  },
+  {
+    key: 'sensory_environment',
+    label: '感覚環境・設備調整',
+    patterns: [
+      /lighting|noise|workspace|technology|equipment/i,
+      /設備|環境|workspace|adaptive equipment/i,
+    ],
+  },
+  {
+    key: 'communication_social',
+    label: '会議・字幕・テキスト確認',
+    patterns: [
+      /communication|talk|discuss|privacy reminder|captions?|text communication|written follow-up|deaf|hard of hearing|meeting/i,
+      /報・連・相|言葉による自発的な要求|紙に書いて伝える|話し合い|字幕|テキスト|会議|聞き漏らし/i,
+    ],
+  },
+  {
+    key: 'adjustment_review',
+    label: '調整後の見直し',
+    patterns: [
+      /monitor and review|follow-?up|reassess|periodically/i,
+      /見直し|再評価|定期|効果確認/i,
+    ],
+  },
+];
+
 const DISABILITY_HINTS = [
   {
     key: 'physical',
@@ -875,12 +1061,24 @@ async function readTextFile(filePath) {
 
   const parsed = parseLeadingMetadataBlock(content);
   const mergedMetadata = mergeMetadata(parsed.metadata, sidecar.metadata);
+  const sourceId = toSourceId(filePath, mergedMetadata);
+  const canonicalized = canonicalizeWebCacheBody({
+    sourceId,
+    text: parsed.body,
+    metadata: mergedMetadata,
+  });
+  const practicalInfo = canonicalized.practicalInfo
+    ? {
+        ...(mergedMetadata?.sidecarStructuredMetadata || {}),
+        ...canonicalized.practicalInfo,
+      }
+    : mergedMetadata?.sidecarStructuredMetadata || null;
 
   return {
-    text: parsed.body,
+    text: canonicalized.text,
     rawText: parsed.body,
     metadata: mergedMetadata,
-    sidecarStructuredMetadata: mergedMetadata?.sidecarStructuredMetadata || null,
+    sidecarStructuredMetadata: practicalInfo,
   };
 }
 
@@ -1001,6 +1199,290 @@ function normalizeCompactText(text) {
     .replace(/[\r\n\t]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function stripPageBranding(title) {
+  return normalizeCompactText(title)
+    .replace(/\s+\|\s+Job Access$/i, '')
+    .replace(/\s+\|\s+Canada\.ca$/i, '')
+    .replace(/^AskEARN\s*\|\s*/i, '')
+    .replace(/\s+\|\s+障害者雇用事例リファレンスサービス.*$/i, '')
+    .trim();
+}
+
+function stripRepeatedPageTitleLead(text, title) {
+  const body = String(text || '');
+  const cleanTitle = stripPageBranding(title);
+  if (!body || cleanTitle.length < 4) return body;
+
+  const lowerBody = body.toLowerCase();
+  const lowerTitle = cleanTitle.toLowerCase();
+  const firstIndex = lowerBody.indexOf(lowerTitle);
+  if (firstIndex < 0) return body;
+  const secondIndex = lowerBody.indexOf(lowerTitle, firstIndex + lowerTitle.length);
+  if (secondIndex < 0) return body;
+  if (secondIndex > Math.floor(body.length * 0.4)) return body;
+  return body.slice(secondIndex);
+}
+
+function sliceAfterMarker(text, pattern) {
+  const match = pattern.exec(text);
+  if (!match || typeof match.index !== 'number') return text;
+  return text.slice(match.index + match[0].length);
+}
+
+function sliceBeforeMarker(text, pattern) {
+  const match = pattern.exec(text);
+  if (!match || typeof match.index !== 'number') return text;
+  return text.slice(0, match.index);
+}
+
+function trimWebCacheTextBySource(sourceId, text, metadata) {
+  let output = stripRepeatedPageTitleLead(text, metadata?.title || '');
+  const rules = SOURCE_CANONICAL_TRIM_RULES[sourceId];
+  if (!rules) return output;
+
+  for (const marker of rules.startMarkers || []) {
+    const next = sliceAfterMarker(output, marker);
+    if (next !== output) {
+      output = next;
+      break;
+    }
+  }
+
+  for (const marker of rules.endMarkers || []) {
+    const next = sliceBeforeMarker(output, marker);
+    if (next !== output) {
+      output = next;
+      break;
+    }
+  }
+
+  return output;
+}
+
+function splitCanonicalSegments(text) {
+  const normalized = String(text || '')
+    .replace(/\b(Step\s+\d+:)\b/gi, '\n$1')
+    .replace(
+      /\b(Duty to Accommodate|Accommodation Process|Understanding the Type of Accommodation Required|What Is a Bona Fide Occupational Requirement|募集・採用時の合理的配慮|採用後の合理的配慮|その他の配慮)\b/g,
+      '\n$1',
+    )
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return normalized
+    .split(/(?<=[。.!?！？])\s+|\n+/)
+    .map((segment) => normalizeCompactText(segment))
+    .filter(Boolean);
+}
+
+function hasCanonicalActionSignal(text) {
+  return CANONICAL_ACTION_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function hasCanonicalDialogueSignal(text) {
+  return CANONICAL_DIALOGUE_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function hasCanonicalReviewSignal(text) {
+  return CANONICAL_REVIEW_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function hasCanonicalWorkContext(text) {
+  return CANONICAL_WORK_CONTEXT_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function isCanonicalNoiseSegment(text) {
+  const normalized = normalizeCompactText(text);
+  if (!normalized) return true;
+  if (CANONICAL_SEGMENT_NOISE_PATTERNS.some((pattern) => pattern.test(normalized))) return true;
+  if (CANONICAL_VENDOR_PATTERNS.some((pattern) => pattern.test(normalized))) return true;
+  if (
+    /\b(?:facebook|linkedin|youtube|postal address|email jobaccess@|monthly newsletter|webinars?)\b/i.test(
+      normalized,
+    )
+  ) {
+    return true;
+  }
+  if (normalized.length > 280 && !hasCanonicalActionSignal(normalized)) return true;
+  return false;
+}
+
+function scoreCanonicalSegment(text, { sourceId, pageType, index }) {
+  const normalized = normalizeCompactText(text);
+  if (!normalized) return Number.NEGATIVE_INFINITY;
+  if (isCanonicalNoiseSegment(normalized)) return -100;
+
+  let score = 0;
+  if (hasCanonicalActionSignal(normalized)) score += 18;
+  if (hasCanonicalDialogueSignal(normalized)) score += 10;
+  if (hasCanonicalReviewSignal(normalized)) score += 10;
+  if (hasCanonicalWorkContext(normalized)) score += 6;
+  if (pageType === 'case_detail' || pageType === 'case_guide') score += 6;
+  if (sourceId === 'jeed_reference') score += 4;
+  if (sourceId === 'askjan_website') score += 2;
+  if (index === 0) score += 3;
+
+  const length = normalized.length;
+  if (length >= 40 && length <= 220) score += 4;
+  else if (length >= 20 && length <= 280) score += 2;
+  else score -= 2;
+
+  return score;
+}
+
+function selectCanonicalSegments(sourceId, pageType, text) {
+  const segments = splitCanonicalSegments(text);
+  if (segments.length === 0) return [];
+
+  const scored = segments.map((segment, index) => ({
+    segment,
+    index,
+    score: scoreCanonicalSegment(segment, { sourceId, pageType, index }),
+  }));
+  const keepCount = pageType === 'case_detail' || pageType === 'case_guide' ? 8 : 6;
+  const selectedIndexes = new Set(
+    scored
+      .filter((item) => item.score > -40)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, keepCount)
+      .map((item) => item.index),
+  );
+
+  if (
+    (pageType === 'case_detail' || pageType === 'case_guide') &&
+    segments[0] &&
+    !isCanonicalNoiseSegment(segments[0])
+  ) {
+    selectedIndexes.add(0);
+  }
+
+  return segments.filter((_, index) => selectedIndexes.has(index));
+}
+
+function inferPracticalFocus(text) {
+  const normalized = normalizeCompactText(text);
+  if (!normalized) return null;
+  return PRACTICAL_FOCUS_RULES.find((rule) =>
+    rule.patterns.some((pattern) => pattern.test(normalized)),
+  ) || null;
+}
+
+function inferPracticalUsageFocus(text) {
+  const normalized = normalizeCompactText(text);
+  if (!normalized) return 'trial';
+  if (hasCanonicalDialogueSignal(normalized)) return 'dialogue';
+  if (hasCanonicalReviewSignal(normalized)) return 'review';
+  return 'trial';
+}
+
+function buildPracticalTitleJa({ sourceId, pageType, focusLabel, usageFocus }) {
+  const label = focusLabel || '個別調整';
+  if (pageType === 'case_detail' || pageType === 'case_guide') {
+    return `${label}の類似事例`;
+  }
+  if (usageFocus === 'dialogue') return `${label}を整理する対話ガイド`;
+  if (usageFocus === 'review') return `${label}の見直しガイド`;
+  if (sourceId === 'askjan_website') return `${label}の実践ヒント`;
+  return `${label}の実践ガイド`;
+}
+
+function buildPracticalSummaryJa({ focusKey, usageFocus }) {
+  if (usageFocus === 'dialogue') {
+    if (focusKey === 'schedule_pacing') {
+      return '対話で確認: 勤務時間・休憩・通院との両立でどこに負担が出るかを、本人と職場で整理する。';
+    }
+    if (focusKey === 'communication_social') {
+      return '対話で確認: 会議で聞き漏らしが起きる場面と、字幕・テキストで補える場面を整理する。';
+    }
+    return '対話で確認: 本人と職場で、障壁・できること・必要な調整を一緒に整理する。';
+  }
+
+  if (usageFocus === 'review') {
+    return '見直しの観点: 導入後に負担軽減や実施しやすさを確認し、調整内容を見直す。';
+  }
+
+  if (focusKey === 'schedule_pacing') {
+    return '試し方の例: 勤務時間や休憩を、疲労や治療スケジュールに合わせて調整する。';
+  }
+  if (focusKey === 'cognitive_instruction') {
+    return '試し方の例: 手順を文書化し、タスクを分けて確認しやすくする。';
+  }
+  if (focusKey === 'coordination_process') {
+    return '試し方の例: 面談・合意・支援連携の進め方を先に決め、調整を動かしやすくする。';
+  }
+  if (focusKey === 'physical_access') {
+    return '試し方の例: 姿勢・椅子・机・動線を見直し、身体負荷を下げる。';
+  }
+  if (focusKey === 'sensory_environment') {
+    return '試し方の例: 設備や環境条件を個別に見直し、負担の強い場面を減らす。';
+  }
+  if (focusKey === 'communication_social') {
+    return '試し方の例: 会議後に字幕やテキストで確認できる導線を作り、聞き漏らしを減らす。';
+  }
+  return '試し方の例: 今回の状況で小さく試せる調整候補を広げる。';
+}
+
+function buildApplicabilityConditionsJa({ sourceId, pageType }) {
+  if (pageType === 'case_detail' || pageType === 'case_guide') {
+    return '個別事情や職務内容が近い場合の参考にとどめ、同じ調整をそのまま一般化しない。';
+  }
+  if (sourceId !== 'jeed_reference') {
+    return '海外情報は制度や雇用慣行が異なるため、日本の制度にそのまま当てはめず、本人・業務・職場条件を確認して使う。';
+  }
+  return '本人の症状変動・必須業務・職場条件を確認してから、具体策を小さく試して見直す。';
+}
+
+function buildPracticalCanonicalInfo(sourceId, pageType, evidenceScope, canonicalText, segments) {
+  if (!STEP4_CANONICAL_SOURCE_IDS.has(sourceId)) return null;
+  const text = normalizeCompactText(canonicalText);
+  if (!text) return null;
+  const focus = inferPracticalFocus(text);
+  const usageFocus = inferPracticalUsageFocus(text);
+  const traceExcerptOriginal = normalizeCompactText(segments[0] || text).slice(0, 280);
+
+  return {
+    practicalTitleJa: buildPracticalTitleJa({
+      sourceId,
+      pageType,
+      focusLabel: focus?.label || '',
+      usageFocus,
+    }),
+    practicalSummaryJa: buildPracticalSummaryJa({
+      focusKey: focus?.key || '',
+      usageFocus,
+    }),
+    usageFocus,
+    applicabilityConditionsJa: buildApplicabilityConditionsJa({ sourceId, pageType, evidenceScope }),
+    traceExcerptOriginal,
+  };
+}
+
+function canonicalizeWebCacheBody({ sourceId, text, metadata }) {
+  const pageType = inferPageType(sourceId, metadata);
+  const evidenceScope = resolveEvidenceScope(pageType, metadata);
+  let trimmed = trimWebCacheTextBySource(sourceId, text, metadata);
+  trimmed = normalizeCompactText(trimmed);
+  if (!trimmed) {
+    return { text: normalizeCompactText(text), practicalInfo: null };
+  }
+
+  const selectedSegments = selectCanonicalSegments(sourceId, pageType, trimmed);
+  const canonicalText =
+    selectedSegments.length > 0 ? selectedSegments.join(' ') : normalizeCompactText(trimmed);
+  const practicalInfo = buildPracticalCanonicalInfo(
+    sourceId,
+    pageType,
+    evidenceScope,
+    canonicalText,
+    selectedSegments,
+  );
+
+  return {
+    text: canonicalText,
+    practicalInfo,
+  };
 }
 
 function normalizeLabel(value) {
@@ -1444,6 +1926,17 @@ function buildInteractionContext({
       typeof structured?.mustPairWithRegionalSupport === 'boolean'
         ? structured.mustPairWithRegionalSupport
         : null,
+    practicalTitleJa:
+      typeof structured?.practicalTitleJa === 'string' ? structured.practicalTitleJa : null,
+    practicalSummaryJa:
+      typeof structured?.practicalSummaryJa === 'string' ? structured.practicalSummaryJa : null,
+    usageFocus: typeof structured?.usageFocus === 'string' ? structured.usageFocus : null,
+    applicabilityConditionsJa:
+      typeof structured?.applicabilityConditionsJa === 'string'
+        ? structured.applicabilityConditionsJa
+        : null,
+    traceExcerptOriginal:
+      typeof structured?.traceExcerptOriginal === 'string' ? structured.traceExcerptOriginal : null,
     interactionModelSignals,
     supportTypeHints,
     disabilityHints,

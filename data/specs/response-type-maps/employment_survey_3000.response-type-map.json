@@ -1,0 +1,1810 @@
+{
+  "dataset_id": "employment_survey_3000",
+  "source_id": "employment_survey_3000_workbook",
+  "file_path": "employment_survey_3000/disability_employment.xlsx",
+  "generated_at": "2026-03-31T09:21:24+00:00",
+  "taxonomy_version": "v0",
+  "response_types": [
+    "identifier",
+    "nominal",
+    "ordinal",
+    "multiselect",
+    "composite_state",
+    "free_text",
+    "derived_existing",
+    "numeric_scalar",
+    "count"
+  ],
+  "variables": [
+    {
+      "raw_name": "団体コード",
+      "display_name": "調査協力団体",
+      "question_group": "回答者の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 35,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "分類名",
+      "display_name": "障害種類（ガイドブック集計用：暫定）",
+      "question_group": "回答者の状況",
+      "response_type_guess": "derived_existing",
+      "guess_reason": "Existing derived or aggregate coding field.",
+      "label_count": 67,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "1回答状況",
+      "display_name": "回答者",
+      "question_group": "回答者の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "1代理回答者",
+      "display_name": "代理回答者",
+      "question_group": "回答者の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "2性別",
+      "display_name": "性別",
+      "question_group": "回答者の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Field name suggests category rather than order.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "2年齢",
+      "display_name": "年齢",
+      "question_group": "回答者の状況",
+      "response_type_guess": "numeric_scalar",
+      "guess_reason": "Field name suggests scalar numeric value or band.",
+      "label_count": 89,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "2住所",
+      "display_name": "居住地域",
+      "question_group": "回答者の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "3障害",
+      "display_name": "障害種類詳細",
+      "question_group": "機能障害",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 45,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4身体手帳",
+      "display_name": "身体障害者手帳",
+      "question_group": "機能障害",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4身体重度",
+      "display_name": "身体障害等級",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4療育手帳",
+      "display_name": "療育手帳等",
+      "question_group": "機能障害",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4療育重度",
+      "display_name": "知的障害程度",
+      "question_group": "機能障害",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4精神手帳",
+      "display_name": "精神障害者保健福祉手帳",
+      "question_group": "機能障害",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4精神重度",
+      "display_name": "精神障害等級",
+      "question_group": "機能障害",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "4その他",
+      "display_name": "その他の障害判定、評価等",
+      "question_group": "機能障害",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 2,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5就労移行事業者",
+      "display_name": "就労移行支援事業者",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5就労継続事業者",
+      "display_name": "就労継続支援事業者",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5指定相談事業者",
+      "display_name": "指定相談支援事業者",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5授産施設等",
+      "display_name": "授産施設等",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5主治医等",
+      "display_name": "主治医、専門医等",
+      "question_group": "就労相談先",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5保健師等",
+      "display_name": "保健師等",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5産業医等",
+      "display_name": "産業医・産業保健師",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5SW等",
+      "display_name": "ソーシャルワーカー等",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5専門援助窓口",
+      "display_name": "ハローワークの専門援助窓口",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5一般求職窓口",
+      "display_name": "ハローワークの一般求職窓口",
+      "question_group": "就労相談先",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5障害者職業センター",
+      "display_name": "障害者職業センター",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5就業・生活支援センター",
+      "display_name": "障害者就業・生活支援センター",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5職業訓練校等",
+      "display_name": "職業訓練校等の職業訓練施設",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5精神障害センター",
+      "display_name": "精神障害者地域生活支援センター",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5発達障害センター",
+      "display_name": "発達障害者支援センター",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5難病センター",
+      "display_name": "難病相談・支援センター",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5特別支援学校",
+      "display_name": "特別支援学校の先生等",
+      "question_group": "就労相談先",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5市役所等相談窓口",
+      "display_name": "市町村等の自治体相談窓口",
+      "question_group": "就労相談先",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5同じ障害や疾患のある人",
+      "display_name": "同じ障害・疾患のある人や団体",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5家族友人等",
+      "display_name": "家族や知人、友人",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5その他",
+      "display_name": "その他の相談先",
+      "question_group": "就労相談先",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6就職等の講座等",
+      "display_name": "就職や独立起業等の講座や学習会",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6職探しの説明",
+      "display_name": "仕事の探し方や、求人票検索の仕方の説明",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6面接・履歴書の練習",
+      "display_name": "就職面接や履歴書作成等の練習",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6職場見学等",
+      "display_name": "職場見学、職業体験や職場実習",
+      "question_group": "就労相談内容",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6就労支援機関の見学",
+      "display_name": "地域の就労支援や職業訓練の機関の見学",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6職業能力評価",
+      "display_name": "職業能力の評価",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6個別職業相談等",
+      "display_name": "個別の職業相談や職業カウンセリング",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6自分に合った仕事等",
+      "display_name": "自分に合った仕事のためのキャリア・進路支援",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6ケース会議等",
+      "display_name": "複数の支援機関のｹｰｽ会議・面談等に参加",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6労働習慣の訓練",
+      "display_name": "生活リズムや一般的労働習慣の訓練",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6資格取得支援等",
+      "display_name": "資格取得支援や職種別の技能訓練",
+      "question_group": "就労相談内容",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6医療リハ",
+      "display_name": "病院等での身体や精神のリハビリテーション",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6SST等",
+      "display_name": "ストレス対処等の訓練、社会技能訓練（SST）等",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6自己管理訓練",
+      "display_name": "障害や疾患の自己管理の学習や訓練",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6就職あっせん紹介",
+      "display_name": "就職先のあっせん・紹介",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6ジョブコーチ・同行支援",
+      "display_name": "ジョブコーチ支援、企業への同行支援",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6トライアル雇用",
+      "display_name": "トライアル雇用",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6起業・自営支援",
+      "display_name": "独立起業や自営のための助言や支援",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6仕事内容の確認・相談",
+      "display_name": "仕事内容や職場状況についての確認・相談",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6就職後の日常生活等の支援",
+      "display_name": "就職後の日常生活、地域生活の支援",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6障害・病気の定期的チェック等",
+      "display_name": "障害や病気の定期的なチェックや支援",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6職業人生の発展支援",
+      "display_name": "キャリアアップや転職、退職時の支援",
+      "question_group": "就労相談内容",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7就労希望の表明",
+      "display_name": "就労したいという思いを周りの人に伝えること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7仕事調べ",
+      "display_name": "自分が能力を発揮できる仕事について調べること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7職場見学・実習",
+      "display_name": "実際の職場を見学したり職場実習に参加すること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7能力獲得",
+      "display_name": "希望の仕事に就くための能力を身につけること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7人生・生活展望",
+      "display_name": "障害と共存しての人生・生活の展望をもつこと",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7会社情報収集",
+      "display_name": "希望の会社についての情報を集めること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7就職申込",
+      "display_name": "企業に就職について連絡・申し込みすること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7履歴書等の作成",
+      "display_name": "履歴書や応募書類を作成すること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7就職面接",
+      "display_name": "就職面接を行うこと",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7病気や障害の説明",
+      "display_name": "企業に障害や病気を誤解されずうまく説明すること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7配慮等の伝達",
+      "display_name": "企業に対して職場で必要な配慮等を伝えること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7企業へのアピール",
+      "display_name": "企業に対して自分をうまくアピールすること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "7起業や自営の情報収集",
+      "display_name": "独立起業や自営の始め方の情報を集めること",
+      "question_group": "就職前や就職活動の職業的課題の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "8就労経験",
+      "display_name": "就業経験の有無",
+      "question_group": "就労状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "9仕事内容",
+      "display_name": "就業の形態",
+      "question_group": "就労状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 12,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10医療的支援機器",
+      "display_name": "医療的な器具や支援機器",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10移動用機器",
+      "display_name": "個人移動用の支援機器",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10意思疎通用機器",
+      "display_name": "意思疎通・パソコン利用のための支援機器",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10マニュアル・テキスト",
+      "display_name": "作業マニュアルや研修用テキスト",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10使いやすい機器",
+      "display_name": "誰もが使いやすい機器・機材",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10仕事用の物理環境",
+      "display_name": "仕事用の機器や道具、作業机等の個別的な環境整備や改造",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10出入施設改善",
+      "display_name": "職場の出入りの施設改善（ドア、スロープ、駐車場、非常口など）",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10移動施設改善",
+      "display_name": "職場内の移動の施設改善（手すり、通路、床面、案内など）",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10エアコン",
+      "display_name": "冷暖房、エアコン、空気清浄機など",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10トイレ・休憩所等",
+      "display_name": "トイレ、休憩所、食堂等の施設改善",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10休憩や健康管理場所",
+      "display_name": "職場内で必要な休憩や健康管理ができる場所の確保や整備",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10職員啓発",
+      "display_name": "偏見・差別防止のための管理職・職員への啓発",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10差別のない人事方針",
+      "display_name": "病気や障害にかかわらずキャリアアップができる人事方針",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10職員の正しい理解",
+      "display_name": "上司・同僚の病気や障害についての正しい理解",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10コミュニケーション配慮",
+      "display_name": "コミュニケーションに時間をかける配慮",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10親睦会の参加しやすさ",
+      "display_name": "社内の親睦活動、サークル活動などの参加しやすさ",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10研修・技能訓練",
+      "display_name": "就職時や配置転換時の研修や技能訓練",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10職業スキル取得支援",
+      "display_name": "キャリアアップのための職業スキル習得のための支援",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10マンツーマン指導",
+      "display_name": "マンツーマン個別実務指導（オンザジョブトレーニングなど）",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10同僚等の作業補助",
+      "display_name": "必要に応じた同僚等の作業補助",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10相談者",
+      "display_name": "仕事上の相談にのってくれる同僚・上司・上役",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10専門的支援者",
+      "display_name": "職場介助者や手話通訳者などの専門的支援者",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10専任相談員",
+      "display_name": "生活全般について相談できる専任の相談員",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10産業等の健康管理",
+      "display_name": "産業医・産業保健師による事業所内の健康管理",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10毎日の健康チェック",
+      "display_name": "上司などによる毎日の健康状態チェック",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10関係者の仕事内容チェック",
+      "display_name": "主治医・専門医と職場担当者を交えた仕事内容のチェック",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10勤務時間中の服薬等への配慮",
+      "display_name": "勤務時間中の服薬や自己管理、治療等への職場の配慮",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10通院への配慮",
+      "display_name": "通院への配慮",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10仕事内容の個別調整",
+      "display_name": "仕事の内容や仕方の個別的な調整や変更",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10意見を積極的に聞いて業務内容改善",
+      "display_name": "あなたの意見を積極的に聞いて業務内容を改善する取組",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10無理のない仕事配置",
+      "display_name": "能力的に無理のない仕事への配置（デスクワークなど）",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10在宅勤務",
+      "display_name": "在宅勤務",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10短時間勤務",
+      "display_name": "短時間勤務",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10勤務中の休憩",
+      "display_name": "勤務中の休憩をとりやすくすること",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10勤務時間帯の変更",
+      "display_name": "勤務時間帯の変更（時差出勤、フレックス勤務等）",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11技能取得",
+      "display_name": "仕事に必要な技能を習得すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11注意集中",
+      "display_name": "仕事中に注意を集中すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11読むこと",
+      "display_name": "書類、本、説明書等の情報を読むこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11書くこと",
+      "display_name": "文章を書くこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11計算すること",
+      "display_name": "数を数えたり、計算すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11問題解決・判断",
+      "display_name": "問題解決や判断を行うこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11課題達成",
+      "display_name": "職務として決められた課題を達成すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11遅刻等せずに出勤",
+      "display_name": "遅刻、早退、欠勤をしないで出勤すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "118時間労働",
+      "display_name": "８時間労働を行うこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11責任への対応",
+      "display_name": "仕事で要求されている責任に十分に応えること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11適度な休憩",
+      "display_name": "仕事中に適度に休憩して能率を下げないようにすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11精神的ストレス対応",
+      "display_name": "精神的ストレスに適切に対処すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11危険への対応",
+      "display_name": "危険のある事態や状況に適切に対処すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11人との応対",
+      "display_name": "仕事上で人と応対すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11円滑な人間関係",
+      "display_name": "上司や同僚など職場内での円滑な人間関係を維持すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11話や文章の内容の理解",
+      "display_name": "同僚、上司、お客さんなどの話や文書の内容を理解すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11自分の意思を伝えること",
+      "display_name": "同僚、上司、お客さんなどに対して自分の意思を伝えること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11会話や議論",
+      "display_name": "職場内で、会話や議論をすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11コミュニケーション機器の使用",
+      "display_name": "コミュニケーション機器（電話、FAX、電子メール等）を使うこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11トイレの利用",
+      "display_name": "仕事中にトイレを利用すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11清潔な身なりや服装",
+      "display_name": "清潔な身なりや服装をすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11健康管理",
+      "display_name": "食事や休養、服薬、自己治療など健康管理をすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11通院",
+      "display_name": "決められた通院を行うこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11勤務時間外の生活",
+      "display_name": "勤務時間外の生活（住居、買い物など）を行うこと",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11座った姿勢",
+      "display_name": "座った姿勢で仕事をすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11立った姿勢",
+      "display_name": "立った姿勢で仕事をすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11運搬",
+      "display_name": "運搬すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11手と手指での操作",
+      "display_name": "手と手指を使って物をつまんだり､操作したり､放したりすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11手と腕での操作",
+      "display_name": "手と腕で物を動かしたり操作したりすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11歩くこと",
+      "display_name": "歩くこと（短距離、長距離、不安定な場所で、など）",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11あちこちの移動",
+      "display_name": "様々な場所をあちこち移動すること（車椅子を含む）",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11交通機関の利用",
+      "display_name": "交通機関を利用すること（バス、電車、飛行機、タクシーなど）",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11乗り物の操作",
+      "display_name": "乗り物を操作して動かすこと（自動車、フォークリフトなど）",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11仕事の継続",
+      "display_name": "仕事上の身分、仕事内容が安定して継続すること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11昇進",
+      "display_name": "昇進をすること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11報酬",
+      "display_name": "適当な報酬を得ること",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "12病気や障害の説明",
+      "display_name": "病気や障害についての説明",
+      "question_group": "説明・開示状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "12必要な環境整備等の説明",
+      "display_name": "必要な環境整備、配慮、支援等についての説明",
+      "question_group": "説明・開示状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "13職業生活の満足",
+      "display_name": "職業生活の満足度",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "14処遇の適正さ",
+      "display_name": "処遇の適正さ",
+      "question_group": "満足度や動機",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "15生きがい",
+      "display_name": "仕事とは「生きがいを得ること」",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "15社会の一員",
+      "display_name": "仕事とは「社会の一員になること」",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "15仲間や友人",
+      "display_name": "仕事とは「仲間や友人を得ること」",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "15経済的自立",
+      "display_name": "仕事とは「経済的に自立すること」",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "15当たり前の生活",
+      "display_name": "仕事とは「当たり前の生活をすること」",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "15家族や他人の承認",
+      "display_name": "仕事とは「家族や他人に認められること」",
+      "question_group": "満足度や動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "16やりたいことの実行",
+      "display_name": "障害や病気があっても、やりたいことは実行できる",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "16社会に役立つ",
+      "display_name": "仕事をとおして、社会に役立つことができる",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "16企業ニーズへの対応",
+      "display_name": "仕事内容によっては、企業ニーズに応えられる",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "16障害・疾患管理",
+      "display_name": "自分の障害や病気の管理が適切にできる",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "16制度・サービスの利用",
+      "display_name": "世の中のいろんな支援制度やサービスを有効に活用できる",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "16自分の意思を通す",
+      "display_name": "自分の希望について周囲を説得して意思を通すことができる",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "17積極的な挑戦",
+      "display_name": "チャンスがあれば、新しいことに積極的に挑戦する方だ",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "17決断力",
+      "display_name": "自分には決断力があって、判断は正しいことが多い",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "17将来への期待感",
+      "display_name": "自分には将来いいことが起こるはずだという期待感がある",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "17プラスになる",
+      "display_name": "悪い出来事も長い目で見ればプラスになると信じている",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 2,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "18地域で安心して生活",
+      "display_name": "地域で安心して生活できる",
+      "question_group": "全般的満足度",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "18収入は十分",
+      "display_name": "収入は、自分の生活に十分",
+      "question_group": "全般的満足度",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "18全般的生活満足",
+      "display_name": "全般的な生活の満足度",
+      "question_group": "全般的満足度",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "19仕事ができるか",
+      "display_name": "職場や地域の適切な理解や配慮や支援が十分に整備されれば、あなたは障害や病気があっても、職業人として十分やっていけると思いますか。",
+      "question_group": "仕事ができる自信",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "障害認定有無",
+      "display_name": "（身体、知的、精神のいずれかの認定があるか[加工項目]）",
+      "question_group": "手帳と障害者雇用制度",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "雇用率制度の活用",
+      "display_name": "（障害認定のある人のうちの雇用率制度の活用[加工項目]）",
+      "question_group": "手帳と障害者雇用制度",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "特例子会社の活用",
+      "display_name": "（雇用率制度の活用のうちの特例子会社の活用[加工項目]）",
+      "question_group": "手帳と障害者雇用制度",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "5記述",
+      "display_name": "就労相談先の利用状況",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "6記述",
+      "display_name": "就労相談内容",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "７記述",
+      "display_name": "就職前や就職活動の職業的課題の状況",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "9その他",
+      "display_name": "その他の仕事",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "9記述",
+      "display_name": "仕事内容",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "10記述",
+      "display_name": "職場配慮の具体的内容",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "11記述",
+      "display_name": "就職後の職業的課題の状況",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "自由記述",
+      "display_name": "全般的な記述",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    }
+  ]
+}

@@ -1,0 +1,1810 @@
+{
+  "dataset_id": "supporter_practice_toku18",
+  "source_id": "toku18_supporters_workbook",
+  "file_path": "supporter_practice/toku18_Supporters.xlsx",
+  "generated_at": "2026-03-31T09:21:30+00:00",
+  "taxonomy_version": "v0",
+  "response_types": [
+    "identifier",
+    "nominal",
+    "ordinal",
+    "multiselect",
+    "composite_state",
+    "free_text",
+    "derived_existing",
+    "numeric_scalar",
+    "count"
+  ],
+  "variables": [
+    {
+      "raw_name": "都道府県コード",
+      "display_name": "所属機関の所在地",
+      "question_group": "回答者の属性",
+      "response_type_guess": "nominal",
+      "guess_reason": "Field name suggests category rather than order.",
+      "label_count": 47,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問2所属機関",
+      "display_name": "所属機関の種類",
+      "question_group": "回答者の属性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 20,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "機関職種集計用",
+      "display_name": "機関・職種",
+      "question_group": "回答者の属性",
+      "response_type_guess": "derived_existing",
+      "guess_reason": "Existing derived or aggregate coding field.",
+      "label_count": 20,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "専門分野（択一）",
+      "display_name": "専門分野（択一）",
+      "question_group": "回答者の属性",
+      "response_type_guess": "nominal",
+      "guess_reason": "Field name suggests category rather than order.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "機関職種（択一）",
+      "display_name": "機関職種（択一）",
+      "question_group": "回答者の属性",
+      "response_type_guess": "nominal",
+      "guess_reason": "Field name suggests category rather than order.",
+      "label_count": 17,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問4職種・資格",
+      "display_name": "回答者の現在の職種・資格",
+      "question_group": "回答者の属性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 20,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問5①生活自立支援",
+      "display_name": "障害者の生活自立支援",
+      "question_group": "支援内容別の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問5②職業準備訓練・支援",
+      "display_name": "障害者の職業準備訓練・支援",
+      "question_group": "支援内容別の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問5③就職活動の支援",
+      "display_name": "障害者の就職活動の支援",
+      "question_group": "支援内容別の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問5④職場適応援助支援",
+      "display_name": "障害者の職場適応援助支援",
+      "question_group": "支援内容別の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問5⑤雇用管理",
+      "display_name": "一般就業での障害者の雇用管理",
+      "question_group": "支援内容別の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6相談・支援の対象者数",
+      "display_name": "最近1年間の障害者相談・支援対象者数",
+      "question_group": "支援対象者像",
+      "response_type_guess": "count",
+      "guess_reason": "Field name suggests count-like quantity.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a①入院、在宅療養",
+      "display_name": "入院、在宅療養",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a②生活困窮状態",
+      "display_name": "生活困窮状態（生活保護等）",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a③日常生活や社会生活",
+      "display_name": "日常生活や社会生活",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a④学校の進路相談",
+      "display_name": "学校の進路相談",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a⑤職業訓練や資格取得",
+      "display_name": "職業訓練や資格取得",
+      "question_group": "支援対象者像",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a⑥就職・再就職",
+      "display_name": "就職・再就職",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a⑦就職後の職場適応",
+      "display_name": "就職後の職場適応",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a⑧休職と復職",
+      "display_name": "休職と復職",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6a⑨離職、退職",
+      "display_name": "離職、退職",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b①視覚障害",
+      "display_name": "視覚障害",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b②聴覚障害",
+      "display_name": "聴覚障害",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b③肢体不自由",
+      "display_name": "肢体不自由",
+      "question_group": "支援対象者像",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b④内部障害",
+      "display_name": "内部障害（心臓、腎臓、呼吸器、等）",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑤知的障害",
+      "display_name": "知的障害",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑥精神障害",
+      "display_name": "精神障害（除. 発達、高次脳）",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑦発達障害",
+      "display_name": "発達障害",
+      "question_group": "支援対象者像",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑧高次脳機能障害",
+      "display_name": "高次脳機能障害",
+      "question_group": "支援対象者像",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑨難病、小児慢性特定疾病",
+      "display_name": "難病、小児特定疾病",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑩障害の疑いがあるが不明確",
+      "display_name": "障害の疑い",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問6b⑪上記以外",
+      "display_name": "他の障害種類",
+      "question_group": "支援対象者像",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1①障害と共存し働く自己イメージ",
+      "display_name": "障害と共に働く自己ｲﾒｰｼﾞ",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1②就労意欲",
+      "display_name": "就労意欲",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1③本人の家族",
+      "display_name": "家族の理解・応援",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1④自尊心や生活上の自信",
+      "display_name": "自尊心や生活上の自信",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1⑤障害の課題の自覚",
+      "display_name": "障害の課題の自覚",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1⑥障害や病気の自己管理",
+      "display_name": "障害や病気の自己管理",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1⑦安定的な住居等",
+      "display_name": "安定的な生活・経済基盤",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_1⑧基本的生活習慣や労働習慣",
+      "display_name": "基本的生活・労働習慣",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2①応募先にアピールする強みや意欲",
+      "display_name": "就職への強みや意欲の確認",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2②希望の仕事に就く経験やスキル",
+      "display_name": "希望の仕事への経験やスキル",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2③無理なくできる仕事内容や条件",
+      "display_name": "無理のない仕事・条件の明確化",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2④無理なくできる仕事が地域にない",
+      "display_name": "地域での無理のない仕事の確保",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2⑤職場見学や職場実習の経験",
+      "display_name": "職場見学・実習の経験",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2⑥就職活動の方法",
+      "display_name": "就職活動方法の知識",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2⑦応募先へ障害や必要な配慮の説明",
+      "display_name": "応募先へ障害・配慮の説明",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2⑧求人に応募しても不採用",
+      "display_name": "求人応募からの採用決定",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_2⑨職場実習やトライアル雇用",
+      "display_name": "実習やﾄﾗｲｱﾙ雇用からの本採用",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3①就職先の上司や同僚の理解や配慮",
+      "display_name": "職場の上司・同僚の理解や配慮",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3②就職後の精神的ストレス",
+      "display_name": "就職後の精神的ストレス",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3③就職後の疲労や体調悪化",
+      "display_name": "就職後の疲労や体調",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3④本人の遅刻、早退、欠勤",
+      "display_name": "遅刻、早退、欠勤のないこと",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3⑤本人の報酬や昇進等",
+      "display_name": "報酬や昇進等への満足",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3⑥雇用した事業所からの苦情",
+      "display_name": "雇用事業所からの苦情なし",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3⑦就職後、3ヶ月以内に離職",
+      "display_name": "就職後、3ヶ月以内の離職なし",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3⑧就職後、4ヶ月～3年以内に離職",
+      "display_name": "就職後、3年以内の離職なし",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_3⑨定年退職より早期に離職",
+      "display_name": "定年退職より早期に離職なし",
+      "question_group": "障害者の就労課題と解決可能性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1①就職希望者に就職・復職の情報提供",
+      "display_name": "就職希望者への就職・復職の情報提供",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1②全ての利用者に就職・復職のイベント等",
+      "display_name": "全利用者向け就職・復職のイベント等",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1③同じ障害の働いている人と交流する場の設定",
+      "display_name": "同じ障害の働いている人との交流機会",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1④利用者と同じ障害・疾病者の就業の情報収集",
+      "display_name": "同じ障害・疾病者の就業の情報収集",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1⑤医療・生活相談での就労状況・就労希望の確認",
+      "display_name": "医療・生活相談での就労状況等確認",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1⑥就労の意思表示や自己決定への配慮、支援",
+      "display_name": "就労の意思表示や自己決定の支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_1⑦就労と生活・経済・住居等の一体的な相談・支援",
+      "display_name": "就労・生活・経済等の一体的相談支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2①相談等で課題、支援のニーズを評価",
+      "display_name": "相談等での支援ニーズ評価",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2②医学的・心理的検査",
+      "display_name": "医学的・心理的検査",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2③集団的生活場面、作業場面の設定",
+      "display_name": "集団的生活・作業場面の設定",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2④ワークサンプルの活用",
+      "display_name": "ワークサンプル（模擬的なＯＡ・事務作業、工場内作業等）の活用",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2⑤就職予定の仕事の模擬的場面の設定",
+      "display_name": "就職予定の仕事の模擬的場面の設定",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2⑥実際の職場での実習等での情報収集",
+      "display_name": "実際の職場での実習等での情報収集",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_2⑦就職/復職後の支援と並行した問題把握",
+      "display_name": "就職後のﾌｫﾛｰｱｯﾌﾟでの問題把握",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_3①職業人としての本人の夢等の丁寧な把握",
+      "display_name": "仕事への興味・強みの丁寧な把握",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_3②日常の人間関係から障害以外の把握に努める",
+      "display_name": "障害以外の本人の個性の理解・把握",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_3③非現実的と思われる希望も検討に考慮",
+      "display_name": "本人希望を尊重した仕事や職場の検討",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_3④職業体験等による働くイメージを持てる支援",
+      "display_name": "職業体験等による働くイメージづくり",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_4①障害や病気があっても無理や危険のない仕事",
+      "display_name": "無理や危険のない仕事や配慮の助言",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_4②興味分野やアピールポイントを活かせる仕事",
+      "display_name": "興味や強みを活かせる就職の相談",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_4③障害者雇用の支援制度を活用",
+      "display_name": "障害者雇用制度による職業紹介・相談",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_4④様々な手段による、求人・会社情報の収集",
+      "display_name": "個別的な求人情報や会社情報の収集",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_4⑤障害者求人を出していない企業への職業開拓",
+      "display_name": "障害者求人のない企業への職場開拓",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_4⑥希望の仕事に必要な職業訓練等の情報提供",
+      "display_name": "希望の職への職業訓練等の情報提供",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5①就職活動で障害開示を望まない利用者への支援",
+      "display_name": "就職活動で障害非開示希望時の支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5②本人への、応募先に説明できるようにする助言支援",
+      "display_name": "障害や配慮の職場説明への本人支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5③応募先や職場への理解、配慮についての助言・支援",
+      "display_name": "障害や配慮の理解への事業主支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5④職場実習等による、本採用につなげる支援",
+      "display_name": "実習等からの職場理解・採用への支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5⑤障害者の雇用管理等への企業相談への対応",
+      "display_name": "雇用管理・職場定着への企業相談対応",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5⑥就職・復職後の、本人、職場の両方の支援",
+      "display_name": "就職後の本人／職場両面のﾌｫﾛｰｱｯﾌﾟ",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5⑦採用後の企業負担軽減のための支援体制を構築",
+      "display_name": "雇用企業への継続的な地域支援体制",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_5⑧障害者が加齢等の場合の具体的支援",
+      "display_name": "障害者の加齢に対応する具体的支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_6①仕事に就いても、自己管理ができるようにする",
+      "display_name": "就職後の障害・疾病自己管理の支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_6②障害、疾病の特性を踏まえ、職業課題に対処",
+      "display_name": "障害理解による職場対処ｽｷﾙの支援",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_6③社会生活技能訓練（SST）、ロールプレイ等",
+      "display_name": "SST等による職場対処ｽｷﾙ訓練",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_6④支援機器、ツール、アプリ等の活用",
+      "display_name": "支援機器、ツール、アプリ等の活用",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_6⑤本人家族への障害理解や支援能力向上",
+      "display_name": "家族の障害理解や支援能力向上",
+      "question_group": "就労支援や連携状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9①障害者雇用率制度",
+      "display_name": "障害者雇用率制度",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9②一般求人と障害者求人の職業相談・紹介",
+      "display_name": "一般求人と障害者求人の職業相談・紹介の違い",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9③最低賃金",
+      "display_name": "最低賃金（最低賃金法による）",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9④現在の職業別の有効求人倍率",
+      "display_name": "現在の職業別の有効求人倍率の傾向",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑤職務再設計",
+      "display_name": "職務再設計（職務分析、切り出し、創出等）",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑥企業の安全・健康配慮義務",
+      "display_name": "企業の安全・健康配慮義務",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑦障害者雇用に係る企業の雇用管理、業務調整",
+      "display_name": "障害者雇用に係る企業の雇用管理等の課題",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑧一般就業と福祉的就労の違い",
+      "display_name": "一般就業と福祉的就労の違い",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑨雇用の分野での、合理的配慮の提供義務",
+      "display_name": "事業主の合理的配慮の提供義務",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑩雇用の分野での、差別の禁止",
+      "display_name": "雇用の分野での障害者差別の禁止",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑪特定求職者雇用開発助成金等",
+      "display_name": "特定求職者雇用開発助成金等の制度",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑫職場適応援助者（ジョブコーチ）",
+      "display_name": "職場適応援助者（ジョブコーチ）",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑬ハローワークを中心としたチーム支援",
+      "display_name": "ハローワークを中心としたチーム支援",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑭障害者職業センターにおける職業準備支援",
+      "display_name": "障害者職業センターの職業準備支援",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問9⑮障害者就業・生活支援センター事業",
+      "display_name": "障害者就業・生活支援センター事業",
+      "question_group": "障害者雇用の基礎知識の修得状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10①職業人として活躍できる",
+      "display_name": "就労支援によって、障害者は、能力や個性を発揮して職業人として活躍できるようになる",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10②事業経営、雇用管理等がより効果的に行える",
+      "display_name": "就労支援によって、障害者を雇用する事業者は、事業経営や雇用管理等がより効果的に行えるようになる",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10③障害、疾病の医療的管理がしやすくなる",
+      "display_name": "就労支援によって、障害者は、障害や疾患の医療的な管理がしやすくなる",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10④生活自立、経済的自立を達成",
+      "display_name": "就労支援によって、障害者は、生活自立や経済的な自立を達成することができるようになる",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑤仕事内容とのマッチングが重要",
+      "display_name": "就労支援では、各障害者に合った仕事内容とのマッチングが重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑥職場での配慮、環境整備が重要",
+      "display_name": "就労支援では、職場での配慮や環境整備が重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑦法的な障害者雇用義務と経済的動機付けが重要",
+      "display_name": "就労支援では、事業者に対する法的な障害者雇用義務と経済的動機付けが重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑧全ての障害者が一般就業を目指すことが重要",
+      "display_name": "就労支援では、障害種類・程度にかかわらず全ての障害者が一般就業を目指すことが重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑨就職後の職場適応、就業継続を目指すことが重要",
+      "display_name": "就労支援では、就職だけが目標ではなく、就職後の職場適応や就業継続を目指すことが重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑩できないこと、課題の理解が重要",
+      "display_name": "就労支援では、職業場面で本人ができないことや課題の理解が重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑪できること、得意な点、興味分野の考慮が重要",
+      "display_name": "就労支援では、職業場面で本人ができることや得意な点、興味分野の考慮が重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10⑫専門的支援の効果的な役割分担と連携が重要",
+      "display_name": "就労支援では、医療、生活（福祉）、教育、雇用の専門的支援の効果的な役割分担と連携が重要である",
+      "question_group": "障害者就労支援の理念・プロセスへの意見・見解",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11①医療・福祉・教育の幅広い就労支援ニーズの確認",
+      "display_name": "医療・福祉・教育場面での就労支援ﾆｰｽﾞの確認",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11②専門的検査、評価ツールに基づく明確化",
+      "display_name": "施設内検査・評価による一般的就労支援ﾆｰｽﾞの明確化",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11③実際の仕事、職場条件を踏まえた明確化",
+      "display_name": "実際の仕事や職場での個別的就労支援ﾆｰｽﾞの明確化",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11④本人の課題を超えた、プラス面の把握・理解",
+      "display_name": "職業人としてのプラス面の全人的な把握・理解",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑤障害や病気があっても無理のない相談・助言",
+      "display_name": "無理のない仕事内容や健康・安全留意事項の相談助言",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑥本人の興味分野やアピールを活かす相談・助言",
+      "display_name": "興味や強みを活かした就職のための相談助言",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑦求人情報収集等による、就職先の開拓",
+      "display_name": "求人情報収集や企業訪問等による個別的な就職先開拓",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑧本人に対する、就職先への説明の助言・支援",
+      "display_name": "障害や配慮の職場説明への本人支援",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑨就職先の職場への、情報提供、支援、相談対応",
+      "display_name": "障害障害や配慮、雇用管理、職場定着への事業主支援",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑩就職・復職後の本人と職場の両方への支援",
+      "display_name": "就職後の本人／職場両面の課題把握に基づく支援",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑪安定した職業継続を目指したフォローアップ",
+      "display_name": "本人、家族、事業主等への安定就業継続へのﾌｫﾛｰｱｯﾌﾟ",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑫職業生活場面における障害特性の自己理解",
+      "display_name": "職業場面での障害理解・管理、対処スキル獲得の支援",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑬地域関係機関・専門職の連絡調整",
+      "display_name": "医療・生活・就労等の総合的な多機関連携支援体制づくり",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11⑭地域関係機関・専門職の就労支援の取組の促進",
+      "display_name": "地域関係機関・専門職の就労支援への専門的助言・援助",
+      "question_group": "障害者就労支援の実施可能性や連携の必要性",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12①各機関・専門職別の研修・教育課程",
+      "display_name": "各機関・専門職別に受講が定められた研修・教育課程",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12②障害者職業総合センターの研修・セミナー等",
+      "display_name": "障害者職業総合センターにおける研修・セミナー等",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12③民間機関・NPO等のジョブコーチ研修",
+      "display_name": "民間機関・NPO等のジョブコーチ養成・就労支援研修",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12④職業リハビリテーション研究・実践発表会",
+      "display_name": "職業リハビリテーション研究・実践発表会",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑤地域障害者職業センター等の助言・援助",
+      "display_name": "地域障害者職業センターやハローワーク等の助言・援助",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑥その他の学会、研究会、セミナー、研修",
+      "display_name": "上記以外の学会、研究会、セミナー、研修",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑦障害者職業総合センターのホームページ等",
+      "display_name": "障害者職業総合センターのホームページ、報告書等",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑧図書、論文、雑誌、ジャーナル等",
+      "display_name": "図書、論文、雑誌・ジャーナル等",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑨実務場面でのスーパーバイザーの助言・指導",
+      "display_name": "実務場面におけるスーパーバイザーの助言・指導",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑩実務場面での他の支援者との情報交換・交流",
+      "display_name": "実務場面における他の支援者との情報交換・交流",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12⑪実務場面における自らの経験の蓄積",
+      "display_name": "実務場面における自らの経験の蓄積",
+      "question_group": "就労支援についての情報源や活用状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13①ハローワークを中心としたチーム支援",
+      "display_name": "ハローワークを中心としたチーム支援",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13②地域障害者職業センターの拡大ケース会議",
+      "display_name": "地域障害者職業センターでの拡大ｹｰｽ会議",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13③障害者就業・生活支援センターの取組み",
+      "display_name": "障害者就業・生活支援センターの取組み",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13④就労移行支援事業所の取組み",
+      "display_name": "就労移行支援事業所の取組み",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13⑤個別の教育支援計画",
+      "display_name": "個別の教育支援計画（学校教育法）",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13⑥発達障害者センターの取組み",
+      "display_name": "発達障害者支援センターの取組み",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13⑦難病相談支援センターの取組み",
+      "display_name": "難病相談支援センターの取組み",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13⑧自立支援協議会・サービス協議会等",
+      "display_name": "自立支援協議会・サービス協議会等",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13⑨上記以外",
+      "display_name": "他の就労支援への関係機関・連携体制",
+      "question_group": "障害者の就労支援のための地域連携体制",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14①所属機関・組織の根拠法令・定款・行動方針",
+      "display_name": "所属機関・組織の根拠法令・定款・行動方針",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Field name suggests category rather than order.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14②所属組織の業績評価基準",
+      "display_name": "所属組織の業績評価基準",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14③就労支援に使える資金源、就労支援の報酬基準",
+      "display_name": "就労支援に使える資金源、就労支援の報酬基準",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 4,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14④上司や同じ職場で働く人たちの考え方や態度",
+      "display_name": "上司や同じ職場で働く人たちの考え方や態度",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14⑤地域の企業の障害者雇用への意欲や意識",
+      "display_name": "地域の企業の障害者雇用への意欲や意識",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14⑥同業・専門職種内における規範や考え方",
+      "display_name": "同業・専門職種内における規範や考え方",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14⑦地域の支援関係者の考え方や態度",
+      "display_name": "地域の支援関係者の考え方や態度",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14⑧障害者の当事者・家族の考え方や態度",
+      "display_name": "障害者の当事者・家族の考え方や態度",
+      "question_group": "周囲の組織や地域の障害者就労支援の状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15①自分の支援は、障害者の役に立つ",
+      "display_name": "自分の支援は障害者の役に立つ",
+      "question_group": "障害者就労支援のやりがい",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15②自分の支援は、障害者雇用企業の役に立つ",
+      "display_name": "自分の支援は障害者を雇用する企業の役に立つ",
+      "question_group": "障害者就労支援のやりがい",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15③支援において、能力・知識・経験を発揮できる",
+      "display_name": "支援において自分の能力・知識・経験を発揮できる",
+      "question_group": "障害者就労支援のやりがい",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15④支援において、自分自身が成長できる",
+      "display_name": "支援において自分自身が成長することができる",
+      "question_group": "障害者就労支援のやりがい",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15⑤自分の報酬等の公正さを感じることができる",
+      "display_name": "仕事の報酬等の処遇で公正さを感じることができる",
+      "question_group": "障害者就労支援のやりがい",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15⑥障害者の就労支援業務量は過大ではない",
+      "display_name": "障害者の就労支援関連の業務量は特に過大でない",
+      "question_group": "障害者就労支援のやりがい",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問7_4記述",
+      "display_name": "障害者の就労課題と解決可能性",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問8_7記述",
+      "display_name": "就労支援や連携状況",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問10記述",
+      "display_name": "障害者就労支援の理念・プロセスへの意見・見解",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問11記述",
+      "display_name": "障害者就労支援の実施可能性や連携の必要性",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問12記述",
+      "display_name": "就労支援についての情報源や活用状況",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13⑨具体的に",
+      "display_name": "他の就労支援への関係機関・連携体制",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問13記述",
+      "display_name": "障害者の就労支援のための地域連携体制",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問14記述",
+      "display_name": "周囲の組織や地域の障害者就労支援の状況",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "問15記述",
+      "display_name": "障害者就労支援のやりがい",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    }
+  ]
+}

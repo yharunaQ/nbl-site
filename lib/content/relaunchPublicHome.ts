@@ -85,14 +85,14 @@ export type RelaunchPublicFirstVisitPath = {
 
 export const relaunchPublicHero: RelaunchPublicHero = {
   eyebrow: 'Next Being Lab',
-  headline: '障害・難病と仕事設計から始める、AI時代の研究と実装のスタジオ',
+  headline: '就労支援の整理を、もっと速く、確かに。',
   subheadline:
     '働きづらさを個人の問題で終わらせず、仕事・情報・運用・支援・制度の設計課題として読み替える。',
   supportingCopy:
-    'Next Being Lab の現在のコアは、働きづらさを仕事設計の課題として読み替えるプロダクト群と、企業・支援者・行政が同じ地図で読める公開コレクションです。いま利用者向けに見せる本線は、仕事設計の見取り図と 26フレームカード版、そして就労支援設計の変革テーマ群です。その他のガイドや個別整理の面は、まだ内部で検証しながら境界を整えています。',
-  operatingNote: 'AIが整理と叩き台を進め、人が公開約束と高リスク判断を持つ。',
-  primaryCta: 'What We Do から見る',
-  secondaryCta: '仕事設計の見取り図を見る',
+    '就労支援員・ジョブコーチ・障害者職業生活相談員のためのAIツールと、仕事設計の方法論を提供しています。ガイドと見取り図はどなたでも無料でご覧いただけます。',
+  operatingNote: 'AIが整理と叩き台を進め、最終判断は支援者と本人が持つ。',
+  primaryCta: '就労支援見立てサポートを知る',
+  secondaryCta: '仕事設計ガイドを見る（無料）',
 };
 
 export const relaunchPublicSignals: RelaunchPublicSignal[] = [
@@ -120,12 +120,12 @@ export const relaunchPublicFirstVisitPaths: RelaunchPublicFirstVisitPath[] = [
     cta: '企業向け整理を見る',
   },
   {
-    title: '支援者・行政・当事者の方へ',
-    audience: '制度・支援・現場の全体像をつなぎたい',
+    title: '就労支援員・ジョブコーチの方へ',
+    audience: '相談整理の効率化・配慮設計に使えるツールを探している',
     detail:
-      '見えない障害シリーズ、就労支援設計の変革テーマ群、支援連携の図解、公開動画の入口から、理解と実装の橋渡しを見られます。',
-    href: '/resources',
-    cta: 'Resourcesを見る',
+      '相談内容からAIが職業的課題の仮見立てを立て、配慮候補の優先順位を整理する補助ツールを招待制で提供しています。ツールの詳細と申込はこちら。',
+    href: '/jac/intro',
+    cta: 'ツール紹介を見る',
   },
   {
     title: '現在のコアから知りたい方へ',

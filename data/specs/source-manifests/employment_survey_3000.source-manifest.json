@@ -1,0 +1,35 @@
+{
+  "source_id": "employment_survey_3000_workbook",
+  "dataset_id": "employment_survey_3000",
+  "source_role": "case_structure_source",
+  "source_type": "xlsx_workbook",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_free_text": true,
+  "row_unit": "respondent",
+  "population": "cross-disability respondent survey",
+  "file_path": "employment_survey_3000/disability_employment.xlsx",
+  "sheet_names": [
+    "回答データ",
+    "データ一覧",
+    "データ一覧の追加説明"
+  ],
+  "data_sheet": "回答データ",
+  "dictionary_sheet": "データ一覧",
+  "row_count": 4553,
+  "column_count": 180,
+  "free_text_columns": [
+    "5記述",
+    "6記述",
+    "７記述",
+    "9その他",
+    "9記述",
+    "10記述",
+    "11記述",
+    "自由記述"
+  ],
+  "guide_files": [],
+  "notes": "Cross-disability employment survey with structured items and multiple free-text columns.",
+  "generated_at": "2026-03-31T09:21:24+00:00"
+}

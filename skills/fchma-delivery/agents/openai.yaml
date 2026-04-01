@@ -1,0 +1,4 @@
+interface:
+  display_name: "FCHMA Delivery"
+  short_description: "Drive autonomous delivery without waiting on minor decisions."
+  default_prompt: "Use $fchma-delivery to advance this task autonomously within the allowed boundaries."

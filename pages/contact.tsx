@@ -1,22 +1,21 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { ArrowLeft, Mail, ShieldCheck, Sparkles, UserRound, Waypoints } from 'lucide-react';
+import PageSeo from '@/components/PageSeo';
 import { contactEntry } from '@/lib/content/contactEntry';
 import { founderProfile } from '@/lib/content/founderProfile';
+import ApplySection from '@/components/ApplySection';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 const CONTACT_EMAIL = 'info@nextbeinglab.org';
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_50%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>連携・お問い合わせ | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab とどんな話を始められるか、Founder と NBL の背景、扱うテーマ、初回連絡の目安を確認できる案内ページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/contact" />
-      </Head>
+      <PageSeo
+        title="連携・お問い合わせ | Next Being Lab"
+        description="Next Being Lab とどんな話を始められるか、Founder と NBL の背景、扱うテーマ、初回連絡の目安を確認できる案内ページ。"
+        path="/contact"
+      />
 
       <main className="mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">
@@ -226,6 +225,35 @@ export default function ContactPage() {
             >
               {CONTACT_EMAIL} にメールする
             </a>
+          </div>
+        </section>
+
+        <div className="border-t border-slate-200 pt-12">
+          <div className="mx-auto max-w-xl px-6 mb-2">
+            <p className="text-sm text-slate-500 leading-relaxed">
+              AIツール「就労支援見立てサポート」の利用申込はこちらです。
+              ツールの詳細は{' '}
+              <Link href="/jac/intro" className="underline underline-offset-2 text-slate-700 hover:text-slate-950">
+                紹介ページ
+              </Link>
+              {' '}で確認できます。
+            </p>
+          </div>
+          <ApplySection />
+        </div>
+
+        <section className="border-t border-slate-200 py-12">
+          <div className="mx-auto max-w-xl px-6">
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
+              Newsletter
+            </p>
+            <h2 className="text-xl font-black text-slate-900 mb-2">
+              アップデートを受け取る
+            </h2>
+            <p className="text-sm text-slate-600 mb-5 leading-relaxed">
+              仕事設計の方法論、AIツールのアップデート、新しいリソースをメールでお届けします。
+            </p>
+            <NewsletterSignup />
           </div>
         </section>
       </main>

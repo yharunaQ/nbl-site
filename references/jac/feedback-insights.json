@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-03-26",
+  "processedFiles": [
+    "runtime:2026-03-25T12-06-21-528Z-mqoa6.json"
+  ],
+  "frameInsights": {},
+  "crossCuttingThemes": [
+    "manual review needed"
+  ],
+  "fileSummaries": {
+    "runtime:2026-03-25T12-06-21-528Z-mqoa6.json": "OpenAI API key unavailable. Stored fallback themes for runtime:2026-03-25T12-06-21-528Z-mqoa6.json."
+  }
+}

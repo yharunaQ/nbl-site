@@ -1,0 +1,4 @@
+interface:
+  display_name: "FCHMA Anti-Swamp"
+  short_description: "Detect rabbit holes and recover with option-based decisions."
+  default_prompt: "Use $fchma-anti-swamp to detect rabbit-hole risk and recover with clear options."

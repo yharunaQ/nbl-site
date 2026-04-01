@@ -1,0 +1,340 @@
+{
+  "version": "v0",
+  "purpose": "PostgreSQL ingestion contract for derived FCHMA dataset assets so runtime and research layers can share the same normalized shapes.",
+  "notes": [
+    "These tables store derived assets only, not original raw workbooks.",
+    "They preserve a stable path from source respondent or supporter rows into field facts, narrative units, projection facts, and manifold-ready profiles.",
+    "They are intentionally provider-agnostic and suitable for both offline research and runtime case materialization."
+  ],
+  "tables": [
+    {
+      "table_name": "dataset_ingestion_batches",
+      "grain": "one row per dataset version and ingestion build",
+      "primary_key": "id",
+      "runtime_uses": [
+        "Track which derived dataset build seeded runtime imports",
+        "Preserve manifest and provenance references for audit"
+      ],
+      "research_uses": [
+        "Version control for analysis-ready and manifold-ready assets",
+        "Reproducibility across dataset rebuilds"
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "description": "Deterministic batch identifier generated from lane, dataset, and version."
+        },
+        {
+          "name": "batch_key",
+          "type": "text",
+          "description": "Human-readable stable batch key."
+        },
+        {
+          "name": "dataset_id",
+          "type": "text",
+          "description": "Dataset identifier such as employment_survey_3000."
+        },
+        {
+          "name": "lane",
+          "type": "text",
+          "description": "respondents or supporters."
+        },
+        {
+          "name": "source_role",
+          "type": "text",
+          "description": "case_structure_source or support_practice_source."
+        },
+        {
+          "name": "version",
+          "type": "text",
+          "description": "Derived asset version folder."
+        },
+        {
+          "name": "artifact_contract_version",
+          "type": "text",
+          "description": "Version of this ingestion contract."
+        },
+        {
+          "name": "analysis_ready_manifest_json",
+          "type": "jsonb",
+          "description": "Manifest emitted by analysis-ready export."
+        },
+        {
+          "name": "projection_manifest_json",
+          "type": "jsonb",
+          "description": "Manifest emitted by projection generation."
+        },
+        {
+          "name": "manifold_recipe_json",
+          "type": "jsonb",
+          "description": "Recipe emitted by manifold input generation."
+        },
+        {
+          "name": "source_manifest_json",
+          "type": "jsonb",
+          "description": "Tracked source manifest describing the secure original workbook."
+        }
+      ]
+    },
+    {
+      "table_name": "dataset_subjects",
+      "grain": "one row per respondent or supporter row within a dataset batch",
+      "primary_key": "id",
+      "runtime_uses": [
+        "Bridge a survey respondent into case materialization later",
+        "Keep lane-aware provenance before creating cases"
+      ],
+      "research_uses": [
+        "Stable subject-level join key across fields, narratives, projections, and manifold profiles"
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "description": "Deterministic subject identifier."
+        },
+        {
+          "name": "batch_id",
+          "type": "uuid",
+          "description": "Owning ingestion batch."
+        },
+        {
+          "name": "dataset_id",
+          "type": "text",
+          "description": "Dataset identifier."
+        },
+        {
+          "name": "lane",
+          "type": "text",
+          "description": "respondents or supporters."
+        },
+        {
+          "name": "subject_key",
+          "type": "text",
+          "description": "Original respondent_id from the derived assets."
+        },
+        {
+          "name": "source_record_count",
+          "type": "integer",
+          "description": "Count of structured source rows tied to the subject."
+        },
+        {
+          "name": "narrative_unit_count",
+          "type": "integer",
+          "description": "Count of narrative units tied to the subject."
+        },
+        {
+          "name": "metadata_json",
+          "type": "jsonb",
+          "description": "Subject-level provenance, row span, and source identifiers."
+        }
+      ]
+    },
+    {
+      "table_name": "dataset_field_facts",
+      "grain": "one row per normalized field observation",
+      "primary_key": "id",
+      "runtime_uses": [
+        "Populate survey_import case inputs without rereading the original workbook",
+        "Preserve response_type-aware normalization"
+      ],
+      "research_uses": [
+        "Filtered structured analysis by response type and question group",
+        "Similarity feature generation from normalized field facts"
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "description": "Deterministic field fact identifier."
+        },
+        {
+          "name": "subject_id",
+          "type": "uuid",
+          "description": "Owning derived subject."
+        },
+        {
+          "name": "source_row_index",
+          "type": "integer",
+          "description": "Original row index in the analysis-ready export."
+        },
+        {
+          "name": "raw_name",
+          "type": "text",
+          "description": "Source field key."
+        },
+        {
+          "name": "response_type",
+          "type": "text",
+          "description": "identifier, ordinal, multiselect, free_text, and related meaning types."
+        },
+        {
+          "name": "raw_value_text",
+          "type": "text",
+          "description": "Original normalized text payload before later modeling."
+        },
+        {
+          "name": "payload_json",
+          "type": "jsonb",
+          "description": "Field payload including normalized value and manual review markers."
+        }
+      ]
+    },
+    {
+      "table_name": "dataset_narrative_units",
+      "grain": "one row per free-text unit extracted from a dataset subject",
+      "primary_key": "id",
+      "runtime_uses": [
+        "Seed narrative_units when materializing a case from survey data",
+        "Keep evidence-text traceability separate from summaries"
+      ],
+      "research_uses": [
+        "Narrative retrieval and later embedding jobs",
+        "Chain extraction experiments without reopening raw workbooks"
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "description": "Deterministic narrative unit identifier."
+        },
+        {
+          "name": "subject_id",
+          "type": "uuid",
+          "description": "Owning derived subject."
+        },
+        {
+          "name": "source_field_key",
+          "type": "text",
+          "description": "Original free-text field key."
+        },
+        {
+          "name": "unit_index",
+          "type": "integer",
+          "description": "Sequence number within the source field."
+        },
+        {
+          "name": "raw_text",
+          "type": "text",
+          "description": "Narrative unit text."
+        },
+        {
+          "name": "content_hash",
+          "type": "text",
+          "description": "Stable content hash for cache reuse."
+        },
+        {
+          "name": "payload_json",
+          "type": "jsonb",
+          "description": "Question context and lightweight provenance."
+        }
+      ]
+    },
+    {
+      "table_name": "dataset_projection_facts",
+      "grain": "one row per deterministic projection candidate",
+      "primary_key": "id",
+      "runtime_uses": [
+        "Seed case-side ICF or supporter-side planning hints before model-backed reasoning",
+        "Preserve candidate status rather than final judgment"
+      ],
+      "research_uses": [
+        "Compare structured and narrative projection coverage",
+        "Track projection quality over time"
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "description": "Deterministic projection fact identifier."
+        },
+        {
+          "name": "subject_id",
+          "type": "uuid",
+          "description": "Owning derived subject."
+        },
+        {
+          "name": "source_kind",
+          "type": "text",
+          "description": "respondent_structured, respondent_narrative, supporter_structured, or supporter_narrative."
+        },
+        {
+          "name": "canonical_key",
+          "type": "text",
+          "description": "Canonical concept or canonical dimension."
+        },
+        {
+          "name": "primary_axis",
+          "type": "text",
+          "description": "Primary frame or support model."
+        },
+        {
+          "name": "secondary_axis",
+          "type": "text",
+          "description": "Optional secondary frame for respondent-side projections."
+        },
+        {
+          "name": "projection_confidence",
+          "type": "text",
+          "description": "Deterministic confidence label."
+        },
+        {
+          "name": "payload_json",
+          "type": "jsonb",
+          "description": "Matched pattern, label text, and extra projection context."
+        }
+      ]
+    },
+    {
+      "table_name": "dataset_manifold_profiles",
+      "grain": "one row per subject-level manifold-ready representation",
+      "primary_key": "id",
+      "runtime_uses": [
+        "Seed lightweight similarity search and related-case suggestions later",
+        "Keep a compact numeric and sparse profile outside the raw source row table"
+      ],
+      "research_uses": [
+        "Local manifold, clustering, and nearest-neighbor experiments",
+        "Future pgvector or external vector migration once dimensions are finalized"
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "description": "Deterministic profile identifier."
+        },
+        {
+          "name": "subject_id",
+          "type": "uuid",
+          "description": "Owning derived subject."
+        },
+        {
+          "name": "numeric_feature_count",
+          "type": "integer",
+          "description": "Count of numeric feature keys present."
+        },
+        {
+          "name": "token_count",
+          "type": "integer",
+          "description": "Count of sparse symbolic tokens."
+        },
+        {
+          "name": "numeric_features_json",
+          "type": "jsonb",
+          "description": "Numeric feature bag from manifold_numeric_features.csv."
+        },
+        {
+          "name": "sparse_tokens_json",
+          "type": "jsonb",
+          "description": "Sparse token list from manifold_sparse_tokens.jsonl."
+        },
+        {
+          "name": "recipe_json",
+          "type": "jsonb",
+          "description": "Manifold recipe metadata and cost-control notes."
+        }
+      ]
+    }
+  ]
+}

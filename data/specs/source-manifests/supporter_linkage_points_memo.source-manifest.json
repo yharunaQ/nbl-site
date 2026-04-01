@@ -1,0 +1,17 @@
+{
+  "source_id": "supporter_linkage_points_memo",
+  "dataset_id": "supporter_practice_workshop_patterns",
+  "source_role": "reviewed_pattern_memo",
+  "source_type": "markdown_analysis",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": false,
+  "contains_free_text": true,
+  "row_unit": null,
+  "population": null,
+  "file_path": "supporter_practice/【分析】障害者就労支援_連携ポイント整理.md",
+  "file_size_bytes": 15164,
+  "guide_files": [],
+  "notes": "Workshop synthesis of linkage success/failure patterns across disability employment support.",
+  "generated_at": "2026-03-31T09:21:30+00:00"
+}

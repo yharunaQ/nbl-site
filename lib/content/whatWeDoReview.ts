@@ -165,7 +165,7 @@ export const whatWeDoCommercialLanes: WhatWeDoCommercialLane[] = [
   {
     title: '内部ツール',
     summary:
-      '条件整理ドラフトは、当面は Founder が外部依頼対応の中で使う internal tool として扱い、外向け商品にはしない。',
+      '配慮設計アシストは、当面は Founder が外部依頼対応の中で使う internal tool として扱い、外向け商品にはしない。',
     note: '将来は operator-assisted、その先で self-serve の順に評価する。',
   },
 ];
@@ -208,9 +208,9 @@ export const whatWeDoGuardrails: WhatWeDoGuardrail[] = [
       '26カード版や各種資料は理解と trust の入口に使い、収益の主軸は private workspace や recurring 運用に置く。',
   },
   {
-    title: '条件整理ドラフトを公開商品にしない',
+    title: '配慮設計アシストを公開商品にしない',
     detail:
-      '条件整理ドラフトは、当面 Founder-operated internal tool として扱い、open trial や常設サービスとして見せない。',
+      '配慮設計アシストは、当面 Founder-operated internal tool として扱い、open trial や常設サービスとして見せない。',
   },
   {
     title: '現在のコアとして前面に出す',

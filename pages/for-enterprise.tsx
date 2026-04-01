@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -8,19 +7,17 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
+import PageSeo from '@/components/PageSeo';
 import { publicEnterpriseEntry } from '@/lib/content/publicEnterpriseEntry';
 
 export default function EnterpriseEntryPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_55%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>企業・組織向けの整理 | Next Being Lab</title>
-        <meta
-          name="description"
-          content="合理的配慮、継続就労、ニューロダイバーシティ、相談導線を職場設計の観点から整理した、Next Being Lab の企業・組織向けページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/for-enterprise" />
-      </Head>
+      <PageSeo
+        title="企業・組織向けの整理 | Next Being Lab"
+        description="合理的配慮、継続就労、ニューロダイバーシティ、相談導線を職場設計の観点から整理した、Next Being Lab の企業・組織向けページ。"
+        path="/for-enterprise"
+      />
 
       <main className="mx-auto max-w-6xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

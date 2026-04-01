@@ -1,0 +1,221 @@
+{
+  "version": "v0",
+  "sources": [
+    "employment_survey_3000",
+    "nanbyo_survey_4000"
+  ],
+  "canonical_concepts": [
+    {
+      "concept_id": "respondent_profile",
+      "description": "Basic respondent identity and demographic profile.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "ID",
+          "2性別",
+          "2年齢",
+          "2住所"
+        ],
+        "nanbyo_survey_4000": [
+          "ID",
+          "Q02",
+          "Q03"
+        ]
+      },
+      "notes": [
+        "Age granularity differs between datasets.",
+        "Use age_band_canonical for cross-dataset analysis."
+      ]
+    },
+    {
+      "concept_id": "health_condition",
+      "description": "Raw health condition, disability, and disease classification layer for ICD normalization and grouping.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "分類名",
+          "3障害",
+          "手帳有無"
+        ],
+        "nanbyo_survey_4000": [
+          "Q05_1",
+          "Q05_2_1",
+          "Q05_2_2",
+          "Q05_2_3",
+          "Q05_2_4",
+          "xQ05"
+        ]
+      },
+      "notes": [
+        "Employment data is broad-category oriented.",
+        "Nanbyo data is disease-label rich."
+      ]
+    },
+    {
+      "concept_id": "work_status",
+      "description": "Current work status, employment form, and job content.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "8就労経験",
+          "9仕事内容"
+        ],
+        "nanbyo_survey_4000": [
+          "Q11_1",
+          "Q11_2",
+          "Q16_2"
+        ]
+      },
+      "notes": [
+        "Work form and job content are split differently across datasets."
+      ]
+    },
+    {
+      "concept_id": "activity_and_participation_difficulty",
+      "description": "Difficulty before employment, during employment, and in concrete work/participation domains.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "7*",
+          "11*",
+          "７記述",
+          "11記述"
+        ],
+        "nanbyo_survey_4000": [
+          "Q15*",
+          "Q16*",
+          "xQ10",
+          "xQ15",
+          "xQ16"
+        ]
+      },
+      "notes": [
+        "Employment has richer structured task-level difficulty items.",
+        "Nanbyo has stronger link between difficulty, symptom burden, and narrative context."
+      ]
+    },
+    {
+      "concept_id": "accommodation_and_support",
+      "description": "Workplace accommodation, support use, and support needs.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "5*",
+          "6*",
+          "10*",
+          "10記述"
+        ],
+        "nanbyo_survey_4000": [
+          "Q15*",
+          "xQ6",
+          "xQ7"
+        ]
+      },
+      "notes": [
+        "Employment emphasizes accommodation status.",
+        "Nanbyo emphasizes support fit and unmet needs."
+      ]
+    },
+    {
+      "concept_id": "disclosure_and_explanation",
+      "description": "Disease/disability explanation, disclosure, and non-disclosure context.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "12病気や障害の説明",
+          "12必要な環境整備等の説明"
+        ],
+        "nanbyo_survey_4000": [
+          "Q15_1",
+          "Q15_2",
+          "Q15_3",
+          "Q15_4",
+          "xQ15-3"
+        ]
+      },
+      "notes": [
+        "Disclosure is a bridge concept linking case structure and intervention planning."
+      ]
+    },
+    {
+      "concept_id": "self_efficacy_and_future_outlook",
+      "description": "Beliefs about working, future orientation, satisfaction, and perceived capacity.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "13*",
+          "14*",
+          "15*",
+          "16*",
+          "17*",
+          "18*",
+          "19仕事ができるか"
+        ],
+        "nanbyo_survey_4000": [
+          "xQ6",
+          "xQ7"
+        ]
+      },
+      "notes": [
+        "Employment has richer structured outlook scales.",
+        "Nanbyo expresses future needs and hopes mainly in narrative form."
+      ]
+    },
+    {
+      "concept_id": "narrative_units",
+      "description": "Free-text fields to be split into narrative units for FCHMA processing.",
+      "source_fields": {
+        "employment_survey_3000": [
+          "5記述",
+          "6記述",
+          "７記述",
+          "9その他",
+          "9記述",
+          "10記述",
+          "11記述",
+          "自由記述"
+        ],
+        "nanbyo_survey_4000": [
+          "xQ01",
+          "xQ05",
+          "xQ10",
+          "xQ11",
+          "xQ15-3",
+          "xQ15",
+          "xQ16",
+          "xQ6",
+          "xQ20",
+          "xQ21",
+          "xQ7"
+        ]
+      },
+      "notes": [
+        "Narrative fields should be kept with provenance, not merged into summaries."
+      ]
+    }
+  ],
+  "dataset_specific_concepts": {
+    "employment_survey_3000": [
+      "detailed workplace accommodation coverage",
+      "post-employment task-level difficulty",
+      "SOC and satisfaction style structured scales"
+    ],
+    "nanbyo_survey_4000": [
+      "rare-disease制度区分",
+      "disclosure and non-disclosure reasons",
+      "treatment-work balance context"
+    ]
+  },
+  "initial_canonical_fields": [
+    "respondent_uid",
+    "source_dataset",
+    "age_band_canonical",
+    "gender_canonical",
+    "region_type_canonical",
+    "health_condition_raw",
+    "health_condition_group",
+    "icd_candidate",
+    "job_status_canonical",
+    "job_type_canonical",
+    "activity_difficulty_bundle",
+    "participation_difficulty_bundle",
+    "accommodation_gap_bundle",
+    "support_use_bundle",
+    "disclosure_status_canonical",
+    "future_outlook_bundle",
+    "narrative_unit_ids"
+  ]
+}

@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
+import PageSeo from '@/components/PageSeo';
+import ApplySection from './ApplySection';
 import Campaign from './Campaign';
 import Footer from './Footer';
 import Hero from './Hero';
@@ -24,32 +26,13 @@ export default function LegacyPublicHome() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
+      <PageSeo
+        title="Next Being Lab | 働くは設計できる。"
+        description="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。"
+        path="/"
+        imageAlt="Next Being Lab - 働くは設計できる。"
+      />
       <Head>
-        <title>Next Being Lab | 働くは設計できる。</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://nextbeinglab.org/" />
-        <meta
-          name="description"
-          content="不公平の見える化を、合意可能な設計へ。難病就労支援・障害者雇用の研究と社会実装ユニット。"
-        />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:site_name" content="Next Being Lab" />
-        <meta property="og:locale" content="ja_JP" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://nextbeinglab.org/" />
-        <meta property="og:title" content="Next Being Lab | 働くは設計できる。" />
-        <meta property="og:description" content="働くは設計できる。At work, CAN matters." />
-        <meta property="og:image" content="https://nextbeinglab.org/og.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Next Being Lab - 働くは設計できる。" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Next Being Lab | 働くは設計できる。" />
-        <meta name="twitter:description" content="働くは設計できる。At work, CAN matters." />
-        <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
-        <meta name="theme-color" content="#0f172a" />
-        <meta name="format-detection" content="telephone=no" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
@@ -83,28 +66,19 @@ export default function LegacyPublicHome() {
               ビジョン
             </a>
             <a href="#phase1" className="transition-colors hover:text-indigo-600">
-              NBL(Phase1)
+              NBL Phase 1
             </a>
             <a href="#product" className="transition-colors hover:text-indigo-600">
-              JAC
+              ツール
             </a>
-            <Link href="/jac" className="transition-colors hover:text-indigo-600">
-              JAC試用版
-            </Link>
             <Link href="/jac/guide" className="transition-colors hover:text-indigo-600">
-              JACガイド
+              仕事設計ガイド
             </Link>
-            <a href="#services" className="transition-colors hover:text-indigo-600">
-              サービス
-            </a>
             <a href="#reports" className="transition-colors hover:text-indigo-600">
               レポート
             </a>
-            <a href="#campaign" className="transition-colors hover:text-indigo-600">
-              CAN BY DESIGN
-            </a>
-            <a href="#contact" className="transition-colors hover:text-indigo-600">
-              Contact
+            <a href="#apply" className="transition-colors hover:text-indigo-600">
+              利用申込
             </a>
           </div>
           <div className="flex items-center gap-2">
@@ -112,14 +86,14 @@ export default function LegacyPublicHome() {
               href="/jac/guide"
               className="rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-bold text-gray-800 transition-all hover:bg-gray-50"
             >
-              JACガイド
+              仕事設計ガイド
             </Link>
-            <Link
-              href="/jac"
+            <a
+              href="#apply"
               className="rounded-full bg-gray-900 px-5 py-2 text-sm font-bold text-white shadow-md transition-all hover:bg-black"
             >
-              JAC試用版
-            </Link>
+              利用申込
+            </a>
           </div>
         </div>
       </nav>
@@ -131,6 +105,7 @@ export default function LegacyPublicHome() {
         <Phase1 />
         <Reports />
         <ProductJac />
+        <ApplySection />
         <Services />
         <Vision />
         <MarketVision />

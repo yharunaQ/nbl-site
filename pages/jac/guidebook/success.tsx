@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
+import PageSeo from '@/components/PageSeo';
 
 type SessionVerifyResponse =
   | {
@@ -67,15 +67,18 @@ export default function JacGuidebookSuccessPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900">
-      <Head>
-        <title>購入完了 | JACガイドブック</title>
-      </Head>
+      <PageSeo
+        title="旧配布リンクの確認 | 先行5章版アーカイブ"
+        description="旧配布リンクからアクセスした購入者向けに、先行5章版アーカイブのダウンロード可否を確認する補助ページ。"
+        path="/jac/guidebook/success"
+      />
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <section className="rounded-3xl border border-emerald-200 bg-white p-6 md:p-8">
-          <h1 className="text-2xl font-extrabold text-gray-900">購入ありがとうございます</h1>
+          <h1 className="text-2xl font-extrabold text-gray-900">旧配布リンクの確認</h1>
           <p className="mt-2 text-sm text-gray-700">
-            決済確認が完了すると、下にダウンロードボタンが表示されます。
+            現在の本体は 26カード版で、先行5章版は開発履歴として扱っています。ここは旧配布リンクから来た場合だけ、
+            以前の配布データの可否を確認するための補助ページとして残しています。
           </p>
 
           {loading && (
@@ -90,16 +93,16 @@ export default function JacGuidebookSuccessPage() {
             </p>
           )}
 
-          {result && result.ok && (
+      {result && result.ok && (
             <div className="mt-5 space-y-3">
               <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
-                決済確認済み: セッション {result.sessionId}
+                確認済み: セッション {result.sessionId}
               </div>
               <a
                 href={result.downloadUrl}
                 className="inline-flex rounded-full bg-emerald-700 px-5 py-2 text-sm font-bold text-white hover:bg-emerald-800"
               >
-                ガイドブックをダウンロード
+                旧版ワークブックをダウンロード
               </a>
               <p className="text-xs text-gray-600">
                 ダウンロードリンク有効期限: {new Date(result.expiresAt).toLocaleString('ja-JP')}
@@ -109,16 +112,16 @@ export default function JacGuidebookSuccessPage() {
 
           <div className="mt-6 flex flex-wrap gap-2">
             <Link
-              href="/jac/guide"
+              href="/jac/frames"
               className="rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-700 hover:bg-gray-50"
             >
-              JACガイドへ戻る
+              26カード版へ戻る
             </Link>
             <Link
               href="/jac/guidebook"
               className="rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-700 hover:bg-gray-50"
             >
-              販売ページへ戻る
+              先行5章版アーカイブを見る
             </Link>
           </div>
         </section>

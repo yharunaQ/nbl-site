@@ -4,13 +4,27 @@ import {
   PATHS,
   ROOT,
   classifyWorkspaceActivity,
+  daysSinceTokyoDate,
   formatTokyoDate,
   getGitStatusEntries,
   getNewFilePaths,
+  readContentInventory,
   readEntriesSection,
   summarizePaths,
   writeText,
 } from './shared.mjs';
+
+function isRevivalRow(row) {
+  const decision = (row['Decision'] ?? '').toLowerCase();
+  const reason = (row['Reason'] ?? '').toLowerCase();
+
+  return (
+    decision.includes('hold') ||
+    decision.includes('public_after_rewrite') ||
+    reason.includes('hold') ||
+    reason.includes('public_after_rewrite')
+  );
+}
 
 async function main() {
   const today = formatTokyoDate();
@@ -21,6 +35,8 @@ async function main() {
   const grouped = classifyWorkspaceActivity(changedPaths);
   const founderNewContent = await readEntriesSection(PATHS.founderNewContentLog);
   const founderSiteFeedback = await readEntriesSection(PATHS.founderSiteFeedbackLog);
+  const contentInventory = await readContentInventory();
+  const revivalRows = contentInventory.rows.filter(isRevivalRow);
 
   const changedBullets = grouped
     .filter((group) => group.count > 0)
@@ -74,19 +90,75 @@ async function main() {
     '- 可視化を弱くすると、silent failure や worktree drift に気づきにくい。',
   );
 
+  const holdSignals = [];
+  const inventoryAge = daysSinceTokyoDate(contentInventory.updatedAt, today);
+
+  if (revivalRows.length > 0) {
+    holdSignals.push(
+      `- content inventory 上に hold / public_after_rewrite 系の候補が ${revivalRows.length} 件ある。weekly ではこの棚から 1-3 件を再起動候補として選ぶ前提にする。`,
+    );
+  }
+
+  if (inventoryAge !== null && inventoryAge >= 7) {
+    holdSignals.push(
+      `- \`content-inventory.md\` の更新日が \`${contentInventory.updatedAt}\` のままで ${inventoryAge} 日経過している。保留棚の再評価が stale になっていないか確認が必要。`,
+    );
+  }
+
+  if (founderNewContent.length > 0 || founderSiteFeedback.length > 0) {
+    holdSignals.push(
+      '- Founder input が追加されているため、保留棚に接続する再評価候補が増えている可能性がある。weekly で hold revival candidate に反映する。',
+    );
+  }
+
+  if (holdSignals.length === 0) {
+    holdSignals.push('- 今回の snapshot で、保留棚を動かし直す新しい signal は明確に検出されなかった。');
+  }
+
   const nextBestRound =
-    '- Automation Visibility Hardening: primary workspace を正本に固定し、`today file exists` と `weekly red-signal view` を最低監視線にする。';
+    revivalRows.length > 0
+      ? '- Hold Revival Queue: inventory 上の hold / public_after_rewrite 棚から 1 件だけ hidden review draft 候補を起こし、Founder 境界に触れる前まで進める。'
+      : '- Automation Visibility Hardening: primary workspace を正本に固定し、`today file exists` と `weekly red-signal view` を最低監視線にする。';
 
   const founderBoundaryLines = [];
   if (founderNewContent.length > 0 || founderSiteFeedback.length > 0) {
     founderBoundaryLines.push(
-      '- structured founder input は入っているが、この snapshot では不可逆判断を要する赤信号は検出されなかった。',
+      '- structured founder input は入っているが、この snapshot では不可逆判断を要する赤信号は検出されなかった。hold 候補の hidden review draft 化までは Founder 判断なしで進められる。',
     );
   } else {
     founderBoundaryLines.push('- none');
   }
 
+  const aiAutonomousMoves = [];
+
+  if (revivalRows.length > 0) {
+    aiAutonomousMoves.push(
+      '- hold 棚から 1 件だけ hidden review draft 候補を起こし、public candidate に触れる手前まで AI 側で整える。',
+    );
+  }
+
+  if (opsPaths.length > 0) {
+    aiAutonomousMoves.push(
+      '- primary workspace 正本チェックと recurring artifact の見える化を継続し、silent failure を減らす。',
+    );
+  }
+
+  const publicNarrativePaths =
+    grouped.find((group) => group.key === 'publicNarrative')?.matchingPaths ?? [];
+  if (publicNarrativePaths.length > 0) {
+    aiAutonomousMoves.push(
+      '- public narrative の更新は AI 側で整理を続け、Founder には public promise 境界だけを返す。',
+    );
+  }
+
+  if (aiAutonomousMoves.length === 0) {
+    aiAutonomousMoves.push(
+      '- 次の round の下準備、比較表づくり、hidden review draft 化は AI 側で先に進める。',
+    );
+  }
+
   const evidencePointers = [
+    `- \`docs/nbl-workspace/content-inventory.md\``,
     `- \`docs/nbl-workspace/snapshot-automation-design-2026-03-17.md\``,
     `- \`scripts/ops/shared.mjs\``,
     `- \`pages/review/snapshot-automation.tsx\``,
@@ -108,9 +180,17 @@ ${accumulatedBullets.join('\n')}
 
 ${blockedBullets.join('\n')}
 
+## Hold Signals
+
+${holdSignals.join('\n')}
+
 ## Next Best Round
 
 ${nextBestRound}
+
+## AI Autonomous Moves Today
+
+${aiAutonomousMoves.join('\n')}
 
 ## Founder Boundary
 

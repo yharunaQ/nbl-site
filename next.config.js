@@ -18,6 +18,11 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: '/jac', destination: '/jac/next', permanent: false },
+    ];
+  },
   async rewrites() {
     return [
       { source: '/docs/:path*', destination: 'https://files.nextbeinglab.org/:path*' },

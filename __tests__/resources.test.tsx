@@ -6,15 +6,28 @@ describe('Resources public pages', () => {
   it('renders the resources shelf with public collection links', () => {
     render(<ResourcesPage />);
 
-    expect(screen.getByText('整理済みの inbox map')).toBeInTheDocument();
-    expect(screen.getByText('地平1: 隔離・分離から包摂へ')).toBeInTheDocument();
+    expect(screen.getByText('整理済みのテーママップ')).toBeInTheDocument();
+    expect(screen.getByText('就労支援設計の変革テーマ')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: '変革テーマを見る' })).toHaveAttribute(
+      'href',
+      '/resources/work-support-transformation',
+    );
     expect(screen.getByRole('link', { name: '動画を見る' })).toHaveAttribute('href', '/videos');
+    expect(screen.getByRole('link', { name: '仕事設計の見取り図を見る' })).toHaveAttribute(
+      'href',
+      '/jac-foundations',
+    );
     expect(screen.getByText('公開中の collection')).toBeInTheDocument();
     expect(screen.getByText('見えない障害の理解')).toBeInTheDocument();
     expect(
       screen
         .getAllByRole('link', { name: 'この collection を見る' })
         .some((link) => link.getAttribute('href') === '/resources/invisible-disability'),
+    ).toBe(true);
+    expect(
+      screen
+        .getAllByRole('link', { name: 'この collection を見る' })
+        .some((link) => link.getAttribute('href') === '/resources/work-support-transformation'),
     ).toBe(true);
   });
 

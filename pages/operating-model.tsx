@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { ArrowLeft, Compass, ShieldCheck, Users, Waypoints } from 'lucide-react';
+import PageSeo from '@/components/PageSeo';
 import {
   founderBoundaries,
   operatingLoops,
@@ -12,14 +12,11 @@ import {
 export default function OperatingModelPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_52%,#ecfeff_100%)] text-slate-900">
-      <Head>
-        <title>Operating Model | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab が、公開更新をどこまで AI で進め、どこで人が判断境界を持つかを整理したページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/operating-model" />
-      </Head>
+      <PageSeo
+        title="Operating Model | Next Being Lab"
+        description="Next Being Lab が、公開更新をどこまで AI で進め、どこで人が判断境界を持つかを整理したページ。"
+        path="/operating-model"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

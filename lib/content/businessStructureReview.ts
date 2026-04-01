@@ -33,13 +33,13 @@ export type BusinessGuardrail = {
 export const businessStructureVerdict: BusinessVerdict = {
   title: 'NBL は相談事業としては弱いが、AIネイティブな社会OS事業としては成立余地がある。',
   summary:
-    '成立条件は、単発相談や未完成 product の販売ではなく、再利用可能な methods / workflows / resources / JAC を system layer として売れること。',
+    '成立条件は、単発相談や未完成 product の販売ではなく、再利用可能な methods / workflows / resources / 仕事設計プロダクト群 を system layer として売れること。単体コンテンツ販売は主軸ではなく、収益は private layer に置く。',
 };
 
 export const businessStructureModelCards: BusinessModelCard[] = [
   {
     title: 'AI-operated core',
-    summary: '知識基盤、workflow、agent orchestration、JAC、resources を中核で運営する。',
+    summary: '知識基盤、workflow、agent orchestration、仕事設計プロダクト群、resources を中核で運営する。',
   },
   {
     title: 'Partner-enabled edge',
@@ -55,12 +55,12 @@ export const businessStructureDistribution: BusinessStep[] = [
   {
     step: '01',
     title: 'Public resources',
-    summary: '図解、動画、series、selected reports、low-friction method entry で trust と入口をつくる。',
+    summary: '図解、動画、series、selected reports、見取り図、26カード版、method entry で trust と入口をつくる。',
   },
   {
     step: '02',
     title: 'Method entry',
-    summary: 'What We Do、JAC guide、AI team startup entry で方法論を理解させる。',
+    summary: 'What We Do、仕事設計の見取り図、26カード版で方法論を理解させる。',
   },
   {
     step: '03',
@@ -87,8 +87,8 @@ export const businessStructureRevenue: BusinessRevenueLayer[] = [
   },
   {
     title: 'Bounded usage',
-    summary: 'JAC assessments、agent runs、private workflow calls。',
-    note: 'public entry は generous / free-to-start にしつつ、flat fee + overage か usage entitlement で private depth を課金するのが相性よい。',
+    summary: 'Founder-operated internal tool runs、agent runs、private workflow calls。',
+    note: 'public entry は generous / free-to-start にしつつ、flat fee + overage か usage entitlement で private depth を課金するのが相性よい。単体コンテンツ販売を primary revenue にしない。',
   },
   {
     title: 'Later outcome-linked layer',
@@ -128,6 +128,11 @@ export const businessStructureGuardrails: BusinessGuardrail[] = [
   {
     title: '未完成 product を sales first にしない',
     detail: 'unfinished trial や pricing draft を先に売らない。',
+  },
+  {
+    title: '入口資産の不足を小売で埋めない',
+    detail:
+      'free asset が弱いからといって、単体コンテンツ販売を主収益に据えると、private layer の価値設計が遅れる。',
   },
   {
     title: 'AI-only rhetoric を避ける',

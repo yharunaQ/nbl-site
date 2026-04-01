@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -11,6 +12,8 @@
     "ops:snapshot:daily": "node ./scripts/ops/generate-daily-snapshot.mjs",
     "ops:snapshot:weekly": "node ./scripts/ops/generate-weekly-loop-report.mjs",
     "ops:snapshot:now": "npm run ops:snapshot:daily && npm run ops:snapshot:weekly",
+    "ops:jac-rate-limit:check": "node ./scripts/ops/check-jac-rate-limit-config.mjs",
+    "ops:jac-rate-limit:reset-token": "node ./scripts/ops/reset-jac-token-rate-limit.mjs",
     "release:public:surface-check": "node ./scripts/ops/check-public-surface-safety.mjs",
     "release:public:preflight": "node ./scripts/ops/run-public-release-preflight.mjs",
     "songs:tracker": "node ./scripts/content/build-song-campaign-tracker.mjs",
@@ -38,6 +41,7 @@
     "ebook:guidebook:26cards:draft": "node ./scripts/ebook/build-26-card-edition.mjs",
     "ebook:guidebook:26cards:layout": "node ./scripts/ebook/build-readable-layout.mjs --input docs/guidebook/jac-26-card-edition.md --output-base jac-26-card-edition",
     "ebook:guidebook:26cards:preview": "npm run ebook:guidebook:26cards:draft && npm run ebook:guidebook:26cards:layout",
+    "ebook:guidebook:26cards:publish": "npm run ebook:guidebook:26cards:preview && node -e \"require('fs').copyFileSync('docs/guidebook/dist/jac-26-card-edition.html','public/downloads/jac-26-card-guidebook.html');console.log('Published to public/downloads/jac-26-card-guidebook.html')\"",
     "ebook:guidebook:frames:summary": "node ./scripts/ebook/build-frames-26-layer-summary.mjs",
     "ebook:book1:layout": "node ./scripts/ebook/build-readable-layout.mjs --input docs/guidebook/book1-health-layer-draft.md --output-base book1-health-layer-draft",
     "ebook:book1:prefinal:draft": "node ./scripts/ebook/generate-book1-prefinal.mjs",
@@ -89,7 +93,27 @@
     "jac:guide:regional-support:examples": "node ./scripts/jac/build-regional-support-example-cases.mjs",
     "jac:review:update-memo": "node ./scripts/jac/build-guide-update-review-memo.mjs",
     "jac:quality:gate": "npm run jac:data2:refresh && npm run jac:audit:wording:enforce && npm run jac:eval:tags-local:enforce && npm run jac:audit:readiness:enforce && npm run typecheck",
-    "jac:quality:gate:strict": "npm run jac:data2:refresh:check && npm run jac:audit:wording:enforce && npm run jac:eval:tags-local:enforce && npm run jac:audit:readiness:enforce && npm run typecheck"
+    "jac:quality:gate:strict": "npm run jac:data2:refresh:check && npm run jac:audit:wording:enforce && npm run jac:eval:tags-local:enforce && npm run jac:audit:readiness:enforce && npm run typecheck",
+    "jac:feedback:analyze": "node ./scripts/jac/analyze-feedback.mjs",
+    "jac:feedback:reprocess": "node ./scripts/jac/analyze-feedback.mjs --reprocess",
+    "jac:evidence:brief": "node ./scripts/jac/build-evidence-refresh-brief.mjs",
+    "jac:eval:step4": "npx jest __tests__/jac-step4-reference-evals.test.ts --runInBand",
+    "jac:eval:step4:brief": "node ./scripts/jac/build-step4-eval-brief.mjs",
+    "jac:eval:step4:brief:enforce": "node ./scripts/jac/build-step4-eval-brief.mjs --enforce",
+    "jac:eval:step4:field": "node ./scripts/jac/build-step4-field-review-brief.mjs",
+    "jac:evidence:refresh:light": "npm run knowledge:fetch-web && npm run knowledge:normalize && npm run knowledge:claims && npm run jac:feedback:analyze && npm run jac:eval:step4:brief && npm run jac:eval:step4:field && npm run jac:evidence:brief",
+    "jac:evidence:refresh:full": "npm run knowledge:fetch-web && npm run knowledge:normalize && npm run knowledge:claims && npm run knowledge:embed && npm run jac:feedback:analyze && npm run jac:eval:step4:brief && npm run jac:eval:step4:field && npm run jac:evidence:brief",
+    "fchma:data:analysis-ready": "python3 ./scripts/data_foundation/build_analysis_ready_exports.py",
+    "fchma:data:respondent-projection": "python3 ./scripts/data_foundation/build_respondent_projection_candidates.py",
+    "fchma:data:supporter-projection": "python3 ./scripts/data_foundation/build_supporter_projection_candidates.py",
+    "fchma:data:health-condition-seeds": "python3 ./scripts/data_foundation/build_health_condition_normalization_seeds.py",
+    "fchma:data:manifold-inputs": "python3 ./scripts/data_foundation/build_manifold_input_recipes.py",
+    "fchma:data:joint-subject-space": "python3 ./scripts/data_foundation/build_respondent_joint_subject_space.py",
+    "fchma:data:respondent-patterns": "python3 ./scripts/data_foundation/build_respondent_manifold_patterns.py",
+    "fchma:data:causal-framework-atlas": "python3 ./scripts/data_foundation/build_fchma_causal_framework_atlas.py",
+    "fchma:data:postgres-ingestion": "python3 ./scripts/data_foundation/build_postgres_ingestion_assets.py",
+    "fchma:data:case-materialization": "python3 ./scripts/data_foundation/build_case_materialization_packs.py",
+    "fchma:data:refresh": "npm run fchma:data:analysis-ready && npm run fchma:data:respondent-projection && npm run fchma:data:supporter-projection && npm run fchma:data:health-condition-seeds && npm run fchma:data:manifold-inputs && npm run fchma:data:joint-subject-space && npm run fchma:data:respondent-patterns && npm run fchma:data:causal-framework-atlas && npm run fchma:data:postgres-ingestion && npm run fchma:data:case-materialization"
   },
   "prettier": {
     "singleQuote": true,
@@ -132,7 +156,7 @@
     "typescript": "5.6.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20 <23"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [

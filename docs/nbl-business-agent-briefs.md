@@ -1,6 +1,6 @@
 # NBL Business Agent Briefs
 
-更新日: 2026-03-16
+更新日: 2026-03-26
 
 ## Purpose
 
@@ -65,6 +65,8 @@ decision log と next experiment へ落とす
 - `docs/nbl-workspace/ai-operating-principles-2026-03-16.md`
 - `docs/nbl-workspace/business-structure-round-2026-03-16.md`
 - `docs/nbl-workspace/business-validation-round-2026-03-16.md`
+- `docs/nbl-workspace/ai-driven-social-os-management-policy-2026-03-26.md`
+- `docs/nbl-workspace/founder-decision-cadence-2026-03-26.md`
 - `docs/nbl-workspace/decision-log.md`
 
 ## Operating Model Lead Brief
@@ -139,13 +141,15 @@ Design a revenue model that supports a social OS business instead of a consultin
 
 Tasks:
 1. Propose the initial commercial shape.
-2. Separate startup fee, recurring fee, usage, and later outcome-linked layers.
+2. Separate bridge revenue, startup fee, recurring fee, usage, and later outcome-linked layers.
 3. Explain what should not be monetized directly.
-4. Identify the simplest package to test with the first design partners.
+4. Keep supporter/tip-style revenue clearly subordinate to the core product thesis.
+5. Identify the simplest package to test with the first design partners.
 
 Return:
 - initial commercial shape
 - revenue stack
+- bridge-vs-core revenue boundary
 - no-go monetization areas
 - first test package
 ```
@@ -278,11 +282,17 @@ Tasks:
 2. Surface the real tradeoffs.
 3. Make provisional decisions where confidence is high.
 4. Convert unresolved items into explicit next experiments.
+5. Return a founder decision queue with 0-3 items only.
+6. For each founder decision, include a recommended answer and a default if no reply.
+7. Separate what AI will do autonomously before the next review.
 
 Return:
 - agreed structure
 - unresolved tradeoffs
 - provisional decisions
+- founder decision queue
+- default if no reply
+- next autonomous moves
 - next experiments
 - decision-log-ready notes
 ```

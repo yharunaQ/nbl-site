@@ -1,6 +1,15 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 
+// framer-motion uses IntersectionObserver which is unavailable in jsdom
+if (typeof window !== 'undefined' && !window.IntersectionObserver) {
+  window.IntersectionObserver = class IntersectionObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  } as unknown as typeof IntersectionObserver;
+}
+
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: Record<string, unknown>) => {

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FCHMA Domain ICF ICD"
+  short_description: "Keep ICF primary and ICD limited to normalization and indexing."
+  default_prompt: "Use $fchma-domain-icf-icd to apply the ICD and ICF domain rules correctly."

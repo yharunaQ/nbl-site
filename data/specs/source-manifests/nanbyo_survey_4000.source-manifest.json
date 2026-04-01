@@ -1,0 +1,38 @@
+{
+  "source_id": "nanbyo_survey_4000_workbook",
+  "dataset_id": "nanbyo_survey_4000",
+  "source_role": "case_structure_source",
+  "source_type": "xlsx_workbook",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_free_text": true,
+  "row_unit": "respondent",
+  "population": "rare disease respondent survey",
+  "file_path": "nanbyo_survey_4000/Nanbyo_kanja.xlsx",
+  "sheet_names": [
+    "難病患者調査標準データ",
+    "データ一覧",
+    "データ一覧の追加説明"
+  ],
+  "data_sheet": "難病患者調査標準データ",
+  "dictionary_sheet": "データ一覧",
+  "row_count": 4523,
+  "column_count": 116,
+  "free_text_columns": [
+    "xQ01",
+    "xQ05",
+    "xQ10",
+    "xQ11",
+    "xQ15-3",
+    "xQ15",
+    "xQ16",
+    "xQ6",
+    "xQ20",
+    "xQ21",
+    "xQ7"
+  ],
+  "guide_files": [],
+  "notes": "Rare disease respondent survey with disease labels, disclosure, support use, and multiple free-text fields.",
+  "generated_at": "2026-03-31T09:21:27+00:00"
+}

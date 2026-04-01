@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-03-25",
+  "source": "extracted from build-26-card-edition.mjs EXPERT_INSIGHTS",
+  "insights": {
+    "p-fatigue-pacing": "問題は体力不足ではなく、業務密度と回復速度のズレが日ごとに累積していることにある。",
+    "p-medical-schedule": "問題は通院そのものより、受診日と業務ピークが同じ人の自己調整に委ねられていることにある。",
+    "p-internal-treatment-compatibility": "問題は治療日ではなく、治療後の回復時間が勤務設計に織り込まれていないことにある。",
+    "p-shift-rhythm-guard": "問題は夜勤や早番の有無だけでなく、睡眠・服薬・通院のリズムが連続勤務で崩れることにある。",
+    "p-return-to-work-ramp": "問題は「できるか」ではなく、「その負荷で続けられるか」を段階で確かめていないことにある。",
+    "p-mental-fluctuation-plan": "問題は危機対応の遅さだけでなく、小さな変化を調整の入口として扱えていないことにある。",
+    "p-environment-sensory": "問題は本人の過敏さではなく、刺激の強い環境が仕事の持続を削っていることにある。",
+    "p-commute-hybrid": "問題は通勤時間の長さだけでなく、始業前にエネルギーを使い切る設計になっていることにある。",
+    "p-physical-mobility-route": "問題は歩けるかどうかではなく、移動回数と動線の長さが仕事の前提を重くしていることにある。",
+    "p-jobmatch-exploration": "問題は意欲不足ではなく、業務要件と本人条件の照合軸が粗いまま探索していることにある。",
+    "p-application-contact-flow": "問題は応募能力より、連絡・書類・追跡の実務が工程として固定されていないことにある。",
+    "p-interview-self-advocacy": "問題は話し方の上手下手より、配慮要望を業務影響ベースで短く伝える準備ができていないことにある。",
+    "p-skill-building-path": "問題は学ぶ量ではなく、学習内容が就職までの工程と接続していないことにある。",
+    "p-worktrial-transition": "問題は実習評価の有無ではなく、安定条件が採用後運用へ翻訳されていないことにある。",
+    "p-income-condition-stability": "問題は収入額だけでなく、契約条件と体調維持可能な稼働量の整合が見えていないことにある。",
+    "p-support-service-navigation": "問題は制度知識不足ではなく、窓口の順番・期限・責任者・戻し先が一枚になっていないことにある。",
+    "p-meeting-overload": "問題は理解力不足ではなく、会議で同時に求める処理量が多すぎることにある。",
+    "p-disclosure-boundary": "問題は話す量そのものより、共有目的と更新責任が決まらないまま開示が始まることにある。",
+    "p-manager-checkin": "問題は相談しにくさより、相談を業務変更まで運ぶ責任線がないことにある。",
+    "p-customer-facing-load": "問題は対人スキルの不足ではなく、即時応答が続く場面で負荷分散が設計されていないことにある。",
+    "p-visual-document-access": "問題は読む速さだけでなく、資料形式が読み取り支援を前提に作られていないことにある。",
+    "p-hearing-meeting-access": "問題は聞き漏らしではなく、発話ルールとテキスト補助がないために情報欠落が運用で補われていないことにある。",
+    "p-intellectual-task-clarity": "問題は理解力ではなく、完了条件と手順の曖昧さが作業再現性を下げていることにある。",
+    "p-developmental-switch-load": "問題は集中力ではなく、割込みと同時並行が切替コストを押し上げていることにある。",
+    "p-higher-brain-memory-support": "問題は記憶力の弱さではなく、保持と段取りを前提にした工程設計が手戻りを増やしていることにある。",
+    "p-safety-critical-operations": "問題は本人の注意不足ではなく、安全判断の条件と停止ラインが先に定義されていないことにある。"
+  }
+}

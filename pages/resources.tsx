@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -18,6 +17,7 @@ import {
   resourcesThemeMapIntro,
   resourcesThemeTracks,
 } from '@/lib/content/resourcesFirstRelease';
+import PageSeo from '@/components/PageSeo';
 
 const collectionTone: Record<string, string> = {
   build_now: 'border-emerald-200 bg-emerald-50 text-emerald-900',
@@ -57,14 +57,11 @@ export default function ResourcesPage() {
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_50%,#ecfeff_100%)] text-slate-900">
-      <Head>
-        <title>Resources | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab の公開資源を、シリーズ、方法論、動画の入口ごとに整理して束ねたページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/resources" />
-      </Head>
+      <PageSeo
+        title="Resources | Next Being Lab"
+        description="Next Being Lab の公開資源を、シリーズ、方法論、動画の入口ごとに整理して束ねたページ。"
+        path="/resources"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

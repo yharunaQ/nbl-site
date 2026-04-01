@@ -1,0 +1,252 @@
+{
+  "generatedAt": "2026-03-28T06:19:31.811Z",
+  "testFile": "__tests__/jac-step4-reference-evals.test.ts",
+  "caseFile": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/jac/eval/step4-representative-cases.json",
+  "caseCount": 5,
+  "passRate": 1,
+  "commandExitCode": 0,
+  "stdout": "",
+  "stderr": "PASS __tests__/jac-step4-reference-evals.test.ts\n  step4 representative evaluations\n    ✓ case: 勤務時間と疲労 (829 ms)\n    ✓ case: 手順と認知負荷 (190 ms)\n    ✓ case: 会議とテキスト確認 (163 ms)\n    ✓ case: 個別調整の対話と見直し (266 ms)\n    ✓ case: 身体負荷と動線 (142 ms)\n    ✓ artifact: removes known AskJAN boilerplate from direct basis claims (3 ms)\n    ✓ artifact: removes known low-value related reading statements (7 ms)\n    ✓ artifact: keeps related reading statements deduped within each source family (1 ms)\n\nTest Suites: 1 passed, 1 total\nTests:       8 passed, 8 total\nSnapshots:   0 total\nTime:        2.038 s\nRan all test suites matching /__tests__\\/jac-step4-reference-evals.test.ts/i.\nTest results written to: ../../../../../var/folders/rv/9d3vjmws7xndb4h0svgyzc000000gn/T/jac-step4-eval-1774678769068.json",
+  "fieldReviewSummary": {
+    "generatedAt": "2026-03-28T04:32:57.302Z",
+    "reviewCount": 0,
+    "verdictCounts": {
+      "usable": 0,
+      "mixed": 0,
+      "needs_revision": 0
+    },
+    "weakThemes": [],
+    "unresolvedCases": []
+  },
+  "relatedReadingCount": 46,
+  "relatedReadingHotspots": [
+    {
+      "sourceId": "australia_jobaccess_guidance",
+      "sourceName": "Australia JobAccess Employer Guidance",
+      "count": 15
+    },
+    {
+      "sourceId": "canada_duty_to_accommodate",
+      "sourceName": "Canada Duty to Accommodate Guidance",
+      "count": 13
+    },
+    {
+      "sourceId": "askearn_employer_guidance",
+      "sourceName": "AskEARN Employer Guidance",
+      "count": 13
+    },
+    {
+      "sourceId": "eu_reasonable_accommodation",
+      "sourceName": "EU Reasonable Accommodation Guidance",
+      "count": 4
+    },
+    {
+      "sourceId": "uk_gov_disability_employment",
+      "sourceName": "UK GOV Disability Employment Guidance",
+      "count": 1
+    }
+  ],
+  "duplicateSameSourceStatementCount": 0,
+  "duplicateSameSourceStatementGroups": [],
+  "sourceActionQueue": [
+    {
+      "sourceId": "australia_jobaccess_guidance",
+      "sourceName": "Australia JobAccess Employer Guidance",
+      "count": 15,
+      "fieldReviewCount": 0,
+      "unresolvedFieldCaseCount": 0,
+      "unresolvedFieldCaseIds": [],
+      "impactCaseCount": 4,
+      "impactCaseTitles": [
+        "勤務時間と疲労",
+        "手順と認知負荷",
+        "会議とテキスト確認",
+        "身体負荷と動線"
+      ],
+      "priorityScore": 55,
+      "actionType": "tighten_trial_lane",
+      "why": "試行候補に強いが、save/navigation/template boilerplate が再混入しやすい。",
+      "suggestedAction": "schedule / task / physical adjustment を残し、save / event / template line は文脈つき表示に寄せる。"
+    },
+    {
+      "sourceId": "askearn_employer_guidance",
+      "sourceName": "AskEARN Employer Guidance",
+      "count": 13,
+      "fieldReviewCount": 0,
+      "unresolvedFieldCaseCount": 0,
+      "unresolvedFieldCaseIds": [],
+      "impactCaseCount": 3,
+      "impactCaseTitles": [
+        "勤務時間と疲労",
+        "手順と認知負荷",
+        "個別調整の対話と見直し"
+      ],
+      "priorityScore": 43,
+      "actionType": "demote_org_generality",
+      "why": "組織運用や雇用一般論が混ざりやすく、相談直結の具体策が埋もれやすい。",
+      "suggestedAction": "newsletter / legal-risk / org-program line を落とし、場面別の具体 adjustment line を優先する。"
+    },
+    {
+      "sourceId": "canada_duty_to_accommodate",
+      "sourceName": "Canada Duty to Accommodate Guidance",
+      "count": 13,
+      "fieldReviewCount": 0,
+      "unresolvedFieldCaseCount": 0,
+      "unresolvedFieldCaseIds": [],
+      "impactCaseCount": 2,
+      "impactCaseTitles": [
+        "勤務時間と疲労",
+        "個別調整の対話と見直し"
+      ],
+      "priorityScore": 33,
+      "actionType": "tighten_dialogue_review_lane",
+      "why": "対話・見直しに有用だが、HR 相談や制度一般論が残りやすい。",
+      "suggestedAction": "HR specialist / recourse / program-design line を抑え、dialogue / review line を優先する。"
+    },
+    {
+      "sourceId": "eu_reasonable_accommodation",
+      "sourceName": "EU Reasonable Accommodation Guidance",
+      "count": 4,
+      "fieldReviewCount": 0,
+      "unresolvedFieldCaseCount": 0,
+      "unresolvedFieldCaseIds": [],
+      "impactCaseCount": 1,
+      "impactCaseTitles": [
+        "個別調整の対話と見直し"
+      ],
+      "priorityScore": 14,
+      "actionType": "keep_case_usable_measures_only",
+      "why": "制度比較の軸として有用だが、一般論や employer-benefit line が残りやすい。",
+      "suggestedAction": "measure / concrete example を残し、systemic/general benefit line は related_reading から外す。"
+    },
+    {
+      "sourceId": "uk_gov_disability_employment",
+      "sourceName": "UK GOV Disability Employment Guidance",
+      "count": 1,
+      "fieldReviewCount": 0,
+      "unresolvedFieldCaseCount": 0,
+      "unresolvedFieldCaseIds": [],
+      "impactCaseCount": 1,
+      "impactCaseTitles": [
+        "個別調整の対話と見直し"
+      ],
+      "priorityScore": 11,
+      "actionType": "keep_adjustment_examples_only",
+      "why": "administrative flow と eligibility 説明が practical lane を汚しやすい。",
+      "suggestedAction": "adjustment example 以外の apply / claim / eligibility line は出さない。"
+    }
+  ],
+  "founderBoundary": [],
+  "phaseGate": {
+    "status": "evaluation_ready",
+    "recommendation": "Step 4 は cleanup 無限ループに入らず、以後は representative case と実ケース評価を主軸に運用する。",
+    "checks": [
+      {
+        "key": "representative_cases_green",
+        "label": "representative cases are all passing",
+        "passed": true,
+        "actual": 0,
+        "target": 0
+      },
+      {
+        "key": "artifact_audits_green",
+        "label": "artifact audits are all passing",
+        "passed": true,
+        "actual": 0,
+        "target": 0
+      },
+      {
+        "key": "related_reading_under_target",
+        "label": "related_reading count is below the cleanup target",
+        "passed": true,
+        "actual": 46,
+        "target": 80
+      },
+      {
+        "key": "top_hotspot_under_target",
+        "label": "top hotspot source is below the concentration target",
+        "passed": true,
+        "actual": 15,
+        "target": 30
+      },
+      {
+        "key": "duplicates_cleared",
+        "label": "same-source duplicate statements are cleared",
+        "passed": true,
+        "actual": 0,
+        "target": 0
+      },
+      {
+        "key": "founder_boundary_clear",
+        "label": "founder boundary is clear",
+        "passed": true,
+        "actual": 0,
+        "target": 0
+      }
+    ],
+    "thresholds": {
+      "relatedReadingTarget": 80,
+      "maxHotspotTarget": 30,
+      "duplicateSameSourceStatementTarget": 0,
+      "representativeCaseFailuresTarget": 0,
+      "artifactAuditFailuresTarget": 0,
+      "founderBoundaryTarget": 0,
+      "fieldReviewUnresolvedTarget": 0
+    }
+  },
+  "totalTests": 8,
+  "passedTests": 8,
+  "failedTests": 0,
+  "representativeCases": [
+    {
+      "title": "勤務時間と疲労",
+      "status": "passed",
+      "duration_ms": 829,
+      "failure_summary": null
+    },
+    {
+      "title": "手順と認知負荷",
+      "status": "passed",
+      "duration_ms": 190,
+      "failure_summary": null
+    },
+    {
+      "title": "会議とテキスト確認",
+      "status": "passed",
+      "duration_ms": 163,
+      "failure_summary": null
+    },
+    {
+      "title": "個別調整の対話と見直し",
+      "status": "passed",
+      "duration_ms": 266,
+      "failure_summary": null
+    },
+    {
+      "title": "身体負荷と動線",
+      "status": "passed",
+      "duration_ms": 142,
+      "failure_summary": null
+    }
+  ],
+  "audits": [
+    {
+      "title": "removes known AskJAN boilerplate from direct basis claims",
+      "status": "passed",
+      "duration_ms": 3,
+      "failure_summary": null
+    },
+    {
+      "title": "removes known low-value related reading statements",
+      "status": "passed",
+      "duration_ms": 7,
+      "failure_summary": null
+    },
+    {
+      "title": "keeps related reading statements deduped within each source family",
+      "status": "passed",
+      "duration_ms": 1,
+      "failure_summary": null
+    }
+  ]
+}

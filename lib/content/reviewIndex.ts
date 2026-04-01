@@ -57,7 +57,31 @@ export const reviewIndexCategories: ReviewCategory[] = [
       {
         href: '/review/site-architecture',
         title: 'Site Architecture',
-        summary: 'Home / What We Do / Resources / JAC / About の全体地図。',
+        summary: 'Home / What We Do / Resources / 仕事設計 / About の全体地図。',
+        status: 'foundational',
+      },
+      {
+        href: '/review/core-content-status',
+        title: 'Core Content Status',
+        summary: '雇用設計コレクション、仕事設計の見取り図、26カード版、ガイド、配慮設計アシスト、先行5章版アーカイブの現状態と確認順を一枚で見る review。',
+        status: 'foundational',
+      },
+      {
+        href: '/review/work-design-frame-reference',
+        title: '26フレームカード版',
+        summary: '見取り図の次に置く、3/9 時点の card edition を基にした current core の hidden review。',
+        status: 'important',
+      },
+      {
+        href: '/review/work-design-guide',
+        title: '仕事設計ガイド',
+        summary: '利用者向けにはまだ出さない前提で、debug output と内部チェック観点を整理する review。',
+        status: 'important',
+      },
+      {
+        href: '/review/jac-core-product',
+        title: '仕事設計コアプロダクト',
+        summary: '仕事設計プロダクト群を最重要プロダクトとして再編するための agent 編成、surface matrix、critical path。',
         status: 'foundational',
       },
       {
@@ -81,7 +105,7 @@ export const reviewIndexCategories: ReviewCategory[] = [
       {
         href: '/review/enterprise-inbound',
         title: 'Enterprise Inbound',
-        summary: '3月20日以降の企業流入を前提に、入口とJACの位置づけを調整する draft。',
+        summary: '3月20日以降の企業流入を前提に、入口と仕事設計領域の位置づけを調整する draft。',
         status: 'important',
       },
       {
@@ -97,9 +121,15 @@ export const reviewIndexCategories: ReviewCategory[] = [
         status: 'important',
       },
       {
+        href: '/review/employment-design',
+        title: '雇用設計コレクション',
+        summary: 'インフォグラフィック群から、雇用設計の読み方を 1 つの collection として束ね直す hidden review draft。',
+        status: 'important',
+      },
+      {
         href: '/review/jac-positioning',
-        title: 'JAC Positioning',
-        summary: 'JAC を NBL 全体の中でどう位置づけるかの draft。',
+        title: '仕事設計領域の位置づけ',
+        summary: '仕事設計プロダクト群を NBL 全体の中でどう位置づけるかの draft。',
         status: 'important',
       },
       {
@@ -194,9 +224,14 @@ export const reviewReadingOrder = [
   '/review/value-compounding',
   '/review/snapshot-automation',
   '/review/site-architecture',
+  '/review/core-content-status',
+  '/review/work-design-frame-reference',
+  '/review/work-design-guide',
+  '/review/jac-core-product',
   '/review/what-we-do',
   '/review/march20-release',
   '/review/enterprise-inbound',
+  '/review/employment-design',
   '/review/next-horizon',
   '/review/business-structure',
   '/review/design-partner-round',

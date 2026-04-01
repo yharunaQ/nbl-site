@@ -1,0 +1,21 @@
+{
+  "version": "v0",
+  "purpose": "PostgreSQL export contract for the runtime FCHMA /cases lane so the file-backed store can move to PostgreSQL without changing the API contract.",
+  "notes": [
+    "This contract maps runtime case records into the existing FCHMA core SQL tables.",
+    "It uses one default organization seed row because the current runtime store is single-tenant.",
+    "It is intended as a migration and synchronization contract, not as a second product-facing source of truth."
+  ],
+  "tables": [
+    "organizations",
+    "cases",
+    "case_inputs",
+    "case_input_fields",
+    "narrative_units",
+    "health_conditions",
+    "structural_hypotheses",
+    "intervention_hypotheses",
+    "feedback_records",
+    "outcome_measures"
+  ]
+}

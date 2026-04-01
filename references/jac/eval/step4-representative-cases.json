@@ -1,0 +1,151 @@
+[
+  {
+    "id": "schedule-fatigue",
+    "title": "勤務時間と疲労",
+    "consultation": "フルタイム勤務だと疲労が強く、治療スケジュールとの両立が難しい。",
+    "selectedTags": [
+      "勤務時間・勤務日数（フルタイム/短時間）",
+      "疲労・倦怠（慢性疲労含む）",
+      "睡眠リズム・通院/治療スケジュール"
+    ],
+    "followUpAnswers": [
+      "午後になると疲労が強く、通院日の勤務調整が必要",
+      "休憩の取り方と勤務時間の見直しも相談したい"
+    ],
+    "selectedAccommodationTitles": [
+      "通院・治療スケジュールへの配慮",
+      "柔軟な勤務時間設計"
+    ],
+    "enabledSourceIds": [
+      "askjan_website",
+      "australia_jobaccess_guidance",
+      "askearn_employer_guidance",
+      "canada_duty_to_accommodate"
+    ],
+    "expectedPreviewKeywords": ["勤務時間", "休憩", "治療", "柔軟"],
+    "expectedReferenceKeywords": ["勤務時間", "休憩", "治療", "試し方"],
+    "minimumPreviewKeywordHits": 2,
+    "minimumReferenceKeywordHits": 2,
+    "expectedUsageFocus": ["trial", "dialogue"],
+    "expectedPracticeStageLabels": ["試行候補", "対話の軸"]
+  },
+  {
+    "id": "cognitive-instruction",
+    "title": "手順と認知負荷",
+    "consultation": "口頭指示だけだと手順を抜かしやすく、マルチタスクが重なると混乱しやすい。",
+    "selectedTags": [
+      "注意集中の波・認知負荷",
+      "指示・連絡の明確さ",
+      "文章作成・読解"
+    ],
+    "followUpAnswers": [
+      "一度に複数依頼が来ると優先順位づけが難しい",
+      "手順書やチェックリストがあると助かる"
+    ],
+    "selectedAccommodationTitles": [
+      "情報をスローダウンして共有",
+      "手順を明文化する"
+    ],
+    "enabledSourceIds": [
+      "askjan_website",
+      "askearn_employer_guidance",
+      "australia_jobaccess_guidance",
+      "uk_headway_brain_injury_work"
+    ],
+    "expectedPreviewKeywords": ["手順", "認知負荷", "対話", "確認"],
+    "expectedReferenceKeywords": ["手順", "対話", "確認", "試行"],
+    "minimumPreviewKeywordHits": 2,
+    "minimumReferenceKeywordHits": 2,
+    "expectedUsageFocus": ["trial", "dialogue"],
+    "expectedPracticeStageLabels": ["試行候補"]
+  },
+  {
+    "id": "meeting-caption",
+    "title": "会議とテキスト確認",
+    "consultation": "会議や対人調整が重なると負荷が高く、聞き漏らしもあるので字幕やテキストでの確認導線が欲しい。",
+    "selectedTags": [
+      "会議・対話の密度",
+      "字幕・文字起こし・テキスト連絡導線",
+      "聴覚負荷・聞き漏らし"
+    ],
+    "followUpAnswers": [
+      "会議後にテキストで確認できると誤解が減る",
+      "同席人数が多い場面だと負荷が上がる"
+    ],
+    "selectedAccommodationTitles": [
+      "コミュニケーションの非同期化",
+      "テキストで確認できる導線を作る"
+    ],
+    "enabledSourceIds": [
+      "askjan_website",
+      "jeed_reference",
+      "australia_jobaccess_guidance",
+      "uk_headway_brain_injury_work"
+    ],
+    "expectedPreviewKeywords": ["感覚", "環境", "対話", "試行"],
+    "expectedReferenceKeywords": ["会議", "字幕", "テキスト", "確認"],
+    "minimumPreviewKeywordHits": 2,
+    "minimumReferenceKeywordHits": 2,
+    "expectedUsageFocus": ["dialogue", "trial"],
+    "expectedPracticeStageLabels": ["対話の軸", "試行候補"]
+  },
+  {
+    "id": "dialogue-review",
+    "title": "個別調整の対話と見直し",
+    "consultation": "職場との相談をどう進めるか、配慮案を試したあとに何を見直すかも整理したい。",
+    "selectedTags": [
+      "職場との相談",
+      "見直し・再評価",
+      "個別調整"
+    ],
+    "followUpAnswers": [
+      "合意した配慮案が運用で崩れないようにしたい",
+      "試行後のフォローアップ項目も決めたい"
+    ],
+    "selectedAccommodationTitles": [
+      "本人の裁量を保ちながら段階調整",
+      "配慮案のフォローアップを決める"
+    ],
+    "enabledSourceIds": [
+      "canada_duty_to_accommodate",
+      "askearn_employer_guidance",
+      "uk_gov_disability_employment",
+      "eu_reasonable_accommodation"
+    ],
+    "expectedPreviewKeywords": ["対話", "見直し", "確認", "合意"],
+    "expectedReferenceKeywords": ["対話", "見直し", "確認", "合意"],
+    "minimumPreviewKeywordHits": 2,
+    "minimumReferenceKeywordHits": 2,
+    "expectedUsageFocus": ["dialogue", "review"],
+    "expectedPracticeStageLabels": ["対話の軸", "見直しの軸"]
+  },
+  {
+    "id": "physical-access",
+    "title": "身体負荷と動線",
+    "consultation": "立ち仕事と物の持ち運びが続くと痛みが強く、机や椅子、動線も含めて負荷を下げたい。",
+    "selectedTags": [
+      "身体操作・実作業負荷",
+      "姿勢・椅子・机（エルゴノミクス）",
+      "移動・動線・物理アクセス"
+    ],
+    "followUpAnswers": [
+      "長く立ち続ける作業と持ち運びが負担になりやすい",
+      "机や椅子、作業位置の調整も必要"
+    ],
+    "selectedAccommodationTitles": [
+      "エルゴノミクス改善",
+      "作業動線を短くする"
+    ],
+    "enabledSourceIds": [
+      "askjan_website",
+      "jeed_reference",
+      "australia_jobaccess_guidance"
+    ],
+    "expectedPreviewKeywords": ["身体負荷", "物理アクセス", "対話"],
+    "expectedReferenceKeywords": ["姿勢", "椅子", "机", "物理"],
+    "minimumPreviewKeywordHits": 2,
+    "minimumReferenceKeywordHits": 1,
+    "expectedUsageFocus": ["trial", "dialogue"],
+    "expectedPracticeStageLabels": ["試行候補"]
+  }
+]

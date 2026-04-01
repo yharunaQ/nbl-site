@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -18,6 +17,7 @@ import {
   aboutReviewShifts,
   aboutReviewSystemSteps,
 } from '@/lib/content/aboutReview';
+import PageSeo from '@/components/PageSeo';
 import { founderProfile } from '@/lib/content/founderProfile';
 
 const STREAM_LINKS: Record<string, { href: string; cta: string }> = {
@@ -30,14 +30,11 @@ const STREAM_LINKS: Record<string, { href: string; cta: string }> = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_50%,#fef3c7_100%)] text-slate-900">
-      <Head>
-        <title>About | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab が何を目指し、何を目指さず、現場R&Dから参加設計までをどうつないでいるかをまとめたページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/about" />
-      </Head>
+      <PageSeo
+        title="About | Next Being Lab"
+        description="Next Being Lab が何を目指し、何を目指さず、現場R&Dから参加設計までをどうつないでいるかをまとめたページ。"
+        path="/about"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

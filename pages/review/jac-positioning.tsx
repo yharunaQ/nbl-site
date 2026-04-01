@@ -32,7 +32,7 @@ export default function JacPositioningReviewPage() {
   return (
     <div className="min-h-screen bg-[#f5efe6] text-slate-900">
       <Head>
-        <title>Review Draft | NBL JAC Positioning</title>
+        <title>Review Draft | 仕事設計領域の位置づけ</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
 
@@ -50,7 +50,7 @@ export default function JacPositioningReviewPage() {
           sideExtra={
             <div className="space-y-4">
               <div className="rounded-[1.4rem] border border-cyan-200 bg-cyan-50/70 p-4 text-sm leading-7 text-slate-700">
-                JAC 固有ページは、販売や個別相談ではなく `method / product stream` の説明に役割を限定する。
+                旧 `/jac` 系ページは、販売や個別相談ではなく `仕事設計プロダクト群` の説明に役割を限定する。
               </div>
               <ul className="space-y-2 text-sm leading-6 text-slate-700">
                 {jacPositioningHero.signals.map((signal) => (
@@ -64,8 +64,8 @@ export default function JacPositioningReviewPage() {
         <section className="mx-auto max-w-7xl px-6 py-10">
           <ReviewSectionTitle
             eyebrow="Position"
-            title="JAC をどう位置づけるか"
-            description="JAC は NBL の中核だが、NBL 全体そのものではない。方法論 / product stream としての役割を先に明確にする。"
+            title="仕事設計プロダクト群をどう位置づけるか"
+            description="仕事設計プロダクト群は NBL の現在のコアだが、NBL 全体そのものではない。方法論 / product stream としての役割を先に明確にする。"
           />
           <div className="grid gap-5 lg:grid-cols-3">
             {jacPositioningCards.map((card) => (
@@ -81,8 +81,8 @@ export default function JacPositioningReviewPage() {
           <ReviewSectionTitle
             icon={<Boxes size={18} className="text-cyan-700" />}
             eyebrow="Artifacts"
-            title="JAC が残すもの"
-            description="JAC を即答ツールでなく方法論として見せるには、何を artifact として残すかが重要。"
+            title="仕事設計プロダクト群が残すもの"
+            description="即答ツールでなく方法論として見せるには、何を artifact として残すかが重要。"
           />
           <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {jacPositioningArtifacts.map((artifact) => (
@@ -117,8 +117,8 @@ export default function JacPositioningReviewPage() {
           <ReviewSectionTitle
             icon={<Layers3 size={18} className="text-emerald-700" />}
             eyebrow="Surface Split"
-            title="guide / trial / guidebook を混ぜない"
-            description="JAC の入口が複数あるほど、役割を先に分けておかないと責任範囲が曖昧になりやすい。"
+            title="guide / draft / workbook を混ぜない"
+            description="仕事設計プロダクト群の入口が複数あるほど、役割を先に分けておかないと責任範囲が曖昧になりやすい。"
           />
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
             {jacPositioningSurfaces.map((surface) => (
@@ -199,7 +199,7 @@ export default function JacPositioningReviewPage() {
         <CoreStreamFooter
           currentId="methods"
           title="Methods は他の stream とどうつながるか"
-          description="JAC は独立した相談サービスではなく、What We Do、Resources、Vision を支える method stream として読む。"
+          description="仕事設計プロダクト群は独立した相談サービスではなく、What We Do、Resources、Vision を支える現在のコアとして読む。"
         />
       </main>
     </div>

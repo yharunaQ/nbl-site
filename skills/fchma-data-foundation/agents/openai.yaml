@@ -1,0 +1,4 @@
+interface:
+  display_name: "FCHMA Data Foundation"
+  short_description: "Handle original data safely and prepare analysis-ready datasets."
+  default_prompt: "Use $fchma-data-foundation to organize original datasets and analysis-ready data safely."

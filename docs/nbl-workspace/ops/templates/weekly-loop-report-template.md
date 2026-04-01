@@ -8,6 +8,14 @@
 - Knowledge And Method Loop:
 - Next Horizon Loop:
 
+## External Reality Interface
+
+- 
+
+## Partner Discovery Status
+
+- 
+
 ## Artifacts Created
 
 - 
@@ -20,9 +28,21 @@
 
 - 
 
-## Founder Boundary This Week
+## Hold Revival Candidates
+
+- 
+
+## Founder Decision Queue
 
 - no founder action needed
+
+## Founder Reply Format
+
+- no reply needed this week
+
+## AI Autonomous Moves Before Next Review
+
+- 
 
 ## Next 7 Days
 

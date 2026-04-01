@@ -1,7 +1,9 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import { Download } from 'lucide-react';
+import { useRouter } from 'next/router';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useMemo, useState } from 'react';
+import PageSeo from '@/components/PageSeo';
 import { GLM_EVIDENCE, GLM_INTERACTION_MEANINGS } from '@/lib/knowledge/glmInsights';
 import {
   causalTierPriority,
@@ -30,6 +32,8 @@ type GuideProps = {
   claimsGlmCoverage: ClaimsGlmCoverageSnapshot | null;
   commonWorkCopy: Record<string, GuideCommonWorkDesignCopyRow>;
   layerDisposition: Record<string, GuideLayerDispositionRow>;
+  expertInsights: Record<string, string>;
+  debugEnabled: boolean;
 };
 
 type Data2Stats = {
@@ -308,6 +312,7 @@ type GuideCommonWorkDesignCopyRow = {
     | {
         standardized?: string[];
         individualized?: string[];
+        principle?: string;
       };
   disabilityEmploymentConnection?: {
     examples?: string[];
@@ -437,10 +442,10 @@ function toGuideCommonWorkDesignCopyRow(
 ): GuideCommonWorkDesignCopyRow {
   const quickBundle =
     Array.isArray(row.quickBundle)
-      ? limitTextList(row.quickBundle, 3, 60)
+      ? limitTextList(row.quickBundle, 3, 120)
       : {
-          standardized: limitTextList(row.quickBundle?.standardized, 3, 60),
-          individualized: limitTextList(row.quickBundle?.individualized, 2, 60),
+          standardized: limitTextList(row.quickBundle?.standardized, 3, 120),
+          individualized: limitTextList(row.quickBundle?.individualized, 2, 120),
         };
 
   const situationLevels = trimSituationLevels(row.situationLevels);
@@ -451,35 +456,35 @@ function toGuideCommonWorkDesignCopyRow(
 
   const legalGroundingObservation = truncateText(
     row.legalPolicyGuardrail?.grounding?.observation,
-    110,
+    200,
   );
-  const legalGroundingCue = truncateText(row.legalPolicyGuardrail?.grounding?.evidenceCue, 90);
-  const legalSummary = truncateText(row.legalPolicyGuardrail?.summary, 120);
-  const legalChecks = limitTextList(row.legalPolicyGuardrail?.checks, 3, 60);
-  const legalEscalation = truncateText(row.legalPolicyGuardrail?.escalation, 100);
+  const legalGroundingCue = truncateText(row.legalPolicyGuardrail?.grounding?.evidenceCue, 150);
+  const legalSummary = truncateText(row.legalPolicyGuardrail?.summary, 200);
+  const legalChecks = limitTextList(row.legalPolicyGuardrail?.checks, 3, 120);
+  const legalEscalation = truncateText(row.legalPolicyGuardrail?.escalation, 160);
 
   const regionalGroundingObservation = truncateText(
     row.regionalSupportOverlay?.grounding?.observation,
-    110,
+    200,
   );
   const regionalGroundingCue = truncateText(
     row.regionalSupportOverlay?.grounding?.evidenceCue,
-    90,
+    150,
   );
-  const regionalSummary = truncateText(row.regionalSupportOverlay?.summary, 120);
-  const regionalJacRole = limitTextList(row.regionalSupportOverlay?.jacRole, 2, 70);
-  const regionalRole = limitTextList(row.regionalSupportOverlay?.regionalRole, 2, 70);
-  const regionalReturnPath = truncateText(row.regionalSupportOverlay?.returnPath, 100);
+  const regionalSummary = truncateText(row.regionalSupportOverlay?.summary, 200);
+  const regionalJacRole = limitTextList(row.regionalSupportOverlay?.jacRole, 2, 120);
+  const regionalRole = limitTextList(row.regionalSupportOverlay?.regionalRole, 2, 120);
+  const regionalReturnPath = truncateText(row.regionalSupportOverlay?.returnPath, 160);
 
-  const examples = limitTextList(row.disabilityEmploymentConnection?.examples, 2, 70);
+  const examples = limitTextList(row.disabilityEmploymentConnection?.examples, 2, 120);
 
   const result: GuideCommonWorkDesignCopyRow = {};
 
   const title = truncateText(row.title, 80);
   if (title) result.title = title;
-  const situation = truncateText(row.situation, 140);
+  const situation = truncateText(row.situation, 200);
   if (situation) result.situation = situation;
-  const selectionBoundary = truncateText(row.selectionBoundary, 120);
+  const selectionBoundary = truncateText(row.selectionBoundary, 300);
   if (selectionBoundary) result.selectionBoundary = selectionBoundary;
 
   if (legalGroundingObservation || legalGroundingCue || legalSummary || legalChecks.length > 0 || legalEscalation) {
@@ -520,12 +525,17 @@ function toGuideCommonWorkDesignCopyRow(
     };
   }
 
+  const principle = !Array.isArray(row.quickBundle)
+    ? truncateText(row.quickBundle?.principle, 200)
+    : '';
+
   if (Array.isArray(quickBundle)) {
     if (quickBundle.length > 0) result.quickBundle = quickBundle;
-  } else if (quickBundle.standardized.length > 0 || quickBundle.individualized.length > 0) {
+  } else if (quickBundle.standardized.length > 0 || quickBundle.individualized.length > 0 || principle) {
     result.quickBundle = {
       standardized: quickBundle.standardized.length > 0 ? quickBundle.standardized : undefined,
       individualized: quickBundle.individualized.length > 0 ? quickBundle.individualized : undefined,
+      principle: principle || undefined,
     };
   }
 
@@ -654,13 +664,13 @@ const FOCUS_OPTIONS: Array<{ key: FocusKey; label: string }> = [
 ];
 
 const CONTEXT_CHECK_LABEL: Record<ContextCheckKey, string> = {
-  person: 'person 本人状態',
-  job: 'job 業務要件',
-  environment: 'environment 環境条件',
-  support: 'support 支援履歴',
-  time: 'time 時間変動',
-  institution: 'institution 法域/制度',
-  evidence: 'evidence 根拠質',
+  person: '本人の状態',
+  job: '業務の要件',
+  environment: '環境の条件',
+  support: '支援の経過',
+  time: '時間・変動',
+  institution: '制度・法令',
+  evidence: '根拠の質',
 };
 
 const CONTEXT_CHECK_HINT: Record<ContextCheckKey, string> = {
@@ -4659,9 +4669,9 @@ const situationLevelOrder: Record<SituationSeverityTone, number> = {
 };
 
 const modeLabel: Record<PatternCard['mode'], string> = {
-  standard: 'STANDARD',
-  conditional_only: 'CONDITIONAL',
-  questions_first: 'QUESTIONS FIRST',
+  standard: '標準適用',
+  conditional_only: '条件確認が必要',
+  questions_first: '状況確認から始める',
 };
 
 const CAUSAL_TIER_STYLE: Record<CausalTier, string> = {
@@ -4765,9 +4775,19 @@ export default function JacGuidebookPage({
   claimsGlmCoverage,
   commonWorkCopy,
   layerDisposition,
+  expertInsights,
+  debugEnabled,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [focus, setFocus] = useState<FocusKey>('all');
   const [tagNavigator, setTagNavigator] = useState<string>('all');
+  const router = useRouter();
+  const showDebug = debugEnabled;
+  const isReviewRoute = router.pathname.startsWith('/review/');
+  const frameReferenceHref = isReviewRoute ? '/review/work-design-frame-reference' : '/jac/frames';
+  const foundationsHref = '/jac-foundations';
+  const guideBaseHref = router.pathname;
+  const publicGuideHref = guideBaseHref;
+  const debugHref = `${guideBaseHref}?debug=1`;
 
   const orderedTagNavigatorOptions = useMemo(() => {
     const scored = TAG_NAVIGATOR_OPTIONS.map((option) => {
@@ -4929,177 +4949,85 @@ export default function JacGuidebookPage({
 
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900 font-sans">
-      <Head>
-        <title>JACガイド | 困りごとから配慮設計へ</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="JACのGLM・諸外国Web・記述データを統合した、困りごと起点の合理的配慮ガイド。"
-        />
-      </Head>
+      <PageSeo
+        title="仕事設計ガイド | 困りごとから配慮設計へ"
+        description="仕事設計のGLM・諸外国Web・記述データを統合した、困りごと起点の合理的配慮ガイド。"
+        path="/jac/guide"
+      />
 
       <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-3">
           <div>
             <p className="text-xs font-semibold text-gray-500">Next Being Lab</p>
-            <h1 className="text-lg md:text-2xl font-bold text-gray-900">JACガイド（導入版）</h1>
+            <h1 className="text-lg md:text-2xl font-bold text-gray-900">仕事設計ガイド</h1>
           </div>
           <div className="flex items-center gap-2">
-            <Link
-              href="/jac/guidebook"
-              className="rounded-full border border-cyan-200 px-4 py-2 text-xs font-semibold text-cyan-800 hover:bg-cyan-50"
+            <a
+              href="/downloads/jac-26-card-guidebook.html"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800 hover:bg-teal-100"
             >
-              26フレーム実装ガイドブック
-            </Link>
+              <Download size={14} />
+              PDF保存版
+            </a>
             <Link
-              href="/jac"
-              className="rounded-full border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50"
+              href={frameReferenceHref}
+              className="rounded-full border border-cyan-200 px-4 py-2 text-sm font-semibold text-cyan-800 hover:bg-cyan-50"
             >
-              JAC個別相談（条件確認あり）へ
+              26カード版
             </Link>
+            {showDebug && (
+              <Link
+                href={publicGuideHref}
+                className="rounded-full border border-amber-200 px-4 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-50"
+              >
+                通常表示
+              </Link>
+            )}
             <Link
               href="/"
-              className="rounded-full bg-gray-900 px-4 py-2 text-xs font-semibold text-white hover:bg-black"
+              className="rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-black"
             >
               トップへ戻る
             </Link>
           </div>
         </div>
+        <div className="mx-auto max-w-6xl px-6 pb-4 flex flex-wrap items-center gap-2 text-sm font-semibold text-gray-600">
+          <Link
+            href={foundationsHref}
+            className="rounded-full border border-gray-200 bg-white px-3 py-1.5 transition hover:border-gray-300 hover:text-gray-900"
+          >
+            見取り図
+          </Link>
+          <span>→</span>
+          <Link
+            href={frameReferenceHref}
+            className="rounded-full border border-gray-200 bg-white px-3 py-1.5 transition hover:border-gray-300 hover:text-gray-900"
+          >
+            26カード版
+          </Link>
+          <span className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-indigo-900">
+            仕事設計ガイド
+          </span>
+        </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 py-10 space-y-8">
-        <section className="rounded-3xl border border-indigo-100 bg-gradient-to-br from-white via-indigo-50 to-cyan-50 p-6 md:p-8">
-          <p className="inline-flex rounded-full bg-indigo-100 px-3 py-1 text-[11px] font-bold text-indigo-700">
-            Difficulty-to-Accommodation Atlas
-          </p>
-          <h2 className="mt-3 text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">
-            困りごとを、条件つきで解ける知識へ。
-          </h2>
-          <p className="mt-3 text-sm md:text-base text-gray-700 leading-relaxed">
-            これは一般的な配慮一覧ではありません。JACが統合した
-            <span className="font-semibold"> GLM・諸外国Web・国内記述データ </span>
-            を、過一般化を避ける形で再編した導入ガイドです。各カードは「すぐ読める要約」と「深い根拠」を同時に持ちます。
-          </p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl border border-white/80 bg-white p-3">
-              <p className="text-[11px] text-gray-500">Claims</p>
-              <p className="text-xl font-bold text-gray-900">{manifest?.claimCount || '-'}</p>
-            </div>
-            <div className="rounded-xl border border-white/80 bg-white p-3">
-              <p className="text-[11px] text-gray-500">Sources</p>
-              <p className="text-xl font-bold text-gray-900">{sourceCount || '-'}</p>
-            </div>
-            <div className="rounded-xl border border-white/80 bg-white p-3">
-              <p className="text-[11px] text-gray-500">Countries/Regions</p>
-              <p className="text-xl font-bold text-gray-900">{countryCount || '-'}</p>
-            </div>
-            <div className="rounded-xl border border-white/80 bg-white p-3">
-              <p className="text-[11px] text-gray-500">Specific-case Evidence</p>
-              <p className="text-xl font-bold text-gray-900">{specificCaseCount || '-'}</p>
-            </div>
+      <main className="mx-auto max-w-6xl px-6 py-8 space-y-6">
+        {showDebug ? (
+          <div className="rounded-xl border border-amber-200 bg-amber-50 p-3">
+            <p className="text-xs font-semibold text-amber-900">debug view</p>
+            <p className="mt-1 text-xs text-amber-800">
+              Claims {manifest?.claimCount || '-'} / Sources {sourceCount || '-'} / Countries{' '}
+              {countryCount || '-'} / data2 entries {data2Stats?.entryCount || '-'} / generatedAt{' '}
+              {manifest?.generatedAt ? new Date(manifest.generatedAt).toLocaleString('ja-JP') : 'n/a'}
+            </p>
           </div>
-          <p className="mt-3 text-xs text-gray-500">
-            high-risk claims: {highRiskCount} / generatedAt:{' '}
-            {manifest?.generatedAt ? new Date(manifest.generatedAt).toLocaleString('ja-JP') : 'n/a'}
-          </p>
-        </section>
+        ) : null}
 
-        <section className="rounded-3xl border border-cyan-200 bg-cyan-50 p-6">
-          <h3 className="text-lg font-bold text-cyan-900">入口体験: なぜJACガイドが効くのか</h3>
-          <p className="mt-2 text-sm text-cyan-900 leading-relaxed">
-            JACガイドは「一般論を読むページ」ではなく、data2とGLMの知見を使って
-            <span className="font-semibold"> 条件つきで再現可能な配慮設計 </span>
-            へつなげる入口です。ここで全体像を掴み、必要なケースだけ個別相談へ進みます。
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-xs font-semibold text-cyan-900">1) 困りごとから入る</p>
-              <p className="mt-1 text-xs text-cyan-800">
-                タグ導線で近いパターンを即時表示。最初に読むカードを迷わず決められます。
-              </p>
-            </div>
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-xs font-semibold text-cyan-900">2) 根拠と失敗リスクを見る</p>
-              <p className="mt-1 text-xs text-cyan-800">
-                各カードで、配慮の運用条件と逆効果リスクを同時に確認できます。
-              </p>
-            </div>
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-xs font-semibold text-cyan-900">3) 条件不足だけ個別相談へ</p>
-              <p className="mt-1 text-xs text-cyan-800">
-                person/job/environment等が不足しているときだけ、JAC個別相談で深掘りします。
-              </p>
-            </div>
-          </div>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-[11px] text-cyan-700">data2 entries</p>
-              <p className="text-xl font-bold text-cyan-900">{data2Stats?.entryCount || '-'}</p>
-            </div>
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-[11px] text-cyan-700">disability types</p>
-              <p className="text-xl font-bold text-cyan-900">
-                {data2Stats?.disabilityCount || '-'}
-              </p>
-            </div>
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-[11px] text-cyan-700">issue patterns</p>
-              <p className="text-xl font-bold text-cyan-900">{data2Stats?.issueCount || '-'}</p>
-            </div>
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-[11px] text-cyan-700">support patterns</p>
-              <p className="text-xl font-bold text-cyan-900">{data2Stats?.supportCount || '-'}</p>
-            </div>
-            <div className="rounded-xl border border-cyan-100 bg-white p-3">
-              <p className="text-[11px] text-cyan-700">narrative signals</p>
-              <p className="text-xl font-bold text-cyan-900">{data2Stats?.narrativeCount || '-'}</p>
-            </div>
-          </div>
-          <p className="mt-3 text-[11px] text-cyan-800">
-            data2 generatedAt: {data2GeneratedAt} /
-            不足条件が残る場合のみ、下のボタンから個別相談へ進んでください。
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Link
-              href="/jac"
-              className="rounded-full bg-cyan-700 px-4 py-2 text-xs font-bold text-white hover:bg-cyan-800"
-            >
-              条件を持ってJAC個別相談へ進む
-            </Link>
-            <Link
-              href="/jac/guidebook"
-              className="rounded-full border border-cyan-300 bg-white px-4 py-2 text-xs font-bold text-cyan-900 hover:bg-cyan-100"
-            >
-              26フレーム実装ガイドブックを見る
-            </Link>
-            <a
-              href="#guide-usage-flow"
-              className="rounded-full border border-cyan-300 bg-white px-4 py-2 text-xs font-bold text-cyan-900 hover:bg-cyan-100"
-            >
-              使い方を先に確認する
-            </a>
-          </div>
-        </section>
-
-        <section id="guide-usage-flow" className="rounded-3xl border border-gray-200 bg-white p-6">
-          <h3 className="text-lg font-bold text-gray-900">JACの相互作用ロジック（4レンズ）</h3>
-          <div className="mt-3 grid gap-2">
-            {GLM_INTERACTION_MEANINGS.map((item, index) => (
-              <p key={item} className="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-700">
-                <span className="font-semibold text-gray-900">{index + 1}.</span> {item}
-              </p>
-            ))}
-          </div>
-        </section>
-
-        <section className="rounded-3xl border border-gray-200 bg-white p-6">
-          <h3 className="text-lg font-bold text-gray-900">よくある困りごと → 配慮パターン</h3>
-          <p className="mt-2 text-sm text-gray-600">
-            まずは困りごとタグだけで探せるようにしています。テーマ絞り込みは任意の詳細設定です。
-          </p>
-          {patternCoverage && (
-            <div className="mt-4 rounded-xl border border-cyan-200 bg-cyan-50 p-3">
+        <section className="rounded-3xl border border-gray-200 bg-white p-5">
+          {showDebug && patternCoverage && (
+            <div className="mb-4 rounded-xl border border-cyan-200 bg-cyan-50 p-3">
               <p className="text-xs font-semibold text-cyan-900">
                 {PATTERN_CARDS.length}カードで拾えている data2課題:{' '}
                 {patternCoverage.coveredIssueRows.toLocaleString()} /{' '}
@@ -5115,155 +5043,50 @@ export default function JacGuidebookPage({
                     {(claimsGlmCoverage.directEvidenceCoverageRate * 100).toFixed(1)}%)
                   </p>
                   <p className="mt-1 text-[11px] text-cyan-800">
-                    claims被覆（件数, 高リスク/ノイズ除外）:{' '}
-                    {claimsGlmCoverage.claimsCovered.toLocaleString()} /{' '}
-                    {claimsGlmCoverage.claimsEligible.toLocaleString()} / 全体{' '}
-                    {claimsGlmCoverage.claimsAll.toLocaleString()} (
-                    {(claimsGlmCoverage.claimsCoverageRate * 100).toFixed(1)}%)
-                  </p>
-                  {claimsGlmCoverage.claimsCoverageBySourceTop.length > 0 && (
-                    <p className="mt-1 text-[11px] text-cyan-800">
-                      source別claims被覆（有効件数上位）:{' '}
-                      {claimsGlmCoverage.claimsCoverageBySourceTop
-                        .map(
-                          (item) =>
-                            `${item.sourceId} ${item.coveredClaims}/${item.eligibleClaims} (${(
-                              item.coverageRate * 100
-                            ).toFixed(0)}%)`,
-                        )
-                        .join(' / ')}
-                    </p>
-                  )}
-                  {claimsGlmCoverage.claimsCoverageByLane.length > 0 && (
-                    <p className="mt-1 text-[11px] text-cyan-800">
-                      レーン別claims被覆:{' '}
-                      {claimsGlmCoverage.claimsCoverageByLane
-                        .map(
-                          (item) =>
-                            `${EVIDENCE_LANE_LABEL[item.lane] || item.lane} ${item.coveredClaims}/${
-                              item.eligibleClaims
-                            } (${(item.coverageRate * 100).toFixed(0)}%)`,
-                        )
-                        .join(' / ')}
-                    </p>
-                  )}
-                  <p className="mt-1 text-[11px] text-cyan-800">
-                    GLM全体（NanbyoGLM有意関係）:{' '}
-                    {claimsGlmCoverage.glmWorkbookSignificantRelations.toLocaleString()}関係 /{' '}
-                    {claimsGlmCoverage.glmWorkbookPredictors.toLocaleString()}予測子
-                  </p>
-                  <p className="mt-1 text-[11px] text-cyan-800">
                     GLM全量カード適合（relation単位）: {claimsGlmCoverage.glmFullCoveredRelations} /{' '}
                     {claimsGlmCoverage.glmFullTotalRelations} (
                     {(claimsGlmCoverage.glmFullCoverageRate * 100).toFixed(1)}%)
                   </p>
                   <p className="mt-1 text-[11px] text-cyan-800">
-                    内訳: 語彙直結 {claimsGlmCoverage.glmFullLexicalCoveredRelations}件 /
-                    outcome分類ブリッジ {claimsGlmCoverage.glmFullBucketBridgedRelations}件
-                  </p>
-                  <p className="mt-1 text-[11px] text-cyan-800">
-                    legacy導線（実装要約セット）: {claimsGlmCoverage.glmLegacyCovered} /{' '}
-                    {claimsGlmCoverage.glmLegacyTotal} (
-                    {(claimsGlmCoverage.glmLegacyCoverageRate * 100).toFixed(1)}%)
-                  </p>
-                  <p className="mt-1 text-[11px] text-cyan-800">
                     因果Tier分布: A {causalTierCounts.A} / B {causalTierCounts.B} / C{' '}
                     {causalTierCounts.C}
                   </p>
-                  <p className="mt-1 text-[11px] text-cyan-800">
-                    設計Tier整合: {tierAlignmentSnapshot.matched} / {tierAlignmentSnapshot.total} (
-                    {(tierAlignmentSnapshot.rate * 100).toFixed(1)}%)
-                  </p>
                 </>
-              )}
-              {patternCoverage.topUncoveredIssues.length > 0 && (
-                <p className="mt-1 text-[11px] text-cyan-800">
-                  未カバー上位:{' '}
-                  {patternCoverage.topUncoveredIssues
-                    .map((item) => item.issue)
-                    .slice(0, 3)
-                    .join(' / ')}
-                </p>
               )}
             </div>
           )}
 
-          <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3">
-            <p className="text-xs font-semibold text-emerald-900">
-              26カードで何ができて、何を個別相談で扱うか
-            </p>
-            <p className="mt-1 text-[11px] text-emerald-900">
-              配慮・支援は個別性が高く見えますが、職場で反復する「詰まり方の型」は26カードでかなり捉えられます。ここで全体像を掴み、
-              最終調整は個別相談で行うのが前提です。
-            </p>
-            <div className="mt-2 grid gap-2 md:grid-cols-2">
-              <div className="rounded-md border border-emerald-200 bg-white p-2">
-                <p className="text-[11px] font-semibold text-emerald-900">
-                  26カードで扱う範囲（型）
-                </p>
-                <ul className="mt-1 list-disc pl-4 space-y-0.5 text-[11px] text-emerald-800">
-                  <li>会議・通院・疲労・復職・開示など、再発しやすい困りごとの構造</li>
-                  <li>失敗しやすい運用パターンと、初手の配慮パッケージ</li>
-                </ul>
-              </div>
-              <div className="rounded-md border border-emerald-200 bg-white p-2">
-                <p className="text-[11px] font-semibold text-emerald-900">
-                  個別相談で扱う範囲（最終調整）
-                </p>
-                <ul className="mt-1 list-disc pl-4 space-y-0.5 text-[11px] text-emerald-800">
-                  <li>同じカードでも、悪化トリガー・職務要件・法域で変わる具体条件</li>
-                  <li>複数特性の重なり、開示範囲、復職段階、制度・契約との整合</li>
-                </ul>
-              </div>
-            </div>
-            <p className="mt-2 text-[11px] text-emerald-800">
-              例:
-              「体調変動」でも、通院翌日の副作用中心か、睡眠・気圧中心かで打ち手は変わります。ここはJAC個別相談で詰めます。
-            </p>
+          <div className="flex flex-wrap gap-2">
+            {orderedTagNavigatorOptions.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setTagNavigator(item.id)}
+                className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${
+                  tagNavigator === item.id
+                    ? 'border-gray-900 bg-gray-900 text-white'
+                    : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
-
-          <div className="mt-4 rounded-xl border border-indigo-100 bg-indigo-50 p-3">
-            <p className="text-xs font-semibold text-indigo-900">困りごとタグで探す（主導線）</p>
-            <p className="mt-1 text-xs text-indigo-800">
-              1ステップで使える入口です。タグを選ぶと、関連しやすいパターンを優先表示します。
-            </p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {orderedTagNavigatorOptions.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setTagNavigator(item.id)}
-                  className={`rounded-full border px-3 py-1 text-[11px] font-semibold transition-colors ${
-                    tagNavigator === item.id
-                      ? 'border-indigo-700 bg-indigo-700 text-white'
-                      : 'border-indigo-200 bg-white text-indigo-800 hover:bg-indigo-100'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-            <p className="mt-2 text-[11px] text-indigo-900">
-              選択中: <span className="font-bold">{activeTagNavigator.label}</span> / 該当カード:{' '}
-              <span className="font-bold">{visibleCards.length}</span>件
-            </p>
-            <p className="mt-1 text-[11px] text-indigo-700">{activeTagNavigator.note}</p>
-          </div>
+          {activeTagNavigator.id !== 'all' && (
+            <p className="mt-3 text-sm text-gray-600">{activeTagNavigator.note}</p>
+          )}
 
           <details className="mt-3 rounded-xl border border-gray-200 bg-gray-50 p-3">
-            <summary className="cursor-pointer text-xs font-semibold text-gray-700">
-              詳細テーマでさらに絞る（任意）
+            <summary className="cursor-pointer text-sm font-semibold text-gray-700">
+              テーマで絞る（任意）
             </summary>
-            <p className="mt-2 text-[11px] text-gray-600">
-              この設定は上級者向けです。通常は上のタグ導線だけで利用できます。
-            </p>
             <div className="mt-2 flex flex-wrap gap-2">
               {FOCUS_OPTIONS.map((option) => (
                 <button
                   key={option.key}
                   type="button"
                   onClick={() => setFocus(option.key)}
-                  className={`rounded-full px-3 py-1.5 text-xs font-semibold border transition-colors ${
+                  className={`rounded-full px-3 py-1.5 text-sm font-semibold border transition-colors ${
                     focus === option.key
                       ? 'bg-gray-900 text-white border-gray-900'
                       : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
@@ -5321,10 +5144,14 @@ export default function JacGuidebookPage({
                           const orderedSituationLevels = [...displaySituationLevels].sort(
                             (a, b) => situationLevelOrder[a.tone] - situationLevelOrder[b.tone],
                           );
+                          const expertInsight = expertInsights?.[card.id] || '';
                           const rewrittenQuickBundleRaw = rewritten?.quickBundle;
                           const rewrittenQuickBundle = Array.isArray(rewrittenQuickBundleRaw)
                             ? { standardized: rewrittenQuickBundleRaw, individualized: [] }
                             : rewrittenQuickBundleRaw;
+                          const quickBundlePrinciple = !Array.isArray(rewrittenQuickBundle)
+                            ? String(rewrittenQuickBundle?.principle || '').trim()
+                            : '';
                           const standardizedBundle = Array.isArray(
                             rewrittenQuickBundle?.standardized,
                           )
@@ -5453,401 +5280,199 @@ export default function JacGuidebookPage({
                             '困りごと全体像と障害facetの近さで抽出';
                           return (
                             <>
-                              <div className="flex flex-wrap items-center justify-between gap-2">
-                                <h4 className="text-base md:text-lg font-bold text-gray-900">
-                                  {displayTitle}
-                                </h4>
-                                <div className="flex items-center gap-1.5">
-                                  <span
-                                    className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-bold ${
-                                      CARD_LAYER_STYLE[CARD_LAYER_MAP[card.id] || 'operation']
-                                    }`}
-                                  >
+                              <div className="flex flex-wrap items-start justify-between gap-2">
+                                <div>
+                                  <h4 className="text-base md:text-lg font-bold text-gray-900">
+                                    {displayTitle}
+                                  </h4>
+                                  <p className="mt-1 text-sm text-gray-500">
                                     {CARD_LAYER_LABEL[CARD_LAYER_MAP[card.id] || 'operation']}
-                                  </span>
-                                  <span
-                                    className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-bold ${modeStyle[card.mode]}`}
-                                  >
-                                    {modeLabel[card.mode]}
-                                  </span>
+                                  </p>
                                 </div>
                               </div>
-                              <p className="mt-2 text-sm text-gray-700">{displaySituation}</p>
-                              {displaySelectionBoundary && (
-                                <p className="mt-2 rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-900">
-                                  選び分け目安: {displaySelectionBoundary}
+                              <p className="mt-2 text-sm text-gray-700 leading-relaxed">
+                                {displaySituation}
+                                {displaySelectionBoundary ? (
+                                  <span className="block mt-1 text-xs text-gray-500">{displaySelectionBoundary}</span>
+                                ) : null}
+                              </p>
+                              {expertInsight && (
+                                <p className="mt-2 text-sm text-slate-600 italic leading-relaxed border-l-2 border-slate-300 pl-3">
+                                  {expertInsight}
                                 </p>
-                              )}
-                              {orderedSituationLevels.length > 0 && (
-                                <div className="mt-2 rounded-md border border-slate-200 bg-white px-2 py-2">
-                                  <p className="text-[11px] font-semibold text-slate-900">
-                                    状況レベル（🟢 → 💣）
-                                  </p>
-                                  <p className="mt-0.5 text-[10px] text-slate-600">
-                                    診断の重さではなく、仕事がどれだけ詰まり、運用で吸収できているかで見る。
-                                  </p>
-                                  <div className="mt-2 space-y-1.5">
-                                    {orderedSituationLevels.map((level) => (
-                                      <div
-                                        key={`${card.id}-${level.icon}-${level.label}`}
-                                        className="flex items-start gap-2"
-                                      >
-                                        <span
-                                          className={`inline-flex shrink-0 items-center rounded-md border px-2 py-0.5 text-[10px] font-bold ${
-                                            situationLevelStyle[level.tone]
-                                          }`}
-                                        >
-                                          {level.icon} {level.label}
-                                        </span>
-                                        <p className="text-[11px] text-slate-700">
-                                          {level.description}
-                                        </p>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
                               )}
                               {(standardizedBundle.length > 0 ||
                                 individualizedBundle.length > 0) && (
-                                <div className="mt-2 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-2">
-                                  <p className="text-[11px] font-semibold text-emerald-900">
-                                    実装ポイント（共通設計 / 個別調整）
+                                <div className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2.5">
+                                  <p className="text-xs font-semibold text-emerald-900">
+                                    最初の取組みポイント
                                   </p>
                                   {standardizedBundle.length > 0 && (
-                                    <p className="mt-0.5 text-[11px] text-emerald-900">
-                                      共通設計: {standardizedBundle.slice(0, 3).join(' / ')}
-                                    </p>
+                                    <ul className="mt-2 space-y-1.5">
+                                      {standardizedBundle.slice(0, 3).map((item) => (
+                                        <li key={item} className="flex items-start gap-2 text-sm text-emerald-900">
+                                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                                          {item}
+                                        </li>
+                                      ))}
+                                    </ul>
                                   )}
                                   {individualizedBundle.length > 0 && (
-                                    <p className="mt-0.5 text-[11px] text-emerald-800">
-                                      個別調整: {individualizedBundle.slice(0, 2).join(' / ')}
+                                    <ul className="mt-2 space-y-1.5 border-t border-emerald-200 pt-2">
+                                      {individualizedBundle.slice(0, 2).map((item) => (
+                                        <li key={item} className="flex items-start gap-2 text-sm text-emerald-800">
+                                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                                          {item}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                  {quickBundlePrinciple && (
+                                    <p className="mt-2 text-xs text-emerald-700 border-t border-emerald-200 pt-2 leading-relaxed">
+                                      {quickBundlePrinciple}
                                     </p>
                                   )}
                                 </div>
                               )}
                               {connectionExamples.length > 0 && (
-                                <p className="mt-2 rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-[11px] text-sky-900">
-                                  障害者雇用との接続（多様性の例）: {connectionExamples.join(' / ')}
+                                <p className="mt-2 text-xs text-gray-500 leading-relaxed">
+                                  {connectionExamples.join(' / ')}
                                 </p>
                               )}
-                              {(legalGroundingObservation ||
-                                legalGroundingCue ||
-                                legalSummary ||
-                                legalChecks.length > 0 ||
-                                legalEscalation) && (
-                                <div className="mt-2 rounded-md border border-orange-200 bg-orange-50 px-2 py-2">
-                                  <p className="text-[11px] font-semibold text-orange-900">
-                                    適用条件（法政策）
-                                  </p>
-                                  {legalDecision === 'keep_in_card' ? (
-                                    <>
-                                      {legalGroundingObservation && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          根拠: {legalGroundingObservation}
-                                        </p>
-                                      )}
-                                      {legalGroundingCue && (
-                                        <p className="mt-0.5 text-[11px] text-orange-800">
-                                          参照範囲: {legalGroundingCue}
-                                        </p>
-                                      )}
-                                      {legalSummary && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          見落としやすい制約: {legalSummary}
-                                        </p>
-                                      )}
-                                      {legalKeepInCard.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          このカードで残す判断線: {legalKeepInCard.join(' / ')}
-                                        </p>
-                                      )}
-                                      {legalChecks.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          実施前に固定: {legalChecks.slice(0, 3).join(' / ')}
-                                        </p>
-                                      )}
-                                      {legalEscalation && (
-                                        <p className="mt-0.5 text-[11px] text-orange-800">
-                                          迷う時の戻し先: {legalEscalation}
-                                        </p>
-                                      )}
-                                    </>
-                                  ) : (
-                                    <>
-                                      {legalGroundingObservation && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          根拠: {legalGroundingObservation}
-                                        </p>
-                                      )}
-                                      {legalGroundingCue && (
-                                        <p className="mt-0.5 text-[11px] text-orange-800">
-                                          参照範囲: {legalGroundingCue}
-                                        </p>
-                                      )}
-                                      {legalKeepInCard.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          このカードで残す判断線: {legalKeepInCard.join(' / ')}
-                                        </p>
-                                      )}
-                                      {legalSummary && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          見落としやすい制約: {legalSummary}
-                                        </p>
-                                      )}
-                                      {legalChecks.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-orange-900">
-                                          実施前に固定: {legalChecks.slice(0, 3).join(' / ')}
-                                        </p>
-                                      )}
-                                      <p className="mt-0.5 text-[11px] text-orange-800">
-                                        詳細の所在: {LAYER_DISPOSITION_LABEL[legalDecision]}
-                                        {legalDetailTarget ? ` (${legalDetailTarget})` : ''}
-                                      </p>
-                                      {legalEscalation && (
-                                        <p className="mt-0.5 text-[11px] text-orange-800">
-                                          迷う時の戻し先: {legalEscalation}
-                                        </p>
-                                      )}
-                                    </>
-                                  )}
-                                </div>
-                              )}
-                              {(regionalGroundingObservation ||
-                                regionalGroundingCue ||
-                                regionalSummary ||
-                                regionalJacRole.length > 0 ||
-                                regionalRole.length > 0 ||
-                                regionalReturnPath) && (
-                                <div className="mt-2 rounded-md border border-teal-200 bg-teal-50 px-2 py-2">
-                                  <p className="text-[11px] font-semibold text-teal-900">
-                                    実施条件（地域支援）
-                                  </p>
-                                  {regionalDecision === 'keep_in_card' ? (
-                                    <>
-                                      {regionalGroundingObservation && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          根拠: {regionalGroundingObservation}
-                                        </p>
-                                      )}
-                                      {regionalGroundingCue && (
-                                        <p className="mt-0.5 text-[11px] text-teal-800">
-                                          参照範囲: {regionalGroundingCue}
-                                        </p>
-                                      )}
-                                      {regionalSummary && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          企業単独では足りない場面: {regionalSummary}
-                                        </p>
-                                      )}
-                                      {regionalKeepInCard.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          このカードで残す判断線: {regionalKeepInCard.join(' / ')}
-                                        </p>
-                                      )}
-                                      {regionalJacRole.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          JAC側で先に固定: {regionalJacRole.slice(0, 2).join(' / ')}
-                                        </p>
-                                      )}
-                                      {regionalRole.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-teal-800">
-                                          外部支援で支える点: {regionalRole.slice(0, 2).join(' / ')}
-                                        </p>
-                                      )}
-                                      {regionalReturnPath && (
-                                        <p className="mt-0.5 text-[11px] text-teal-800">
-                                          止まった時の戻し先: {regionalReturnPath}
-                                        </p>
-                                      )}
-                                    </>
-                                  ) : (
-                                    <>
-                                      {regionalGroundingObservation && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          根拠: {regionalGroundingObservation}
-                                        </p>
-                                      )}
-                                      {regionalGroundingCue && (
-                                        <p className="mt-0.5 text-[11px] text-teal-800">
-                                          参照範囲: {regionalGroundingCue}
-                                        </p>
-                                      )}
-                                      {regionalKeepInCard.length > 0 && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          このカードで残す判断線: {regionalKeepInCard.join(' / ')}
-                                        </p>
-                                      )}
-                                      {regionalSummary && (
-                                        <p className="mt-0.5 text-[11px] text-teal-900">
-                                          企業単独では足りない場面: {regionalSummary}
-                                        </p>
-                                      )}
-                                      <p className="mt-0.5 text-[11px] text-teal-800">
-                                        詳細の所在: {LAYER_DISPOSITION_LABEL[regionalDecision]}
-                                        {regionalDetailTarget ? ` (${regionalDetailTarget})` : ''}
-                                      </p>
-                                      {regionalReturnPath && (
-                                        <p className="mt-0.5 text-[11px] text-teal-800">
-                                          止まった時の戻し先: {regionalReturnPath}
-                                        </p>
-                                      )}
-                                    </>
-                                  )}
-                                </div>
-                              )}
-                              <div className="mt-2 flex flex-wrap gap-1.5">
-                                {(PATTERN_DISABILITY_FACETS[card.id] || []).map((facet) => (
-                                  <span
-                                    key={`${card.id}-${facet}`}
-                                    className="inline-flex rounded-md border border-sky-100 bg-sky-50 px-2 py-0.5 text-[10px] font-semibold text-sky-800"
-                                  >
-                                    {DISABILITY_FACET_LABEL[facet]}
-                                  </span>
-                                ))}
-                              </div>
-                              <p className="mt-2 rounded-md border border-indigo-100 bg-indigo-50 px-2 py-1 text-[11px] text-indigo-900">
-                                このカードが上位に出た理由: {selectionReason}
-                              </p>
+                              {showDebug ? (
+                                <p className="mt-2 rounded-md border border-indigo-100 bg-indigo-50 px-2 py-1 text-[11px] text-indigo-900">
+                                  このカードが上位に出た理由: {selectionReason}
+                                </p>
+                              ) : null}
 
                               {strategic && (
-                                <div className="mt-3 rounded-xl border border-cyan-200 bg-cyan-50 p-3">
-                                  <p className="text-xs font-bold text-cyan-900">
-                                    統合AI分析で見えた「一手」
+                                <div className="mt-3 rounded-xl border border-cyan-100 bg-cyan-50/60 p-3">
+                                  <p className="text-[11px] font-semibold text-cyan-700 mb-1">
+                                    現場データが示す優先アクション
                                   </p>
-                                  <div className="mt-1 flex flex-wrap gap-1.5">
-                                    <span
-                                      className={`inline-flex rounded-md border px-2 py-0.5 text-[10px] font-semibold ${CAUSAL_TIER_STYLE[strategic.causalTier]}`}
-                                    >
-                                      {strategic.causalLabel}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      設計Tier: {strategic.expectedCausalTier}
-                                      {strategic.expectedTierMet ? ' (一致)' : ' (要見直し)'}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      根拠種別: {CAUSAL_BASIS_LABEL[strategic.causalBasis]}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      triangulation: {strategic.causalTriangulationScore}/4
-                                    </span>
-                                  </div>
-                                  <p className="mt-1 text-xs text-cyan-900">
-                                    {strategic.causalSummary}
+                                  <p className="text-sm text-cyan-950 leading-relaxed">
+                                    {strategic.move.replace(/^最初の一手: /, '')}
                                   </p>
-                                  <p className="mt-1 text-[11px] text-cyan-800">
-                                    留意: {strategic.causalGuardrail}
-                                  </p>
-                                  {!strategic.expectedTierMet && strategic.tierPolicyRationale ? (
-                                    <p className="mt-1 text-[11px] text-amber-800">
-                                      設計意図: {strategic.tierPolicyRationale}
-                                    </p>
-                                  ) : null}
-                                  <p className="mt-1 text-xs text-cyan-900">
-                                    {strategic.observation}
-                                  </p>
-                                  <p className="mt-1 text-xs text-cyan-900">
-                                    {strategic.inference}
-                                  </p>
-                                  <p className="mt-1 text-xs font-semibold text-cyan-950">
-                                    {strategic.move}
-                                  </p>
-                                  <div className="mt-3 rounded-lg border border-cyan-200 bg-white p-2">
-                                    <p className="text-[11px] font-semibold text-cyan-900">
-                                      根拠トレース（3レーン）
-                                    </p>
-                                    <div className="mt-2 grid gap-2 md:grid-cols-3">
-                                      <div className="rounded-md border border-cyan-100 bg-cyan-50 p-2">
-                                        <p className="text-[10px] font-semibold text-cyan-900">
-                                          GLMレーン
-                                        </p>
-                                        <p className="mt-0.5 text-[11px] text-cyan-800">
-                                          anchor {strategic.evidenceTraceCounts.glmAnchors} /
-                                          matched {strategic.evidenceTraceCounts.glmMatched}
-                                        </p>
-                                      </div>
-                                      <div className="rounded-md border border-cyan-100 bg-cyan-50 p-2">
-                                        <p className="text-[10px] font-semibold text-cyan-900">
-                                          data2レーン
-                                        </p>
-                                        <p className="mt-0.5 text-[11px] text-cyan-800">
-                                          issue-support反復{' '}
-                                          {strategic.evidenceTraceCounts.data2PairHits} /
-                                          narrative一致{' '}
-                                          {strategic.evidenceTraceCounts.data2NarrativeHits}
-                                        </p>
-                                      </div>
-                                      <div className="rounded-md border border-cyan-100 bg-cyan-50 p-2">
-                                        <p className="text-[10px] font-semibold text-cyan-900">
-                                          claimsレーン
-                                        </p>
-                                        <p className="mt-0.5 text-[11px] text-cyan-800">
-                                          matched {strategic.evidenceTraceCounts.claimsMatched} /
-                                          evidence重み{' '}
-                                          {strategic.evidenceTraceCounts.claimsEvidence}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  {(strategic.data2NarrativeHighlights.length > 0 ||
-                                    strategic.syntheticVoices.length > 0) && (
-                                    <div className="mt-3 rounded-lg border border-cyan-200 bg-white p-2">
-                                      <p className="text-[11px] font-semibold text-cyan-900">
-                                        ナラティブ要約と仮想の生の声
-                                      </p>
-                                      {strategic.data2NarrativeHighlights.length > 0 && (
-                                        <div className="mt-1">
-                                          <p className="text-[10px] font-semibold text-cyan-800">
-                                            data2由来ナラティブ（匿名要約）
-                                          </p>
-                                          <ul className="mt-1 list-disc pl-4 text-[11px] text-cyan-900 space-y-0.5">
-                                            {strategic.data2NarrativeHighlights.map((item) => (
-                                              <li key={`${card.id}-narrative-${item}`}>{item}</li>
-                                            ))}
-                                          </ul>
-                                        </div>
-                                      )}
-                                      {strategic.syntheticVoices.length > 0 && (
-                                        <div className="mt-2">
-                                          <p className="text-[10px] font-semibold text-cyan-800">
-                                            仮想の生の声（合成・匿名）
-                                          </p>
-                                          <ul className="mt-1 list-disc pl-4 text-[11px] text-cyan-900 space-y-0.5">
-                                            {strategic.syntheticVoices.map((item) => (
-                                              <li key={`${card.id}-voice-${item}`}>{item}</li>
-                                            ))}
-                                          </ul>
-                                        </div>
+                                  {showDebug && (
+                                    <div className="mt-2 flex flex-wrap gap-1.5 border-t border-cyan-200 pt-2">
+                                      <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                        設計Tier: {strategic.expectedCausalTier}
+                                        {strategic.expectedTierMet ? ' (一致)' : ' (要見直し)'}
+                                      </span>
+                                      <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                        根拠種別: {CAUSAL_BASIS_LABEL[strategic.causalBasis]}
+                                      </span>
+                                      <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                        triangulation: {strategic.causalTriangulationScore}/4
+                                      </span>
+                                      {!strategic.expectedTierMet && strategic.tierPolicyRationale && (
+                                        <span className="inline-flex rounded-md border border-amber-300 bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-900">
+                                          設計意図: {strategic.tierPolicyRationale}
+                                        </span>
                                       )}
                                     </div>
                                   )}
-                                  <div className="mt-2 flex flex-wrap gap-1.5">
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      data2 hit: {strategic.data2Hits}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      claims evidence: {strategic.claimHits}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      GLM(top): {strategic.glmIds.join(', ') || 'n/a'}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      countries: {strategic.countries.join(', ') || 'n/a'}
-                                    </span>
-                                    <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
-                                      lanes:{' '}
-                                      {strategic.evidenceLanes.length > 0
-                                        ? strategic.evidenceLanes
-                                            .map((lane) => EVIDENCE_LANE_LABEL[lane] || lane)
-                                            .join(', ')
-                                        : 'n/a'}
-                                    </span>
-                                  </div>
+                                  {showDebug ? (
+                                    <>
+                                      <div className="mt-3 rounded-lg border border-cyan-200 bg-white p-2">
+                                        <p className="text-[11px] font-semibold text-cyan-900">
+                                          根拠トレース（3レーン）
+                                        </p>
+                                        <div className="mt-2 grid gap-2 md:grid-cols-3">
+                                          <div className="rounded-md border border-cyan-100 bg-cyan-50 p-2">
+                                            <p className="text-[10px] font-semibold text-cyan-900">
+                                              GLMレーン
+                                            </p>
+                                            <p className="mt-0.5 text-[11px] text-cyan-800">
+                                              anchor {strategic.evidenceTraceCounts.glmAnchors} /
+                                              matched {strategic.evidenceTraceCounts.glmMatched}
+                                            </p>
+                                          </div>
+                                          <div className="rounded-md border border-cyan-100 bg-cyan-50 p-2">
+                                            <p className="text-[10px] font-semibold text-cyan-900">
+                                              data2レーン
+                                            </p>
+                                            <p className="mt-0.5 text-[11px] text-cyan-800">
+                                              issue-support反復{' '}
+                                              {strategic.evidenceTraceCounts.data2PairHits} /
+                                              narrative一致{' '}
+                                              {strategic.evidenceTraceCounts.data2NarrativeHits}
+                                            </p>
+                                          </div>
+                                          <div className="rounded-md border border-cyan-100 bg-cyan-50 p-2">
+                                            <p className="text-[10px] font-semibold text-cyan-900">
+                                              claimsレーン
+                                            </p>
+                                            <p className="mt-0.5 text-[11px] text-cyan-800">
+                                              matched {strategic.evidenceTraceCounts.claimsMatched} /
+                                              evidence重み{' '}
+                                              {strategic.evidenceTraceCounts.claimsEvidence}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {(strategic.data2NarrativeHighlights.length > 0 ||
+                                        strategic.syntheticVoices.length > 0) && (
+                                        <div className="mt-3 rounded-lg border border-cyan-200 bg-white p-2">
+                                          <p className="text-[11px] font-semibold text-cyan-900">
+                                            ナラティブ要約と状況シグナル
+                                          </p>
+                                          {strategic.data2NarrativeHighlights.length > 0 && (
+                                            <div className="mt-1">
+                                              <p className="text-[10px] font-semibold text-cyan-800">
+                                                data2由来ナラティブ（匿名要約）
+                                              </p>
+                                              <ul className="mt-1 list-disc pl-4 text-[11px] text-cyan-900 space-y-0.5">
+                                                {strategic.data2NarrativeHighlights.map((item) => (
+                                                  <li key={`${card.id}-narrative-${item}`}>{item}</li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                          )}
+                                          {strategic.syntheticVoices.length > 0 && (
+                                            <div className="mt-2">
+                                              <p className="text-[10px] font-semibold text-cyan-800">
+                                                仮想の生の声（匿名再構成）
+                                              </p>
+                                              <ul className="mt-1 list-disc pl-4 text-[11px] text-cyan-900 space-y-0.5">
+                                                {strategic.syntheticVoices.map((item) => (
+                                                  <li key={`${card.id}-voice-${item}`}>{item}</li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                          )}
+                                        </div>
+                                      )}
+                                      <div className="mt-2 flex flex-wrap gap-1.5">
+                                        <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                          data2 hit: {strategic.data2Hits}
+                                        </span>
+                                        <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                          claims evidence: {strategic.claimHits}
+                                        </span>
+                                        <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                          GLM(top): {strategic.glmIds.join(', ') || 'n/a'}
+                                        </span>
+                                        <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                          countries: {strategic.countries.join(', ') || 'n/a'}
+                                        </span>
+                                        <span className="inline-flex rounded-md border border-cyan-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-cyan-900">
+                                          lanes:{' '}
+                                          {strategic.evidenceLanes.length > 0
+                                            ? strategic.evidenceLanes
+                                                .map((lane) => EVIDENCE_LANE_LABEL[lane] || lane)
+                                                .join(', ')
+                                            : 'n/a'}
+                                        </span>
+                                      </div>
+                                    </>
+                                  ) : null}
                                 </div>
                               )}
 
-                              <div className="mt-3">
+                              <div className="mt-4">
                                 <p className="text-xs font-semibold text-gray-500">
-                                  配慮パッケージ（詳細を開いて運用条件まで確認）
+                                  配慮の組み合わせ方
                                 </p>
                               </div>
 
@@ -5858,20 +5483,17 @@ export default function JacGuidebookPage({
                                     className="rounded-xl border border-gray-200 bg-white p-3"
                                     aria-label={`${pkg.name} の詳細`}
                                   >
-                                    <div className="flex items-start justify-between gap-2">
+                                    <div className="flex items-start gap-2">
                                       <p className="text-sm font-semibold text-gray-900">
                                         {pkg.name}
                                       </p>
-                                      <code className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] text-gray-600">
-                                        {pkg.id}
-                                      </code>
                                     </div>
-                                    <p className="mt-1 text-xs text-gray-700">{pkg.goal}</p>
+                                    <p className="mt-1 text-sm text-gray-700">{pkg.goal}</p>
                                     <details className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-2">
-                                      <summary className="cursor-pointer text-xs font-semibold text-gray-700">
+                                      <summary className="cursor-pointer text-sm font-semibold text-gray-700">
                                         配慮パッケージ詳細
                                       </summary>
-                                      <div className="mt-2 space-y-2 text-xs text-gray-700">
+                                      <div className="mt-2 space-y-2 text-sm text-gray-700">
                                         <div>
                                           <p className="font-semibold text-gray-900">構成要素</p>
                                           <ul className="mt-1 list-disc pl-4 space-y-1">
@@ -5913,11 +5535,75 @@ export default function JacGuidebookPage({
 
                               <details className="mt-4 rounded-xl border border-gray-200 bg-white p-3">
                                 <summary className="cursor-pointer text-sm font-semibold text-gray-800">
-                                  深いロジックと根拠を表示
+                                  詳細・確認事項を見る
                                 </summary>
                                 <div className="mt-3 space-y-3 text-sm text-gray-700">
+                                  {orderedSituationLevels.length > 0 && (
+                                    <div>
+                                      <p className="font-semibold text-gray-900">状況のレベル感</p>
+                                      <div className="mt-2 space-y-2">
+                                        {orderedSituationLevels.map((level) => (
+                                          <div
+                                            key={`${card.id}-${level.icon}-${level.label}`}
+                                            className="flex items-start gap-2"
+                                          >
+                                            <span
+                                              className={`inline-flex shrink-0 items-center rounded-md border px-2 py-0.5 text-xs font-bold ${
+                                                situationLevelStyle[level.tone]
+                                              }`}
+                                            >
+                                              {level.icon} {level.label}
+                                            </span>
+                                            <p className="text-xs text-slate-700">
+                                              {level.description}
+                                            </p>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+                                  {(legalSummary || legalChecks.length > 0 || legalEscalation) && (
+                                    <div>
+                                      <p className="font-semibold text-gray-900">制度・法令の確認</p>
+                                      {legalSummary && (
+                                        <p className="mt-1 text-sm text-gray-700">{legalSummary}</p>
+                                      )}
+                                      {legalChecks.length > 0 && (
+                                        <ul className="mt-1.5 list-disc pl-5 space-y-1">
+                                          {legalChecks.slice(0, 3).map((item) => (
+                                            <li key={item} className="text-sm text-gray-700">{item}</li>
+                                          ))}
+                                        </ul>
+                                      )}
+                                      {legalEscalation && (
+                                        <p className="mt-1.5 text-xs text-gray-500">
+                                          迷ったら: {legalEscalation}
+                                        </p>
+                                      )}
+                                    </div>
+                                  )}
+                                  {(regionalSummary || regionalJacRole.length > 0 || regionalRole.length > 0 || regionalReturnPath) && (
+                                    <div>
+                                      <p className="font-semibold text-gray-900">外部支援との連携</p>
+                                      {regionalSummary && (
+                                        <p className="mt-1 text-sm text-gray-700">{regionalSummary}</p>
+                                      )}
+                                      {(regionalJacRole.length > 0 || regionalRole.length > 0) && (
+                                        <ul className="mt-1.5 list-disc pl-5 space-y-1">
+                                          {[...regionalJacRole.slice(0, 2), ...regionalRole.slice(0, 2)].map((item) => (
+                                            <li key={item} className="text-sm text-gray-700">{item}</li>
+                                          ))}
+                                        </ul>
+                                      )}
+                                      {regionalReturnPath && (
+                                        <p className="mt-1.5 text-xs text-gray-500">
+                                          止まったら: {regionalReturnPath}
+                                        </p>
+                                      )}
+                                    </div>
+                                  )}
                                   <div>
-                                    <p className="font-semibold text-gray-900">4レンズ解釈</p>
+                                    <p className="font-semibold text-gray-900">この問題が起きる構造</p>
                                     <ul className="mt-1 list-disc pl-5 space-y-1">
                                       <li>{card.lensLogic.occurrence}</li>
                                       <li>{card.lensLogic.resolution}</li>
@@ -5926,13 +5612,12 @@ export default function JacGuidebookPage({
                                     </ul>
                                   </div>
                                   <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-2">
-                                    <p className="text-xs font-semibold text-indigo-900">
-                                      実行前コンテキスト確認（7観点）
+                                    <p className="text-sm font-semibold text-indigo-900">
+                                      使う前に確認したい観点
                                     </p>
-                                    <p className="mt-1 text-[11px] text-indigo-800">
-                                      mode:{' '}
-                                      <span className="font-semibold">{modeLabel[card.mode]}</span>{' '}
-                                      / 必須観点を先に確認してから提案を適用してください。
+                                    <p className="mt-1 text-xs text-indigo-700">
+                                      このフレームの適用前に、以下の観点を確認してください。
+                                      太枠は特に重要な観点です（{modeLabel[card.mode]}）。
                                     </p>
                                     <div className="mt-2 flex flex-wrap gap-1.5">
                                       {ALL_CONTEXT_KEYS.map((key) => {
@@ -5941,13 +5626,14 @@ export default function JacGuidebookPage({
                                         return (
                                           <span
                                             key={`${card.id}-${key}`}
-                                            className={`inline-flex rounded-md border px-2 py-0.5 text-[10px] font-semibold ${
+                                            className={`inline-flex rounded-md border px-2 py-1 text-xs ${
                                               required
-                                                ? 'border-indigo-300 bg-white text-indigo-900'
-                                                : 'border-indigo-100 bg-indigo-100/70 text-indigo-700'
+                                                ? 'border-indigo-400 bg-white font-semibold text-indigo-900'
+                                                : 'border-indigo-100 bg-indigo-100/70 text-indigo-600'
                                             }`}
                                           >
-                                            {CONTEXT_CHECK_LABEL[key]}: {CONTEXT_CHECK_HINT[key]}
+                                            <span className="font-semibold">{CONTEXT_CHECK_LABEL[key]}</span>
+                                            <span className="ml-1 opacity-75">— {CONTEXT_CHECK_HINT[key]}</span>
                                           </span>
                                         );
                                       })}
@@ -5989,59 +5675,61 @@ export default function JacGuidebookPage({
                                       </ul>
                                     </div>
                                   </div>
-                                  <div className="rounded-lg border border-gray-200 bg-gray-50 p-2">
-                                    <p className="text-xs font-semibold text-gray-700">
-                                      Evidence Trace
-                                    </p>
-                                    {strategic ? (
-                                      <p className="mt-1 text-xs text-gray-600">
-                                        Causal tier: {strategic.causalLabel} /{' '}
-                                        {CAUSAL_BASIS_LABEL[strategic.causalBasis]} / score{' '}
-                                        {strategic.causalTriangulationScore}/4
+                                  {showDebug ? (
+                                    <div className="rounded-lg border border-gray-200 bg-gray-50 p-2">
+                                      <p className="text-xs font-semibold text-gray-700">
+                                        Evidence Trace
                                       </p>
-                                    ) : null}
-                                    {strategic?.glmHighlights?.length ? (
+                                      {strategic ? (
+                                        <p className="mt-1 text-xs text-gray-600">
+                                          Causal tier: {strategic.causalLabel} /{' '}
+                                          {CAUSAL_BASIS_LABEL[strategic.causalBasis]} / score{' '}
+                                          {strategic.causalTriangulationScore}/4
+                                        </p>
+                                      ) : null}
+                                      {strategic?.glmHighlights?.length ? (
+                                        <p className="mt-1 text-xs text-gray-600">
+                                          GLM全量ハイライト:{' '}
+                                          {strategic.glmHighlights
+                                            .map((item) => `${item.id} ${item.summary}`)
+                                            .join(' / ')}
+                                        </p>
+                                      ) : null}
+                                      {strategic?.claimHighlights?.length ? (
+                                        <p className="mt-1 text-xs text-gray-600">
+                                          claimsハイライト: {strategic.claimHighlights.join(' / ')}
+                                        </p>
+                                      ) : null}
+                                      {strategic?.data2NarrativeHighlights?.length ? (
+                                        <p className="mt-1 text-xs text-gray-600">
+                                          data2ナラティブ要約:{' '}
+                                          {strategic.data2NarrativeHighlights.join(' / ')}
+                                        </p>
+                                      ) : null}
                                       <p className="mt-1 text-xs text-gray-600">
-                                        GLM全量ハイライト:{' '}
-                                        {strategic.glmHighlights
-                                          .map((item) => `${item.id} ${item.summary}`)
-                                          .join(' / ')}
+                                        GLM legacy anchor: {card.evidenceTrace.glm.join(', ')}
                                       </p>
-                                    ) : null}
-                                    {strategic?.claimHighlights?.length ? (
-                                      <p className="mt-1 text-xs text-gray-600">
-                                        claimsハイライト: {strategic.claimHighlights.join(' / ')}
-                                      </p>
-                                    ) : null}
-                                    {strategic?.data2NarrativeHighlights?.length ? (
-                                      <p className="mt-1 text-xs text-gray-600">
-                                        data2ナラティブ要約:{' '}
-                                        {strategic.data2NarrativeHighlights.join(' / ')}
-                                      </p>
-                                    ) : null}
-                                    <p className="mt-1 text-xs text-gray-600">
-                                      GLM legacy anchor: {card.evidenceTrace.glm.join(', ')}
-                                    </p>
-                                    {strategic?.claimIds?.length ? (
+                                      {strategic?.claimIds?.length ? (
+                                        <p className="text-xs text-gray-600">
+                                          Top Claim IDs: {strategic.claimIds.join(', ')}
+                                        </p>
+                                      ) : null}
+                                      {strategic?.evidenceLanes?.length ? (
+                                        <p className="text-xs text-gray-600">
+                                          Claim lanes:{' '}
+                                          {strategic.evidenceLanes
+                                            .map((lane) => EVIDENCE_LANE_LABEL[lane] || lane)
+                                            .join(', ')}
+                                        </p>
+                                      ) : null}
                                       <p className="text-xs text-gray-600">
-                                        Top Claim IDs: {strategic.claimIds.join(', ')}
+                                        Claim IDs: {card.evidenceTrace.claimIds.join(', ')}
                                       </p>
-                                    ) : null}
-                                    {strategic?.evidenceLanes?.length ? (
                                       <p className="text-xs text-gray-600">
-                                        Claim lanes:{' '}
-                                        {strategic.evidenceLanes
-                                          .map((lane) => EVIDENCE_LANE_LABEL[lane] || lane)
-                                          .join(', ')}
+                                        Source regions: {card.evidenceTrace.sourceRegions.join(', ')}
                                       </p>
-                                    ) : null}
-                                    <p className="text-xs text-gray-600">
-                                      Claim IDs: {card.evidenceTrace.claimIds.join(', ')}
-                                    </p>
-                                    <p className="text-xs text-gray-600">
-                                      Source regions: {card.evidenceTrace.sourceRegions.join(', ')}
-                                    </p>
-                                  </div>
+                                    </div>
+                                  ) : null}
                                 </div>
                               </details>
                             </>
@@ -6056,15 +5744,16 @@ export default function JacGuidebookPage({
           </div>
         </section>
 
-        <section className="rounded-3xl border border-cyan-200 bg-cyan-50 p-6">
-          <h3 className="text-lg font-bold text-cyan-900">カバレッジ検査（自動）</h3>
-          <p className="mt-2 text-sm text-cyan-900/90 leading-relaxed">
-            `knowledge-claims.jsonl`
-            の障害facet分布と、このページのパターン分布を並べて監査しています。
-            偏りやノイズを隠さず表示し、次スプリントの改善対象を明確化します。
-          </p>
-          {coverageAudit ? (
-            <div className="mt-4 space-y-4">
+        {showDebug ? (
+          <section className="rounded-3xl border border-cyan-200 bg-cyan-50 p-6">
+            <h3 className="text-lg font-bold text-cyan-900">カバレッジ検査（自動）</h3>
+            <p className="mt-2 text-sm text-cyan-900/90 leading-relaxed">
+              `knowledge-claims.jsonl`
+              の障害facet分布と、このページのパターン分布を並べて監査しています。
+              偏りやノイズを隠さず表示し、次スプリントの改善対象を明確化します。
+            </p>
+            {coverageAudit ? (
+              <div className="mt-4 space-y-4">
               <div className="grid gap-3 md:grid-cols-3">
                 <div className="rounded-xl border border-white bg-white p-3">
                   <p className="text-[11px] text-cyan-700">Claims総数</p>
@@ -6167,12 +5856,38 @@ export default function JacGuidebookPage({
                   </div>
                 </div>
               )}
-            </div>
-          ) : (
-            <p className="mt-3 text-sm text-cyan-900">
-              カバレッジ監査データの読み込みに失敗しました。
-            </p>
-          )}
+              </div>
+            ) : (
+              <p className="mt-3 text-sm text-cyan-900">
+                カバレッジ監査データの読み込みに失敗しました。
+              </p>
+            )}
+          </section>
+        ) : null}
+
+        <section className="rounded-3xl border border-gray-900 bg-gray-900 p-6 md:p-8">
+          <p className="text-xs font-semibold text-gray-400 mb-2">Next Being Lab</p>
+          <h3 className="text-xl font-bold text-white leading-snug">
+            典型パターンを確認したら、個別ケースの整理へ
+          </h3>
+          <p className="mt-3 text-sm text-gray-300 leading-relaxed">
+            このガイドで「どのパターンに近いか」が見えたら、次は個別ケースの条件を整理するステップです。
+            就労支援見立てサポートに相談内容を入れると、職業的課題の仮見立てと配慮候補の優先順位を自動整理します。
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              href="/jac/intro"
+              className="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-gray-900 hover:bg-gray-100"
+            >
+              就労支援見立てサポート — 利用申込・詳細
+            </Link>
+            <Link
+              href={frameReferenceHref}
+              className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-gray-300 hover:bg-white/10"
+            >
+              26カード版を見る
+            </Link>
+          </div>
         </section>
 
         <section className="rounded-3xl border border-amber-200 bg-amber-50 p-6">
@@ -6183,8 +5898,7 @@ export default function JacGuidebookPage({
           </p>
           <div className="mt-3 rounded-xl border border-amber-300 bg-white/70 p-3">
             <p className="text-xs font-semibold text-amber-900">
-              最低限確認する観点: person / job / environment / support / time / institution /
-              evidence
+              最低限確認する観点: 本人 / 仕事 / 環境 / 支援 / 時間 / 制度 / 根拠
             </p>
             <p className="mt-1 text-xs text-amber-800">
               いずれかが欠ける場合は、断定提案より先に追加質問を優先してください。
@@ -6192,22 +5906,22 @@ export default function JacGuidebookPage({
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
-              href="/jac"
+              href="/contact"
               className="rounded-full bg-amber-700 px-4 py-2 text-xs font-bold text-white hover:bg-amber-800"
             >
-              条件を確認しながらJACで個別相談する
+              個別設計について連絡する
             </Link>
             <Link
-              href="/jac/guidebook"
+              href={frameReferenceHref}
               className="rounded-full border border-amber-300 bg-white px-4 py-2 text-xs font-bold text-amber-900 hover:bg-amber-100"
             >
-              26フレーム実装ガイドブック（電子版）
+              26カード版を見る
             </Link>
             <Link
               href="/"
               className="rounded-full border border-amber-300 bg-white px-4 py-2 text-xs font-bold text-amber-900 hover:bg-amber-100"
             >
-              トップページへ戻る
+              トップへ戻る
             </Link>
           </div>
         </section>
@@ -6234,6 +5948,7 @@ async function buildGuideProps(): Promise<GuideProps> {
   let glmSignificantRelations: GlmSignificantRelation[] = [];
   let commonWorkCopy: Record<string, GuideCommonWorkDesignCopyRow> = {};
   let layerDisposition: Record<string, GuideLayerDispositionRow> = {};
+  let expertInsights: Record<string, string> = {};
 
   try {
     const manifestPath = path.join(
@@ -6456,6 +6171,20 @@ async function buildGuideProps(): Promise<GuideProps> {
   }
 
   try {
+    const expertInsightsPath = path.join(
+      process.cwd(),
+      'references',
+      'jac',
+      'expert-insights.json',
+    );
+    const raw = await fs.readFile(expertInsightsPath, 'utf8');
+    const parsed = JSON.parse(raw) as { insights?: Record<string, string> };
+    expertInsights = parsed?.insights || {};
+  } catch {
+    expertInsights = {};
+  }
+
+  try {
     const layerDispositionPath = path.join(
       process.cwd(),
       'references',
@@ -6505,15 +6234,26 @@ async function buildGuideProps(): Promise<GuideProps> {
     claimsGlmCoverage,
     commonWorkCopy,
     layerDisposition,
+    expertInsights,
+    debugEnabled: false,
   };
 }
 
-export const getServerSideProps: GetServerSideProps<GuideProps> = async () => {
+export const getServerSideProps: GetServerSideProps<GuideProps> = async (context) => {
   if (!cachedGuidePropsPromise) {
     cachedGuidePropsPromise = buildGuideProps();
   }
 
+  const hasToken = Boolean(
+    context.req.headers['x-jac-access-token'] ||
+    context.query.accessToken,
+  );
+  const debugEnabled = hasToken && String(context.query.debug || '').trim() === '1';
+
   return {
-    props: await cachedGuidePropsPromise,
+    props: {
+      ...(await cachedGuidePropsPromise),
+      debugEnabled,
+    },
   };
 };

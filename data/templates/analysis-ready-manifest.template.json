@@ -1,0 +1,21 @@
+{
+  "dataset_id": "employment_survey_3000_analysis_ready_v1",
+  "source_dataset_id": "employment_survey_3000",
+  "stage": "analysis_ready",
+  "anonymized": true,
+  "tabular_tables": ["respondents.parquet", "responses.parquet"],
+  "narrative_tables": ["free_text_units.parquet"],
+  "join_keys": ["respondent_uid"],
+  "feature_groups": [
+    "demographics",
+    "health_condition",
+    "support_status",
+    "occupational_difficulties",
+    "coping",
+    "future_preference"
+  ],
+  "embedding_status": "not_started",
+  "graph_input_status": "not_started",
+  "manifold_input_status": "not_started",
+  "notes": "どの列を共通 schema に写したか、除外列は何かを記述する"
+}

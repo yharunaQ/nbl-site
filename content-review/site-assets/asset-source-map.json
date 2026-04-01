@@ -198,6 +198,94 @@
         }
       ],
       "notes": "Invisible disability series"
+    },
+    {
+      "id": "work-support-inclusive-employment",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/障害者雇用支援の世界標準/インクルーシブ雇用.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/inclusive-employment.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-global-three-layers",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/障害者雇用支援の世界標準/諸外国の３層.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/global-three-layers.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-japan-vs-world",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/日本における変革課題/日本と世界の比較.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/japan-vs-world.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-employment-frame",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/障害者雇用支援の世界標準/障害者雇用枠インフォグラフィック.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/employment-frame.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-foundational-training",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/日本における変革課題/基礎的研修から始まる.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/foundational-training.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-job-choice-support",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/日本における変革課題/インクルーシブ雇用の要：就労選択支援.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/job-choice-support.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-chronic-illness-trends",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/慢性疾患の支援/難病就労支援の諸外国の動向.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/chronic-illness-trends.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
+    },
+    {
+      "id": "work-support-balance-treatment-work",
+      "source": "content-inbox/地平1_隔離・分離から包摂へ/慢性疾患の支援/治療と仕事の両立.png",
+      "targets": [
+        {
+          "path": "public/resources/work-support-transformation/balance-treatment-work.png",
+          "channel": "public"
+        }
+      ],
+      "notes": "Work support transformation public collection"
     }
   ]
 }

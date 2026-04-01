@@ -2,6 +2,11 @@
 
 公開済みまたは公開予定の YouTube 動画をここに並べる。
 
+https://youtu.be/-6PJlEa9DeQ
+https://youtu.be/muwEfKS420U
+https://youtu.be/sQ0zoIZaO4w
+
+
 ## Current list
 
 | Title                                                                                                              | URL                          | Status    | Channel                         | Site decision        | Topic                   | Related assets                                                                                                                                                                                                                  | Notes                                                                               |

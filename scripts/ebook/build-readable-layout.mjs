@@ -275,7 +275,7 @@ function parseMarkdownToHtml(markdown, options = {}) {
   let cardOpen = false;
   let headingCount = 0;
   let firstH1Captured = false;
-  let documentTitle = 'JAC Guidebook';
+  let documentTitle = '仕事設計ガイドブック';
 
   const closeList = () => {
     if (listType) {
@@ -484,7 +484,10 @@ function buildToc(headings, layoutVariant) {
       .map((layer) => {
         const groupClass = ['toc-group', layer.className || ''].filter(Boolean).join(' ');
         return `<section class="${groupClass}"><h3>${escapeHtml(layer.text)}</h3><ol class="toc-list">${layer.cards
-          .map((row) => `<li><a href="#${row.id}">${escapeHtml(row.text)}</a></li>`)
+          .map((row) => {
+            const label = row.text.replace(/^フレーム\s*[0-9０-９]+\s+/, '');
+            return `<li><a href="#${row.id}">${escapeHtml(label)}</a></li>`;
+          })
           .join('\n')}</ol></section>`;
       })
       .join('\n')}</div>`;
@@ -493,7 +496,10 @@ function buildToc(headings, layoutVariant) {
   const chapterHeadings = headings.filter((row) => row.level === 2);
   if (chapterHeadings.length === 0) return '<p class="toc-empty">目次はありません。</p>';
   return `<ol class="toc-list">${chapterHeadings
-    .map((row) => `<li><a href="#${row.id}">${escapeHtml(row.text)}</a></li>`)
+    .map((row) => {
+      const label = row.text.replace(/^フレーム\s*[0-9０-９]+\s+/, '');
+      return `<li><a href="#${row.id}">${escapeHtml(label)}</a></li>`;
+    })
     .join('\n')}</ol>`;
 }
 
@@ -502,22 +508,22 @@ function buildHtmlDocument({ title, tocHtml, contentHtml, layoutVariant }) {
   const bodyClass = variant === 'default' ? '' : ` class="theme-${escapeHtml(variant)}"`;
   const coverEyebrow =
     variant === 'focus-card-editorial'
-      ? 'JAC FIELD GUIDE / CARD EDITION'
+      ? 'Next Being Lab / 仕事設計の見取り図'
       : variant === 'full-card-editorial'
-        ? 'JAC FIELD GUIDE / 26 CARD EDITION'
-        : 'JAC GUIDEBOOK / READABLE EDITION';
+        ? 'Next Being Lab / 仕事設計の見取り図'
+        : 'Next Being Lab / 仕事設計ガイドブック';
   const coverSubtitle =
     variant === 'focus-card-editorial'
-      ? '重点5フレームの編集試作。内容の流れだけでなく、カードとしての見え方と判断しやすさを検討するための版。'
+      ? '就労支援員・ジョブコーチ・障害者職業生活相談員のための仕事設計リファレンス。'
       : variant === 'full-card-editorial'
-        ? '重点5で検証したカード構造を、3レイヤーを保ったまま26フレーム全体へ広げた版。カードで引き、レイヤーで全体を見るための構成。'
-        : 'Web版ガイドを、現場で読み進めやすい章構成に再編集した版';
+        ? '就労支援員・ジョブコーチ・障害者職業生活相談員のための仕事設計リファレンス。3レイヤーで全体を把握し、26フレームで現場の詰まりを読み解く。'
+        : '就労支援員・ジョブコーチ・障害者職業生活相談員のための仕事設計リファレンス。';
   const coverFormat =
     variant === 'focus-card-editorial'
-      ? '形式: 編集試作レイアウト'
+      ? '対象: 就労支援者向け'
       : variant === 'full-card-editorial'
-        ? '形式: 26カード本番ドラフト'
-        : '形式: 試作レイアウト';
+        ? '対象: 就労支援者向け'
+        : '対象: 就労支援者向け';
   return `<!doctype html>
 <html lang="ja">
 <head>

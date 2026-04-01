@@ -5,6 +5,7 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 const INPUT_PATH = path.join(ROOT, 'references', 'jac', 'common-work-design-copy.json');
+const INSIGHTS_PATH = path.join(ROOT, 'references', 'jac', 'expert-insights.json');
 const OUTPUT_PATH = path.join(ROOT, 'docs', 'guidebook', 'jac-26-card-edition.md');
 
 const LAYERS = [
@@ -60,58 +61,6 @@ const LAYERS = [
   },
 ];
 
-const EXPERT_INSIGHTS = {
-  'p-fatigue-pacing':
-    '問題は体力不足ではなく、業務密度と回復速度のズレが日ごとに累積していることにある。',
-  'p-medical-schedule':
-    '問題は通院そのものより、受診日と業務ピークが同じ人の自己調整に委ねられていることにある。',
-  'p-internal-treatment-compatibility':
-    '問題は治療日ではなく、治療後の回復時間が勤務設計に織り込まれていないことにある。',
-  'p-shift-rhythm-guard':
-    '問題は夜勤や早番の有無だけでなく、睡眠・服薬・通院のリズムが連続勤務で崩れることにある。',
-  'p-return-to-work-ramp':
-    '問題は「できるか」ではなく、「その負荷で続けられるか」を段階で確かめていないことにある。',
-  'p-mental-fluctuation-plan':
-    '問題は危機対応の遅さだけでなく、小さな変化を調整の入口として扱えていないことにある。',
-  'p-environment-sensory':
-    '問題は本人の過敏さではなく、刺激の強い環境が仕事の持続を削っていることにある。',
-  'p-commute-hybrid':
-    '問題は通勤時間の長さだけでなく、始業前にエネルギーを使い切る設計になっていることにある。',
-  'p-physical-mobility-route':
-    '問題は歩けるかどうかではなく、移動回数と動線の長さが仕事の前提を重くしていることにある。',
-  'p-jobmatch-exploration':
-    '問題は意欲不足ではなく、業務要件と本人条件の照合軸が粗いまま探索していることにある。',
-  'p-application-contact-flow':
-    '問題は応募能力より、連絡・書類・追跡の実務が工程として固定されていないことにある。',
-  'p-interview-self-advocacy':
-    '問題は話し方の上手下手より、配慮要望を業務影響ベースで短く伝える準備ができていないことにある。',
-  'p-skill-building-path':
-    '問題は学ぶ量ではなく、学習内容が就職までの工程と接続していないことにある。',
-  'p-worktrial-transition':
-    '問題は実習評価の有無ではなく、安定条件が採用後運用へ翻訳されていないことにある。',
-  'p-income-condition-stability':
-    '問題は収入額だけでなく、契約条件と体調維持可能な稼働量の整合が見えていないことにある。',
-  'p-support-service-navigation':
-    '問題は制度知識不足ではなく、窓口の順番・期限・責任者・戻し先が一枚になっていないことにある。',
-  'p-meeting-overload': '問題は理解力不足ではなく、会議で同時に求める処理量が多すぎることにある。',
-  'p-disclosure-boundary':
-    '問題は話す量そのものより、共有目的と更新責任が決まらないまま開示が始まることにある。',
-  'p-manager-checkin': '問題は相談しにくさより、相談を業務変更まで運ぶ責任線がないことにある。',
-  'p-customer-facing-load':
-    '問題は対人スキルの不足ではなく、即時応答が続く場面で負荷分散が設計されていないことにある。',
-  'p-visual-document-access':
-    '問題は読む速さだけでなく、資料形式が読み取り支援を前提に作られていないことにある。',
-  'p-hearing-meeting-access':
-    '問題は聞き漏らしではなく、発話ルールとテキスト補助がないために情報欠落が運用で補われていないことにある。',
-  'p-intellectual-task-clarity':
-    '問題は理解力ではなく、完了条件と手順の曖昧さが作業再現性を下げていることにある。',
-  'p-developmental-switch-load':
-    '問題は集中力ではなく、割込みと同時並行が切替コストを押し上げていることにある。',
-  'p-higher-brain-memory-support':
-    '問題は記憶力の弱さではなく、保持と段取りを前提にした工程設計が手戻りを増やしていることにある。',
-  'p-safety-critical-operations':
-    '問題は本人の注意不足ではなく、安全判断の条件と停止ラインが先に定義されていないことにある。',
-};
 
 const GENERIC_SUPPORT_LINES = new Set([
   '企業内で回せる共通設計と、個別調整が必要な部分を切り分ける',
@@ -288,28 +237,37 @@ function appendBulletSection(lines, heading, items) {
 
 async function main() {
   const source = JSON.parse(await fs.readFile(INPUT_PATH, 'utf8'));
+  const insightsSource = JSON.parse(await fs.readFile(INSIGHTS_PATH, 'utf8'));
+  const EXPERT_INSIGHTS_DATA = insightsSource.insights || {};
   const cardMap = new Map(source.cards.map((card) => [card.id, card]));
   const lines = [];
 
-  lines.push('# JAC 26フレーム カード版');
+  lines.push('# 仕事設計ガイドブック');
   lines.push('');
   lines.push(`更新日: ${new Date().toISOString().slice(0, 10)}`);
-  lines.push('状態: full-card-edition-draft');
+  lines.push('発行: Next Being Lab');
   lines.push('');
   lines.push(
-    '重点5カードで固めた読み順と誌面方針を、26フレーム全体へ広げた版です。ここでは `3レイヤー` を全体地図、`カード` を現場で使う最小単位として扱います。',
+    '就労支援員・ジョブコーチ・障害者職業生活相談員が、相談現場で困りごとを整理するためのリファレンスです。',
   );
   lines.push(
-    '読者はまず、どのレイヤーで詰まっているかを見て、その後に `鑑別診断 / 問題の切り分け` と `具体的な取組み内容` を使って、最初の一手と戻し先を決めます。',
+    '働きづらさを診断名や個人特性で扱うのではなく、仕事・環境・支援・時間・制度の設計課題として読み替えることを目的としています。',
+  );
+  lines.push('');
+  lines.push(
+    '3レイヤーは全体地図です。まず体調・就職移行・職場運用のどのレイヤーで詰まっているかを見ます。',
   );
   lines.push(
-    '状況レベルは `🟢 / 🟡 / 🔴 / 💣` の4段階で統一し、診断の重さではなく、仕事がどれだけ詰まり、運用で吸収できているかで切り分けます。',
+    'その後、該当フレームの「鑑別診断 / 問題の切り分け」と「具体的な取組み内容」で最初の一手と戻し先を決めます。',
   );
   lines.push(
-    '各カードの「先に見えやすい文脈」は、配慮が可視化されやすい例であり、診断名でカードを決め打ちするための欄ではない。',
+    '状況レベル 🟢 / 🟡 / 🔴 / 💣 は診断の重さではなく、仕事がどれだけ詰まり、運用で吸収できているかで切り分けます。',
   );
   lines.push(
-    '本文は読者向けに絞り、採用根拠の細かなログは外している。制度適用や個人情報の扱いは、法域・雇用区分・本人同意を確認して判断する。',
+    '「先に見えやすい文脈」は配慮が可視化されやすい例であり、診断名でフレームを決め打ちするための欄ではありません。',
+  );
+  lines.push(
+    '最終判断は支援者と本人が持ちます。制度適用や個人情報の扱いは、法域・雇用区分・本人同意を確認して判断してください。',
   );
   lines.push('');
   lines.push('- `体調レイヤー`: 体調、回復、勤務密度、移動負荷がぶつかるときに使う');
@@ -348,7 +306,7 @@ async function main() {
       lines.push('');
       lines.push(normalizeSituation(card.situation));
       lines.push(
-        `> JACの着眼点: ${EXPERT_INSIGHTS[id] || '主課題がどこで止まっているかを、人ではなく仕事側の条件から見直す。'}`,
+        `> 着眼点: ${EXPERT_INSIGHTS_DATA[id] || '主課題がどこで止まっているかを、人ではなく仕事側の条件から見直す。'}`,
       );
       lines.push('');
       lines.push('#### こんな場面で起きやすい');

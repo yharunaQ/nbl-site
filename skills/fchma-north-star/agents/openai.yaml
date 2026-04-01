@@ -1,0 +1,4 @@
+interface:
+  display_name: "FCHMA North Star"
+  short_description: "Keep the product mission and non-goals intact."
+  default_prompt: "Use $fchma-north-star to keep this change aligned with the product mission."

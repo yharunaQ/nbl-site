@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import PageSeo from '@/components/PageSeo';
 import ProposalComposer from '@/components/daoParticipationLab/ProposalComposer';
 import ProposalDetail from '@/components/daoParticipationLab/ProposalDetail';
 import ProposalList from '@/components/daoParticipationLab/ProposalList';
@@ -169,13 +169,11 @@ export default function DaoParticipationLabPage({
 
   return (
     <>
-      <Head>
-        <title>DAO Participation Lab | Next Being Lab</title>
-        <meta
-          name="description"
-          content="DAO Participation Lab の最小ローカルWebアプリ。実験提案の一覧、作成、コメント、状態管理を行えます。"
-        />
-      </Head>
+      <PageSeo
+        title="DAO Participation Lab | Next Being Lab"
+        description="DAO Participation Lab の最小ローカルWebアプリ。実験提案の一覧、作成、コメント、状態管理を行えます。"
+        path="/dao-participation-lab"
+      />
 
       <div className="min-h-screen bg-[radial-gradient(circle_at_top,#e2e8f0,transparent_32%),linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] text-slate-900">
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">

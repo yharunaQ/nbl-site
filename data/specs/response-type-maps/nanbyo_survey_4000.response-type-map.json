@@ -1,0 +1,1170 @@
+{
+  "dataset_id": "nanbyo_survey_4000",
+  "source_id": "nanbyo_survey_4000_workbook",
+  "file_path": "nanbyo_survey_4000/Nanbyo_kanja.xlsx",
+  "generated_at": "2026-03-31T09:21:27+00:00",
+  "taxonomy_version": "v0",
+  "response_types": [
+    "identifier",
+    "nominal",
+    "ordinal",
+    "multiselect",
+    "composite_state",
+    "free_text",
+    "derived_existing",
+    "numeric_scalar",
+    "count"
+  ],
+  "variables": [
+    {
+      "raw_name": "Q01",
+      "display_name": "問1 本調査について、どこからお知りになりましたか。（あてはまるものすべてを選択）",
+      "question_group": "つながり",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 10,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q02",
+      "display_name": "問2 現在のあなたのご年齢（満年齢）をお答えください。",
+      "question_group": "回答者の状況",
+      "response_type_guess": "numeric_scalar",
+      "guess_reason": "Field name suggests scalar numeric value or band.",
+      "label_count": 9,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q03",
+      "display_name": "問3 あなたの性別をお答えください。",
+      "question_group": "回答者の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Field name suggests category rather than order.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_4",
+      "display_name": "（問４から都市部と地方部）",
+      "question_group": "回答者の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_1",
+      "display_name": "問5 あなたは難病の診断や指定を受けていますか。（あてはまるものすべてを選択）",
+      "question_group": "疾病",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 6,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_2_1",
+      "display_name": "問5-1 指定難病の診断のある方は、主として治療又は検査をしている疾病２つまでお選びください。",
+      "question_group": "疾病",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 338,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_2_2",
+      "display_name": "問5-2 指定難病以外の、障害者総合支援法上での難病のある方は主として治療又は検査をしている 疾病をお選びください。",
+      "question_group": "疾病",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 42,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_2_3",
+      "display_name": "（問5-3の記述から、小児慢性特定疾病医療受給者証をお持ちの方の疾病名）",
+      "question_group": "疾病",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 12,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_2_4",
+      "display_name": "（問5-3の記述から、難病法や障害者総合支援法で指定のない難病（小児慢性特定疾病以外）の疾病名）",
+      "question_group": "疾病",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 45,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_3",
+      "display_name": "（問5-1～3の疾病名からの疾患群分類）",
+      "question_group": "疾病",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 15,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_4",
+      "display_name": "問5-4 現在の主として治療又は検査をしている難病で最初に診断を受けた満年齢をお答えください。",
+      "question_group": "疾病",
+      "response_type_guess": "numeric_scalar",
+      "guess_reason": "Field name suggests scalar numeric value or band.",
+      "label_count": 10,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05_5",
+      "display_name": "（問5-4と問2から、診断を受けた時代）",
+      "question_group": "疾病",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q06",
+      "display_name": "問6 最近１年間で、難病に関連した入院がありましたか。あった場合、年間で合計何日程度でしたか。",
+      "question_group": "疾病",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q07",
+      "display_name": "問7 最近１年間で、難病に関連した定期的通院（検査を含む）は、年間で合計何回程度ありましたか。（最も近いもの１つを選択）",
+      "question_group": "疾病",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 9,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08",
+      "display_name": "問8 最近１年間で、難病に関連した体調悪化時等の不定期の通院は、年間で合計何回程度ありましたか。（最も近いもの１つを選択）",
+      "question_group": "疾病",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 7,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_1",
+      "display_name": "問9 あなたは障害者手帳を取得していますか。",
+      "question_group": "機能障害",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_2",
+      "display_name": "問9-1 取得している障害者手帳は何ですか。（あてはまるものすべてを選択）",
+      "question_group": "機能障害",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 3,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_3",
+      "display_name": "問9-2 身体障害者手帳を取得している場合、認定されている等級は何ですか。",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_4",
+      "display_name": "問9-3 身体障害者手帳で認定されている障害を、全て選んでください。",
+      "question_group": "機能障害",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 14,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_01",
+      "display_name": "問10 現在、あなたには、社会生活への支障となるような、次のような制限、症状や機能障害等がありますか。（各項目について、最も近い状況1つを選択）",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_02",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_03",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_04",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_05",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_06",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_07",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_08",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_09",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_10",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_11",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_12",
+      "display_name": "",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_1",
+      "display_name": "問11あなたの現在のお仕事の状況はいかがですか。 （最も近い状況１つを選択）",
+      "question_group": "就労状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 7,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_2",
+      "display_name": "問11-1 現在、仕事に就いていない方の生活状況はいかがですか。（あてはまるものすべてを選択）",
+      "question_group": "就労状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 6,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_1",
+      "display_name": "問12 ご自身やご家族の経済状況について、どのように感じていますか。（※上から４つ目までの質問）（各項目について、最も近い状況１つを選択）",
+      "question_group": "経済状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_2",
+      "display_name": "",
+      "question_group": "経済状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_3",
+      "display_name": "",
+      "question_group": "経済状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_4",
+      "display_name": "",
+      "question_group": "経済状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_5",
+      "display_name": "",
+      "question_group": "経済状況",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_1",
+      "display_name": "問13 あなたは難病と関連した次のような困り事を経験したことがありますか。現在、それは解決しましたか。（各項目について、最も近い状況１つを選択）",
+      "question_group": "仕事の自信・職業準備状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_2",
+      "display_name": "",
+      "question_group": "仕事の自信・職業準備状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_3",
+      "display_name": "",
+      "question_group": "仕事の自信・職業準備状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_4",
+      "display_name": "",
+      "question_group": "仕事の自信・職業準備状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_5",
+      "display_name": "",
+      "question_group": "仕事の自信・職業準備状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q14_1",
+      "display_name": "問14 あなた自身の仕事への捉え方や日頃の困難状況への向き合い方や感じ方の傾向はいかがですか。（※）（各項目について、最も近い状況１つを選択）",
+      "question_group": "仕事の動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q14_2",
+      "display_name": "",
+      "question_group": "仕事の動機",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q14_3",
+      "display_name": "",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q14_4",
+      "display_name": "",
+      "question_group": "SOC（首尾一貫感覚）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_1",
+      "display_name": "問15 難病の発症後、最近５年程度の間に、就職活動をした経験はありますか。",
+      "question_group": "就職活動の経験",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_2_1",
+      "display_name": "問15-1 就職活動時には、難病と関連した次のような不安や困り事がありましたか。それは現在、解決済みですか。（各項目について、最も近い状況１つを選択）",
+      "question_group": "就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_2_2",
+      "display_name": "",
+      "question_group": "就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_2_3",
+      "display_name": "",
+      "question_group": "就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_2_4",
+      "display_name": "",
+      "question_group": "就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_2_5",
+      "display_name": "",
+      "question_group": "就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_3",
+      "display_name": "問15-2 一番最近の就職活動では、難病・障害や必要な配慮について伝えましたか。（あてはまるものすべてを選択）",
+      "question_group": "説明・開示状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_4",
+      "display_name": "問15-3 問15-2の内容を伝えた／伝えなかった理由は何ですか。（あてはまるものすべてを選択）",
+      "question_group": "説明・開示状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 6,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q15_5",
+      "display_name": "問15-4 一番最近の就職活動では、障害者雇用支援の制度を活用しましたか。（あてはまるものすべてを選択）",
+      "question_group": "障害者雇用支援制度の利用",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 5,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_1",
+      "display_name": "問16 難病の発症後、最近５年程度の間に、一般就労をした経験はありますか。（自営、会社・団体・個人・官公庁・就労継続支援A型事業所等での雇用）",
+      "question_group": "就業の経験",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 2,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_2",
+      "display_name": "問16-1 「現在働いている仕事」、現在働いていない場合には「一番最近の仕事」について、その仕事 の特徴を選んでください。（主要なものすべてを選択）",
+      "question_group": "就業の経験",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 12,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_3_1",
+      "display_name": "問16-2 その仕事での平均的な1週間あたりの勤務時間（残業を含む、休憩時間を除く）は、どうでしたか。（最も近いもの１つを選択）",
+      "question_group": "就業の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_3_2",
+      "display_name": "問16-3 その仕事での平均的な1週間あたりの勤務日数は、どうでしたか。（最も近いもの１つを選択）",
+      "question_group": "就業の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 7,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_3_3",
+      "display_name": "問16-4 その仕事での平均的な片道あたりの通勤時間は、どの程度でしたか。（最も近いもの１つを選択）",
+      "question_group": "就業の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_3_4",
+      "display_name": "（問16から、1日あたりの平均労働時間）",
+      "question_group": "就業の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_3_5",
+      "display_name": "（問16から、1日あたりの労働時間＋通勤時間の平均）",
+      "question_group": "就業の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_01",
+      "display_name": "問16-5 その仕事での会社や職場は、次のような状況があてはまりますか。（※）（各項目について、最も近い状況１つを選択）",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_02",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_03",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_04",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_05",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_06",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_07",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_08",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_09",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_10",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_11",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_12",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_13",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_14",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_4_15",
+      "display_name": "",
+      "question_group": "職場配慮の状況",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_1",
+      "display_name": "問16-6 その仕事では、難病と関連した次のような不安や困り事がありましたか。それは現在、解決済みですか。（各項目について、最も近い状況１つを選択）",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_2",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_3",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_4",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_5",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_6",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_7",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_8",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_5_9",
+      "display_name": "",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q16_6",
+      "display_name": "問16-7 現在働いている／または一番最近の仕事の会社（本社・支社等全て含む）の規模（全従業員数）について、おおよそ分かる範囲でお選びください。（※）（最も近いもの１つを選択）",
+      "question_group": "就業の経験",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 6,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_1",
+      "display_name": "問17 あなたが治療と両立して仕事で活躍するために、次のような専門的支援は必要とお考えですか。必要な場合、実際に地域でそのような支援を利用したことはありますか、また、その時の状況はいかがでしたか。（各項目について、最も近い状況を１つ選択）",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_2",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_3",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_4",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_5",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_6",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_7",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q17_8",
+      "display_name": "",
+      "question_group": "就労相談内容",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q18",
+      "display_name": "問18 あなたは次の支援者・支援機関等に、就労の相談をしたことはありますか。（相談したことがあるところすべてを選択）",
+      "question_group": "就労相談先",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 17,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q19",
+      "display_name": "問19 あなたご自身の支援ニーズに照らして、難病患者にどのような就労支援が適切とお考えですか。（適切とお考えの支援をすべて選択）",
+      "question_group": "就労相談先",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 12,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q20",
+      "display_name": "問20 あなたの最終学歴を一つ選んでください。",
+      "question_group": "学歴や資格",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 7,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q21",
+      "display_name": "問21 あなたがもっている資格や免許等をすべて選んでください。",
+      "question_group": "学歴や資格",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 10,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Sp01",
+      "display_name": "その他の心身機能の障害程度(最大のもの)",
+      "question_group": "機能障害",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Sp02",
+      "display_name": "就職活動の困難程度(最大のもの)",
+      "question_group": "就職活動の職業的課題の状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Sp03",
+      "display_name": "職場適応や就業継続の困難程度(最大のもの)",
+      "question_group": "就職後の職業的課題",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Sp04",
+      "display_name": "職業準備性等の困難程度(最大のもの)",
+      "question_group": "仕事の自信・職業準備状況",
+      "response_type_guess": "composite_state",
+      "guess_reason": "Labels combine need/usefulness/resolution/applicability states.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ01",
+      "display_name": "問１．本調査について知った経路：「その他」の具体的な内容を教えてください。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ05",
+      "display_name": "問５－３．難病法や障害者総合支援法で指定のない難病（小児慢性特定疾病以外）の疾病名",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ10",
+      "display_name": "問５～10に関連して、特に就労困難性に関係する又は社会生活への支障となるような制限、症状や障害等があれば、具体的にご記入ください（任意）。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ11",
+      "display_name": "問11-1.現在仕事に就いていない方の生活状況：「その他」の具体的な内容を教えてください。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ15-3",
+      "display_name": "問15-3.開示／非開示の理由：「その他」の具体的な内容を教えてください。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ15",
+      "display_name": "問15に関連して、就職活動等における困り事があれば、具体的にご記入ください（任意）。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ16",
+      "display_name": "問16に関連して、仕事上で、あなたが経験した困り事があれば、具体的にご記入ください（任意）。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ6",
+      "display_name": "問16～19に関連して、あなたの支援ニーズに合う専門支援のあり方、支援を利用したくない理由等について、ご意見・要望をご記入ください（任意）。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ20",
+      "display_name": "問20.最終学齢：「その他」の具体的な内容を教えてください。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ21",
+      "display_name": "問21.資格や免許等：「その他」の具体的な内容を教えてください。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "xQ7",
+      "display_name": "問20～21に関連して、あなたの支援ニーズに合う職業訓練や資格取得支援のあり方について、ご意見・要望をご記入ください（任意）。",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    }
+  ]
+}

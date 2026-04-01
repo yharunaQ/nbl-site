@@ -12,7 +12,15 @@
 
 - 
 
+## Hold Signals
+
+- 
+
 ## Next Best Round
+
+- 
+
+## AI Autonomous Moves Today
 
 - 
 

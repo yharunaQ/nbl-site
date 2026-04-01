@@ -32,7 +32,7 @@
 - Switch: [lib/publicSiteMode.ts](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/lib/publicSiteMode.ts)
 - Temporary home: [components/TemporaryPublicHome.tsx](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/components/TemporaryPublicHome.tsx)
 - Preserved previous home: [components/LegacyPublicHome.tsx](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/components/LegacyPublicHome.tsx)
-- Route blocking: [middleware.ts](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/middleware.ts)
+- Route blocking: [proxy.ts](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/proxy.ts)
 
 ## Later replacement
 

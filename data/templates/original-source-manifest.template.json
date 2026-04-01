@@ -1,0 +1,31 @@
+{
+  "dataset_id": "employment_survey_3000",
+  "dataset_label": "3000名障害・疾病アンケート",
+  "dataset_type": "structured_survey",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_free_text": true,
+  "respondent_count_estimate": 3000,
+  "row_unit": "respondent",
+  "source_files": [
+    {
+      "path": "raw/source-file.ext",
+      "format": "xlsx"
+    }
+  ],
+  "questionnaire_files": ["questionnaire.pdf"],
+  "dictionary_files": ["data_dictionary.csv"],
+  "free_text_columns": ["free_text_1"],
+  "key_dimensions": [
+    "disability_or_disease",
+    "gender",
+    "age",
+    "occupational_difficulty_status",
+    "workplace_support_status",
+    "job_content",
+    "future_hope",
+    "coping_ability"
+  ],
+  "notes": "項目差分、欠損コード、匿名化上の注意をここに記述する"
+}

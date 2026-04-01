@@ -22,3 +22,12 @@ references/index/embeddings.jsonl
 
 # Runtime cache
 .tmp/
+
+# Internal workspace assets not required for public deployment
+content-inbox/
+
+# Sensitive original datasets and local analysis workspaces
+data/original_secure/
+data/staging/
+data/analysis_ready/
+data/local_cache/

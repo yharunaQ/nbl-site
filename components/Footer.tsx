@@ -24,11 +24,10 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <div className="font-bold text-gray-900 mb-1">利用ガイド</div>
-                    <a href="#phase1" className="hover:text-indigo-600 transition-colors">NBL (Phase 1)</a>
-                    <a href="#product" className="hover:text-indigo-600 transition-colors">JAC (Product)</a>
-                    <Link href="/jac" className="hover:text-indigo-600 transition-colors">JAC試用版</Link>
-                    <a href="#services" className="hover:text-indigo-600 transition-colors">Services & Pricing</a>
+                    <div className="font-bold text-gray-900 mb-1">ツール</div>
+                    <Link href="/jac/next" className="hover:text-indigo-600 transition-colors">就労支援見立てサポート</Link>
+                    <Link href="/jac/guide" className="hover:text-indigo-600 transition-colors">仕事設計ガイド</Link>
+                    <a href="#services" className="hover:text-indigo-600 transition-colors">Services</a>
                 </div>
 
                 <div className="flex flex-col gap-3">

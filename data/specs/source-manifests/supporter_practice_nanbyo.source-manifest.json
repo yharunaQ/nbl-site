@@ -1,0 +1,27 @@
+{
+  "source_id": "nanbyo_supporters_workbook",
+  "dataset_id": "supporter_practice_nanbyo",
+  "source_role": "support_practice_source",
+  "source_type": "xlsx_workbook",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_free_text": true,
+  "row_unit": "supporter_respondent",
+  "population": "rare disease supporter survey",
+  "file_path": "supporter_practice/Nanbyo_Supporters.xlsx",
+  "sheet_names": [
+    "支援機関調査標準データ",
+    "データ一覧"
+  ],
+  "data_sheet": "支援機関調査標準データ",
+  "dictionary_sheet": "データ一覧",
+  "row_count": 536,
+  "column_count": 66,
+  "free_text_columns": [
+    "Q14x"
+  ],
+  "guide_files": [],
+  "notes": "Supporter-side survey focused on rare disease employment support practices and beliefs.",
+  "generated_at": "2026-03-31T09:21:27+00:00"
+}

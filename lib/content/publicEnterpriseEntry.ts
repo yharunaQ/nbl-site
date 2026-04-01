@@ -125,7 +125,7 @@ export const publicEnterpriseEntry = {
     {
       title: '内部ツール',
       summary:
-        '条件整理ドラフトは、当面は Founder が外部依頼対応の中で使う internal tool として扱い、公開 product にはしません。',
+        '配慮設計アシストは、当面は Founder が外部依頼対応の中で使う internal tool として扱い、公開 product にはしません。',
       note: '将来の operator-assisted / self-serve の可能性は、内部運用の蓄積から順に判断します。',
     },
   ] as EnterpriseLayer[],
@@ -150,7 +150,7 @@ export const publicEnterpriseEntry = {
     'このページは、個別ケースの最終判断や法的結論を示すページではありません。',
     '診断名だけで必要な配慮や働き方を決め打ちするためのページではありません。',
     '支援機関への丸投げや、販売優先の導線を主目的にしたページではありません。',
-    '条件整理ドラフトを公開相談商品として案内するページではありません。',
+    '配慮設計アシストを公開相談商品として案内するページではありません。',
   ],
   notReplacing: [
     '既存支援機関や社内責任者を置き換えるものではありません。',

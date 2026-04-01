@@ -5,6 +5,10 @@ import { buildAgenticPlan } from '@/lib/knowledge/agenticPlanner';
 import { executeAgenticPlan } from '@/lib/knowledge/agenticExecutor';
 import { buildGlmInsights } from '@/lib/knowledge/glmRuntimeInsights';
 import {
+  getCitationEvidenceDetails,
+  type CitationEvidenceDetail,
+} from '@/lib/knowledge/claimRegistry';
+import {
   GlmInsight,
   GlmInsightResult,
   GLM_INTERACTION_MEANINGS,
@@ -18,8 +22,31 @@ import {
   getData2KnowledgeBundle,
   type SuggestionSeed as Data2SuggestionSeed,
 } from '@/lib/jac/data2Knowledge';
-
-type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
+import {
+  getSupportCatalogBundle,
+  type SupportCatalogPromptIssue,
+  type SupportCatalogSuggestionSeed,
+} from '@/lib/jac/supportCatalog';
+import {
+  buildRegionalSupportPromptGuidance,
+  REGIONAL_SUPPORT_POSITIONING_DETAIL,
+  REGIONAL_SUPPORT_POSITIONING_SOURCE_NOTE,
+  REGIONAL_SUPPORT_PROMPT_RULES,
+} from '@/lib/jac/regionalSupportPositioning';
+import {
+  buildStep4ReferencePromptGuidance,
+  STEP4_REFERENCE_SOURCE_NOTE,
+} from '@/lib/jac/step4ReferencePositioning';
+import {
+  buildPracticalReferencePreview,
+  type PracticalReferencePreviewItem,
+} from '@/lib/jac/practicalReferenceCatalog';
+import { buildStep4EvidencePack } from '@/lib/jac/step4EvidencePack';
+import {
+  buildSelectedTagContractSummary,
+  buildStepContractPromptGuidance,
+} from '@/lib/jac/stepContract';
+import type { TagGroupKey } from '@/lib/jac/tagTaxonomy';
 
 type FollowUpAnswer = {
   key: string;
@@ -38,6 +65,15 @@ type Suggestion = {
 type AccommodationSelection = {
   selected: boolean;
   priority: number;
+};
+
+type SupportCatalogProcessIssue = {
+  title: string;
+  summary: string;
+  recommendedSupports: Array<{
+    title: string;
+    summary: string;
+  }>;
 };
 
 type RequestBody = {
@@ -149,7 +185,7 @@ const SUGGESTION_LIBRARY: Suggestion[] = [
 ];
 
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
-const OPENAI_CHAT_TIMEOUT_MS_DEFAULT = 45000;
+const OPENAI_CHAT_TIMEOUT_MS_DEFAULT = 75000;
 const EXECUTION_TIMEOUT_MS = 7000;
 
 function buildComposedQuery(payload: RequestBody): string {
@@ -175,9 +211,18 @@ function buildSystemPrompt(): string {
 - 医療診断は行わず、職業場面・タスク条件・環境条件・本人希望に基づいて整理する。
 - 追加相談や配慮候補の選択結果を踏まえて、見立てを更新する。
 - 提案は合意形成の材料であり、断定的な医療助言は避ける。
+- 【重要】consultation（相談文）に障害名・診断名・特性名・症状名が明記されている場合は、タグ選択の有無に関わらず必ずその情報を読み取り、見立てに反映すること。タグは補助的な整理であり、相談文が主情報である。
+- selected_tags は Step 2 の粗い入口であり、見落とし防止のための補助線として扱う。タグ自体を結論として扱わない。
 - planner_context.glm_context はGLM分析の実証的知見。関連する場合は優先的に配慮案へ反映する。
 - GLM根拠に対応する配慮案を、理由に「どの状況を下げる/上げるためか」を含めて明示する。
 - planner_context.safety_gate.mode が strict/caution の場合は、断定提案を避け、追加確認質問と条件付き提案を優先する。
+
+${buildRegionalSupportPromptGuidance()}
+${buildStepContractPromptGuidance()}
+${buildStep4ReferencePromptGuidance()}
+- planner_context.support_catalog_context は上記ルールに従って使う。
+- planner_context.practical_reference_context は web-cache 由来の類似事例・雇用ガイダンスであり、直接根拠ではなく、合意文書に書いた合理的配慮や支援の実施方法を具体化する参考としてのみ使う。
+- 知的障害、身体障害、内部障害、難病、高次脳機能障害など、伝統的な障害者就労支援の対象でも使える地域支援の選択肢を必要に応じて含める。
 
 出力ルール:
 - JSONのみを出力する。
@@ -205,9 +250,7 @@ function dedupeSuggestionLibrary(suggestions: Suggestion[], maxCount = 28): Sugg
       relatedTags: Array.from(new Set([...(prev.relatedTags || []), ...(item.relatedTags || [])])),
     });
   }
-  return [...byTitle.values()]
-    .sort((a, b) => a.priority - b.priority)
-    .slice(0, maxCount);
+  return [...byTitle.values()].sort((a, b) => a.priority - b.priority).slice(0, maxCount);
 }
 
 function mapData2Suggestions(rows: Data2SuggestionSeed[]): Suggestion[] {
@@ -220,6 +263,42 @@ function mapData2Suggestions(rows: Data2SuggestionSeed[]): Suggestion[] {
   }));
 }
 
+function mapSupportCatalogSuggestions(rows: SupportCatalogSuggestionSeed[]): Suggestion[] {
+  return rows.map((row) => ({
+    title: row.title,
+    reason: row.reason,
+    examples: row.examples,
+    relatedTags: row.relatedTags,
+    priority: row.priority,
+  }));
+}
+
+function buildSupportCatalogPreview(
+  rows: SupportCatalogPromptIssue[],
+  maxIssues = 3,
+): SupportCatalogProcessIssue[] {
+  return rows.slice(0, maxIssues).map((issue) => ({
+    title: issue.title,
+    summary: issue.summary,
+    recommendedSupports: issue.recommendedSupports.slice(0, 2).map((support) => ({
+      title: support.title,
+      summary: support.summary,
+    })),
+  }));
+}
+
+function buildProcessSourceNotes(
+  selectedSourceIds: Array<{ id: string }>,
+  hasSupportCatalogPreview: boolean,
+  hasPracticalReferencePreview: boolean,
+): string[] {
+  return selectedSourceIds
+    .map((source) => getKnowledgeSourceById(source.id)?.notes)
+    .concat(hasSupportCatalogPreview ? [REGIONAL_SUPPORT_POSITIONING_SOURCE_NOTE] : [])
+    .concat(hasPracticalReferencePreview ? [STEP4_REFERENCE_SOURCE_NOTE] : [])
+    .filter(Boolean) as string[];
+}
+
 function buildUserPrompt(
   payload: RequestBody,
   plannerContext: Record<string, unknown>,
@@ -229,6 +308,7 @@ function buildUserPrompt(
     {
       consultation: payload.consultation,
       selected_tags: payload.selectedTags,
+      selected_tag_contract: buildSelectedTagContractSummary(payload.selectedTags),
       follow_up_answers: payload.followUpAnswers,
       additional_consultation: payload.additionalConsultation || '',
       selected_accommodations: payload.selectedAccommodations || {},
@@ -338,6 +418,7 @@ type ParsedAssessment = {
       lane: string;
       label: string;
     }>;
+    evidence_details?: CitationEvidenceDetail[];
   }>;
 };
 
@@ -407,23 +488,27 @@ function resolveEvidenceLane(evidenceId: string, claimLaneMap: Map<string, strin
   return normalizeEvidenceLane(claimLaneMap.get(id) || 'unknown');
 }
 
-async function attachCitationEvidenceLanes(assessment: ParsedAssessment): Promise<ParsedAssessment> {
+async function attachCitationMetadata(assessment: ParsedAssessment): Promise<ParsedAssessment> {
   const claimLaneMap = await readClaimLaneMap();
-  const citations = (assessment.citations || []).map((citation) => {
-    const evidenceIds = Array.isArray(citation.evidence_ids) ? citation.evidence_ids : [];
-    const evidence_lanes = evidenceIds.map((evidenceId) => {
-      const lane = resolveEvidenceLane(evidenceId, claimLaneMap);
+  const citations = await Promise.all(
+    (assessment.citations || []).map(async (citation) => {
+      const evidenceIds = Array.isArray(citation.evidence_ids) ? citation.evidence_ids : [];
+      const evidence_lanes = evidenceIds.map((evidenceId) => {
+        const lane = resolveEvidenceLane(evidenceId, claimLaneMap);
+        return {
+          evidence_id: evidenceId,
+          lane,
+          label: EVIDENCE_LANE_LABEL[lane] || lane,
+        };
+      });
+      const evidence_details = await getCitationEvidenceDetails(evidenceIds);
       return {
-        evidence_id: evidenceId,
-        lane,
-        label: EVIDENCE_LANE_LABEL[lane] || lane,
+        ...citation,
+        evidence_lanes,
+        evidence_details,
       };
-    });
-    return {
-      ...citation,
-      evidence_lanes,
-    };
-  });
+    }),
+  );
 
   return {
     ...assessment,
@@ -594,6 +679,7 @@ function normalizeRequestBody(body?: Partial<RequestBody> | null): RequestBody {
   return {
     consultation: body?.consultation || '',
     selectedTags: body?.selectedTags || {
+      situation: [],
       task: [],
       symptom: [],
       environment: [],
@@ -739,7 +825,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  const guard = guardJacApiRequest(req, { route: 'jac-assess', costly: true });
+  const guard = await guardJacApiRequest(req, { route: 'jac-assess', costly: true });
   if (!guard.ok) {
     return res.status(guard.status).json({ error: guard.error });
   }
@@ -765,10 +851,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       maxInsights: 6,
       maxSuggestions: 10,
     }).catch(() => ({ suggestions: [], promptInsights: [] }));
+    const supportCatalogBundle = await getSupportCatalogBundle(composedQuery, body.selectedTags, {
+      maxIssues: 3,
+      maxSuggestions: 8,
+      maxQuestions: 4,
+    }).catch(() => ({ suggestions: [], promptIssues: [], followupHints: [] }));
     const suggestionLibrary = dedupeSuggestionLibrary([
       ...mapData2Suggestions(data2Bundle.suggestions),
+      ...mapSupportCatalogSuggestions(supportCatalogBundle.suggestions),
       ...SUGGESTION_LIBRARY,
     ]);
+    const supportCatalogPreview = buildSupportCatalogPreview(supportCatalogBundle.promptIssues);
     const data2Preview = data2Bundle.promptInsights.slice(0, 3).map((insight) => ({
       id: insight.id,
       disability: insight.disability,
@@ -795,6 +888,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ).catch(() => ({
       stepProgress: [],
       evidence: [],
+      step4Evidence: [],
+      step4ClaimIds: [],
       structuredSummary: [
         'Execution fallback: structured summary unavailable due to timeout/error.',
       ],
@@ -803,6 +898,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         '安全ゲート: 実行フォールバックのため追加確認を優先します。',
       ),
     }));
+    const evidenceContext = {
+      consultationText: body.consultation,
+      selectedTags: Object.values(body.selectedTags || {}).flat(),
+      followUpAnswers: (body.followUpAnswers || []).map(
+        (item) => `${item.label} ${item.value}`.trim(),
+      ),
+      selectedAccommodationTitles: Object.entries(body.selectedAccommodations || {})
+        .filter(([, selection]) => selection?.selected !== false)
+        .map(([title]) => title),
+    };
+    const practicalContext = {
+      consultationText: body.consultation,
+      additionalConsultation: body.additionalConsultation || '',
+      selectedTags: Object.values(body.selectedTags || {}).flat(),
+      followUpAnswers: (body.followUpAnswers || []).map(
+        (item) => `${item.label} ${item.value}`.trim(),
+      ),
+      selectedAccommodationTitles: evidenceContext.selectedAccommodationTitles,
+    };
+    const practicalReferencePreview = await buildPracticalReferencePreview(
+      safeExecution.step4Evidence,
+      6,
+      practicalContext,
+    ).catch(() => []);
 
     const plannerContext = {
       selected_sources: plan.selectedSources,
@@ -827,12 +946,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })),
         recommended_actions: glmResult.recommendedActions,
       },
+      support_catalog_context: {
+        positioning_summary: REGIONAL_SUPPORT_POSITIONING_DETAIL,
+        reasoning_rules: REGIONAL_SUPPORT_PROMPT_RULES,
+        prompt_issues: supportCatalogBundle.promptIssues,
+        followup_hints: supportCatalogBundle.followupHints,
+      },
+      practical_reference_context: practicalReferencePreview,
       data2_context: data2Bundle.promptInsights,
     };
 
     let assessment: ParsedAssessment;
     let fallbackReason: string | null = null;
     let refinementJobId: string | null = null;
+    let step4EvidencePack = null;
     const freeTextEvidence = buildFreeTextEvidenceSummary(safeExecution.evidence);
     const planWarnings = [...plan.warnings];
     if (safeExecution.evidence.length === 0) {
@@ -840,12 +967,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'Evidence hit count is 0. Try adding concrete scenes (meeting/load/time/environment) or selecting more tags.',
       );
     }
+    if (supportCatalogBundle.promptIssues.length > 0) {
+      planWarnings.push(
+        '地域支援カタログを、本人と職場の個別調整を支える支援連携の文脈として参照しました。',
+      );
+    }
+    if (practicalReferencePreview.length > 0) {
+      planWarnings.push(
+        STEP4_REFERENCE_SOURCE_NOTE,
+      );
+    }
     if (safeExecution.safetyGate.mode !== 'normal') {
       planWarnings.push(safeExecution.safetyGate.summary);
     }
 
     if (isFastMode) {
-      assessment = await attachCitationEvidenceLanes(
+      assessment = await attachCitationMetadata(
         applySafetyGateToAssessment(
           mergeAssessmentWithGlm(
             buildFallbackAssessment(body, glmResult, suggestionLibrary),
@@ -864,12 +1001,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             suggestionLibrary,
             openAiTimeoutMs,
           );
-          const fullAssessment = await attachCitationEvidenceLanes(
-            applySafetyGateToAssessment(
-              mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights),
-              safeExecution.safetyGate,
-            ),
+          const fullAssessment = await attachCitationMetadata(
+            applySafetyGateToAssessment(fullAssessmentRaw, safeExecution.safetyGate),
           );
+          const fullStep4EvidencePack = await buildStep4EvidencePack({
+            assessment: fullAssessment,
+            claimIds: safeExecution.step4ClaimIds,
+            evidence: safeExecution.step4Evidence,
+            supportCatalogItems: supportCatalogPreview,
+            evidenceContext,
+            practicalContext,
+            practicalMaxItems: 6,
+          }).catch(() => null);
           const refinementProcess = {
             selectedSources: plan.selectedSources.map((source) => ({
               id: source.id,
@@ -889,10 +1032,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             refinementJobId: null,
             data2InsightCount: data2Bundle.promptInsights.length,
             data2Preview,
+            supportCatalogPreview,
+            practicalReferencePreview,
+            step4EvidencePack: fullStep4EvidencePack,
             safetyGate: safeExecution.safetyGate,
-            sourceNotes: plan.selectedSources
-              .map((source) => getKnowledgeSourceById(source.id)?.notes)
-              .filter(Boolean),
+            sourceNotes: buildProcessSourceNotes(
+              plan.selectedSources,
+              supportCatalogPreview.length > 0,
+              practicalReferencePreview.length > 0,
+            ),
             fallbackReason: null,
           };
           return {
@@ -902,7 +1050,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
       }
     } else if (!process.env.OPENAI_API_KEY) {
-      assessment = await attachCitationEvidenceLanes(
+      assessment = await attachCitationMetadata(
         applySafetyGateToAssessment(
           buildFallbackAssessment(body, glmResult, suggestionLibrary),
           safeExecution.safetyGate,
@@ -917,11 +1065,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           suggestionLibrary,
           openAiTimeoutMs,
         );
-        assessment = await attachCitationEvidenceLanes(
-          applySafetyGateToAssessment(
-            mergeAssessmentWithGlm(fullAssessmentRaw, glmResult.topInsights),
-            safeExecution.safetyGate,
-          ),
+        assessment = await attachCitationMetadata(
+          applySafetyGateToAssessment(fullAssessmentRaw, safeExecution.safetyGate),
         );
       } catch (error) {
         const rawMessage =
@@ -930,7 +1075,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           rawMessage.includes('aborted') || rawMessage.toLowerCase().includes('timeout')
             ? '精密見立ては時間上限を超えたため、初回結果を継続表示しています。'
             : rawMessage;
-        assessment = await attachCitationEvidenceLanes(
+        assessment = await attachCitationMetadata(
           applySafetyGateToAssessment(
             buildFallbackAssessment(body, glmResult, suggestionLibrary),
             safeExecution.safetyGate,
@@ -938,6 +1083,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         );
       }
     }
+    step4EvidencePack = await buildStep4EvidencePack({
+      assessment,
+      claimIds: safeExecution.step4ClaimIds,
+      evidence: safeExecution.step4Evidence,
+      supportCatalogItems: supportCatalogPreview,
+      evidenceContext,
+      practicalContext,
+      practicalMaxItems: 6,
+    }).catch(() => null);
 
     const responseProcess = {
       selectedSources: plan.selectedSources.map((source) => ({
@@ -959,9 +1113,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       refinementJobId,
       data2InsightCount: data2Bundle.promptInsights.length,
       data2Preview,
-      sourceNotes: plan.selectedSources
-        .map((source) => getKnowledgeSourceById(source.id)?.notes)
-        .filter(Boolean),
+      supportCatalogPreview,
+      practicalReferencePreview,
+      step4EvidencePack,
+      sourceNotes: buildProcessSourceNotes(
+        plan.selectedSources,
+        supportCatalogPreview.length > 0,
+        practicalReferencePreview.length > 0,
+      ),
       fallbackReason,
     };
 
@@ -1000,17 +1159,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       buildComposedQuery(body),
       body.selectedTags,
     ).catch(() => ({ suggestions: [], promptInsights: [] }));
+    const supportCatalogBundle = await getSupportCatalogBundle(
+      buildComposedQuery(body),
+      body.selectedTags,
+      { maxIssues: 3, maxSuggestions: 8, maxQuestions: 4 },
+    ).catch(() => ({ suggestions: [], promptIssues: [], followupHints: [] }));
     const suggestionLibrary = dedupeSuggestionLibrary([
       ...mapData2Suggestions(data2Bundle.suggestions),
+      ...mapSupportCatalogSuggestions(supportCatalogBundle.suggestions),
       ...SUGGESTION_LIBRARY,
     ]);
+    const supportCatalogPreview = buildSupportCatalogPreview(supportCatalogBundle.promptIssues);
+    const practicalReferencePreview: PracticalReferencePreviewItem[] = [];
     const data2Preview = data2Bundle.promptInsights.slice(0, 3).map((insight) => ({
       id: insight.id,
       disability: insight.disability,
       issues: insight.matchedIssues.map((item) => item.issue).slice(0, 2),
     }));
     const safetyGate = buildDefaultSafetyGate('安全ゲート: 内部例外のため追加確認を優先します。');
-    const assessment = await attachCitationEvidenceLanes(
+    const assessment = await attachCitationMetadata(
       applySafetyGateToAssessment(
         mergeAssessmentWithGlm(
           buildFallbackAssessment(body, glmResult, suggestionLibrary),
@@ -1019,6 +1186,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         safetyGate,
       ),
     );
+    const fallbackEvidenceContext = {
+      consultationText: body.consultation,
+      selectedTags: Object.values(body.selectedTags || {}).flat(),
+      followUpAnswers: (body.followUpAnswers || []).map(
+        (item) => `${item.label} ${item.value}`.trim(),
+      ),
+      selectedAccommodationTitles: Object.keys(body.selectedAccommodations || {}),
+    };
+    const fallbackPracticalContext = {
+      consultationText: body.consultation,
+      additionalConsultation: body.additionalConsultation || '',
+      selectedTags: Object.values(body.selectedTags || {}).flat(),
+      followUpAnswers: (body.followUpAnswers || []).map(
+        (item) => `${item.label} ${item.value}`.trim(),
+      ),
+      selectedAccommodationTitles: Object.keys(body.selectedAccommodations || {}),
+    };
+    const step4EvidencePack = await buildStep4EvidencePack({
+      assessment,
+      claimIds: [],
+      evidence: [],
+      supportCatalogItems: supportCatalogPreview,
+      evidenceContext: fallbackEvidenceContext,
+      practicalContext: fallbackPracticalContext,
+      practicalMaxItems: 6,
+    }).catch(() => null);
     const errorMessage = error instanceof Error ? error.message : 'unexpected error';
     await recordJacSafetyAudit({
       req,
@@ -1052,7 +1245,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         refinementJobId: null,
         data2InsightCount: data2Bundle.promptInsights.length,
         data2Preview,
-        sourceNotes: [],
+        supportCatalogPreview,
+        practicalReferencePreview,
+        step4EvidencePack,
+        sourceNotes: buildProcessSourceNotes([], supportCatalogPreview.length > 0, false),
         fallbackReason: `内部例外のため安全フォールバックを返却しました: ${errorMessage}`,
       },
     });

@@ -1,0 +1,670 @@
+{
+  "dataset_id": "supporter_practice_nanbyo",
+  "source_id": "nanbyo_supporters_workbook",
+  "file_path": "supporter_practice/Nanbyo_Supporters.xlsx",
+  "generated_at": "2026-03-31T09:21:27+00:00",
+  "taxonomy_version": "v0",
+  "response_types": [
+    "identifier",
+    "nominal",
+    "ordinal",
+    "multiselect",
+    "composite_state",
+    "free_text",
+    "derived_existing",
+    "numeric_scalar",
+    "count"
+  ],
+  "variables": [
+    {
+      "raw_name": "Q01",
+      "display_name": "問1回答者の所属する機関等（該当全ての機関種類を選択、その他は記述）",
+      "question_group": "回答者の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 9,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q03",
+      "display_name": "問3回答者の現在の資格・職種等を下記から全てお選びください。（該当の全てを選択、その他は記述）",
+      "question_group": "回答者の状況",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 12,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_1",
+      "display_name": "①全身まひや人工呼吸器使用等、医療や日常生活の継続的で高度な支援ニーズのある難病患者",
+      "question_group": "日頃の業務において、次のような状態像にある難病患者と関わる機会はどの程度ありますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_2",
+      "display_name": "②難病を原因疾患とした身体障害認定のある難病患者",
+      "question_group": "日頃の業務において、次のような状態像にある難病患者と関わる機会はどの程度ありますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_3",
+      "display_name": "③精神障害や発達障害の認定のある難病患者",
+      "question_group": "日頃の業務において、次のような状態像にある難病患者と関わる機会はどの程度ありますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_4",
+      "display_name": "④精神障害や発達障害の疑いのある難病患者",
+      "question_group": "日頃の業務において、次のような状態像にある難病患者と関わる機会はどの程度ありますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_5",
+      "display_name": "⑤障害者手帳のない難病患者",
+      "question_group": "日頃の業務において、次のような状態像にある難病患者と関わる機会はどの程度ありますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q04_6",
+      "display_name": "⑥難病法や障害者総合支援法上の「難病」に含まれない難病患者",
+      "question_group": "日頃の業務において、次のような状態像にある難病患者と関わる機会はどの程度ありますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q05",
+      "display_name": "難病就労支援の業務上の位置付け",
+      "question_group": "回答者の所属する機関・部署等では、「難病患者の就労支援」は業務上位置付けられたり、難病患者や関係機関等への周知等があったりしますか。",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q06_1",
+      "display_name": "①対人支援だけでなく環境改善により生活機能の改善を図る",
+      "question_group": "難病患者の就労支援に限らず、日頃の業務では、次のようなケースマネジメントに関する取組はどの程度ありますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q06_2",
+      "display_name": "②各支援対象者の強みや興味等を踏まえた全人的捉え方",
+      "question_group": "難病患者の就労支援に限らず、日頃の業務では、次のようなケースマネジメントに関する取組はどの程度ありますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q06_3",
+      "display_name": "③家庭、地域、職場等の実際の生活場面での評価と支援",
+      "question_group": "難病患者の就労支援に限らず、日頃の業務では、次のようなケースマネジメントに関する取組はどの程度ありますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q06_4",
+      "display_name": "④複数専門機関・職種によるチームでの個別・継続的支援",
+      "question_group": "難病患者の就労支援に限らず、日頃の業務では、次のようなケースマネジメントに関する取組はどの程度ありますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q07_1",
+      "display_name": "①疲労と回復のバランスのとれる仕事内容や勤務条件が重要",
+      "question_group": "難病患者への効果的な就労支援について、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q07_2",
+      "display_name": "②通院や体調管理等への職場の理解と配慮が重要",
+      "question_group": "難病患者への効果的な就労支援について、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q07_3",
+      "display_name": "③就職だけでなく、就職後の治療と仕事の両立の継続が重要",
+      "question_group": "難病患者への効果的な就労支援について、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q07_4",
+      "display_name": "④各自の失業給付期間や経済状態を考えた就職支援が重要",
+      "question_group": "難病患者への効果的な就労支援について、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q07_5",
+      "display_name": "⑤難病を原因疾患とする障害者には、疾患管理の継続的支援が重要",
+      "question_group": "難病患者への効果的な就労支援について、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_01",
+      "display_name": "①疾患によっては、自身を「障害者」と考えていない患者は多い",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_02",
+      "display_name": "②デスクワークやパートで働いている患者が多い",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_03",
+      "display_name": "③障害者手帳がないと、障害者求人に応募しても採用されにくい",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_04",
+      "display_name": "④職場には病気について説明なしで働いている患者が多い",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_05",
+      "display_name": "⑤職場の理解がないと、通院、休養が妨げられやすい",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_06",
+      "display_name": "⑥比較的軽症でも、治療と仕事の両立の困難やストレスは大きい",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_07",
+      "display_name": "⑦比較的軽症でも、離転職を繰り返し、生活破たんに至ることがある",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_08",
+      "display_name": "⑧難病患者は、職場で病気を隠すストレスが大きい",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_09",
+      "display_name": "⑨進行性の難病の初期では、患者は、障害者支援につながりにくい",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q08_10",
+      "display_name": "⑩最重度の患者でも、IT等の進歩で就労希望が増えている",
+      "question_group": "日頃の業務では、次のような難病患者の実態を意識していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_01",
+      "display_name": "①難病相談支援センター",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_02",
+      "display_name": "②治療と仕事の両立支援",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_03",
+      "display_name": "③ハローワークの個別の職業紹介等",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_04",
+      "display_name": "④難病患者就職サポーター",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_05",
+      "display_name": "⑤ハローワークの障害者向けチーム支援",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_06",
+      "display_name": "⑥地域障害者職業センター",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_07",
+      "display_name": "⑦障害者就業・生活支援センター",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_08",
+      "display_name": "⑧障害者手帳のある人への障害者雇用率制度",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_09",
+      "display_name": "⑨雇用場面での障害者差別禁止と合理的配慮提供義務",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_10",
+      "display_name": "⑩就労移行支援事業",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_11",
+      "display_name": "⑪就労継続支援Ａ型事業所（一般雇用が困難でも一定の支援があれば働ける人への、最低賃金等の労働法が適用される雇用の場）",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q09_12",
+      "display_name": "⑫産業保健総合支援センター",
+      "question_group": "難病患者の就労支援ニーズに対応するために活用できる機関、制度・サービスはどの程度ご存じですか。（※⑧以外は、障害者手帳の有無にかかわらず難病患者は支援対象です。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_1",
+      "display_name": "①患者への就労支援の情報提供と、適切な就労支援や治療と仕事の両立支援につなぐこと",
+      "question_group": "あなた自身や機関・部署等の専門性や業務内容を踏まえ、次のような難病患者の就労支援ニーズへの対応は可能とお考えですか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_2",
+      "display_name": "②進行性難病の患者を、早期からの治療と仕事の両立支援や、障害進行に合せた長期的な相談支援につなぐこと",
+      "question_group": "あなた自身や機関・部署等の専門性や業務内容を踏まえ、次のような難病患者の就労支援ニーズへの対応は可能とお考えですか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_3",
+      "display_name": "③就労中の難病患者の困り事やストレスを把握し、治療と仕事の両立支援や、必要な相談支援につなぐこと",
+      "question_group": "あなた自身や機関・部署等の専門性や業務内容を踏まえ、次のような難病患者の就労支援ニーズへの対応は可能とお考えですか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q10_4",
+      "display_name": "④難病患者の実態や支援ニーズについて、地域関係機関や企業向けに啓発や情報提供を行うこと",
+      "question_group": "あなた自身や機関・部署等の専門性や業務内容を踏まえ、次のような難病患者の就労支援ニーズへの対応は可能とお考えですか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Labels suggest ordered intensity/frequency/agreement.",
+      "label_count": 5,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_1",
+      "display_name": "①難病患者の就労支援ニーズを明確にし（アセスメントし）、必要な支援につなげること",
+      "question_group": "あなた自身には、次のような難病患者の就労支援のために必要な専門知識や支援・連携スキルは備わっていますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_2",
+      "display_name": "②治療と両立して活躍できる仕事内容や職場条件を明確にして、適切な職業紹介や職場調整の支援につなげること",
+      "question_group": "あなた自身には、次のような難病患者の就労支援のために必要な専門知識や支援・連携スキルは備わっていますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_3",
+      "display_name": "③主治医の就業上の留意事項等の意見を踏まえ、適切な職業紹介や、治療と仕事の両立支援とスムーズに連携させること",
+      "question_group": "あなた自身には、次のような難病患者の就労支援のために必要な専門知識や支援・連携スキルは備わっていますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_4",
+      "display_name": "④医療・福祉・教育・労働等の支援機関、患者、企業、行政等の関係者が、適切な役割分担・連携ができるように調整すること",
+      "question_group": "あなた自身には、次のような難病患者の就労支援のために必要な専門知識や支援・連携スキルは備わっていますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q11_5",
+      "display_name": "⑤重症難病患者の社会参加のため、各自の強みを活かせる仕事内容や働き方、安全・治療・生活支援との調整を行うこと",
+      "question_group": "あなた自身には、次のような難病患者の就労支援のために必要な専門知識や支援・連携スキルは備わっていますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_1",
+      "display_name": "①障害者権利条約で、すべての障害者に、希望や能力を活かし、障害の有無にかかわらず働ける雇用・就業の権利が求められている",
+      "question_group": "最近の障害者就労支援で、取り上げられることのある次のような事柄にはどう対応していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_2",
+      "display_name": "②すべての事業主・企業には、各障害者の職業能力を引き出し職業生活を享受できるように、合理的配慮を行う法的義務がある",
+      "question_group": "最近の障害者就労支援で、取り上げられることのある次のような事柄にはどう対応していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q12_3",
+      "display_name": "③障害の有無にかかわらず労働者には最低賃金が保障される必要がある",
+      "question_group": "最近の障害者就労支援で、取り上げられることのある次のような事柄にはどう対応していますか。（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "nominal",
+      "guess_reason": "Small closed label set without strong ordering evidence.",
+      "label_count": 3,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_01",
+      "display_name": "①はじまっています！難病のある人の就労支援、治療と仕事の両立支援",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_02",
+      "display_name": "②難病のある人の就労支援活用ガイド",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_03",
+      "display_name": "③難病のある人の職業リハビリテーションハンドブックQ＆A",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_04",
+      "display_name": "④難病のある人の雇用管理マニュアル",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_05",
+      "display_name": "⑤難病のある人の就労支援のために",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_06",
+      "display_name": "⑥事業場における治療と仕事の両立支援のためのガイドライン",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_07",
+      "display_name": "⑦企業・医療機関連携マニュアル",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_08",
+      "display_name": "⑧健康管理と職業生活の両立ワークブック（難病編）",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_09",
+      "display_name": "⑨仕事と治療の両立 お役立ちノート（難病編）",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_10",
+      "display_name": "⑩就労系福祉サービス事業所における難病のある人への支援ハンドブック",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q13_11",
+      "display_name": "⑪就労系福祉サービス事業所における難病のある人への合理的配慮マニュアル",
+      "question_group": "難病患者の就労支援の支援力向上や連携・役割分担の促進等に資する様々な冊子等は、機関・部署等でお手元にあり、活用されていますか。（※タイトルをクリックするとそれぞれの冊子等の詳細を確認できます。）（各項目について、最も近い状況１つを選択）",
+      "response_type_guess": "ordinal",
+      "guess_reason": "Multi-step coded item; defaulting to ordered scale pending review.",
+      "label_count": 4,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q14_01",
+      "display_name": "適切な難病就労支援のあり方",
+      "question_group": "あなたご自身の経験に照らして、難病患者に対してどのような就労支援が適切とお考えですか。（適切とお考えの支援をすべて選択）",
+      "response_type_guess": "multiselect",
+      "guess_reason": "Observed '+' separated values in source data.",
+      "label_count": 12,
+      "sample_has_plus": true,
+      "manual_review_required": true
+    },
+    {
+      "raw_name": "Q14x",
+      "display_name": "難病就労支援のあり方や課題等",
+      "question_group": "記述回答",
+      "response_type_guess": "free_text",
+      "guess_reason": "No coded label set; treat as narrative/free-text source.",
+      "label_count": 0,
+      "sample_has_plus": false,
+      "manual_review_required": true
+    }
+  ]
+}

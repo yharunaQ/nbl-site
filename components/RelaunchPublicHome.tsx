@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Waypoints } from 'lucide-react';
 import { Noto_Sans_JP } from 'next/font/google';
+import NewsletterSignup from '@/components/NewsletterSignup';
 import {
   relaunchPublicFirstVisitPaths,
   relaunchPublicHero,
@@ -72,16 +73,30 @@ export default function RelaunchPublicHome({ reviewLink }: RelaunchPublicHomePro
               AI時代の人間参加を設計し直す研究と実装のスタジオ
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            {navigationLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="rounded-full border border-stone-300 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-stone-400 hover:text-slate-950"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="hidden md:flex items-center gap-2">
+              {navigationLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="rounded-full border border-stone-300 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-stone-400 hover:text-slate-950"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+            <Link
+              href="/jac/guide"
+              className="rounded-full border border-cyan-300 bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-900 transition hover:border-cyan-400 hover:bg-cyan-100"
+            >
+              仕事設計ガイド
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+            >
+              ツール利用申込
+            </Link>
             {showReviewTools ? (
               <Link
                 href={reviewLink ?? '/review'}
@@ -119,14 +134,14 @@ export default function RelaunchPublicHome({ reviewLink }: RelaunchPublicHomePro
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/what-we-do"
+                href="/jac/intro"
                 className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
                 {relaunchPublicHero.primaryCta}
                 <ArrowRight size={16} />
               </Link>
               <Link
-                href="/jac-foundations"
+                href="/jac/guide"
                 className="inline-flex items-center gap-2 rounded-full border border-cyan-300 bg-white/80 px-5 py-3 text-sm font-semibold text-cyan-950 transition hover:border-cyan-400 hover:bg-white"
               >
                 {relaunchPublicHero.secondaryCta}
@@ -160,11 +175,18 @@ export default function RelaunchPublicHome({ reviewLink }: RelaunchPublicHomePro
             </div>
             <div className="mt-5 rounded-[1.4rem] border border-cyan-200 bg-cyan-50 px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-900">
-                Human-in-Command
+                就労支援者向けAIツール
               </p>
               <p className="mt-2 text-sm leading-7 text-slate-700">
-                最終的な公開約束と高リスク判断は人が持ちます。
+                就労支援見立てサポートは招待制で申込受付中。無償・フィードバック条件。
               </p>
+              <Link
+                href="/jac/intro"
+                className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold text-white transition hover:bg-slate-800"
+              >
+                ツール紹介・申込へ
+                <ArrowRight size={13} />
+              </Link>
             </div>
           </aside>
         </section>
@@ -211,6 +233,71 @@ export default function RelaunchPublicHome({ reviewLink }: RelaunchPublicHomePro
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="border-t border-stone-300/80 py-12">
+        <div className="rounded-[2.2rem] border border-slate-900 bg-slate-950 px-6 py-8 md:px-10 md:py-10">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] xl:items-start">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
+                就労支援者向けAIツール
+              </p>
+              <h2 className={`text-2xl md:text-3xl text-white leading-snug ${display.className}`}>
+                就労支援見立てサポート
+              </h2>
+              <p className="mt-4 text-base leading-8 text-slate-300">
+                相談内容をもとに、AIが職業的課題の仮見立てと配慮候補の優先順位を整理します。
+                就労支援員・ジョブコーチ・相談員が相談後の整理作業を効率化するための補助ツールです。
+                最終判断は支援者が持ちます。
+              </p>
+              <div className="mt-5 grid gap-2 sm:grid-cols-3 text-sm">
+                <div className="rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+                  <p className="text-xs text-slate-400">料金</p>
+                  <p className="text-white font-semibold mt-0.5">無償（フィードバック条件）</p>
+                </div>
+                <div className="rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+                  <p className="text-xs text-slate-400">アクセス</p>
+                  <p className="text-white font-semibold mt-0.5">招待制・個人単位</p>
+                </div>
+                <div className="rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+                  <p className="text-xs text-slate-400">利用上限</p>
+                  <p className="text-white font-semibold mt-0.5">1日20件</p>
+                </div>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-900 transition hover:bg-slate-100"
+                >
+                  利用を申し込む
+                </Link>
+                <Link
+                  href="/jac/intro"
+                  className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  ツールの詳細を見る
+                </Link>
+              </div>
+            </div>
+            <div className="rounded-[1.8rem] border border-white/10 bg-white/5 p-6 text-sm space-y-3">
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">対象ユーザー</p>
+              {[
+                '就労移行・就労継続支援事業所の支援員',
+                'ジョブコーチ（職場適応援助者）',
+                '障害者職業生活相談員',
+                '企業の障害者雇用担当者・人事',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyan-400" />
+                  <p className="text-slate-300">{item}</p>
+                </div>
+              ))}
+              <p className="mt-4 text-xs text-slate-500 pt-3 border-t border-white/10">
+                入力内容はNBLのサーバーに保存されません。就労支援業務での相談整理に限る。
+              </p>
+            </div>
+          </div>
+        </div>
         </section>
 
         <section className="grid gap-5 border-t border-stone-300/80 py-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
@@ -367,6 +454,21 @@ export default function RelaunchPublicHome({ reviewLink }: RelaunchPublicHomePro
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="border-t border-stone-300/80 py-12">
+          <div className="mx-auto max-w-xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
+              Newsletter
+            </p>
+            <h2 className="text-xl font-black text-slate-900 mb-2">
+              アップデートを受け取る
+            </h2>
+            <p className="text-sm text-slate-600 mb-5 leading-relaxed">
+              仕事設計の方法論、AIツールのアップデート、新しいリソースをメールでお届けします。
+            </p>
+            <NewsletterSignup />
           </div>
         </section>
 

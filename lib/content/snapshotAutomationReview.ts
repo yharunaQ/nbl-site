@@ -37,7 +37,7 @@ export const snapshotAutomationHero: SnapshotAutomationHero = {
   eyebrow: 'Snapshot Automation',
   headline: 'NBL の daily / weekly 運転を、automation-ready な recurring job にする。',
   subheadline:
-    '最初に固定すべきなのは、毎日と毎週に何を読み、何を書き、どのときだけ Founder に返すか。daily snapshot と weekly loop report が回れば、NBL は会話トリガー待ちからかなり抜けられる。',
+    '最初に固定すべきなのは、毎日と毎週に何を読み、何を書き、どのときだけ Founder に返すか。daily snapshot と weekly loop report が回れば、NBL は会話トリガー待ちからかなり抜けられ、hold も放置でなく再起動キューとして扱える。',
 };
 
 export const snapshotJobs: SnapshotJob[] = [
@@ -57,15 +57,18 @@ export const snapshotJobs: SnapshotJob[] = [
       '`what changed`',
       '`what accumulated`',
       '`blocked or drifting`',
+      '`hold signals`',
       '`next best round`',
       '`Founder boundary`',
     ],
-    founderOnlyIf: 'Founder boundary が空でないとき、または build / safety / public promise に赤信号があるときだけ。',
+    founderOnlyIf:
+      'Founder boundary が空でないとき、または build / safety / public promise に赤信号があるときだけ。hold 候補の hidden review draft 化までは Founder を止めない。',
   },
   {
     title: 'Weekly Loop Report',
     cadence: '毎週月曜朝 1回',
-    purpose: '5 loop をまとめてレビューし、複利、drift、priority、Founder boundary を週単位で整える。',
+    purpose:
+      '5 loop をまとめてレビューし、複利、drift、priority、Founder boundary を週単位で整える。あわせて hold 棚から再起動候補を 1-3 件まで出す。',
     reads: [
       '当週の daily snapshots',
       '`decision-log.md`',
@@ -79,10 +82,12 @@ export const snapshotJobs: SnapshotJob[] = [
       '`artifacts created`',
       '`compounding signals`',
       '`risks and drifts`',
-      '`Founder boundary this week`',
+      '`hold revival candidates`',
+      '`Founder Yes / No / Adjust`',
       '`next 7 days`',
     ],
-    founderOnlyIf: 'Founder boundary this week が空でないとき、または continue / adjust / stop を前倒しで求めるべき signal があるときだけ。',
+    founderOnlyIf:
+      '`Founder Yes / No / Adjust` が空でないとき、または hold 候補を public candidate / public promise に近づける境界が来たときだけ。',
   },
 ];
 
@@ -112,6 +117,15 @@ export const dailySnapshotSections: SnapshotSection[] = [
       '7日以上 next best round が出ていない',
       '都度対応だけ増えて artifact が残っていない',
       'public candidate が build / copy / boundary のどこかで止まっている',
+    ],
+  },
+  {
+    title: 'Hold Signals',
+    description: '保留棚を放置にしないため、再起動の cue と stale を短く押さえる。',
+    bullets: [
+      'content inventory 上の hold / public_after_rewrite の件数',
+      '保留棚の最終更新が stale になっていないか',
+      'Founder input が保留棚の再評価に接続しているか',
     ],
   },
   {
@@ -147,12 +161,22 @@ export const weeklyLoopSections: SnapshotSection[] = [
     ],
   },
   {
-    title: 'Founder Boundary This Week',
-    description: 'Founder はここだけ見ればよい。',
+    title: 'Hold Revival Candidates',
+    description: 'hold を放置箱にせず、今週起こす候補を 1-3 件までに絞る。',
+    bullets: [
+      'なぜ今その候補を動かすのか',
+      '次の最小成果物は何か',
+      'Founder 判断が必要になる境界はどこか',
+    ],
+  },
+  {
+    title: 'Founder Yes / No / Adjust',
+    description: 'Founder はここだけ見ればよい。必要ない週は `no founder action needed` と明記する。',
     bullets: [
       'public promise の変更',
       '外部連絡が必要な named case',
       '高リスク境界の escalation',
+      'hold 候補を public candidate に上げるかどうか',
       '`no founder action needed` の明記',
     ],
   },
@@ -193,6 +217,12 @@ export const snapshotEscalationRules: SnapshotEscalationRule[] = [
     action: 'Chief of Staff loop の blocked item に置き、weekly で優先的に再起動する。',
   },
   {
+    title: 'Hold Revival Boundary',
+    severity: 'Medium',
+    when: 'hold 候補が hidden review draft を超えて public candidate に近づくとき',
+    action: 'Founder boundary に載せ、Yes / No / Adjust を返してもらう。',
+  },
+  {
     title: 'Artifact Drought',
     severity: 'Medium',
     when: '都度対応だけが増え、reusable asset が残っていないとき',
@@ -207,6 +237,7 @@ export const automationSpecs: AutomationSpec[] = [
     deliverable: '`docs/nbl-workspace/ops/daily-snapshots/YYYY-MM-DD.md`',
     rules: [
       'Founder boundary が空なら `none` と明記する',
+      '`hold signals` で保留棚の stale / revival cue を短く返す',
       '`next best round` は必ず 1 つに絞る',
       '既存ファイルがある日は上書きでなく update を優先する',
     ],
@@ -217,6 +248,7 @@ export const automationSpecs: AutomationSpec[] = [
     deliverable: '`docs/nbl-workspace/ops/weekly-loop-reports/YYYY-MM-DD.md`',
     rules: [
       '各 loop を `moving / blocked / waiting / drift risk` のどれかで判定する',
+      '`hold revival candidates` は最大 3 件までに絞る',
       'Founder boundary がなければ `no founder action needed` と明記する',
       '`next 7 days` は 3 項目以内に絞る',
     ],

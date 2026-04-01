@@ -53,11 +53,17 @@ export const enterpriseInboundCards: EnterpriseInboundCard[] = [
     title: 'Sequence Support After Design',
     summary: '最初から外部支援ありきにせず、まず職場設計で改善し、その次に支援連携を組み込む順序を出す。',
   },
+  {
+    title: 'Keep Revenue In The Private Layer',
+    summary:
+      '公開面は free-first の trust entry にとどめ、収益は private workspace、setup、recurring support に置く。',
+  },
 ];
 
-export const enterpriseInboundJacNotes = [
-  'JAC guide は、条件つきの職場設計を考える public method entry。',
-  'JAC guidebook は sales-first checkout ではなく、仕事設計を試しに見直す low-friction trial asset として再定義する。',
-  'free-first / overage-later を internal revenue posture に置く。',
-  '個別ケースの最終判断や open consultation promise には寄せない。',
+export const enterpriseInboundCoreNotes = [
+  '26カード版は、見取り図の次に置く current core の本体。',
+  '仕事設計ガイドは、現状では public method entry ではなく内部チェック面に留める。',
+  '先行5章版は sales-first checkout ではなく、開発履歴として静かに保持する。',
+  '収益の主軸は startup fee / recurring fee / bounded private usage に置く。',
+  '配慮設計アシストは当面 Founder-operated internal tool とし、個別ケースの最終判断や open consultation promise には寄せない。',
 ];

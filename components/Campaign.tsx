@@ -71,12 +71,12 @@ export default function Campaign() {
                 </ul>
 
                 <div className="flex flex-wrap gap-4 pt-4">
-                    <Link href="/jac" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 bg-gray-900 text-white font-bold shadow-lg hover:shadow-xl hover:bg-black transition-all">
-                        JAC試用版を使う <Zap size={18} className="text-teal-400" fill="currentColor" />
+                    <Link href="/contact" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 bg-gray-900 text-white font-bold shadow-lg hover:shadow-xl hover:bg-black transition-all">
+                        ツール利用申込 <Zap size={18} className="text-teal-400" fill="currentColor" />
                     </Link>
-                    <a href="/docs/CAN_BY_DESIGN_Brief.pdf" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors">
-                        <Download size={18} /> 概要PDF
-                    </a>
+                    <Link href="/jac/guide" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+                        仕事設計ガイドを見る
+                    </Link>
                 </div>
             </div>
         </section>

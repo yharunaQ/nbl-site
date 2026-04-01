@@ -1,4 +1,6 @@
-export const TEMPORARY_PUBLIC_SITE_ENABLED = true;
+export const TEMPORARY_PUBLIC_SITE_ENABLED =
+  process.env.NEXT_PUBLIC_TEMPORARY_PUBLIC_SITE_ENABLED === 'true' ||
+  process.env.TEMPORARY_PUBLIC_SITE_ENABLED === 'true';
 export type PublicHomeVariant = 'relaunch' | 'temporary';
 
 export const PUBLIC_HOME_VARIANT: PublicHomeVariant = 'relaunch';
@@ -18,19 +20,7 @@ const TEMPORARY_PUBLIC_ROUTE_CONFIGS: RouteConfig[] = [
     label: '先行5章版アーカイブ',
     note: 'inactive pilot archive kept outside the active public path',
   },
-  {
-    prefix: '/jac/guide',
-    slug: 'jac-guide',
-    label: '仕事設計ガイド',
-    note: 'internal review surface, not ready for public use',
-  },
-  {
-    prefix: '/jac',
-    slug: 'jac',
-    label: '条件整理ドラフト',
-    note: 'founder-operated internal tool under review',
-    match: 'exact',
-  },
+
   {
     prefix: '/dao-participation-lab',
     slug: 'dao-participation-lab',
@@ -40,9 +30,6 @@ const TEMPORARY_PUBLIC_ROUTE_CONFIGS: RouteConfig[] = [
 ];
 
 const TEMPORARY_PUBLIC_API_PREFIXES = [
-  '/api/jac-assess',
-  '/api/jac-assess-refinement',
-  '/api/jac-tag-suggest',
   '/api/dao-participation-lab',
   '/api/ebook',
 ] as const;

@@ -66,7 +66,22 @@ NBL を進めるとき、Founder がやることは `全部考えること` で�
 
 返答は `Yes / No / Name / Keep / Adjust / Stop` で十分。
 
-## 6. 基本ルール
+## 6. Founder の返答フォーマット
+
+weekly CEO brief の `Founder Decision Queue` には、次の形で返せばよい。
+
+- `1. Yes`
+- `1. No`
+- `1. Adjust: wording audit までは進めてよいが public copy change はまだ保留`
+
+判断が複数ある週は、番号を増やすだけでよい。
+
+- `1. Yes`
+- `2. Adjust: 実名 outreach はまだしない`
+
+返答が遅れても、weekly memo の `Default if no reply` に書いてある範囲では AI が進める。
+
+## 7. 基本ルール
 
 - 未完成でも inbox に入れてよい
 - 荒いメモでもよい

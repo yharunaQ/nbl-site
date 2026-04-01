@@ -1,0 +1,37 @@
+{
+  "sourceId": "nbl_support_catalog",
+  "title": "地域支援エビデンス再整理: 効果的な障害者就労支援カタログ",
+  "fetchedAt": "2026-03-27T00:00:00+09:00",
+  "structuredMetadata": {
+    "noteType": "support_catalog",
+    "pageType": "support_catalog",
+    "evidenceScope": "aggregated_index",
+    "country": "JP",
+    "legalContext": "japan_disability_employment_policy",
+    "trustTier": "primary",
+    "updatedAt": "2026-03-27",
+    "sourceScope": "regional_support_effectiveness_catalog",
+    "riskLevel": "medium",
+    "mustPairWithRegionalSupport": true,
+    "audiences": ["jac_consultation", "regional_support_coordination", "employer_support"],
+    "operationalTags": [
+      "regional_support_system",
+      "employment_transition",
+      "job_retention",
+      "intellectual_disability_support",
+      "physical_disability_support",
+      "mental_health_support",
+      "rare_disease_support"
+    ],
+    "applicability": {
+      "withConditions": [
+        "地域の支援機関や制度資源と組み合わせて支援選択肢を設計する際の材料として使う",
+        "職業的課題ごとに支援の方向性を広げる際の候補カタログとして使う"
+      ],
+      "notFor": [
+        "単独で最終文面の直接根拠として提示する",
+        "本人の文脈確認なしに診断名だけで支援内容を決める"
+      ]
+    }
+  }
+}

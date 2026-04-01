@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import PageSeo from '@/components/PageSeo';
 import { founderProfile } from '@/lib/content/founderProfile';
 
 const CONTACT_EMAIL = 'info@nextbeinglab.org';
@@ -84,33 +85,12 @@ export default function TemporaryPublicHome() {
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f8fafc_0%,#eef2ff_45%,#ffffff_100%)] text-slate-900">
+      <PageSeo
+        title="Next Being Lab | 公開中の案内"
+        description="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、仕事設計の見取り図をまとめた入口ページ。"
+        path="/"
+      />
       <Head>
-        <title>Next Being Lab | 公開中の案内</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://nextbeinglab.org/" />
-        <meta
-          name="description"
-          content="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、仕事設計の見取り図をまとめた入口ページ。"
-        />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:site_name" content="Next Being Lab" />
-        <meta property="og:locale" content="ja_JP" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://nextbeinglab.org/" />
-        <meta property="og:title" content="Next Being Lab | 公開中の案内" />
-        <meta
-          property="og:description"
-          content="内容を整理・再構築しながら、現在公開している考え方、動画、仕事設計の見取り図を見られる入口です。"
-        />
-        <meta property="og:image" content="https://nextbeinglab.org/og.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Next Being Lab | 公開中の案内" />
-        <meta
-          name="twitter:description"
-          content="Next Being Lab が、内容を整理・再構築しながら現在公開している考え方、動画、仕事設計の見取り図を見られる入口です。"
-        />
-        <meta name="twitter:image" content="https://nextbeinglab.org/og.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

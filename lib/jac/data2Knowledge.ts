@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
-type TagGroupKey = 'task' | 'symptom' | 'environment' | 'preference';
+type TagGroupKey = 'situation' | 'task' | 'symptom' | 'environment' | 'preference';
 
 export type TagSelection = Record<TagGroupKey, string[]>;
 
@@ -220,7 +220,10 @@ async function resolveKnowledgeDirs(): Promise<{ chishikiDir: string; kijutsuDir
   }
 }
 
-async function readEntry(id: number, dirs: { chishikiDir: string; kijutsuDir: string }): Promise<ParsedEntry | null> {
+async function readEntry(
+  id: number,
+  dirs: { chishikiDir: string; kijutsuDir: string },
+): Promise<ParsedEntry | null> {
   const chishikiPath = path.join(dirs.chishikiDir, `sogo${id}.txt`);
   const kijutsuPath = path.join(dirs.kijutsuDir, `${String(id).padStart(2, '0')}.txt`);
 
@@ -254,7 +257,9 @@ async function loadFromIndex(): Promise<ParsedEntry[] | null> {
       : Array.isArray((parsed as { entries?: unknown[] }).entries)
         ? (parsed as { entries: unknown[] }).entries
         : [];
-    const entries = rows.map((row) => normalizeIndexEntry(row)).filter((row): row is ParsedEntry => Boolean(row));
+    const entries = rows
+      .map((row) => normalizeIndexEntry(row))
+      .filter((row): row is ParsedEntry => Boolean(row));
     return entries.length > 0 ? entries : null;
   } catch {
     return null;
@@ -405,7 +410,27 @@ function inferRelatedTags(texts: string[]): string[] {
       tag: '騒音・音環境',
     },
     {
-      keywords: ['時差', '短時間勤務', '勤務時間', '納期', '労働'],
+      keywords: ['フルタイム', '短時間勤務', '時短', '勤務時間', '勤務日数', '週20時間', '週30時間'],
+      tag: '勤務時間・勤務日数（フルタイム/短時間）',
+    },
+    {
+      keywords: ['シフト', '夜勤', '交代勤務', '早番', '遅番', '勤務時間帯', '時差'],
+      tag: 'シフト・夜勤・勤務時刻',
+    },
+    {
+      keywords: ['残業', '連勤', '長時間労働', '休日出勤'],
+      tag: '残業・連続勤務',
+    },
+    {
+      keywords: ['立ち仕事', '立位', '運搬', '重量物', '手作業', '細かい作業', '反復動作'],
+      tag: '身体操作・実作業負荷（立位・運搬・手作業）',
+    },
+    {
+      keywords: ['危険', '事故', '緊急', '避難', 'フォークリフト', '機械', '運転'],
+      tag: '安全・危険業務・緊急対応',
+    },
+    {
+      keywords: ['納期', '締切', '期限', '急ぎ'],
       tag: '時間制約・納期',
     },
     {
@@ -415,6 +440,10 @@ function inferRelatedTags(texts: string[]): string[] {
     {
       keywords: ['読み', '文章', '文書', '書類'],
       tag: '文章作成・読解',
+    },
+    {
+      keywords: ['曖昧指示', '手順書', '見本', 'チェックリスト', '完了条件', 'マニュアル'],
+      tag: '指示・連絡の明確さ（手順書/見本/確認）',
     },
     {
       keywords: ['裁量', '意思', '希望', '自己決定'],
@@ -431,7 +460,10 @@ function inferRelatedTags(texts: string[]): string[] {
   return [...related];
 }
 
-function buildSuggestionsFromInsights(insights: Data2PromptInsight[], maxCount: number): SuggestionSeed[] {
+function buildSuggestionsFromInsights(
+  insights: Data2PromptInsight[],
+  maxCount: number,
+): SuggestionSeed[] {
   const suggestions: SuggestionSeed[] = [];
 
   for (const insight of insights) {
@@ -451,7 +483,11 @@ function buildSuggestionsFromInsights(insights: Data2PromptInsight[], maxCount: 
         title,
         reason: `障害種類「${insight.disability}」の回答群では、「${matched.issue}」に対して上記支援が軽減に関係しやすい仮説が示されているため。`,
         examples,
-        relatedTags: inferRelatedTags([matched.issue, ...matched.supports, ...insight.narrativeHighlights]),
+        relatedTags: inferRelatedTags([
+          matched.issue,
+          ...matched.supports,
+          ...insight.narrativeHighlights,
+        ]),
         priority: matched.score >= 8 ? 1 : 2,
       });
     }
@@ -474,7 +510,11 @@ function buildSuggestionsFromInsights(insights: Data2PromptInsight[], maxCount: 
   return [...deduped.values()].slice(0, maxCount);
 }
 
-function rankInsights(entries: ParsedEntry[], consultation: string, selectedTags: TagSelection): Data2PromptInsight[] {
+function rankInsights(
+  entries: ParsedEntry[],
+  consultation: string,
+  selectedTags: TagSelection,
+): Data2PromptInsight[] {
   const keywords = tokenizeInput(consultation, selectedTags);
   if (keywords.length === 0) return [];
 
@@ -499,7 +539,8 @@ function rankInsights(entries: ParsedEntry[], consultation: string, selectedTags
 
     if (matchedIssues.length === 0) continue;
     const score =
-      matchedIssues.slice(0, 3).reduce((sum, row) => sum + row.score, 0) + (disabilityMentioned ? 12 : 0);
+      matchedIssues.slice(0, 3).reduce((sum, row) => sum + row.score, 0) +
+      (disabilityMentioned ? 12 : 0);
     ranked.push({
       id: entry.id,
       disability: entry.disability,

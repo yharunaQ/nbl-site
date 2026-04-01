@@ -1,8 +1,8 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Layers3, Map, ShieldCheck, Sparkles } from 'lucide-react';
 import React from 'react';
+import PageSeo from '@/components/PageSeo';
 import ZoomableImage from '@/components/ZoomableImage';
 import {
   jacFoundationContextAxes,
@@ -32,14 +32,11 @@ export default function JacFoundationsPage() {
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_48%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>仕事設計の見取り図 | Next Being Lab</title>
-        <meta
-          name="description"
-          content="仕事設計の見取り図の3レイヤー構成と、その背景にある職場設計の考え方を、企業担当者にも読みやすい形で紹介するページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/jac-foundations" />
-      </Head>
+      <PageSeo
+        title="仕事設計の見取り図 | Next Being Lab"
+        description="仕事設計の見取り図の3レイヤー構成と、その背景にある職場設計の考え方を、企業担当者にも読みやすい形で紹介するページ。"
+        path="/jac-foundations"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">
@@ -459,7 +456,7 @@ export default function JacFoundationsPage() {
               </p>
               <div className="mt-5 rounded-[1.5rem] border border-sky-200 bg-sky-50 px-5 py-5">
                 <p className="text-sm font-semibold text-slate-900">
-                  だからこそ、公開面は見取り図と 26カード版までに絞り、その先は内部で慎重に扱います。
+                  典型パターンを確認したら、就労支援見立てサポートで個別ケースの仮見立てへ進めます。
                 </p>
               </div>
             </article>
@@ -470,9 +467,11 @@ export default function JacFoundationsPage() {
               const statusClassName =
                 item.status === '公開中'
                   ? 'border-emerald-200 bg-emerald-50 text-emerald-900'
-                  : item.status === '整備中'
-                    ? 'border-cyan-200 bg-cyan-50 text-cyan-900'
-                    : 'border-amber-200 bg-amber-50 text-amber-900';
+                  : item.status === '招待制・無償'
+                    ? 'border-sky-200 bg-sky-50 text-sky-900'
+                    : item.status === '整備中'
+                      ? 'border-cyan-200 bg-cyan-50 text-cyan-900'
+                      : 'border-amber-200 bg-amber-50 text-amber-900';
 
               return (
                 <article
@@ -596,28 +595,29 @@ export default function JacFoundationsPage() {
           </div>
 
           <div className="mt-8 rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
-            <h2 className="text-2xl font-black">いま開ける公開面</h2>
+            <h2 className="text-2xl font-black">次のステップ</h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
-              この基礎説明を押さえたうえで、NBL が現在 public-safe に何を出しているか、企業向けにどう整理しているか、公開資源として何を出しているかへ進めます。
+              3レイヤーの全体構造を確認したら、26フレームの早見表やインタラクティブガイドで詳細を確かめてください。
+              個別ケースの条件整理は、就労支援見立てサポートで行えます。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/what-we-do"
+                href="/jac/guide"
                 className="rounded-full border border-slate-500 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
               >
-                What We Do を見る
+                仕事設計ガイド（インタラクティブ）
               </Link>
               <Link
-                href="/for-enterprise"
+                href="/jac/frames"
                 className="rounded-full border border-slate-500 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
               >
-                企業向け実務メモへ
+                26フレーム早見表
               </Link>
               <Link
-                href="/resources"
+                href="/jac/intro"
                 className="rounded-full border border-slate-500 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
               >
-                Resources を見る
+                就労支援見立てサポート（招待制）
               </Link>
               <Link
                 href="/contact"

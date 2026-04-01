@@ -1,0 +1,38 @@
+{
+  "source_id": "toku18_supporters_workbook",
+  "dataset_id": "supporter_practice_toku18",
+  "source_role": "support_practice_source",
+  "source_type": "xlsx_workbook",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_free_text": true,
+  "row_unit": "supporter_respondent",
+  "population": "cross-institution supporter survey",
+  "file_path": "supporter_practice/toku18_Supporters.xlsx",
+  "sheet_names": [
+    "特別研究18マスターデータ",
+    "データ一覧",
+    "データ一覧の追加説明"
+  ],
+  "data_sheet": "特別研究18マスターデータ",
+  "dictionary_sheet": "データ一覧",
+  "row_count": 3054,
+  "column_count": 180,
+  "free_text_columns": [
+    "問7_4記述",
+    "問8_7記述",
+    "問10記述",
+    "問11記述",
+    "問12記述",
+    "問13⑨具体的に",
+    "問13記述",
+    "問14記述",
+    "問15記述"
+  ],
+  "guide_files": [
+    "supporter_practice/toku18_supporters_structure.pdf"
+  ],
+  "notes": "Supporter-side survey with collaboration, philosophy, support implementation, and free-text narratives.",
+  "generated_at": "2026-03-31T09:21:30+00:00"
+}

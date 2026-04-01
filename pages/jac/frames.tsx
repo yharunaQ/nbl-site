@@ -1,8 +1,8 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { ArrowLeft, BookOpenText, Layers3, Route } from 'lucide-react';
+import { ArrowLeft, BookOpenText, Download, Layers3 } from 'lucide-react';
 import React from 'react';
+import PageSeo from '@/components/PageSeo';
 import {
   parseCardEditionMarkdown,
   type CardEditionLayer,
@@ -43,13 +43,11 @@ export default function WorkDesignFrameReferencePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_52%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>26フレームカード版 | Next Being Lab</title>
-        <meta
-          name="description"
-          content="2026-03-09 時点の 26フレームカード版を基に、仕事設計の論点を利用者向けに読める形でまとめたページ。"
-        />
-      </Head>
+      <PageSeo
+        title="26フレーム早見表 | Next Being Lab"
+        description="就労支援の仕事設計3レイヤー・26フレームの早見表。各フレームの使いどころ、状況レベル、最初の取組みポイントをまとめています。"
+        path="/jac/frames"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">
@@ -57,15 +55,26 @@ export default function WorkDesignFrameReferencePage({
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
               Next Being Lab
             </p>
-            <p className="mt-2 text-sm text-slate-600">26フレームカード版</p>
+            <p className="mt-2 text-sm text-slate-600">仕事設計 — 26フレーム早見表</p>
           </div>
-          <Link
-            href="/jac-foundations"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
-          >
-            <ArrowLeft size={16} />
-            見取り図へ戻る
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <a
+              href="/downloads/jac-26-card-guidebook.html"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-300 bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-900 transition hover:border-cyan-400 hover:bg-cyan-100"
+            >
+              <Download size={14} />
+              冊子版をダウンロード
+            </a>
+            <Link
+              href="/jac-foundations"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
+            >
+              <ArrowLeft size={16} />
+              見取り図へ戻る
+            </Link>
+          </div>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
@@ -77,29 +86,29 @@ export default function WorkDesignFrameReferencePage({
           </Link>
           <span>→</span>
           <span className="rounded-full border border-sky-300 bg-sky-50 px-3 py-1.5 text-sky-900">
-            26フレームカード版
+            26フレーム早見表
           </span>
           <span>→</span>
-          <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-700">
-            詳細確認
-          </span>
+          <Link
+            href="/jac/guide"
+            className="rounded-full border border-slate-200 bg-white px-3 py-1.5 transition hover:border-slate-300 hover:text-slate-900"
+          >
+            インタラクティブガイド
+          </Link>
         </div>
 
         <section className="grid gap-8 py-12 lg:grid-cols-[1.08fr,0.92fr]">
           <div>
-            <p className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-800">
-              2026-03-09 カード版
-            </p>
-            <h1 className="mt-5 max-w-5xl text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
-              26フレームを、現在の本体として読めるカード版で示す。
+            <h1 className="max-w-5xl text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+              3レイヤー・26フレームの早見表
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-700">
-              このページは、2026-03-09 時点の 26フレームカード版を土台にしています。仕事設計の見取り図で見た
-              3レイヤーを、フレーム単位で詳細確認できるようにした現在の本体です。
+              就労支援の現場で繰り返し起きる仕事の詰まりを、3つのレイヤーと26のフレームで整理しています。
+              どのフレームで詰まっているかを先に見極め、最初の取組みポイントへの道筋をつけます。
             </p>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
-              公開本線は、見取り図とこの 26フレームカード版までに絞っています。個別判断や内部検証用の面は、
-              利用者向けの導線とは分けて扱います。
+              個別ケースの最終判断は支援者と本人が行います。
+              制度適用や個人情報の扱いは、法域・雇用区分・本人同意を確認してください。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {layers.map((layer) => (
@@ -114,31 +123,40 @@ export default function WorkDesignFrameReferencePage({
             </div>
           </div>
 
-          <aside className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-sm shadow-slate-200/60">
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">
-              <Route size={16} />
-              この版の位置づけ
+          <aside className="rounded-[2rem] border border-cyan-200 bg-cyan-50/60 p-6 shadow-sm shadow-cyan-100/60">
+            <div className="flex items-center gap-2 mb-4">
+              <Download size={18} className="text-cyan-700 shrink-0" />
+              <p className="text-xs font-bold uppercase tracking-widest text-cyan-800">
+                印刷・PDF保存して使う
+              </p>
             </div>
-            <div className="mt-5 space-y-4">
-              <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-4">
-                <h2 className="text-lg font-black text-slate-900">いまの本体</h2>
-                <p className="mt-2 text-sm leading-7 text-slate-700">
-                  26フレームの説明の仕方として、現在の本体はこのカード版です。
-                </p>
-              </div>
-              <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-4">
-                <h2 className="text-lg font-black text-slate-900">このページの役割</h2>
-                <p className="mt-2 text-sm leading-7 text-slate-700">
-                  見取り図で見た 3レイヤーを、各フレームの論点まで掘り下げて確認できるようにすることです。
-                </p>
-              </div>
-              <div className="rounded-[1.4rem] border border-amber-200 bg-amber-50 px-4 py-4">
-                <h2 className="text-lg font-black text-amber-950">ここで決めないこと</h2>
-                <p className="mt-2 text-sm leading-7 text-amber-900">
-                  個別案件の最終判断、制度適用の断定、高リスク案件の完結はここでは行いません。
-                </p>
-              </div>
+            <h2 className="text-lg font-bold text-slate-950">
+              仕事設計ガイドブック（26フレーム版）
+            </h2>
+            <p className="mt-2 text-sm text-slate-600 leading-7">
+              このページの内容を冊子形式にまとめたHTMLファイルです。
+              ブラウザで開いてそのまま印刷、またはPDF保存してお使いください。
+            </p>
+            <div className="mt-4 flex flex-col gap-2">
+              <a
+                href="/downloads/jac-26-card-guidebook.html"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-cyan-800"
+              >
+                <Download size={14} />
+                ガイドブックを開く（HTML）
+              </a>
+              <Link
+                href="/jac/guide"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-stone-50"
+              >
+                インタラクティブガイドを見る
+              </Link>
             </div>
+            <p className="mt-3 text-xs text-slate-400">
+              ⌘P / Ctrl+P →「PDFとして保存」でPDF化できます。
+            </p>
           </aside>
         </section>
 
@@ -293,29 +311,47 @@ export default function WorkDesignFrameReferencePage({
           <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
             <div className="flex items-center gap-3">
               <BookOpenText size={18} />
-              <h2 className="text-2xl font-black">このページの使い方</h2>
+              <h2 className="text-2xl font-black">次のステップ</h2>
             </div>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
-              まず見取り図で全体像をつかみ、次にこの 26フレームカード版で詳細を確かめる。この 2段を公開本線として
-              使い、個別検討が必要な案件だけを別途扱います。
+              典型パターンを確認したら、個別ケースの整理へ。インタラクティブガイドでは困りごとのタグで絞り込み、
+              就労支援見立てサポートでは相談内容から支援仮説と配慮候補のドラフトを自動生成します。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/jac-foundations"
-                className="rounded-full border border-slate-500 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
+              <a
+                href="/downloads/jac-26-card-guidebook.html"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-500 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
               >
-                見取り図へ戻る
+                <Download size={14} />
+                冊子版をダウンロード（HTML）
+              </a>
+              <Link
+                href="/jac/guide"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-500 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-300 hover:bg-slate-800"
+              >
+                インタラクティブガイド
               </Link>
               <Link
-                href="/contact"
-                className="rounded-full border border-slate-500 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-300 hover:bg-slate-800"
+                href="/jac/intro"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-500 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-300 hover:bg-slate-800"
               >
-                連携・お問い合わせ
+                就労支援見立てサポート（招待制）
               </Link>
             </div>
           </div>
         </section>
       </main>
+
+      <footer className="border-t border-slate-200 py-8">
+        <div className="mx-auto max-w-7xl px-6 flex items-center justify-between text-sm text-slate-500">
+          <p>Next Being Lab</p>
+          <Link href="/" className="hover:text-slate-900 transition">
+            トップへ
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }

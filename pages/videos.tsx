@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Film, ShieldCheck } from 'lucide-react';
+import PageSeo from '@/components/PageSeo';
 import {
   publicVideoScopeNotes,
   publicVideos,
@@ -11,14 +11,11 @@ import {
 export default function PublicVideosPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_52%,#eef2ff_100%)] text-slate-900">
-      <Head>
-        <title>公開動画 | Next Being Lab</title>
-        <meta
-          name="description"
-          content="Next Being Lab が現在 public-safe に案内する YouTube 動画を、短い説明付きでまとめたページ。"
-        />
-        <link rel="canonical" href="https://nextbeinglab.org/videos" />
-      </Head>
+      <PageSeo
+        title="公開動画 | Next Being Lab"
+        description="Next Being Lab が現在 public-safe に案内する YouTube 動画を、短い説明付きでまとめたページ。"
+        path="/videos"
+      />
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">

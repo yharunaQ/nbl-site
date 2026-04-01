@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.setHeader('Allow', 'GET');
         return res.status(405).json({ error: 'Method not allowed' });
     }
-    const guard = guardJacApiRequest(req, { route: 'jac-assess-refinement', costly: false });
+    const guard = await guardJacApiRequest(req, { route: 'jac-assess-refinement', costly: false });
     if (!guard.ok) {
         return res.status(guard.status).json({ error: guard.error });
     }

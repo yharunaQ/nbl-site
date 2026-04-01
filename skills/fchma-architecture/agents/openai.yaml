@@ -1,0 +1,4 @@
+interface:
+  display_name: "FCHMA Architecture"
+  short_description: "Keep case-centered architecture and layer boundaries coherent."
+  default_prompt: "Use $fchma-architecture to keep this implementation aligned with the target architecture."

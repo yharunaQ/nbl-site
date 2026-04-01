@@ -24,6 +24,7 @@ function resolvePrimaryWorkspaceRoot(startCwd) {
     const output = execFileSync('git', ['worktree', 'list', '--porcelain'], {
       cwd: startCwd,
       encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
     });
     const entries = parseWorktreeEntries(output);
     const primaryEntry =
@@ -41,10 +42,13 @@ export const ROOT = resolvePrimaryWorkspaceRoot(EXECUTION_ROOT);
 
 export const PATHS = {
   decisionLog: path.join(ROOT, 'docs/nbl-workspace/decision-log.md'),
+  contentInventory: path.join(ROOT, 'docs/nbl-workspace/content-inventory.md'),
   founderNewContentLog: path.join(ROOT, 'content-inbox/founder-new-content-log.md'),
   founderSiteFeedbackLog: path.join(ROOT, 'content-inbox/founder-site-feedback-log.md'),
   dailySnapshotsDir: path.join(ROOT, 'docs/nbl-workspace/ops/daily-snapshots'),
   weeklyLoopReportsDir: path.join(ROOT, 'docs/nbl-workspace/ops/weekly-loop-reports'),
+  externalSignalDigestsDir: path.join(ROOT, 'docs/nbl-workspace/ops/external-signal-digests'),
+  partnerDiscoveryLoopsDir: path.join(ROOT, 'docs/nbl-workspace/ops/partner-discovery-loops'),
   publicReleasePreflightsDir: path.join(ROOT, 'docs/nbl-workspace/ops/public-release-preflights'),
 };
 
@@ -59,6 +63,21 @@ export function formatTokyoDate(date = new Date()) {
 
 export function formatTokyoMonth(date = new Date()) {
   return formatTokyoDate(date).slice(0, 7);
+}
+
+export function daysSinceTokyoDate(dateString, referenceDateString = formatTokyoDate()) {
+  if (!dateString) {
+    return null;
+  }
+
+  const start = new Date(`${dateString}T00:00:00+09:00`);
+  const end = new Date(`${referenceDateString}T00:00:00+09:00`);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    return null;
+  }
+
+  return Math.round((end.getTime() - start.getTime()) / 86_400_000);
 }
 
 export async function ensureDir(dirPath) {
@@ -83,6 +102,7 @@ export function getGitStatusEntries() {
     const output = execFileSync('git', ['status', '--short'], {
       cwd: ROOT,
       encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
     });
 
     return output
@@ -137,6 +157,52 @@ export async function readEntriesSection(filePath) {
     .split('\n')
     .map((line) => line.trim())
     .filter((line) => line.startsWith('- ') && !line.includes('ここに追記'));
+}
+
+function parseMarkdownTableRow(line) {
+  return line
+    .split('|')
+    .slice(1, -1)
+    .map((cell) => cell.trim());
+}
+
+export async function readContentInventory(filePath = PATHS.contentInventory) {
+  const content = await readText(filePath);
+  const updatedAt = content.match(/更新日:\s*(\d{4}-\d{2}-\d{2})/)?.[1] ?? null;
+  const match = content.match(/## Inventory\n([\s\S]*?)(\n## |\n# |$)/);
+
+  if (!match) {
+    return {
+      updatedAt,
+      rows: [],
+    };
+  }
+
+  const tableLines = match[1]
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('|'));
+
+  if (tableLines.length < 3) {
+    return {
+      updatedAt,
+      rows: [],
+    };
+  }
+
+  const headers = parseMarkdownTableRow(tableLines[0]);
+  const rows = tableLines
+    .slice(2)
+    .map((line) => parseMarkdownTableRow(line))
+    .filter((cells) => cells.some(Boolean))
+    .map((cells) =>
+      Object.fromEntries(headers.map((header, index) => [header, cells[index] ?? ''])),
+    );
+
+  return {
+    updatedAt,
+    rows,
+  };
 }
 
 export function classifyWorkspaceActivity(filePaths) {

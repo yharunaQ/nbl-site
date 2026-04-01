@@ -19,12 +19,21 @@ Status: hidden review operating design
 monthly compounding dashboard は次段でよい。
 まずは `日々の現在地` と `週次の構造レビュー` が回るだけでも、Founder chat が trigger になる割合をかなり減らせる。
 
+## Hold means incubation, not abandonment
+
+- `hold` は「Founder が直して再提案するまで停止」の意味ではない。
+- `hold` は `internal incubation / revival queue` として扱い、AI が weekly review で再起動候補を 1-3 件に絞る。
+- AI は `hold -> hidden review draft` まで進めてよい。
+- Founder の `Yes / No / Adjust` が必要なのは、特定の候補を `public candidate / public promise` に近づける境界だけ。
+- つまり Founder は `全部を思い出して再提案する人` ではなく、`上がってきた候補の境界を切る人` に寄る。
+
 ## Daily snapshot
 
 目的:
 
 - 何が増えたか
 - 何が止まっているか
+- 保留棚に再起動 signal が出たか
 - 次にどの loop を進めるべきか
 - Founder boundary が発生しているか
 
@@ -48,15 +57,18 @@ monthly compounding dashboard は次段でよい。
 1. what changed
 2. what accumulated
 3. blocked / drifting
-4. next best round
-5. Founder boundary
-6. evidence pointers
+4. hold signals
+5. next best round
+6. AI autonomous moves today
+7. Founder boundary
+8. evidence pointers
 
 Founder に見せる条件:
 
 - `Founder boundary` が空でない
 - build / lint / safety の赤信号がある
 - public promise の変更が必要
+- hold 候補が `hidden review draft` を超えて `public candidate` に上がる
 
 ## Weekly loop report
 
@@ -64,6 +76,8 @@ Founder に見せる条件:
 
 - 5 loop をまとめて見て、どこに複利が立っているかを確認する
 - consulting drift を早めに見つける
+- hold 棚から再起動候補を 1-3 件だけ選ぶ
+- Founder に返すべき判断を 0-3 件に圧縮する
 - 次週の priority を1段整理する
 
 読む範囲:
@@ -81,17 +95,23 @@ Founder に見せる条件:
 出力セクション:
 
 1. loop-by-loop status
-2. artifacts created
-3. compounding signals
-4. risks and drifts
-5. Founder boundary this week
-6. next 7 days
+2. external reality interface
+3. partner discovery status
+4. artifacts created
+5. compounding signals
+6. risks and drifts
+7. hold revival candidates
+8. Founder decision queue
+9. Founder reply format
+10. AI autonomous moves before next review
+11. next 7 days
 
 Founder に見せる条件:
 
-- `Founder boundary this week` が空でない
+- `Founder decision queue` が空でない
 - `high-risk boundary` が出た
 - `continue / adjust / stop` を前倒しで求めるべき signal がある
+- hold candidate を `public candidate` に上げるかどうかの境界が来た
 
 ## Recommended cadence
 
@@ -107,6 +127,7 @@ Founder に見せる条件:
 - public に本当に約束する文言が変わる
 - 実名候補や外部連絡が必要
 - 支援 / 権利 / 合理的配慮で unsafe automation pressure が上がる
+- hold 候補を public promise に接続する必要が出た
 - build break や routing break で public candidate が壊れている
 - 7日以上 `next best round` が更新されていない
 - artifact が増えず、都度対応だけが増えている
@@ -127,6 +148,7 @@ Founder に見せる条件:
 - rule:
   - その日すでに file があっても update は可
   - Founder boundary が空なら `none` と明記
+  - `hold signals` で保留棚の stale / revival cue を短く返す
   - next best round は必ず 1 つに絞る
 
 ### NBL Weekly Loop Report
@@ -135,11 +157,15 @@ Founder に見せる条件:
 - write path: `docs/nbl-workspace/ops/weekly-loop-reports/YYYY-MM-DD.md`
 - rule:
   - 各 loop を `moving / blocked / waiting / drift risk` のどれかで判定
-  - Founder boundary がなければ `no founder action needed` と明記
+  - `hold revival candidates` は最大 3 件までに絞る
+  - Founder decision queue が空なら `no founder action needed` と明記
+  - 各 decision は `Decision / Recommended / Why now / Default if no reply` に圧縮する
+  - Founder reply format は `1. Yes / No / Adjust: ...` の行だけにする
+  - `AI autonomous moves before next review` は最大 3 項目に絞る
   - next 7 days は 3 項目以内に絞る
 
 ## Immediate next use
 
 - `/review/snapshot-automation` を recurring automation の基準ページにする
 - 将来の app automation を作るときは、この設計をそのまま prompt と output path に落とす
-- Founder は daily を常時読まなくてよく、weekly だけ赤信号ベースで見ればよい
+- Founder は daily を常時読まなくてよく、weekly だけ赤信号と public boundary ベースで見ればよい

@@ -6,6 +6,7 @@ import {
   PlannerOutput,
   PlannerStepProgress,
 } from '@/lib/knowledge/types';
+import { getKnowledgeSourceById } from '@/lib/knowledge/sourceRegistry';
 
 export type EvidenceItem = {
   id: string;
@@ -24,6 +25,8 @@ export type AgenticExecutionContext = {
 export type AgenticExecutionResult = {
   stepProgress: PlannerStepProgress[];
   evidence: EvidenceItem[];
+  step4Evidence: EvidenceItem[];
+  step4ClaimIds: string[];
   structuredSummary: string[];
   policyNotes: string[];
   safetyGate: KnowledgeSafetyGate;
@@ -348,6 +351,182 @@ function extractBestExcerpt(content: string, keywords: string[]): string {
   }
 
   return content.replace(/\s+/g, ' ').trim().slice(0, 220);
+}
+
+function sourceKind(sourceId: string): string {
+  return getKnowledgeSourceById(sourceId)?.kind || 'unknown';
+}
+
+type RebalanceEvidenceOptions = {
+  maxPerSource?: number;
+  websiteQuota?: number;
+  candidatePoolSize?: number;
+  minDistinctSources?: number;
+  minDistinctWebsiteSources?: number;
+};
+
+function collectRebalanceCandidates(
+  rankedEvidence: EvidenceItem[],
+  limit: number,
+  options?: RebalanceEvidenceOptions,
+): EvidenceItem[] {
+  const candidatePoolSize = Math.max(limit, Number(options?.candidatePoolSize || 48));
+  const minDistinctSources = Math.max(0, Number(options?.minDistinctSources || 0));
+  const minDistinctWebsiteSources = Math.max(0, Number(options?.minDistinctWebsiteSources || 0));
+
+  if (minDistinctSources === 0 && minDistinctWebsiteSources === 0) {
+    return (rankedEvidence || []).slice(0, candidatePoolSize);
+  }
+
+  const seenSources = new Set<string>();
+  const seenWebsiteSources = new Set<string>();
+  let endIndex = 0;
+
+  while (endIndex < rankedEvidence.length && endIndex < candidatePoolSize) {
+    const item = rankedEvidence[endIndex];
+    seenSources.add(item.sourceId);
+    if (sourceKind(item.sourceId) === 'website') {
+      seenWebsiteSources.add(item.sourceId);
+    }
+    endIndex += 1;
+  }
+
+  while (
+    endIndex < rankedEvidence.length &&
+    (seenSources.size < minDistinctSources || seenWebsiteSources.size < minDistinctWebsiteSources)
+  ) {
+    const item = rankedEvidence[endIndex];
+    seenSources.add(item.sourceId);
+    if (sourceKind(item.sourceId) === 'website') {
+      seenWebsiteSources.add(item.sourceId);
+    }
+    endIndex += 1;
+  }
+
+  return rankedEvidence.slice(0, endIndex);
+}
+
+function appendUniqueSourceIds(target: string[], seen: Set<string>, sourceIds: string[]): void {
+  for (const sourceId of sourceIds) {
+    if (seen.has(sourceId)) continue;
+    seen.add(sourceId);
+    target.push(sourceId);
+  }
+}
+
+export function rebalanceEvidenceBySource(
+  rankedEvidence: EvidenceItem[],
+  limit = 16,
+  options?: RebalanceEvidenceOptions,
+): EvidenceItem[] {
+  const maxPerSource = Math.max(1, Number(options?.maxPerSource || 3));
+  const websiteQuota = Math.max(0, Number(options?.websiteQuota || 6));
+  const minDistinctSources = Math.max(0, Number(options?.minDistinctSources || 0));
+  const minDistinctWebsiteSources = Math.max(0, Number(options?.minDistinctWebsiteSources || 0));
+  const candidates = collectRebalanceCandidates(rankedEvidence || [], limit, options);
+  const buckets = new Map<string, EvidenceItem[]>();
+  const cursors = new Map<string, number>();
+  const counts = new Map<string, number>();
+  const selected = new Set<string>();
+  const selectedSourceIds = new Set<string>();
+  const selectedWebsiteSourceIds = new Set<string>();
+  const result: EvidenceItem[] = [];
+
+  for (const item of candidates) {
+    const bucket = buckets.get(item.sourceId) || [];
+    bucket.push(item);
+    buckets.set(item.sourceId, bucket);
+  }
+
+  const sourceOrder = [...buckets.entries()]
+    .sort((a, b) => {
+      const scoreDiff = Number(b[1][0]?.score || 0) - Number(a[1][0]?.score || 0);
+      if (scoreDiff !== 0) return scoreDiff;
+      return a[0].localeCompare(b[0], 'ja');
+    })
+    .map(([sourceId]) => sourceId);
+  const websiteSourceOrder = sourceOrder.filter((sourceId) => sourceKind(sourceId) === 'website');
+  const prioritizedSourceOrder: string[] = [];
+  const prioritizedSourceIds = new Set<string>();
+
+  if (minDistinctWebsiteSources > 0) {
+    appendUniqueSourceIds(
+      prioritizedSourceOrder,
+      prioritizedSourceIds,
+      websiteSourceOrder.slice(0, minDistinctWebsiteSources),
+    );
+  }
+
+  if (minDistinctSources > 0) {
+    for (const sourceId of sourceOrder) {
+      if (prioritizedSourceOrder.length >= minDistinctSources) break;
+      appendUniqueSourceIds(prioritizedSourceOrder, prioritizedSourceIds, [sourceId]);
+    }
+  }
+
+  appendUniqueSourceIds(prioritizedSourceOrder, prioritizedSourceIds, sourceOrder);
+
+  const pushNextFromSource = (sourceId: string) => {
+    const bucket = buckets.get(sourceId) || [];
+    const cursor = Number(cursors.get(sourceId) || 0);
+    if (cursor >= bucket.length) return false;
+    if (Number(counts.get(sourceId) || 0) >= maxPerSource) return false;
+    const candidate = bucket[cursor];
+    cursors.set(sourceId, cursor + 1);
+    if (!candidate || selected.has(candidate.id)) return false;
+    selected.add(candidate.id);
+    counts.set(sourceId, Number(counts.get(sourceId) || 0) + 1);
+    result.push(candidate);
+    selectedSourceIds.add(sourceId);
+    if (sourceKind(sourceId) === 'website') {
+      selectedWebsiteSourceIds.add(sourceId);
+    }
+    return true;
+  };
+
+  for (const sourceId of prioritizedSourceOrder) {
+    if (result.length >= limit) break;
+    pushNextFromSource(sourceId);
+  }
+
+  if (result.length < limit && minDistinctWebsiteSources > 0) {
+    for (const sourceId of websiteSourceOrder) {
+      if (result.length >= limit || selectedWebsiteSourceIds.size >= minDistinctWebsiteSources) break;
+      if (selectedWebsiteSourceIds.has(sourceId)) continue;
+      pushNextFromSource(sourceId);
+    }
+  }
+
+  if (result.length < limit && minDistinctSources > 0) {
+    for (const sourceId of sourceOrder) {
+      if (result.length >= limit || selectedSourceIds.size >= minDistinctSources) break;
+      if (selectedSourceIds.has(sourceId)) continue;
+      pushNextFromSource(sourceId);
+    }
+  }
+
+  let currentWebsiteCount = result.filter((item) => sourceKind(item.sourceId) === 'website').length;
+  while (result.length < limit && currentWebsiteCount < websiteQuota) {
+    let progressed = false;
+    for (const sourceId of websiteSourceOrder) {
+      if (result.length >= limit || currentWebsiteCount >= websiteQuota) break;
+      if (!pushNextFromSource(sourceId)) continue;
+      currentWebsiteCount += 1;
+      progressed = true;
+    }
+    if (!progressed) break;
+  }
+
+  for (const item of candidates) {
+    if (result.length >= limit) break;
+    if (selected.has(item.id)) continue;
+    if (Number(counts.get(item.sourceId) || 0) >= maxPerSource) continue;
+    selected.add(item.id);
+    counts.set(item.sourceId, Number(counts.get(item.sourceId) || 0) + 1);
+    result.push(item);
+  }
+
+  return result.slice(0, limit);
 }
 
 function detectRequestedSignals(query: string, keywords: string[]): Set<string> {
@@ -1191,7 +1370,7 @@ export async function executeAgenticPlan(
     });
   }
 
-  const dedupedEvidence = Array.from(
+  const rankedEvidence = Array.from(
     evidence.reduce((map, item) => {
       const existing = map.get(item.id);
       if (!existing || item.score > existing.score) {
@@ -1201,11 +1380,23 @@ export async function executeAgenticPlan(
     }, new Map<string, EvidenceItem>()),
   )
     .map(([, item]) => item)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 16);
+    .sort((a, b) => b.score - a.score);
+  const dedupedEvidence = rebalanceEvidenceBySource(rankedEvidence, 16, {
+    maxPerSource: 3,
+    websiteQuota: 6,
+    candidatePoolSize: 48,
+  });
+  const step4Evidence = rebalanceEvidenceBySource(rankedEvidence, 32, {
+    maxPerSource: 4,
+    websiteQuota: 14,
+    candidatePoolSize: 160,
+    minDistinctSources: 6,
+    minDistinctWebsiteSources: 4,
+  });
 
   const claimsByRecordId = await readClaimsByRecordId();
   const matchedClaims = collectMatchedClaims(dedupedEvidence, claimsByRecordId);
+  const matchedStep4Claims = collectMatchedClaims(step4Evidence, claimsByRecordId);
   const safetyGate = buildSafetyGate(dedupedEvidence, matchedClaims, claimsByRecordId.size > 0);
 
   const notes = buildPolicyNotes(safetyGate);
@@ -1220,6 +1411,8 @@ export async function executeAgenticPlan(
   return {
     stepProgress,
     evidence: dedupedEvidence,
+    step4Evidence,
+    step4ClaimIds: matchedStep4Claims.map((claim) => claim.id),
     structuredSummary,
     policyNotes,
     safetyGate,

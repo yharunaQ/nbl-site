@@ -30,6 +30,16 @@
     "notes": "Curated markdown notes that reorganize raw sources for JAC operational use via sidecar metadata."
   },
   {
+    "id": "nbl_support_catalog",
+    "name": "NBL Support Catalog",
+    "kind": "local_fs",
+    "enabled": true,
+    "trustLevel": "primary",
+    "refresh": "manual",
+    "location": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/supporter",
+    "notes": "Curated regional support evidence catalog for support-option generation. Use as support design knowledge, not as direct public-safe basis."
+  },
+  {
     "id": "askjan_website",
     "name": "AskJAN Website",
     "kind": "website",

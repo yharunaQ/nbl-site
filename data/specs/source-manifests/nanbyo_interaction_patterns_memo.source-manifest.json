@@ -1,0 +1,17 @@
+{
+  "source_id": "nanbyo_interaction_patterns_memo",
+  "dataset_id": "supporter_practice_workshop_patterns",
+  "source_role": "reviewed_pattern_memo",
+  "source_type": "markdown_analysis",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": false,
+  "contains_free_text": true,
+  "row_unit": null,
+  "population": null,
+  "file_path": "supporter_practice/難病就労支援_相互作用パターン分析と連携設計.md",
+  "file_size_bytes": 40574,
+  "guide_files": [],
+  "notes": "Workshop synthesis of rare disease employment support interaction patterns and coordination design.",
+  "generated_at": "2026-03-31T09:21:30+00:00"
+}

@@ -1,0 +1,1989 @@
+{
+  "version": "0.1.0",
+  "generated_at": "2026-03-31T12:35:43+00:00",
+  "positioning": {
+    "role": "The exhaustive methodological superstructure for FCHMA causal reasoning.",
+    "note": "Product-facing frame sets such as 26 frames should be treated as projections or cuts of this atlas, not the atlas itself."
+  },
+  "layers": [
+    {
+      "id": "condition_work_interaction",
+      "label": "体調-仕事相互作用レイヤー",
+      "description": "症状、体調変動、仕事要求、場面負荷の相互作用を扱う。"
+    },
+    {
+      "id": "participation_transition",
+      "label": "参加・移行レイヤー",
+      "description": "就労参加、継続、移行、離脱リスク、時間経過を扱う。"
+    },
+    {
+      "id": "support_orchestration",
+      "label": "支援オーケストレーションレイヤー",
+      "description": "配慮、連携、説明、制度アクセス、支援体制を扱う。"
+    }
+  ],
+  "domains": [
+    {
+      "id": "symptom_variability",
+      "label": "症状変動",
+      "primary_layer": "condition_work_interaction",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "question_seed": "どの症状・変動が、どの作業場面で強く出るか。",
+      "intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ]
+    },
+    {
+      "id": "task_demand_mismatch",
+      "label": "仕事要求ミスマッチ",
+      "primary_layer": "condition_work_interaction",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "question_seed": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ]
+    },
+    {
+      "id": "participation_role_instability",
+      "label": "参加・役割不安定化",
+      "primary_layer": "participation_transition",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "question_seed": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ]
+    },
+    {
+      "id": "accommodation_environment_gap",
+      "label": "配慮・環境ギャップ",
+      "primary_layer": "support_orchestration",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "question_seed": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ]
+    },
+    {
+      "id": "communication_disclosure_mediation",
+      "label": "説明・開示媒介",
+      "primary_layer": "support_orchestration",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "question_seed": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ]
+    },
+    {
+      "id": "support_coordination_access",
+      "label": "支援連携アクセス",
+      "primary_layer": "support_orchestration",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "question_seed": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ]
+    },
+    {
+      "id": "temporal_trajectory_instability",
+      "label": "時間経過・移行不安定化",
+      "primary_layer": "participation_transition",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "question_seed": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ]
+    },
+    {
+      "id": "institutional_constraint_and_access",
+      "label": "制度制約・制度アクセス",
+      "primary_layer": "support_orchestration",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "question_seed": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ]
+    }
+  ],
+  "motifs": [
+    {
+      "id": "amplification",
+      "label": "増幅",
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "summary": "条件の重なりが困難や不安定さを強める。"
+    },
+    {
+      "id": "mismatch",
+      "label": "ミスマッチ",
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "summary": "要求条件と利用可能条件のズレが生じている。"
+    },
+    {
+      "id": "bottleneck",
+      "label": "ボトルネック",
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "summary": "一箇所の詰まりが全体の流れを止めている。"
+    },
+    {
+      "id": "buffering",
+      "label": "緩衝",
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "summary": "保護因子や支援が負荷を和らげている。"
+    },
+    {
+      "id": "compensation",
+      "label": "補償",
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "summary": "別の資源や設計変更が不足を補っている。"
+    },
+    {
+      "id": "delay_recurrence",
+      "label": "遅延・再燃",
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "summary": "時間差や再発的なループが問題を見えにくくしている。"
+    }
+  ],
+  "framework_count": 48,
+  "frameworks": [
+    {
+      "framework_id": "symptom_variability__amplification",
+      "title": "症状変動 × 増幅",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "symptom_variability",
+      "motif_id": "amplification",
+      "summary": "症状変動の文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "どの症状・変動が、どの作業場面で強く出るか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "symptom_variability__mismatch",
+      "title": "症状変動 × ミスマッチ",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "symptom_variability",
+      "motif_id": "mismatch",
+      "summary": "症状変動の文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "どの症状・変動が、どの作業場面で強く出るか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "symptom_variability__bottleneck",
+      "title": "症状変動 × ボトルネック",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "symptom_variability",
+      "motif_id": "bottleneck",
+      "summary": "症状変動の文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "どの症状・変動が、どの作業場面で強く出るか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "symptom_variability__buffering",
+      "title": "症状変動 × 緩衝",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "symptom_variability",
+      "motif_id": "buffering",
+      "summary": "症状変動の文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "どの症状・変動が、どの作業場面で強く出るか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "symptom_variability__compensation",
+      "title": "症状変動 × 補償",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "symptom_variability",
+      "motif_id": "compensation",
+      "summary": "症状変動の文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "どの症状・変動が、どの作業場面で強く出るか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "symptom_variability__delay_recurrence",
+      "title": "症状変動 × 遅延・再燃",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "symptom_variability",
+      "motif_id": "delay_recurrence",
+      "summary": "症状変動の文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "health_condition",
+        "body_functions_structures",
+        "activities"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "どの症状・変動が、どの作業場面で強く出るか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "症状変動の場面特定",
+        "負荷が高い時間帯の切り分け",
+        "回復余地の確保"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "task_demand_mismatch__amplification",
+      "title": "仕事要求ミスマッチ × 増幅",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "task_demand_mismatch",
+      "motif_id": "amplification",
+      "summary": "仕事要求ミスマッチの文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "task_demand_mismatch__mismatch",
+      "title": "仕事要求ミスマッチ × ミスマッチ",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "task_demand_mismatch",
+      "motif_id": "mismatch",
+      "summary": "仕事要求ミスマッチの文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "task_demand_mismatch__bottleneck",
+      "title": "仕事要求ミスマッチ × ボトルネック",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "task_demand_mismatch",
+      "motif_id": "bottleneck",
+      "summary": "仕事要求ミスマッチの文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "task_demand_mismatch__buffering",
+      "title": "仕事要求ミスマッチ × 緩衝",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "task_demand_mismatch",
+      "motif_id": "buffering",
+      "summary": "仕事要求ミスマッチの文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "task_demand_mismatch__compensation",
+      "title": "仕事要求ミスマッチ × 補償",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "task_demand_mismatch",
+      "motif_id": "compensation",
+      "summary": "仕事要求ミスマッチの文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "task_demand_mismatch__delay_recurrence",
+      "title": "仕事要求ミスマッチ × 遅延・再燃",
+      "primary_layer": "condition_work_interaction",
+      "domain_id": "task_demand_mismatch",
+      "motif_id": "delay_recurrence",
+      "summary": "仕事要求ミスマッチの文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "activities",
+        "work_design",
+        "participation"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "必要な作業要求と現在の遂行条件がどこで噛み合っていないか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "タスク切り出し",
+        "時間設計の変更",
+        "役割期待の調整"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "participation_role_instability__amplification",
+      "title": "参加・役割不安定化 × 増幅",
+      "primary_layer": "participation_transition",
+      "domain_id": "participation_role_instability",
+      "motif_id": "amplification",
+      "summary": "参加・役割不安定化の文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "participation_role_instability__mismatch",
+      "title": "参加・役割不安定化 × ミスマッチ",
+      "primary_layer": "participation_transition",
+      "domain_id": "participation_role_instability",
+      "motif_id": "mismatch",
+      "summary": "参加・役割不安定化の文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "participation_role_instability__bottleneck",
+      "title": "参加・役割不安定化 × ボトルネック",
+      "primary_layer": "participation_transition",
+      "domain_id": "participation_role_instability",
+      "motif_id": "bottleneck",
+      "summary": "参加・役割不安定化の文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "participation_role_instability__buffering",
+      "title": "参加・役割不安定化 × 緩衝",
+      "primary_layer": "participation_transition",
+      "domain_id": "participation_role_instability",
+      "motif_id": "buffering",
+      "summary": "参加・役割不安定化の文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "participation_role_instability__compensation",
+      "title": "参加・役割不安定化 × 補償",
+      "primary_layer": "participation_transition",
+      "domain_id": "participation_role_instability",
+      "motif_id": "compensation",
+      "summary": "参加・役割不安定化の文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "participation_role_instability__delay_recurrence",
+      "title": "参加・役割不安定化 × 遅延・再燃",
+      "primary_layer": "participation_transition",
+      "domain_id": "participation_role_instability",
+      "motif_id": "delay_recurrence",
+      "summary": "参加・役割不安定化の文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "activities",
+        "participation",
+        "role_expectations"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "働き方や役割期待のどこが継続を不安定にしているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "就労継続条件の再設定",
+        "役割の再定義",
+        "参加条件の緩和"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "accommodation_environment_gap__amplification",
+      "title": "配慮・環境ギャップ × 増幅",
+      "primary_layer": "support_orchestration",
+      "domain_id": "accommodation_environment_gap",
+      "motif_id": "amplification",
+      "summary": "配慮・環境ギャップの文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "accommodation_environment_gap__mismatch",
+      "title": "配慮・環境ギャップ × ミスマッチ",
+      "primary_layer": "support_orchestration",
+      "domain_id": "accommodation_environment_gap",
+      "motif_id": "mismatch",
+      "summary": "配慮・環境ギャップの文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "accommodation_environment_gap__bottleneck",
+      "title": "配慮・環境ギャップ × ボトルネック",
+      "primary_layer": "support_orchestration",
+      "domain_id": "accommodation_environment_gap",
+      "motif_id": "bottleneck",
+      "summary": "配慮・環境ギャップの文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "accommodation_environment_gap__buffering",
+      "title": "配慮・環境ギャップ × 緩衝",
+      "primary_layer": "support_orchestration",
+      "domain_id": "accommodation_environment_gap",
+      "motif_id": "buffering",
+      "summary": "配慮・環境ギャップの文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "accommodation_environment_gap__compensation",
+      "title": "配慮・環境ギャップ × 補償",
+      "primary_layer": "support_orchestration",
+      "domain_id": "accommodation_environment_gap",
+      "motif_id": "compensation",
+      "summary": "配慮・環境ギャップの文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "accommodation_environment_gap__delay_recurrence",
+      "title": "配慮・環境ギャップ × 遅延・再燃",
+      "primary_layer": "support_orchestration",
+      "domain_id": "accommodation_environment_gap",
+      "motif_id": "delay_recurrence",
+      "summary": "配慮・環境ギャップの文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "environmental_factors",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "必要な配慮と実際の職場環境の間にどのギャップがあるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "必要配慮の言語化",
+        "職場内調整",
+        "環境設定の見直し"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "communication_disclosure_mediation__amplification",
+      "title": "説明・開示媒介 × 増幅",
+      "primary_layer": "support_orchestration",
+      "domain_id": "communication_disclosure_mediation",
+      "motif_id": "amplification",
+      "summary": "説明・開示媒介の文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "communication_disclosure_mediation__mismatch",
+      "title": "説明・開示媒介 × ミスマッチ",
+      "primary_layer": "support_orchestration",
+      "domain_id": "communication_disclosure_mediation",
+      "motif_id": "mismatch",
+      "summary": "説明・開示媒介の文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "communication_disclosure_mediation__bottleneck",
+      "title": "説明・開示媒介 × ボトルネック",
+      "primary_layer": "support_orchestration",
+      "domain_id": "communication_disclosure_mediation",
+      "motif_id": "bottleneck",
+      "summary": "説明・開示媒介の文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "communication_disclosure_mediation__buffering",
+      "title": "説明・開示媒介 × 緩衝",
+      "primary_layer": "support_orchestration",
+      "domain_id": "communication_disclosure_mediation",
+      "motif_id": "buffering",
+      "summary": "説明・開示媒介の文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "communication_disclosure_mediation__compensation",
+      "title": "説明・開示媒介 × 補償",
+      "primary_layer": "support_orchestration",
+      "domain_id": "communication_disclosure_mediation",
+      "motif_id": "compensation",
+      "summary": "説明・開示媒介の文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "communication_disclosure_mediation__delay_recurrence",
+      "title": "説明・開示媒介 × 遅延・再燃",
+      "primary_layer": "support_orchestration",
+      "domain_id": "communication_disclosure_mediation",
+      "motif_id": "delay_recurrence",
+      "summary": "説明・開示媒介の文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "personal_factors",
+        "environmental_factors",
+        "support_resources"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "誰に何をどう伝えるかが支援形成にどう影響しているか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "説明順序の設計",
+        "開示範囲の調整",
+        "対話相手の選定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "support_coordination_access__amplification",
+      "title": "支援連携アクセス × 増幅",
+      "primary_layer": "support_orchestration",
+      "domain_id": "support_coordination_access",
+      "motif_id": "amplification",
+      "summary": "支援連携アクセスの文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "support_coordination_access__mismatch",
+      "title": "支援連携アクセス × ミスマッチ",
+      "primary_layer": "support_orchestration",
+      "domain_id": "support_coordination_access",
+      "motif_id": "mismatch",
+      "summary": "支援連携アクセスの文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "support_coordination_access__bottleneck",
+      "title": "支援連携アクセス × ボトルネック",
+      "primary_layer": "support_orchestration",
+      "domain_id": "support_coordination_access",
+      "motif_id": "bottleneck",
+      "summary": "支援連携アクセスの文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "support_coordination_access__buffering",
+      "title": "支援連携アクセス × 緩衝",
+      "primary_layer": "support_orchestration",
+      "domain_id": "support_coordination_access",
+      "motif_id": "buffering",
+      "summary": "支援連携アクセスの文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "support_coordination_access__compensation",
+      "title": "支援連携アクセス × 補償",
+      "primary_layer": "support_orchestration",
+      "domain_id": "support_coordination_access",
+      "motif_id": "compensation",
+      "summary": "支援連携アクセスの文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "support_coordination_access__delay_recurrence",
+      "title": "支援連携アクセス × 遅延・再燃",
+      "primary_layer": "support_orchestration",
+      "domain_id": "support_coordination_access",
+      "motif_id": "delay_recurrence",
+      "summary": "支援連携アクセスの文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "support_resources",
+        "institutional_conditions",
+        "participation"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "必要な支援資源に接続できているか、連携の詰まりはどこか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "連携先の明確化",
+        "支援導線の一本化",
+        "役割分担の再設定"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "temporal_trajectory_instability__amplification",
+      "title": "時間経過・移行不安定化 × 増幅",
+      "primary_layer": "participation_transition",
+      "domain_id": "temporal_trajectory_instability",
+      "motif_id": "amplification",
+      "summary": "時間経過・移行不安定化の文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "temporal_trajectory_instability__mismatch",
+      "title": "時間経過・移行不安定化 × ミスマッチ",
+      "primary_layer": "participation_transition",
+      "domain_id": "temporal_trajectory_instability",
+      "motif_id": "mismatch",
+      "summary": "時間経過・移行不安定化の文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "temporal_trajectory_instability__bottleneck",
+      "title": "時間経過・移行不安定化 × ボトルネック",
+      "primary_layer": "participation_transition",
+      "domain_id": "temporal_trajectory_instability",
+      "motif_id": "bottleneck",
+      "summary": "時間経過・移行不安定化の文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "temporal_trajectory_instability__buffering",
+      "title": "時間経過・移行不安定化 × 緩衝",
+      "primary_layer": "participation_transition",
+      "domain_id": "temporal_trajectory_instability",
+      "motif_id": "buffering",
+      "summary": "時間経過・移行不安定化の文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "temporal_trajectory_instability__compensation",
+      "title": "時間経過・移行不安定化 × 補償",
+      "primary_layer": "participation_transition",
+      "domain_id": "temporal_trajectory_instability",
+      "motif_id": "compensation",
+      "summary": "時間経過・移行不安定化の文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "temporal_trajectory_instability__delay_recurrence",
+      "title": "時間経過・移行不安定化 × 遅延・再燃",
+      "primary_layer": "participation_transition",
+      "domain_id": "temporal_trajectory_instability",
+      "motif_id": "delay_recurrence",
+      "summary": "時間経過・移行不安定化の文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "temporal_change",
+        "activities",
+        "participation"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "時間経過、再燃、移行期がどのように困難を変動させるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "移行期支援",
+        "再燃時対応ルート",
+        "短期再評価サイクル"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "institutional_constraint_and_access__amplification",
+      "title": "制度制約・制度アクセス × 増幅",
+      "primary_layer": "support_orchestration",
+      "domain_id": "institutional_constraint_and_access",
+      "motif_id": "amplification",
+      "summary": "制度制約・制度アクセスの文脈で、条件の重なりが困難や不安定さを強める。",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "amplifies"
+      ],
+      "core_question": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "institutional_constraint_and_access__mismatch",
+      "title": "制度制約・制度アクセス × ミスマッチ",
+      "primary_layer": "support_orchestration",
+      "domain_id": "institutional_constraint_and_access",
+      "motif_id": "mismatch",
+      "summary": "制度制約・制度アクセスの文脈で、要求条件と利用可能条件のズレが生じている。",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "inhibits",
+        "constrains"
+      ],
+      "core_question": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "institutional_constraint_and_access__bottleneck",
+      "title": "制度制約・制度アクセス × ボトルネック",
+      "primary_layer": "support_orchestration",
+      "domain_id": "institutional_constraint_and_access",
+      "motif_id": "bottleneck",
+      "summary": "制度制約・制度アクセスの文脈で、一箇所の詰まりが全体の流れを止めている。",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "mediates",
+        "blocks"
+      ],
+      "core_question": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "institutional_constraint_and_access__buffering",
+      "title": "制度制約・制度アクセス × 緩衝",
+      "primary_layer": "support_orchestration",
+      "domain_id": "institutional_constraint_and_access",
+      "motif_id": "buffering",
+      "summary": "制度制約・制度アクセスの文脈で、保護因子や支援が負荷を和らげている。",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "buffers",
+        "stabilizes"
+      ],
+      "core_question": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "institutional_constraint_and_access__compensation",
+      "title": "制度制約・制度アクセス × 補償",
+      "primary_layer": "support_orchestration",
+      "domain_id": "institutional_constraint_and_access",
+      "motif_id": "compensation",
+      "summary": "制度制約・制度アクセスの文脈で、別の資源や設計変更が不足を補っている。",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "compensates",
+        "substitutes"
+      ],
+      "core_question": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    },
+    {
+      "framework_id": "institutional_constraint_and_access__delay_recurrence",
+      "title": "制度制約・制度アクセス × 遅延・再燃",
+      "primary_layer": "support_orchestration",
+      "domain_id": "institutional_constraint_and_access",
+      "motif_id": "delay_recurrence",
+      "summary": "制度制約・制度アクセスの文脈で、時間差や再発的なループが問題を見えにくくしている。",
+      "node_pattern": [
+        "institutional_conditions",
+        "support_resources",
+        "participation"
+      ],
+      "relation_pattern": [
+        "delays",
+        "loops"
+      ],
+      "core_question": "制度上の要件やアクセス条件が何を可能にし、何を塞いでいるか。",
+      "interpretation_focus": [
+        "observation",
+        "inference",
+        "recommendation"
+      ],
+      "typical_intervention_ports": [
+        "制度導線の確認",
+        "給付・制度利用の整理",
+        "法制度ガードレール確認"
+      ],
+      "view_cut_keys": [
+        "layer",
+        "domain",
+        "motif",
+        "actor",
+        "phase",
+        "severity",
+        "evidence_density"
+      ]
+    }
+  ],
+  "cut_principles": [
+    "Cut by layer when showing macro structure.",
+    "Cut by domain when showing causal location.",
+    "Cut by motif when showing how the problem behaves.",
+    "Cut by actor when assigning intervention ownership.",
+    "Cut by phase when distinguishing pre-employment, transition, and post-employment.",
+    "Cut by evidence_density when deciding whether to ask more questions before stronger advice."
+  ]
+}

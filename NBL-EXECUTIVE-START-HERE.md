@@ -1,6 +1,6 @@
 # NBL Executive Start Here
 
-更新日: 2026-03-17
+更新日: 2026-03-26
 
 このファイルは、NBL の全体像を最短で把握するための `1枚紙`。
 細かい `md` や `tsx` を順番に追わなくても、いま何が決まり、何が未決で、どこだけ見ればよいかが分かるようにしている。
@@ -16,6 +16,8 @@
 - AI中心の運営を `気分` でなく `定常ループ` として回すため、`operating loops` の整理を追加した。
 - さらに、単月売上より先に何を複利で増やすかを定義する `value compounding` の operating draft も追加した。
 - 事業構造の現在地は `AI core + partner edge + human review boundary`、`startup fee + recurring platform fee + bounded usage`。
+- 2026年3月26日付で、`赤字でも product-first で進める / content の投げ銭的収益は bridge revenue に留める` 方針を追加した。
+- 同じく 2026年3月26日付で、daily / weekly recurring ops は `状況報告` ではなく `AI が進めること` と `Founder に返してほしい判断` を分けて返す運用に寄せた。
 - 直近の実務は `design partner -> commercial package -> discovery kit -> partner discovery ops -> anonymous pipeline -> dossier/readout kit` に加え、`enterprise inbound prep` まで進んでいる。
 - 直近の public 側の実務は、`3月20日までに一旦出せる面` を仕上げる sprint に入っている。
 - その先の本流では、`Horizon 1 = 障害・難病の雇用支援R&D` と `Horizon 2 = participation design の芽出し` を並走させる整理に入っている。
@@ -53,6 +55,8 @@
   - partner edge
   - human review boundary
 - revenue shape:
+  - bridge revenue:
+    - optional support / tip-style contributions for content lanes
   - startup fee
   - recurring platform fee
   - bounded usage
@@ -78,6 +82,7 @@
 - 本番は仮公開に退避済み
 - 完成版は hidden review page 群で詰めている
 - 次の中核は `relaunch home` を軸に、全体像を 1 ページで返せる構造へ寄せること
+- `配慮設計アシスト` の `1日20件` 制限は Vercel 本番では shared Redis 前提。Upstash env が入るまで production hardening は未完
 
 ### Business / Management
 
@@ -119,19 +124,22 @@
 
 1. このファイル
 2. `docs/nbl-workspace/decision-log.md`
-3. `NBL-FOUNDER-INPUT-GUIDE.md`
+3. `docs/nbl-workspace/ai-driven-social-os-management-policy-2026-03-26.md`
+4. `NBL-FOUNDER-INPUT-GUIDE.md`
+5. `docs/nbl-workspace/vercel-jac-rate-limit-cutover-2026-03-26.md`
 
 ### 10分で追う
 
 1. このファイル
 2. `docs/nbl-workspace/decision-log.md`
-3. `NBL-FOUNDER-INPUT-GUIDE.md`
-4. `docs/nbl-workspace/operating-loops-round-2026-03-17.md`
-5. `docs/nbl-workspace/value-compounding-operating-system-2026-03-17.md`
-6. `docs/nbl-workspace/snapshot-automation-design-2026-03-17.md`
-7. `docs/nbl-workspace/relaunch-home-round-2026-03-17.md`
-8. `docs/nbl-workspace/showcase-direction-round-2026-03-17.md`
-9. `docs/nbl-workspace/next-horizon-round-2026-03-17.md`
+3. `docs/nbl-workspace/ai-driven-social-os-management-policy-2026-03-26.md`
+4. `NBL-FOUNDER-INPUT-GUIDE.md`
+5. `docs/nbl-workspace/operating-loops-round-2026-03-17.md`
+6. `docs/nbl-workspace/value-compounding-operating-system-2026-03-17.md`
+7. `docs/nbl-workspace/snapshot-automation-design-2026-03-17.md`
+8. `docs/nbl-workspace/relaunch-home-round-2026-03-17.md`
+9. `docs/nbl-workspace/showcase-direction-round-2026-03-17.md`
+10. `docs/nbl-workspace/next-horizon-round-2026-03-17.md`
 
 ### partner discovery だけ追うなら
 
@@ -213,11 +221,19 @@ flowchart TD
 ### あなたが最小限やること
 
 - 随時: 呼ばれたときだけ `Yes / No / Name` を返す
-- 週1回 15-20分: weekly loop report の赤信号だけを見る
+- 週1回 15-20分: weekly CEO brief の `Founder Decision Queue` に `Yes / No / Adjust` を返す
 - 月1回 30-45分: compounding dashboard に `Keep / Adjust / Stop` を返す
 - 四半期ごと 60分: NBL の器と Horizon 1 / Horizon 2 の比重を見直す
 
 赤信号がなければ、何もしなくてよい。
+
+weekly output は今後、必ず次のどちらかで終わる。
+
+- `no founder action needed`
+- `Decision / Recommended / Why now / Default if no reply` の 4 点に圧縮された判断キュー
+- 返答フォーマットは `1. Yes / No / Adjust: ...` の 1 行でよい
+
+つまり、Founder は `全部を見張る人` ではなく、`節目の境界だけ切る人` でよい。
 
 ## いま次に来るもの
 
@@ -237,5 +253,6 @@ flowchart TD
 1. このファイル
 2. `docs/nbl-workspace/decision-log.md`
 3. `docs/nbl-business-agent-briefs.md`
+4. `docs/nbl-workspace/ai-driven-social-os-management-policy-2026-03-26.md`
 
 これで、今どこにいて、何が終わっていて、次に何が必要かは再把握できる。

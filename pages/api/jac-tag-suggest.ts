@@ -19,7 +19,7 @@ const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
 const OPENAI_TIMEOUT_MS = 7000;
 
 function emptySuggestions(): Record<TagGroupKey, TagSuggestion[]> {
-    return { task: [], symptom: [], environment: [], preference: [] };
+    return { situation: [], task: [], symptom: [], environment: [], preference: [] };
 }
 
 function clampScore(score: number): number {
@@ -173,6 +173,7 @@ function applyStrongSignalRules(
 ): Record<TagGroupKey, TagSuggestion[]> {
     const lower = consultation.toLowerCase();
     const next: Record<TagGroupKey, TagSuggestion[]> = {
+        situation: [...(base.situation ?? [])],
         task: [...base.task],
         symptom: [...base.symptom],
         environment: [...base.environment],
@@ -213,7 +214,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         res.setHeader('Allow', 'POST');
         return res.status(405).json({ error: 'Method not allowed' });
     }
-    const guard = guardJacApiRequest(req, { route: 'jac-tag-suggest', costly: true });
+    const guard = await guardJacApiRequest(req, {
+        route: 'jac-tag-suggest',
+        costly: true,
+        tokenLimited: false,
+    });
     if (!guard.ok) {
         return res.status(guard.status).json({ error: guard.error });
     }
@@ -229,8 +234,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     const systemPrompt = `あなたは就労支援タグの推薦アシスタントです。
 目的:
-- 相談文から、4分類(task/symptom/environment/preference)それぞれ0〜3件のタグを提案する。
-- 相談文に合わせて毎回変化する提案を行い、理由を短く具体的に書く。
+- 相談文を丁寧に読み、5分類(situation/task/symptom/environment/preference)それぞれ0〜3件のタグを提案する。
+- 相談文に障害名・診断名・特性名が明記されている場合は、必ずsymptomタグに反映する。
+- 単純なキーワード一致ではなく、相談文の文脈と意味から判断する。
+- 理由は相談文のどの記述に基づくかを短く具体的に書く。
 制約:
 - 必ず与えられた候補タグのみから選ぶ。
 - JSONのみ出力。`;
@@ -241,6 +248,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         output: {
             summary: '提案全体の要約（1文）',
             suggestions: {
+                situation: [{ tag: '候補タグ', reason: '理由', score: 0.8 }],
                 task: [{ tag: '候補タグ', reason: '理由', score: 0.8 }],
                 symptom: [{ tag: '候補タグ', reason: '理由', score: 0.8 }],
                 environment: [{ tag: '候補タグ', reason: '理由', score: 0.8 }],
@@ -276,12 +284,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                                     type: 'object',
                                     additionalProperties: false,
                                     properties: {
+                                        situation: { type: 'array', items: { type: 'object', additionalProperties: false, properties: { tag: { type: 'string' }, reason: { type: 'string' }, score: { type: 'number' } }, required: ['tag', 'reason', 'score'] } },
                                         task: { type: 'array', items: { type: 'object', additionalProperties: false, properties: { tag: { type: 'string' }, reason: { type: 'string' }, score: { type: 'number' } }, required: ['tag', 'reason', 'score'] } },
                                         symptom: { type: 'array', items: { type: 'object', additionalProperties: false, properties: { tag: { type: 'string' }, reason: { type: 'string' }, score: { type: 'number' } }, required: ['tag', 'reason', 'score'] } },
                                         environment: { type: 'array', items: { type: 'object', additionalProperties: false, properties: { tag: { type: 'string' }, reason: { type: 'string' }, score: { type: 'number' } }, required: ['tag', 'reason', 'score'] } },
                                         preference: { type: 'array', items: { type: 'object', additionalProperties: false, properties: { tag: { type: 'string' }, reason: { type: 'string' }, score: { type: 'number' } }, required: ['tag', 'reason', 'score'] } },
                                     },
-                                    required: ['task', 'symptom', 'environment', 'preference'],
+                                    required: ['situation', 'task', 'symptom', 'environment', 'preference'],
                                 },
                             },
                             required: ['summary', 'suggestions'],

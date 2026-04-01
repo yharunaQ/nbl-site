@@ -38,6 +38,12 @@ export type KnowledgeConfidenceLevel = 'low' | 'medium' | 'high';
 
 export type KnowledgeSafetyGateMode = 'normal' | 'caution' | 'strict';
 
+export type KnowledgeEvidenceRole =
+  | 'direct_basis'
+  | 'conditional_hypothesis'
+  | 'support_catalog'
+  | 'related_reading';
+
 export type KnowledgeSafetyRecommendationPolicy =
   | 'standard'
   | 'conditional_only'
@@ -58,6 +64,10 @@ export type KnowledgeClaim = {
     filePath: string;
     sourceUrl: string | null;
     excerpt: string;
+    practicalTitleJa?: string | null;
+    practicalSummaryJa?: string | null;
+    usageFocus?: string | null;
+    applicabilityConditionsJa?: string | null;
   }>;
   interactionContextSummary: {
     countries: string[];
@@ -87,6 +97,13 @@ export type KnowledgeClaim = {
   confidence: {
     score: number;
     level: KnowledgeConfidenceLevel;
+  };
+  provenance?: {
+    noteTypes: string[];
+    curationRiskLevels: string[];
+    evidenceRole: KnowledgeEvidenceRole;
+    publicSafe: boolean;
+    mustPairWithRegionalSupport: boolean;
   };
 };
 

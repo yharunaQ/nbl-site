@@ -27,15 +27,12 @@ export default function Hero() {
                         成果の評価までを<span className="font-semibold text-indigo-600 bg-indigo-50 px-1 rounded">一本化</span>。現場と科学で進めます。
                     </p>
                     <div className="flex flex-wrap gap-3 mt-2">
-                        <Link href="/jac" className="group inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-gray-900 text-white shadow-lg hover:bg-gray-800 transition-all hover:scale-105 active:scale-95">
-                            JAC試用版を使う <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        <Link href="/contact" className="group inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-gray-900 text-white shadow-lg hover:bg-gray-800 transition-all hover:scale-105 active:scale-95">
+                            ツール利用申込 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <a href="#poc" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-all text-gray-700">
-                            <FileText size={18} /> PoC相談
-                        </a>
-                        <a href="#campaign" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 shadow-sm hover:shadow transition-all text-teal-800 font-medium">
-                            <Zap size={18} fill="currentColor" className="text-teal-500" /> CAN BY DESIGN
-                        </a>
+                        <Link href="/jac/guide" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-all text-gray-700">
+                            <FileText size={18} /> 仕事設計ガイド
+                        </Link>
                     </div>
                 </motion.div>
 
@@ -47,9 +44,9 @@ export default function Hero() {
                 >
                     <div className="grid gap-4 text-sm">
                         <div className="flex items-center justify-between pb-2 border-b border-gray-100">
-                            <span className="text-gray-900 font-bold text-lg">JAC α <span className="text-gray-400 font-normal ml-2">2025-10 Started</span></span>
-                            <span className="rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-semibold border border-emerald-200">
-                                PoC 募集中
+                            <span className="text-gray-900 font-bold text-lg">配慮設計アシスト</span>
+                            <span className="rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-semibold border border-gray-200">
+                                招待制
                             </span>
                         </div>
                         <div className="grid grid-cols-3 gap-2">
@@ -70,12 +67,12 @@ export default function Hero() {
                                 ))}
                         </div>
                         <div className="flex gap-3 pt-4">
-                            <Link href="/jac" className="flex-1 text-center rounded-xl px-4 py-2 bg-gray-900 text-white text-sm font-medium hover:bg-black transition-colors">
-                                試用版へ
+                            <Link href="/contact" className="flex-1 text-center rounded-xl px-4 py-2 bg-gray-900 text-white text-sm font-medium hover:bg-black transition-colors">
+                                利用申込
                             </Link>
-                            <a href="#downloads" className="flex-1 text-center rounded-xl px-4 py-2 border bg-white text-gray-600 text-sm hover:bg-gray-50 transition-colors">
-                                ドキュメント
-                            </a>
+                            <Link href="/jac/guide" className="flex-1 text-center rounded-xl px-4 py-2 border bg-white text-gray-600 text-sm hover:bg-gray-50 transition-colors">
+                                ガイドを見る
+                            </Link>
                         </div>
                     </div>
                 </motion.div>

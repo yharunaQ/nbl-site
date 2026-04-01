@@ -1,10 +1,10 @@
 # YouTube Triage
 
-更新日: 2026-03-18
+更新日: 2026-03-22
 
 対象:
 
-- `content-inbox/youtube-links.md` に入った 15 本の YouTube 動画
+- `content-inbox/youtube-links.md` に入った 18 本の YouTube 動画
 
 ## Holistic Positioning
 
@@ -30,10 +30,16 @@
 - 相互作用モデルの基礎理解
 - 企業向け実践ガイド
 - 障害者雇用の「質」論点
+- 能力主義批判と質の論点
+- 配慮疲れをシステム転換として読む視点
+- 制度枠をめぐる対論的論点整理
 - 難病就労連携の方法論
 
 該当動画:
 
+- `-6PJlEa9DeQ`
+- `muwEfKS420U`
+- `sQ0zoIZaO4w`
 - `mSyzmOVP_Ek`
 - `Q5h5aIrYb2I`
 - `Ef9Bu1rXtKQ`
@@ -90,7 +96,7 @@
 ## Provisional next action
 
 - Minimal safe action now:
-  - `public_now` の 5 本だけを、resources / insights の最初の public-safe 導線として扱う
+  - `public_now` の 8 本を、resources / videos / 変革テーマ群の最初の public-safe 導線として扱う
 - Re-evaluation trigger:
   - トップページの audience と CTA が決まった時
   - 制度系動画に更新注記を付けられる時

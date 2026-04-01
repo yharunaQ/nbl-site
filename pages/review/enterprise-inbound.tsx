@@ -5,8 +5,8 @@ import React from 'react';
 import {
   enterpriseInboundAudiences,
   enterpriseInboundCards,
+  enterpriseInboundCoreNotes,
   enterpriseInboundHero,
-  enterpriseInboundJacNotes,
 } from '@/lib/content/enterpriseInboundReview';
 
 export default function EnterpriseInboundReviewPage() {
@@ -94,10 +94,10 @@ export default function EnterpriseInboundReviewPage() {
           <div className="mx-auto max-w-7xl px-6 py-14">
             <div className="flex items-center gap-3">
               <ShieldCheck size={18} className="text-slate-700" />
-              <h2 className="text-2xl font-black text-slate-900">JAC Entry Posture</h2>
+              <h2 className="text-2xl font-black text-slate-900">仕事設計コアの入口姿勢</h2>
             </div>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {enterpriseInboundJacNotes.map((note) => (
+              {enterpriseInboundCoreNotes.map((note) => (
                 <article key={note} className="rounded-[1.6rem] border border-stone-200 bg-stone-50 p-5 text-sm leading-7 text-slate-700">
                   {note}
                 </article>
@@ -113,7 +113,7 @@ export default function EnterpriseInboundReviewPage() {
               <h2 className="text-2xl font-black text-slate-900">Implementation Hint</h2>
             </div>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
-              current public site では `企業・組織の方へ` の safe entry を作り、hidden review では Home / What We Do / JAC / revenue posture をこの前提で揃える。
+              current public site では `企業・組織の方へ` の safe entry を作り、hidden review では Home / What We Do / 仕事設計コア / revenue posture をこの前提で揃える。
             </p>
           </div>
         </section>

@@ -1,0 +1,17 @@
+{
+  "source_id": "toku18_supporters_structure_note",
+  "dataset_id": "supporter_practice_toku18",
+  "source_role": "reviewed_pattern_memo",
+  "source_type": "pdf_structure_note",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": false,
+  "contains_free_text": true,
+  "row_unit": null,
+  "population": null,
+  "file_path": "supporter_practice/toku18_supporters_structure.pdf",
+  "file_size_bytes": 1254288,
+  "guide_files": [],
+  "notes": "Original analytic structure note for toku18 supporter survey. Use as a schema interpretation guide.",
+  "generated_at": "2026-03-31T09:21:30+00:00"
+}

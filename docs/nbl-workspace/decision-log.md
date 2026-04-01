@@ -1,8 +1,48 @@
 # NBL Decision Log
 
-更新日: 2026-03-18
+更新日: 2026-03-26
 
 ## Entries
+
+### 2026-03-26
+
+- Decision: `配慮設計アシスト` の `1日20件` 制限は、Vercel 本番では file-backed cache ではなく `shared Redis store` を正規系にする
+- Why: Vercel Functions の scratch filesystem だけでは、再デプロイや複数インスタンスをまたいだ利用制限が維持できず、招待制 product の cost boundary として弱いため
+- Evidence or source: Vercel Functions runtimes docs、Storage on Vercel Marketplace docs、Founder feedback、`lib/security/jacAccessGuard.ts`
+- Public impact: public copy 上の `1日20件` 表示と実際の挙動を一致させやすくなる。Vercel 本番では Upstash env が入るまで hardening 未完とみなす
+- Follow-up action: `vercel-jac-rate-limit-cutover-2026-03-26.md` を運用基準にし、`ops:jac-rate-limit:check` で env readiness を確認する
+- Owner: Chief of Staff
+- Status: provisional
+
+### 2026-03-26
+
+- Decision: `配慮設計アシスト` の改善は UI 改善だけでなく `evidence ops loop` として回し、source refresh / feedback ingest / evidence brief / report traceability を定常化する
+- Why: NBL のコア価値は配慮提案の wording ではなく、基本エビデンス情報を継続収集し、条件つきの判断材料として返せることにあるため
+- Evidence or source: Founder feedback、`knowledge-sources.json`、`knowledge-claims-manifest.json`、`normalized-manifest.json`、`feedback-insights.json`
+- Public impact: 最終レポートでは `claim / evidence lane / source URL / missing context` を返せる形へ寄せ、public asset 候補は evidence brief から 1-3 件に絞る
+- Follow-up action: `jac-evidence-ops-loop-2026-03-26.md` を基準に、`jac:evidence:brief` と recurring automation を evidence refresh lane に載せる
+- Owner: Chief of Staff
+- Status: provisional
+
+### 2026-03-26
+
+- Decision: recurring な経営 output は `状況報告` だけで終わらせず、毎回 `Founder Decision Queue` と `AI Autonomous Moves` のどちらかを明示する
+- Why: daily / weekly memo が観測中心のままだと、Founder から見て経営が自律的に進んでいる感覚も、節目で判断を求められている感覚も弱くなるため
+- Evidence or source: Founder feedback、既存の `daily snapshot` / `weekly loop report` 出力、`snapshot-automation-design-2026-03-17.md`
+- Public impact: 直接の public copy 変更はないが、以後の recurring ops と business-agent synthesis は `Decision / Recommended / Why now / Default if no reply` の形を優先する
+- Follow-up action: `founder-decision-cadence-2026-03-26.md` を recurring ops の基準文書にし、daily / weekly template と生成スクリプトを更新する
+- Owner: Chief of Staff
+- Status: provisional
+
+### 2026-03-26
+
+- Decision: NBL は `product-first の AIドリブン社会OS事業` として進め、インフォグラフィックや動画の投げ銭的収益は `bridge revenue lane` に留める
+- Why: 初期の主目的は企業・就労支援者向け product と operating layer の fit をつくることであり、content 収益を主事業化すると consulting drift や sensational media drift に戻りやすいため
+- Evidence or source: Founder feedback、`Business Structure Round`、`Business Validation Round`、`Value Compounding Operating System`、`disability-holistic-review` workflow
+- Public impact: public copy では `応援は任意` と `professional product build が本命` を混同しない。重要な教育資源は paywall 化せず、投げ銭と個別判断や優先対応を結びつけない
+- Follow-up action: `ai-driven-social-os-management-policy-2026-03-26.md` を Revenue Architect / Managing Director の基準文書として使い、今後の supporter lane は 1-2 本の infographic / video series で小さく検証する
+- Owner: Chief of Staff
+- Status: provisional
 
 ### 2026-03-18
 
