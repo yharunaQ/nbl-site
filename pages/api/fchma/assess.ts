@@ -4,6 +4,7 @@ import {
   buildFchmaFullAssessment,
   type FchmaFullAssessment,
 } from '@/lib/fchma/aiAssessmentOrchestration';
+import { withDeterministicFchmaAssessmentFallback } from '@/lib/fchma/deterministicAssessmentFallback';
 
 type ErrorResponse = { error: string };
 
@@ -50,7 +51,12 @@ export default async function handler(
 
   try {
     const assessment = await buildFchmaFullAssessment(consultation.trim(), additionalCtx);
-    res.status(200).json(assessment);
+    if (!assessment.aiAssessment && assessment.aiError) {
+      console.warn('[fchma-assess] falling back to deterministic assessment', {
+        reason: assessment.aiError,
+      });
+    }
+    res.status(200).json(withDeterministicFchmaAssessmentFallback(assessment));
   } catch (err) {
     const message = err instanceof Error ? err.message : 'アセスメントの生成に失敗しました。';
     res.status(500).json({ error: message });

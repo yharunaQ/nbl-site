@@ -73,6 +73,7 @@ Phase 1b: product-facing next JAC shell with minimal-input first interaction
 - [x] bridge CTA from current `/jac` to `/jac/next`
 - [x] minimal-input `/jac/next` entry that infers an initial FCHMA payload from one consultation narrative
 - [x] public `/jac/next` access model switched to tokenless, rate-limit-only guard
+- [x] deterministic-only fallback for `/jac/next` when the model provider is unavailable
 - [ ] initial database schema implementation
 - [x] provider abstraction scaffold
 
@@ -103,6 +104,7 @@ Phase 1b: product-facing next JAC shell with minimal-input first interaction
 - storing only summaries and losing evidence traceability
 - letting AI outputs overwrite human-reviewed structure
 - opening `/jac/next` without a shared production rate-limit store
+- running production `/jac/next` without `OPENAI_API_KEY` degrades to deterministic-only hypotheses, which are usable but less precise than model-backed assessment
 - entering rabbit holes in minor UX or schema issues
 - mixing sensitive original datasets into `references/`
 

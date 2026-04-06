@@ -9,6 +9,7 @@
 - ローカル / VPS では file-backed fallback を残すが、Vercel では `JAC_RATE_LIMIT_ALLOW_LOCAL_FALLBACK=false` を推奨する。
 - 公開中の `/jac/next` ではアクセストークンを要求せず、rate limit のみで利用量を制御する。
 - private mode が必要な場合だけ `JAC_ACCESS_TOKEN_REQUIRED=true` を明示し、旧 `JAC_PUBLIC_ENABLED=false` は token 必須条件として扱わない。
+- `/api/fchma/assess` は `OPENAI_API_KEY` が未設定または model provider が失敗した場合、利用者向けエラーではなく deterministic-only の暫定見立てを返す。
 
 ## Why
 
@@ -24,6 +25,8 @@
 
 ## Recommended Env
 
+- `OPENAI_API_KEY`（model-backed assessment を使う場合）
+- `OPENAI_MODEL`（任意。未設定時はコード側の既定モデル）
 - `JAC_RATE_LIMIT_TIMEZONE=Asia/Tokyo`
 - `JAC_COSTLY_RATE_LIMIT_PER_TOKEN_PER_DAY=20`
 - `JAC_RATE_LIMIT_PER_DAY=120`
@@ -43,6 +46,7 @@
 ## Acceptance
 
 - アクセストークンなしの `jac-assess` が `401 Access token required.` にならない。
+- `fchma-assess` が `OPENAI_API_KEY が設定されていません。` を利用者向けエラーとして返さず、`providerId=deterministic_only` の暫定見立てを返す。
 - 同一利用単位の `jac-assess` の 21 回目が 429 になる。
 - その判定が再デプロイ後も維持される。
 - 日本時間 0 時をまたぐと翌日ぶんとして再開する。
@@ -52,8 +56,11 @@
 - shared-store aware guard: `lib/security/jacAccessGuard.ts`
 - guarded costly routes:
   - `pages/api/jac-assess.ts`
+  - `pages/api/fchma/assess.ts`
   - `pages/api/jac-followup-suggest.ts`
   - `pages/api/jac-tag-suggest.ts`
+- deterministic fallback for model-provider failures:
+  - `lib/fchma/deterministicAssessmentFallback.ts`
 - config self-check:
   - `scripts/ops/check-jac-rate-limit-config.mjs`
 - one-off token reset:
