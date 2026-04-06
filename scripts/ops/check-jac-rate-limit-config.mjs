@@ -18,6 +18,7 @@ const upstashToken = envValue('UPSTASH_REDIS_REST_TOKEN');
 const rateLimitTimeZone = envValue('JAC_RATE_LIMIT_TIMEZONE') || 'Asia/Tokyo';
 const costlyLimit = envValue('JAC_COSTLY_RATE_LIMIT_PER_TOKEN_PER_DAY') || '20';
 const fallbackRaw = envValue('JAC_RATE_LIMIT_ALLOW_LOCAL_FALLBACK');
+const accessTokenRequired = truthy(envValue('JAC_ACCESS_TOKEN_REQUIRED'));
 const fallbackEnabled =
   fallbackRaw === '' ? !isVercel : truthy(fallbackRaw);
 
@@ -48,12 +49,17 @@ if (costlyLimit !== '20') {
   notes.push(`現在の 1日上限は ${costlyLimit} 件です。想定とずれていないか確認してください。`);
 }
 
+if (accessTokenRequired) {
+  notes.push('`JAC_ACCESS_TOKEN_REQUIRED=true` のため、公開 /jac/next でもアクセストークンが必要になります。');
+}
+
 printLine('JAC Rate Limit Mode', isVercel ? 'vercel' : 'local_or_vps');
 printLine('UPSTASH_REDIS_REST_URL', upstashUrl ? 'set' : 'missing');
 printLine('UPSTASH_REDIS_REST_TOKEN', upstashToken ? 'set' : 'missing');
 printLine('JAC_RATE_LIMIT_TIMEZONE', rateLimitTimeZone);
 printLine('JAC_COSTLY_RATE_LIMIT_PER_TOKEN_PER_DAY', costlyLimit);
 printLine('JAC_RATE_LIMIT_ALLOW_LOCAL_FALLBACK', fallbackEnabled ? 'true' : 'false');
+printLine('JAC_ACCESS_TOKEN_REQUIRED', accessTokenRequired ? 'true' : 'false');
 
 if (issues.length === 0) {
   console.log('');

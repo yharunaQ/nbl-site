@@ -4,10 +4,10 @@ import path from 'node:path';
 const ORIGINAL_ENV = process.env;
 const ORIGINAL_FETCH = global.fetch;
 
-function buildRequest(token = 'persist-token', ip = '127.0.0.1') {
+function buildRequest(token: string | null = 'persist-token', ip = '127.0.0.1') {
   return {
     headers: {
-      'x-jac-access-token': token,
+      ...(token ? { 'x-jac-access-token': token } : {}),
     },
     query: {},
     socket: {
@@ -47,6 +47,7 @@ describe('jac access guard persistence', () => {
       ...ORIGINAL_ENV,
       NODE_ENV: 'test',
       JAC_PUBLIC_ENABLED: 'false',
+      JAC_ACCESS_TOKEN_REQUIRED: 'false',
       JAC_ACCESS_TOKENS: 'persist-token',
       JAC_COSTLY_RATE_LIMIT_PER_TOKEN_PER_DAY: '2',
       JAC_RATE_LIMIT_STORE_PATH: storePath,
@@ -221,5 +222,55 @@ describe('jac access guard persistence', () => {
 
     expect(persisted.routeDayCounts['127.0.0.1:jac-tag-suggest']).toBe(3);
     expect(persisted.costlyTokenCounts['persist-token']).toBeUndefined();
+  });
+
+  it('allows public requests without an access token and still applies costly daily limits', async () => {
+    const { guardJacApiRequest } = require('@/lib/security/jacAccessGuard');
+
+    await expect(
+      guardJacApiRequest(buildRequest(null), {
+        route: 'jac-assess',
+        costly: true,
+      }),
+    ).resolves.toEqual({ ok: true, forceFast: false });
+
+    await expect(
+      guardJacApiRequest(buildRequest(null), {
+        route: 'jac-assess',
+        costly: true,
+      }),
+    ).resolves.toEqual({ ok: true, forceFast: false });
+
+    const result = await guardJacApiRequest(buildRequest(null), {
+      route: 'jac-assess',
+      costly: true,
+    });
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.status).toBe(429);
+      expect(result.error).toContain('1日の利用上限（2件）');
+    }
+
+    const persisted = JSON.parse(fs.readFileSync(storePath, 'utf8')) as {
+      costlyTokenCounts: Record<string, number>;
+    };
+    expect(Object.values(persisted.costlyTokenCounts)).toContain(3);
+  });
+
+  it('requires a token only when explicit private mode is enabled', async () => {
+    process.env.JAC_ACCESS_TOKEN_REQUIRED = 'true';
+
+    const { guardJacApiRequest } = require('@/lib/security/jacAccessGuard');
+    const result = await guardJacApiRequest(buildRequest(null), {
+      route: 'jac-assess',
+      costly: true,
+    });
+
+    expect(result).toEqual({
+      ok: false,
+      status: 401,
+      error: 'Access token required.',
+    });
   });
 });

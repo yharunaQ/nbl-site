@@ -7,6 +7,8 @@
 - `配慮設計アシスト` の `1日20件` 制限は、Vercel 本番では `.tmp` ではなく `shared store` を前提にする。
 - 既定の shared store は `Upstash Redis`。
 - ローカル / VPS では file-backed fallback を残すが、Vercel では `JAC_RATE_LIMIT_ALLOW_LOCAL_FALLBACK=false` を推奨する。
+- 公開中の `/jac/next` ではアクセストークンを要求せず、rate limit のみで利用量を制御する。
+- private mode が必要な場合だけ `JAC_ACCESS_TOKEN_REQUIRED=true` を明示し、旧 `JAC_PUBLIC_ENABLED=false` は token 必須条件として扱わない。
 
 ## Why
 
@@ -26,6 +28,7 @@
 - `JAC_COSTLY_RATE_LIMIT_PER_TOKEN_PER_DAY=20`
 - `JAC_RATE_LIMIT_PER_DAY=120`
 - `JAC_GLOBAL_RATE_LIMIT_PER_DAY=3000`
+- `JAC_ACCESS_TOKEN_REQUIRED=false` または未設定
 
 ## Cutover Steps
 
@@ -33,12 +36,14 @@
 2. Production environment に `UPSTASH_REDIS_REST_URL` と `UPSTASH_REDIS_REST_TOKEN` を入れる。
 3. 追加で `JAC_RATE_LIMIT_ALLOW_LOCAL_FALLBACK=false` を入れる。
 4. `JAC_RATE_LIMIT_TIMEZONE=Asia/Tokyo` を確認する。
-5. 再デプロイする。
-6. 必要なら `npm run ops:jac-rate-limit:check` で env の想定値を確認する。
+5. `JAC_ACCESS_TOKEN_REQUIRED` が未設定または `false` であることを確認する。
+6. 再デプロイする。
+7. 必要なら `npm run ops:jac-rate-limit:check` で env の想定値を確認する。
 
 ## Acceptance
 
-- `jac-assess` の 21 回目が 429 になる。
+- アクセストークンなしの `jac-assess` が `401 Access token required.` にならない。
+- 同一利用単位の `jac-assess` の 21 回目が 429 になる。
 - その判定が再デプロイ後も維持される。
 - 日本時間 0 時をまたぐと翌日ぶんとして再開する。
 

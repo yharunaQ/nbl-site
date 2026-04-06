@@ -72,6 +72,7 @@ Phase 1b: product-facing next JAC shell with minimal-input first interaction
 - [x] product-facing `/jac/next` shell for the next JAC preview
 - [x] bridge CTA from current `/jac` to `/jac/next`
 - [x] minimal-input `/jac/next` entry that infers an initial FCHMA payload from one consultation narrative
+- [x] public `/jac/next` access model switched to tokenless, rate-limit-only guard
 - [ ] initial database schema implementation
 - [x] provider abstraction scaffold
 
@@ -101,6 +102,7 @@ Phase 1b: product-facing next JAC shell with minimal-input first interaction
 - mistaking coarse pattern clustering for true multimodal manifold analysis
 - storing only summaries and losing evidence traceability
 - letting AI outputs overwrite human-reviewed structure
+- opening `/jac/next` without a shared production rate-limit store
 - entering rabbit holes in minor UX or schema issues
 - mixing sensitive original datasets into `references/`
 

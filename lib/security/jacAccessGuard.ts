@@ -286,14 +286,21 @@ function getUpstashConfig(): { url: string; token: string } | null {
     };
 }
 
-function buildDistributedRateLimitKeys(dayKey: string, ip: string, route: string, tokenProvided: string) {
+function buildDistributedRateLimitKeys(dayKey: string, ip: string, route: string, costlyUsageKey: string) {
     const routeHash = hashKeyPart(`${ip}:${route}`);
-    const tokenHash = tokenProvided ? hashKeyPart(tokenProvided) : '';
+    const tokenHash = costlyUsageKey ? hashKeyPart(costlyUsageKey) : '';
     return {
         routeKey: `jac:rate-limit:${dayKey}:route:${routeHash}`,
         globalKey: `jac:rate-limit:${dayKey}:global`,
         tokenKey: tokenHash ? `jac:rate-limit:${dayKey}:token:${tokenHash}` : '',
     };
+}
+
+function costlyUsageLimitKey(ip: string, route: string, tokenProvided: string): string {
+    if (tokenProvided) {
+        return tokenProvided;
+    }
+    return `public:${hashKeyPart(`${ip}:${route}`)}`;
 }
 
 async function runUpstashTransaction(commands: Array<Array<string | number>>): Promise<UpstashResponseRow[]> {
@@ -523,14 +530,15 @@ export async function guardJacApiRequest(
     req: NextApiRequest,
     options: GuardOptions,
 ): Promise<GuardResult> {
-    const publicEnabled = boolEnv('JAC_PUBLIC_ENABLED', false);
     const acceptedTokens = getAcceptedTokens();
     const tokenProvided = normalizeToken(extractToken(req));
     const forceFastWhenHighUsage = boolEnv('JAC_FORCE_FAST_WHEN_HIGH_USAGE', true);
     const globalFastThreshold = numEnv('JAC_FORCE_FAST_THRESHOLD_PER_DAY', 1800);
     const tokenLimited = typeof options.tokenLimited === 'boolean' ? options.tokenLimited : Boolean(options.costly);
+    const ip = getIp(req);
+    const usageLimitKey = costlyUsageLimitKey(ip, options.route, tokenProvided);
 
-    if (!publicEnabled) {
+    if (boolEnv('JAC_ACCESS_TOKEN_REQUIRED', false)) {
         if (acceptedTokens.length === 0) {
             return {
                 ok: false,
@@ -561,11 +569,10 @@ export async function guardJacApiRequest(
         }
     }
 
-    const ip = getIp(req);
     const minute = enforceMinuteLimit(ip, options.route);
     if (!minute.ok) return minute;
 
-    const daily = await enforceDailyLimit(ip, options.route, tokenProvided, tokenLimited);
+    const daily = await enforceDailyLimit(ip, options.route, usageLimitKey, tokenLimited);
     if (!daily.ok) return daily;
 
     const forceFast = Boolean(
