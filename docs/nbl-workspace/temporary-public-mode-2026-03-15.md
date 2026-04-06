@@ -11,6 +11,8 @@
 - `/`
   - Minimal public-safe landing page
   - Contact and YouTube only
+- `/docs/*`
+  - Rewritten to a temporary holding page while public document downloads are paused
 - `/jac`
 - `/jac/guide`
 - `/jac/guidebook`
@@ -33,6 +35,7 @@
 - Temporary home: [components/TemporaryPublicHome.tsx](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/components/TemporaryPublicHome.tsx)
 - Preserved previous home: [components/LegacyPublicHome.tsx](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/components/LegacyPublicHome.tsx)
 - Route blocking: [proxy.ts](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/proxy.ts)
+- Docs hold redirect: [next.config.js](/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/next.config.js)
 
 ## Later replacement
 

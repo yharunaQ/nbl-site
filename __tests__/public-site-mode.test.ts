@@ -11,4 +11,9 @@ describe('temporary public route gating', () => {
   it('keeps legacy archive routes in the temporary list', () => {
     expect(getTemporaryPublicRoute('/jac/guidebook')?.slug).toBe('jac-guidebook');
   });
+
+  it('keeps docs downloads on a temporary hold path', () => {
+    expect(getTemporaryPublicRoute('/docs')?.slug).toBe('docs');
+    expect(getTemporaryPublicRoute('/docs/houkoku126_summary.pdf')?.slug).toBe('docs');
+  });
 });

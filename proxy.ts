@@ -40,6 +40,8 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    '/docs',
+    '/docs/:path*',
     '/jac',
     '/jac/:path*',
     '/dao-participation-lab',

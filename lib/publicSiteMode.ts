@@ -13,6 +13,12 @@ type RouteConfig = {
 
 const TEMPORARY_PUBLIC_ROUTE_CONFIGS: RouteConfig[] = [
   {
+    prefix: '/docs',
+    slug: 'docs',
+    label: '公開資料',
+    note: 'public document files are temporarily withheld while the release surface is reorganized',
+  },
+  {
     prefix: '/jac/guidebook',
     slug: 'jac-guidebook',
     label: '先行5章版アーカイブ',
