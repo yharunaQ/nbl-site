@@ -14,3 +14,18 @@ NBL-EXECUTIVE-START-HERE.md
 NBL-FOUNDER-INPUT-GUIDE.md
 RECOVERY_NOTES.md
 WIP_COMMIT_PLAN.md
+
+# API routes not needed on public Hobby plan (>12 serverless function limit)
+pages/api/dao-participation-lab
+pages/api/ebook
+pages/api/knowledge
+pages/api/fchma/cases
+pages/api/fchma/import-datasets.ts
+pages/api/fchma/import-preview.ts
+pages/api/fchma/intake-blueprint.ts
+pages/api/fchma/intake-draft.ts
+pages/api/fchma/intervention-preview.ts
+pages/api/fchma/learning-summary.ts
+pages/api/fchma/minimal-preview.ts
+pages/api/fchma/runtime-export.ts
+pages/api/fchma/structure-preview.ts
