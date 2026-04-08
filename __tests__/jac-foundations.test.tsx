@@ -15,20 +15,12 @@ describe('Jac foundations page', () => {
     expect(screen.getByRole('link', { name: '画像を別タブで開く' })).toBeInTheDocument();
   });
 
-  it('links each layer to the corresponding frame details page', () => {
+  it('shows correct next-step links without old frame pages', () => {
     render(<JacFoundationsPage />);
 
-    expect(screen.getByRole('link', { name: '体調レイヤーのフレーム詳細を見る' })).toHaveAttribute(
-      'href',
-      '/jac/frames#%E4%BD%93%E8%AA%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC',
-    );
-    expect(screen.getByRole('link', { name: '就職移行レイヤーのフレーム詳細を見る' })).toHaveAttribute(
-      'href',
-      '/jac/frames#%E5%B0%B1%E8%81%B7%E7%A7%BB%E8%A1%8C%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC',
-    );
-    expect(screen.getByRole('link', { name: '職場運用レイヤーのフレーム詳細を見る' })).toHaveAttribute(
-      'href',
-      '/jac/frames#%E8%81%B7%E5%A0%B4%E9%81%8B%E7%94%A8%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC',
-    );
+    expect(screen.getByRole('link', { name: 'はたらく相談室（AI対話）' })).toHaveAttribute('href', '/jac');
+    expect(screen.getByRole('link', { name: '仕事設計ガイド（インタラクティブ）' })).toHaveAttribute('href', '/jac/guide');
+    expect(screen.queryByRole('link', { name: '26フレーム早見表' })).toBeNull();
+    expect(screen.queryByRole('link', { name: /jac\/frames/ })).toBeNull();
   });
 });

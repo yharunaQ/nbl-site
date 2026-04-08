@@ -28,8 +28,6 @@ export default function JacFoundationsPage() {
   const supportingInfographics = jacFoundationInfographics.filter(
     (item) => item.slug !== 'condition-map',
   );
-  const getFrameLayerHref = (title: string) => `/jac/frames#${encodeURIComponent(title)}`;
-
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_48%,#eef2ff_100%)] text-slate-900">
       <PageSeo
@@ -129,43 +127,8 @@ export default function JacFoundationsPage() {
             <h2 className="text-2xl font-black text-slate-900">まず3レイヤーを見る</h2>
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-700">
-            前置きより先に、3レイヤーの実物を見られるようにしています。細かい説明は後から読めます。
+            3つのレイヤーそれぞれの役割と読み方を、下のセクションで確認できます。
           </p>
-          <div className="mt-6 grid gap-5 lg:grid-cols-3">
-            {jacFoundationLayers.map((layer, index) => (
-              <article
-                key={layer.title}
-                className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                  Layer 0{index + 1} / {layer.frameCount}
-                </p>
-                <h3 className="mt-3 text-xl font-black text-slate-900">{layer.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-700">{layer.purpose}</p>
-                <div className="mt-4 overflow-hidden rounded-[1.4rem] border border-slate-200 bg-slate-50 p-3">
-                  <ZoomableImage
-                    src={layer.imageSrc}
-                    alt={layer.imageAlt}
-                    width={2464}
-                    height={1728}
-                    imageClassName="h-auto max-h-[15rem] w-full object-contain"
-                  />
-                </div>
-                <Link
-                  href={`#layer-${index + 1}`}
-                  className="mt-5 inline-flex rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-white hover:text-slate-950"
-                >
-                  このレイヤーを詳しく見る
-                </Link>
-                <Link
-                  href={getFrameLayerHref(layer.title)}
-                  className="mt-3 inline-flex rounded-full border border-sky-300 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
-                >
-                  {layer.title}のフレーム詳細を見る
-                </Link>
-              </article>
-            ))}
-          </div>
           {conditionMap ? (
             <article className="mt-8 grid gap-6 rounded-[2rem] border border-sky-200 bg-sky-50/80 p-6 shadow-sm shadow-sky-100/60 lg:grid-cols-[0.92fr,1.08fr] md:p-8">
               <div>
@@ -215,61 +178,37 @@ export default function JacFoundationsPage() {
                 id={`layer-${index + 1}`}
                 className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/60 md:p-8"
               >
-                <div className="grid gap-8 lg:grid-cols-[0.92fr,1.08fr]">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                      Layer 0{index + 1} / {layer.frameCount}
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                  Layer 0{index + 1}
+                </p>
+                <h3 className="mt-3 text-3xl font-black text-slate-900">{layer.title}</h3>
+                <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-700">{layer.purpose}</p>
+
+                <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  <div className="rounded-[1.5rem] border border-sky-200 bg-sky-50 px-5 py-5">
+                    <p className="text-sm font-semibold text-slate-900">
+                      企業担当者にとっての意味
                     </p>
-                    <h3 className="mt-3 text-3xl font-black text-slate-900">{layer.title}</h3>
-                    <p className="mt-5 text-sm leading-7 text-slate-700">{layer.purpose}</p>
-
-                    <div className="mt-5 rounded-[1.5rem] border border-sky-200 bg-sky-50 px-5 py-5">
-                      <p className="text-sm font-semibold text-slate-900">
-                        企業担当者にとっての意味
-                      </p>
-                      <p className="mt-3 text-sm leading-7 text-slate-700">
-                        {layer.businessMeaning}
-                      </p>
-                    </div>
-
-                    <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5">
-                      <p className="text-sm font-semibold text-slate-900">
-                        このレイヤーで見たい問い
-                      </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
-                        {layer.typicalQuestions.map((question) => (
-                          <li key={question}>• {question}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mt-5 rounded-[1.5rem] border border-amber-200 bg-amber-50 px-5 py-5">
-                      <p className="text-sm font-semibold text-amber-950">見落としやすい点</p>
-                      <p className="mt-3 text-sm leading-7 text-amber-900">{layer.blindSpot}</p>
-                    </div>
-
-                    <Link
-                      href={getFrameLayerHref(layer.title)}
-                      className="mt-5 inline-flex rounded-full border border-sky-300 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
-                    >
-                      {layer.title}の26フレーム詳細を見る
-                    </Link>
+                    <p className="mt-3 text-sm leading-7 text-slate-700">
+                      {layer.businessMeaning}
+                    </p>
                   </div>
 
-                  <figure className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-4">
-                    <div className="overflow-hidden rounded-[1.3rem] bg-white p-2">
-                      <ZoomableImage
-                        src={layer.imageSrc}
-                        alt={layer.imageAlt}
-                        width={2464}
-                        height={1728}
-                        imageClassName="h-auto max-h-[32rem] w-full object-contain"
-                      />
-                    </div>
-                    <figcaption className="mt-4 text-xs leading-6 text-slate-500">
-                      {layer.imageNote}
-                    </figcaption>
-                  </figure>
+                  <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5">
+                    <p className="text-sm font-semibold text-slate-900">
+                      このレイヤーで見たい問い
+                    </p>
+                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
+                      {layer.typicalQuestions.map((question) => (
+                        <li key={question}>• {question}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50 px-5 py-5">
+                    <p className="text-sm font-semibold text-amber-950">見落としやすい点</p>
+                    <p className="mt-3 text-sm leading-7 text-amber-900">{layer.blindSpot}</p>
+                  </div>
                 </div>
               </article>
             ))}
@@ -452,11 +391,11 @@ export default function JacFoundationsPage() {
                 </h2>
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-700">
-                見取り図も 26フレームも、個別案件の最終判断を自動で返すためのものではありません。個別化が必要なときは、本人、仕事、環境、支援、時間、制度の条件を重ね、高リスク判断は人が持ちます。
+                この見取り図は、個別案件の最終判断を自動で返すためのものではありません。個別化が必要なときは、本人、仕事、環境、支援、時間、制度の条件を重ね、高リスク判断は人が持ちます。
               </p>
               <div className="mt-5 rounded-[1.5rem] border border-sky-200 bg-sky-50 px-5 py-5">
                 <p className="text-sm font-semibold text-slate-900">
-                  典型パターンを確認したら、就労支援見立てサポートで個別ケースの仮見立てへ進めます。
+                  典型パターンを確認したら、はたらく相談室（AI対話）で個別ケースの仮見立てへ進めます。
                 </p>
               </div>
             </article>
@@ -597,8 +536,8 @@ export default function JacFoundationsPage() {
           <div className="mt-8 rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
             <h2 className="text-2xl font-black">次のステップ</h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
-              3レイヤーの全体構造を確認したら、26フレームの早見表やインタラクティブガイドで詳細を確かめてください。
-              個別ケースの条件整理は、就労支援見立てサポートで行えます。
+              3レイヤーの全体構造を確認したら、インタラクティブガイドで詳細を確かめてください。
+              個別ケースの条件整理は、はたらく相談室（AI対話）で行えます。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
@@ -608,16 +547,10 @@ export default function JacFoundationsPage() {
                 仕事設計ガイド（インタラクティブ）
               </Link>
               <Link
-                href="/jac/frames"
+                href="/jac"
                 className="rounded-full border border-slate-500 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
               >
-                26フレーム早見表
-              </Link>
-              <Link
-                href="/jac/intro"
-                className="rounded-full border border-slate-500 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
-              >
-                就労支援見立てサポート（招待制）
+                はたらく相談室（AI対話）
               </Link>
               <Link
                 href="/contact"
