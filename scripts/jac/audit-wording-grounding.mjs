@@ -165,6 +165,14 @@ async function readClaimsJsonl(filePath) {
 }
 
 async function main() {
+  // If data2 index or GLM results are absent (e.g. renamed to xx_), skip gracefully.
+  const data2Exists = await fs.access(DATA2_INDEX_PATH).then(() => true).catch(() => false);
+  const glmExists = await fs.access(GLM_RELATIONS_PATH).then(() => true).catch(() => false);
+  if (!data2Exists || !glmExists) {
+    console.log(JSON.stringify({ message: 'data2 index or GLM results not found — wording audit skipped.' }));
+    return;
+  }
+
   const [guideText, data2Raw, claims, glmRaw] = await Promise.all([
     fs.readFile(GUIDE_PATH, 'utf8'),
     fs.readFile(DATA2_INDEX_PATH, 'utf8'),

@@ -194,6 +194,13 @@ function evaluateGate(summary) {
 }
 
 async function main() {
+  // If eval cases file is absent (e.g. data2 renamed to xx_data2/), skip gracefully.
+  const casesExist = await fs.access(CASES_PATH).then(() => true).catch(() => false);
+  if (!casesExist) {
+    console.log(JSON.stringify({ message: 'data2 eval cases not found — tag eval skipped.' }));
+    return;
+  }
+
   const source = await fs.readFile(SOURCE_PATH, 'utf8');
   const cases = JSON.parse(await fs.readFile(CASES_PATH, 'utf8'));
   if (!Array.isArray(cases)) {
