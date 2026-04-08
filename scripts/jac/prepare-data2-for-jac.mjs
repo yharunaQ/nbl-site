@@ -841,6 +841,20 @@ async function processKijutsuFiles(inputDir, outputDirs) {
 }
 
 async function main() {
+  // If input directories don't exist (e.g. renamed to xx_data2/), skip gracefully.
+  const chishikiExists = await chishikiInputCandidates.reduce(
+    async (found, c) => (await found) || pathExists(c),
+    Promise.resolve(false),
+  );
+  const kijutsuExists = await kijutsuInputCandidates.reduce(
+    async (found, c) => (await found) || pathExists(c),
+    Promise.resolve(false),
+  );
+  if (!chishikiExists && !kijutsuExists) {
+    console.log(JSON.stringify({ message: 'data2 input directories not found — skipped.' }));
+    return;
+  }
+
   const chishikiInputDir = await resolveFirstExistingDir(chishikiInputCandidates, 'chishiki');
   const kijutsuInputDir = await resolveFirstExistingDir(kijutsuInputCandidates, 'kijutsu');
 
