@@ -146,6 +146,15 @@ async function resolveTargetDir() {
 
 async function run() {
   const targetDir = await resolveTargetDir();
+
+  // If data2 directories are absent (e.g. renamed to xx_data2/), skip gracefully.
+  try {
+    await fs.access(targetDir);
+  } catch {
+    console.log(JSON.stringify({ message: 'data2 audit target not found — skipped.' }));
+    return;
+  }
+
   const files = (await fs.readdir(targetDir))
     .filter((name) => /^\d+\.txt$/.test(name))
     .sort((a, b) => Number(a.replace('.txt', '')) - Number(b.replace('.txt', '')));

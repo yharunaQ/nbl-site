@@ -113,6 +113,15 @@ function parseNarrativeHighlights(content) {
 }
 
 async function main() {
+  // If data2 directories are absent (e.g. renamed to xx_data2/), skip gracefully.
+  const hasChishiki = await fs.access(canonicalChishikiDir).then(() => true).catch(() =>
+    fs.access(legacyChishikiDir).then(() => true).catch(() => false)
+  );
+  if (!hasChishiki) {
+    console.log(JSON.stringify({ message: 'data2 index source not found — skipped.' }));
+    return;
+  }
+
   const chishikiDir = await resolveDir(canonicalChishikiDir, legacyChishikiDir, 'chishiki');
   const kijutsuDir = await resolveDir(canonicalKijutsuDir, legacyKijutsuDir, 'kijutsu');
 
