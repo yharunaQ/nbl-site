@@ -2,12 +2,21 @@ const path = require('node:path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Exclude UI-only packages from serverless function bundles (Vercel 250MB limit)
+  // Exclude large non-runtime assets from serverless function bundles (Vercel 250MB limit)
   outputFileTracingExcludes: {
     '*': [
+      // UI-only packages not needed in server functions
       'node_modules/lucide-react/**',
       'node_modules/@img/**',
       'node_modules/sharp/**',
+      // Large local data/content directories
+      'data/**',
+      'content-inbox/**',
+      'references/**',
+      'docs/**',
+      'public/**',
+      'scripts/**',
+      '__tests__/**',
     ],
   },
   // Allow local cross-origin dev access (e.g. 127.0.0.1 -> localhost for /_next/* assets)
