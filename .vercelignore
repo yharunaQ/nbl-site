@@ -4,6 +4,7 @@ docs/*
 !docs/guidebook/
 docs/guidebook/*
 !docs/guidebook/jac-26-card-edition.md
+!docs/guidebook/jac-27-frame-edition.md
 scripts
 __tests__
 dao-participation-lab
