@@ -17,7 +17,7 @@ describe('siteMetadata', () => {
     );
   });
 
-  it('exposes the default social image as an absolute URL', () => {
-    expect(DEFAULT_SOCIAL_IMAGE_URL).toBe(`${SITE_URL}/og.png`);
+  it('exposes the default social image as an absolute URL pointing to the OG API', () => {
+    expect(DEFAULT_SOCIAL_IMAGE_URL).toBe(`${SITE_URL}/api/og`);
   });
 });

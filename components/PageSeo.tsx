@@ -7,6 +7,7 @@ import {
   DEFAULT_SOCIAL_IMAGE_WIDTH,
   SITE_LOCALE,
   SITE_NAME,
+  SITE_URL,
 } from '@/lib/siteMetadata';
 
 type PageSeoProps = {
@@ -23,13 +24,17 @@ export default function PageSeo({
   title,
   description,
   path = '/',
-  imagePath = DEFAULT_SOCIAL_IMAGE_PATH,
+  imagePath,
   imageAlt = DEFAULT_SOCIAL_IMAGE_ALT,
   noIndex = false,
   type = 'website',
 }: PageSeoProps) {
   const canonicalUrl = buildSiteUrl(path);
-  const socialImageUrl = buildSiteUrl(imagePath);
+
+  // If a custom image is provided use it directly; otherwise generate via /api/og
+  const socialImageUrl = imagePath
+    ? buildSiteUrl(imagePath)
+    : `${SITE_URL}${DEFAULT_SOCIAL_IMAGE_PATH}?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
   return (
     <Head>
