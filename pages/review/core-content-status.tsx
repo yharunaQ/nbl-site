@@ -196,7 +196,7 @@ export default function CoreContentStatusReviewPage() {
           />
           <div className="mt-6 flex flex-wrap gap-3">
             {[
-              '/jac-foundations',
+              '/resources/work-design-foundations',
               '/review/work-design-frame-reference',
               '/review/work-design-workbook',
               '/review/work-design-guide',

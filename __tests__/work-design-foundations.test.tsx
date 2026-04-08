@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import JacFoundationsPage from '@/pages/jac-foundations';
+import WorkDesignFoundationsPage from '@/pages/resources/work-design-foundations';
 
-describe('Jac foundations page', () => {
+describe('Work design foundations page', () => {
   it('allows infographic zoom for detailed reading', () => {
-    render(<JacFoundationsPage />);
+    render(<WorkDesignFoundationsPage />);
 
     const openButton = screen.getByRole('button', {
       name: '仕事のコンディションマップを拡大して見る',
@@ -15,12 +15,11 @@ describe('Jac foundations page', () => {
     expect(screen.getByRole('link', { name: '画像を別タブで開く' })).toBeInTheDocument();
   });
 
-  it('shows correct next-step links without old frame pages', () => {
-    render(<JacFoundationsPage />);
+  it('shows correct next-step links', () => {
+    render(<WorkDesignFoundationsPage />);
 
     expect(screen.getByRole('link', { name: 'はたらく相談室（AI対話）' })).toHaveAttribute('href', '/jac');
-    expect(screen.getByRole('link', { name: '仕事設計ガイド（インタラクティブ）' })).toHaveAttribute('href', '/jac/guide');
-    expect(screen.queryByRole('link', { name: '26フレーム早見表' })).toBeNull();
-    expect(screen.queryByRole('link', { name: /jac\/frames/ })).toBeNull();
+    expect(screen.getAllByRole('link', { name: '仕事設計ガイド（インタラクティブ）' }).length).toBeGreaterThan(0);
+    expect(screen.getByRole('link', { name: 'リソース一覧へ' })).toHaveAttribute('href', '/resources');
   });
 });

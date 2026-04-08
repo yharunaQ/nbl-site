@@ -83,10 +83,10 @@ export default function WhatWeDoPage() {
                 変革テーマ群を見る
               </Link>
               <Link
-                href="/jac-foundations"
+                href="/resources/work-design-foundations"
                 className="rounded-full border border-emerald-300 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-900 transition hover:border-emerald-400 hover:bg-emerald-100"
               >
-                仕事設計の見取り図を見る
+                仕事設計の基礎図解を見る
               </Link>
               <Link
                 href="/for-enterprise"
@@ -281,10 +281,10 @@ export default function WhatWeDoPage() {
                   困りごとをどんな単位で読んでいるかを先に確認したい場合の入口です。
                 </p>
                 <Link
-                  href="/jac-foundations"
+                  href="/resources/work-design-foundations"
                   className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
                 >
-                  仕事設計の見取り図を見る
+                  仕事設計の基礎図解を見る
                 </Link>
               </article>
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">

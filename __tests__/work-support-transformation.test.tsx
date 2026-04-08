@@ -14,9 +14,9 @@ describe('Work support transformation collection', () => {
     expect(screen.getByText('支援者・行政の実装レーン')).toBeInTheDocument();
     expect(screen.getByText('インクルーシブ雇用の要：就労選択支援')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Resourcesへ戻る' })).toHaveAttribute('href', '/resources');
-    expect(screen.getByRole('link', { name: '仕事設計の見取り図を見る' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: '仕事設計の基礎図解を見る' })).toHaveAttribute(
       'href',
-      '/jac-foundations',
+      '/resources/work-design-foundations',
     );
     expect(screen.getByRole('link', { name: 'What We Do を見る' })).toHaveAttribute(
       'href',

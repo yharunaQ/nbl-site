@@ -235,7 +235,7 @@ export function classifyWorkspaceActivity(filePaths) {
         'pages/review',
         'pages/for-enterprise.tsx',
         'pages/videos.tsx',
-        'pages/jac-foundations.tsx',
+        'pages/resources/work-design-foundations.tsx',
         'components',
         'lib/content',
       ],

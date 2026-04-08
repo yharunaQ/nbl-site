@@ -101,8 +101,8 @@ export const publicVideos: PublicVideo[] = [
     href: 'https://youtu.be/Q5h5aIrYb2I',
     thumbnailSrc: getYouTubeThumbnailSrc('Q5h5aIrYb2I'),
     relatedResource: {
-      href: '/jac-foundations',
-      label: '仕事設計の見取り図を見る',
+      href: '/resources/work-design-foundations',
+      label: '仕事設計の基礎図解を見る',
     },
   },
   {

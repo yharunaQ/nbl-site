@@ -58,10 +58,10 @@ export default function EnterpriseEntryPage() {
                 What We Do を見る
               </Link>
               <Link
-                href="/jac-foundations"
+                href="/resources/work-design-foundations"
                 className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
               >
-                仕事設計の見取り図を見る
+                仕事設計の基礎図解を見る
               </Link>
               <Link
                 href="/resources/work-support-transformation"

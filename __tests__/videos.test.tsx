@@ -11,7 +11,7 @@ describe('Public videos page', () => {
         .every((link) => link.getAttribute('href') === '/resources/work-support-transformation'),
     ).toBe(true);
     expect(
-      screen.getAllByRole('link', { name: '仕事設計の見取り図を見る' }).every((link) => link.getAttribute('href') === '/jac-foundations'),
+      screen.getAllByRole('link', { name: '仕事設計の基礎図解を見る' }).every((link) => link.getAttribute('href') === '/resources/work-design-foundations'),
     ).toBe(true);
   });
 

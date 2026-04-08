@@ -40,17 +40,17 @@ export default function WorkDesignWorkbookPage({
             <p className="mt-2 text-sm text-slate-600">先行5章版アーカイブ</p>
           </div>
           <Link
-            href="/jac-foundations"
+            href="/resources/work-design-foundations"
             className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
           >
             <ArrowLeft size={16} />
-            見取り図へ戻る
+            基礎図解へ戻る
           </Link>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
           <Link
-            href="/jac-foundations"
+            href="/resources/work-design-foundations"
             className="rounded-full border border-slate-200 bg-white px-3 py-1.5 transition hover:border-slate-300 hover:text-slate-900"
           >
             見取り図

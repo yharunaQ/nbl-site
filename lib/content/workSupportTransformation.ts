@@ -275,10 +275,10 @@ export const workSupportTransformationGuardrails = [
 
 export const workSupportTransformationPaths: WorkSupportTransformationPath[] = [
   {
-    title: '仕事設計の見取り図',
-    summary: '3レイヤーと条件読み取りの土台を先に押さえたいときの入口です。',
-    href: '/jac-foundations',
-    cta: '仕事設計の見取り図を見る',
+    title: '仕事設計の基礎図解',
+    summary: 'コンディションマップや基礎図解で、仕事設計の論点を先に押さえたいときの入口です。',
+    href: '/resources/work-design-foundations',
+    cta: '仕事設計の基礎図解を見る',
   },
   {
     title: '見えない障害の理解',

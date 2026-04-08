@@ -10,7 +10,7 @@ const ROUTES = [
   '/',
   '/what-we-do',
   '/for-enterprise',
-  '/jac-foundations',
+  '/resources/work-design-foundations',
   '/contact',
   '/resources',
   '/videos',

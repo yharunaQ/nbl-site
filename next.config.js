@@ -39,6 +39,7 @@ const nextConfig = {
     return [
       { source: '/for-enterprise', destination: '/organizations', permanent: true },
       { source: '/docs/:path*', destination: '/site-update/docs', permanent: false },
+      { source: '/jac-foundations', destination: '/resources/work-design-foundations', permanent: true },
     ];
   },
   async rewrites() {

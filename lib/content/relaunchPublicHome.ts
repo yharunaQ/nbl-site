@@ -132,8 +132,8 @@ export const relaunchPublicFirstVisitPaths: RelaunchPublicFirstVisitPath[] = [
     audience: 'NBLがいま何を中核に積み上げているか知りたい',
     detail:
       '困りごとを職場設計として読むための 3レイヤーの地図と、条件読み取りの基礎説明を、NBL の現在のコアとして公開向けにまとめています。',
-    href: '/jac-foundations',
-    cta: '仕事設計の見取り図を見る',
+    href: '/resources/work-design-foundations',
+    cta: '仕事設計の基礎図解を見る',
   },
 ];
 
@@ -204,7 +204,7 @@ export const relaunchPublicArtifacts: RelaunchPublicArtifact[] = [
     title: '条件マップ',
     detail: '人・仕事・環境・支援・時間・制度を分けて見られる読み取り単位。',
     note: '診断名だけで結論を出さないための土台。',
-    href: '/jac-foundations',
+    href: '/resources/work-design-foundations',
     cta: '仕事設計の地図を見る',
   },
   {
@@ -271,11 +271,11 @@ export const relaunchPublicStreams: RelaunchPublicStream[] = [
   },
   {
     id: 'methods',
-    title: '仕事設計の見取り図',
+    title: '仕事設計の基礎図解',
     detail:
-      'NBL の現在のコアである仕事設計プロダクト群の起点。3レイヤー、条件読み取り、そして 26カード版へどうつながるかを見る。',
+      'コンディションマップ、場の設計、雇用の正常化、質の指標の4つの基礎図解を収録した資源ページ。',
     question: 'いまのコアは何か。',
-    href: '/jac-foundations',
+    href: '/resources/work-design-foundations',
   },
   {
     id: 'resources',
@@ -346,9 +346,9 @@ export const relaunchPublicQuestionPaths: RelaunchPublicQuestionPath[] = [
   {
     title: '方法論から入る',
     question: '困りごとをどんな単位で読んでいるのか。',
-    detail: '仕事設計の見取り図、3レイヤー、そして次に 26カード版で何を確認できるかを見る。',
-    href: '/jac-foundations',
-    cta: '仕事設計の見取り図',
+    detail: '仕事設計の基礎図解とインタラクティブガイドで、困りごとをどんな単位で読んでいるかを確認する。',
+    href: '/resources/work-design-foundations',
+    cta: '仕事設計の基礎図解',
   },
   {
     title: '公開資源から入る',

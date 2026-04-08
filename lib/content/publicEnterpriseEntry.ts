@@ -171,10 +171,10 @@ export const publicEnterpriseEntry = {
       cta: '変革テーマ群を見る',
     },
     {
-      title: '仕事設計の見取り図',
-      summary: '3レイヤー、読み方、基礎図解を含めて、方法論の土台を先に押さえたいときの入口です。',
-      href: '/jac-foundations',
-      cta: '仕事設計の見取り図を見る',
+      title: '仕事設計の基礎図解',
+      summary: 'コンディションマップ、場の設計、雇用の正常化、質の指標を含む基礎図解集です。',
+      href: '/resources/work-design-foundations',
+      cta: '仕事設計の基礎図解を見る',
     },
   ] as EnterpriseResourceLink[],
 };

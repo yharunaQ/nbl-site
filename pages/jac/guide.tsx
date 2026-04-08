@@ -4784,7 +4784,7 @@ export default function JacGuidebookPage({
   const showDebug = debugEnabled;
   const isReviewRoute = router.pathname.startsWith('/review/');
   const frameReferenceHref = isReviewRoute ? '/review/work-design-frame-reference' : '/jac/frames';
-  const foundationsHref = '/jac-foundations';
+  const foundationsHref = '/resources/work-design-foundations';
   const guideBaseHref = router.pathname;
   const publicGuideHref = guideBaseHref;
   const debugHref = `${guideBaseHref}?debug=1`;

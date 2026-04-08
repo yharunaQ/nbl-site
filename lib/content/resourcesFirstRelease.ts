@@ -160,8 +160,8 @@ export const resourcesCollections: ResourceCollection[] = [
       '障害者雇用の質の指標',
     ],
     note: '企業向けには、まず「障害者雇用の正常化」を入口に置き、その次に「質の指標」へ進める順がよい。',
-    href: '/jac-foundations',
-    publicHref: '/jac-foundations',
+    href: '/resources/work-design-foundations',
+    publicHref: '/resources/work-design-foundations',
   },
   {
     title: '就労支援設計の変革テーマ群',

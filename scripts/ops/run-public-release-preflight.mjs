@@ -6,7 +6,7 @@ const REPORT_ROUTES = [
   '/',
   '/what-we-do',
   '/for-enterprise',
-  '/jac-foundations',
+  '/resources/work-design-foundations',
   '/contact',
   '/resources',
   '/videos',
@@ -52,7 +52,7 @@ const FILE_CHECKS = [
   'pages/contact.tsx',
   'pages/for-enterprise.tsx',
   'pages/about.tsx',
-  'pages/jac-foundations.tsx',
+  'pages/resources/work-design-foundations.tsx',
   'pages/operating-model.tsx',
   'pages/resources.tsx',
   'pages/videos.tsx',
@@ -63,7 +63,7 @@ const CONTACT_ROUTE_CHECKS = [
   'pages/about.tsx',
   'pages/what-we-do.tsx',
   'pages/for-enterprise.tsx',
-  'pages/jac-foundations.tsx',
+  'pages/resources/work-design-foundations.tsx',
   'pages/operating-model.tsx',
 ];
 

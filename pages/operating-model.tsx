@@ -57,10 +57,10 @@ export default function OperatingModelPage() {
                 What We Do を見る
               </Link>
               <Link
-                href="/jac-foundations"
+                href="/resources/work-design-foundations"
                 className="rounded-full border border-cyan-300 bg-cyan-50 px-5 py-3 text-sm font-semibold text-cyan-950 transition hover:border-cyan-400 hover:bg-cyan-100"
               >
-                仕事設計の見取り図を見る
+                仕事設計の基礎図解を見る
               </Link>
               <Link
                 href="/contact"
@@ -218,10 +218,10 @@ export default function OperatingModelPage() {
                 What We Do を見る
               </Link>
               <Link
-                href="/jac-foundations"
+                href="/resources/work-design-foundations"
                 className="rounded-full border border-slate-500 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300"
               >
-                仕事設計の見取り図を見る
+                仕事設計の基礎図解を見る
               </Link>
               <Link
                 href="/contact"

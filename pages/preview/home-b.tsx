@@ -261,7 +261,7 @@ export default function HomeVariantB() {
                 はたらく相談室を使う →
               </Link>
               <Link
-                href="/jac-foundations"
+                href="/resources/work-design-foundations"
                 className="inline-block rounded-full border-2 border-slate-300 px-8 py-4 text-base font-black text-slate-700 transition hover:border-slate-500"
               >
                 基礎知識から入る →
