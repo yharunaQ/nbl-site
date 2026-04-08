@@ -370,6 +370,13 @@ function summarizeRareCoverage(label, rows, matchFn, context) {
 }
 
 async function main() {
+  // If data2 index is absent (e.g. renamed to xx_data2/), skip gracefully.
+  const data2Exists = await fs.access(DATA2_INDEX_PATH).then(() => true).catch(() => false);
+  if (!data2Exists) {
+    console.log(JSON.stringify({ message: 'data2 index not found — minority diff audit skipped.' }));
+    return;
+  }
+
   const [guideText, data2Raw, claims] = await Promise.all([
     fs.readFile(GUIDE_PATH, 'utf8'),
     fs.readFile(DATA2_INDEX_PATH, 'utf8'),
