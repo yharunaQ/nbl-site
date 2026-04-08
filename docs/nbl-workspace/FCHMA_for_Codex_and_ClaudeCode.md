@@ -7,6 +7,21 @@ FCHMA stands for Framework-guided Contextual Hypergraph and Manifold Analysis.
 Japanese name:
 枠組み誘導型 文脈ハイパーグラフ・マニフォールド分析法
 
+This is the **official overarching methodology**. It defines how cases are understood, hypotheses generated, and knowledge accumulated across all NBL products.
+
+### Implementation profile: /jac/next
+
+The implementation deployed in `/jac/next` (はたらく相談室) operates under a specific profile named:
+
+**Functional Causal Hypothesis Manifold Analysis**
+
+This profile is not a separate methodology. It is a focused instantiation of FCHMA for the AI-assisted employment support consultation use case — emphasizing causal hypothesis generation and ICF-structured functional analysis within a single-session interaction model. The "Functional" prefix foregrounds alignment with ICF (International Classification of Functioning), and "Causal Hypothesis" names the primary product of each session.
+
+When referring to FCHMA in product documentation or external-facing text:
+- Use "Framework-guided Contextual Hypergraph and Manifold Analysis" when describing the methodology itself or the knowledge system
+- Use "Functional Causal Hypothesis Manifold Analysis" only when describing the specific behavior of `/jac/next`
+- Do not treat the two names as interchangeable
+
 FCHMA is not just a research method for qualitative analysis. In this product, it is the core logic for understanding a case, generating support hypotheses, and learning from outcomes.
 
 Its purpose is to analyze narratives such as interviews, consultation notes, and free-text responses without flattening them into isolated fragments. It does this by using a comprehensive framework as a reference frame, preserving contextual meaning chains across multiple sentences, representing multi-factor interactions as higher-order structures, and combining AI-assisted candidate generation with human review and feedback.

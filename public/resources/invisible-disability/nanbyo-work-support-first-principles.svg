@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">難病と働く支援の第一原理モデル</title>
+  <desc id="desc">病名ではなく、変動する体調を働ける条件に変換するための16:9インフォグラフィック。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6fbfb"/>
+      <stop offset="0.48" stop-color="#eef8f7"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fef3c7"/>
+      <stop offset="1" stop-color="#fde68a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .jp { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", "Noto Sans JP", sans-serif; }
+      .title { font-size: 60px; font-weight: 800; letter-spacing: -0.02em; fill: #0f172a; }
+      .subtitle { font-size: 29px; font-weight: 700; fill: #0f766e; }
+      .section-title { font-size: 31px; font-weight: 800; fill: #0f172a; }
+      .label { font-size: 24px; font-weight: 800; fill: #0f172a; }
+      .body { font-size: 21px; font-weight: 500; fill: #334155; }
+      .small { font-size: 18px; font-weight: 600; fill: #475569; }
+      .formula { font-size: 28px; font-weight: 800; fill: #0f172a; }
+      .formula-small { font-size: 22px; font-weight: 700; fill: #334155; }
+      .white-title { font-size: 31px; font-weight: 800; fill: #ffffff; }
+      .white-body { font-size: 21px; font-weight: 650; fill: #ecfeff; }
+      .chip-text { font-size: 19px; font-weight: 800; fill: #0f172a; }
+      .footer-title { font-size: 24px; font-weight: 800; fill: #0f172a; }
+      .footer-body { font-size: 20px; font-weight: 650; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <circle cx="1710" cy="120" r="220" fill="#99f6e4" opacity="0.24"/>
+  <circle cx="155" cy="910" r="260" fill="#bfdbfe" opacity="0.23"/>
+  <circle cx="1480" cy="870" r="180" fill="#fde68a" opacity="0.18"/>
+
+  <g class="jp">
+    <rect x="58" y="44" width="1804" height="146" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="58" y="44" width="16" height="146" rx="8" fill="url(#hero)"/>
+    <text class="title" x="102" y="110">難病と働く支援の第一原理モデル</text>
+    <text class="subtitle" x="104" y="156">病名から支援を決めるのではなく、変動する体調を「働ける条件」に変換する。</text>
+    <text class="small" x="1490" y="92">FCHMA / ICF中心</text>
+    <text class="small" x="1490" y="124">専門家サポート用</text>
+    <text class="small" x="1490" y="156">AIは候補生成、人間が判断</text>
+
+    <rect x="92" y="222" width="1736" height="146" rx="34" fill="#0f172a" filter="url(#shadow)"/>
+    <rect x="120" y="248" width="730" height="94" rx="26" fill="#ffffff" opacity="0.10"/>
+    <rect x="900" y="248" width="900" height="94" rx="26" fill="#ffffff" opacity="0.10"/>
+    <text class="white-title" x="148" y="290">困難の式</text>
+    <text class="white-body" x="148" y="324">体調の変動性 × 仕事の固定性 × 見えにくさ × 支援接続の弱さ</text>
+    <text class="white-title" x="930" y="290">解決の式</text>
+    <text class="white-body" x="930" y="324">仕事設計 + 開示判断 + つながる支援 + 継続的な見直し</text>
+
+    <rect x="92" y="396" width="840" height="438" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="124" y="426" width="776" height="62" rx="24" fill="#eef8f7"/>
+    <text class="section-title" x="154" y="468">現実に起きる4つの詰まり</text>
+
+    <g transform="translate(136 518)">
+      <circle cx="28" cy="28" r="28" fill="#ccfbf1"/>
+      <text class="chip-text" x="21" y="36">1</text>
+      <text class="label" x="78" y="24">体調の波</text>
+      <text class="body" x="78" y="58">週・月単位で、症状・疲労・認知負荷・通院予定が変わる。</text>
+    </g>
+    <g transform="translate(136 602)">
+      <circle cx="28" cy="28" r="28" fill="#dbeafe"/>
+      <text class="chip-text" x="21" y="36">2</text>
+      <text class="label" x="78" y="24">見えにくさ</text>
+      <text class="body" x="78" y="58">伝えると不利、伝えないと配慮が得られない。</text>
+    </g>
+    <g transform="translate(136 686)">
+      <circle cx="28" cy="28" r="28" fill="#fef3c7"/>
+      <text class="chip-text" x="21" y="36">3</text>
+      <text class="label" x="78" y="24">生活・治療・仕事の衝突</text>
+      <text class="body" x="78" y="58">通院、服薬、休憩、食事、急変時対応が職場運用と合わない。</text>
+    </g>
+    <g transform="translate(136 770)">
+      <circle cx="28" cy="28" r="28" fill="#fee2e2"/>
+      <text class="chip-text" x="21" y="36">4</text>
+      <text class="label" x="78" y="24">支援の遅れ</text>
+      <text class="body" x="78" y="58">医療、職場、就労支援、制度が分断され、深刻化してからつながる。</text>
+    </g>
+
+    <rect x="988" y="396" width="840" height="438" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="1020" y="426" width="776" height="62" rx="24" fill="#eff6ff"/>
+    <text class="section-title" x="1050" y="468">支援で行う5つの変換</text>
+
+    <g transform="translate(1032 518)">
+      <rect x="0" y="0" width="328" height="48" rx="20" fill="#ccfbf1"/>
+      <text class="label" x="24" y="32">運用ルール化</text>
+      <text class="body" x="356" y="31">予兆、休憩、通院、負荷上限を仕事の条件にする。</text>
+    </g>
+    <g transform="translate(1032 590)">
+      <rect x="0" y="0" width="328" height="48" rx="20" fill="#dbeafe"/>
+      <text class="label" x="24" y="32">翻訳</text>
+      <text class="body" x="356" y="31">本人の経験を、職場で実行できる調整案に変える。</text>
+    </g>
+    <g transform="translate(1032 662)">
+      <rect x="0" y="0" width="328" height="48" rx="20" fill="#fef3c7"/>
+      <text class="label" x="24" y="32">開示判断</text>
+      <text class="body" x="356" y="31">何を、誰に、いつ、どこまで伝えるかを決める。</text>
+    </g>
+    <g transform="translate(1032 734)">
+      <rect x="0" y="0" width="328" height="48" rx="20" fill="#e0e7ff"/>
+      <text class="label" x="24" y="32">仕事設計</text>
+      <text class="body" x="356" y="31">職務、時間、情報、相談ルートを設計し直す。</text>
+    </g>
+    <g transform="translate(1032 806)">
+      <rect x="0" y="0" width="328" height="48" rx="20" fill="#dcfce7"/>
+      <text class="label" x="24" y="32">更新</text>
+      <text class="body" x="356" y="31">就職前、採用時、定着期、悪化時に見直す。</text>
+    </g>
+
+    <rect x="92" y="866" width="1736" height="154" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="124" y="896" width="352" height="94" rx="28" fill="url(#amber)"/>
+    <text class="footer-title" x="152" y="934">支援ループ</text>
+    <text class="footer-body" x="152" y="968">聞く → 構造化 → 設計 → 試す → 見直す</text>
+
+    <text class="footer-title" x="526" y="922">共有すべき3つの合意</text>
+    <g transform="translate(526 946)">
+      <rect x="0" y="0" width="350" height="48" rx="20" fill="#eef8f7"/>
+      <text class="footer-body" x="22" y="31">病名だけで支援を決めない。</text>
+    </g>
+    <g transform="translate(906 946)">
+      <rect x="0" y="0" width="430" height="48" rx="20" fill="#eff6ff"/>
+      <text class="footer-body" x="22" y="31">本人だけに説明責任を押しつけない。</text>
+    </g>
+    <g transform="translate(1366 946)">
+      <rect x="0" y="0" width="410" height="48" rx="20" fill="#f0fdf4"/>
+      <text class="footer-body" x="22" y="31">配慮は働きながら更新する。</text>
+    </g>
+
+    <text class="small" x="112" y="1050">目標は「無理に働かせること」ではなく、働く・休む・調整する・相談する選択肢を失わせないこと。</text>
+    <text class="small" x="1352" y="1050">NBL はたらく相談室 / 専門知識ネットワーク</text>
+  </g>
+</svg>

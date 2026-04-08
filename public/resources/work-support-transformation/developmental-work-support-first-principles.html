@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1920, initial-scale=1" />
+    <title>発達障害と働く支援の第一原理モデル</title>
+    <style>
+      :root {
+        --ink: #111827;
+        --muted: #475569;
+        --blue: #1d4ed8;
+        --indigo: #4338ca;
+        --teal: #0f766e;
+        --amber: #d97706;
+        --green: #15803d;
+        --rose: #be123c;
+        --line: #d8e3f2;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #eef6ff;
+        color: var(--ink);
+        font-family:
+          "Hiragino Sans",
+          "Yu Gothic",
+          "Meiryo",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+      }
+
+      .canvas {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        padding: 44px 62px 34px;
+        background:
+          radial-gradient(circle at 86% 10%, rgba(125, 211, 252, 0.26), transparent 22%),
+          radial-gradient(circle at 10% 92%, rgba(196, 181, 253, 0.24), transparent 24%),
+          linear-gradient(135deg, #f8fbff 0%, #eef8ff 47%, #fbf7ff 100%);
+      }
+
+      .header {
+        display: grid;
+        grid-template-columns: 1fr 370px;
+        gap: 28px;
+        align-items: stretch;
+        height: 150px;
+        padding: 30px 36px 28px;
+        border-radius: 34px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 58px;
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+      }
+
+      .subtitle {
+        margin-top: 12px;
+        font-size: 29px;
+        line-height: 1.35;
+        font-weight: 800;
+        color: var(--indigo);
+      }
+
+      .badge {
+        align-self: center;
+        padding: 18px 24px;
+        border-radius: 26px;
+        color: white;
+        background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 58%, #0f766e 100%);
+        font-size: 21px;
+        line-height: 1.55;
+        font-weight: 800;
+      }
+
+      .formula {
+        height: 154px;
+        margin-top: 28px;
+        padding: 26px 34px;
+        border-radius: 34px;
+        color: #fff;
+        background: #111827;
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.17);
+      }
+
+      .formula-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .formula .kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 6px 16px;
+        border-radius: 999px;
+        color: #dbeafe;
+        background: rgba(255, 255, 255, 0.11);
+        font-size: 21px;
+        font-weight: 900;
+      }
+
+      .formula .text {
+        font-size: 29px;
+        line-height: 1.28;
+        font-weight: 900;
+      }
+
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+        margin-top: 28px;
+      }
+
+      .panel {
+        height: 426px;
+        padding: 30px 32px;
+        border-radius: 34px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
+      }
+
+      .panel h2 {
+        margin: 0 0 22px;
+        padding: 16px 24px;
+        border-radius: 24px;
+        background: #eef2ff;
+        font-size: 32px;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+      }
+
+      .panel.left h2 {
+        background: #eff6ff;
+      }
+
+      .panel.right h2 {
+        background: #ecfdf5;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        gap: 18px;
+        align-items: start;
+        margin: 17px 0;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 19px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .left .item:nth-of-type(1) .num {
+        background: var(--blue);
+      }
+
+      .left .item:nth-of-type(2) .num {
+        background: var(--indigo);
+      }
+
+      .left .item:nth-of-type(3) .num {
+        background: var(--amber);
+      }
+
+      .left .item:nth-of-type(4) .num {
+        background: var(--rose);
+      }
+
+      .right .item:nth-of-type(1) .num {
+        background: var(--teal);
+      }
+
+      .right .item:nth-of-type(2) .num {
+        background: var(--blue);
+      }
+
+      .right .item:nth-of-type(3) .num {
+        background: var(--indigo);
+      }
+
+      .right .item:nth-of-type(4) .num {
+        background: var(--amber);
+      }
+
+      .right .item:nth-of-type(5) .num {
+        background: var(--green);
+      }
+
+      .item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 26px;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .item span {
+        display: block;
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1.32;
+        font-weight: 650;
+      }
+
+      .bottom {
+        display: grid;
+        grid-template-columns: 360px 1fr 365px;
+        gap: 28px;
+        margin-top: 28px;
+        height: 206px;
+      }
+
+      .loop,
+      .agreement,
+      .roles {
+        border-radius: 34px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
+      }
+
+      .loop {
+        padding: 28px 28px;
+        background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+      }
+
+      .loop h3,
+      .agreement h3,
+      .roles h3 {
+        margin: 0 0 16px;
+        font-size: 28px;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+      }
+
+      .loop p {
+        margin: 0;
+        font-size: 23px;
+        line-height: 1.55;
+        font-weight: 900;
+        color: #713f12;
+      }
+
+      .agreement {
+        padding: 26px 28px;
+      }
+
+      .chips {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .chip {
+        min-height: 86px;
+        padding: 17px 18px;
+        border-radius: 24px;
+        font-size: 21px;
+        line-height: 1.28;
+        font-weight: 900;
+      }
+
+      .chip:nth-child(1) {
+        background: #eff6ff;
+        color: #1e3a8a;
+      }
+
+      .chip:nth-child(2) {
+        background: #f5f3ff;
+        color: #4c1d95;
+      }
+
+      .chip:nth-child(3) {
+        background: #ecfdf5;
+        color: #14532d;
+      }
+
+      .roles {
+        padding: 26px 28px;
+        background: linear-gradient(135deg, #eef2ff 0%, #ecfeff 100%);
+      }
+
+      .roles p {
+        margin: 0;
+        color: #334155;
+        font-size: 20px;
+        line-height: 1.48;
+        font-weight: 750;
+      }
+
+      .footer {
+        position: absolute;
+        left: 82px;
+        right: 82px;
+        bottom: 18px;
+        display: flex;
+        justify-content: space-between;
+        color: #64748b;
+        font-size: 18px;
+        font-weight: 750;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas" aria-label="発達障害と働く支援の第一原理モデル">
+      <section class="header">
+        <div>
+          <h1>発達障害と働く支援の第一原理モデル</h1>
+          <div class="subtitle">本人を変える前に、仕事の仕様を「処理できる形」に変える。</div>
+        </div>
+        <div class="badge">
+          FCHMA / ICF中心<br />
+          診断名ではなく構造を見る<br />
+          AIは候補生成、人間が判断
+        </div>
+      </section>
+
+      <section class="formula">
+        <div class="formula-grid">
+          <div>
+            <div class="kicker">困難の式</div>
+            <div class="text">認知・感覚・対人処理の特性 × 暗黙・即時・多重の仕事設計 = 詰まり</div>
+          </div>
+          <div>
+            <div class="kicker">解決の式</div>
+            <div class="text">暗黙を明示へ + 即時を非同期へ + 多重を単線化へ + 記憶を外部化へ</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="columns">
+        <div class="panel left">
+          <h2>現実に起きる4つの詰まり</h2>
+          <div class="item">
+            <div class="num">1</div>
+            <div>
+              <strong>感覚過負荷</strong>
+              <span>音・光・温度・におい・人の多さが、集中や回復を削る。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">2</div>
+            <div>
+              <strong>情報処理の過負荷</strong>
+              <span>会議、長い説明、同時処理で、理解・判断・発言が追いつかない。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">3</div>
+            <div>
+              <strong>暗黙指示と優先順位不明</strong>
+              <span>「いい感じに」「なる早で」が、ミス・手戻り・自己否定に変わる。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">4</div>
+            <div>
+              <strong>割込み・切替・対人即応</strong>
+              <span>予定外の声かけ、電話、接客、並行業務で、疲労と誤解が蓄積する。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel right">
+          <h2>支援で行う5つの設計変更</h2>
+          <div class="item">
+            <div class="num">1</div>
+            <div>
+              <strong>明示化</strong>
+              <span>何を・いつまでに・どの品質で・誰へ、を4点セットで伝える。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">2</div>
+            <div>
+              <strong>外部化</strong>
+              <span>記憶や段取りを、メモ・チェックリスト・見本・カレンダーに出す。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">3</div>
+            <div>
+              <strong>単線化</strong>
+              <span>同時進行を減らし、集中時間・割込み時間・相談時間を分ける。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">4</div>
+            <div>
+              <strong>非同期化</strong>
+              <span>事前資料、チャット、議事録、確認時間で、即答前提を下げる。</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">5</div>
+            <div>
+              <strong>環境調整</strong>
+              <span>席、音、光、通知、休憩、在宅を、仕事品質を守る条件として扱う。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bottom">
+        <div class="loop">
+          <h3>支援ループ</h3>
+          <p>観察 → 仮説<br />→ 設計 → 試行<br />→ 結果で更新</p>
+        </div>
+        <div class="agreement">
+          <h3>共有すべき3つの合意</h3>
+          <div class="chips">
+            <div class="chip">努力不足と決めつけない。</div>
+            <div class="chip">配慮は特別扱いではなく、仕事品質の設計。</div>
+            <div class="chip">一度決めて終わりではなく、運用しながら更新する。</div>
+          </div>
+        </div>
+        <div class="roles">
+          <h3>使う人</h3>
+          <p>
+            本人・家族、上司・同僚、人事、支援者、医療・教育・地域支援が、同じ地図で「何を変えるか」を話し合う。
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">
+        <span>目標は「普通に合わせること」ではなく、強みが出る仕事条件を一緒に作ること。</span>
+        <span>NBL はたらく相談室 / 専門知識ネットワーク</span>
+      </div>
+    </main>
+  </body>
+</html>

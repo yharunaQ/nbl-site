@@ -154,6 +154,10 @@ function buildStructuralHypotheses(
 
   const hypotheses: FchmaStructuralHypothesis[] = [
     {
+      domainId: domain.id,
+      domainLabel: domain.label,
+      motifId: motif.id,
+      motifLabel: motif.label,
       label: `${domain.label}の暫定仮説`,
       rationale:
         `OpenAI による精密生成は使わず、入力文から抽出したシグナルで暫定整理しています。${signalSummary}` +
@@ -175,6 +179,10 @@ function buildStructuralHypotheses(
 
   if (topPattern) {
     hypotheses.push({
+      domainId: domain.id,
+      domainLabel: domain.label,
+      motifId: motif.id,
+      motifLabel: motif.label,
       label: '類似パターン参照仮説',
       rationale:
         `ローカルの回答者パターン「${topPattern.patternKey}」との重なりから、同じ因果連鎖が関与する可能性を置いています。` +

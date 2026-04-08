@@ -25,8 +25,12 @@ import {
 import {
   getFchmaReferenceKnowledgePack,
   formatSupportCatalogForPrompt,
+  formatIpsSEValidationForPrompt,
+  formatPracticeCompassForPrompt,
   formatHwKnowledgeForPrompt,
+  formatWorkshopVoicesForPrompt,
   formatInternationalEvidenceForPrompt,
+  formatQ13NetworkForPrompt,
   resolveReferenceItemUrl,
   type FchmaReferenceKnowledgePack,
 } from '@/lib/fchma/referenceKnowledgePack';
@@ -36,6 +40,10 @@ import {
 // ---------------------------------------------------------------------------
 
 export type FchmaStructuralHypothesis = {
+  domainId: string;         // D1〜D8: どのドメインフレームからの仮説か
+  domainLabel: string;
+  motifId: string;          // M1〜M6: どの因果モチーフからの仮説か
+  motifLabel: string;
   label: string;
   rationale: string;
   causalChain: string;
@@ -68,6 +76,7 @@ export type FchmaReferenceItem = {
 export type FchmaStructuredFollowupQuestion = {
   question: string;
   suggestedOptions: string[];
+  differentialPurpose?: string; // 1文：この質問でどの仮説を鑑別・確認するか
 };
 
 export type FchmaAiAssessment = {
@@ -122,8 +131,12 @@ function buildPatternContext(patterns: FchmaRespondentPatternMatch[]): string {
 
 function buildSystemPrompt(
   supportCatalogText: string,
+  ipsSEText: string,
+  practiceCompassText: string,
   hwKnowledgeText: string,
+  workshopVoicesText: string,
   internationalText: string,
+  q13NetworkText: string,
 ): string {
   return `あなたはFCHMA（Functional Causal Hypothesis Manifold Analysis）に基づく就労支援専門家アシスタントです。
 
@@ -148,15 +161,31 @@ ${buildMotifSummary()}
 
 分析では必ず primaryDomain（D1〜D8）と primaryMotif（M1〜M6）を特定してください。
 
-## 実証された就労支援効果（回帰モデル検証済み）
+## 実証された就労支援効果（支援者実践調査 n=3,053・ロジスティック回帰）
 
 ${supportCatalogText}
 
-係数が大きいほど支援効果が強い。支援提案はこのエビデンスを根拠に。
+ΔはQ7課題の解決可能性認識上昇幅（外部連携型実施時 vs 自機関のみ）。ORは同条件のオッズ比。支援提案はこのエビデンスを根拠に。
+
+## IPS/SE 8原則の日本データによる再検証
+
+${ipsSEText}
+
+## 実践転換の羅針盤（日本調査データより）
+
+${practiceCompassText}
 
 ## 就労支援実践知識（ハローワーク事例から普遍化）
 
 ${hwKnowledgeText}
+
+## ワークショップ実例知識（多職種連携・現場の声）
+
+${workshopVoicesText}
+
+## 機関ネットワーク参加とQ1転換効果（日本調査 Q13）
+
+${q13NetworkText}
 
 ## 国際的配慮・支援エビデンス
 
@@ -174,6 +203,10 @@ ${internationalText}
   "frameworkSummary": "このケースの因果構造を1〜2文で説明",
   "structuralHypotheses": [
     {
+      "domainId": "D1〜D8のいずれか（この仮説のドメインフレーム）",
+      "domainLabel": "ドメインのラベル",
+      "motifId": "M1〜M6のいずれか（この仮説の因果モチーフ）",
+      "motifLabel": "モチーフのラベル",
       "label": "仮説の見出し（日本語で20字以内、例：活動制限から参加不安定へ）",
       "rationale": "なぜこの仮説が成立するかの説明（3〜5文）",
       "causalChain": "A → B → C 形式の因果連鎖",
@@ -199,12 +232,13 @@ ${internationalText}
   "structuredFollowupQuestions": [
     {
       "question": "追加確認の質問文",
-      "suggestedOptions": ["選択肢A", "選択肢B", "選択肢C"]
+      "suggestedOptions": ["選択肢A", "選択肢B", "選択肢C"],
+      "differentialPurpose": "この情報により〇〇仮説と△△仮説を鑑別します（または「△△支援の適用条件を確認します」）"
     }
   ],
   "referenceItems": [
     {
-      "title": "参照している具体的な知識・資料の名称（日本語で記述。例：AskJAN 職場配慮データベース、GLM回帰検証済み支援カタログ、治療と仕事の両立支援ガイドライン）",
+      "title": "参照している知識・資料の名称（短く簡潔に、20字以内を目安。例：AskJAN 職場配慮データベース、就労支援効果カタログ、治療と仕事の両立支援ガイドライン）",
       "summary": "内容の要点（このケースにどう関係するか）",
       "sourceType": "supports_model|hw_practice|international_guidance|guideline|manifold_pattern",
       "evidenceRole": "direct_basis|conditional_hypothesis|related_reading",
@@ -213,14 +247,44 @@ ${internationalText}
   ]
 }
 
+## 4層知識の利用制約
+
+介入案と構造仮説は、以下4層の知識から根拠を明示して取ること。一般論・印象論に圧縮してはならない。
+
+①当事者データ: 障害者・難病当事者調査（n=4,553 / n=4,523）——どのような困難パターンが実際に観測されるか
+②支援者データ: 支援者実践調査（n=3,053 ロジスティック回帰）——どの支援が効くか、なぜ実施されないか
+③外部エビデンス: IPS/SE再検証・国際配慮データ（AskJAN、UK、EU等）・治療と仕事の両立支援ガイドライン
+④実装主体の条件: 誰が（manager_or_hr / external_supporter / case_worker / person_self / 医療機関）実施するか、その現実的制約
+
+各 interventionPlan の evidenceBasis には上記①〜④のどれを根拠とするかを明示すること。「一般的なアドバイス」「常識的対応」などは根拠として認めない。
+
 ## 分析の方針
 
-1. まず primaryDomain と primaryMotif を決定する
-2. 構造仮説は2〜3件、主仮説と対抗仮説を含める
-3. 介入案は2〜4件、主仮説から導出し supports.md のエビデンスで根拠づける
-4. followupQuestions は不足シグナルを1文の質問リストで最大4件。structuredFollowupQuestions は同じ質問を選択肢付きで提示——各質問に suggestedOptions を2〜4件付ける（選択肢は短く具体的に、「その他・自由記述」は含めない）
-5. 参照資料は evidenceRole を必ず分類する（根拠と参考読み物を混ぜない）
-6. 「症状がある→配慮が必要」ではなく「どの因果経路で何が困難になるか」を起点にする`;
+【初回相談（フォローアップ履歴なし）の原則】
+
+最初に入力された相談文は断片情報である。断片情報から仮説を一つに確定してはならない。
+
+1. まず8ドメイン×6モチーフのアトラス全体を走査し、相談文から「活性化している可能性があるドメインとモチーフの組み合わせ」を複数特定する。これが競合仮説フレームのスキャンである
+
+2. structuralHypotheses は必ず異なる domainId × motifId の組み合わせから2〜3件設定する。各仮説は独立したフレームからの解釈であり、同じ primaryDomain の言い換えや詳細化ではない。すべての仮説の confidence は low を基本とし、高くとも medium まで。断片情報で high は付けない
+
+3. primaryDomain と primaryMotif は「最も可能性の高い競合仮説の代表フレーム」として選択する——確定ではなく、追加情報で別フレームに更新されることを前提とする
+
+4. structuredFollowupQuestions の各質問には differentialPurpose を必ず付与し、「この回答で○○仮説（D?×M?）と△△仮説（D?×M?）を鑑別します」と、どのフレーム間の鑑別かを明示する。一つの仮説に決め打ちした前提の質問は不可
+
+【フォローアップ情報がある場合】
+
+5. 追加情報を踏まえて確信度を積極的に更新する。情報が揃ったフレームの仮説は low → medium → high に引き上げ、否定されたフレームの仮説は残さない
+6. 既に回答済みの質問（追加情報の履歴に記録されているもの）は structuredFollowupQuestions に絶対に含めない
+7. structuralHypotheses の中で最高 confidence が medium 以上になった時点で structuredFollowupQuestions を空配列 [] にすること。全仮説がまだ low の場合は引き続き鑑別質問を生成する（フォローアップ回数ではなく仮説の確信度で判断する）
+8. medium 確信度は就労支援の現場では十分に行動可能な仮説であり「不完全」ではない。interventionPlan を強化・具体化することを優先する
+
+【共通】
+
+9. 介入案は2〜4件、必ず4層知識の根拠を明示して導出する
+10. followupQuestions は不足シグナルを1文の質問リストで最大4件。structuredFollowupQuestions は同じ質問を選択肢付きで提示——各質問に suggestedOptions を2〜4件付ける（選択肢は短く具体的に、「その他・自由記述」は含めない）
+11. 参照資料は evidenceRole を必ず分類する（根拠と参考読み物を混ぜない）
+12. 「症状がある→配慮が必要」ではなく「どの因果経路で何が困難になるか」を起点にする`;
 }
 
 function buildUserPrompt(
@@ -232,8 +296,12 @@ function buildUserPrompt(
   const { extractedSignals } = signals;
 
   const additionalSection = additionalContext
-    ? `\n## 追加情報（フォローアップ回答）\n\n${additionalContext}\n`
+    ? `\n## フォローアップ履歴（確認済みQ&A）\n\n【指示】以下は既に回答された内容です。(1) これらと同一または類似の質問を structuredFollowupQuestions に含めないこと。(2) これらの回答を踏まえ、仮説の確信度を積極的に更新すること。\n\n${additionalContext}\n`
     : '';
+
+  const finalInstruction = additionalContext
+    ? `上記の情報をもとに、FCHMAアセスメントを生成してください。フォローアップ履歴の回答を反映して確信度を更新し、確認済みの質問は絶対に繰り返さないこと。`
+    : `上記の情報をもとに、FCHMAアセスメントを生成してください。`;
 
   return `## 相談内容
 
@@ -252,7 +320,7 @@ ${additionalSection}
 
 ${buildPatternContext(patterns)}
 
-上記の情報をもとに、FCHMAアセスメントを生成してください。`;
+${finalInstruction}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -360,11 +428,15 @@ export async function buildFchmaFullAssessment(
   // Step 3: Load reference knowledge packs
   const pack = await getFchmaReferenceKnowledgePack();
   const supportCatalogText = formatSupportCatalogForPrompt(pack.supportCatalog);
+  const ipsSEText = formatIpsSEValidationForPrompt(pack.ipsSEValidation);
+  const practiceCompassText = formatPracticeCompassForPrompt(pack.practiceCompass);
   const hwKnowledgeText = formatHwKnowledgeForPrompt(pack.hwPractice);
+  const workshopVoicesText = formatWorkshopVoicesForPrompt(pack.workshopVoices);
   const internationalText = formatInternationalEvidenceForPrompt(pack.internationalEvidence);
+  const q13NetworkText = formatQ13NetworkForPrompt(pack.q13NetworkData);
 
   // Step 4: Build prompts and call AI
-  const systemPrompt = buildSystemPrompt(supportCatalogText, hwKnowledgeText, internationalText);
+  const systemPrompt = buildSystemPrompt(supportCatalogText, ipsSEText, practiceCompassText, hwKnowledgeText, workshopVoicesText, internationalText, q13NetworkText);
   const userPrompt = buildUserPrompt(consultation, signalPreview, matchedPatterns, additionalContext);
 
   let aiAssessment: FchmaAiAssessment | null = null;

@@ -10,9 +10,31 @@ export type SupportCatalogChallenge = {
   label: string;
   effectiveInterventions: Array<{
     title: string;
+    /** v2: avg_rate_diff (positive = more effective). v1 legacy: GLM coefficient (negative). */
     coefficient: number;
     coordinationType: 'collaborative' | 'own' | 'either';
+    /** v2 only: odds ratio from logistic regression */
+    oddsRatio?: number;
+    /** v2 only: number of significant variable pairs in this group */
+    nSignificantPairs?: number;
   }>;
+};
+
+export type IpsSEPrincipalValidation = {
+  principle: string;
+  jpEvidenceNote: string;
+  validated: boolean;
+  significantPairs: number;
+  totalPairs: number;
+  avgRateDiff: number;
+};
+
+export type IpsSEValidationSummary = {
+  analysisDate: string;
+  dataSource: string;
+  validatedCount: number;
+  totalPrinciples: number;
+  principles: IpsSEPrincipalValidation[];
 };
 
 export type HwPracticeKnowledge = {
@@ -49,11 +71,81 @@ export type DocumentReference = {
   relevantFor: string[];
 };
 
+export type Q13NetworkConversionEntry = {
+  institutionLabel: string;
+  conversionRateDelta: number; // Q1転換率の変化量（ポイント）
+  coordinationType: 'primary' | 'secondary';
+  notes: string;
+};
+
+export type Q13NetworkConversionData = {
+  description: string;
+  entries: Q13NetworkConversionEntry[];
+  methodNote: string;
+};
+
+export type PracticeCompassItem = {
+  display: string;
+  rateAll: number;
+  rateQ1: number | null;
+  rateQ2: number | null;
+  q1Q2Diff: number | null;
+  q1Q2Significant: boolean;
+  nSigPositive: number;
+  nSigNegative: number;
+};
+
+export type PracticeTransformationCompass = {
+  analysisDate: string;
+  dataSource: string;
+  /** C象限: 低実施率・高効果・Q1優位——「導入が必要な実践」 */
+  toIntroduce: PracticeCompassItem[];
+  /** A象限Q1優位: 高実施率・高効果・Q1優位——「強化すべき実践」 */
+  toStrengthen: PracticeCompassItem[];
+  /** B象限: 高実施率・効果相関なし——「転換候補」 */
+  toTransform: PracticeCompassItem[];
+  coreInsight: string;
+};
+
+export type WorkshopInteractionPattern = {
+  /** パターン名（例: 「遅すぎる介入」スパイラル） */
+  patternName: string;
+  /** 因果連鎖の核心ボトルネック */
+  bottleneck: string;
+  /** 因果連鎖のステップ（要約） */
+  causeSteps: string[];
+};
+
+export type WorkshopPhaseHighlight = {
+  phase: string;
+  phaseLabel: string;
+  /** そのフェーズで最も重要な成功ポイント（1〜2件） */
+  keySuccessPoint: string;
+  /** そのフェーズで最もよく起こる失敗モード */
+  typicalFailure: string;
+};
+
+export type WorkshopPracticeVoices = {
+  source: string;
+  /** 難病就労WSから抽出した7つの相互作用パターン */
+  interactionPatterns: WorkshopInteractionPattern[];
+  /** フェーズ別連携ポイントのハイライト（Phase 0〜5） */
+  phaseHighlights: WorkshopPhaseHighlight[];
+  /** 全ワークショップ共通の横断的成功原則 */
+  crossCuttingPrinciples: string[];
+  /** よくある失敗パターン（防止策付き） */
+  antiPatterns: Array<{ name: string; prevention: string }>;
+};
+
 export type FchmaReferenceKnowledgePack = {
   supportCatalog: SupportCatalogChallenge[];
+  ipsSEValidation: IpsSEValidationSummary | null;
+  practiceCompass: PracticeTransformationCompass | null;
   hwPractice: HwPracticeKnowledge;
+  workshopVoices: WorkshopPracticeVoices;
   internationalEvidence: InternationalEvidenceSource[];
   documentReferences: DocumentReference[];
+  q13NetworkData: Q13NetworkConversionData;
   loadedAt: string;
 };
 
@@ -97,7 +189,7 @@ const INTERNATIONAL_EVIDENCE: InternationalEvidenceSource[] = [
     country: 'JP',
     title: '高齢・障害・求職者雇用支援機構（JEED）参照資料',
     url: 'https://www.jeed.go.jp/',
-    matchKeywords: ['jeed', '高齢・障害・求職者', 'JEED', '職業センター', 'ジョブコーチ支援'],
+    matchKeywords: ['jeed', '高齢・障害・求職者', 'JEED', '職業センター', 'ジョブコーチ支援', '就労支援効果カタログ', '支援者実践調査', '4象限分析'],
     primaryFocus: '日本の障害者雇用支援の実証研究・実践資料',
     keyInsights: [
       'ジョブコーチ支援は職務適応・定着フォローの両面で有効',
@@ -167,6 +259,43 @@ const INTERNATIONAL_EVIDENCE: InternationalEvidenceSource[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Q13 network participation → Q1 conversion data (Japan survey)
+// ---------------------------------------------------------------------------
+
+const Q13_NETWORK_DATA: Q13NetworkConversionData = {
+  description:
+    '日本の支援者調査（Q13）における機関ネットワーク参加とQ1転換率の関係。Q2支援者がQ1転換する確率の変化量（ポイント差）。',
+  entries: [
+    {
+      institutionLabel: '就労移行支援事業所',
+      conversionRateDelta: 17.0,
+      coordinationType: 'primary',
+      notes: '最も転換効果が高い。実習・面接練習・就労準備訓練を通じた実地関与が転換を促す。',
+    },
+    {
+      institutionLabel: '就業・生活支援センター',
+      conversionRateDelta: 16.4,
+      coordinationType: 'primary',
+      notes: '生活基盤と就労継続を一体支援。定着フォローとの接続が特に有効。',
+    },
+    {
+      institutionLabel: 'ハローワーク（専門援助）',
+      conversionRateDelta: 15.3,
+      coordinationType: 'primary',
+      notes: '企業側調整・求人接続の公的機能が支援者の実践幅を広げる。',
+    },
+    {
+      institutionLabel: '難病相談支援センター',
+      conversionRateDelta: 3.1,
+      coordinationType: 'secondary',
+      notes: '医療との橋渡し機能。難病・慢性疾患が関わるケースで有効。',
+    },
+  ],
+  methodNote:
+    '「参加しているが転換しない」問題に注意：参加の有無より参加の質（企業調整・定着フォロー・実地関与）が転換を規定する。',
+};
+
+// ---------------------------------------------------------------------------
 // Static document reference registry
 // ---------------------------------------------------------------------------
 
@@ -208,59 +337,155 @@ function referencesDir(...parts: string[]): string {
   return path.join(process.cwd(), 'references', ...parts);
 }
 
+function analysisDir(...parts: string[]): string {
+  return path.join(
+    process.cwd(),
+    'data/analysis_ready/supporters/supporter_practice_toku18/v2_effectiveness_catalog',
+    ...parts,
+  );
+}
+
 /**
- * Parse supports.md into structured SupportCatalogChallenge list.
- * The file has sections like:
- *   ### 職業的課題N: "label"
- *   * intervention（type）[coefficient]
+ * Load support effectiveness catalog from v2 analysis output.
+ * Source: toku18 n=3,053 — NBL's own logistic regression (chi-square + OR + B).
+ * Replaces old supports.md (which parsed NIVR's pre-computed GLM coefficients).
  */
 async function loadSupportCatalog(): Promise<SupportCatalogChallenge[]> {
   try {
-    const text = await readFile(
-      referencesDir('supporter', 'supports.md'),
-      'utf-8',
-    );
-
-    const challenges: SupportCatalogChallenge[] = [];
-        const interventionRe = /^\*\s+(.+?)（(連携|自前重視?|連携重視?)）\[([+-]?\d+\.\d+)\]/;
-
-    const lines = text.split('\n');
-    let currentChallenge: SupportCatalogChallenge | null = null;
-
-    for (const line of lines) {
-      const challengeMatch = /###\s+職業的課題(\d+):\s*「([^」]+)」/.exec(line);
-      if (challengeMatch) {
-        if (currentChallenge) challenges.push(currentChallenge);
-        currentChallenge = {
-          id: `challenge_${challengeMatch[1]}`,
-          label: challengeMatch[2],
-          effectiveInterventions: [],
-        };
-        continue;
-      }
-
-      if (currentChallenge) {
-        const ivMatch = interventionRe.exec(line);
-        if (ivMatch) {
-          const coordRaw = ivMatch[2];
-          let coordinationType: SupportCatalogChallenge['effectiveInterventions'][number]['coordinationType'] =
-            'either';
-          if (coordRaw.startsWith('連携')) coordinationType = 'collaborative';
-          else if (coordRaw.startsWith('自前')) coordinationType = 'own';
-
-          currentChallenge.effectiveInterventions.push({
-            title: ivMatch[1].trim(),
-            coefficient: parseFloat(ivMatch[3]),
-            coordinationType,
-          });
+    const raw = await readFile(analysisDir('support_effectiveness_by_challenge.json'), 'utf-8');
+    const data = JSON.parse(raw) as {
+      challenge_intervention_matrix: Record<
+        string,
+        {
+          label: string;
+          effective_interventions: Array<{
+            intervention_label: string;
+            intervention_note: string;
+            avg_rate_diff: number;
+            n_significant_pairs: number;
+            best_pair: { odds_ratio: number | null; log_coef: number | null; p_chi2: number | null };
+          }>;
         }
-      }
-    }
-    if (currentChallenge) challenges.push(currentChallenge);
+      >;
+    };
 
-    return challenges;
+    const CHALLENGE_ID_MAP: Record<string, string> = {
+      C1_disability_readiness: 'challenge_1',
+      C2_job_search: 'challenge_2',
+      C3_hiring: 'challenge_3',
+      C4_post_employment_health: 'challenge_4',
+      C5_retention: 'challenge_5',
+    };
+
+    return Object.entries(data.challenge_intervention_matrix).map(([cgId, cg]) => ({
+      id: CHALLENGE_ID_MAP[cgId] ?? cgId,
+      label: cg.label,
+      effectiveInterventions: cg.effective_interventions
+        .filter((iv) => iv.avg_rate_diff > 0)
+        .sort((a, b) => b.avg_rate_diff - a.avg_rate_diff)
+        .slice(0, 5)
+        .map((iv) => {
+          const label = iv.intervention_label;
+          const coordinationType: SupportCatalogChallenge['effectiveInterventions'][number]['coordinationType'] =
+            label.includes('自前') ? 'own' : label.includes('連携') ? 'collaborative' : 'either';
+          return {
+            title: label,
+            coefficient: iv.avg_rate_diff,
+            coordinationType,
+            oddsRatio: iv.best_pair.odds_ratio ?? undefined,
+            nSignificantPairs: iv.n_significant_pairs,
+          };
+        }),
+    }));
   } catch {
     return [];
+  }
+}
+
+/**
+ * Load practice transformation compass from v2 analysis output.
+ * Identifies practices that are: underused-but-effective (introduce),
+ * used-and-effective (strengthen), used-but-ineffective (transform).
+ */
+async function loadPracticeCompass(): Promise<PracticeTransformationCompass | null> {
+  try {
+    const raw = await readFile(analysisDir('practice_transformation_compass.json'), 'utf-8');
+    const data = JSON.parse(raw) as {
+      analysis_date: string;
+      data_source: string;
+      compass: {
+        C_introduce: { q1_dominant_items: Array<Record<string, unknown>> };
+        A_maintain: { q1_dominant_items: Array<Record<string, unknown>> };
+        B_transform: { all_items: Array<Record<string, unknown>> };
+      };
+    };
+
+    function mapItem(raw: Record<string, unknown>): PracticeCompassItem {
+      return {
+        display: String(raw['display'] ?? ''),
+        rateAll: Number(raw['rate_all'] ?? 0),
+        rateQ1: raw['rate_q1'] != null ? Number(raw['rate_q1']) : null,
+        rateQ2: raw['rate_q2'] != null ? Number(raw['rate_q2']) : null,
+        q1Q2Diff: raw['q1_q2_diff'] != null ? Number(raw['q1_q2_diff']) : null,
+        q1Q2Significant: Boolean(raw['q1_q2_significant']),
+        nSigPositive: Number(raw['n_sig_positive_q7'] ?? 0),
+        nSigNegative: Number(raw['n_sig_negative_q7'] ?? 0),
+      };
+    }
+
+    return {
+      analysisDate: data.analysis_date,
+      dataSource: data.data_source,
+      toIntroduce: (data.compass.C_introduce.q1_dominant_items ?? []).slice(0, 8).map(mapItem),
+      toStrengthen: (data.compass.A_maintain.q1_dominant_items ?? []).slice(0, 6).map(mapItem),
+      toTransform: (data.compass.B_transform.all_items ?? []).slice(0, 5).map(mapItem),
+      coreInsight:
+        '旧来型支援の核心的問題は「間違った実践をしていること」ではなく「支援の射程が職場の外で止まっていること」。' +
+        '効果が確認されているが普及していない実践はすべて、職場内・就職後フェーズへの関与——' +
+        'Q1実践者はこれらを30〜40ポイント高い頻度で実施している。' +
+        '転換を阻む障壁は個人の意欲ではなく組織・制度構造。',
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Load IPS/SE 8-principle validation summary from v2 analysis output.
+ */
+async function loadIpsSEValidation(): Promise<IpsSEValidationSummary | null> {
+  try {
+    const raw = await readFile(analysisDir('ips_se_revalidation.json'), 'utf-8');
+    const data = JSON.parse(raw) as {
+      analysis_date: string;
+      data_source: string;
+      summary: { validated_count: number; total_principles: number };
+      principles: Record<
+        string,
+        {
+          principle: string;
+          jp_evidence_note: string;
+          summary: { validated: boolean; significant_positive_pairs: number; total_pairs_tested: number; avg_rate_diff_significant: number };
+        }
+      >;
+    };
+
+    return {
+      analysisDate: data.analysis_date,
+      dataSource: data.data_source,
+      validatedCount: data.summary.validated_count,
+      totalPrinciples: data.summary.total_principles,
+      principles: Object.values(data.principles).map((p) => ({
+        principle: p.principle,
+        jpEvidenceNote: p.jp_evidence_note,
+        validated: p.summary.validated,
+        significantPairs: p.summary.significant_positive_pairs,
+        totalPairs: p.summary.total_pairs_tested,
+        avgRateDiff: p.summary.avg_rate_diff_significant,
+      })),
+    };
+  } catch {
+    return null;
   }
 }
 
@@ -347,6 +572,132 @@ async function loadHwPracticeKnowledge(): Promise<HwPracticeKnowledge> {
   }
 }
 
+/**
+ * Workshop practice voices — qualitative data from 8 multi-stakeholder workshops
+ * (広島・紋別・福岡・大分・目黒・全重協・難病相談センター・名古屋) + 難病就労WS.
+ * Content is hardcoded from the analyzed workshop documents in references/workshops/.
+ * Used as exemplar-based context for AI prompt injection (option B: 実例・言語化).
+ */
+function loadWorkshopVoices(): WorkshopPracticeVoices {
+  return {
+    source: '8ワークショップ統合分析（障害者就労支援）+ 難病就労WS相互作用パターン分析',
+    interactionPatterns: [
+      {
+        patternName: '「遅すぎる介入」スパイラル',
+        bottleneck: '診断〜就労問題顕在化の間の「就労支援の死角」。診断時に就労情報が渡らない。',
+        causeSteps: [
+          '難病診断 → 就労情報が届かない（医療側からの情報提供なし）',
+          '患者が一人で抱える → 病状悪化・退職 → 生活困窮',
+          'ようやく相談窓口へ（この時点で多重困難状態）',
+        ],
+      },
+      {
+        patternName: '「縦割り抱え込み」ループ',
+        bottleneck: '各機関が「自分の専門外」として回避か抱え込みかの二択になり、橋渡し機能が機能しない。',
+        causeSteps: [
+          '患者が保健師・医療機関に就労相談',
+          '就労支援スキルがない → 自機関で解決しようとする OR 何もできない',
+          '就労支援機関につながらない → 問題が拡大',
+        ],
+      },
+      {
+        patternName: '「企業-患者間コミュニケーション障壁」パターン',
+        bottleneck: '開示のタイミング・方法の支援が不足。企業側の「難病＝働けない」先入観が払拭されなければ、開示自体がリスクになる。',
+        causeSteps: [
+          '非開示ルート: 隠して就職 → 配慮なし → 無理を続ける → 体調悪化 → 離職',
+          '開示ルート: 開示を試みる → 企業の無理解・過剰反応 → 採用拒否・就労意欲喪失',
+        ],
+      },
+      {
+        patternName: '「医療情報と就労支援の断絶」パターン',
+        bottleneck: '医療機関と就労支援機関の間の「情報インターフェース」が制度化されていない。',
+        causeSteps: [
+          '就労支援側: 病状・就労制限の医療情報がない → 不適切な求人マッチング → 早期離職',
+          '医療側: 就労可否判断の根拠・方法がない → 「就労困難」か曖昧な回答 → 支援が前進しない',
+        ],
+      },
+      {
+        patternName: '「制度の谷間による支援空白」パターン',
+        bottleneck: '障害者手帳なし（多くの難病患者）により企業に採用インセンティブなし・支援機関も積極関与の根拠が弱い。',
+        causeSteps: [
+          '障害者手帳なし → 障害者雇用率の対象外',
+          '企業に採用インセンティブなし + 就労支援機関でも積極支援の根拠が弱い',
+          '「一般求職者と同じ扱い」か「たらい回し」 → 実質無支援',
+        ],
+      },
+      {
+        patternName: '「難サポ一点集中・地理的空白」パターン',
+        bottleneck: '難サポは連携ハブになれる潜在力があるが、配置の希薄さと「丸投げ」がシステム全体のボトルネック。',
+        causeSteps: [
+          '県に1名の難病患者就職サポーター（非常勤）→ HW内でサポーターに丸投げ',
+          '物理的に県全体をカバー不能 → 地方・遠隔地では実質機能しない',
+        ],
+      },
+      {
+        patternName: '「就職後フォロー消滅」パターン',
+        bottleneck: '就職直後だけサポートが厚く、その後消える支援の波が定着失敗の主因。',
+        causeSteps: [
+          '採用後のサポートを企業だけに任せる → 企業だけに支援の重荷が集中',
+          '「問題が起きてから相談」 → 定着支援が単発で終わる → 離職',
+        ],
+      },
+    ],
+    phaseHighlights: [
+      {
+        phase: 'Phase 0',
+        phaseLabel: '超早期（学校在学中・診断直後）',
+        keySuccessPoint: '特別支援学校・大学は入学時からキャリア教育を開始。医師が診断時に「まず辞めないで、支援がある」と一言添えるだけで相談行動が変わる。',
+        typicalFailure: '学校・医療・福祉それぞれが「自分の担当ではない」と情報を抱え込む。',
+      },
+      {
+        phase: 'Phase 1',
+        phaseLabel: '就労準備（就活前）',
+        keySuccessPoint: '職場体験・インターンシップが就労意欲の最大の起爆剤。本人の強み・弱み・配慮事項の言語化を支援機関がツールで整理する。',
+        typicalFailure: '訓練・実習が「就職とは無関係な別物」になる。家族の意向と本人の希望のズレを放置。',
+      },
+      {
+        phase: 'Phase 2',
+        phaseLabel: 'マッチング・就職活動',
+        keySuccessPoint: '「誰が中核コーディネーターか」を明確化。企業側のニーズと本人の配慮ニーズを同時進行で把握する。',
+        typicalFailure: '複数機関が動いても誰も主担当にならない → 連携が空回り。窓口が多すぎて本人が迷子になる。',
+      },
+      {
+        phase: 'Phase 3',
+        phaseLabel: '採用直後・定着初期（最初の3〜6ヶ月）',
+        keySuccessPoint: '就職後も支援機関が関与し続ける（「つないで終わり」にしない）。医療機関–企業–支援機関の三角連携を確立する。',
+        typicalFailure: '採用後のサポートを企業だけに任せる。「問題が起きてから相談」ではなく問題前から定期面談を仕組み化する。',
+      },
+      {
+        phase: 'Phase 4',
+        phaseLabel: '中長期的定着・継続',
+        keySuccessPoint: '不調のサインを本人・家族・企業・支援機関が共有。定期面談（本人×支援機関・本人×企業・支援機関×企業の各ペア）を制度化する。',
+        typicalFailure: '状態が安定していても定期アセスメントを止める。就職直後だけサポートが厚くその後消える「支援の波」を作る。',
+      },
+      {
+        phase: 'Phase 5',
+        phaseLabel: '危機介入・離職防止',
+        keySuccessPoint: '「まず辞めない・相談する」文化の醸成を診断時から繰り返し伝える。同一企業内での業務変更・配置転換を離職の代替手段として持つ。',
+        typicalFailure: '難病・精神障害の方が「誰にも相談せず自己判断で退職」するパターンが最多の失敗モード。',
+      },
+    ],
+    crossCuttingPrinciples: [
+      '「顔の見える関係」が連携の基盤——制度や手続きではなく人と人の信頼関係。定期的な担当者会議・情報交流会の継続。',
+      '情報を「つないだら終わり」にしない——リファー後フォローが最大の盲点。紹介した機関が継続的に状況確認する。',
+      '本人の意欲・自己決定を中心に置く——「してあげる」ではなく「本人が動く力を引き出す」。ニーズは変化するため定期的に確認し直す。',
+      '早期介入が最もコスパが高い——就活直前・離職直前ではなくその前の段階で動く。全フェーズを通じて、早いほど選択肢が多く介入コストが低い。',
+      '誰がコーディネーターか常に明確にする——「誰が中核か？」が最大課題として複数WSで浮上。医療・生活・就労の三領域を統合的に調整できる人材を必ず決める。',
+    ],
+    antiPatterns: [
+      { name: '誰にも相談せず自己判断で退職', prevention: '「まず相談」の文化醸成。相談先を診断時から明示。' },
+      { name: '企業だけに支援の重荷が集中', prevention: '外部支援機関の定期訪問と三者連携を確立。' },
+      { name: '窓口が多すぎて本人が迷子', prevention: 'コーディネーター（一本化窓口）の設置。' },
+      { name: '支援が就職時だけで長期フォロー消滅', prevention: '定着支援を仕組みとして制度化。' },
+      { name: '学校→社会の情報引き継ぎ断絶', prevention: '卒業前から次機関と顔つなぎし、情報引き継ぎ経路を事前整備。' },
+      { name: '家族が障害受容できず機会を塞ぐ', prevention: '家族を支援対象として巻き込む。成功事例を共有。' },
+    ],
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Main export
 // ---------------------------------------------------------------------------
@@ -358,16 +709,22 @@ export async function getFchmaReferenceKnowledgePack(
 ): Promise<FchmaReferenceKnowledgePack> {
   if (_cachedPack && !forceRefresh) return _cachedPack;
 
-  const [supportCatalog, hwPractice] = await Promise.all([
+  const [supportCatalog, ipsSEValidation, practiceCompass, hwPractice] = await Promise.all([
     loadSupportCatalog(),
+    loadIpsSEValidation(),
+    loadPracticeCompass(),
     loadHwPracticeKnowledge(),
   ]);
 
   _cachedPack = {
     supportCatalog,
+    ipsSEValidation,
+    practiceCompass,
     hwPractice,
+    workshopVoices: loadWorkshopVoices(),
     internationalEvidence: INTERNATIONAL_EVIDENCE,
     documentReferences: DOCUMENT_REFERENCES,
+    q13NetworkData: Q13_NETWORK_DATA,
     loadedAt: new Date().toISOString(),
   };
 
@@ -376,20 +733,77 @@ export async function getFchmaReferenceKnowledgePack(
 
 /**
  * Format the support catalog as a compact text block for AI prompt injection.
+ * v2: uses rate_diff (Δ) and OR from toku18 logistic regression analysis.
  * Example output:
- *   課題「職場定着・就業継続」に効く支援: 職業評価[-0.11連携], 障害理解家族支援[-0.08連携], 就職後継続支援[-0.06自前]
+ *   課題「職場定着・就業継続」に効く支援: 就労・生活一体相談[Δ+0.12/OR2.3連携], 企業アプローチ[Δ+0.08連携]
  */
 export function formatSupportCatalogForPrompt(catalog: SupportCatalogChallenge[]): string {
   if (!catalog.length) return '（就労支援効果データ読み込みエラー）';
   return catalog
     .map((challenge) => {
       const ivText = challenge.effectiveInterventions
-        .sort((a, b) => a.coefficient - b.coefficient)
-        .map((iv) => `${iv.title}[${iv.coefficient}]`)
+        .map((iv) => {
+          const delta = `Δ${iv.coefficient >= 0 ? '+' : ''}${iv.coefficient.toFixed(3)}`;
+          const or = iv.oddsRatio ? `/OR${iv.oddsRatio.toFixed(1)}` : '';
+          const coord = iv.coordinationType === 'collaborative' ? '連携' : iv.coordinationType === 'own' ? '自前' : '';
+          return `${iv.title}[${delta}${or}${coord}]`;
+        })
         .join(', ');
-      return `課題「${challenge.label}」: ${ivText}`;
+      return `課題「${challenge.label}」に効く支援: ${ivText}`;
     })
     .join('\n');
+}
+
+/**
+ * Format practice transformation compass for AI prompt injection.
+ * Surfaces: what to introduce (C), what to strengthen (A-Q1), what lacks correlation (B).
+ */
+export function formatPracticeCompassForPrompt(compass: PracticeTransformationCompass | null): string {
+  if (!compass) return '';
+
+  const introduce = compass.toIntroduce
+    .slice(0, 6)
+    .map((p) => {
+      const diff = p.q1Q2Diff != null ? ` Q1=${Math.round((p.rateQ1 ?? 0) * 100)}%/Q2=${Math.round((p.rateQ2 ?? 0) * 100)}%（差${p.q1Q2Diff >= 0 ? '+' : ''}${Math.round(p.q1Q2Diff * 100)}pt）` : '';
+      return `・${p.display}（全体実施率${Math.round(p.rateAll * 100)}%,${diff} 効果確認${p.nSigPositive}課題）`;
+    })
+    .join('\n');
+
+  const strengthen = compass.toStrengthen
+    .slice(0, 4)
+    .map((p) => `・${p.display}（実施率${Math.round(p.rateAll * 100)}%, 効果確認${p.nSigPositive}課題）`)
+    .join('\n');
+
+  const transform = compass.toTransform.length > 0
+    ? compass.toTransform.slice(0, 3).map((p) => `・${p.display}（実施率${Math.round(p.rateAll * 100)}%）`).join('\n')
+    : '（高実施率で効果なし実践は軽微）';
+
+  return [
+    `【実践転換の羅針盤】${compass.dataSource}`,
+    '',
+    compass.coreInsight,
+    '',
+    '▼ 導入が必要（低普及・高効果・Q1支援者が30〜40pt高頻度で実施）:',
+    introduce,
+    '',
+    '▼ 維持・強化（高普及・高効果）:',
+    strengthen,
+    '',
+    '▼ 効果相関が弱い（転換候補）:',
+    transform,
+  ].join('\n');
+}
+
+/**
+ * Format IPS/SE validation summary for AI prompt injection.
+ */
+export function formatIpsSEValidationForPrompt(validation: IpsSEValidationSummary | null): string {
+  if (!validation) return '';
+  const principleLines = validation.principles
+    .filter((p) => p.validated)
+    .map((p) => `・${p.principle}: ${p.jpEvidenceNote}（${p.significantPairs}ペア有意, 平均Δ${p.avgRateDiff >= 0 ? '+' : ''}${p.avgRateDiff.toFixed(3)}）`)
+    .join('\n');
+  return `IPS/SE ${validation.validatedCount}/${validation.totalPrinciples}原則を日本データで独立に再確認（${validation.dataSource}）:\n${principleLines}`;
 }
 
 /**
@@ -400,6 +814,48 @@ export function formatHwKnowledgeForPrompt(hw: HwPracticeKnowledge): string {
     .map((p) => `・${p.title}: ${p.universalInsight}`)
     .join('\n');
   return principles;
+}
+
+/**
+ * Format workshop practice voices for AI prompt injection.
+ * Surfaces: structural failure patterns, phase coordination highlights,
+ * cross-cutting principles, and anti-patterns.
+ * Compact — prioritizes exemplars and language from real multi-stakeholder workshops.
+ */
+export function formatWorkshopVoicesForPrompt(voices: WorkshopPracticeVoices): string {
+  const patterns = voices.interactionPatterns
+    .slice(0, 5)
+    .map((p) => `・${p.patternName}——${p.bottleneck}`)
+    .join('\n');
+
+  const phases = voices.phaseHighlights
+    .map((ph) => `${ph.phase}（${ph.phaseLabel}）: ${ph.keySuccessPoint}`)
+    .join('\n');
+
+  const principles = voices.crossCuttingPrinciples
+    .map((p) => `・${p}`)
+    .join('\n');
+
+  const anti = voices.antiPatterns
+    .slice(0, 4)
+    .map((a) => `・${a.name} → 防止: ${a.prevention}`)
+    .join('\n');
+
+  return [
+    `【ワークショップ実例知識】${voices.source}`,
+    '',
+    '▼ よく起こる構造的失敗パターン（就労支援現場の声）:',
+    patterns,
+    '',
+    '▼ フェーズ別連携ポイント:',
+    phases,
+    '',
+    '▼ 横断的成功原則:',
+    principles,
+    '',
+    '▼ 避けるべきアンチパターン:',
+    anti,
+  ].join('\n');
 }
 
 /**
@@ -443,4 +899,16 @@ export function formatInternationalEvidenceForPrompt(
   return sources
     .map((s) => `[${s.country}/${s.sourceId}] ${s.title}: ${s.keyInsights[0]}`)
     .join('\n');
+}
+
+/**
+ * Format Q13 network conversion data for prompt injection.
+ * Shows which institution networks correlate with Q1 conversion rate increases.
+ */
+export function formatQ13NetworkForPrompt(data: Q13NetworkConversionData): string {
+  const entries = data.entries
+    .sort((a, b) => b.conversionRateDelta - a.conversionRateDelta)
+    .map((e) => `・${e.institutionLabel}: +${e.conversionRateDelta}pt（${e.notes}）`)
+    .join('\n');
+  return `${data.description}\n${entries}\n注意: ${data.methodNote}`;
 }

@@ -20,12 +20,12 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/jac', destination: '/jac/next', permanent: false },
+      { source: '/for-enterprise', destination: '/organizations', permanent: true },
+      { source: '/docs/:path*', destination: '/site-update/docs', permanent: false },
     ];
   },
   async rewrites() {
     return [
-      { source: '/docs/:path*', destination: 'https://files.nextbeinglab.org/:path*' },
       { source: '/blog/:path*', destination: 'https://blog.nextbeinglab.org/:path*' },
     ];
   },
@@ -47,6 +47,12 @@ const nextConfig = {
       },
       {
         pathname: '/review/invisible-disability/**',
+      },
+      {
+        pathname: '/resources/disability-work-design/**',
+      },
+      {
+        pathname: '/about/**',
       },
     ],
     remotePatterns: [

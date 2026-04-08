@@ -44,7 +44,7 @@ const trackStatusLabel: Record<string, string> = {
 };
 
 const readingPathLinks: Record<string, { href: string; cta: string }> = {
-  基礎の地図から入る: { href: '/jac-foundations', cta: '仕事設計の見取り図を見る' },
+  基礎の地図から入る: { href: '/guide', cta: 'ガイドブックを見る' },
   シリーズで理解を深める: {
     href: '/resources/invisible-disability',
     cta: 'シリーズを見る',
@@ -280,39 +280,39 @@ export default function ResourcesPage() {
             <h2 className="text-2xl font-black">次に進む入口</h2>
             <div className="mt-5 grid gap-5 md:grid-cols-3">
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
-                <h3 className="text-xl font-black text-white">What We Do</h3>
+                <h3 className="text-xl font-black text-white">はたらく相談室</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">
-                  NBL がいま何を公開し、どこから話を始められるかを確認できます。
+                  就労の詰まりをAI対話で整理する。知識ネットワークが現場の一手を示します。
                 </p>
                 <Link
-                  href="/what-we-do"
+                  href="/jac"
                   className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
                 >
-                  What We Do を見る
+                  相談室を使う
                 </Link>
               </article>
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
-                <h3 className="text-xl font-black text-white">For Enterprise</h3>
+                <h3 className="text-xl font-black text-white">実践知識</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">
-                  企業や組織の担当者向けに、実務テーマをどう整理しているかを確認できます。
+                  71.9%問題・地域格差・連携効果のエビデンス。データが示す就労支援の構造。
                 </p>
                 <Link
-                  href="/for-enterprise"
+                  href="/knowledge"
                   className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
                 >
-                  企業向け整理を見る
+                  実践知識を見る
                 </Link>
               </article>
               <article className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5">
-                <h3 className="text-xl font-black text-white">Contact</h3>
+                <h3 className="text-xl font-black text-white">お問い合わせ</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-200">
-                  公開面を見たうえで内容確認や連携を始めたい場合の入口です。
+                  知識の活用・研究連携・組織での展開について話を始めたい方へ。
                 </p>
                 <Link
                   href="/contact"
                   className="mt-5 inline-flex rounded-full border border-slate-600 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
                 >
-                  連携・お問い合わせ
+                  お問い合わせ
                 </Link>
               </article>
             </div>

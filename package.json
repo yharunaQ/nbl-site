@@ -42,6 +42,8 @@
     "ebook:guidebook:26cards:layout": "node ./scripts/ebook/build-readable-layout.mjs --input docs/guidebook/jac-26-card-edition.md --output-base jac-26-card-edition",
     "ebook:guidebook:26cards:preview": "npm run ebook:guidebook:26cards:draft && npm run ebook:guidebook:26cards:layout",
     "ebook:guidebook:26cards:publish": "npm run ebook:guidebook:26cards:preview && node -e \"require('fs').copyFileSync('docs/guidebook/dist/jac-26-card-edition.html','public/downloads/jac-26-card-guidebook.html');console.log('Published to public/downloads/jac-26-card-guidebook.html')\"",
+    "ebook:guidebook:27frames:layout": "node ./scripts/ebook/build-readable-layout.mjs --input docs/guidebook/jac-27-frame-edition.md --output-base jac-27-frame-edition",
+    "ebook:guidebook:27frames:publish": "npm run ebook:guidebook:27frames:layout && node -e \"const fs=require('fs');fs.copyFileSync('docs/guidebook/dist/jac-27-frame-edition.html','public/downloads/jac-27-frame-edition.html');console.log('Published HTML');\"",
     "ebook:guidebook:frames:summary": "node ./scripts/ebook/build-frames-26-layer-summary.mjs",
     "ebook:book1:layout": "node ./scripts/ebook/build-readable-layout.mjs --input docs/guidebook/book1-health-layer-draft.md --output-base book1-health-layer-draft",
     "ebook:book1:prefinal:draft": "node ./scripts/ebook/generate-book1-prefinal.mjs",

@@ -3,7 +3,6 @@ import { ArrowLeft, Mail, ShieldCheck, Sparkles, UserRound, Waypoints } from 'lu
 import PageSeo from '@/components/PageSeo';
 import { contactEntry } from '@/lib/content/contactEntry';
 import { founderProfile } from '@/lib/content/founderProfile';
-import ApplySection from '@/components/ApplySection';
 import NewsletterSignup from '@/components/NewsletterSignup';
 
 const CONTACT_EMAIL = 'info@nextbeinglab.org';
@@ -56,10 +55,10 @@ export default function ContactPage() {
                 About を見る
               </Link>
               <Link
-                href="/what-we-do"
+                href="/guide"
                 className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
               >
-                What We Do を見る
+                ガイドブックを見る
               </Link>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -227,20 +226,6 @@ export default function ContactPage() {
             </a>
           </div>
         </section>
-
-        <div className="border-t border-slate-200 pt-12">
-          <div className="mx-auto max-w-xl px-6 mb-2">
-            <p className="text-sm text-slate-500 leading-relaxed">
-              AIツール「就労支援見立てサポート」の利用申込はこちらです。
-              ツールの詳細は{' '}
-              <Link href="/jac/intro" className="underline underline-offset-2 text-slate-700 hover:text-slate-950">
-                紹介ページ
-              </Link>
-              {' '}で確認できます。
-            </p>
-          </div>
-          <ApplySection />
-        </div>
 
         <section className="border-t border-slate-200 py-12">
           <div className="mx-auto max-w-xl px-6">

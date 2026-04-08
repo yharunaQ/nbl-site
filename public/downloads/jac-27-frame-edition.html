@@ -1,0 +1,2183 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>仕事設計ガイドブック v3</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --subtle: #6b7280;
+      --line: #d1d5db;
+      --accent: #0f766e;
+      --paper: #ffffff;
+      --bg: #f8fafc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+      line-height: 1.85;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .book {
+      width: 210mm;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 6px 30px rgba(15, 23, 42, 0.08);
+      min-height: 100vh;
+      padding: 24mm 18mm 20mm;
+    }
+    .cover {
+      min-height: 220mm;
+      display: grid;
+      align-content: center;
+      gap: 10mm;
+      border: 1px solid var(--line);
+      padding: 16mm;
+      background: linear-gradient(160deg, #f0fdfa, #ffffff 56%, #ecfeff);
+    }
+    .cover .eyebrow {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .cover h1 {
+      margin: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 33px;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+    .cover p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--subtle);
+    }
+    .meta-block {
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .toc {
+      margin-top: 14mm;
+      padding-top: 10mm;
+      border-top: 1px solid var(--line);
+    }
+    .toc h2 {
+      margin: 0 0 6mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 20px;
+    }
+    .toc-list {
+      margin: 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 16mm;
+      font-size: 12px;
+    }
+    .toc-list li {
+      break-inside: avoid;
+      margin: 0 0 4px;
+      padding-right: 10px;
+    }
+    .toc-list a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .toc-list a:hover {
+      border-bottom-color: var(--line);
+    }
+    .content {
+      margin-top: 16mm;
+      font-size: 13px;
+    }
+    .chapter {
+      break-before: page;
+      page-break-before: always;
+      padding-top: 2mm;
+    }
+    h2, h3, h4, h5 {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 4mm;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 1.5mm;
+    }
+    .chapter > h2 + p {
+      border-bottom: 2px solid #99f6e4;
+      padding-bottom: 3mm;
+      margin-bottom: 4.6mm;
+    }
+    h3 { font-size: 17px; margin-top: 7mm; }
+    h4 { font-size: 14px; margin-top: 5mm; }
+    h5 { font-size: 13px; margin-top: 4mm; }
+    p { margin: 0 0 3.4mm; }
+    ul, ol {
+      margin: 0 0 4mm;
+      padding-left: 20px;
+    }
+    li { margin-bottom: 2mm; }
+    blockquote {
+      margin: 0 0 4.2mm;
+      padding: 4mm 4.5mm;
+      border-left: 4px solid #99f6e4;
+      background: #f0fdfa;
+      color: #334155;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 8mm 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+    pre {
+      margin: 0 0 4mm;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 4mm;
+      border-radius: 8px;
+      overflow: auto;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    figure.illustration {
+      margin: 0 0 6mm;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 3mm;
+      background: #f8fafc;
+    }
+    figure.illustration img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #eef2ff;
+    }
+    figure.illustration figcaption {
+      margin-top: 2mm;
+      font-size: 11px;
+      color: var(--subtle);
+      text-align: center;
+    }
+    body.theme-focus-card-editorial {
+      color: #2f261d;
+      background:
+        radial-gradient(circle at top left, #e8decf 0, #f4eee5 42%, #edf3f0 100%);
+    }
+    body.theme-focus-card-editorial .book {
+      width: 206mm;
+      background: linear-gradient(180deg, #fbf8f1 0, #f7f1e7 100%);
+      box-shadow: 0 22px 56px rgba(60, 42, 18, 0.14);
+      padding: 18mm 14mm 16mm;
+    }
+    body.theme-focus-card-editorial .cover {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      padding: 18mm 18mm 16mm;
+      border: 1px solid #d7c7b0;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.10), rgba(15, 23, 42, 0.04) 46%, rgba(183, 131, 56, 0.11) 100%),
+        linear-gradient(180deg, #fffdf8 0, #f7efe1 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+    }
+    body.theme-focus-card-editorial .cover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 38mm;
+      background: linear-gradient(180deg, #0f766e 0, #164e63 100%);
+      opacity: 0.92;
+    }
+    body.theme-focus-card-editorial .cover::after {
+      content: "EDITORIAL SAMPLE";
+      position: absolute;
+      top: 18mm;
+      right: -14mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.88);
+      transform: rotate(90deg);
+      transform-origin: center;
+    }
+    body.theme-focus-card-editorial .cover .eyebrow,
+    body.theme-focus-card-editorial .cover h1,
+    body.theme-focus-card-editorial .cover p,
+    body.theme-focus-card-editorial .cover .meta-block {
+      position: relative;
+      z-index: 1;
+      max-width: 126mm;
+    }
+    body.theme-focus-card-editorial .cover .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: #0f766e;
+    }
+    body.theme-focus-card-editorial .cover h1 {
+      font-size: 41px;
+      line-height: 1.22;
+      letter-spacing: 0.02em;
+      color: #1f2b26;
+    }
+    body.theme-focus-card-editorial .cover p:not(.eyebrow) {
+      font-size: 14px;
+      line-height: 1.85;
+      color: #645645;
+    }
+    body.theme-focus-card-editorial .meta-block {
+      gap: 4px;
+      margin-top: 3mm;
+      padding-top: 4mm;
+      border-top: 1px solid rgba(112, 95, 66, 0.26);
+      color: #6d5c49;
+    }
+    body.theme-focus-card-editorial .toc {
+      margin-top: 10mm;
+      padding: 8mm 9mm 7mm;
+      border-top: 0;
+      border: 1px solid #d8c9b3;
+      border-radius: 18px;
+      background: rgba(255, 252, 246, 0.86);
+    }
+    body.theme-focus-card-editorial .toc h2 {
+      margin-bottom: 5mm;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: #0f766e;
+    }
+    body.theme-focus-card-editorial .toc-list {
+      columns: initial;
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2mm 10mm;
+      counter-reset: toc;
+      font-size: 12px;
+    }
+    body.theme-focus-card-editorial .toc-list li {
+      counter-increment: toc;
+      position: relative;
+      margin: 0;
+      padding: 3mm 0 3mm 11mm;
+      border-top: 1px solid #e3d7c5;
+      break-inside: avoid;
+    }
+    body.theme-focus-card-editorial .toc-list li::before {
+      content: counter(toc, decimal-leading-zero);
+      position: absolute;
+      top: 3mm;
+      left: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: #0f766e;
+      font-weight: 700;
+    }
+    body.theme-focus-card-editorial .toc-list a {
+      display: inline-block;
+      color: #2f261d;
+    }
+    body.theme-focus-card-editorial .content {
+      margin-top: 10mm;
+    }
+    body.theme-focus-card-editorial .content > p:first-child {
+      margin-bottom: 3mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #776655;
+      text-transform: uppercase;
+    }
+    body.theme-focus-card-editorial .content > p:nth-child(2) {
+      max-width: 142mm;
+      margin-bottom: 8mm;
+      padding: 5mm 6mm;
+      border: 1px solid #ded0bc;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+      line-height: 1.95;
+      color: #4d4134;
+    }
+    body.theme-focus-card-editorial .content > hr:first-of-type {
+      display: none;
+    }
+    body.theme-focus-card-editorial .chapter {
+      --frame-accent: #0f766e;
+      --frame-accent-2: #2563eb;
+      --frame-accent-soft: #e9f5f1;
+      --frame-accent-line: #9bd8d4;
+      --frame-marker: #d7b271;
+      padding: 12mm 11mm 10mm 13mm;
+      border: 1px solid #ddceb7;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(248, 243, 234, 0.98));
+      box-shadow: 0 14px 34px rgba(58, 42, 20, 0.09);
+      position: relative;
+      overflow: hidden;
+    }
+    body.theme-focus-card-editorial .chapter::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11mm;
+      bottom: 11mm;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--frame-accent) 0, var(--frame-accent-2) 100%);
+    }
+    body.theme-focus-card-editorial .chapter.frame-route {
+      --frame-accent: #0f766e;
+      --frame-accent-2: #1d4ed8;
+      --frame-accent-soft: #e6f6f2;
+      --frame-accent-line: #9bd8d4;
+      --frame-marker: #b7791f;
+    }
+    body.theme-focus-card-editorial .chapter.frame-bridge {
+      --frame-accent: #b45309;
+      --frame-accent-2: #d97706;
+      --frame-accent-soft: #fbeddc;
+      --frame-accent-line: #efc48a;
+      --frame-marker: #8c5a16;
+    }
+    body.theme-focus-card-editorial .chapter.frame-governance {
+      --frame-accent: #1d4ed8;
+      --frame-accent-2: #0f766e;
+      --frame-accent-soft: #e8efff;
+      --frame-accent-line: #b8c7f0;
+      --frame-marker: #4f46e5;
+    }
+    body.theme-focus-card-editorial .chapter.frame-boundary {
+      --frame-accent: #9a3412;
+      --frame-accent-2: #be123c;
+      --frame-accent-soft: #fbe9e4;
+      --frame-accent-line: #efb6a8;
+      --frame-marker: #b45309;
+    }
+    body.theme-focus-card-editorial .chapter.frame-signal {
+      --frame-accent: #047857;
+      --frame-accent-2: #b91c1c;
+      --frame-accent-soft: #e7f6ef;
+      --frame-accent-line: #9fd7bf;
+      --frame-marker: #b91c1c;
+    }
+    body.theme-focus-card-editorial .chapter > hr {
+      display: none;
+    }
+    body.theme-focus-card-editorial .chapter > h2:not(.frame-heading) {
+      font-size: 26px;
+      margin-bottom: 4mm;
+      padding-bottom: 3mm;
+      border-bottom: 2px solid #9bd8d4;
+      color: #1e2d2a;
+    }
+    body.theme-focus-card-editorial .frame-heading {
+      display: grid;
+      gap: 1.6mm;
+      margin-bottom: 1.8mm;
+    }
+    body.theme-focus-card-editorial .frame-kicker {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--frame-accent);
+      font-weight: 700;
+    }
+    body.theme-focus-card-editorial .frame-meta {
+      display: inline-flex;
+      width: fit-content;
+      padding: 1mm 2.8mm;
+      border-radius: 999px;
+      border: 1px solid var(--frame-accent-line);
+      background: var(--frame-accent-soft);
+      color: var(--frame-accent);
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+    body.theme-focus-card-editorial .frame-title {
+      display: block;
+      font-size: 29px;
+      line-height: 1.24;
+      letter-spacing: 0.01em;
+      color: #1d2b28;
+    }
+    body.theme-focus-card-editorial .chapter > h2 + p {
+      max-width: 136mm;
+      padding-bottom: 4mm;
+      margin-bottom: 7mm;
+      border-bottom: 2px solid var(--frame-accent-line);
+      font-size: 15px;
+      line-height: 1.86;
+      color: #4c4035;
+    }
+    body.theme-focus-card-editorial h3 {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 8mm;
+      margin-bottom: 3mm;
+      padding: 1.2mm 4mm;
+      border-radius: 999px;
+      border: 1px solid var(--frame-accent-line);
+      background: var(--frame-accent-soft);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--frame-accent);
+    }
+    body.theme-focus-card-editorial h3.section-heading::before {
+      margin-right: 2.4mm;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      opacity: 0.82;
+    }
+    body.theme-focus-card-editorial h3.section-scene::before {
+      content: "SCENE";
+    }
+    body.theme-focus-card-editorial h3.section-diagnosis::before {
+      content: "TRIAGE";
+    }
+    body.theme-focus-card-editorial h3.section-action::before {
+      content: "ACTION";
+    }
+    body.theme-focus-card-editorial h3.section-action {
+      background: #f6ecdc;
+      border-color: #e2c79b;
+      color: #8a5a15;
+    }
+    body.theme-focus-card-editorial h4 {
+      margin-top: 4.8mm;
+      margin-bottom: 2.2mm;
+      padding-left: 3.2mm;
+      border-left: 3px solid var(--frame-marker);
+      font-size: 13px;
+      color: #6c4f25;
+    }
+    body.theme-focus-card-editorial h4.sub-diff {
+      border-left-color: var(--frame-accent);
+      color: var(--frame-accent);
+    }
+    body.theme-focus-card-editorial h4.sub-first {
+      border-left-color: #b45309;
+      color: #8a5a15;
+    }
+    body.theme-focus-card-editorial h4.sub-risk {
+      border-left-color: #b91c1c;
+      color: #8a1c1c;
+    }
+    body.theme-focus-card-editorial h4.sub-support {
+      border-left-color: #1d4ed8;
+      color: #1e40af;
+    }
+    body.theme-focus-card-editorial p {
+      max-width: 136mm;
+      font-size: 13.2px;
+    }
+    body.theme-focus-card-editorial .content ul,
+    body.theme-focus-card-editorial .content ol {
+      margin: 0 0 4.4mm;
+      padding-left: 0;
+      list-style: none;
+    }
+    body.theme-focus-card-editorial .content li {
+      position: relative;
+      margin-bottom: 2.6mm;
+      padding-left: 5mm;
+    }
+    body.theme-focus-card-editorial .content li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.92em;
+      width: 2.2mm;
+      height: 2.2mm;
+      border-radius: 50%;
+      background: var(--frame-accent);
+      transform: translateY(-50%);
+    }
+    body.theme-focus-card-editorial code {
+      background: #f3ede3;
+      border: 1px solid #e5d8c4;
+      color: #43352a;
+    }
+    @media print {
+      body.theme-focus-card-editorial {
+        background: white;
+      }
+      body.theme-focus-card-editorial .book {
+        width: auto;
+        box-shadow: none;
+        padding: 0;
+        background: white;
+      }
+      body.theme-focus-card-editorial .cover,
+      body.theme-focus-card-editorial .toc,
+      body.theme-focus-card-editorial .chapter,
+      body.theme-focus-card-editorial .content > p:nth-child(2) {
+        box-shadow: none;
+      }
+      body.theme-focus-card-editorial .cover {
+        border-radius: 0;
+      }
+      body.theme-focus-card-editorial .chapter {
+        border-radius: 12px;
+        background: white;
+      }
+    }
+    body.theme-full-card-editorial {
+      color: #2a2f33;
+      background:
+        radial-gradient(circle at top left, #e6eef2 0, #f4f1ea 42%, #eef3f7 100%);
+    }
+    body.theme-full-card-editorial .book {
+      width: 206mm;
+      background: linear-gradient(180deg, #fbfaf7 0, #f4f1eb 100%);
+      box-shadow: 0 20px 50px rgba(27, 39, 49, 0.12);
+      padding: 18mm 14mm 18mm;
+    }
+    body.theme-full-card-editorial .cover {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      padding: 18mm 18mm 16mm;
+      border: 1px solid #d3dbe3;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(29, 78, 216, 0.08), rgba(15, 118, 110, 0.05) 48%, rgba(180, 83, 9, 0.10) 100%),
+        linear-gradient(180deg, #fffefd 0, #f5f2ec 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+    }
+    body.theme-full-card-editorial .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 34mm;
+      background: linear-gradient(180deg, #1d4ed8 0, #0f766e 48%, #b45309 100%);
+      opacity: 0.9;
+    }
+    body.theme-full-card-editorial .cover .eyebrow,
+    body.theme-full-card-editorial .cover h1,
+    body.theme-full-card-editorial .cover p,
+    body.theme-full-card-editorial .cover .meta-block {
+      position: relative;
+      z-index: 1;
+      max-width: 138mm;
+      margin-left: 18mm;
+    }
+    body.theme-full-card-editorial .cover .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: #1d4ed8;
+    }
+    body.theme-full-card-editorial .cover h1 {
+      font-size: 39px;
+      line-height: 1.24;
+      color: #1d2730;
+    }
+    body.theme-full-card-editorial .cover p:not(.eyebrow) {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #56616d;
+    }
+    body.theme-full-card-editorial .meta-block {
+      margin-top: 2mm;
+      padding-top: 4mm;
+      border-top: 1px solid rgba(110, 123, 137, 0.24);
+      color: #647180;
+    }
+    body.theme-full-card-editorial .toc {
+      margin-top: 10mm;
+      padding: 8mm 9mm 8mm;
+      border: 1px solid #d6dde4;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+    body.theme-full-card-editorial .toc h2 {
+      margin-bottom: 5mm;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: #475569;
+    }
+    body.theme-full-card-editorial .toc-groups {
+      display: grid;
+      gap: 5mm;
+    }
+    body.theme-full-card-editorial .toc-group {
+      padding: 4mm 4.5mm 3.5mm;
+      border-radius: 16px;
+      border: 1px solid #dde4ea;
+      background: rgba(255, 255, 255, 0.8);
+    }
+    body.theme-full-card-editorial .toc-group h3 {
+      display: block;
+      margin: 0 0 3mm;
+      padding: 0 0 2.2mm;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.24);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: #334155;
+    }
+    body.theme-full-card-editorial .toc-group.layer-health h3 {
+      color: #0f766e;
+    }
+    body.theme-full-card-editorial .toc-group.layer-transition h3 {
+      color: #b45309;
+    }
+    body.theme-full-card-editorial .toc-group.layer-operation h3 {
+      color: #1d4ed8;
+    }
+    body.theme-full-card-editorial .toc-list {
+      columns: initial;
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2mm 8mm;
+      counter-reset: toc;
+      font-size: 12px;
+    }
+    body.theme-full-card-editorial .toc-list li {
+      counter-increment: toc;
+      position: relative;
+      margin: 0;
+      padding: 2.6mm 0 2.6mm 11mm;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      break-inside: avoid;
+    }
+    body.theme-full-card-editorial .toc-list li::before {
+      content: counter(toc, decimal-leading-zero);
+      position: absolute;
+      top: 2.7mm;
+      left: 0;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      font-weight: 700;
+    }
+    body.theme-full-card-editorial .toc-list a {
+      display: inline-block;
+      color: #2a2f33;
+    }
+    body.theme-full-card-editorial .content {
+      margin-top: 10mm;
+    }
+    body.theme-full-card-editorial .content > p:first-child {
+      margin-bottom: 3mm;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+    body.theme-full-card-editorial .content > p:nth-child(2) {
+      max-width: 146mm;
+      margin-bottom: 8mm;
+      padding: 5mm 6mm;
+      border: 1px solid #d7dfe6;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      line-height: 1.92;
+      color: #46525e;
+    }
+    body.theme-full-card-editorial .content > hr:first-of-type {
+      display: none;
+    }
+    body.theme-full-card-editorial .layer {
+      --layer-accent: #0f766e;
+      --layer-soft: #e8f5f2;
+      --layer-line: #a7d7cf;
+      break-before: page;
+      page-break-before: always;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    body.theme-full-card-editorial .layer.layer-transition {
+      --layer-accent: #b45309;
+      --layer-soft: #fbf1e5;
+      --layer-line: #e9c89b;
+    }
+    body.theme-full-card-editorial .layer.layer-operation {
+      --layer-accent: #1d4ed8;
+      --layer-soft: #ebf1ff;
+      --layer-line: #bbcbf6;
+    }
+    body.theme-full-card-editorial .layer-heading {
+      margin-bottom: 4mm;
+      padding: 6mm 7mm 5.5mm;
+      border: 1px solid var(--layer-line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, var(--layer-soft), rgba(255, 255, 255, 0.95));
+      font-size: 26px;
+      color: var(--layer-accent);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    }
+    body.theme-full-card-editorial .layer > h2 + p {
+      max-width: 148mm;
+      margin-bottom: 6mm;
+      color: #55616c;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    body.theme-full-card-editorial .card {
+      --frame-accent: var(--layer-accent);
+      --frame-accent-soft: var(--layer-soft);
+      --frame-accent-line: var(--layer-line);
+      --frame-marker: #64748b;
+      margin-top: 6mm;
+      padding: 10mm 10.5mm 9mm 12mm;
+      border: 1px solid #d9e0e6;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.98));
+      box-shadow: 0 12px 30px rgba(31, 41, 55, 0.08);
+      position: relative;
+      overflow: hidden;
+      break-inside: avoid;
+    }
+    body.theme-full-card-editorial .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10mm;
+      bottom: 10mm;
+      width: 4px;
+      border-radius: 999px;
+      background: var(--frame-accent);
+    }
+    body.theme-full-card-editorial .card.frame-health {
+      --frame-accent: #0f766e;
+      --frame-accent-soft: #e8f5f2;
+      --frame-accent-line: #a7d7cf;
+      --frame-marker: #0f766e;
+    }
+    body.theme-full-card-editorial .card.frame-transition {
+      --frame-accent: #b45309;
+      --frame-accent-soft: #fbf1e5;
+      --frame-accent-line: #e9c89b;
+      --frame-marker: #b45309;
+    }
+    body.theme-full-card-editorial .card.frame-operation {
+      --frame-accent: #1d4ed8;
+      --frame-accent-soft: #ebf1ff;
+      --frame-accent-line: #bbcbf6;
+      --frame-marker: #1d4ed8;
+    }
+    body.theme-full-card-editorial .frame-heading {
+      display: grid;
+      gap: 1.2mm;
+      margin-bottom: 2mm;
+    }
+    body.theme-full-card-editorial .frame-kicker {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--frame-accent);
+      font-weight: 700;
+    }
+    body.theme-full-card-editorial .frame-title {
+      display: block;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      color: #1d2730;
+    }
+    body.theme-full-card-editorial .card > h3 + p {
+      max-width: 138mm;
+      padding-bottom: 4mm;
+      margin-bottom: 5mm;
+      border-bottom: 2px solid var(--frame-accent-line);
+      font-size: 15px;
+      line-height: 1.88;
+      color: #46525e;
+    }
+    body.theme-full-card-editorial blockquote {
+      margin: 0 0 5mm;
+      padding: 4mm 4.5mm;
+      border: 1px solid var(--frame-accent-line);
+      border-left: 0;
+      border-radius: 14px;
+      background: var(--frame-accent-soft);
+      color: #334155;
+    }
+    body.theme-full-card-editorial blockquote p {
+      max-width: none;
+      margin: 0;
+      font-size: 12.8px;
+      line-height: 1.82;
+    }
+    body.theme-full-card-editorial h4 {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 7mm;
+      margin-bottom: 3mm;
+      padding: 1.2mm 4mm;
+      border-radius: 999px;
+      border: 1px solid var(--frame-accent-line);
+      background: var(--frame-accent-soft);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--frame-accent);
+    }
+    body.theme-full-card-editorial h4.section-heading::before {
+      margin-right: 2.4mm;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      opacity: 0.82;
+    }
+    body.theme-full-card-editorial h4.section-scene::before {
+      content: "SCENE";
+    }
+    body.theme-full-card-editorial h4.section-diagnosis::before {
+      content: "TRIAGE";
+    }
+    body.theme-full-card-editorial h4.section-action::before {
+      content: "ACTION";
+    }
+    body.theme-full-card-editorial h4.section-action {
+      background: #f5efe4;
+      border-color: #dfccaa;
+      color: #8a5a15;
+    }
+    body.theme-full-card-editorial h5 {
+      margin-top: 4.5mm;
+      margin-bottom: 2.2mm;
+      padding-left: 3.2mm;
+      border-left: 3px solid var(--frame-marker);
+      font-size: 13px;
+      color: #526070;
+    }
+    body.theme-full-card-editorial h5.sub-diff {
+      border-left-color: var(--frame-accent);
+      color: var(--frame-accent);
+    }
+    body.theme-full-card-editorial h5.sub-first {
+      border-left-color: #b45309;
+      color: #8a5a15;
+    }
+    body.theme-full-card-editorial h5.sub-risk {
+      border-left-color: #b91c1c;
+      color: #8a1c1c;
+    }
+    body.theme-full-card-editorial h5.sub-support {
+      border-left-color: #1d4ed8;
+      color: #1e40af;
+    }
+    body.theme-full-card-editorial p {
+      max-width: 138mm;
+      font-size: 13.2px;
+    }
+    body.theme-full-card-editorial .content ul,
+    body.theme-full-card-editorial .content ol {
+      margin: 0 0 4.2mm;
+      padding-left: 0;
+      list-style: none;
+    }
+    body.theme-full-card-editorial .content li {
+      position: relative;
+      margin-bottom: 2.6mm;
+      padding-left: 5mm;
+    }
+    body.theme-full-card-editorial .content li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.92em;
+      width: 2.2mm;
+      height: 2.2mm;
+      border-radius: 50%;
+      background: var(--frame-accent);
+      transform: translateY(-50%);
+    }
+    body.theme-full-card-editorial code {
+      background: #f3f5f7;
+      border: 1px solid #dbe4ea;
+      color: #334155;
+    }
+    @media print {
+      body.theme-full-card-editorial {
+        background: white;
+      }
+      body.theme-full-card-editorial .book {
+        width: auto;
+        box-shadow: none;
+        padding: 0;
+        background: white;
+      }
+      body.theme-full-card-editorial .cover,
+      body.theme-full-card-editorial .toc,
+      body.theme-full-card-editorial .toc-group,
+      body.theme-full-card-editorial .layer-heading,
+      body.theme-full-card-editorial .card,
+      body.theme-full-card-editorial .content > p:nth-child(2) {
+        box-shadow: none;
+      }
+      body.theme-full-card-editorial .cover,
+      body.theme-full-card-editorial .toc,
+      body.theme-full-card-editorial .toc-group,
+      body.theme-full-card-editorial .layer-heading,
+      body.theme-full-card-editorial .card {
+        border-radius: 0;
+        background: white;
+      }
+    }
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 10mm 14mm;
+      }
+      body {
+        background: white;
+      }
+      .book {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .cover {
+        min-height: 0;
+        border: 0;
+        padding: 0;
+        background: white;
+      }
+      .content {
+        margin-top: 10mm;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="book">
+    <section class="cover">
+      <p class="eyebrow">Next Being Lab / 仕事設計ガイドブック</p>
+      <h1>仕事設計ガイドブック v3</h1>
+      <p>就労支援員・ジョブコーチ・障害者職業生活相談員のための仕事設計リファレンス。</p>
+      <div class="meta-block">
+        <span>発行: Next Being Lab</span>
+        <span>対象: 就労支援者向け</span>
+      </div>
+    </section>
+    <section class="toc">
+      <h2>目次</h2>
+      <ol class="toc-list"><li><a href="#sec-001">このガイドブックが取り組む課題の射程</a></li>
+<li><a href="#sec-002">ファーストエイドガイド：複合困難への最初の一手</a></li>
+<li><a href="#sec-007">設計層Ⅰ：症状・経過との共存設計</a></li>
+<li><a href="#sec-085">設計層Ⅱ：仕事・環境の適合設計</a></li>
+<li><a href="#sec-207">設計層Ⅲ：参加経路と社会的接続の設計</a></li></ol>
+    </section>
+    <article class="content">
+      <p>更新日: 2026-04-04 発行: Next Being Lab 根拠:   当事者データ: employment_survey（n=4,553）+ nanbyo_survey（n=4,523）   支援者データ: toku18支援者調査（n=3,053）+ nanbyo支援者調査（n=535）   FCHMAアトラス（8D×6M）   外部知識統合 G1-G6（IPS/SE含む：日本データとの独立整合確認済み）</p>
+<p>就労支援員・ジョブコーチ・障害者職業生活相談員が、相談現場で困りごとを整理するためのリファレンスです。 働きづらさを診断名や個人特性で扱うのではなく、<strong>仕事・環境・支援・制度の設計課題として読み替えること</strong>を目的としています。</p>
+<p>3つの設計層は全体地図です。まず「どの設計層で詰まっているか」を見てから、該当フレームの「鑑別診断」と「取組み内容」で最初の一手を決めます。 状況レベル 🟢 / 🟡 / 🔴 / 💣 は診断の重さではなく、就労がどれだけ詰まり、設計変更で吸収できているかで切り分けます。 「先に見えやすい文脈」は配慮が可視化されやすい例であり、診断名でフレームを決め打ちするための欄ではありません。 最終判断は支援者と本人が持ちます。制度適用や個人情報の扱いは、法域・雇用区分・本人同意を確認して判断してください。</p>
+<ul>
+<li><code>設計層Ⅰ 症状・経過との共存設計</code>: 体調、治療、疾患管理、勤務リズム、段階設計がぶつかるときに使う</li>
+<li><code>設計層Ⅱ 仕事・環境の適合設計</code>: 感覚・認知・情報処理・コミュニケーション環境と仕事要求が合っていないときに使う</li>
+<li><code>設計層Ⅲ 参加経路と社会的接続の設計</code>: 就労意欲・開示判断・求職・支援接続・制度活用が詰まるときに使う</li>
+</ul>
+<hr />
+<section class="chapter">
+<h2 id="sec-001">このガイドブックが取り組む課題の射程</h2>
+<p><strong>喫緊の課題への対応として</strong>: 相談現場では、障害や難病を持つ人の就労の詰まりが「本人の問題」として扱われ続けることがある。このガイドブックは、その詰まりを仕事・環境・支援・制度の設計課題として読み替え、今すぐ一手を打つための実践ツールです。</p>
+<p><strong>インクルーシブ雇用の実践的基盤として</strong>: 同時に、このガイドブックが積み上げる「仕事設計」の知見は、障害者雇用からインクルーシブ雇用への転換を、理念からではなく実践から進める基盤になります。「誰を雇用枠に当てはめるか」ではなく「仕事をどう設計するか」という問いを持つ支援者・企業が増えるとき、より多くの人が配慮を必要とせず参加できる職場の設計が蓄積されていく。障害者就労支援の現場で培われた仕事設計の実践知は、そのままインクルーシブな職場の設計知識になります。</p>
+<p><strong>AI・生産性向上の時代を見据えて</strong>: AIによる生産性向上が加速する時代、生産性のために一部の人に役割を集中させる仕事設計はむしろ脆弱になる可能性があります。このガイドブックが示す設計の視点、つまり「人の多様な機能プロフィールを前提として仕事を設計する」という発想は、その転換を実践から支えます。健常者だけに役割が集中する設計から、より多くの人が強みや能力を発揮して職業に参加できる設計へのスムーズな移行を、現場の一手の積み重ねから準備することがこのガイドブックの長期的な目的です。</p>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-002">ファーストエイドガイド：複合困難への最初の一手</h2>
+<p>このガイドは、「どのフレームを使えばよいかわからない」「複数の問題が同時に起きている」「フレームを試しても動けない」という状況のためのものです。フレームブックの入口として使ってください。</p>
+<h3 id="sec-003">ステップ1：今、最も強く詰まっているのはどこか</h3>
+<p>以下の4問で設計層の目安をつけます。</p>
+<p>| 問い | 主にあてはまる場合 | |---|---| | 体調・症状・治療が仕事の継続を直接妨げていますか？ | → <strong>設計層Ⅰ</strong>を先に見る | | 仕事の内容・指示・情報・環境が機能的に合っていないと感じますか？ | → <strong>設計層Ⅱ</strong>を先に見る | | 就職活動・開示判断・支援へのアクセス・制度の壁が詰まっていますか？ | → <strong>設計層Ⅲ</strong>を先に見る | | 上の3つがすべて当てはまる、またはどれかわからない | → 以下の<strong>複合困難のファーストエイド</strong>へ |</p>
+<h3 id="sec-004">ステップ2：複合困難のファーストエイド</h3>
+<p><strong>C2型（全方位困難）の典型像</strong>: 体調悪化・就労意欲喪失・支援へのアクセス困難・経済的不安が同時に発生している状態。このとき、フレームを選んで介入しようとしても、どこから手をつけても他の問題に引き戻される。</p>
+<h4 id="sec-005">複合困難時の優先順位</h4>
+<ol>
+<li><strong>安全の確認を最初に行う</strong></li>
+</ol>
+<ul>
+<li>健康上の危機（受診できていない・薬が切れている・生活が維持できない）がある場合、フレームの前に医療・生活支援の緊急接続を優先する（→ 設計層ⅢのⅢ-08「支援ネットワークへの接続」参照）</li>
+</ul>
+<ol>
+<li><strong>「今週できること」を一つだけ選ぶ</strong></li>
+</ol>
+<ul>
+<li>複合困難では、複数の問題を同時に解こうとすると全部が止まる</li>
+<li>「最も小さな一手」を当事者と一緒に選ぶ。その一手が設計層Ⅰ・Ⅱ・Ⅲのどこかに必ずある</li>
+</ul>
+<ol>
+<li><strong>意欲が出ない状態を「意欲の問題」として扱わない</strong></li>
+</ol>
+<ul>
+<li>就労意欲の低下は、複合困難の結果として起きる。意欲を上げようとする前に、困難の構造を解くことが先（→ Ⅲ-01「就労意欲・社会参加の再接続」参照）</li>
+</ul>
+<ol>
+<li><strong>支援者自身がどこから手をつけるか行き詰まったとき</strong></li>
+</ol>
+<ul>
+<li>当事者を中心に置き、「今一番つらいことは何ですか」という問いから始める</li>
+<li>その答えが、最初に開くフレームを決める</li>
+</ul>
+<h4 id="sec-006">フレームが機能しない状況の鑑別</h4>
+<p>| 状況 | 見立て | 対応 | |---|---|---| | フレームを試したが何も変わらない | 別の問題が根本にある可能性 | 他の設計層を確認、または支援者間でのケース会議 | | 本人がフレームの実施を断る | 信頼関係の構築が先 / 意欲回復が先 | Ⅲ-01→Ⅲ-08の順で再接続から | | 雇用側がどの提案も受け入れない | 組織レベルの問題 | 外部機関（ハローワーク・障害者職業センター等）を介入させる | | 体調が不安定すぎてどのフレームも試せない | 医療的安定が前提条件 | 主治医・医療機関との連携を確認 |</p>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-007">設計層Ⅰ：症状・経過との共存設計</h2>
+<p>体調・治療・疾患管理と仕事の密度がぶつかるとき、勤務設計と経過への備えを整えるレイヤー。本人の頑張り方ではなく、業務量・時間・治療スケジュール・職場内の管理環境をどう設計し直すかを見る。</p>
+<p><strong>対応FCHMAドメイン</strong>: D1（症状変動）+ D7（時間経過・移行不安定化） <strong>主要根拠クラスタ</strong>: C4（難病・中等度身体負荷）、C8（難病・治療通院衝突）、C10（難病・重度身体負荷）、C1（難病・高困難）、C5（難病・病状進行不安）</p>
+<hr />
+<h3 id="sec-008">Ⅰ-01 体調変動の設計</h3>
+<p>症状の波・疲労・回復遅延がある場合、日・週・月単位で達成度が変動し、標準的な業務密度の維持が困難になりやすい。</p>
+<blockquote><p>着眼点: 問題は体力不足ではなく、業務密度と症状の変動リズムのズレが累積していることにある。難病では日単位の波だけでなく、週・月・季節単位での変動パターンが見られることが多い。</p></blockquote>
+<h4 id="sec-009">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（慢性疾患含む）/ 内部障害 / 精神障害</p>
+<h5 id="sec-010">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 変動リズムを前提に業務量と休憩が組まれ、悪化前に負荷を下げられる。</li>
+<li>🟡 要調整: 休憩や業務再配置で持ち直せるが、変動パターンに合わせた設計がまだ不十分。</li>
+<li>🔴 高頻度支障: 週後半や繁忙期に失速が反復し、品質と回復の両方が落ちる。</li>
+<li>💣 破綻・停止: 数日単位で稼働が崩れ、欠勤や業務停止が続いている。</li>
+</ul>
+<h4 id="sec-011">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-012">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「症状の変動リズムに合わせた業務密度の可変設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-013">近いフレームとの見分け方</h5>
+<ul>
+<li>通院日程との衝突が主課題なら「Ⅰ-02 治療・通院の統合設計」へ。職場内での服薬・休憩管理が主課題なら「Ⅰ-03 職場内疾患管理の実装」へ。復職後の段階復帰設計が主課題なら「Ⅰ-06 段階的職務設計」へ。</li>
+</ul>
+<h4 id="sec-014">具体的な取組み内容</h4>
+<h5 id="sec-015">最初にやること</h5>
+<ul>
+<li>本人の症状変動パターン（日内・週内・月内）を記録し、「良い日・普通の日・悪い日」の頻度と特徴をつかむ</li>
+<li>業務量を週単位で平準化し、ピーク日を作らない</li>
+<li>重要タスクを体調の安定時間帯へ再配置する</li>
+<li>90分ごとの短休憩を標準運用にする</li>
+<li>週次レビューで負荷の上げ下げを事前合意する</li>
+</ul>
+<h5 id="sec-016">見落としやすい点</h5>
+<ul>
+<li>難病では「今日できたことが明日できない」ではなく「良い週・悪い週」という中長期パターンがある。日々の記録だけでなく月単位の変動を確認する</li>
+<li>勤務条件の変更は制度や雇用区分で変わる。善意運用だけで決めない</li>
+</ul>
+<h5 id="sec-017">設計の考え方</h5>
+<p>まず変動リズムの記録で「パターン」をつかむ。パターンがわかれば業務密度の設計が可能になる。変動そのものをなくそうとせず、変動を前提とした設計を目指す。</p>
+<h5 id="sec-018">外部と一緒に考える場面</h5>
+<ul>
+<li>支援者データ（toku18）が示す「就職後の体調管理」への最有効介入：職業場面を踏まえた職業評価（障害者職業センター、効果推定-0.10）が体調変動パターンと職務設計のミスマッチを客観評価できる。就業生活支援センター（Q1転換差+16.4pt）・HWチーム支援（+15.3pt）が企業への定期的アプローチ（効果推定-0.09）と就職後継続支援（効果推定-0.06）の主要担い手。主治医・医療ソーシャルワーカーによる自己管理支援（効果推定-0.05）と、就労している同障害者との交流・情報収集（ピア支援グループ等、効果推定-0.04）も体調管理の実践知として効果が確認されている。</li>
+</ul>
+<hr />
+<h3 id="sec-019">Ⅰ-02 治療・通院の統合設計</h3>
+<p>通院・検査・処置の予定が業務スケジュールと衝突し、どちらかを犠牲にする状態が続いている。</p>
+<blockquote><p>着眼点: 問題は通院そのものではなく、受診日と業務ピークの調整が本人一人に任されていることにある。</p></blockquote>
+<h4 id="sec-020">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（定期通院・点滴治療等）/ 内部障害 / 肢体不自由</p>
+<h5 id="sec-021">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 通院日を固定し、前後の業務負荷調整が合意されている。</li>
+<li>🟡 要調整: 通院日の個別調整で回っているが、治療ピーク期や突発受診で崩れやすい。</li>
+<li>🔴 高頻度支障: 通院日と会議・納期が定期的に衝突し、欠勤不安・有給消耗が積み上がる。</li>
+<li>💣 破綻・停止: 通院を優先すると仕事が落ち、仕事を優先すると受診が崩れる。</li>
+</ul>
+<h4 id="sec-022">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-023">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「受診日・受診時刻と業務スケジュールの衝突調整」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-024">近いフレームとの見分け方</h5>
+<ul>
+<li>職場内での服薬・食事・安静の確保が主課題なら「Ⅰ-03 職場内疾患管理の実装」へ。治療後の回復時間確保が主課題なら「Ⅰ-04 回復時間の確保設計」へ。</li>
+</ul>
+<h4 id="sec-025">具体的な取組み内容</h4>
+<h5 id="sec-026">最初にやること</h5>
+<ul>
+<li>通院日を固定し、その前後の業務負荷を事前に軽減する</li>
+<li>始業・終業時刻の可変枠（フレックス・半日休暇等）を設定する</li>
+<li>突発受診時の業務引継ぎテンプレートを作成する</li>
+<li>治療ピーク期（副作用が強い時期等）だけ別立ての短期運用ルールを設ける</li>
+</ul>
+<h5 id="sec-027">見落としやすい点</h5>
+<ul>
+<li>定期通院の頻度は治療の進行で変わる。半年ごとに通院スケジュールを確認する</li>
+<li>通院配慮の制度適用（特別有給・通院休暇等）は雇用区分・就業規則によって異なる</li>
+</ul>
+<h5 id="sec-028">設計の考え方</h5>
+<p>通院スケジュールを「業務計画に組み込む変数」として扱う。本人が毎回交渉するのではなく、仕組みとして機能するルートを作る。</p>
+<h5 id="sec-029">外部と一緒に考える場面</h5>
+<ul>
+<li>就業生活支援センター（Q1転換差+16.4pt）・HW専門援助部門（+15.3pt）が通院スケジュール調整の企業側交渉（企業へのアプローチ、効果推定-0.09）の主要担い手。障害者職業センターの職業場面評価（効果推定-0.10）が治療スケジュールと職務設計のミスマッチを客観評価できる。主治医の診断書・意見書が合理的配慮の根拠として機能する。</li>
+</ul>
+<hr />
+<h3 id="sec-030">Ⅰ-03 職場内疾患管理の実装</h3>
+<p>服薬・食事制限・安静確保など、職場内で継続して行う疾患管理が業務フローに組み込まれておらず、自己管理が破綻しやすい状態になっている。</p>
+<blockquote><p>着眼点: 問題は自己管理意識の低さではなく、服薬・休憩・食事のタイミングが職場ルールや業務設計と整合していないことにある。</p></blockquote>
+<h4 id="sec-031">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（服薬・食事制限・安静確保を要する場合）/ 内部障害（糖尿病・透析・消化器疾患等）</p>
+<h5 id="sec-032">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 服薬・食事・休憩の時間と場所が業務スケジュールに組み込まれている。</li>
+<li>🟡 要調整: 通常期は自己管理できているが、繁忙期・出張・会議が重なると崩れやすい。</li>
+<li>🔴 高頻度支障: 服薬タイミングや休憩が業務の流れで取れず、自己管理が不安定になっている。</li>
+<li>💣 破綻・停止: 職場での疾患管理が限界を超え、体調悪化または離職検討に至っている。</li>
+</ul>
+<h4 id="sec-033">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-034">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「職場内での服薬・食事・安静の実施環境の整備」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-035">近いフレームとの見分け方</h5>
+<ul>
+<li>通院日程の調整が主課題なら「Ⅰ-02 治療・通院の統合設計」へ。治療後の回復確保が主課題なら「Ⅰ-04 回復時間の確保設計」へ。身体負荷自体が就労限界を超えている場合は支援者・医療者との緊急協議へ。</li>
+</ul>
+<h4 id="sec-036">具体的な取組み内容</h4>
+<h5 id="sec-037">最初にやること</h5>
+<ul>
+<li>服薬・食事・安静の時刻と場所を事前に上司と合意し、業務スケジュールに明記する</li>
+<li>繁忙期・出張・会議集中時の「例外ルール」を事前に設定する</li>
+<li>服薬・休憩スペース・食事場所（個室・空き部屋・休憩室等）を施設担当者と確認する</li>
+<li>自己管理の実施状況を定期報告できる仕組みを整える（記録シート等）</li>
+</ul>
+<h5 id="sec-038">見落としやすい点</h5>
+<ul>
+<li>「体調が悪くなったら言う」方式は、言い出せないまま悪化する。事前の構造化が必要</li>
+<li>食事制限がある場合、社員食堂・弁当発注・社外食事の選択肢を確認する</li>
+</ul>
+<h5 id="sec-039">設計の考え方</h5>
+<p>疾患管理を「個人の努力」から「職場の設計」に転換する。合理的配慮として位置づけ、業務計画の一部として組み込む。</p>
+<h5 id="sec-040">外部と一緒に考える場面</h5>
+<ul>
+<li>就業生活支援センター（Q1転換差+16.4pt）が就職後継続的な職場・本人支援（効果推定-0.06）として服薬・食事・安静の実施状況を定期モニタリングできる。主治医が「職場内管理に必要な環境」を文書化する自己管理支援（効果推定-0.05）が企業側の配慮実施を支援する。HWチーム支援（+15.3pt）が合理的配慮としての環境整備を企業側に働きかけることができる（企業へのアプローチ、効果推定-0.09）。</li>
+</ul>
+<hr />
+<h3 id="sec-041">Ⅰ-04 回復時間の確保設計</h3>
+<p>定期治療・強い症状エピソードの後に必要な回復時間が勤務設計に織り込まれておらず、疲労・症状が蓄積している。</p>
+<blockquote><p>着眼点: 問題は治療日の欠勤そのものではなく、治療後の回復に必要な時間が業務設計に存在していないことにある。</p></blockquote>
+<h4 id="sec-042">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 内部障害 / 難病（化学療法・点滴治療・強い疼痛エピソードを伴う場合）</p>
+<h5 id="sec-043">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 回復時間帯を前提に業務密度が組まれ、治療と仕事がぶつかりにくい。</li>
+<li>🟡 要調整: 部分的な軽減はあるが、不可業務帯や代替担当が未固定で無理が残る。</li>
+<li>🔴 高頻度支障: 治療翌日まで疲労・副作用が残り、業務密度を維持できない状態が続く。</li>
+<li>💣 破綻・停止: 治療後の回復が取れず、悪化と欠勤が連鎖している。</li>
+</ul>
+<h4 id="sec-044">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-045">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「治療・症状エピソード後の回復時間の確保」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-046">近いフレームとの見分け方</h5>
+<ul>
+<li>通院日程の衝突が主課題なら「Ⅰ-02」へ。職場内での疾患管理が主課題なら「Ⅰ-03」へ。</li>
+</ul>
+<h4 id="sec-047">具体的な取組み内容</h4>
+<h5 id="sec-048">最初にやること</h5>
+<ul>
+<li>治療日の翌日・翌々日を「軽業務日」として業務計画に組む</li>
+<li>治療後に不可能な業務（重作業・集中を要する業務・会議等）を明確にして周知する</li>
+<li>代替担当者を事前に設定し、回復期間中の引継ぎをルール化する</li>
+</ul>
+<h5 id="sec-049">見落としやすい点</h5>
+<ul>
+<li>副作用や症状の強さは治療サイクルで変動する。治療計画に合わせて定期的に見直す</li>
+<li>「頑張れば出勤できる」状態を無理しないよう、回復基準を事前に本人と合意する</li>
+</ul>
+<h5 id="sec-050">設計の考え方</h5>
+<p>回復時間を「例外的な休み」ではなく「治療に伴う標準的な設計要素」として位置づける。</p>
+<h5 id="sec-051">外部と一緒に考える場面</h5>
+<ul>
+<li>就業生活支援センター（Q1転換差+16.4pt）が就職後継続的な職場・本人支援（効果推定-0.06）として回復設計の定期確認を担える。治療計画変更時は障害者職業センターの職業場面評価（効果推定-0.11）で職務設計の再アセスメントを行える。医師の意見書が業務調整・合理的配慮の根拠として機能する。</li>
+</ul>
+<hr />
+<h3 id="sec-052">Ⅰ-05 勤務リズムの適合設計</h3>
+<p>標準的な勤務形態（始業・終業時刻・曜日・連勤日数）が症状の変動パターンや治療スケジュールと構造的に合っていない。</p>
+<blockquote><p>着眼点: 問題は意欲や継続性ではなく、固定された勤務形態が症状リズムと根本的にズレていることにある。</p></blockquote>
+<h4 id="sec-053">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（周期的な症状変動・治療サイクルがある場合）/ 内部障害 / 精神障害</p>
+<h5 id="sec-054">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 症状のリズムに合わせた勤務形態（時間・日数・曜日）が設定されている。</li>
+<li>🟡 要調整: おおむね機能しているが、一部の曜日や時間帯で無理が生じている。</li>
+<li>🔴 高頻度支障: 週の前半/後半・特定の時間帯に繰り返しパターンで支障が出る。</li>
+<li>💣 破綻・停止: 勤務形態と症状リズムの不整合が継続し、就労継続の見通しが立たない。</li>
+</ul>
+<h4 id="sec-055">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-056">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「勤務の時間・頻度・リズムの形態変更」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-057">近いフレームとの見分け方</h5>
+<ul>
+<li>日内の症状変動への対応が主課題なら「Ⅰ-01」へ。治療日との衝突が主課題なら「Ⅰ-02」へ。</li>
+</ul>
+<h4 id="sec-058">具体的な取組み内容</h4>
+<h5 id="sec-059">最初にやること</h5>
+<ul>
+<li>症状が安定している時間帯・曜日を記録し、勤務時間帯の候補を絞る</li>
+<li>短時間勤務・フレックス・週3日勤務等の選択肢を雇用区分・制度と照らして確認する</li>
+<li>症状の変化に合わせて勤務形態を段階的に変更できる合意を事前に作る</li>
+</ul>
+<h5 id="sec-060">見落としやすい点</h5>
+<ul>
+<li>短時間勤務は給与・社会保険の影響を伴う。収入と給付のバランスをⅢ-07と合わせて確認する</li>
+<li>勤務形態の変更は雇用契約の変更になることがある。労務的な確認を先行する</li>
+</ul>
+<h5 id="sec-061">設計の考え方</h5>
+<p>「週5日・フルタイム」を標準として逸脱を管理するのではなく、本人の機能リズムに合った勤務形態を設計の出発点にする。</p>
+<h5 id="sec-062">外部と一緒に考える場面</h5>
+<ul>
+<li>HW専門援助部門（Q1転換差+15.3pt）・就業生活支援センター（+16.4pt）が勤務形態変更の企業側交渉（企業へのアプローチ、効果推定-0.09）を担える。障害者職業センターの職業場面評価（効果推定-0.10）が勤務形態と機能プロフィールのミスマッチを客観評価できる。収入・社会保険への影響はⅢ-07と合わせて就労・生活一体相談（就業生活支援センター等、効果推定-0.08）で確認する。</li>
+</ul>
+<hr />
+<h3 id="sec-063">Ⅰ-06 段階的職務設計</h3>
+<p>現在の症状・能力水準と将来の変化見通しを踏まえた職務の段階的な設計ができておらず、「このまま続けられるか」という不安が就労継続を妨げている。</p>
+<blockquote><p>着眼点: 問題は現在の能力の限界ではなく、現在から将来にわたる変化を前提とした職務設計が存在しないことにある。就職前の段階でも、「続けられるか」という将来設計の不在が就職活動の障壁になることがある。</p></blockquote>
+<h4 id="sec-064">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（病状の段階的進行がある場合）/ 内部障害 / 精神障害（再発リスクがある場合）</p>
+<h5 id="sec-065">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 段階的な職務計画があり、症状変化に合わせた調整経路が合意されている。</li>
+<li>🟡 要調整: 現在は安定しているが、将来の変化に対応する計画がない。</li>
+<li>🔴 高頻度支障: 症状変化のたびに職務内容を一から交渉せざるを得ず、疲弊している。</li>
+<li>💣 破綻・停止: 将来への不安から就職・就労継続の判断ができない状態になっている。</li>
+</ul>
+<h4 id="sec-066">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-067">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「現在の状態と将来の変化を見据えた職務の段階的な設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-068">近いフレームとの見分け方</h5>
+<ul>
+<li>日々の体調変動への対応が主課題なら「Ⅰ-01」へ。病状進行への「備えと合意」が主課題なら「Ⅰ-07」へ。就職前の将来不安への対応が主課題で開示問題が絡む場合は「Ⅲ-03」も合わせて確認。</li>
+</ul>
+<h4 id="sec-069">具体的な取組み内容</h4>
+<h5 id="sec-070">最初にやること</h5>
+<ul>
+<li>現在できる業務・今後負荷を下げたい業務・避けたい業務を3種類に整理する</li>
+<li>「段階1（今）→段階2（体調変化時）→段階3（大きな変化時）」の職務変更の筋道を事前に合意する</li>
+<li>就職前の場合: 入社後の試用期間・職務変更経路を採用段階で確認・合意する</li>
+</ul>
+<h5 id="sec-071">見落としやすい点</h5>
+<ul>
+<li>将来設計は「今の状態の延長」でなく「起こりうる変化の想定」が必要。主治医からの見通し情報を活用する</li>
+<li>段階的な変更の合意は、口頭ではなく書面（労働条件通知書の特記等）に残す</li>
+</ul>
+<h5 id="sec-072">設計の考え方</h5>
+<p>日本の当事者データ（C5型の将来不安・C1型の就職障壁）が示す構造と同じ原則を、IPS/SE国際エビデンスも「place-then-train（就職してから学ぶ）」として独立に確認している。「完璧に準備できてから就職する」ではなく「今の段階で就職しながら設計を更新していく」視点で考える。</p>
+<h5 id="sec-073">外部と一緒に考える場面</h5>
+<ul>
+<li>就労移行支援事業所（Q1転換差+17.0pt）・就業生活支援センター（+16.4pt）が段階的職務計画の策定と企業交渉（企業へのアプローチ、効果推定-0.07）の主要担い手。障害者職業センターの職業場面評価（効果推定-0.11）が各段階での職務適合性を評価できる。就業生活支援センターが就職後継続的な職場・本人支援（効果推定-0.06）として段階変更のタイミングを継続的にモニタリングできる。</li>
+</ul>
+<hr />
+<h3 id="sec-074">Ⅰ-07 病状変化への備えの設計</h3>
+<p>現在は安定していても、今後の病状進行・再燃・悪化に備えた職場側の対応計画が合意されておらず、「いつか来る変化」への不安が就労意欲や日常の集中力を妨げている。</p>
+<blockquote><p>着眼点: 問題は現在の悪化ではなく、悪化したときの対応経路が存在しないこと、またはその不在への不安にある。「今は大丈夫」な状態での備えの設計が、将来の就労継続を支える。</p></blockquote>
+<h4 id="sec-075">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（進行性・再燃性の疾患）/ 精神障害（再発リスクがある場合）/ 内部障害</p>
+<h5 id="sec-076">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 変化時の対応計画が職場・支援者・本人の間で合意されている。</li>
+<li>🟡 要調整: 現在は安定しているが、変化時の経路が明確でなく不安が続いている。</li>
+<li>🔴 高頻度支障: 将来への不安が日常的な集中力・意欲・就職活動の妨げになっている。</li>
+<li>💣 破綻・停止: 将来の不安が主因で就職を断念しているか、在職中の危機対応が機能していない。</li>
+</ul>
+<h4 id="sec-077">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-078">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「現在安定しているが将来の変化への備えと合意形成」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-079">近いフレームとの見分け方</h5>
+<ul>
+<li>現在すでに症状変動が起きているなら「Ⅰ-01」へ。現在悪化が進行しており職務設計の見直しが必要なら「Ⅰ-06」へ。将来不安が就職意欲の断念に至っているなら「Ⅲ-01」も確認。</li>
+</ul>
+<h4 id="sec-080">具体的な取組み内容</h4>
+<h5 id="sec-081">最初にやること</h5>
+<ul>
+<li>「悪化サインのチェックリスト」を本人と作成し、早期に職場・支援者に伝えられる基準を設定する</li>
+<li>悪化時の対応手順（休暇取得・業務変更・職場内支援担当者への連絡等）を事前に文書化する</li>
+<li>主治医・支援者・職場担当者の3者連絡経路を確認・合意する</li>
+</ul>
+<h5 id="sec-082">見落としやすい点</h5>
+<ul>
+<li>「今は大丈夫だから」という理由で備えを後回しにすると、変化が来たときに間に合わない</li>
+<li>不安そのものが症状として現れている場合（C5型）、備えの設計と並行して心理的サポートを確認する</li>
+</ul>
+<h5 id="sec-083">設計の考え方</h5>
+<p>将来の変化への「不安をなくす」のではなく、「不確実性の中でも対応経路がある」という安心感を設計する。予防的合意が、現在の就労継続を支える。</p>
+<h5 id="sec-084">外部と一緒に考える場面</h5>
+<ul>
+<li>就業生活支援センター（Q1転換差+16.4pt）が就職後継続的な職場・本人支援（効果推定-0.06）として変化への備えと定期確認を担える。難病相談支援センター（都道府県設置、Q1転換差+3.1ptだが難病では不可欠）が疾患特有の変化パターンの情報提供を担える。就業生活支援センター等による障害理解・対処支援（効果推定-0.08）が職場の「変化時対応文化」の形成を支援する。</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-085">設計層Ⅱ：仕事・環境の適合設計</h2>
+<p>仕事の内容・指示・情報提示・コミュニケーション環境と、本人の感覚・認知・身体特性が合っていないときに使うレイヤー。本人の特性を変えようとするのではなく、仕事の要求と職場環境の設計を変えることを目指す。</p>
+<p><strong>対応FCHMAドメイン</strong>: D2（仕事要求ミスマッチ）+ D4（配慮・環境ギャップ） <strong>主要根拠クラスタ</strong>: C3（発達障害）、C7（視覚障害）、C9（聴覚障害）、C11（障害横断・指示困難）、C14（高次脳機能障害）</p>
+<hr />
+<h3 id="sec-086">Ⅱ-01 感覚環境の設計</h3>
+<p>光・音・温度・においなどの感覚刺激が本人の感覚特性と不整合であり、就労中の過負荷・消耗・集中困難を引き起こしている。</p>
+<blockquote><p>着眼点: 問題は感覚過敏そのものではなく、標準仕様の職場環境が一部の人には過負荷になる設計になっていることにある。</p></blockquote>
+<h4 id="sec-087">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 発達障害（ASD・ADHD）/ 精神障害 / 難病（光・音過敏を伴う疾患）</p>
+<h5 id="sec-088">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 感覚負荷が少ない配置・環境が整い、過負荷が起きにくい。</li>
+<li>🟡 要調整: 一部の環境で不快感・集中困難があるが、業務継続は可能。</li>
+<li>🔴 高頻度支障: 特定の感覚刺激で業務遂行が毎日影響を受けている。</li>
+<li>💣 破綻・停止: 感覚過負荷により就労が困難な状態が続いている。</li>
+</ul>
+<h4 id="sec-089">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-090">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「感覚刺激の強度・質と本人の耐性のギャップ解消」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-091">近いフレームとの見分け方</h5>
+<ul>
+<li>聴覚環境のコミュニケーション設計が主課題なら「Ⅱ-05」へ。指示の不明確さが主課題なら「Ⅱ-07」へ。</li>
+</ul>
+<h4 id="sec-092">具体的な取組み内容</h4>
+<h5 id="sec-093">最初にやること</h5>
+<ul>
+<li>問題になっている感覚刺激の種類（光・音・温度・におい等）と発生源を特定する</li>
+<li>座席位置の変更（窓から離れる・騒音源から離れる・仕切りを設けるなど）を確認する</li>
+<li>イヤーマフ・サングラス・個人用パーティション等の補助ツールの使用可否を確認する</li>
+<li>会議室・個室・在宅等の静音環境でのタスク実施可否を確認する</li>
+</ul>
+<h5 id="sec-094">見落としやすい点</h5>
+<ul>
+<li>感覚過負荷は「慣れれば大丈夫」ではなく蓄積する。継続的な消耗は見えにくい</li>
+<li>補助ツールの使用が「目立つ」ことへの抵抗感がある場合、職場全体への事前説明が有効</li>
+</ul>
+<h5 id="sec-095">設計の考え方</h5>
+<p>「本人が感覚刺激に耐える」ではなく「感覚負荷が低い環境をまず設計する」。合理的配慮の典型例として位置づける。</p>
+<h5 id="sec-096">外部と一緒に考える場面</h5>
+<ul>
+<li>障害者職業センターの職業場面を踏まえた職業評価（効果推定-0.09）が感覚環境と機能プロフィールのミスマッチを職業的に評価できる。就業生活支援センター（Q1転換差+16.4pt）・HW（+15.3pt）が企業への合理的配慮申請（企業へのアプローチ、効果推定-0.07）を担える。就業生活支援センター等による障害理解・対処支援（効果推定-0.08）が職場全体の感覚特性への理解促進を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-097">Ⅱ-02 通勤・移動の負荷設計</h3>
+<p>通勤経路・手段・所要時間・移動動線が身体的・感覚的・認知的負荷として就労継続を妨げている。</p>
+<blockquote><p>着眼点: 問題は移動能力の欠如ではなく、標準的な通勤設計が特定の機能プロフィールに対して過負荷になっていることにある。</p></blockquote>
+<h4 id="sec-098">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 視覚障害 / 肢体不自由 / 難病（体力消耗・移動疼痛）</p>
+<h5 id="sec-099">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 通勤手段・ルート・所要時間が機能特性に合わせて最適化されている。</li>
+<li>🟡 要調整: 現状の通勤でおおむね機能しているが、体力消耗・時間的余裕のなさが課題。</li>
+<li>🔴 高頻度支障: 通勤消耗が仕事開始前から疲労を蓄積させ、就労継続に影響している。</li>
+<li>💣 破綻・停止: 通勤自体が就労継続の最大の障壁になっている。</li>
+</ul>
+<h4 id="sec-100">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-101">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「通勤手段・ルート・移動環境の再設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-102">近いフレームとの見分け方</h5>
+<ul>
+<li>勤務開始時刻の変更が主課題なら「Ⅰ-05 勤務リズムの適合設計」へ。職場内の移動・作業環境整備が主課題なら「Ⅱ-01」と合わせて確認。</li>
+</ul>
+<h4 id="sec-103">具体的な取組み内容</h4>
+<h5 id="sec-104">最初にやること</h5>
+<ul>
+<li>現在の通勤時間・手段・乗換回数と、消耗の大きさを具体的に確認する</li>
+<li>混雑回避（時差通勤・始業時刻変更）の可否を確認する</li>
+<li>在宅勤務・近隣就労・送迎サービスの選択肢を確認する</li>
+<li>職場内の移動経路（エレベーター・駐車場・休憩場所等）のアクセシビリティを確認する</li>
+</ul>
+<h5 id="sec-105">見落としやすい点</h5>
+<ul>
+<li>通勤負荷は季節・体調・天候によって変動する。「今は大丈夫」でも変化する可能性がある</li>
+<li>在宅勤務の適用には雇用契約上の確認が必要</li>
+</ul>
+<h5 id="sec-106">設計の考え方</h5>
+<p>「職場まで来ること」自体を問い直す。就労の目的は移動の達成ではなく業務の遂行であり、移動負荷を最小化する設計が就労継続を支える。</p>
+<h5 id="sec-107">外部と一緒に考える場面</h5>
+<ul>
+<li>移動支援制度（行動援護・移動支援等）の適用はケアマネ・相談支援専門員と確認する。HW専門援助部門（Q1転換差+15.3pt）・就業生活支援センター（+16.4pt）がテレワーク・時差通勤等の企業交渉（企業へのアプローチ、効果推定-0.09）を担える。職業場面評価（障害者職業センター、効果推定-0.10）が通勤負荷と職務設計の関係を評価できる。</li>
+</ul>
+<hr />
+<h3 id="sec-108">Ⅱ-03 会議・情報処理の設計</h3>
+<p>会議の形式・情報提示の速度と量・複数情報の同時処理が認知処理の特性と合っておらず、情報の取りこぼし・意思決定の遅延・過負荷が生じている。</p>
+<blockquote><p>着眼点: 問題は理解力の不足ではなく、情報の提示方法と処理容量のミスマッチにある。同じ情報でも提示方法の変更で処理可能になる。</p></blockquote>
+<h4 id="sec-109">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 高次脳機能障害 / 発達障害 / 難病・精神障害（疲労・認知症状を伴う場合）/ 聴覚障害</p>
+<h5 id="sec-110">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 情報提示の形式が特性に合わせて設計されており、会議が機能している。</li>
+<li>🟡 要調整: 一部の会議形式で情報取りこぼしが起きているが、業務への影響は限定的。</li>
+<li>🔴 高頻度支障: 会議や打ち合わせで情報が追いつかず、業務の質と継続性に影響が出ている。</li>
+<li>💣 破綻・停止: 会議への参加自体が過負荷になり、業務遂行が困難な状態になっている。</li>
+</ul>
+<h4 id="sec-111">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-112">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「会議・打ち合わせでの情報処理と参加設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-113">近いフレームとの見分け方</h5>
+<ul>
+<li>書面・画面の視覚的情報アクセスが主課題なら「Ⅱ-04」へ。音声・聴覚環境が主課題なら「Ⅱ-05」へ。業務の指示の明確さが主課題なら「Ⅱ-07」へ。</li>
+</ul>
+<h4 id="sec-114">具体的な取組み内容</h4>
+<h5 id="sec-115">最初にやること</h5>
+<ul>
+<li>会議のアジェンダと資料を事前（24時間前）に共有する</li>
+<li>口頭説明に加えて書面・スライドでの視覚的補完を標準化する</li>
+<li>発言・質問は一つずつ、間を置いて行う</li>
+<li>会議後に決定事項・アクション項目を文書化して共有する</li>
+<li>必要に応じて会議の録音・後での確認を許可する</li>
+</ul>
+<h5 id="sec-116">見落としやすい点</h5>
+<ul>
+<li>「会議が苦手」の原因は一つではない（聴覚・視覚・認知負荷・対人緊張など）。原因を特定してから設計変更する</li>
+<li>難病・精神障害による認知疲労は「その日の調子」で変動する。固定ルールだけでなく可変設計も必要</li>
+</ul>
+<h5 id="sec-117">設計の考え方</h5>
+<p>会議の設計変更は個人への特別対応ではなく、情報共有の質を全員に向上させる。「事前資料の配布」「決定事項の文書化」は普遍的に有効。</p>
+<h5 id="sec-118">外部と一緒に考える場面</h5>
+<ul>
+<li>障害者職業センターの職業場面を踏まえた職業評価（効果推定-0.09〜-0.10）が会議参加の困難パターンを職業的場面で評価できる。就業生活支援センター（Q1転換差+16.4pt）・HW（+15.3pt）が企業への会議設計変更の配慮申請（企業へのアプローチ、効果推定-0.07〜-0.09）を担える。障害理解・対処支援（効果推定-0.08）が会議設計変更への職場理解を促進できる。</li>
+</ul>
+<hr />
+<h3 id="sec-119">Ⅱ-04 視覚的情報アクセス設計</h3>
+<p>書類・画面・標識・掲示物などの視覚的情報が本人の視覚特性に対応していないため、業務遂行や職場内の移動・安全に支障が生じている。</p>
+<blockquote><p>着眼点: 問題は視覚障害の程度ではなく、標準的な視覚情報のフォーマットと本人の視覚的情報アクセス方法が一致していないことにある。</p></blockquote>
+<h4 id="sec-120">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 視覚障害（弱視・全盲）/ ロービジョン / 色覚特性</p>
+<h5 id="sec-121">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 視覚情報が本人のアクセス方法（拡大・音声変換等）に対応して提供されている。</li>
+<li>🟡 要調整: 一部の書類・画面で対応が不十分で、自己対処に頼っている。</li>
+<li>🔴 高頻度支障: 視覚情報の取得困難が業務の質と速度に毎日影響している。</li>
+<li>💣 破綻・停止: 視覚的情報アクセスが就労継続の最大の壁になっている。</li>
+</ul>
+<h4 id="sec-122">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-123">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「書類・画面・標識の視覚的アクセシビリティの整備」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-124">近いフレームとの見分け方</h5>
+<ul>
+<li>移動・通勤の問題が主課題なら「Ⅱ-02」へ。会議での情報処理が主課題なら「Ⅱ-03」へ。</li>
+</ul>
+<h4 id="sec-125">具体的な取組み内容</h4>
+<h5 id="sec-126">最初にやること</h5>
+<ul>
+<li>業務で使用するすべての書類・システム・ツールの視覚的アクセス手段を確認する</li>
+<li>スクリーンリーダー・拡大表示・色設定変更等の補助技術の導入を確認する</li>
+<li>書類は電子データで提供し、本人がアクセシブルに変換できるようにする</li>
+<li>職場内の移動経路の点字・音声案内・物理的な配慮を確認する</li>
+</ul>
+<h5 id="sec-127">見落としやすい点</h5>
+<ul>
+<li>弱視では「見えない」ではなく「疲れが早い」「時間がかかる」という形で現れることがある</li>
+<li>IT補助技術の導入は機器の設定・習熟にも時間が必要</li>
+</ul>
+<h5 id="sec-128">設計の考え方</h5>
+<p>「視覚情報を提供すること」から「本人がアクセスできる形で情報を提供すること」へ。アクセシビリティは補助技術と職場設計の両方で達成する。</p>
+<h5 id="sec-129">外部と一緒に考える場面</h5>
+<ul>
+<li>障害者職業センターの職業場面評価（効果推定-0.09）と個別IT環境整備支援が活用できる。就業生活支援センター（Q1転換差+16.4pt）・HW（+15.3pt）が企業への合理的配慮申請（企業へのアプローチ、効果推定-0.07）を担える。視覚障害者のIT活用支援は日本視覚障害者ICTネットワーク等の専門機関に相談できる。</li>
+</ul>
+<hr />
+<h3 id="sec-130">Ⅱ-05 音声・コミュニケーション環境の設計</h3>
+<p>口頭指示・音声情報・コミュニケーション形式が本人の聴覚・言語特性に対応しておらず、業務上の情報取得や対人コミュニケーションに支障が生じている。</p>
+<blockquote><p>着眼点: 問題は個人のコミュニケーション能力ではなく、職場のコミュニケーション設計が多数派の前提で作られていることにある。設計を変えることが先で、個人の適応訓練は後の問題。</p></blockquote>
+<h4 id="sec-131">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 聴覚障害 / 難聴 / 言語障害</p>
+<h5 id="sec-132">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 情報伝達の形式が多様化され、口頭以外の手段が標準的に使われている。</li>
+<li>🟡 要調整: 書面・メール等で補完できているが、一部の口頭情報が抜け落ちやすい。</li>
+<li>🔴 高頻度支障: 口頭指示・会話が中心の環境で、情報取得と意思表示に継続的な困難がある。</li>
+<li>💣 破綻・停止: コミュニケーション設計の不整合により就労継続が困難になっている。</li>
+</ul>
+<h4 id="sec-133">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-134">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「音声・言語によるコミュニケーション環境の設計変更」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-135">近いフレームとの見分け方</h5>
+<ul>
+<li>視覚情報アクセスが主課題なら「Ⅱ-04」へ。会議での認知処理が主課題なら「Ⅱ-03」へ。個人の対人応答負荷が主課題なら「Ⅱ-06」へ。</li>
+</ul>
+<h4 id="sec-136">具体的な取組み内容</h4>
+<h5 id="sec-137">最初にやること</h5>
+<ul>
+<li>指示・連絡を文字（チャット・メール・メモ）で行うことを標準化する</li>
+<li>会議・打ち合わせには事前資料を用意し、決定事項を書面で共有する</li>
+<li>必要に応じて手話通訳・要約筆記・文字起こしツールの活用可否を確認する</li>
+<li>電話対応の免除・代替手段（メール・ビデオ通話）の整備を確認する</li>
+</ul>
+<h5 id="sec-138">見落としやすい点</h5>
+<ul>
+<li>「補聴器があれば大丈夫」は過信になることがある。補聴器の効果は環境・音質・背景雑音によって大きく変わる</li>
+<li>手話が第一言語の場合、文字日本語が第二言語であることを前提とした文書設計が必要な場合がある</li>
+</ul>
+<h5 id="sec-139">設計の考え方</h5>
+<p>「口頭で言えばわかる」という多数派前提のコミュニケーション設計を問い直す。文字・視覚・非同期のコミュニケーション手段を標準装備にすることが、全員に利便性を提供する。</p>
+<h5 id="sec-140">外部と一緒に考える場面</h5>
+<ul>
+<li>手話通訳・要約筆記の派遣制度（聴覚障害者情報提供施設等）を活用できる。障害者職業センターの職業場面評価（効果推定-0.09）がコミュニケーション設計の課題を職業的に評価できる。就業生活支援センター（Q1転換差+16.4pt）・HW（+15.3pt）が企業側へのコミュニケーション設計変更の交渉（企業へのアプローチ、効果推定-0.07）と障害理解促進（効果推定-0.08）を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-141">Ⅱ-06 対人応答負荷の調整</h3>
+<p>職場での対人インタラクションの密度・形式・頻度が本人の負荷許容量を超えており、消耗・回避・業務遂行困難を引き起こしている。</p>
+<blockquote><p>着眼点: 問題は対人スキルの欠如ではなく、職場の対人インタラクションの設計が一部の人には過負荷になっていることにある。個人の対人スキル訓練より先に、職場設計の変更を確認する。</p></blockquote>
+<h4 id="sec-142">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 発達障害（ASD）/ 精神障害 / 聴覚障害 / 難病（対人疲労を伴う場合）</p>
+<h5 id="sec-143">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 対人インタラクションの密度と形式が本人の耐性に合わせて設計されている。</li>
+<li>🟡 要調整: 一部の場面（突発的な対話・長時間の協働作業等）で消耗が生じている。</li>
+<li>🔴 高頻度支障: 対人負荷が蓄積し、業務遂行と就労継続に影響が出ている。</li>
+<li>💣 破綻・停止: 対人応答負荷が就労継続の最大の壁になっている。</li>
+</ul>
+<h4 id="sec-144">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-145">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「職場での対人インタラクションの密度・形式の設計変更」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-146">近いフレームとの見分け方</h5>
+<ul>
+<li>感覚環境の問題が主課題なら「Ⅱ-01」へ。コミュニケーション形式の問題が主課題なら「Ⅱ-05」へ。相談経路の問題が主課題なら「Ⅲ-09」へ。</li>
+</ul>
+<h4 id="sec-147">具体的な取組み内容</h4>
+<h5 id="sec-148">最初にやること</h5>
+<ul>
+<li>一日の対人インタラクション量（時間・回数・関係者数）を把握し、過負荷が発生するパターンを特定する</li>
+<li>一人作業・在宅・個室環境での業務時間を確保する</li>
+<li>突発的な声かけ・割り込みを減らす（チャット・事前予約制への変更等）</li>
+<li>対話が必要な場面は事前にアジェンダを共有し、時間を限定する</li>
+</ul>
+<h5 id="sec-149">見落としやすい点</h5>
+<ul>
+<li>対人負荷は「人が嫌い」ではなく「疲労の閾値の問題」。在宅・個室の確保が大きく状況を変えることがある</li>
+<li>対人緊張に不安症状が伴う場合、医療的なサポートと並行が必要な場合がある</li>
+</ul>
+<h5 id="sec-150">設計の考え方</h5>
+<p>対人インタラクションを「業務の目的を達成するための手段」として最適化する。コミュニケーションの形式・頻度・量を必要最小限に設計することは、効率化にもつながる。</p>
+<h5 id="sec-151">外部と一緒に考える場面</h5>
+<ul>
+<li>対人疲労の医学的背景（自律神経・疼痛・精神症状等）は主治医・医療機関との連携（就職後の自己管理支援、効果推定-0.05）で確認する。就業生活支援センター（Q1転換差+16.4pt）が対人負荷軽減の配慮交渉（企業へのアプローチ、効果推定-0.09）と就職後継続モニタリング（効果推定-0.06）を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-152">Ⅱ-07 指示・業務設計の明確化</h3>
+<p>指示の曖昧さ・暗黙の前提・優先順位の不明確さが業務遂行を困難にしており、「わかっているはずなのにできない」状態が繰り返されている。</p>
+<blockquote><p>着眼点: 問題は理解力や努力の不足ではなく、指示の設計が「暗黙知を持つ多数派」を前提に作られていることにある。このパターンは発達障害・高次脳機能障害だけでなく、疲労・認知症状を伴う難病・精神障害にも広く発生する。</p></blockquote>
+<h4 id="sec-153">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 発達障害（ADHD・ASD）/ 高次脳機能障害 / 難病・精神障害（認知疲労・集中困難を伴う場合）/ 内部障害</p>
+<h5 id="sec-154">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 指示が具体的・段階的に提示されており、業務遂行が安定している。</li>
+<li>🟡 要調整: 一部の指示で曖昧さがあり、確認のやりとりが増えている。</li>
+<li>🔴 高頻度支障: 曖昧な指示によるやり直し・ミス・過負荷が繰り返されている。</li>
+<li>💣 破綻・停止: 業務指示が機能せず、業務遂行そのものが困難な状態になっている。</li>
+</ul>
+<h4 id="sec-155">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-156">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「指示の明確化・業務手順の可視化」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-157">近いフレームとの見分け方</h5>
+<ul>
+<li>タスクの切替・並行処理が主課題なら「Ⅱ-08」へ。記憶・段取りの管理が主課題なら「Ⅱ-09」へ。会議・情報処理が主課題なら「Ⅱ-03」へ。</li>
+</ul>
+<h4 id="sec-158">具体的な取組み内容</h4>
+<h5 id="sec-159">最初にやること</h5>
+<ul>
+<li>指示を「何を・いつまでに・どの品質で・誰に」の4点セットで明文化する</li>
+<li>口頭指示は文書（チャット・メモ・業務マニュアル）で同時に補完する</li>
+<li>優先順位が変わる場合は口頭で言うだけでなく、タスクリストを更新する</li>
+<li>業務手順をチェックリスト化し、自己確認できるようにする</li>
+</ul>
+<h5 id="sec-160">見落としやすい点</h5>
+<ul>
+<li>「言わなくてもわかる」という前提が指示側にある場合、具体化のコストを職場全体の効率化として提示すると受け入れやすい</li>
+<li>疲労日・症状変動日は理解処理が落ちることがある。重要な指示は「良い日」に確認する設計も有効</li>
+</ul>
+<h5 id="sec-161">設計の考え方</h5>
+<p>「言わなくてもわかる」から「言葉にして確認する」へ。明確な指示設計は、誰に対しても業務の質を向上させる普遍的な設計変更。</p>
+<h5 id="sec-162">外部と一緒に考える場面</h5>
+<ul>
+<li>障害者職業センターのジョブコーチ・職業評価（効果推定-0.09〜-0.10）が職場指示設計のアセスメントと改善提案を行える。就業生活支援センター（Q1転換差+16.4pt）が企業への業務設計変更アプローチ（効果推定-0.07〜-0.09）と職場内の障害理解促進（効果推定-0.08）を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-163">Ⅱ-08 タスク切替の負荷設計</h3>
+<p>複数業務の並行処理・タスク切替の頻度が認知負荷として機能障害を増幅させており、集中困難・ミスの増加・過負荷が生じている。</p>
+<blockquote><p>着眼点: 問題は集中力の欠如ではなく、業務の切替頻度と認知処理の切替コストの設計上のミスマッチにある。</p></blockquote>
+<h4 id="sec-164">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 発達障害（ADHD）/ 高次脳機能障害 / 難病・精神障害（認知疲労を伴う場合）</p>
+<h5 id="sec-165">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: タスク構成が単一集中型に近く、切替コストが低い設計になっている。</li>
+<li>🟡 要調整: 切替は発生しているが、時間割での区切りで対処できている。</li>
+<li>🔴 高頻度支障: 頻繁なタスク切替・割り込みにより、業務遂行に毎日影響が出ている。</li>
+<li>💣 破綻・停止: タスク切替の負荷が就労継続の主要な壁になっている。</li>
+</ul>
+<h4 id="sec-166">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-167">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「タスク切替頻度の削減と集中時間の確保」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-168">近いフレームとの見分け方</h5>
+<ul>
+<li>指示の不明確さが主課題なら「Ⅱ-07」へ。記憶・段取りの管理が主課題なら「Ⅱ-09」へ。</li>
+</ul>
+<h4 id="sec-169">具体的な取組み内容</h4>
+<h5 id="sec-170">最初にやること</h5>
+<ul>
+<li>一定の時間帯（例: 午前中）を特定のタスクに固定し、切替を最小化する</li>
+<li>割り込み対応の時間帯を分離し、それ以外は集中時間として保護する</li>
+<li>並行業務を可能な限り「直列化」する（AとBを同時ではなく、Aを終えてからBへ）</li>
+<li>タスクの切替前に現在の状態をメモに残す「中断プロトコル」を作る</li>
+</ul>
+<h5 id="sec-171">見落としやすい点</h5>
+<ul>
+<li>「割り込み禁止」の設計は職場全体の協力が必要。本人だけの問題として扱わない</li>
+<li>切替コストは疲労度によって変動する。午後や繁忙期は切替設計をより慎重に</li>
+</ul>
+<h5 id="sec-172">設計の考え方</h5>
+<p>「何でもできる汎用型の業務」から「単一集中型の業務ブロック」への再設計。業務効率化の観点でも、深い集中時間の確保は価値がある。</p>
+<h5 id="sec-173">外部と一緒に考える場面</h5>
+<ul>
+<li>障害者職業センターの職業場面評価（効果推定-0.09）がタスク切替困難のパターンを職業的に評価できる。就業生活支援センター（Q1転換差+16.4pt）・HW（+15.3pt）が企業への業務設計変更アプローチ（効果推定-0.07）と就職後継続支援（効果推定-0.06）を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-174">Ⅱ-09 記憶・段取りの外部化設計</h3>
+<p>手順・スケジュール・約束・締め切りの記憶・管理が認知機能の特性上困難であり、忘れ・ミス・段取りの破綻が繰り返されている。</p>
+<blockquote><p>着眼点: 問題は記憶力の低さではなく、「記憶して管理する」という前提の業務設計と認知プロフィールのミスマッチにある。外部記憶ツールで代替できることが多い。</p></blockquote>
+<h4 id="sec-175">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 高次脳機能障害 / 発達障害（ADHD）/ 難病・精神障害（認知疲労・ブレインフォグを伴う場合）</p>
+<h5 id="sec-176">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 外部記憶ツール（メモ・チェックリスト・カレンダー）で業務管理が機能している。</li>
+<li>🟡 要調整: ツールはあるが使い方が定着しておらず、抜け漏れが発生することがある。</li>
+<li>🔴 高頻度支障: 忘れ・段取り崩れが繰り返され、業務の質と信頼関係に影響が出ている。</li>
+<li>💣 破綻・停止: 記憶・段取りの困難が就労継続の主要な壁になっている。</li>
+</ul>
+<h4 id="sec-177">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-178">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「業務の手順・期日・段取りの管理ツールの整備」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-179">近いフレームとの見分け方</h5>
+<ul>
+<li>指示の曖昧さが主課題なら「Ⅱ-07」へ。タスク切替が主課題なら「Ⅱ-08」へ。</li>
+</ul>
+<h4 id="sec-180">具体的な取組み内容</h4>
+<h5 id="sec-181">最初にやること</h5>
+<ul>
+<li>業務のすべての手順をチェックリスト化し、確認に使えるようにする</li>
+<li>カレンダー・タスク管理アプリでのリマインダー設定を標準化する</li>
+<li>重要な連絡事項は口頭だけでなく必ず文書（メモ・チャット）で確認する</li>
+<li>業務開始時に「今日やること」を書き出す習慣を設ける</li>
+</ul>
+<h5 id="sec-182">見落としやすい点</h5>
+<ul>
+<li>ツールが複雑すぎると管理自体が負荷になる。シンプルなものから始める</li>
+<li>疲労日はツールを使う余力も落ちる。最重要タスクだけに絞るシンプル設計を別途準備する</li>
+</ul>
+<h5 id="sec-183">設計の考え方</h5>
+<p>「頭で覚えること」を前提とする業務設計から「記録して参照できること」を前提とする設計へ。外部記憶の活用はすべての職場人に普遍的に有効。</p>
+<h5 id="sec-184">外部と一緒に考える場面</h5>
+<ul>
+<li>障害者職業センターの職業評価（効果推定-0.09）と個別ツール導入支援・業務マニュアル作成支援が活用できる。就業生活支援センター（Q1転換差+16.4pt）が企業への外部記憶ツール導入の配慮申請（効果推定-0.07）と就職後継続モニタリング（効果推定-0.06）を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-185">Ⅱ-10 情報共有の範囲設計</h3>
+<p>職場内での情報共有（誰に・何を・どこまで共有するか）の範囲が設計されておらず、過剰な開示・不十分な情報共有のいずれかによって職場適応が妨げられている。</p>
+<blockquote><p>着眼点: 問題は本人の情報管理能力ではなく、「何をどこまで共有すべきか」の基準が職場に存在しないことにある。</p></blockquote>
+<h4 id="sec-186">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 発達障害 / 精神障害 / 高次脳機能障害</p>
+<h5 id="sec-187">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 共有範囲が合意されており、必要な情報が必要な人に届いている。</li>
+<li>🟡 要調整: 共有範囲の基準があいまいで、判断に迷うことがある。</li>
+<li>🔴 高頻度支障: 情報の過剰共有または不足により、職場内の誤解やトラブルが生じている。</li>
+<li>💣 破綻・停止: 情報共有の問題が職場関係の悪化・業務遂行困難につながっている。</li>
+</ul>
+<h4 id="sec-188">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-189">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「職場内での情報共有の範囲と基準の設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-190">近いフレームとの見分け方</h5>
+<ul>
+<li>外部への開示判断（就職時・採用時の開示）が主課題なら「Ⅲ-03 開示判断の設計」へ。職場への配慮依頼の方法が主課題なら「Ⅲ-04 伝え方の設計」へ。</li>
+</ul>
+<h4 id="sec-191">具体的な取組み内容</h4>
+<h5 id="sec-192">最初にやること</h5>
+<ul>
+<li>「業務遂行に必要な情報」と「プライバシーに関わる情報」を区別する基準を作る</li>
+<li>共有する相手（直属上司のみ・人事・チーム全員等）の範囲を事前に合意する</li>
+<li>共有した情報の取り扱い（他部署への口外禁止等）を文書化する</li>
+<li>情報共有の方法（口頭・書面・会議等）と記録方法を合意する</li>
+</ul>
+<h5 id="sec-193">見落としやすい点</h5>
+<ul>
+<li>「配慮のために必要だから」と判断して共有した情報が、当事者の同意なく広まることがある。同意の範囲を明確にする</li>
+<li>情報共有の範囲は時間とともに変化する。定期的に見直す機会を設ける</li>
+</ul>
+<h5 id="sec-194">設計の考え方</h5>
+<p>情報共有の設計は「開示させる」ではなく「当事者が共有先を選べる」枠組みを作ること。開示の選択権は常に本人にある。</p>
+<h5 id="sec-195">外部と一緒に考える場面</h5>
+<ul>
+<li>個人情報の取り扱いは法域・社内規定によって異なる。社労士・労務担当者に確認する。就業生活支援センター（Q1転換差+16.4pt）が情報共有範囲の合意設計を企業へのアプローチ（効果推定-0.07）として担え、職場の障害理解促進（効果推定-0.08）を通じて「情報を受け取る職場側の文化」を育てることができる。</li>
+</ul>
+<hr />
+<h3 id="sec-196">Ⅱ-11 安全重視業務の運用設計</h3>
+<p>安全上の配慮が必要な業務（高所・機械・電気・薬品等を扱う作業）において、症状・特性を踏まえた運用ルールが設定されておらず、安全リスクと就労継続の両立が困難になっている。</p>
+<blockquote><p>着眼点: 問題は本人が危険な仕事に向かないということではなく、安全管理ルールが機能特性の多様性を想定していないことにある。</p></blockquote>
+<h4 id="sec-197">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 視覚障害 / 肢体不自由 / 難病（意識障害リスク・体力低下がある場合）</p>
+<h5 id="sec-198">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 安全運用ルールが機能特性に合わせて設計されており、リスクが管理されている。</li>
+<li>🟡 要調整: 標準的な安全規則は機能しているが、特定の症状変動時に対応が曖昧。</li>
+<li>🔴 高頻度支障: 安全規則と機能特性の不整合でリスクが顕在化している。</li>
+<li>💣 破綻・停止: 安全管理上の問題から業務継続が困難になっている。</li>
+</ul>
+<h4 id="sec-199">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-200">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「安全管理が必要な業務での機能特性を考慮した運用ルールの設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-201">近いフレームとの見分け方</h5>
+<ul>
+<li>職場全体の環境設計が主課題なら「Ⅱ-01」へ。段階的な業務変更が主課題なら「Ⅰ-06」へ。</li>
+</ul>
+<h4 id="sec-202">具体的な取組み内容</h4>
+<h5 id="sec-203">最初にやること</h5>
+<ul>
+<li>業務上の安全リスクと機能特性（視覚・体力・反応速度・意識状態等）の組み合わせを評価する</li>
+<li>症状変動時（体調悪化・疲労蓄積等）の業務停止基準と判断権限を明確化する</li>
+<li>安全補助手段（補助者・安全装置・作業変更）を事前に合意する</li>
+<li>定期的な安全評価と運用見直しのスケジュールを設ける</li>
+</ul>
+<h5 id="sec-204">見落としやすい点</h5>
+<ul>
+<li>「問題が起きてから対応する」ではなく「症状変動時の基準を事前に決める」ことが重要</li>
+<li>安全リスクの評価は産業医・労働安全衛生担当者と連携して行う</li>
+</ul>
+<h5 id="sec-205">設計の考え方</h5>
+<p>安全管理を「個人の自己管理」から「システムレベルの設計」へ。多様な機能プロフィールに対応した安全設計は、全従業員の安全基盤を強化する。</p>
+<h5 id="sec-206">外部と一緒に考える場面</h5>
+<ul>
+<li>安全管理業務での就職後の体調管理・職場定着（職業的課題4・5）は、障害者職業センターの職業場面を踏まえた職業評価（連携・効果推定-0.10〜-0.11）が職場安全設計の専門的アセスメントを担える。就業生活支援センター（Q1転換差+16.4pt）が企業へのアプローチ（効果推定-0.09）として安全運用ルールの企業側調整を支援できる。産業医・労働安全衛生委員会との連携は法的観点からも必須。</li>
+</ul>
+<hr />
+</section>
+<section class="chapter">
+<h2 id="sec-207">設計層Ⅲ：参加経路と社会的接続の設計</h2>
+<p>就労意欲・開示判断・求職活動・支援接続・制度活用が詰まるときに使うレイヤー。就職活動の前・途中・就職後のいずれの段階でも使える。「準備が整ってから」という前提ではなく、今の状態から始められる接続経路を設計することを目指す。</p>
+<p><strong>対応FCHMAドメイン</strong>: D3（参加・役割不安定化）+ D5（説明・開示媒介）+ D6（支援連携アクセス）+ D8（制度制約・制度アクセス） <strong>主要根拠クラスタ</strong>: C2（全方位困難・就労断念）、C12（見えない難病・開示困難）、C0（内部障害・制度格差）、C13（難病・制度格差意識）、C5（病状進行不安）</p>
+<hr />
+<h3 id="sec-208">Ⅲ-01 就労意欲・社会参加の再接続</h3>
+<p>困難の蓄積により就労意欲が低下し、支援への相談・求職活動・日常的なやり取りを含めた社会的な能動性が全体的に困難な状態になっている。</p>
+<blockquote><p>着眼点: 問題は意志や努力の欠如ではなく、困難の重積が能動性の基盤を消耗させていることにある。意欲を上げようとする前に、困難の構造を解くことが先決。</p></blockquote>
+<h4 id="sec-209">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（全方位困難・孤立状態）/ 精神障害 / 長期の就労断念</p>
+<h5 id="sec-210">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 就労意欲があり、困難が生じても支援者・周囲に相談できる状態がある。</li>
+<li>🟡 要調整: 意欲はあるが行動に移れない状態が続いている。周囲へのSOSが出せていない。</li>
+<li>🔴 高頻度支障: 就労・相談・日常活動への意欲が全体的に低下し、社会的孤立が進んでいる。</li>
+<li>💣 破綻・停止: 就労を諦めており、支援機関・人との接触自体が困難になっている。</li>
+</ul>
+<h4 id="sec-211">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-212">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「意欲・能動性の基盤回復と社会的接続の再構築」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-213">近いフレームとの見分け方</h5>
+<ul>
+<li>支援機関の情報・経路が主課題なら「Ⅲ-08 支援ネットワークへの接続」へ。開示への恐れが行動を阻んでいるなら「Ⅲ-03 開示判断の設計」へ。体調悪化が直接の原因なら設計層Ⅰに戻る。</li>
+</ul>
+<h4 id="sec-214">具体的な取組み内容</h4>
+<h5 id="sec-215">最初にやること</h5>
+<ul>
+<li>「就労」より前の問いから始める：「今、一番しんどいことは何ですか」</li>
+<li>意欲回復の目標を「就職する」ではなく「今週、誰かに一度話す」など最小化する</li>
+<li>孤立を作っている構造的原因（情報不足・経済的不安・開示困難等）を特定し、一つずつ取り除く</li>
+<li>当事者同士のピア・グループや当事者会への参加が意欲回復に有効な場合がある</li>
+</ul>
+<h5 id="sec-216">見落としやすい点</h5>
+<ul>
+<li>「頑張れ」「前向きに」という言葉は逆効果になることがある。「今の状態でも始められること」を一緒に探す</li>
+<li>抑うつ症状が強い場合は医療的評価を先行する</li>
+</ul>
+<h5 id="sec-217">設計の考え方</h5>
+<p>就労意欲の回復は「心がけ」ではなく「困難の構造を解く」ことで生じる。C2（全方位困難・就労断念型, n=380）のデータが示すこの構造は、IPS/SE国際エビデンスが「訓練準備主義への対抗」として独立に確認している原則と整合する。「意欲が回復してから動く」ではなく「小さく動くことで意欲が生まれる」という順序で設計する。</p>
+<h5 id="sec-218">外部と一緒に考える場面</h5>
+<ul>
+<li>「障害理解・対処・職業準備性」（職業的課題1）への支援者データが示す有効介入は、障害理解・対処・家族支援（連携・効果推定-0.08）と企業へのアプローチ（連携・効果推定-0.07）。就労移行支援（Q1転換差+17.0pt）が意欲回復から就労準備への移行を伴走できる最優先連携先。難病・障害当事者の自助グループ・ピア相談が意欲回復の入口として有効な場合がある。精神保健福祉士・MSWが医療側からの接続を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-219">Ⅲ-02 制度的所属と就労選択肢の整理</h3>
+<p>障害者手帳の有無・疾患の性質・等級によって利用できる就労支援制度・就労枠組みが異なり、「自分がどの制度を使えるのか」「どの枠で就職すればよいのか」が整理できていない。</p>
+<blockquote><p>着眼点: 問題は当事者の制度理解の不足ではなく、複雑な制度設計と個別状況の組み合わせを整理できる機会・専門家が不足していることにある。</p></blockquote>
+<h4 id="sec-220">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（障害者手帳なし・または申請未検討）/ 内部障害 / 精神障害（中等度・軽度）/ 複数の障害・疾患が重なる場合</p>
+<h5 id="sec-221">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 制度的所属が整理されており、利用できる支援の全体像が把握されている。</li>
+<li>🟡 要調整: 一部の制度は使えているが、他に利用可能な選択肢があるかどうかが不明。</li>
+<li>🔴 高頻度支障: 「どの枠で就職すればよいか」の判断ができず、求職活動が止まっている。</li>
+<li>💣 破綻・停止: 制度的所属の不明確さが就職活動・支援接続の根本的な障壁になっている。</li>
+</ul>
+<h4 id="sec-222">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-223">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「利用可能な制度・支援枠組みの整理と所属の確認」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-224">近いフレームとの見分け方</h5>
+<ul>
+<li>制度が整理されたうえで収入・給付のバランスが主課題なら「Ⅲ-07」へ。制度整理後に「伝えるかどうか」が主課題なら「Ⅲ-03」へ。</li>
+</ul>
+<h4 id="sec-225">具体的な取組み内容</h4>
+<h5 id="sec-226">最初にやること</h5>
+<ul>
+<li>現在の手帳（身体・精神・療育）の取得状況と等級を確認する</li>
+<li>難病指定疾患・特定疾患の認定状況を確認する</li>
+<li>「障害者枠」「一般枠」「オープン就労」「クローズ就労」それぞれの現実的な選択肢と条件を整理する</li>
+<li>手帳の申請可能性がある場合は主治医・支援者と確認する</li>
+</ul>
+<h5 id="sec-227">見落としやすい点</h5>
+<ul>
+<li>難病は「難病指定を受けていても障害者手帳の対象とならない場合」がある。制度の組み合わせは個別に確認が必要</li>
+<li>手帳取得が「固定した状態の受け入れ」という心理的意味を持つ場合がある。当事者の感情に丁寧に関わる</li>
+</ul>
+<h5 id="sec-228">設計の考え方</h5>
+<p>制度的所属の整理は就労支援の入口。どの制度を「使う/使わない」は本人が選ぶが、「選択肢がある」ことを知っていることが前提条件。</p>
+<h5 id="sec-229">外部と一緒に考える場面</h5>
+<ul>
+<li>制度整理後の就労支援への接続では、就業生活支援センター（Q1転換差+16.4pt）とHWチーム支援（Q1転換差+15.3pt）が就業移行の最効果連携先。難病相談支援センター（Q1転換差+3.1pt）は難病特有の制度情報（難病指定・特定疾患・手帳対象外の場合）に特化した専門機能を持つ。制度整理そのものはハローワーク専門援助・就業生活支援センターが担える。</li>
+</ul>
+<hr />
+<h3 id="sec-230">Ⅲ-03 開示判断の設計</h3>
+<p>症状・診断・配慮ニーズを職場や採用担当者に「伝えるかどうか」の判断基準がなく、「伝えると不利になるかもしれない」「伝えないと配慮が得られない」という両立困難が就職活動・在職継続を妨げている。</p>
+<blockquote><p>着眼点: 問題は開示の技術（何をどう言うか）ではなく、開示するかどうかの判断基準が本人にも支援者にも存在しないことにある。判断基準を作ることが先で、伝え方の設計は後。</p></blockquote>
+<h4 id="sec-231">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病・慢性疾患（障害者手帳なし）/ 精神障害（中等度・軽度、手帳なし）/ 内部障害（症状が外見に現れにくい場合）</p>
+<h5 id="sec-232">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 開示の判断基準があり、場面ごとに自分で判断できている。</li>
+<li>🟡 要調整: 開示済みだが十分な理解が得られていない、または開示先・タイミングに迷いがある。</li>
+<li>🔴 高頻度支障: 「開示すると落とされる」「開示しないと限界が来る」の板挟みが継続している。</li>
+<li>💣 破綻・停止: 開示もできず配慮も得られず、就職活動や就労継続が止まっている。</li>
+</ul>
+<h4 id="sec-233">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-234">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「伝えるかどうかの判断基準の整理」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-235">近いフレームとの見分け方</h5>
+<ul>
+<li>判断ができており「どう伝えるか」が主課題なら「Ⅲ-04 伝え方の設計」へ。制度的所属の整理が先に必要なら「Ⅲ-02」へ。開示後の職場での情報管理が主課題なら「Ⅱ-10」へ。</li>
+</ul>
+<h4 id="sec-236">具体的な取組み内容</h4>
+<h5 id="sec-237">最初にやること</h5>
+<ul>
+<li>開示した場合・しない場合のリスクとメリットを具体的に整理する</li>
+<li>開示先を段階的に区別する（採用担当 / 直属上司 / 人事 / 同僚）</li>
+<li>「完全な開示」と「完全な非開示」の間に「必要な配慮だけを伝える」という選択肢があることを確認する</li>
+<li>手帳取得の要否・可能性について主治医・支援者と確認する</li>
+</ul>
+<h5 id="sec-238">見落としやすい点</h5>
+<ul>
+<li>開示は「一度決めたら変わらない」ではない。状況の変化に合わせて変えられることを伝える</li>
+<li>「正直に全部話さなければならない」という義務感から来る行き詰まりに注意。開示の範囲は本人が決める</li>
+</ul>
+<h5 id="sec-239">設計の考え方</h5>
+<p>開示判断は「正直さ」の問題ではなく「戦略的な情報共有設計」の問題。本人の権利として、開示の選択権は常に本人にある。支援者はその判断を一緒に整理するサポーターであって、開示を勧める立場ではない。</p>
+<h5 id="sec-240">外部と一緒に考える場面</h5>
+<ul>
+<li>開示判断は「障害理解・対処」（職業的課題1）と密接に関係し、支援者データでは障害理解・対処・家族支援（連携・効果推定-0.08）と企業へのアプローチ（効果推定-0.07）が有効な介入。就業生活支援センター（Q1転換差+16.4pt）が開示判断の相談と企業への調整を担える最優先連携先。難病当事者団体・ピア相談が同疾患の開示経験を共有できる場合がある。ハローワーク専門援助部門が開示なしの一般枠・開示ありの障害者枠の両面から状況を整理できる。</li>
+</ul>
+<hr />
+<h3 id="sec-241">Ⅲ-04 伝え方の設計</h3>
+<p>症状・診断・配慮ニーズを伝えるかどうかの判断はできているが、「どのように・どこまで・誰に」伝えるかの具体的な表現・戦略が定まっておらず、職場での理解と配慮が得られていない。</p>
+<blockquote><p>着眼点: 問題は開示の意思ではなく、「機能的に何が必要か」を職場が理解できる言葉で伝える枠組みが整っていないことにある。</p></blockquote>
+<h4 id="sec-242">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病・慢性疾患 / 精神障害 / 内部障害（症状が変動する・外見から見えにくい）</p>
+<h5 id="sec-243">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 配慮ニーズが職場に伝わっており、適切な配慮が実施されている。</li>
+<li>🟡 要調整: 開示はしているが、十分な理解・配慮が得られていない。</li>
+<li>🔴 高頻度支障: 伝え方の問題で職場との誤解やすれ違いが繰り返されている。</li>
+<li>💣 破綻・停止: 伝えられず配慮も得られず、就労継続が困難な状態にある。</li>
+</ul>
+<h4 id="sec-244">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-245">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「配慮ニーズをどのように・誰に・どこまで伝えるかの設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-246">近いフレームとの見分け方</h5>
+<ul>
+<li>「伝えるかどうか」の判断がまだできていないなら「Ⅲ-03 開示判断の設計」へ先に戻る。伝えた後の職場内情報管理が主課題なら「Ⅱ-10」へ。</li>
+</ul>
+<h4 id="sec-247">具体的な取組み内容</h4>
+<h5 id="sec-248">最初にやること</h5>
+<ul>
+<li>診断名・病名ではなく「業務上必要な配慮」を中心に伝える枠組みに変える（例: 「〇〇という診断があります」→「午後に疲れやすいため、重要な業務を午前中に入れていただけると助かります」）</li>
+<li>配慮依頼を「お願い」ではなく「業務設計の提案」として構成する</li>
+<li>症状の変動性・不確実性を伝えるときは「日によって違う」ではなく「このパターンで変動する」と説明できるようにする</li>
+<li>担当医に「就労上の配慮が必要な状態」を記した意見書・診断書の作成を依頼する</li>
+</ul>
+<h5 id="sec-249">見落としやすい点</h5>
+<ul>
+<li>一度で完全に理解してもらおうとしない。伝えることは継続的なプロセス</li>
+<li>難病・慢性疾患では症状の変動性が伝わりにくい。「波がある」ことを構造として説明する</li>
+</ul>
+<h5 id="sec-250">設計の考え方</h5>
+<p>伝える内容を「症状の説明」から「必要な設計の提案」に転換する。職場側が「何をすればよいか」がわかるように設計することが、配慮実現の近道。</p>
+<h5 id="sec-251">外部と一緒に考える場面</h5>
+<ul>
+<li>「伝え方の設計」は「障害理解・対処」（職業的課題1・4）に対応し、支援者データでは障害理解・対処・家族支援（連携・効果推定-0.08）と企業へのアプローチ（連携・効果推定-0.09）が有効。就業生活支援センター（Q1転換差+16.4pt）が職場への代理説明・企業調整を担える最優先連携先。就労支援員・ジョブコーチが伝え方の練習と職場訪問時の橋渡しを支援できる。主治医の意見書が職場理解の根拠として機能する。</li>
+</ul>
+<hr />
+<h3 id="sec-252">Ⅲ-05 求職活動の道筋設計</h3>
+<p>求人探索・応募・選考というプロセスの段取りが、障害・疾患の特性や制度的所属を踏まえて設計されていないため、求職活動が止まるか非効率なルートを繰り返している。</p>
+<blockquote><p>着眼点: 問題は求職能力の不足ではなく、一般的な求職プロセスが障害・疾患の特性を前提としていないことにある。</p></blockquote>
+<h4 id="sec-253">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病（障害者手帳なし・または取得後初めての求職）/ 精神障害 / 内部障害</p>
+<h5 id="sec-254">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 特性・制度に合った求職ルートが設計されており、活動が進んでいる。</li>
+<li>🟡 要調整: 求職活動は始まっているが、特性・制度に合っていないルートで疲弊している。</li>
+<li>🔴 高頻度支障: 応募・選考が繰り返し止まり、理由の分析と修正ができていない。</li>
+<li>💣 破綻・停止: 求職活動自体が止まっている、または開始できない状態にある。</li>
+</ul>
+<h4 id="sec-255">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-256">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「求人探索・応募・選考の段取り設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-257">近いフレームとの見分け方</h5>
+<ul>
+<li>制度的所属の整理が先に必要なら「Ⅲ-02」へ。開示判断が先に必要なら「Ⅲ-03」へ。就労意欲の回復が先に必要なら「Ⅲ-01」へ。</li>
+</ul>
+<h4 id="sec-258">具体的な取組み内容</h4>
+<h5 id="sec-259">最初にやること</h5>
+<ul>
+<li>利用する求職ルート（ハローワーク一般窓口・専門援助・就労移行支援・転職エージェント等）を制度的所属に合わせて選択する</li>
+<li>応募書類で「配慮ニーズの伝え方」を「Ⅲ-04 伝え方の設計」と合わせて整理する</li>
+<li>症状の変動を踏まえた「活動できる日・できない日」のペース設計をする</li>
+<li>面接後に選考結果を分析し、修正点を特定する（支援者と一緒に）</li>
+</ul>
+<h5 id="sec-260">見落としやすい点</h5>
+<ul>
+<li>「一般枠でも大丈夫」という判断は慎重に。配慮が得られないと入社後に詰まることが多い</li>
+<li>日本の支援者データ（toku18 Q1支援者の実践構造）が示すように、「条件が揃ってから求職する」より「求職しながら条件を整える」方が就職成功につながりやすい（この構造はIPS/SEが独立に整合確認している）</li>
+</ul>
+<h5 id="sec-261">設計の考え方</h5>
+<p>日本の当事者データ（C6精神障害・C2全方位困難）と支援者データ（toku18 Q1支援者の早期求職実践）が示す「今の状態から始める」構造は、IPS/SEの「place-then-train（就職してから学ぶ）」と独立に整合している。「完全に準備できてから応募する」ではなく「今の状態で応募しながら調整する」というアプローチを基本にする。</p>
+<h5 id="sec-262">外部と一緒に考える場面</h5>
+<ul>
+<li>「就職活動の実施」（職業的課題2）への支援者データが示す最効果介入は、企業へのアプローチ（連携・効果推定-0.15）で全介入中最高水準。Q13連携体制参加でのQ1転換差は就労移行支援（+17.0pt）&gt; 就業生活支援センター（+16.4pt）&gt; HWチーム支援（+15.3pt）の順。就労移行支援事業所が求職活動の伴走支援を担える最優先連携先。就業生活支援センターが企業へのアプローチ・開示調整を一体的に担える。</li>
+</ul>
+<hr />
+<h3 id="sec-263">Ⅲ-06 実習・訓練から就業への接続</h3>
+<p>就労準備訓練・実習の経験が実際の競争的雇用への移行に結びつかず、訓練環境の中で停滞している。</p>
+<blockquote><p>着眼点: 日本の支援者データ（toku18 Q1支援者の実践構造）と当事者データ（C6精神障害・C2全方位困難）が示すように、問題は「まだ準備ができていない」ことではなく「訓練から実際の就業環境への移行設計が機能していない」ことにある。この構造はIPS/SE国際エビデンスの「place-then-train（就職してから学ぶ）」と独立に整合している。</p></blockquote>
+<h4 id="sec-264">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 精神障害 / 発達障害 / 長期就労準備中の状態</p>
+<h5 id="sec-265">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 実習・訓練の経験が段階的な就業計画と結びついている。</li>
+<li>🟡 要調整: 訓練は続いているが、就業移行の具体的な見通しが立っていない。</li>
+<li>🔴 高頻度支障: 訓練が長期化し、「いつ就職できるか」の判断ができていない状態が続いている。</li>
+<li>💣 破綻・停止: 訓練・実習への意欲も低下し、どこにも動けない状態になっている。</li>
+</ul>
+<h4 id="sec-266">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-267">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「訓練・実習から実際の就業への移行設計」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-268">近いフレームとの見分け方</h5>
+<ul>
+<li>就労意欲の回復が先に必要なら「Ⅲ-01」へ。制度的所属の整理が先に必要なら「Ⅲ-02」へ。</li>
+</ul>
+<h4 id="sec-269">具体的な取組み内容</h4>
+<h5 id="sec-270">最初にやること</h5>
+<ul>
+<li>「いつ就職できるか」の基準を支援者・本人・施設で明確にする（具体的な指標を設定する）</li>
+<li>「訓練で完璧にできてから就職する」ではなく「今できることで就職し、職場で学ぶ」という方針を確認する</li>
+<li>実際の職場での短期実習（企業実習）を早期に試みる</li>
+<li>訓練施設側と就職後の定着支援の継続を事前に合意する</li>
+</ul>
+<h5 id="sec-271">見落としやすい点</h5>
+<ul>
+<li>訓練の長期化は「本人が準備不足」ではなく「移行設計の不在」が原因の場合が多い</li>
+<li>定着支援（就業後の継続的なサポート）を訓練終了で打ち切らない。IPS原則7「時間制限なしの定着支援」</li>
+</ul>
+<h5 id="sec-272">設計の考え方</h5>
+<p>日本の支援者データ（toku18）が示すQ1支援者の実践構造（早期求職・連携型支援・定着継続）は、IPS/SE国際エビデンス（RCTメタ分析：競争的雇用獲得率が従来型の2〜3倍、オッズ比3〜4）と独立に整合している。「訓練してから就職する」より「就職しながら学ぶ」という移行設計の優位性は、日本データと国際エビデンスの両側から支持されている。</p>
+<h5 id="sec-273">外部と一緒に考える場面</h5>
+<ul>
+<li>「採用決定」（職業的課題3）への支援者データが示す最効果介入は、企業へのアプローチ（連携・効果推定-0.18）で全介入・全課題を通じた最高水準。次いで職業場面を踏まえた職業評価（連携・効果推定-0.11）が続く。Q13連携体制参加では就労移行支援（+17.0pt）&gt; 就業生活支援センター（+16.4pt）の順。就労移行支援事業所が訓練→実習→採用の全段階を伴走できる最優先連携先。就業生活支援センターが企業へのアプローチ・採用後定着支援を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-274">Ⅲ-07 収入・給付の安定設計</h3>
+<p>就労することによる収入と、障害年金・医療費助成・生活保護等の各種給付のバランスが整理されておらず、「働くと生活が苦しくなる（働き損）」という不安が就労の障壁になっている。</p>
+<blockquote><p>着眼点: 問題は本人の計算能力ではなく、複雑な給付制度の相互作用を個人が把握することが現実的に困難なことにある。専門家との確認が必要な問題。</p></blockquote>
+<h4 id="sec-275">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 障害年金受給者 / 生活保護受給者 / 医療費助成対象者 / 難病（高額医療を継続中）</p>
+<h5 id="sec-276">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 収入と給付のバランスが整理されており、就労が経済的安定を支えている。</li>
+<li>🟡 要調整: 給付への影響が不明で、就労規模を決めかねている状態がある。</li>
+<li>🔴 高頻度支障: 「働き損」への不安から就労規模が過度に制限されている。</li>
+<li>💣 破綻・停止: 経済的不安が就労の断念に直結している。</li>
+</ul>
+<h4 id="sec-277">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-278">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「就労による収入と各種給付の整合性の確認」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-279">近いフレームとの見分け方</h5>
+<ul>
+<li>制度的所属の整理が先に必要なら「Ⅲ-02」へ。経済不安が意欲低下の主因なら「Ⅲ-01」と合わせて確認。</li>
+</ul>
+<h4 id="sec-280">具体的な取組み内容</h4>
+<h5 id="sec-281">最初にやること</h5>
+<ul>
+<li>現在受給している給付（障害年金・生活保護・難病助成等）の種類と金額を一覧にする</li>
+<li>各給付の「就労による減額・停止の基準」を担当窓口（年金事務所・福祉事務所・難病相談支援センター等）に確認する</li>
+<li>就労した場合の収入と給付の合計を「就労前後」で試算する</li>
+<li>「働き損ゾーン」を回避できる就労規模（時間・収入）の目安を把握する</li>
+</ul>
+<h5 id="sec-282">見落としやすい点</h5>
+<ul>
+<li>給付制度は改正があるため、過去の情報や伝聞に頼らず必ず担当窓口に確認する</li>
+<li>試算は「現在の状態」だけでなく「症状変化で勤務を減らした場合」も確認する</li>
+</ul>
+<h5 id="sec-283">設計の考え方</h5>
+<p>「働き損」の不安を取り除くことが、就労の障壁を一つ解消する。情報として整理されることで、不安が「計算可能な問題」に変わる。</p>
+<h5 id="sec-284">外部と一緒に考える場面</h5>
+<ul>
+<li>給付・収入設計は「就職後の体調管理・職場定着」（職業的課題4・5）と連動する。就業生活支援センター（Q1転換差+16.4pt）の就労・生活一体相談（連携）が収入・給付の両面を扱える窓口として機能する。社会保険労務士が年金・医療費助成の試算を担い、ケースワーカーが生活保護との調整を担える。難病相談支援センターが難病助成と就労の組み合わせを専門に相談できる。</li>
+</ul>
+<hr />
+<h3 id="sec-285">Ⅲ-08 支援ネットワークへの接続</h3>
+<p>利用可能な支援機関・制度へのアクセス経路が不明か、存在は知っているが「動けない」「開示できない」「信頼できない」という理由で接続できていない。</p>
+<blockquote><p>着眼点: 「支援につながれない」理由は一つではない。情報不足・意欲低下・開示困難・信頼関係の欠如で対応が異なる。理由を切り分けてから対応する。</p></blockquote>
+<h4 id="sec-286">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 難病・全方位困難状態 / 孤立・長期未就労 / 支援経験のない初回相談</p>
+<h5 id="sec-287">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 複数の支援機関と接続されており、困りごとに応じて使い分けられている。</li>
+<li>🟡 要調整: 一部の機関と接続しているが、必要な支援が揃っていない。</li>
+<li>🔴 高頻度支障: 支援機関の存在は知っているが、連絡・相談ができない状態が続いている。</li>
+<li>💣 破綻・停止: 支援機関との接触自体が困難になっている。</li>
+</ul>
+<h4 id="sec-288">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-289">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「支援機関への接続経路の整備」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-290">近いフレームとの見分け方</h5>
+<p>| 「つながれない」理由 | 対応 | |---|---| | 支援機関の存在を知らない → 情報提供が先 | このフレーム（Ⅲ-08） | | 知っているが動けない → 意欲回復が先 | Ⅲ-01「就労意欲・社会参加の再接続」 | | 開示への恐れで動けない → 開示設計が先 | Ⅲ-03「開示判断の設計」 | | 以前の支援への不信感がある → 信頼関係の構築が先 | このフレーム（信頼構築の設計） |</p>
+<h4 id="sec-291">具体的な取組み内容</h4>
+<h5 id="sec-292">最初にやること</h5>
+<ul>
+<li>状況に応じた支援機関の一覧を整理する（障害者就業・生活支援センター / ハローワーク専門援助 / 就労移行支援 / 難病相談支援センター / 障害者職業センター 等）</li>
+<li>「最初の一歩」を最小化する（電話ではなくメールから・来所ではなくオンラインから）</li>
+<li>過去の支援への不信感がある場合は、その経験を聴いてから機関の紹介を行う</li>
+</ul>
+<h5 id="sec-293">見落としやすい点</h5>
+<ul>
+<li>支援機関を一つ紹介するより「相性の合う担当者・機関を一緒に探す」姿勢が継続につながる</li>
+<li>「あなたに合った支援はない」と感じていることへの共感が、接続の第一歩になることがある</li>
+</ul>
+<h5 id="sec-294">設計の考え方</h5>
+<p>支援への接続は「紹介する」ではなく「一緒に選ぶ」プロセス。当事者が主体的に選んだ機関への接続の方が継続率が高い。</p>
+<h5 id="sec-295">外部と一緒に考える場面</h5>
+<ul>
+<li>このフレームはQ13連携体制参加データが直接示す成果の基盤。<strong>Q1転換差（参加者Q1率 − 非参加者Q1率）の順位</strong>：就労移行支援（+17.0pt）&gt; 就業生活支援センター（+16.4pt）&gt; HWチーム支援（+15.3pt）&gt; 難病相談支援センター（+3.1pt）。支援者データ（GLM）では全5職業的課題にわたって「企業へのアプローチ（連携）」が最効果介入（効果推定-0.07〜-0.18）。接続先の優先順位はこのランキングを基準にして、当事者の状況・疾患特性に合わせて調整する。相談支援専門員・基幹相談支援センターが複数機関のコーディネーション役を担える。</li>
+</ul>
+<hr />
+<h3 id="sec-296">Ⅲ-09 職場内相談ルートの設計</h3>
+<p>在職中に困りごとが生じたとき、誰にどのようにどのタイミングで相談するかの経路が整備されておらず、問題が大きくなるまで気づかれないか、相談しても変わらないという状況が繰り返されている。</p>
+<blockquote><p>着眼点: 問題は相談意欲の欠如ではなく、相談したら何が変わるかが見えない、または変わらないという経験の蓄積にある。「相談ルート」より先に「相談が機能する仕組み」が必要。</p></blockquote>
+<h4 id="sec-297">こんな場面で起きやすい</h4>
+<p>先に見えやすい文脈: 精神障害 / 発達障害 / 難病・障害横断（指示困難・認知負荷を伴う）</p>
+<h5 id="sec-298">状況レベル（🟢 → 💣）</h5>
+<ul>
+<li>🟢 安定・予防: 相談ルートが整備されており、問題が早期に対応されている。</li>
+<li>🟡 要調整: 相談ルートはあるが、使いにくい状況や「何を相談すればよいかわからない」状態がある。</li>
+<li>🔴 高頻度支障: 問題が積み重なってから発覚するパターンが繰り返されている。</li>
+<li>💣 破綻・停止: 職場内に相談できる関係がなく、孤立した状態になっている。</li>
+</ul>
+<h4 id="sec-299">鑑別診断 / 問題の切り分け</h4>
+<h5 id="sec-300">このフレームを使うとき</h5>
+<ul>
+<li>主課題が「職場内での相談経路の整備」なら、このフレームを優先する。</li>
+</ul>
+<h5 id="sec-301">近いフレームとの見分け方</h5>
+<ul>
+<li>相談ルートはあるが「何を相談すればよいかわからない」なら「Ⅱ-07 指示・業務設計の明確化」と並行。支援機関への外部接続が先に必要なら「Ⅲ-08」へ。「相談しても変わらない」という経験が主因なら以下の対応へ。</li>
+</ul>
+<h4 id="sec-302">具体的な取組み内容</h4>
+<h5 id="sec-303">最初にやること</h5>
+<ul>
+<li>相談する担当者を明確に決める（直属上司 / 人事 / 産業医 / ジョブコーチ等、複数を状況別に設定）</li>
+<li>定期的な「状況確認の場」を設ける（月1回等の1on1 / 就労支援員の定期訪問等）</li>
+<li>「何が起きたら誰に連絡する」という早期アラートの基準を事前に合意する</li>
+<li>「相談しても変わらなかった」経験がある場合、変わるためには何が必要かを一緒に考える</li>
+</ul>
+<h5 id="sec-304">見落としやすい点</h5>
+<ul>
+<li>「相談ルートがある」と「相談が機能する」は別。相談した後の対応プロセスを設計しておく</li>
+<li>発達障害・高次脳では「何が困っているか言語化できない」ことがある。状況記録シートを使った相談方法が有効</li>
+</ul>
+<h5 id="sec-305">設計の考え方</h5>
+<p>相談ルートを「あったら便利なもの」から「業務設計の一部として機能するもの」に転換する。問題が大きくなる前に動ける仕組みが、就労継続の安全網になる。</p>
+<h5 id="sec-306">外部と一緒に考える場面</h5>
+<ul>
+<li>「職場定着・就業継続」（職業的課題5）への支援者データが示す最効果介入は、職業場面を踏まえた職業評価（連携・効果推定-0.11）と就職後継続的な職場・本人支援（自前・効果推定-0.06）。就業生活支援センター（Q1転換差+16.4pt）が定期訪問・企業フォローアップを担える最優先連携先。就労定着支援員・ジョブコーチが職場内相談の機能確認と早期アラートのモニタリングを担う。</li>
+</ul>
+<hr />
+<p><em>このガイドブックは、当事者データ（employment_survey n=4,553 + nanbyo_survey n=4,523）および支援者データ（toku18支援者調査 n=3,053 + nanbyo支援者調査 n=535）の分析結果を、FCHMAアトラス（8ドメイン×6モチーフ）に基づいて統合して作成しています。フレームの介入設計は当事者データの機能的困難・未解決課題（Q10/Q11/Q16）から導出し、支援者データのGLM分析（有効介入の効果推定）および外部知識統合G1-G6（IPS/SE含む：日本データとの独立整合確認済み）で検証しています。</em> <em>各フレームの「先に見えやすい文脈」は参照点であり、診断名でフレームを決め打ちするためのものではありません。すべての障害・疾患にまたがる機能的なパターンに基づいた設計として活用してください。</em> <em>発行: Next Being Lab / 更新: 2026-04-04</em></p>
+</section>
+    </article>
+  </main>
+</body>
+</html>

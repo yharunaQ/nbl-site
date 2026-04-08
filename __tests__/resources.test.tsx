@@ -13,10 +13,9 @@ describe('Resources public pages', () => {
       '/resources/work-support-transformation',
     );
     expect(screen.getByRole('link', { name: '動画を見る' })).toHaveAttribute('href', '/videos');
-    expect(screen.getByRole('link', { name: '仕事設計の見取り図を見る' })).toHaveAttribute(
-      'href',
-      '/jac-foundations',
-    );
+    expect(
+      screen.getAllByRole('link', { name: 'ガイドブックを見る' }).every((l) => l.getAttribute('href') === '/guide'),
+    ).toBe(true);
     expect(screen.getByText('公開中の collection')).toBeInTheDocument();
     expect(screen.getByText('見えない障害の理解')).toBeInTheDocument();
     expect(
