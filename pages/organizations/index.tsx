@@ -45,16 +45,21 @@ export default function OrganizationsPage() {
               <span className="mt-4 text-xs font-semibold text-slate-400 group-hover:text-teal-600">読む →</span>
             </Link>
 
-            <div className="flex flex-col rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6">
-              <span className="self-start rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-500">
-                準備中
+            <Link
+              href="/organizations/diagnosis"
+              className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-indigo-300 hover:shadow-md"
+            >
+              <span className="self-start rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-800">
+                組織診断
               </span>
-              <p className="mt-4 font-semibold text-slate-600">組織診断</p>
-              <p className="mt-2 text-sm leading-7 text-slate-400 flex-1">
-                「なぜ支援者が動けない組織になっているか」を診断する簡易ツール。Q14データに基づく5つの診断軸。
+              <p className="mt-4 font-semibold text-slate-900 group-hover:text-indigo-700">
+                組織診断ツール
               </p>
-              <span className="mt-4 text-xs text-slate-400">近日公開予定</span>
-            </div>
+              <p className="mt-2 text-sm leading-7 text-slate-500 flex-1">
+                「なぜ支援者が動けない組織になっているか」を診断する簡易ツール。Q14データに基づく5つの診断軸。所要時間3分。
+              </p>
+              <span className="mt-4 text-xs font-semibold text-slate-400 group-hover:text-indigo-600">診断する →</span>
+            </Link>
           </div>
 
           {/* Callout for practitioners */}
