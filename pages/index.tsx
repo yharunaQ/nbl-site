@@ -71,7 +71,7 @@ export default function HomePage() {
         title="Next Being Lab | 就労の詰まりは、設計で解ける"
         description="日本の当事者・支援者のデータから導いた、インクルーシブ就労支援の実践知識。27のフレームと対話AIが、現場の一手を示します。"
         path="/"
-        imagePath="/social/home-og.png"
+        imagePath="/social/home-og-20260409-1.png"
         imageAlt="Next Being Lab トップページの就労支援知識プラットフォーム紹介画像"
       />
 
