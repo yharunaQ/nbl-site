@@ -1,0 +1,13 @@
+name = "nbl-song-reactions"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# KV namespace: 本番用（デプロイ後に wrangler コマンドで id を埋める）
+[[kv_namespaces]]
+binding = "REACTIONS_KV"
+id = "REPLACE_WITH_KV_ID"
+preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
+
+[vars]
+# 許可するオリジン（本番ドメインに差し替える）
+ALLOWED_ORIGIN = "https://nextbeinglab.com"
