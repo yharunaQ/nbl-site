@@ -4,62 +4,89 @@
 
 - Campaign: 障害者雇用啓発キャンペーン
 - Title: がんばりより設計
-- Folder: `content-inbox/songs/障害者雇用啓発キャンペーン/がんばりより設計`
-- Audio files:
-  - `がんばりより、設計で.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: ganbari-yori-sekkei
+- Status: public
+- Catchphrase: 美談より、誰もがいられる社会設計を
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: がんばりより、設計で.wav
+- Hero visual: songs/still/ganbari-yori-sekkei.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 障害を努力や感動だけで語らず、環境設計として考えたい人
+- Secondary audience: 企業・行政・教育・支援関係者、障害者雇用の啓発に関わる人
+- Short concept note (120-200 chars): 障害者を美談化する「エイブリズム」でなく、誰もが当たり前に過ごせる社会設計に取り組むキャンペーンソング。
+
+## Companion
+
+- Companion boundary note: この曲は、障害を美談化せず、社会設計や環境調整として考えるための問題提起です。個人の努力や特定の職場を断定的に評価するものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
 ```text
 [Intro]
 ねえ
-その「はくしゅ」は　だれのため
-そのことばは　だれを外す
-やさしさだけじゃ　たりないなら
+その拍手は　誰のため
+その言葉は　誰を外す
+優しさだけじゃ　足りないなら
 ここから　前提を変えよう
 
 [Verse 1]
-「すごいね」って　ほめるたび
+「すごいね」って　褒めるたび
 見えない線を　引いてないかな
-“ふつうじゃない”を　飾るより
-ふつうにいられる　場所をつくろう
+“普通じゃない”を　飾るより
+普通にいられる　場所をつくろう
 
-がんばりを　語る前に
+頑張りを　語る前に
 届いてないものを　見にいこう
-できないことを　数えるより
-できるようにする　仕組みへ
+出来ないことを　数えるより
+出来るようにする　仕組みへ
 
 [Pre-Chorus]
-ひとりの強さに
+一人の強さに
 寄りかかるより
 みんなが働ける
 前提をえらぼう
 
 [Chorus]
-がんばりより　「せっけい」で
+頑張りより　設計で
 ヒーローじゃなく　チームで
 “特別”じゃなく　最初から
-ここにいるって　わかるように
+ここにいるって　分かるように
 
 感動のその先へ
-「はくしゅ」のその先へ
-配慮はやさしさじゃない
+拍手のその先へ
+配慮は優しさじゃない
 明日をつくる　仕様なんだ
 
 [Verse 2]
 見えるものだけが
 困りごとじゃない
-ことばにしにくい
-いたみも　あるから
+言葉にしにくい
+痛みも　あるから
 
 席の高さ　伝える順番
 ツールの文字の　読みやすさ
@@ -72,64 +99,50 @@
 景色を変える
 
 [Pre-Chorus]
-だれかのためは
+誰かのためは
 みんなのために
-あとからじゃなくて
+後からじゃなくて
 最初から　そこに
 
 [Chorus]
-がんばりより　「せっけい」で
-「びだん」じゃなくて　日常へ
-“できない”じゃなく　まだ
+頑張りより　設計で
+美談じゃなくて　日常へ
+“出来ない”じゃなく　まだ
 届いてないだけと　知るように
 
 感動で終わらせず
 参加へ　つなげよう
-「はいりょ」は特別じゃない
+配慮は特別じゃない
 力をひらく　入口なんだ
 
 [Bridge]
 語りを変えることは
 前提を変えること
-「はくしゅ」で包むより
+拍手で包むより
 働けるように　整えよう
 
-だれかが無理して
+誰かが無理して
 合わせる未来じゃなく
-ちがいがそのままで
+違いがそのままで
 並べる場所へ
 
 [Final Chorus]
-がんばりより　「せっけい」で
+頑張りより　設計で
 ヒーローじゃなく　チームで
-“違う”ことさえ　ふつうだと
+“違う”ことさえ　普通だと
 言える職場を　つくろう
 
 感動のその先で
 わたしたちは会える
-「はいりょ」はやさしさじゃない
+配慮は優しさじゃない
 みんなで働く　前提なんだ
 
 [Outro]
 ねえ
 特別じゃなくていい
 ただここで
-はたらけるように
+働けるように
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

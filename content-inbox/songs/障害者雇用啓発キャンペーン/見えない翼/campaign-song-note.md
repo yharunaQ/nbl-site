@@ -4,82 +4,95 @@
 
 - Campaign: 障害者雇用啓発キャンペーン
 - Title: 見えない翼
-- Folder: `content-inbox/songs/障害者雇用啓発キャンペーン/見えない翼`
-- Audio files:
-  - `見えない翼／Invisible Wings.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: mienai-tsubasa
+- Status: public
+- Catchphrase: 見えない翼で、同じ街を支えている
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 見えない翼／Invisible Wings.wav
+- Hero visual: songs/still/mienai-tsubasa.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 見えない障害とともに働く人への理解を深めたい一般社会・職場
+- Secondary audience: 上司・同僚、家族、支援者、啓発・教育関係者
+- Short concept note (120-200 chars): 同じ社会で生きている「見えない障害」のある人についての一般社会の理解促進のためのキャンペーンソング。
+
+## Companion
+
+- Companion boundary note: この曲は、見えない障害とともに働く人への想像力を広げるための啓発コンテンツです。障害や疾患を一括りにした判断や、個別支援方針の決定を目的とするものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
 ```text
 [Intro]  
-きょうも　おなじ　まちをあるく  
-となりのきみは　わらっているけど  
-こころのなかで　たたかっている  
-それは　まだ　だれも　しらない
+今日も　同じ　街を歩く  
+隣の君は　笑っているけど  
+心の中で　戦っている  
+それは　まだ　誰も　知らない
 
 [Verse 1]  
-あさのひかりに　まぎれて  
-つかれをかくす　そのえがお  
-「だいじょうぶ？」って　ひとことが  
-きせきを　おこす　はじまりになる
+朝の光に　まぎれて  
+疲れを隠す　その笑顔  
+「大丈夫？」って　一言が  
+奇跡を　起こす　始まりになる
 
 [Chorus]  
-見えない　つばさで　はばたいている  
-だれかの　しごとを　ささえるために  
+見えない翼で　羽ばたいている  
+誰かの　仕事を　支えるために  
 そばにいる　それだけで  
-はたらく　ちからが　よみがえる
+働く力が　よみがえる
 
 [Verse 2]  
-めにみえない　いたみやふあん  
-それでも　まえを　むくひとたち  
-ひとりじゃないと　しったとき  
-あしたは　すこし　かるくなる
+目に見えない　痛みや不安  
+それでも　前を向く人たち  
+一人じゃないと　知ったとき  
+あしたは　少し　軽くなる
 
 [Chorus]  
-見えない　つばさで　はばたいている  
-だれかの　ゆめを　まもるために  
+見えない翼で　羽ばたいている  
+誰かの夢を守るために  
 そばにいる　それだけで  
-はたらく　ちからが　ひらいてく
+働く力が　開いてく
 
 [Bridge]  
-とくべつじゃない　このてをさしだすこと  
-そのぬくもりが　せかいを　かえるから  
-きこえてる？　そのこえが  
-あしたの　はじまりになる
+特別じゃない　この手を差し出すこと  
+そのぬくもりが　世界を　変えるから  
+聞こえてる？　その声が  
+明日の始まりになる
 
 [Chorus - repeat & build]  
-見えない　つばさで　はばたいている  
-きょうも　だれかの　よこにいて  
+見えない翼で　羽ばたいている  
+きょうも　誰かの横にいて  
 そばにいる　それだけで  
-はたらく　ちからが　ひらいてく
+働く力が開いてく
 
 [Outro]  
-あさのひかりに　まぎれて  
-また　つばさを　ひろげる
+朝の光に　まぎれて  
+また　翼を広げる
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

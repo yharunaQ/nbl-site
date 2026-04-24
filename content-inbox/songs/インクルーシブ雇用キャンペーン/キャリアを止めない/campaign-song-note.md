@@ -4,18 +4,45 @@
 
 - Campaign: インクルーシブ雇用キャンペーン
 - Title: キャリアを止めない
-- Folder: `content-inbox/songs/インクルーシブ雇用キャンペーン/キャリアを止めない`
-- Audio files:
-  - `キャリアを止めない.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: career-wo-tomenai
+- Status: public
+- Catchphrase: 変化のあとも、キャリアは続いていく
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: キャリアを止めない.wav
+- Hero visual: songs/still/career-wo-tomenai.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 中途障害や病気の後も働き続けたい本人、復職・配置を考える職場関係者
+- Secondary audience: 企業の人事・上司、産業保健・就労支援関係者
+- Short concept note (120-200 chars): 中途障害でキャリアを止めなくてもよい、誰もが働きやすい職場づくりが、障害者雇用の本流。
+
+## Companion
+
+- Companion boundary note: この曲は、中途障害や病気の後もキャリア継続を考える視点を伝える入口です。復職可否、配置転換、治療と仕事の調整は、本人・職場・医療/支援関係者で個別に確認する必要があります。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -86,20 +113,6 @@
 止めない
 キャリアを　止めない
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

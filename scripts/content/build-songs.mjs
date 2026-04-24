@@ -96,8 +96,8 @@ async function findNoteFiles(dirPath) {
 }
 
 function extractField(content, label) {
-  const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const match = content.match(new RegExp(`^- ${escaped}:[ \\t]*(.*)$`, 'm'));
+  // label is passed as a regex-ready string (callers pre-escape special chars with \\)
+  const match = content.match(new RegExp(`^- ${label}:[ \\t]*(.*)$`, 'm'));
   return match ? match[1].trim() : '';
 }
 
@@ -124,7 +124,7 @@ function parseCommaSeparated(value) {
 function parseSong(content, filePath) {
   const campaignJa = extractField(content, 'Campaign') || path.basename(path.dirname(path.dirname(filePath)));
   const title = extractField(content, 'Title') || path.basename(path.dirname(filePath));
-  const campaignSlug = CAMPAIGN_SLUG_MAP[campaignJa] || campaignJa;
+  const campaignSlug = CAMPAIGN_SLUG_MAP[campaignJa.normalize('NFC')] || campaignJa;
 
   // Publishing section
   const publishingSection = extractSection(content, 'Publishing');

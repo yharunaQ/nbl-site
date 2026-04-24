@@ -7,7 +7,7 @@
 - Folder: `content-inbox/songs/次の地平へ/静かな革命`
 - Audio files:
   - `静かな革命.wav`
-- Status: inbox
+- Status: hold
 
 ## Campaign Intent
 
@@ -15,7 +15,7 @@
 - Secondary audience:
 - Campaign purpose:
 - One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Short concept note (120-200 chars): Next Being Labの創発の雰囲気。
 
 ## Lyrics
 

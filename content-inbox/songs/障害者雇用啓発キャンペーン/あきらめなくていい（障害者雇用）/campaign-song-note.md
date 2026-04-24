@@ -4,108 +4,121 @@
 
 - Campaign: 障害者雇用啓発キャンペーン
 - Title: あきらめなくていい（障害者雇用）
-- Folder: `content-inbox/songs/障害者雇用啓発キャンペーン/あきらめなくていい（障害者雇用）`
-- Audio files:
-  - `あきらめなくていい.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: akiramenakute-ii-shougai
+- Status: public
+- Catchphrase: 障害者雇用を、枠ではなく働き続ける仕組みへ
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: あきらめなくていい.wav
+- Hero visual: songs/still/akiramenakute-ii-shougai.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 障害者雇用の意味を現代的に捉え直したい企業・人事・上司
+- Secondary audience: 障害のある働き手、中途障害者、就労支援者、制度に関わる人
+- Short concept note (120-200 chars): 障害者雇用を「障害者枠」だけじゃなく、解像度よく現代的な理解ができるような共通理解のためのアンセム。
+
+## Companion
+
+- Companion boundary note: この曲は、障害者雇用を「枠」だけでなく働き続ける仕組みとして捉え直す入口です。制度解釈、個別の雇用判断、支援方針を直接決定するものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
 ```text
 [Intro]
-“しょうがいしゃこよう”を
-ただの“わく”だと　おもっていた
-でも　ほんとうは
-だれもが　はたらきつづけるための
-しくみの　はなし
+“障害者雇用”を
+ただの“枠”だと　思っていた
+でも　本当は
+誰もが　働き続けるための
+仕組みの話
 
 [Verse 1]
-みえやすいことばだけが
-いつも　ただしいわけじゃない
-“いっぱん”か“しょうがいしゃわく”か
-そんな　ふたつだけじゃない
+見えやすい言葉だけが
+いつも　正しいわけじゃない
+“一般”か“障害者枠”か
+そんな　二つだけじゃない
 
-わかさのなかで　しょうがいと　いきるひとも
-はたらくとちゅうで　かわっていくひとも
-きゃりあを　てばなさなくていい
-そのための　みちを　ひらくんだ
+若さのなかで　障害と　生きる人も
+働く途中で　変わっていく人も
+キャリアを　手放さなくていい
+そのための　道を　開くんだ
 
 [Pre-Chorus]
-さべつを　しないこと
-ひつようを　きくこと
-むりなく　つづけられるよう
-しごとを　ともに　ととのえること
+差別を　しないこと
+必要を　聞くこと
+無理なく　続けられるよう
+仕事を　共に　整えること
 
 [Chorus]
-それは　とくべつあつかいじゃない
-はたらくことを　あきらめないための
-あたらしい　あたりまえ
-だれかを　わけるためじゃない
-だれもが　のこれるようにする
-しゃかいの　せっけい
-“しょうがいしゃこよう”を
-いま　いいなおそう
+それは　特別扱いじゃない
+働くことを　諦めないための
+新しい　当たり前
+誰かを　分けるためじゃない
+誰もが　残れるようにする
+社会の設計
+“障害者雇用”を
+今　言い直そう
 
 [Verse 2]
-てちょうが　あるかないかで
-ひとの　かのうせいは　きまらない
-はいりぐちも　はたらきかたも
-ひとつだけじゃ　たりないから
+手帳が　あるかないかで
+人の　可能性は　決まらない
+入り口も　働き方も
+一つだけじゃ　足りないから
 
-はいちも　ひょうかも　たいわで　かわる
-ちーむの　やりかたも　かえられる
-“こうへい”って　おなじにすることじゃない
-さんかできるように　ととのえること
+配置も　評価も　対話で　変わる
+チームの　やり方も　変えられる
+“公平”って　同じにすることじゃない
+参加できるように　整えること
 
 [Bridge]
-びょうきも　けがも　こころのゆらぎも
-あした　だれにも　おこりうること
+病気も　けがも　心の揺らぎも
+あした　誰にも　起こりうること
 だから　これは
-“だれかのため”だけの　はなしじゃない
-わたしたちの　しごとの　みらい
+“誰かのため”だけの　話じゃない
+わたしたちの　仕事の未来
 
 [Final Chorus]
-それは　やさしさだけじゃない
-ほうりつの　どだいに　あるちから
-さべつをこえ　はいりょでつなぎ
-はたらけるばしょを　ひろげていく
+それは　優しさだけじゃない
+法律の土台にある力
+差別をこえ　配慮でつなぎ
+働ける場所を　拡げていく
 
-“いっぱん”と“ささえ”は　とぎれない
-ひとを　こぼさないための　ぞーん
-わくに　いれるかじゃない
-だれもが　むりなく　つづけられる
-そのための　こようへ
+“一般”と“支え”は　途切れない
+人を　こぼさないための　ゾーン
+枠に　入れるかじゃない
+誰もが　無理なく　続けれる
+そのための　雇用へ
 いま　アップデートしよう
 
 [Outro]
-あきらめなくていい
-かわっていい
-ささえていい
-ともに　はたらいていける
-しゃかいへ
+諦めなくていい
+変わっていい
+支えていい
+共に　働いていける
+社会へ
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

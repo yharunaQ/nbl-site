@@ -4,18 +4,45 @@
 
 - Campaign: インクルーシブ雇用キャンペーン
 - Title: 共に創る未来
-- Folder: `content-inbox/songs/インクルーシブ雇用キャンペーン/共に創る未来`
-- Audio files:
-  - `共に創る未来.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: tomo-ni-tsukuru-mirai
+- Status: public
+- Catchphrase: 一人ひとりが光る場所を、共につくる
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 共に創る未来.wav
+- Hero visual: songs/still/tomo-ni-tsukuru-mirai.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 個性や強みを活かせる職場づくりに関わる企業・現場リーダー
+- Secondary audience: 障害のある働き手、就労支援者、インクルーシブ雇用に関心のある人
+- Short concept note (120-200 chars): 個性を潰す仕事や働き方の時代を終わらせ、まともな仕事や働き方ができる未来を一緒に創っていこう！
+
+## Companion
+
+- Companion boundary note: この曲は、個性や強みを活かす職場づくりの共通イメージを広げるためのものです。個別の配慮内容や雇用制度の判断は、本人の希望・職務・環境条件に即して検討してください。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -63,20 +90,6 @@ Together we draw the map to tomorrow
 輝く場所 ここにある
 A place to shine is right here
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

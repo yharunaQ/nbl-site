@@ -4,18 +4,45 @@
 
 - Campaign: インクルーシブ雇用キャンペーン
 - Title: 明日をつくる僕ら
-- Folder: `content-inbox/songs/インクルーシブ雇用キャンペーン/明日をつくる僕ら`
-- Audio files:
-  - `明日をつくる僕ら.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: ashita-wo-tsukuru-bokura
+- Status: public
+- Catchphrase: 強みも夢も違うまま、明日をつくる
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 明日をつくる僕ら.wav
+- Hero visual: songs/still/ashita-wo-tsukuru-bokura.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 自分の強みを活かして働きたい若い世代・働く人
+- Secondary audience: 職場づくりに関わる企業・学校・支援者、インクルーシブ雇用の入口にいる人
+- Short concept note (120-200 chars): 仕事に人を合わせる社会から、各人の強みの発揮の総合で成り立つ社会の共創＝インクルーシブ雇用。
+
+## Companion
+
+- Companion boundary note: この曲は、強みの違いを前提にしたインクルーシブ雇用の入口を示すものです。個別の支援設計や進路・雇用判断は、本人の状況と環境条件を確認して行う必要があります。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -52,20 +79,6 @@ We are the work of tomorrow
 希望のスイッチ、君が押すとき  
 社会が始まる　今この場所で
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

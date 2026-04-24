@@ -7,7 +7,7 @@
 - Folder: `content-inbox/songs/周辺化された人々/My Second First Time`
 - Audio files:
   - `My Second First Time.wav`
-- Status: inbox
+- Status: hold
 
 ## Campaign Intent
 
@@ -15,7 +15,7 @@
 - Secondary audience:
 - Campaign purpose:人生100年時代で退職後の第二の人生をスタートする人の不安に寄り添いながら、本物の人生を送れる機会とできるように応援する。
 - One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Short concept note (120-200 chars):第二の人生のために退職した後のふわふわした感じの歌。
 
 ## Lyrics
 

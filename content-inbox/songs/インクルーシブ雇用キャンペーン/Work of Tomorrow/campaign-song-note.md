@@ -4,18 +4,45 @@
 
 - Campaign: インクルーシブ雇用キャンペーン
 - Title: Work of Tomorrow
-- Folder: `content-inbox/songs/インクルーシブ雇用キャンペーン/Work of Tomorrow`
-- Audio files:
-  - `Work of Tomorrow.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: work-of-tomorrow
+- Status: public
+- Catchphrase: 誰もが本当の姿で働ける明日へ
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: Work of Tomorrow.wav
+- Hero visual: songs/still/work-of-tomorrow.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 現在の日本の働き方を息苦しく閉塞感を感じる思う人。
+- Secondary audience: 障害者雇用関係者。
+- Short concept note (120-200 chars): 従来の息苦しい働き方を変えていこう。英語だからこそストレートに言える。
+
+## Companion
+
+- Companion boundary note: この曲は、働き方を人に合わせ直す未来像を共有するためのキャンペーン表現です。個別の雇用管理、配慮内容、医療・法務判断を直接決めるものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -91,22 +118,7 @@ We are the work of tomorrow
 (私たちは 明日の仕事であり 明日の希望だ)
 And we begin today
 (その始まりは もう 今日なんだ)
-
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

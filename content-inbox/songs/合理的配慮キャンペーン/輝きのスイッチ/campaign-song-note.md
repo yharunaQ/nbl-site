@@ -4,18 +4,45 @@
 
 - Campaign: 合理的配慮キャンペーン
 - Title: 輝きのスイッチ
-- Folder: `content-inbox/songs/合理的配慮キャンペーン/輝きのスイッチ`
-- Audio files:
-  - `輝きのスイッチ.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: kagayaki-no-switch
+- Status: public
+- Catchphrase: できないのドアを開け、可能性のスイッチへ
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 輝きのスイッチ.wav
+- Hero visual: songs/still/kagayaki-no-switch.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 配慮や環境調整で可能性を広げたい働く本人・職場関係者
+- Secondary audience: 企業人事、上司・同僚、障害者雇用・就労支援関係者
+- Short concept note (120-200 chars): 合理的配慮とは、一人ひとりが仕事しやすくするための、職場のみんなでの工夫や調整。可能性のスイッチは そこにある。
+
+## Companion
+
+- Companion boundary note: この曲は、「できない」で止めず、条件を変えて可能性を探す視点を伝えるものです。個別の就労可否、職務設計、配慮判断を直接決めるものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -80,20 +107,6 @@
 輝きの中へ
 カラフルな未来へ
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

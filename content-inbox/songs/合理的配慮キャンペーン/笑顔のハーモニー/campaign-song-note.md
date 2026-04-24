@@ -4,18 +4,45 @@
 
 - Campaign: 合理的配慮キャンペーン
 - Title: 笑顔のハーモニー
-- Folder: `content-inbox/songs/合理的配慮キャンペーン/笑顔のハーモニー`
-- Audio files:
-  - `笑顔のハーモニー (Remix).wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: egao-no-harmony
+- Status: public
+- Catchphrase: 小さな工夫が、みんなの笑顔を重ねる
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 笑顔のハーモニー (Remix).wav
+- Hero visual: songs/still/egao-no-harmony.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 合理的配慮を子どもにも大人にもやさしく伝えたい教育・啓発関係者
+- Secondary audience: 企業の同僚・上司、働く本人、家族、支援者
+- Short concept note (120-200 chars): 合理的配慮とは、一人ひとりが仕事しやすくするための、職場のみんなでの工夫や調整。小さな配慮が　未来を変える。「みんなのうた」風。
+
+## Companion
+
+- Companion boundary note: この曲は、小さな工夫や配慮を親しみやすく伝える啓発コンテンツです。実際の配慮内容や安全配慮、法的判断は、個別の状況に応じて確認する必要があります。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -62,20 +89,6 @@
 （パン・パン）ひらけ！ひらけ！　仕事のドア
 みんなで笑顔の　ハーモニー
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

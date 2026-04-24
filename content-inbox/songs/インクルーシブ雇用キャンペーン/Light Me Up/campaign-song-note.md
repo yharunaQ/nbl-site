@@ -4,18 +4,45 @@
 
 - Campaign: インクルーシブ雇用キャンペーン
 - Title: Light Me Up
-- Folder: `content-inbox/songs/インクルーシブ雇用キャンペーン/Light Me Up`
-- Audio files:
-  - `Light Me Up (Work of Tomorrow).wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: light-me-up
+- Status: public
+- Catchphrase: 枠を破り、まだ見えない力に火を灯す
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: Light Me Up (Work of Tomorrow).wav
+- Hero visual: songs/still/light-me-up.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 現在の日本の働き方を息苦しく閉塞感を感じる思う人。
+- Secondary audience: 障害者雇用関係者。
+- Short concept note (120-200 chars): 英語の歌詞だからこそ、本心がストレートに言える。息苦しい従来の働き方を破って、新しい働き方に向かうこと。それが、インクルーシブ雇用。
+
+## Companion
+
+- Companion boundary note: この曲はインクルーシブ雇用を、枠ではなく人と環境の可能性を開く社会的メッセージとして伝える入口です。個別の就労可否判断、法的判断、医療的助言の代替にはなりません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -88,20 +115,6 @@ Light me up — don’t you see?
 Tomorrow starts with you and me
 (明日は あなたと私から始まる)
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

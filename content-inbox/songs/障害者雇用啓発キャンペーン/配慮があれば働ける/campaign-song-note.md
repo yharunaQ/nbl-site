@@ -4,18 +4,45 @@
 
 - Campaign: 障害者雇用啓発キャンペーン
 - Title: 配慮があれば働ける
-- Folder: `content-inbox/songs/障害者雇用啓発キャンペーン/配慮があれば働ける`
-- Audio files:
-  - `配慮があれば働ける.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: hairyo-ga-areba-hatarakeru
+- Status: public
+- Catchphrase: 手帳の有無でなく、配慮があれば働ける
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 配慮があれば働ける.wav
+- Hero visual: songs/still/hairyo-ga-areba-hatarakeru.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 手帳のない難病患者の就労困難と配慮を知ってほしい企業・職場関係者
+- Secondary audience: 難病のある本人、家族、医療・福祉・就労支援者、政策関係者
+- Short concept note (120-200 chars): 手帳のない難病患者の就労問題の理解啓発キャンペーンソング。
+
+## Companion
+
+- Companion boundary note: この曲は、手帳の有無だけでは見えない難病の就労困難と配慮の必要性を伝える入口です。制度利用、配慮内容、就労可否の判断は個別状況に即して確認してください。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -65,20 +92,6 @@
 “できる条件を　具体化する”
 この声で　扉を　開こう
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

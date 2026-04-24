@@ -7,7 +7,7 @@
 - Folder: `content-inbox/songs/次の地平へ/腹ペコのまま`
 - Audio files:
   - `腹ペコのまま.wav`
-- Status: inbox
+- Status: hold
 
 ## Campaign Intent
 
@@ -15,7 +15,7 @@
 - Secondary audience:
 - Campaign purpose:
 - One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Short concept note (120-200 chars): Steve Jobsの伝説のスピーチを70年代風の歌に。
 
 ## Lyrics
 

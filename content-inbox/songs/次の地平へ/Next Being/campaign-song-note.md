@@ -7,7 +7,7 @@
 - Folder: `content-inbox/songs/次の地平へ/Next Being`
 - Audio files:
   - `Next_Being.wav`
-- Status: inbox
+- Status: hold
 
 ## Campaign Intent
 
@@ -15,7 +15,7 @@
 - Secondary audience:
 - Campaign purpose:
 - One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Short concept note (120-200 chars): Next Being Labの創設メンバーの会話から生まれた応援歌。
 
 ## Lyrics
 

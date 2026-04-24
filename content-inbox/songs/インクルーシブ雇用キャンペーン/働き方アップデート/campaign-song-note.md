@@ -4,33 +4,60 @@
 
 - Campaign: インクルーシブ雇用キャンペーン
 - Title: 働き方アップデート
-- Folder: `content-inbox/songs/インクルーシブ雇用キャンペーン/働き方アップデート`
-- Audio files:
-  - `働き方アップデート.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: hataraki-kata-update
+- Status: public
+- Catchphrase: 思考停止をほどき、働き方を更新する合図
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: 働き方アップデート.wav
+- Hero visual: songs/still/hataraki-kata-update.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:	障害者雇用施策が30年間の停滞をして有識者の検討でも出口がないが絶望せず国民自身で正しい理解に基づいて進もう。「真面目vs不真面目」の対立に疲れている。説教口調は拒否。“誰かを悪者化しない”姿勢に好意。合唱・手拍子など参加できる仕掛けに反応。難語は避け、**「敵は顔のない仕組み」**と噛み砕く。
-- One scene / one action stimulus:30年のモヤモヤが笑いと自由でほどけ、観客が“敵＝人ではなく構造”に気づいて立ち上がる。
-- Short concept note (120-200 chars):	1.	敵は人ではなく、“手段が目的化した構造／思考停止”。個人攻撃ではなく構造更新へ。2.	本質は「能力 × 環境のマッチング」に制度・現場・意識を揃え直すこと。3.	30年の停滞を破る鍵は、ユーモアと共感での可視化（Before/After、2×2の見える化）。4.	スローガンではなく行動の“合図”（笑い・連帯・創造で動く）。
+- Primary audience: 職場の制度や慣習に閉塞感を感じている働く人、現場を変えたい上司・同僚
+- Secondary audience: 企業人事、障害者雇用・ダイバーシティ推進担当者、就労支援者
+- Short concept note (120-200 chars): 1.	敵は人ではなく、“手段が目的化した構造／思考停止”。個人攻撃ではなく構造更新へ。2.	本質は「能力 × 環境のマッチング」に制度・現場・意識を揃え直すこと。3.	30年の停滞を破る鍵は、ユーモアと共感での可視化（Before/After、2×2の見える化）。4.	スローガンではなく行動の“合図”（笑い・連帯・創造で動く）。
+
+## Companion
+
+- Companion boundary note: この曲は、個人攻撃ではなく働き方の構造更新へ視点を向けるためのキャンペーン表現です。特定の制度運用や人事判断を一律に示すものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
 ```text
-[Verse 1 - V1 soft, close mic]
-ながい霧（きり）が　きえていく朝
+[Verse 1]
+ながい霧が　きえていく朝
 胸のボタンを　一つはずして
 笑ってみたら　風が入った
 「ここからだ」って　空が言う
 
-[Pre - V1→V2 lift, add strings arpeggio]
+[Pre]
 合図はもう　わかってる
-ひらく音（ね）を　ならそうよ（カチャッ）[SFX: key click]
+ひらく音を　ならそうよ（カチャッ）
 
-[Chorus - all, anthemic]
+[Chorus]
 働き方　アップデート　今だ！
 できる？——（客席）できる！
 開ける？——（客席）あけた！
@@ -38,57 +65,39 @@
 つながる手で　明日をならす
 働き方　アップデート　今だ！
 
-[Post-chorus Hook - chant, keep claps]
+[Post-chorus Hook]
 オーオー　（パン・パン）　ラララ　（パン・パン）
-[Instruction: keep simple march rhythm, crowd unison]
 
-[Verse 2 - V1 talk-singing, add acoustic strum]
+[Verse 2]
 昨日の地図を　たたんでおいて
 今日は“合う場所”　えらべばいい
 弱さじゃないよ　ちがいこそ道
 笑い声から　道が伸びる
 
-[Pre 2 - V2 lead, add shaker]
+[Pre 2]
 「正しさ」だけじゃ　狭すぎた
 自由と知恵で　ひろげよう
 
-[Chorus 2 - bigger, add light brass stabs]
+[Chorus 2]
 働き方　アップデート　今だ！
 いこう？——（客席）いこう！
 ならす？——（客席）ならす！
 鍵はポケット　ここにあるよ
 名前のない壁　もう越えた
 
-[Bridge - drop to claps + bass, whisper crowd; call & response 3 patterns]
-[Whisper crowd]
+[Bridge]
 できる？——（全員）できる！
 開ける？——（全員）あけた！
 いこう？——（全員）いこう！
 
-[Final Chorus - double length, bright and wide]
+[Final Chorus]
 働き方　アップデート　今だ！
 笑いで合図　ならして進め！
-肩書（かたがき）よりも　目のひら広く
+肩書よりも　目のひら広く
 今日の私たちで　上書きしよう
 働き方　アップデート　今だ！
 オーオー　（パン・パン）　ラララ　（パン・パン）
-[Outro - crowd hum with claps; loop-safe ending]
-
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 

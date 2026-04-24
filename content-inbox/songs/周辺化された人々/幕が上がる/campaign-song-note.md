@@ -7,7 +7,7 @@
 - Folder: `content-inbox/songs/周辺化された人々/幕が上がる`
 - Audio files:
   - `幕が上がる`
-- Status: inbox
+- Status: hold
 
 ## Campaign Intent
 
@@ -15,7 +15,7 @@
 - Secondary audience:
 - Campaign purpose:世界で最も不幸で見捨てられている日本の独身男性を励ます歌。
 - One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Short concept note (120-200 chars):女性を励ます歌は沢山あるのに独身男性を励ます歌が少ないので試しに作ったアニメのOP的な歌。
 
 ## Lyrics
 

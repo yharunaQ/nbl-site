@@ -4,18 +4,45 @@
 
 - Campaign: 合理的配慮キャンペーン
 - Title: リターンは笑顔
-- Folder: `content-inbox/songs/合理的配慮キャンペーン/リターンは笑顔`
-- Audio files:
-  - `リターンは笑顔.wav`
-- Status: inbox
+- Status: public
+
+## Publishing
+
+- Slug: return-is-smile
+- Status: public
+- Catchphrase: 小さな配慮の投資が、笑顔を返す
+- Release date:
+- Duration:
+
+## Assets (web)
+
+- Audio source: リターンは笑顔.wav
+- Hero visual: songs/still/return-is-smile.jpg
+- Lyric card (optional):
+- YouTube id:
 
 ## Campaign Intent
 
-- Primary audience:
-- Secondary audience:
-- Campaign purpose:
-- One scene / one action stimulus:
-- Short concept note (120-200 chars):
+- Primary audience: 合理的配慮をコストではなく職場投資として捉えたい企業関係者
+- Secondary audience: 同僚・上司、働く本人、支援者、職場啓発に関わる人
+- Short concept note (120-200 chars): 合理的配慮とは、一人ひとりが仕事しやすくするための、職場のみんなでの工夫や調整。ちょっとの配慮で　ひらく未来。
+
+## Companion
+
+- Companion boundary note: この曲は、配慮をコストではなく職場への投資として捉える視点を広げるためのものです。個別の費用負担、法的判断、配慮の妥当性を一律に示すものではありません。
+
+## Cross-links
+
+- Related song slugs:
+- Related campaigns:
+- Related resource paths:
+- Related infographic keys:
+
+## Share copy
+
+- X (140字以内):
+- Threads (200字以内):
+- LINE (120字以内):
 
 ## Lyrics
 
@@ -52,20 +79,6 @@
 投資は希望さ　リターンは笑顔
 共に働く　この世界で
 ```
-
-## Related Assets
-
-- Related infographic:
-- Still visual / cover art:
-- Companion boundary note:
-- Related links:
-
-## Guardrails
-
-- What this song can convey:
-- What this song should not replace:
-- Bias / misunderstanding risk:
-- Additional context needed:
 
 ## Notes
 
