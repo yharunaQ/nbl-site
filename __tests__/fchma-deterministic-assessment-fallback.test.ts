@@ -34,8 +34,6 @@ function buildBaseAssessment(overrides: Partial<FchmaFullAssessment> = {}): Fchm
     ],
     aiAssessment: null,
     aiError: 'OPENAI_API_KEY が設定されていません。',
-    modelId: null,
-    promptVersion: 'fchma_assessment_v0',
     providerId: 'deterministic_only',
     generatedAt: '2026-04-07T00:00:00.000Z',
     ...overrides,
