@@ -1,0 +1,9 @@
+# 毎週月曜日に current.picks を上書きし、前の current を archive 先頭に追加する。
+# picks の slug は generated.json の公開曲 slug と一致すること（build-songs.mjs が検証）。
+
+current:
+  week_of: 2026-04-27
+  picks: []
+  # 公開曲の slug が揃ったら追加する
+
+archive: []

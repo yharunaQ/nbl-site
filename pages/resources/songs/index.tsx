@@ -36,6 +36,7 @@ function SongCard({ song }: { song: Song }) {
           src={`/${song.heroVisual}`}
           alt={song.title}
           className="mb-4 h-36 w-full rounded-[1rem] object-cover"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       )}
       <span

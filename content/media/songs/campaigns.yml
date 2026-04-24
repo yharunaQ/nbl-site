@@ -1,0 +1,35 @@
+- slug: reasonable-accommodation
+  title_ja: 合理的配慮キャンペーン
+  headline: 特別扱いではなく職場設計として見る
+  summary: 少しの工夫でできる条件が増える、という実務の感覚。合理的配慮を「ルール対応」ではなく「チームの仕事術」として捉え直す曲を集めています。
+  tone_color: emerald
+  related_campaigns:
+    - disability-awareness
+    - inclusive-employment
+
+- slug: inclusive-employment
+  title_ja: インクルーシブ雇用キャンペーン
+  headline: 多様な人が共に働く職場をつくる
+  summary: 雇用の形を問わず、誰もが力を発揮できる職場環境へ。AI時代の人間参加と、新しい仕事観を前向きな未来像として伝えます。
+  tone_color: sky
+  related_campaigns:
+    - reasonable-accommodation
+    - disability-awareness
+
+- slug: disability-awareness
+  title_ja: 障害者雇用啓発キャンペーン
+  headline: 障害や難病を持つ人の就労を、本人の視点から伝える
+  summary: 見えない困りごと、制度の壁、支援の形。問題として眺めるのではなく、本人の視点と周囲の関わり方を見直すための曲集です。
+  tone_color: violet
+  related_campaigns:
+    - reasonable-accommodation
+    - care-work-employment-bridge
+
+- slug: care-work-employment-bridge
+  title_ja: 医療・福祉・雇用の連携キャンペーン
+  headline: 医療・福祉・雇用の支援をつなぐ
+  summary: 病気や障害のある人の就労に関わる、医療・福祉・雇用支援の連携を促す曲。支援者同士がつながり、当事者を中心に据えた支援の形を伝えます。
+  tone_color: teal
+  related_campaigns:
+    - disability-awareness
+    - reasonable-accommodation
