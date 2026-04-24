@@ -108,6 +108,16 @@ export const resourcesThemeTracks: ResourceThemeTrack[] = [
     ctaLabel: '障害別 仕事設計を見る',
   },
   {
+    title: 'キャンペーンソング',
+    status: 'public_now',
+    summary:
+      '就労支援・合理的配慮・インクルーシブ雇用をテーマにしたキャンペーンソング集。各曲ページで歌詞・コンセプト・シェアリンクを確認できます。お気に入り登録と連続再生に対応。',
+    signals: ['合理的配慮', 'インクルーシブ雇用', '障害理解', '聴いて理解する'],
+    note: 'SNSシェア用OG画像を各曲に自動生成。サイト内プレイヤーで他ページを見ながら聴き続けられます。',
+    publicHref: '/resources/songs',
+    ctaLabel: 'ソングを聴く',
+  },
+  {
     title: '社会参加・主体性',
     status: 'organizing',
     summary:

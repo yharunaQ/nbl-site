@@ -1,13 +1,22 @@
 import Link from 'next/link';
 import { ArrowLeft, Map, Sparkles } from 'lucide-react';
+import type { GetStaticProps } from 'next';
 import PageSeo from '@/components/PageSeo';
 import ZoomableImage from '@/components/ZoomableImage';
 import {
   jacFoundationEnterpriseSignals,
   jacFoundationInfographics,
 } from '@/lib/content/jacFoundations';
+import { RelatedSongsRailByKey } from '@/components/songs/RelatedSongsRail';
+import { getPublicSongs, getByInfographic } from '@/lib/songs';
+import type { Song, SongsByInfographic } from '@/lib/types/songs';
 
-export default function WorkDesignFoundationsPage() {
+interface Props {
+  allSongs: Song[];
+  byInfographic: SongsByInfographic;
+}
+
+export default function WorkDesignFoundationsPage({ allSongs, byInfographic }: Props) {
   const conditionMap = jacFoundationInfographics.find((item) => item.slug === 'condition-map');
   const otherInfographics = jacFoundationInfographics.filter((item) => item.slug !== 'condition-map');
 
@@ -175,7 +184,19 @@ export default function WorkDesignFoundationsPage() {
             </div>
           </div>
         </section>
+        <div className="border-t border-slate-200 py-10">
+          <RelatedSongsRailByKey
+            infographicKey="work-design-foundations"
+            allSongs={allSongs}
+            byInfographic={byInfographic}
+          />
+        </div>
       </main>
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const [allSongs, byInfographic] = await Promise.all([getPublicSongs(), getByInfographic()]);
+  return { props: { allSongs, byInfographic }, revalidate: 1800 };
+};

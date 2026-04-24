@@ -31,7 +31,7 @@ describe('Resources public pages', () => {
   });
 
   it('renders the public invisible disability series', () => {
-    render(<InvisibleDisabilityPage />);
+    render(<InvisibleDisabilityPage allSongs={[]} byInfographic={{}} />);
 
     expect(screen.getByText('見えない障害の理解を、')).toBeInTheDocument();
     expect(screen.getByText('まずは5点の公開セットから読み始められます。')).toBeInTheDocument();

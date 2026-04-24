@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, ShieldCheck } from 'lucide-react';
+import type { GetStaticProps } from 'next';
 import PageSeo from '@/components/PageSeo';
 import ZoomableImage from '@/components/ZoomableImage';
 import SiteNav from '@/components/SiteNav';
@@ -8,8 +9,16 @@ import {
   disabilityWorkDesignGuardrails,
   disabilityWorkDesignIntro,
 } from '@/lib/content/disabilityWorkDesignSeries';
+import { RelatedSongsRailByKey } from '@/components/songs/RelatedSongsRail';
+import { getPublicSongs, getByInfographic } from '@/lib/songs';
+import type { Song, SongsByInfographic } from '@/lib/types/songs';
 
-export default function DisabilityWorkDesignPage() {
+interface Props {
+  allSongs: Song[];
+  byInfographic: SongsByInfographic;
+}
+
+export default function DisabilityWorkDesignPage({ allSongs, byInfographic }: Props) {
   return (
     <>
       <PageSeo
@@ -148,8 +157,20 @@ export default function DisabilityWorkDesignPage() {
             </div>
           </section>
 
+          <div className="border-t border-slate-200 py-10">
+            <RelatedSongsRailByKey
+              infographicKey="intractable-disease"
+              allSongs={allSongs}
+              byInfographic={byInfographic}
+            />
+          </div>
         </main>
       </div>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const [allSongs, byInfographic] = await Promise.all([getPublicSongs(), getByInfographic()]);
+  return { props: { allSongs, byInfographic }, revalidate: 1800 };
+};

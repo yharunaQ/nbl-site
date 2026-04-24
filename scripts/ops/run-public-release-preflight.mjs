@@ -56,6 +56,9 @@ const FILE_CHECKS = [
   'pages/operating-model.tsx',
   'pages/resources.tsx',
   'pages/videos.tsx',
+  'pages/resources/songs/index.tsx',
+  'content/media/songs/campaigns.yml',
+  'content/media/songs/generated.json',
 ];
 
 const CONTACT_ROUTE_CHECKS = [

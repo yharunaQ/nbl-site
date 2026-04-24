@@ -2,8 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import WorkDesignFoundationsPage from '@/pages/resources/work-design-foundations';
 
 describe('Work design foundations page', () => {
+  const defaultProps = { allSongs: [], byInfographic: {} };
+
   it('allows infographic zoom for detailed reading', () => {
-    render(<WorkDesignFoundationsPage />);
+    render(<WorkDesignFoundationsPage {...defaultProps} />);
 
     const openButton = screen.getByRole('button', {
       name: '仕事のコンディションマップを拡大して見る',
@@ -16,7 +18,7 @@ describe('Work design foundations page', () => {
   });
 
   it('shows correct next-step links', () => {
-    render(<WorkDesignFoundationsPage />);
+    render(<WorkDesignFoundationsPage {...defaultProps} />);
 
     expect(screen.getByRole('link', { name: 'はたらく相談室（AI対話）' })).toHaveAttribute('href', '/jac');
     expect(screen.getAllByRole('link', { name: '仕事設計ガイド（インタラクティブ）' }).length).toBeGreaterThan(0);
