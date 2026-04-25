@@ -1,7 +1,11 @@
 'use client';
 
+import { useRouter } from 'next/router';
 import { usePlayerOptional } from './PlayerProvider';
 import { Pause, Play, SkipBack, SkipForward, X } from 'lucide-react';
+
+// Pages that render their own player UI and don't want the generic MiniPlayer.
+const SUPPRESS_MINIPLAYER_PATHS = new Set<string>(['/resources/songs']);
 
 function formatTime(s: number) {
   if (!isFinite(s) || s < 0) return '0:00';
@@ -12,7 +16,9 @@ function formatTime(s: number) {
 
 export default function MiniPlayer() {
   const player = usePlayerOptional();
+  const router = useRouter();
 
+  if (SUPPRESS_MINIPLAYER_PATHS.has(router.pathname)) return null;
   if (!player || !player.currentSong || !player.isMiniPlayerVisible) return null;
 
   const { currentSong, isPlaying, currentTime, duration, toggle, next, prev } = player;

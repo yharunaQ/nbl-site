@@ -4,7 +4,10 @@ import {
   BookOpenText,
   FolderKanban,
   LibraryBig,
+  Music2,
+  Radio,
   ShieldCheck,
+  Sparkles,
   Waypoints,
 } from 'lucide-react';
 import {
@@ -107,6 +110,64 @@ export default function ResourcesPage() {
               ))}
             </ul>
           </aside>
+        </section>
+
+        {/* WORK UPDATE FEST 2026 — Featured */}
+        <section className="border-t border-slate-200 py-10">
+          <Link
+            href="/resources/songs"
+            className="group block overflow-hidden rounded-[2rem] border border-slate-900/15 bg-slate-950 text-white shadow-2xl shadow-slate-900/20 transition hover:shadow-slate-900/30"
+          >
+            <div className="relative grid gap-0 md:grid-cols-[1.4fr,1fr]">
+              <div
+                className="absolute inset-0 opacity-90"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(120deg, rgba(2,6,23,0.95) 0%, rgba(15,23,42,0.85) 40%, rgba(15,23,42,0.6) 70%, rgba(15,23,42,0.4) 100%), url(/fest/2026gw/hero.jpg)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
+              <div className="relative p-7 md:p-10">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/40 bg-amber-400/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-200 backdrop-blur">
+                    <Radio size={10} />
+                    Golden Week Special
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/40 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-200 backdrop-blur">
+                    Hosted by NBL
+                  </span>
+                </div>
+                <h2 className="mt-4 text-3xl font-black leading-tight md:text-4xl">
+                  WORK UPDATE
+                  <br />
+                  <span className="bg-gradient-to-r from-amber-300 via-pink-300 to-violet-300 bg-clip-text text-transparent">
+                    FEST 2026
+                  </span>
+                </h2>
+                <p className="mt-3 text-sm font-bold text-white/90 md:text-base">
+                  働き方アップデート・フェス — 30 Songs for Inclusive Work
+                </p>
+                <p className="mt-4 max-w-xl text-sm leading-7 text-white/75">
+                  バーチャル7ステージ + アンコールで巡る30曲。連続再生モードで、
+                  ステージごとに変わる景色とテーマを体験できます。
+                </p>
+                <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-slate-900 shadow-lg transition group-hover:scale-[1.02] group-hover:bg-amber-100">
+                  <Music2 size={14} />
+                  フェス会場へ入る
+                  <Sparkles size={13} />
+                </div>
+              </div>
+              <div className="relative hidden items-end justify-end p-6 md:flex">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/fest/2026gw/timetable-poster.jpg"
+                  alt=""
+                  className="max-h-[280px] w-auto rounded-xl object-cover shadow-2xl shadow-black/40"
+                />
+              </div>
+            </div>
+          </Link>
         </section>
 
         <section className="border-t border-slate-200 py-12">
