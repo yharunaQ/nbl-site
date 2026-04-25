@@ -294,6 +294,20 @@ export default function FestPage({ songs, campaigns, weeklyPicks }: Props) {
   const [shareOpen, setShareOpen] = useState(false);
   const [lyricsOpen, setLyricsOpen] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+
+  // close lightbox on Escape
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIdx(null);
+      else if (e.key === 'ArrowLeft' && lightboxIdx > 0) setLightboxIdx(lightboxIdx - 1);
+      else if (e.key === 'ArrowRight' && lightboxIdx < STAGE2_ILLUSTRATIONS.length - 1)
+        setLightboxIdx(lightboxIdx + 1);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [lightboxIdx]);
 
   // close share dropdown when clicking outside
   useEffect(() => {
@@ -659,18 +673,29 @@ export default function FestPage({ songs, campaigns, weeklyPicks }: Props) {
                       Visual Companion — 見えにくいものを共有するための絵
                     </p>
                     <div className="mt-4 grid gap-4 md:grid-cols-3">
-                      {STAGE2_ILLUSTRATIONS.map((ill) => (
+                      {STAGE2_ILLUSTRATIONS.map((ill, illIdx) => (
                         <figure
                           key={ill.src}
                           className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
                         >
-                          <Image
-                            src={ill.src}
-                            alt={ill.title}
-                            width={1200}
-                            height={900}
-                            className="h-44 w-full object-cover"
-                          />
+                          <button
+                            onClick={() => setLightboxIdx(illIdx)}
+                            aria-label={`${ill.title}を拡大表示`}
+                            className="group relative block w-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-sky-300"
+                          >
+                            <Image
+                              src={ill.src}
+                              alt={ill.title}
+                              width={1200}
+                              height={900}
+                              className="h-44 w-full object-cover transition group-hover:scale-[1.03]"
+                            />
+                            <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-950/0 opacity-0 transition group-hover:bg-slate-950/40 group-hover:opacity-100">
+                              <span className="rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold text-slate-900">
+                                クリックで拡大
+                              </span>
+                            </span>
+                          </button>
                           <figcaption className="p-3">
                             <p className="text-sm font-bold text-white">{ill.title}</p>
                             <p className="mt-1 text-xs leading-5 text-white/65">{ill.note}</p>
@@ -1055,6 +1080,87 @@ export default function FestPage({ songs, campaigns, weeklyPicks }: Props) {
             </aside>
           </>
         )}
+
+        {/* ── Image lightbox (Stage 02 illustrations) ───────────────── */}
+        {lightboxIdx !== null && (() => {
+          const ill = STAGE2_ILLUSTRATIONS[lightboxIdx];
+          const hasPrev = lightboxIdx > 0;
+          const hasNext = lightboxIdx < STAGE2_ILLUSTRATIONS.length - 1;
+          return (
+            <div
+              role="dialog"
+              aria-label={`${ill.title} — 拡大表示`}
+              aria-modal="true"
+              onClick={() => setLightboxIdx(null)}
+              className="fixed inset-0 z-[80] flex flex-col items-center justify-center bg-slate-950/95 p-4 backdrop-blur-md"
+            >
+              {/* Close */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIdx(null);
+                }}
+                aria-label="拡大表示を閉じる"
+                className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur transition hover:bg-white/20"
+              >
+                <XIcon size={20} />
+              </button>
+
+              {/* Counter */}
+              <p className="absolute left-4 top-4 z-10 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-white/70 backdrop-blur">
+                {lightboxIdx + 1} / {STAGE2_ILLUSTRATIONS.length} · Stage 02
+              </p>
+
+              {/* Prev */}
+              {hasPrev && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIdx(lightboxIdx - 1);
+                  }}
+                  aria-label="前のイラスト"
+                  className="absolute left-2 top-1/2 z-10 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur transition hover:bg-white/20 md:left-6"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+              )}
+
+              {/* Next */}
+              {hasNext && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIdx(lightboxIdx + 1);
+                  }}
+                  aria-label="次のイラスト"
+                  className="absolute right-2 top-1/2 z-10 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur transition hover:bg-white/20 md:right-6"
+                >
+                  <ArrowRight size={20} />
+                </button>
+              )}
+
+              {/* Image + caption */}
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="flex max-h-full max-w-5xl flex-col items-center gap-4"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={ill.src}
+                  alt={ill.title}
+                  className="max-h-[75vh] w-auto max-w-full rounded-xl object-contain shadow-2xl shadow-black/60"
+                />
+                <figcaption className="max-w-2xl rounded-xl border border-white/10 bg-slate-900/80 p-4 text-center backdrop-blur">
+                  <p className="text-base font-bold text-white">{ill.title}</p>
+                  <p className="mt-1.5 text-sm leading-7 text-white/70">{ill.note}</p>
+                  <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-white/40">
+                    Esc で閉じる · ← → で切り替え
+                  </p>
+                </figcaption>
+              </div>
+            </div>
+          );
+        })()}
       </div>
     </>
   );
