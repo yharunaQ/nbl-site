@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>研修後15分で、会議に一手を残す3枚</title>
+    <style>
+      @page { size: A4; margin: 10mm; }
+      :root {
+        color: #07111f;
+        background: #f8f3e8;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #f8f3e8; }
+      main { max-width: 900px; margin: 0 auto; padding: 28px; }
+      h1 { margin: 0 0 8px; font-size: 31px; line-height: 1.18; word-break: keep-all; }
+      h2 { margin: 8px 0 12px; font-size: 25px; line-height: 1.22; word-break: keep-all; }
+      h3 { margin: 12px 0 8px; font-size: 18px; }
+      p, li { font-size: 14px; line-height: 1.72; }
+      .lead { color: #334155; line-height: 1.8; margin-bottom: 18px; }
+      .sheet {
+        background: #fffdf7;
+        border: 2px solid #0e7490;
+        padding: 18px;
+        margin-bottom: 16px;
+        page-break-inside: avoid;
+      }
+      .num { color: #0e7490; font-weight: 900; letter-spacing: .12em; font-size: 13px; }
+      .box {
+        border: 1px dashed #94a3b8;
+        min-height: 70px;
+        padding: 12px;
+        margin-top: 10px;
+        color: #64748b;
+        background: #fff;
+      }
+      .row { display: grid; grid-template-columns: 132px 1fr; gap: 10px; align-items: start; margin-top: 10px; }
+      .label { font-weight: 800; color: #0e7490; }
+      .note { background: #ecfeff; border-left: 5px solid #0e7490; padding: 12px 14px; font-size: 13px; line-height: 1.8; color: #123044; }
+      .warn { background: #fff1f2; border-left-color: #e11d48; color: #3f1720; }
+      .example { border: 1px solid #cbd5e1; background: #fff; padding: 12px 14px; margin-top: 12px; }
+      .check { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+      .check div { border: 1px solid #cbd5e1; background: #fff; padding: 10px; min-height: 54px; }
+      .timebox { display: grid; grid-template-columns: 86px 1fr; gap: 10px; margin-top: 9px; }
+      .timebox div { border: 1px solid #cbd5e1; background: white; padding: 9px 10px; }
+      .timebox .time { color: #0e7490; font-weight: 900; }
+      @media print { main { padding: 0; } body { background: white; } .sheet { break-inside: avoid; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>研修後15分で、会議に一手を残す3枚</h1>
+      <p class="lead">資料を読んだ後の「大事ですね」で止めず、現場会議で実際に使うための3枚です。場面、分解、二週間実験へ進めます。</p>
+
+      <section class="sheet">
+        <div class="num">FACILITATOR</div>
+        <h2>最初に言うこと</h2>
+        <p>今日は資料の正しさを判定する会議ではありません。資料の論点を、現場で確認できる一つの場面に戻し、誰が何を二週間試すかを決める会議です。</p>
+        <div class="timebox">
+          <div class="time">0-2分</div><div>資料の論点を一つ選ぶ。</div>
+          <div class="time">2-5分</div><div>誰が、いつ、何の仕事で止まるかを書く。</div>
+          <div class="time">5-10分</div><div>本人、仕事、情報、時間、支援、評価に分ける。</div>
+          <div class="time">10-15分</div><div>二週間だけ試す一手と戻す日を決める。</div>
+        </div>
+        <div class="check">
+          <div><strong>扱う</strong><br />場面、仕事条件、確認する役割、二週間後の戻し方</div>
+          <div><strong>扱わない</strong><br />制度解釈、法的判断、個別支援の妥当性判断、医療判断</div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="num">SHEET 01</div>
+        <h2>今日見る場面</h2>
+        <p>資料の論点を、抽象語のまま扱わず、会議の参加者が同じ場面を思い浮かべられる一文にします。</p>
+        <div class="row"><div class="label">誰が</div><div class="box">例: 本人 / 上司 / 人事 / 支援者 / 同僚</div></div>
+        <div class="row"><div class="label">いつ</div><div class="box">例: 月末3営業日前 / 午前の会議後 / 移動後 / 通院翌日</div></div>
+        <div class="row"><div class="label">何の仕事で</div><div class="box">例: 入力作業 / 顧客対応 / 変更連絡 / 引き継ぎ / 休憩後の再開</div></div>
+        <div class="row"><div class="label">何が止まる</div><div class="box">例: 情報が残らない / 確認先がない / 評価されない / 代替がない</div></div>
+        <div class="example"><strong>例:</strong> 通院翌日の午前、変更連絡が口頭で重なり、本人も上司も優先順位を確認できない。</div>
+      </section>
+
+      <section class="sheet">
+        <div class="num">SHEET 02</div>
+        <h2>分ける表</h2>
+        <p>誰か一人の問題にせず、本人、仕事、情報、時間、支援、評価に分けます。全部を埋めようとせず、今日動かす列を一つ選びます。</p>
+        <div class="row"><div class="label">本人</div><div class="box">状態、希望、開示できる範囲、困っている場面</div></div>
+        <div class="row"><div class="label">仕事</div><div class="box">作業、手順、例外、判断、対人対応、代替手順</div></div>
+        <div class="row"><div class="label">情報</div><div class="box">変更、期限、完成形、確認先、記録の置き場</div></div>
+        <div class="row"><div class="label">時間</div><div class="box">勤務、休憩、移動、通院、回復、繁忙の重なり</div></div>
+        <div class="row"><div class="label">支援</div><div class="box">相談先、翻訳役、関係機関、会議への戻し方</div></div>
+        <div class="row"><div class="label">評価</div><div class="box">量、質、安定、協働、引き継ぎ、見えにくい工夫</div></div>
+      </section>
+
+      <section class="sheet">
+        <div class="num">SHEET 03</div>
+        <h2>二週間の実験</h2>
+        <p>正解を決めるのではなく、小さく試して戻します。次回会議の最初に、結果、負担、見落としを確認します。</p>
+        <div class="row"><div class="label">何を試す</div><div class="box">小さく変更する仕事条件を1つ</div></div>
+        <div class="row"><div class="label">誰が見る</div><div class="box">本人 / 上司 / 人事 / 支援者の確認役</div></div>
+        <div class="row"><div class="label">いつ戻す</div><div class="box">二週間後の会議日、または短い確認時刻</div></div>
+        <div class="row"><div class="label">何を見る</div><div class="box">成果、負担、漏れ、周囲への影響、次に直すこと</div></div>
+        <div class="example"><strong>例:</strong> 変更連絡は15時に共有表へ集約する。二週間後に、確認漏れ、本人の負担、上司の使いやすさを戻す。</div>
+      </section>
+
+      <p class="note warn">境界: このツールは会議の入口です。個別の医療、法務、雇用、合理的配慮の判断を決めるものではありません。判断が必要な場合は、元資料、専門職、本人確認へ戻します。</p>
+    </main>
+  </body>
+</html>

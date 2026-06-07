@@ -8,7 +8,9 @@ const NAV_ITEMS = [
   { label: '相談する', href: '/jac' },
   { label: 'フレームを使う', href: '/guide' },
   { label: '実践知識を学ぶ', href: '/knowledge' },
-  { label: '職場・組織を変える', href: '/organizations' },
+  { label: 'ツールキット', href: '/partnership' },
+  { label: 'イベント', href: '/events' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Resources', href: '/resources' },
   { label: 'NBLについて', href: '/about' },
 ];
@@ -26,7 +28,10 @@ export default function SiteNav() {
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 text-sm font-semibold tracking-tight text-slate-900 hover:text-teal-700">
+        <Link
+          href="/"
+          className="flex-shrink-0 text-sm font-semibold tracking-tight text-slate-900 hover:text-teal-700"
+        >
           Next Being Lab
         </Link>
 
@@ -61,9 +66,15 @@ export default function SiteNav() {
           onClick={() => setOpen(!open)}
           aria-label="メニューを開く"
         >
-          <span className={`block h-0.5 w-5 bg-current transition-all ${open ? 'translate-y-1 rotate-45' : '-translate-y-0.5'}`} />
-          <span className={`mt-1 block h-0.5 w-5 bg-current transition-all ${open ? 'opacity-0' : ''}`} />
-          <span className={`mt-1 block h-0.5 w-5 bg-current transition-all ${open ? '-translate-y-2 -rotate-45' : 'translate-y-0.5'}`} />
+          <span
+            className={`block h-0.5 w-5 bg-current transition-all ${open ? 'translate-y-1 rotate-45' : '-translate-y-0.5'}`}
+          />
+          <span
+            className={`mt-1 block h-0.5 w-5 bg-current transition-all ${open ? 'opacity-0' : ''}`}
+          />
+          <span
+            className={`mt-1 block h-0.5 w-5 bg-current transition-all ${open ? '-translate-y-2 -rotate-45' : 'translate-y-0.5'}`}
+          />
         </button>
       </div>
 

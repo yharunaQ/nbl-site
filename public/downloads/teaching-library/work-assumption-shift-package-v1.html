@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>がんばり美談から、仕事の前提へ 6機能キット</title>
+    <style>
+      :root {
+        color: #07111f;
+        background: #f6f1e7;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #f6f1e7; }
+      main { max-width: 1120px; margin: 0 auto; padding: 28px; }
+      .sheet {
+        margin-bottom: 24px;
+        border: 1px solid #b9c4cf;
+        background: #fffdfa;
+        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+      }
+      .cover { display: grid; grid-template-columns: 0.98fr 1.02fr; min-height: 600px; }
+      .dark { background: #07111f; color: white; padding: 40px; }
+      .page { padding: 30px; }
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #0e7490;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .12em;
+      }
+      .dark .eyebrow { color: #9ce2f0; }
+      h1 { margin: 0; font-size: 39px; line-height: 1.14; letter-spacing: 0; word-break: keep-all; }
+      h2 { margin: 0; font-size: 29px; line-height: 1.22; letter-spacing: 0; word-break: keep-all; }
+      h3 { margin: 0; font-size: 20px; line-height: 1.35; letter-spacing: 0; word-break: keep-all; }
+      p, li { font-size: 14px; line-height: 1.8; }
+      .lead { margin-top: 22px; color: #dbeafe; font-size: 17px; }
+      .note { margin-top: 18px; border-left: 5px solid #0e7490; background: #ecfeff; padding: 13px 15px; color: #123044; }
+      .dark .note { color: #123044; }
+      .warning { border-left-color: #e11d48; background: #fff1f2; color: #3f1720; }
+      .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .box, .card { border: 1px solid #c9d4df; background: white; padding: 16px; }
+      .card { background: #fbfaf5; }
+      .box img { width: 100%; max-height: 430px; border: 1px solid #d7e0e8; background: white; object-fit: contain; }
+      .coverImage { padding: 28px; display: grid; align-content: center; background: #fbfaf5; }
+      .coverImage img { width: 100%; border: 1px solid #d7e0e8; background: white; object-fit: contain; }
+      .toc { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 20px; }
+      .toc a,
+      .assetLinks a {
+        display: inline-flex;
+        justify-content: space-between;
+        gap: 8px;
+        border: 1px solid #0e7490;
+        background: #ecfeff;
+        color: #075985;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .assetLinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      .story {
+        display: grid;
+        grid-template-columns: 0.9fr 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .story article {
+        min-height: 190px;
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        padding: 16px;
+      }
+      .story .bad { border-color: #fecdd3; background: #fff1f2; }
+      .story .turn { border-color: #bae6fd; background: #ecfeff; }
+      .story .move { border-color: #bbf7d0; background: #f0fdf4; }
+      .matrix {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr 1.1fr;
+        border: 1px solid #94a3b8;
+        margin-top: 18px;
+      }
+      .matrix div { min-height: 86px; border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; padding: 12px; }
+      .matrix div:nth-child(3n) { border-right: 0; }
+      .matrix .head { min-height: auto; background: #07111f; color: white; font-weight: 800; }
+      .matrix .problem { background: #fff1f2; }
+      .matrix .read { background: #ecfeff; }
+      .matrix .design { background: #f0fdf4; }
+      .pill {
+        display: inline-flex;
+        border: 1px solid #0e7490;
+        background: #ecfeff;
+        color: #075985;
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .worksheet { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+      .field { min-height: 86px; margin-top: 10px; border: 1px dashed #94a3b8; background: white; padding: 10px; color: #64748b; }
+      .audioCard audio { width: 100%; margin-top: 12px; }
+      .microcopy {
+        margin: 14px 0 0;
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        padding: 13px 15px;
+        font-weight: 800;
+      }
+      @media (max-width: 760px) {
+        main { padding: 16px; }
+        .cover, .grid2, .grid3, .grid4, .story, .worksheet { grid-template-columns: 1fr; }
+        .toc { grid-template-columns: repeat(2, 1fr); }
+        h1 { font-size: 34px; }
+        .matrix { grid-template-columns: 1fr; }
+        .matrix div, .matrix div:nth-child(3n) { border-right: 0; }
+      }
+      @media print {
+        body { background: white; }
+        main { max-width: none; padding: 0; }
+        .sheet { page-break-after: always; margin: 0; border: 0; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="sheet cover">
+        <div class="dark">
+          <p class="eyebrow">認知補助ツールキット / Package 02</p>
+          <h1>がんばり美談から、<br />仕事の前提へ。</h1>
+          <p class="lead">「あの人は本当にすごい」で終わると、本人の努力が吸収している仕事の段差が見えなくなります。このキットは、称賛を入口にしながら、再現可能な仕事条件へ戻すための教材です。</p>
+          <p class="note">使い方: 美談や善意を否定しません。そこに隠れた役割、情報、評価、相談線、余力を見つけ、次の二週間で変える前提を一つ選びます。</p>
+        </div>
+        <div class="coverImage">
+          <img src="/resources/teaching-library/heron-scenes/ableism-work-assumption-manga.webp" alt="がんばり美談から仕事の前提を見直すマンガ" />
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">KIT MAP / このキットに入っているもの</p>
+          <h2>6つの機能を、実物として使う。</h2>
+          <nav class="toc" aria-label="6機能ナビゲーション">
+            <a href="#open">注意</a>
+            <a href="#metaphor">比喩</a>
+            <a href="#scene">場面</a>
+            <a href="#structure">構造</a>
+            <a href="#work">ワーク</a>
+            <a href="#read">読み下し</a>
+          </nav>
+          <p class="note">会議や研修では、まずマンガか音から入り、次に場面カード、最後に「がんばり前提分解シート」へ進みます。読み下しは、教材が本人責任論や職場批判へ滑らないように意味を守る部分です。</p>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">EXPERT READ / 専門チームの読み</p>
+          <h2>努力は尊い。でも、努力だけで回る仕事は壊れやすい。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <article class="card"><h3>称賛で隠れるもの</h3><p>成果、笑顔、献身の裏で、変更連絡、相談、引き継ぎ、例外対応を本人が吸収していることがある。</p></article>
+            <article class="card"><h3>職場側の接触点</h3><p>役割、評価、情報共有、人員余力、安全、顧客対応のどこに段差があるかを見る。</p></article>
+            <article class="card"><h3>支援者の翻訳負荷</h3><p>本人の強みや努力を、仕事条件の変更へ翻訳できないと、美談だけが残りやすい。</p></article>
+            <article class="card"><h3>次の一手</h3><p>「すごい人」を増やすのではなく、同じ成果を本人の消耗を減らして出せる条件を一つ変える。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="open" class="sheet">
+        <div class="page">
+          <p class="eyebrow">OPEN / 注意を開く</p>
+          <h2>入口カード: その称賛の裏で、何が吸収されているか。</h2>
+          <div class="story">
+            <article class="bad">
+              <p class="pill">止まりやすい見方</p>
+              <h3>「本人がすごい」</h3>
+              <p>よく頑張っている。周囲も助かっている。だから良い事例に見える。</p>
+            </article>
+            <article class="turn">
+              <p class="pill">Falconの読み</p>
+              <h3>努力が埋めている前提を見る</h3>
+              <p>変更連絡、暗黙ルール、相談役、評価の偏り、休憩の削りを、本人が引き受けていないか。</p>
+            </article>
+            <article class="move">
+              <p class="pill">次の問い</p>
+              <h3>同じ成果を、消耗を減らして出すには</h3>
+              <p>誰が、いつ、何を共有すれば、本人だけが頑張り続けなくてよいか。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="metaphor" class="sheet">
+        <div class="page">
+          <p class="eyebrow">METAPHOR / 比喩でつかむ</p>
+          <h2>ヒーローを増やすより、床を平らにする。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <article class="box">
+              <img src="/resources/teaching-library/heron-scenes/ableism-work-assumption-manga.webp" alt="脱エイブリズムのマンガ" />
+              <h3>脱エイブリズムのマンガ</h3>
+              <p>「すごい人を増やす」から、「すごくなくても続けられる仕事条件を作る」へ視点を移す。</p>
+              <p class="assetLinks"><a href="/resources/teaching-library/heron-scenes/ableism-work-assumption-manga.webp">画像を開く</a></p>
+            </article>
+            <article class="box audioCard">
+              <img src="/songs/still/ganbari-yori-sekkei.jpg" alt="がんばりより設計のジャケット画像" />
+              <h3>音の入口: がんばりより設計</h3>
+              <p>研修の冒頭やSNS短尺で、努力礼賛から仕事設計へ空気を変えるための入口。</p>
+              <audio controls preload="none" src="/songs/audio/ganbari-yori-sekkei.mp3"><a href="/songs/audio/ganbari-yori-sekkei.mp3">音声を開く</a></audio>
+            </article>
+          </div>
+          <p class="microcopy">短い合言葉: いい話で終わらせない。いい仕事条件へ戻す。</p>
+        </div>
+      </section>
+
+      <section id="scene" class="sheet">
+        <div class="page">
+          <p class="eyebrow">SCENE / 場面で見る</p>
+          <h2>一日の中で、美談が生まれる場所を見る。</h2>
+          <div class="grid4" style="margin-top:18px">
+            <article class="card"><h3>朝</h3><p>誰より早く来て、昨日の変更連絡を整理している。</p><p><strong>見る点:</strong> 変更情報は本人だけに集まっていないか。</p></article>
+            <article class="card"><h3>昼</h3><p>困っている同僚を助け、自分の休憩を削っている。</p><p><strong>見る点:</strong> 支援役割が非公式に偏っていないか。</p></article>
+            <article class="card"><h3>夕方</h3><p>成果は出ているが、本人だけが疲れ切っている。</p><p><strong>見る点:</strong> 評価が成果だけを拾い、持続可能性を見ているか。</p></article>
+            <article class="card"><h3>会議</h3><p>「頼りになる人」と評価されるが、仕事条件は変わらない。</p><p><strong>見る点:</strong> 称賛が改善の代わりになっていないか。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="structure" class="sheet">
+        <div class="page">
+          <p class="eyebrow">STRUCTURE / 構造に置く</p>
+          <h2>称賛を、仕事条件の表へ分解する。</h2>
+          <div class="matrix" aria-label="がんばり美談から仕事条件への変換表">
+            <div class="head">よくある称賛</div>
+            <div class="head">隠れている前提</div>
+            <div class="head">変えられる仕事条件</div>
+            <div class="problem">「いつも先回りしてくれる」</div>
+            <div class="read">変更情報、期限、完成形が本人の頭の中に集まっている。</div>
+            <div class="design">変更連絡の置き場、確認時刻、完成形サンプルを共有する。</div>
+            <div class="problem">「困っている人を放っておかない」</div>
+            <div class="read">相談役が非公式に偏り、本人の休憩や本来業務が削られる。</div>
+            <div class="design">相談当番、一次受けの範囲、引き継ぎ先を決める。</div>
+            <div class="problem">「休まず安定している」</div>
+            <div class="read">体調、通院、回復時間が評価や予定に乗っていない。</div>
+            <div class="design">繁忙期、休憩、回復時間、代替手順を予定に入れる。</div>
+          </div>
+          <p class="assetLinks"><a href="/downloads/teaching-library/work-assumption-prerequisite-cards-v1.html">印刷用カードを開く</a></p>
+        </div>
+      </section>
+
+      <section id="work" class="sheet">
+        <div class="page">
+          <p class="eyebrow">WORK / 手を動かす</p>
+          <h2>10分ワーク: 美談を、二週間の実験へ変える。</h2>
+          <div class="worksheet">
+            <article class="box"><h3>1. 称賛の文を書く</h3><p>例: いつも先回りして助けてくれる。</p><div class="field">ここに書く</div></article>
+            <article class="box"><h3>2. 努力が埋めている前提</h3><p>情報、役割、相談、評価、余力のどこを本人が吸収しているか。</p><div class="field">ここに書く</div></article>
+            <article class="box"><h3>3. 仕事条件へ置く</h3><p>誰が、いつ、何を共有・分担・記録すればよいか。</p><div class="field">ここに書く</div></article>
+            <article class="box"><h3>4. 二週間だけ試す</h3><p>試すことを一つに絞り、二週間後に結果と負担を戻す。</p><div class="field">ここに書く</div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="read" class="sheet">
+        <div class="page">
+          <p class="eyebrow">READ-DOWN / 読み下しで守る</p>
+          <h2>頑張りを否定せず、頑張りだけに閉じない。</h2>
+          <p>このキットは、努力している本人を責めるものでも、職場を責めるものでもありません。努力で埋めていた条件を見える形にし、本人の消耗を減らしながら成果を出す仕事条件へ戻すための入口です。</p>
+          <p>称賛は、関係者の善意を開く力があります。ただし、そこで止まると、同じ働き方を他の人に移植できず、本人の負担も減りません。美談を、役割、情報、相談線、評価、余力へ置き直すことで、現場で試せる改善になります。</p>
+          <p class="note warning">扱わないこと: 個別の評価、雇用判断、法的判断、合理的配慮の妥当性判断。この教材は、会議や研修で同じ場面を見るための認知補助です。</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

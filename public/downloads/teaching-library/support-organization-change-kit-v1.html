@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>支援者が動ける組織へ 6機能キット</title>
+    <style>
+      :root { color: #07111f; background: #f6f1e7; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #f6f1e7; }
+      main { max-width: 1120px; margin: 0 auto; padding: 28px; }
+      .sheet { margin-bottom: 24px; border: 1px solid #b9c4cf; background: #fffdfa; box-shadow: 0 16px 36px rgba(15, 23, 42, .1); }
+      .sheet.compact { min-height: auto; }
+      .cover { display: grid; grid-template-columns: .95fr 1.05fr; min-height: 590px; }
+      .dark { background: #07111f; color: white; padding: 40px; }
+      .page { padding: 30px; }
+      .eyebrow { margin: 0 0 12px; color: #0e7490; font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+      .dark .eyebrow { color: #9ce2f0; }
+      h1 { margin: 0; font-size: 39px; line-height: 1.14; letter-spacing: 0; word-break: keep-all; }
+      h2 { margin: 0; font-size: 29px; line-height: 1.22; letter-spacing: 0; word-break: keep-all; }
+      h3 { margin: 0; font-size: 20px; line-height: 1.35; letter-spacing: 0; word-break: keep-all; }
+      p, li { font-size: 14px; line-height: 1.8; }
+      .lead { margin-top: 22px; color: #dbeafe; font-size: 17px; }
+      .note { margin-top: 18px; border-left: 5px solid #0e7490; background: #ecfeff; padding: 13px 15px; color: #123044; }
+      .dark .note { color: #123044; }
+      .coverVisual { padding: 28px; display: grid; align-content: center; background: #fbfaf5; }
+      .coverVisual img, .box img { width: 100%; max-height: 430px; border: 1px solid #d7e0e8; background: white; object-fit: contain; }
+      .toc { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 20px; }
+      .toc a, .assetLinks a { display: inline-flex; justify-content: space-between; gap: 8px; border: 1px solid #0e7490; background: #ecfeff; color: #075985; padding: 10px 12px; font-size: 13px; font-weight: 800; text-decoration: none; }
+      .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .box, .card { border: 1px solid #c9d4df; background: white; padding: 16px; }
+      .card { background: #fbfaf5; }
+      .quickStart { margin-top: 18px; border: 2px solid #0e7490; background: #ecfeff; padding: 16px; }
+      .quickStart .eyebrow { margin-bottom: 8px; }
+      .toolFlow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .toolFlow article { border: 1px solid #cbd5e1; background: #fbfaf5; padding: 16px; min-height: 205px; }
+      .roomSet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .roomSet article { border: 2px solid #0e7490; background: #ecfeff; padding: 16px; min-height: 165px; }
+      .accent { border-left: 5px solid #0e7490; background: #ecfeff; }
+      .bulletGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+      .roleBoard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+      .roleBoard article { min-height: 145px; border: 1px solid #cbd5e1; background: #fff; padding: 14px; }
+      .pill { display: inline-flex; border: 1px solid #0e7490; background: #ecfeff; color: #075985; padding: 5px 8px; font-size: 12px; font-weight: 800; }
+      .audioCard audio { width: 100%; margin-top: 12px; }
+      .warning { border-left-color: #e11d48; background: #fff1f2; color: #3f1720; }
+      .scenarioGrid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 14px; margin-top: 20px; }
+      .voiceGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+      .voiceGrid article { border: 1px solid #cbd5e1; background: white; padding: 14px; min-height: 155px; }
+      .filledTable { display: grid; grid-template-columns: .42fr 1fr; margin-top: 18px; border: 1px solid #94a3b8; }
+      .filledTable div { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; padding: 13px; min-height: 58px; }
+      .filledTable div:nth-child(2n) { border-right: 0; }
+      .filledLabel { background: #07111f; color: white; font-weight: 800; }
+      .smallNote { margin-top: 14px; color: #475569; font-size: 12px; }
+      .scriptTable { display: grid; grid-template-columns: 0.55fr 0.95fr 1.7fr 1fr; margin-top: 18px; border: 1px solid #94a3b8; }
+      .scriptTable div { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; padding: 12px; min-height: 68px; }
+      .scriptTable div:nth-child(4n) { border-right: 0; }
+      .scriptTable .head { min-height: auto; background: #07111f; color: white; font-weight: 800; }
+      .printSet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .printTool { border: 2px solid #0e7490; background: #fffdf7; padding: 16px; min-height: 365px; }
+      .printTool ul { padding-left: 1.2em; }
+      .fieldGrid { display: grid; gap: 9px; margin-top: 14px; }
+      .fieldGrid div { display: grid; grid-template-columns: 0.42fr 1fr; align-items: end; gap: 10px; }
+      .fieldGrid strong { font-size: 12px; color: #075985; }
+      .fieldGrid span { display: block; height: 26px; border-bottom: 1px solid #94a3b8; }
+      .fieldLines { display: grid; gap: 11px; margin-top: 16px; }
+      .fieldLines span { display: block; height: 34px; border-bottom: 1px dashed #94a3b8; }
+      .deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .cardDeckItem { min-height: 230px; border: 2px solid #0e7490; background: white; padding: 18px; }
+      @media (max-width: 760px) {
+        main { padding: 16px; }
+        .cover, .grid2, .grid3, .bulletGrid, .roleBoard, .scenarioGrid, .voiceGrid, .printSet, .deck, .toolFlow, .roomSet { grid-template-columns: 1fr; }
+        .scriptTable, .filledTable { grid-template-columns: 1fr; }
+        .scriptTable div, .scriptTable div:nth-child(4n) { border-right: 0; }
+        .filledTable div, .filledTable div:nth-child(2n) { border-right: 0; }
+        .toc { grid-template-columns: repeat(2, 1fr); }
+        h1 { font-size: 32px; }
+      }
+      @media print {
+        @page { size: A4; margin: 12mm; }
+        body { background: white; }
+        main { max-width: none; padding: 0; }
+        .sheet { break-after: page; page-break-after: always; margin: 0; border: 0; box-shadow: none; }
+        .sheet.compact { break-after: auto; page-break-after: auto; }
+        .page, .box, .card, .printTool, .cardDeckItem, .voiceGrid article, .roleBoard article, .toolFlow article { break-inside: avoid; page-break-inside: avoid; }
+        .cover { min-height: auto; }
+        .dark { color: #07111f; background: white; border: 2px solid #07111f; }
+        .dark .eyebrow { color: #0e7490; }
+        h1 { font-size: 30px; }
+        h2 { font-size: 23px; }
+        h3 { font-size: 16px; }
+        p, li { font-size: 11px; line-height: 1.62; }
+        .lead { color: #07111f; font-size: 13px; }
+        .note, .quickStart { padding: 10px 12px; }
+        .coverVisual img, .box img { max-height: 250px; }
+        .toc a { color: #07111f; border-color: #94a3b8; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="sheet cover">
+        <div class="dark">
+          <p class="eyebrow">認知補助ツールキット / Package 07</p>
+          <h1>支援者が動ける組織へ</h1>
+          <p class="lead">支援の質は、支援者個人の熱意や知識だけでは決まりません。本人、医療生活、求人、職場、制度を翻訳し続ける機能が、組織の記録、会議、役割、学習に残るかで変わります。</p>
+          <p class="note">使い方: 個人の力量評価ではなく、翻訳・連携・学習が続く組織条件を見る。30日で変える会議、記録、同行、振り返りを一つ選びます。</p>
+        </div>
+        <div class="coverVisual">
+          <img src="/images/work-condition-lens-support-translation-v1.webp" alt="支援者の翻訳負荷を示すインフォグラフィック" />
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">USE CASE / 使う場面</p>
+          <h2>このキットで、何を場に残すか。</h2>
+          <div class="grid3" style="margin-top:18px">
+            <article class="box"><h3>対象</h3><p>障害者就労支援機関、難病相談支援、就業・生活支援、管理者、研修担当</p></article>
+            <article class="box"><h3>時間</h3><p>60分組織内ワーク / 30日改善ミーティング / 新人研修</p></article>
+            <article class="box"><h3>持ち帰るもの</h3><p>支援者個人に偏っている翻訳作業を、組織の記録・会議・同行・学習へ移す改善案</p></article>
+          </div>
+          <div class="quickStart">
+            <p class="eyebrow">QUICK START</p>
+            <h3>最初の一声: 属人化している翻訳を出す</h3>
+            <p>担当者が一人で抱えている翻訳作業を3つ書く。</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">TOOL FLOW / 図解からワークへ</p>
+          <h2>図解で入口を開き、場面でそろえ、印刷3枚で一手を残す。</h2>
+          <div class="toolFlow">
+            <article>
+              <p class="pill">1. 図解</p>
+              <h3>支援者の翻訳負荷を示すインフォグラフィック</h3>
+              <p>最初に全員が同じ絵を見て、話題の入口をそろえる。</p>
+            </article>
+            <article>
+              <p class="pill">2. 場面</p>
+              <h3>担当者は頑張っている。でも、本人・医療生活・求人・職場・制度の翻訳が個人に集中している。</h3>
+              <p>抽象語を、具体的な仕事場面と複数の声へ戻す。</p>
+            </article>
+            <article>
+              <p class="pill">3. ワーク</p>
+              <h3>翻訳負荷マップ / 組織機能診断ミニ / 30日改善シート</h3>
+              <p>最後に、会議や研修で記入できる紙として持ち帰る。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">ROOM SET / 会場に置くもの</p>
+          <h2>説明を聞く前に、机の上に道具を置く。</h2>
+          <div class="roomSet">
+
+            <article>
+              <p class="pill">入口</p>
+              <p>担当者個人に偏っている翻訳作業を3つだけ出す。能力評価にしない。</p>
+            </article>
+
+            <article>
+              <p class="pill">中央</p>
+              <p>翻訳、記録、会議、同行、学習、地域接続のどこで受け取るかを選ぶ。</p>
+            </article>
+
+            <article>
+              <p class="pill">出口</p>
+              <p>30日だけ変える運用を一つ決め、本人、企業、支援者の負担変化を見る。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">KIT MAP / このキットに入っているもの</p>
+          <h2>入口、比喩、場面、構造、ワーク、読み下しを一つにする。</h2>
+          <nav class="toc" aria-label="6機能ナビゲーション">
+            <a href="#open">注意</a>
+            <a href="#metaphor">比喩</a>
+            <a href="#scene">場面</a>
+            <a href="#structure">構造</a>
+            <a href="#work">ワーク</a>
+            <a href="#read">読み下し</a>
+          </nav>
+          <div class="roleBoard">
+            <article><p class="pill">読み 1</p><h3>止まりやすい見方</h3><p>支援者の知識不足、経験不足、意欲不足として読んでしまう。</p></article>
+            <article><p class="pill">読み 2</p><h3>専門チームの読み</h3><p>支援者は本人、職場、医療生活、制度を再翻訳する役割を担う。その負荷が組織機能として支えられているかを見る。</p></article>
+            <article><p class="pill">読み 3</p><h3>道具の役割</h3><p>組織診断ミニ、支援機能マップ、改善会議シートで、個人の頑張りを組織条件へ戻す。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">RELATED READS / 文章で読みたい人へ</p>
+          <h2>対応する記事と一緒に読む。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <a class="box" href="/preview/falcon-next-nbl/policy-research?article=support-translation#article-reader"><h3>支援はある。翻訳が続くかを見る。</h3><p>記事ライブラリで、背景となる考え方と対応図解を読む。</p></a>
+            <a class="box" href="/preview/falcon-next-nbl/policy-research?article=manual-abundance#article-reader"><h3>マニュアルを増やすより、会議で使える形にする。</h3><p>記事ライブラリで、背景となる考え方と対応図解を読む。</p></a>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">SCENE / 場面のリアリティ</p>
+          <h2>担当者は頑張っている。でも、本人・医療生活・求人・職場・制度の翻訳が個人に集中している。</h2>
+          <div class="scenarioGrid">
+            <article class="box warning"><h3>止まりやすい終わり方</h3><p>「担当者の力量を上げよう」で終わると、翻訳負荷を支える組織条件が見えない。</p></article>
+            <article class="box accent"><h3>読み替え</h3><p>支援者個人ではなく、翻訳、記録、会議、同行、学習が続く組織機能として見る。</p></article>
+          </div>
+          <div class="voiceGrid">
+            <article><p class="pill">担当者</p><p>「職場に伝える言葉を、毎回一人で考えている」</p></article>
+            <article><p class="pill">管理者</p><p>「良い支援が属人的で、組織の型にならない」</p></article>
+            <article><p class="pill">新人</p><p>「同行後、何を記録すれば次に使えるのか分からない」</p></article>
+            <article><p class="pill">地域連携先</p><p>「医療、企業、行政へ戻す情報の粒度が揃わない」</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">FILLED SAMPLE / 記入例</p>
+          <h2>記入例: 職場に伝える言葉を担当者が一人で抱える</h2>
+          <div class="filledTable">
+
+            <div class="filledLabel">属人化している翻訳</div>
+            <div>本人の言葉を職場語へ戻す作業が、毎回担当者の頭の中だけで行われる。</div>
+
+            <div class="filledLabel">組織で受け取る場</div>
+            <div>同行後10分の記録テンプレートと、週1回のケース共有で受け取る。</div>
+
+            <div class="filledLabel">変える運用</div>
+            <div>職場に伝える前に「仕事条件」「共有しない情報」「戻り先」を3行で残す。</div>
+
+            <div class="filledLabel">30日後のサイン</div>
+            <div>新人も同じ観測点で同行できる。本人・企業への説明が短くなる。</div>
+          </div>
+          <p class="smallNote">記入例は判断例ではありません。参加者が「どの粒度で書けばよいか」をつかむための人工的な例です。</p>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">FACILITATION / 進行台本</p>
+          <h2>進行者が、そのまま読んで進められる形にする。</h2>
+          <div class="scriptTable">
+            <div class="head">時間</div>
+            <div class="head">進行</div>
+            <div class="head">進行者の声かけ</div>
+            <div class="head">残すもの</div>
+
+            <div><strong>0-10分</strong></div>
+            <div>属人化している翻訳を出す</div>
+            <div>担当者が一人で抱えている翻訳作業を3つ書く。</div>
+            <div>翻訳負荷リストができる</div>
+
+            <div><strong>10-25分</strong></div>
+            <div>組織機能へ置く</div>
+            <div>記録、会議、同行、学習、地域接続のどこで受け取れるかを見る。</div>
+            <div>組織機能マップができる</div>
+
+            <div><strong>25-45分</strong></div>
+            <div>30日改善を選ぶ</div>
+            <div>会議、記録、同行、振り返りから一つだけ変える。</div>
+            <div>改善実験が決まる</div>
+
+            <div><strong>45-60分</strong></div>
+            <div>負担変化を戻す</div>
+            <div>本人、企業、支援者の負担がどう変わるか、戻す日を決める。</div>
+            <div>30日後の確認が残る</div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">PRINT SET / 印刷して使う3枚</p>
+          <h2>説明を、会議で書ける紙に変える。</h2>
+          <div class="printSet">
+
+            <article class="printTool">
+              <h3>翻訳負荷マップ</h3>
+              <p>支援者個人が抱えている再翻訳を見える化する。</p>
+              <div class="fieldGrid">
+
+                <div>
+                  <strong>本人語</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>職場語</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>医療生活語</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>制度語</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>誰が抱えているか</strong>
+                  <span></span>
+                </div>
+              </div>
+              <div class="fieldLines" aria-label="翻訳負荷マップの記入欄">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+
+            <article class="printTool">
+              <h3>組織機能診断ミニ</h3>
+              <p>個人の力量ではなく、組織条件を見る。</p>
+              <div class="fieldGrid">
+
+                <div>
+                  <strong>記録</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>会議</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>同行</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>振り返り</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>地域接続</strong>
+                  <span></span>
+                </div>
+              </div>
+              <div class="fieldLines" aria-label="組織機能診断ミニの記入欄">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+
+            <article class="printTool">
+              <h3>30日改善シート</h3>
+              <p>組織変革を大きく始めず、一つの運用変更から始める。</p>
+              <div class="fieldGrid">
+
+                <div>
+                  <strong>変える運用</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>担当</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>最初の一回</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>30日後のサイン</strong>
+                  <span></span>
+                </div>
+              </div>
+              <div class="fieldLines" aria-label="30日改善シートの記入欄">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">CARD DECK / 場で使う問いカード</p>
+          <h2>迷った時に、場を戻す短い問い。</h2>
+          <div class="deck">
+
+            <article class="cardDeckItem">
+              <p class="pill">個人技にしない</p>
+              <h3>「この翻訳作業は、組織のどこで受け取れますか」</h3>
+              <p>支援者を責めず、組織機能へ置く。</p>
+            </article>
+
+            <article class="cardDeckItem">
+              <p class="pill">記録を使える形にする</p>
+              <h3>「次の担当者が使える情報として残っていますか」</h3>
+              <p>記録を保管ではなく再利用へ変える。</p>
+            </article>
+
+            <article class="cardDeckItem">
+              <p class="pill">30日で変える</p>
+              <h3>「明日から一つだけ変える会議・記録・同行は何ですか」</h3>
+              <p>大改革ではなく運用の一手へ落とす。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">VISUAL / 中心図解</p>
+          <h2>まず、見える形にする。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <article class="box">
+              <img src="/images/work-condition-lens-support-translation-v1.webp" alt="支援者の翻訳負荷を示すインフォグラフィック" />
+              <h3>支援者の翻訳負荷を示すインフォグラフィック</h3>
+              <p>この図は判断ではなく、会議や研修で同じ場面を思い浮かべるための入口です。</p>
+              <p class="assetLinks"><a href="/images/work-condition-lens-support-translation-v1.webp">画像を開く</a></p>
+            </article>
+
+            <article class="box audioCard">
+              <img src="/songs/still/tomo-ni-tsukuru-mirai.jpg" alt="ともに作る未来のジャケット画像" />
+              <h3>音の入口: ともに作る未来</h3>
+              <p>文章を読む前に、テーマの空気を変える入口として使います。音は判断や助言ではなく、話し始めるための補助です。</p>
+              <audio controls preload="none" src="/songs/audio/tomo-ni-tsukuru-mirai.mp3"><a href="/songs/audio/tomo-ni-tsukuru-mirai.mp3">音声を開く</a></audio>
+            </article>
+            <article class="box">
+              <h3>読み下しテキスト</h3>
+              <p>図を見ない人にも、同じ意味が伝わるように、各ページに言葉で追える説明を置いています。</p>
+              <p>視覚情報だけに頼らず、会議で読み上げられる文章として使います。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">READ DOWN / 読み下し</p>
+          <h2>図・音・カードの意味を、言葉でも守る。</h2>
+          <p class="note">このパッケージは支援者個人を評価するものではありません。支援が続くための翻訳、記録、会議、同行、学習を、組織条件として見直すための道具です。</p>
+        </div>
+      </section>
+
+
+      <section id="open" class="sheet">
+        <div class="page">
+          <p class="eyebrow">注意を開く</p>
+          <h2>入口カード: 支援者が動けない時、個人だけを見ない。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>支援者は知っている。必要性も分かっている。それでも動けないことがある。</p></article>
+            <article class="card"><p>その時に見るのは、記録、会議、同行、相談、振り返りが組織として残っているか。</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="metaphor" class="sheet">
+        <div class="page">
+          <p class="eyebrow">比喩でつかむ</p>
+          <h2>支援は、個人技ではなく翻訳リレー。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>本人の言葉を職場語へ、職場の不安を仕事条件へ、制度の言葉を実装へ戻す。</p></article>
+            <article class="card"><p>リレーの途中で手渡し場がないと、支援者個人が抱え続ける。</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="scene" class="sheet">
+        <div class="page">
+          <p class="eyebrow">場面で見る</p>
+          <h2>支援機関内のよくある詰まり。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>担当者: 「職場に伝える言葉まで一人で考えている」</p></article>
+            <article class="card"><p>管理者: 「個別ケースの学びが組織に残らない」</p></article>
+            <article class="card"><p>新人: 「同行後に何を見ればよいか分からない」</p></article>
+            <article class="card"><p>地域: 「医療・企業・行政との戻り先が曖昧」</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="structure" class="sheet">
+        <div class="page">
+          <p class="eyebrow">構造に置く</p>
+          <h2>組織として見る5つの機能。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>翻訳: 本人語、職場語、制度語をつなぐ</p></article>
+            <article class="card"><p>記録: 次の担当者が使える形で残す</p></article>
+            <article class="card"><p>会議: 同じ場面を見て一手を決める</p></article>
+            <article class="card"><p>同行: 現場で見る観測点を共有する</p></article>
+            <article class="card"><p>学習: 成功と失敗を次の支援に戻す</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="work" class="sheet">
+        <div class="page">
+          <p class="eyebrow">手を動かす</p>
+          <h2>30日改善シート。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>今、担当者個人に偏っている翻訳作業を一つ選ぶ。</p></article>
+            <article class="card"><p>組織で受け取る場を、会議、記録、同行、振り返りのどこに作るか決める。</p></article>
+            <article class="card"><p>30日後に、本人、企業、支援者のどの負担が変わったか確認する。</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="read" class="sheet">
+        <div class="page">
+          <p class="eyebrow">読み下しで守る</p>
+          <h2>支援者を責める教材にしない。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>このキットは、支援者個人の能力評価ではありません。</p></article>
+            <article class="card"><p>支援機関の組織診断を最終判定するものでもありません。</p></article>
+            <article class="card"><p>目的は、支援が続く条件を組織で見える化することです。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">BOUNDARY / 境界</p>
+          <h2>このキットは、判断ではなく場面共有の入口です。</h2>
+          <p class="note warning">個別の就労可否、医学判断、法的判断、合理的配慮の妥当性判断、公開承認済みの知識主張としては扱いません。実際の支援や職場判断では、本人、仕事、環境、支援、時間、制度の具体的文脈を別途確認します。</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

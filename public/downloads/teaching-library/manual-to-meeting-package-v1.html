@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>研修後15分で、会議に一手を残す 6機能キット</title>
+    <style>
+      :root {
+        color: #07111f;
+        background: #f6f1e7;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #f6f1e7; }
+      main { max-width: 1120px; margin: 0 auto; padding: 28px; }
+      .sheet {
+        margin-bottom: 24px;
+        border: 1px solid #b9c4cf;
+        background: #fffdfa;
+        box-shadow: 0 16px 36px rgba(15, 23, 42, .1);
+      }
+      .cover { display: grid; grid-template-columns: .98fr 1.02fr; min-height: 600px; }
+      .dark { background: #07111f; color: white; padding: 40px; }
+      .page { padding: 30px; }
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #0e7490;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .12em;
+      }
+      .dark .eyebrow { color: #9ce2f0; }
+      h1 { margin: 0; font-size: 39px; line-height: 1.14; letter-spacing: 0; word-break: keep-all; }
+      h2 { margin: 0; font-size: 29px; line-height: 1.22; letter-spacing: 0; word-break: keep-all; }
+      h3 { margin: 0; font-size: 20px; line-height: 1.35; letter-spacing: 0; word-break: keep-all; }
+      p, li { font-size: 14px; line-height: 1.8; }
+      .lead { margin-top: 22px; color: #dbeafe; font-size: 17px; }
+      .note { margin-top: 18px; border-left: 5px solid #0e7490; background: #ecfeff; padding: 13px 15px; color: #123044; }
+      .dark .note { color: #123044; }
+      .warning { border-left-color: #e11d48; background: #fff1f2; color: #3f1720; }
+      .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .box, .card { border: 1px solid #c9d4df; background: white; padding: 16px; }
+      .card { background: #fbfaf5; }
+      .toc { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 20px; }
+      .toc a,
+      .assetLinks a {
+        display: inline-flex;
+        justify-content: space-between;
+        gap: 8px;
+        border: 1px solid #0e7490;
+        background: #ecfeff;
+        color: #075985;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .assetLinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      .coverVisual { padding: 28px; display: grid; align-content: center; background: #fbfaf5; }
+      .board {
+        border: 1px solid #cbd5e1;
+        background: #fffdfa;
+        padding: 22px;
+        box-shadow: inset 0 0 0 8px #f6f1e7;
+      }
+      .board h2 { font-size: 25px; }
+      .boardLane { display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr; gap: 8px; align-items: stretch; margin-top: 18px; }
+      .boardCard { min-height: 150px; border: 1px solid #cbd5e1; background: white; padding: 14px; }
+      .boardCard.darkCard { background: #07111f; color: white; }
+      .boardCard.cyanCard { background: #ecfeff; }
+      .boardCard.greenCard { background: #f0fdf4; }
+      .boardArrow { display: grid; place-items: center; color: #0e7490; font-size: 28px; font-weight: 900; }
+      .miniSheets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+      .miniSheet { border: 2px solid #0e7490; background: white; padding: 12px; min-height: 118px; }
+      .pill {
+        display: inline-flex;
+        border: 1px solid #0e7490;
+        background: #ecfeff;
+        color: #075985;
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .workbench {
+        display: grid;
+        grid-template-columns: 1fr 56px 1fr 56px 1fr;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .workbench .node {
+        min-height: 150px;
+        border: 1px solid #cbd5e1;
+        background: white;
+        padding: 16px;
+      }
+      .workbench .arrow {
+        display: grid;
+        place-items: center;
+        color: #0e7490;
+        font-size: 30px;
+        font-weight: 900;
+      }
+      .node.darkNode { background: #07111f; color: white; }
+      .node.cyanNode { background: #ecfeff; }
+      .node.greenNode { background: #f0fdf4; }
+      .meetingScene {
+        display: grid;
+        grid-template-columns: .92fr 1.08fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .voice { display: grid; gap: 10px; }
+      .voice article { border: 1px solid #cbd5e1; background: white; padding: 13px 15px; }
+      .turningPoint { border: 2px solid #0e7490; background: #ecfeff; padding: 18px; }
+      .sheetPreview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .paper { border: 2px solid #0e7490; background: #fffdf7; padding: 16px; min-height: 310px; }
+      .field { min-height: 70px; margin-top: 10px; border: 1px dashed #94a3b8; background: white; padding: 10px; color: #64748b; }
+      .script { counter-reset: step; display: grid; gap: 10px; margin-top: 18px; padding: 0; }
+      .script li {
+        list-style: none;
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        padding: 12px 14px;
+      }
+      .script li::before {
+        counter-increment: step;
+        content: counter(step);
+        display: inline-grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        border-radius: 999px;
+        background: #0e7490;
+        color: white;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      @media (max-width: 760px) {
+        main { padding: 16px; }
+        .cover, .grid2, .grid3, .grid4, .meetingScene, .sheetPreview, .miniSheets { grid-template-columns: 1fr; }
+        .toc { grid-template-columns: repeat(2, 1fr); }
+        .workbench, .boardLane { grid-template-columns: 1fr; }
+        .workbench .arrow, .boardArrow { transform: rotate(90deg); }
+        h1 { font-size: 32px; }
+      }
+      @media print {
+        body { background: white; }
+        main { max-width: none; padding: 0; }
+        .sheet { page-break-after: always; margin: 0; border: 0; box-shadow: none; }
+        .dark { color: #07111f; background: white; border: 2px solid #07111f; }
+        .dark .eyebrow { color: #0e7490; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="sheet cover">
+        <div class="dark">
+          <p class="eyebrow">認知補助ツールキット / Package 03</p>
+          <h1>研修後15分で、<br />会議に一手を残す。</h1>
+          <p class="lead">資料を共有した。研修も受けた。けれど現場会議では「大事ですね」で終わる。このキットは、研修後の15分を、今日見る場面、分ける表、二週間の実験へ変える道具です。</p>
+          <p class="note">目的は資料を短くすることではありません。正しい資料を、関係者が同じ場面を見て動ける3枚に変えることです。</p>
+        </div>
+        <div class="coverVisual">
+          <div class="board" aria-label="研修後15分会議のワークボード">
+            <p class="eyebrow">WORK BOARD</p>
+            <h2>資料を、会議で動く3枚へ。</h2>
+            <div class="boardLane">
+              <article class="boardCard darkCard">
+                <p class="pill">研修後</p>
+                <h3>大事ですね</h3>
+                <p>制度、好事例、マニュアルは共有された。でも、現場で最初に見る場面が残らない。</p>
+              </article>
+              <div class="boardArrow">→</div>
+              <article class="boardCard cyanCard">
+                <p class="pill">15分会議</p>
+                <h3>3枚に置く</h3>
+                <p>今日見る場面、分ける表、二週間の実験へ移す。</p>
+              </article>
+              <div class="boardArrow">→</div>
+              <article class="boardCard greenCard">
+                <p class="pill">次回</p>
+                <h3>戻して直す</h3>
+                <p>結果、負担、見落としを戻し、次の一手を小さく直す。</p>
+              </article>
+            </div>
+            <div class="miniSheets">
+              <article class="miniSheet"><strong>1. 今日見る場面</strong><br />誰が、いつ、何の仕事で止まるか。</article>
+              <article class="miniSheet"><strong>2. 分ける表</strong><br />本人、仕事、情報、時間、支援、評価。</article>
+              <article class="miniSheet"><strong>3. 二週間の実験</strong><br />誰が、何を、いつ戻すか。</article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">KIT MAP / このキットに入っているもの</p>
+          <h2>研修後の会議で、机に置く順番。</h2>
+          <nav class="toc" aria-label="6機能ナビゲーション">
+            <a href="#open">注意</a>
+            <a href="#metaphor">比喩</a>
+            <a href="#scene">場面</a>
+            <a href="#structure">構造</a>
+            <a href="#work">ワーク</a>
+            <a href="#read">読み下し</a>
+          </nav>
+          <p class="note">使う順番は、1. 研修後に止まりやすい会議を確認する、2. 本棚から作業台へ比喩でつかむ、3. 15分会議の会話を見る、4. 3枚に記入する、5. 次回に戻す、です。</p>
+          <div class="grid2" style="margin-top:18px">
+            <article class="card">
+              <h3>場で動かす</h3>
+              <p>このキットの主戦場です。関係者が同じ場面を見て、分ける表と二週間実験を残せるようにします。</p>
+            </article>
+            <article class="card">
+              <h3>言葉だけにしない</h3>
+              <p>資料の抽象語を、比喩、ワークボード、3枚シートへ移します。ただし、図解や音で入口を開く比重は他のパッケージより控えめです。</p>
+            </article>
+          </div>
+          <div class="assetLinks" aria-label="対応記事リンク">
+            <a href="/preview/falcon-next-nbl/policy-research?article=manual-abundance#article-reader">文章で読む: マニュアルを会議で使える形にする</a>
+            <a href="/preview/falcon-next-nbl/policy-research?article=policy-research-translation#article-reader">文章で読む: 制度や研究を現場の問いにする</a>
+            <a href="/preview/falcon-next-nbl/policy-research?article=workshop-to-implementation#article-reader">文章で読む: 研修の気づきを実装へ残す</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">EXPERT READ / 専門チームの読み</p>
+          <h2>資料は足りている。実装へ翻訳する場が足りない。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <article class="card"><h3>資料の正しさ</h3><p>公式資料、研究、好事例は重要。ただし、それだけでは現場で最初に見る仕事場面が決まらない。</p></article>
+            <article class="card"><h3>会議の詰まり</h3><p>人事、上司、支援者が同じ資料を読んでも、本人、仕事、情報、時間、支援、評価のどこを見るかがずれる。</p></article>
+            <article class="card"><h3>翻訳の仕事</h3><p>資料の言葉を、今日の場面、分ける表、二週間の実験へ移す役割がないと、理解で止まる。</p></article>
+            <article class="card"><h3>戻り回路</h3><p>やって終わりではなく、二週間後に何を観察し、誰が戻し、どう直すかを残す。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="open" class="sheet">
+        <div class="page">
+          <p class="eyebrow">OPEN / 注意を開く</p>
+          <h2>入口カード: 研修後の「大事ですね」で止まらない。</h2>
+          <div class="grid3" style="margin-top:18px">
+            <article class="card"><h3>止まりやすい状態</h3><p>資料を共有した。研修も受けた。でも現場会議では、誰が何を変えるかが残らない。</p></article>
+            <article class="card"><h3>Falconの読み</h3><p>不足しているのは熱意や情報量ではなく、仕事場面へ戻す翻訳、分解、戻り回路である。</p></article>
+            <article class="card"><h3>入口の問い</h3><p>この研修内容を、次の15分会議で使う3枚にすると何が残るか。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="metaphor" class="sheet">
+        <div class="page">
+          <p class="eyebrow">METAPHOR / 比喩でつかむ</p>
+          <h2>本棚から、作業台へ。</h2>
+          <div class="workbench" aria-label="本棚から作業台への変換図">
+            <article class="node darkNode">
+              <p class="pill">本棚</p>
+              <h3>正しい資料</h3>
+              <p>制度、研究、マニュアル、好事例、通達。大事だが、そのままでは会議の行動に変わりにくい。</p>
+            </article>
+            <div class="arrow">→</div>
+            <article class="node cyanNode">
+              <p class="pill">作業台</p>
+              <h3>3枚に置く</h3>
+              <p>今日見る場面、仕事条件の分解表、二週間の実験へ置く。</p>
+            </article>
+            <div class="arrow">→</div>
+            <article class="node greenNode">
+              <p class="pill">戻り回路</p>
+              <h3>次回に戻す</h3>
+              <p>結果、負担、見落とし、次の修正を戻す。会議が一回で終わらない。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene" class="sheet">
+        <div class="page">
+          <p class="eyebrow">SCENE / 場面で見る</p>
+          <h2>研修後の15分会議で、何が起きているか。</h2>
+          <div class="meetingScene">
+            <div class="voice">
+              <article><p class="pill">人事</p><h3>「資料は共有しました」</h3><p>制度も好事例も説明した。現場で活かしてほしい。</p></article>
+              <article><p class="pill">上司</p><h3>「今日のシフトで何を変えれば？」</h3><p>大事なのは分かるが、最初に見る場面が決まらない。</p></article>
+              <article><p class="pill">支援者</p><h3>「次回また確認しましょう」</h3><p>論点は見えているが、二週間後に戻す観測点が残らない。</p></article>
+            </div>
+            <article class="turningPoint">
+              <p class="pill">ここで3枚を置く</p>
+              <h3>資料の話を、ひとつの仕事場面に戻す。</h3>
+              <p>「何を知ったか」ではなく、「明日の職場で、誰が、いつ、何の仕事で止まるか」を一文にします。そこから、本人、仕事、情報、時間、支援、評価に分け、二週間だけ試す一手を決めます。</p>
+              <p class="note">会議の成果物は、理解ではなく、次回戻せる観測点です。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="structure" class="sheet">
+        <div class="page">
+          <p class="eyebrow">STRUCTURE / 構造に置く</p>
+          <h2>机に置く3枚。</h2>
+          <div class="sheetPreview">
+            <article class="paper">
+              <p class="pill">SHEET 01</p>
+              <h3>今日見る場面</h3>
+              <p>誰が、いつ、何の仕事で止まったか。資料の論点を、実際の場面へ戻す。</p>
+              <div class="field">例: 通院翌日の午前、変更連絡が口頭で重なり、優先順位を確認できない。</div>
+            </article>
+            <article class="paper">
+              <p class="pill">SHEET 02</p>
+              <h3>分ける表</h3>
+              <p>本人、仕事、情報、時間、支援、評価に分ける。誰か一人の問題にしない。</p>
+              <div class="field">例: 情報の置き場、相談先、期限、評価基準が分かれていない。</div>
+            </article>
+            <article class="paper">
+              <p class="pill">SHEET 03</p>
+              <h3>二週間の実験</h3>
+              <p>何を、誰が、いつまで、どう戻すか。小さく試して戻す。</p>
+              <div class="field">例: 変更は15時に共有表へ。二週間後に負担と漏れを確認。</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="sheet">
+        <div class="page">
+          <p class="eyebrow">WORK / 手を動かす</p>
+          <h2>ファシリテーター台本: 15分で3枚にする。</h2>
+          <ol class="script">
+            <li><strong>0-2分: 資料の論点を一つだけ選ぶ。</strong> 制度説明や理念を全部扱わず、今日の会議で見る論点を一つに絞る。</li>
+            <li><strong>2-5分: 仕事場面を書く。</strong> 誰が、いつ、何の仕事で止まるかを一文にする。</li>
+            <li><strong>5-10分: 六つに分ける。</strong> 本人、仕事、情報、時間、支援、評価。どれか一つを正解にしない。</li>
+            <li><strong>10-13分: 二週間だけ試す一手を決める。</strong> 試すこと、見る人、戻す日を決める。</li>
+            <li><strong>13-15分: 次回の最初に戻すことを決める。</strong> 成果だけでなく、負担、漏れ、見落としを戻す。</li>
+          </ol>
+          <p class="assetLinks"><a href="/downloads/teaching-library/three-sheet-meeting-kit-v1.html">印刷用3枚セットを開く</a></p>
+        </div>
+      </section>
+
+      <section id="read" class="sheet">
+        <div class="page">
+          <p class="eyebrow">READ-DOWN / 読み下しで守る</p>
+          <h2>資料の価値を落とさず、会議で使える形にする。</h2>
+          <p>このキットは、公式資料、研究、マニュアル、好事例の価値を否定するものではありません。むしろ、それらを現場で使えるように、同じ場面、分ける表、二週間実験へ翻訳するための入口です。</p>
+          <p>資料を要約するだけでは、現場の会議は動きません。資料の言葉を、今日見る場面、関係者が分けて確認する表、二週間後に戻る観測点へ移すことで、知識が会議の行動になります。</p>
+          <p class="note warning">扱わないこと: 制度解釈、法的判断、統計評価、個別支援の妥当性判断。必要な場合は元資料と専門確認へ戻します。</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

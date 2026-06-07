@@ -3,6 +3,52 @@
 @tailwind utilities;
 
 html, body, #__next { height: 100%; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+.nbl-public-preview,
+.nbl-public-preview * {
+  min-width: 0;
+}
+.nbl-public-preview .max-w-7xl,
+.nbl-public-preview .max-w-6xl,
+.nbl-public-preview .max-w-5xl,
+.nbl-public-preview .max-w-4xl,
+.nbl-public-preview .max-w-3xl,
+.nbl-public-preview .max-w-2xl,
+.nbl-public-preview .max-w-xl,
+.nbl-public-preview .max-w-md {
+  box-sizing: border-box;
+}
+.nbl-public-preview .max-w-7xl,
+.nbl-public-preview .max-w-6xl,
+.nbl-public-preview .max-w-5xl,
+.nbl-public-preview .max-w-4xl,
+.nbl-public-preview .max-w-3xl,
+.nbl-public-preview .max-w-2xl,
+.nbl-public-preview .max-w-xl,
+.nbl-public-preview .max-w-md {
+  max-width: min(100%, 22rem);
+}
+@media (min-width: 640px) {
+  .nbl-public-preview .max-w-7xl { max-width: min(100%, 80rem); }
+  .nbl-public-preview .max-w-6xl { max-width: min(100%, 72rem); }
+  .nbl-public-preview .max-w-5xl { max-width: min(100%, 64rem); }
+  .nbl-public-preview .max-w-4xl { max-width: min(100%, 56rem); }
+  .nbl-public-preview .max-w-3xl { max-width: min(100%, 48rem); }
+  .nbl-public-preview .max-w-2xl { max-width: min(100%, 42rem); }
+  .nbl-public-preview .max-w-xl { max-width: min(100%, 36rem); }
+  .nbl-public-preview .max-w-md { max-width: min(100%, 28rem); }
+}
+.nbl-public-preview p,
+.nbl-public-preview h1,
+.nbl-public-preview h2,
+.nbl-public-preview h3,
+.nbl-public-preview h4,
+.nbl-public-preview h5,
+.nbl-public-preview h6,
+.nbl-public-preview li,
+.nbl-public-preview span {
+  overflow-wrap: anywhere;
+}
 
 html { scroll-behavior: smooth; }
 :focus-visible { outline: 2px solid #111827; outline-offset: 2px; }

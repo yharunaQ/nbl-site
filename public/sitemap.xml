@@ -5,7 +5,27 @@
   <url><loc>https://nextbeinglab.org/about</loc><priority>0.8</priority></url>
   <url><loc>https://nextbeinglab.org/contact</loc><priority>0.8</priority></url>
   <url><loc>https://nextbeinglab.org/operating-model</loc><priority>0.8</priority></url>
+  <url><loc>https://nextbeinglab.org/projects</loc><priority>0.8</priority></url>
+  <url><loc>https://nextbeinglab.org/projects/rare-disease-linkage</loc><priority>0.8</priority></url>
+  <url
+    ><loc>https://nextbeinglab.org/projects/rare-disease-linkage/resources</loc
+    ><priority>0.7</priority></url
+  >
+  <url
+    ><loc>https://nextbeinglab.org/projects/rare-disease-linkage/workshop</loc
+    ><priority>0.7</priority></url
+  >
+  <url
+    ><loc>https://nextbeinglab.org/projects/rare-disease-linkage/hospital</loc
+    ><priority>0.7</priority></url
+  >
+  <url
+    ><loc>https://nextbeinglab.org/projects/rare-disease-linkage/partner</loc
+    ><priority>0.7</priority></url
+  >
+  <url><loc>https://nextbeinglab.org/projects/employment-mobility</loc><priority>0.7</priority></url>
   <url><loc>https://nextbeinglab.org/resources</loc><priority>0.8</priority></url>
+  <url><loc>https://nextbeinglab.org/nbl-employment-reform</loc><priority>0.8</priority></url>
   <url
     ><loc>https://nextbeinglab.org/resources/invisible-disability</loc><priority>0.8</priority></url
   >

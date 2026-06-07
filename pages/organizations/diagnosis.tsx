@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import OrganizationsSurfaceBoundaryNote from '@/components/OrganizationsSurfaceBoundaryNote';
 import PageSeo from '@/components/PageSeo';
-import SiteNav from '@/components/SiteNav';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -43,7 +43,7 @@ const AXES: AxisDef[] = [
         '上司・職場文化が就労支援の最大の障壁になっています。支援者の個人努力だけでは構造的な限界があります。',
     },
     guidance:
-      '最小コストの最初の一手：「就労相談を受けた場合に外部の就労支援機関へ情報提供すること」を業務として明示することが、最もコストが低く効果が大きい介入です。これだけで支援者の「業務外」という認識の壁を取り除けます。',
+      '最初の話し合いの一手として、「就労相談を受けた場合に外部の就労支援機関へ情報提供すること」を業務として明示できるかを確認します。支援者が業務外の善意として抱えていないかを見る入口になります。',
   },
   {
     id: 'mission',
@@ -157,35 +157,35 @@ function detectPattern(scores: Record<AxisId, number>): PatternResult {
 
   if (scores.boss < 0.45 && scores.mission < 0.45) {
     return {
-      label: '完全孤立型',
+      label: '支援者が孤立しやすい配置',
       badgeClass: 'bg-red-100 text-red-800',
       description:
-        '上司・職場文化と機関ミッションの両方が就労支援を支えていない状態です。支援者への個別指導・研修だけでは成果につながりません。管理職・機関長レベルの意思決定が唯一の有効な介入経路です。',
-      note: '外部の自立支援協議会や就労支援ネットワークからの参加要請を活用することで、内部からの変革が困難な場合でも組織変化を促すことができます。',
+        '上司・職場文化と機関ミッションの両方で、就労支援を業務として残しにくい配置です。支援者個人への研修だけでなく、管理職・機関長レベルで、記録、会議、同行、外部連携をどう業務に置くかを話し合う必要があります。',
+      note: '外部の自立支援協議会や就労支援ネットワークからの参加要請も、内部で話し合いを始める材料になります。',
     };
   }
   if (avg >= 0.67) {
     return {
-      label: '実践促進型',
+      label: '支援が残りやすい配置',
       badgeClass: 'bg-teal-100 text-teal-800',
       description:
-        '組織的な後押しが整っており、支援者が就労支援を実践しやすい環境です。全国調査で「真の専門性実践者（Q1）」に分類される支援者（全体の20.8%）と同水準の組織環境です。',
+        '組織的な後押しが比較的整っており、支援者が就労支援を業務として扱いやすい配置です。次は、個人の頑張りではなく、記録、会議、同行、学習回路として残っているかを確認します。',
     };
   }
   if (avg >= 0.45) {
     return {
-      label: '制度的障壁型',
+      label: '仕組みで止まりやすい配置',
       badgeClass: 'bg-amber-100 text-amber-800',
       description:
-        '理念はあっても組織的な壁が支援者の実践を阻んでいる状態です。全国調査の71.9%（n=2,196）がこのパターンに該当します。スコアが低い軸への集中的な改善が、実践率を大きく引き上げます。',
+        '理念や関心はあっても、時間、記録、評価、上司承認、外部連携の仕組みで支援が止まりやすい配置です。点数が低い観点を、次の会議で話す論点として使います。',
     };
   }
   return {
-    label: '環境依存型',
+    label: '個人努力に寄りやすい配置',
     badgeClass: 'bg-orange-100 text-orange-800',
     description:
-      '複数の組織的障壁が重なっており、支援者の実践が個人の努力と外部環境に大きく依存しています。構造的な改革が必要な状況です。',
-    note: '特にスコアが低い2〜3軸に絞って、最小コストの変化（業務の明示化・記録の開始）から始めることを推奨します。',
+      '複数の条件が重なり、支援者の実践が個人の努力や偶然の外部環境に寄りやすい配置です。どこからなら業務として残せるかを、小さく確認します。',
+    note: '特にスコアが低い2〜3軸に絞って、業務の明示化や記録の開始など、話し合いやすい変化から確認します。',
   };
 }
 
@@ -197,9 +197,9 @@ const LEVEL_BADGE: Record<Level, string> = {
   critical: 'bg-red-100 text-red-800',
 };
 const LEVEL_LABEL: Record<Level, string> = {
-  good: '良好',
-  moderate: '改善余地あり',
-  critical: '要対応',
+  good: '使いやすい条件',
+  moderate: '確認したい条件',
+  critical: '話し合いたい条件',
 };
 const BAR_COLOR: Record<Level, string> = {
   good: 'bg-teal-400',
@@ -239,23 +239,40 @@ export default function OrganizationsDiagnosisPage() {
   return (
     <>
       <PageSeo
-        title="組織診断ツール | Next Being Lab"
-        description="就労支援実践の組織規定因子を診断。toku18支援者調査Q14（n=3,053）に基づく5軸評価で、あなたの機関の強みと課題を明らかにします。"
+        title="組織自己チェック | Next Being Lab"
+        description="支援者が動きにくくなる組織側の条件を、記録、会議、同行、学習回路の観点から話し合うための自己チェックです。監査や認証、法的・雇用上の判断ではありません。"
         path="/organizations/diagnosis"
       />
 
-      <SiteNav />
+      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#fbfaf5]/94 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-3 md:flex-row md:items-center md:justify-between">
+          <Link href="/" className="flex flex-col leading-tight">
+            <span className="text-[11px] font-semibold tracking-[0.12em] text-cyan-800">
+              働きづらさを仕事の条件から考える
+            </span>
+            <span className="text-sm font-semibold text-slate-950">Next Being Lab</span>
+          </Link>
+          <nav className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
+            <Link href="/work-design-map" className="hover:text-slate-950">相談事例集</Link>
+            <Link href="/work-design-tools" className="hover:text-slate-950">21視点</Link>
+            <Link href="/policy-research" className="hover:text-slate-950">記事</Link>
+            <Link href="/partnership" className="font-semibold text-slate-950">ツールキット</Link>
+            <Link href="/events" className="hover:text-slate-950">イベント</Link>
+            <Link href="/about" className="hover:text-slate-950">このサイトについて</Link>
+          </nav>
+        </div>
+      </header>
 
       <main className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_55%)] text-slate-900">
         <div className="mx-auto max-w-2xl px-6 py-14">
 
           {/* Breadcrumb */}
           <nav className="text-xs text-slate-400">
-            <Link href="/organizations" className="hover:text-slate-700">
-              職場・組織設計
+            <Link href="/partnership#prototype-a" className="hover:text-slate-700">
+              認知補助ツールキット
             </Link>
             <span className="mx-2">/</span>
-            <span>組織診断</span>
+            <span>組織自己チェック</span>
           </nav>
 
           {/* ── INTRO ────────────────────────────────────────────────── */}
@@ -263,19 +280,23 @@ export default function OrganizationsDiagnosisPage() {
             <div>
               <header className="mt-6">
                 <span className="inline-block rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-800">
-                  組織診断
+                  組織自己チェック
                 </span>
                 <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">
-                  組織診断ツール
+                  組織自己チェック
                 </h1>
                 <p className="mt-4 text-base leading-8 text-slate-600">
-                  「なぜ支援者が動けない組織になっているか」を5つの軸で診断します。
-                  個人への介入より先に、組織の環境を変えることが効果的です。
+                  支援者が動きにくくなる組織側の条件を、5つの観点で見える形にします。
+                  点数は結論ではなく、記録、会議、同行、学習回路のどこを話し合うかを選ぶ入口です。
                 </p>
               </header>
 
+              <div className="mt-8">
+                <OrganizationsSurfaceBoundaryNote variant="diagnosis" />
+              </div>
+
               <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6">
-                <p className="text-sm font-semibold text-slate-700 mb-4">診断する5つの軸</p>
+                <p className="text-sm font-semibold text-slate-700 mb-4">自己チェックする5つの観点</p>
                 <div className="space-y-3">
                   {AXES.map((axis, i) => (
                     <div key={axis.id} className="flex items-center gap-3">
@@ -300,22 +321,22 @@ export default function OrganizationsDiagnosisPage() {
                     <p className="mt-0.5">約3分（10問）</p>
                   </div>
                   <div className="col-span-2">
-                    <span className="font-semibold text-slate-600">根拠データ</span>
+                    <span className="font-semibold text-slate-600">参照データ</span>
                     <p className="mt-0.5">toku18 支援者調査 問14（組織規定因子）n=3,053</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-500 leading-6">
-                診断結果は全国調査のQ1（真の専門性実践者: 20.8%）・Q2（制度的障壁型: 71.9%）の
-                ベンチマーク値と比較します。すべて回答は保存されません。
+                回答結果は全国調査の参考値と並べて表示します。組織の良し悪しを判定するものではなく、
+                話し合いの論点を見つけるための入口です。すべて回答は保存されません。
               </div>
 
               <button
                 onClick={() => setScreen('assessment')}
                 className="mt-8 w-full rounded-xl bg-slate-900 px-6 py-4 text-sm font-semibold text-white hover:bg-slate-700 transition-colors"
               >
-                診断を始める →
+                自己チェックを始める →
               </button>
             </div>
           )}
@@ -418,7 +439,7 @@ export default function OrganizationsDiagnosisPage() {
             <div>
               <div className="mt-6">
                 <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">
-                  診断結果
+                  自己チェック結果
                 </p>
 
                 {/* Pattern card */}
@@ -437,7 +458,7 @@ export default function OrganizationsDiagnosisPage() {
                 </div>
 
                 {/* Per-axis scores */}
-                <h2 className="mt-8 text-sm font-semibold text-slate-700 mb-4">軸別スコア</h2>
+                <h2 className="mt-8 text-sm font-semibold text-slate-700 mb-4">観点別メモ</h2>
                 <div className="space-y-5">
                   {AXES.map((axis) => {
                     const score = scores[axis.id];
@@ -507,7 +528,7 @@ export default function OrganizationsDiagnosisPage() {
                         {/* Guidance for non-good */}
                         {level !== 'good' && (
                           <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
-                            <p className="text-xs font-semibold text-slate-500 mb-1">推奨アクション</p>
+                            <p className="text-xs font-semibold text-slate-500 mb-1">話し合いの一手</p>
                             <p className="text-sm leading-6 text-slate-600">{axis.guidance}</p>
                           </div>
                         )}
@@ -518,9 +539,9 @@ export default function OrganizationsDiagnosisPage() {
 
                 {/* Data note */}
                 <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-xs text-slate-400 leading-5">
-                  <p className="font-semibold text-slate-500 mb-1">診断の根拠</p>
+                  <p className="font-semibold text-slate-500 mb-1">この自己チェックの素材</p>
                   <p>
-                    この診断は、難病就労支援機関調査（toku18: n=3,053）の問14
+                    この自己チェックは、難病就労支援機関調査（toku18: n=3,053）の問14
                     「就労支援実践の組織規定因子」分析に基づいています。Q1水準は
                     「真の専門性実践者」（20.8%, n=634）の平均値、全国平均は
                     「理念あり・制度的障壁型」（71.9%, n=2,196）の平均値です。
@@ -531,16 +552,16 @@ export default function OrganizationsDiagnosisPage() {
                 {/* Next steps */}
                 <div className="mt-8 flex flex-wrap gap-4 items-center">
                   <Link
-                    href="/jac/next"
+                    href="/policy-research?article=support-organization-self-check#article-reader"
                     className="text-sm font-semibold text-teal-700 hover:underline"
                   >
-                    はたらく相談室で組織課題を整理する →
+                    解説記事を読む →
                   </Link>
                   <Link
-                    href="/organizations/design"
+                    href="/partnership#prototype-a"
                     className="text-sm text-slate-500 hover:text-slate-800 hover:underline"
                   >
-                    インクルーシブ職場設計を読む →
+                    ツールキット一覧へ戻る →
                   </Link>
                 </div>
 
@@ -549,7 +570,7 @@ export default function OrganizationsDiagnosisPage() {
                     onClick={handleReset}
                     className="text-xs text-slate-400 hover:text-slate-600 hover:underline"
                   >
-                    ← もう一度診断する
+                    ← もう一度チェックする
                   </button>
                 </div>
               </div>

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>見えない病気と働く 認知補助ツールキット</title>
+    <style>
+      :root {
+        color: #07111f;
+        background: #f6f1e7;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Hiragino Sans",
+          "Yu Gothic",
+          sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f6f1e7;
+      }
+      main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 32px;
+      }
+      .sheet {
+        min-height: 720px;
+        margin-bottom: 28px;
+        border: 1px solid #b9c4cf;
+        background: #fffdfa;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        min-height: 640px;
+      }
+      .heroText {
+        padding: 42px;
+        background: #07111f;
+        color: white;
+      }
+      .eyebrow {
+        margin: 0 0 16px;
+        color: #9ce2f0;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        letter-spacing: 0;
+      }
+      h1 {
+        margin: 0;
+        font-size: 44px;
+        line-height: 1.12;
+      }
+      h2 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.2;
+      }
+      h3 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.35;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+      .lead {
+        margin-top: 24px;
+        color: #dbeafe;
+        font-size: 17px;
+      }
+      .note {
+        border-left: 5px solid #0e7490;
+        background: #ecfeff;
+        padding: 14px 16px;
+      }
+      .hero .note {
+        margin-top: 24px;
+        color: #07111f;
+      }
+      .heroImages {
+        display: grid;
+        gap: 16px;
+        padding: 28px;
+      }
+      .heroImages img {
+        width: 100%;
+        height: 186px;
+        object-fit: cover;
+        border: 1px solid #d2dce6;
+      }
+      .three {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 28px;
+      }
+      .card {
+        border: 1px solid #cad6e2;
+        background: #fff;
+        padding: 18px;
+      }
+      .card img {
+        width: 100%;
+        height: 165px;
+        object-fit: cover;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 14px;
+      }
+      .role {
+        color: #0e7490;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .worksheet {
+        padding: 30px;
+      }
+      .rows {
+        display: grid;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 120px 1fr 1fr;
+        border: 1px solid #cad6e2;
+        background: white;
+      }
+      .row > div {
+        min-height: 94px;
+        padding: 14px;
+        border-left: 1px solid #cad6e2;
+      }
+      .row > div:first-child {
+        border-left: 0;
+        background: #ecfeff;
+        color: #075985;
+        font-weight: 800;
+      }
+      .row p {
+        margin: 0;
+        font-size: 14px;
+      }
+      .scenes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 20px;
+      }
+      .scene {
+        border: 1px solid #cad6e2;
+        background: #fbfaf5;
+        padding: 16px;
+      }
+      .scene strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #be123c;
+      }
+      .footerNote {
+        margin-top: 22px;
+        border: 1px solid #fecdd3;
+        background: #fff1f2;
+        padding: 14px 16px;
+      }
+      @media print {
+        body {
+          background: white;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        .sheet {
+          page-break-after: always;
+          margin: 0;
+          border: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="sheet hero" aria-labelledby="title">
+        <div class="heroText">
+          <p class="eyebrow">認知補助ツールキット / Package 01</p>
+          <h1 id="title">見えない病気と働く。</h1>
+          <p class="lead">
+            「元気そう」「疲れやすい」「通院が多い」で止めず、見えない負担を、仕事の時間、情報共有、相談線、開示境界へ分けて話すための印刷用パッケージです。
+          </p>
+          <p class="note">
+            この教材は、病状説明、医学判断、法的判断、合理的配慮の妥当性判断を行うものではありません。関係者が同じ仕事場面を見て、次に確認できる条件へ進むための入口です。
+          </p>
+        </div>
+        <div class="heroImages" aria-label="見えない病気と働く図解">
+          <img src="/resources/invisible-disability/invisible-backpack.webp" alt="見えない負担を背負うバッグパックの図解" />
+          <img src="/fest/2026gw/stage2/karada-tenki.jpg" alt="体の中の天気予報の図解" />
+          <img src="/resources/invisible-disability/work-friction.webp" alt="仕事との摩擦を示す図解" />
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="roles">
+        <div class="worksheet">
+          <p class="eyebrow">THREE ROLES</p>
+          <h2 id="roles">気づく、同じ場面を見る、動かす。</h2>
+          <p>
+            文章を増やす前に、同じテーマを3つの役割へ分けます。まず注意を開き、次に同じ場面を見て、最後に会議や相談で確認できる形へ移します。
+          </p>
+        </div>
+        <div class="three">
+          <article class="card">
+            <img src="/resources/invisible-disability/invisible-backpack.webp" alt="" />
+            <p class="role">気づく</p>
+            <h3>その荷物、見えていません。</h3>
+            <p>見えない負担を、本人の努力不足や説明不足でなく、仕事条件へ戻す入口にする。</p>
+          </article>
+          <article class="card">
+            <img src="/fest/2026gw/stage2/karada-tenki.jpg" alt="" />
+            <p class="role">同じ場面を見る</p>
+            <h3>からだの中の天気予報。</h3>
+            <p>体調の専門語を増やす前に、勤務時間、会議、移動、休憩のどこで重なるかを見る。</p>
+          </article>
+          <article class="card">
+            <img src="/resources/invisible-disability/work-friction.webp" alt="" />
+            <p class="role">動かす</p>
+            <h3>仕事条件へ分ける。</h3>
+            <p>症状説明で止めず、時間、移動、情報共有、相談先、評価、回復の余白へ分ける。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="scenes">
+        <div class="worksheet">
+          <p class="eyebrow">SCENE CARDS</p>
+          <h2 id="scenes">よくある言葉を、仕事条件へ戻す。</h2>
+          <div class="scenes">
+            <article class="scene">
+              <h3>朝</h3>
+              <strong>「今日は元気そうですね」で止まる</strong>
+              <p>移動、睡眠、朝の体調、午前会議の負荷を同じ地図に置く。</p>
+            </article>
+            <article class="scene">
+              <h3>会議</h3>
+              <strong>「集中力が続かない」で止まる</strong>
+              <p>会議時間、発言順、資料の事前共有、途中離席の扱いを見る。</p>
+            </article>
+            <article class="scene">
+              <h3>月末</h3>
+              <strong>「また休み？」で止まる</strong>
+              <p>締切、通院、回復時間、代替手順、評価の見方を分ける。</p>
+            </article>
+          </div>
+          <p class="footerNote">
+            使い方: どの場面が近いかを一つ選び、すぐに結論を出さず、次ページの4つの確認に分けます。
+          </p>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="worksheet">
+        <div class="worksheet">
+          <p class="eyebrow">WORKSHEET</p>
+          <h2 id="worksheet">見えない負担を、4つの確認に分ける。</h2>
+          <div class="rows">
+            <div class="row">
+              <div>時間</div>
+              <div><p>通院、移動、会議、締切、休憩、回復時間は同じ週のどこで重なるか。</p></div>
+              <div><p>記入例: 週前半に通院、翌日に長時間会議、月末に締切が重なる。</p></div>
+            </div>
+            <div class="row">
+              <div>情報共有</div>
+              <div><p>何を、誰に、どこまで、いつ更新すれば仕事が進むか。</p></div>
+              <div><p>記入例: 会議後に30分の回復時間が必要な日を共有する。</p></div>
+            </div>
+            <div class="row">
+              <div>開示境界</div>
+              <div><p>診断名や病状の詳細ではなく、仕事上共有すべき条件は何か。</p></div>
+              <div><p>記入例: トイレ位置、途中退席の扱い、急な休憩の連絡方法を確認する。</p></div>
+            </div>
+            <div class="row">
+              <div>相談線</div>
+              <div><p>困った時に、本人、上司、人事、支援者のどこへ戻るか。</p></div>
+              <div><p>記入例: 当日判断は上司、週単位の見直しは人事と支援者で行う。</p></div>
+            </div>
+          </div>
+          <p class="footerNote">
+            持ち帰るもの: 判断ではなく、次に確認する条件です。個別の医療、法務、雇用、合理的配慮の判断は、専門家・関係者の確認が必要です。
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

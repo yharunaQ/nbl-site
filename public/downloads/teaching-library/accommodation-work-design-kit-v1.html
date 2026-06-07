@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>配慮名の前に、仕事を分解する 6機能キット</title>
+    <style>
+      :root { color: #07111f; background: #f6f1e7; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #f6f1e7; }
+      main { max-width: 1120px; margin: 0 auto; padding: 28px; }
+      .sheet { margin-bottom: 24px; border: 1px solid #b9c4cf; background: #fffdfa; box-shadow: 0 16px 36px rgba(15, 23, 42, .1); }
+      .sheet.compact { min-height: auto; }
+      .cover { display: grid; grid-template-columns: .95fr 1.05fr; min-height: 590px; }
+      .dark { background: #07111f; color: white; padding: 40px; }
+      .page { padding: 30px; }
+      .eyebrow { margin: 0 0 12px; color: #0e7490; font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+      .dark .eyebrow { color: #9ce2f0; }
+      h1 { margin: 0; font-size: 39px; line-height: 1.14; letter-spacing: 0; word-break: keep-all; }
+      h2 { margin: 0; font-size: 29px; line-height: 1.22; letter-spacing: 0; word-break: keep-all; }
+      h3 { margin: 0; font-size: 20px; line-height: 1.35; letter-spacing: 0; word-break: keep-all; }
+      p, li { font-size: 14px; line-height: 1.8; }
+      .lead { margin-top: 22px; color: #dbeafe; font-size: 17px; }
+      .note { margin-top: 18px; border-left: 5px solid #0e7490; background: #ecfeff; padding: 13px 15px; color: #123044; }
+      .dark .note { color: #123044; }
+      .coverVisual { padding: 28px; display: grid; align-content: center; background: #fbfaf5; }
+      .coverVisual img, .box img { width: 100%; max-height: 430px; border: 1px solid #d7e0e8; background: white; object-fit: contain; }
+      .toc { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 20px; }
+      .toc a, .assetLinks a { display: inline-flex; justify-content: space-between; gap: 8px; border: 1px solid #0e7490; background: #ecfeff; color: #075985; padding: 10px 12px; font-size: 13px; font-weight: 800; text-decoration: none; }
+      .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .box, .card { border: 1px solid #c9d4df; background: white; padding: 16px; }
+      .card { background: #fbfaf5; }
+      .quickStart { margin-top: 18px; border: 2px solid #0e7490; background: #ecfeff; padding: 16px; }
+      .quickStart .eyebrow { margin-bottom: 8px; }
+      .toolFlow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .toolFlow article { border: 1px solid #cbd5e1; background: #fbfaf5; padding: 16px; min-height: 205px; }
+      .roomSet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .roomSet article { border: 2px solid #0e7490; background: #ecfeff; padding: 16px; min-height: 165px; }
+      .accent { border-left: 5px solid #0e7490; background: #ecfeff; }
+      .bulletGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+      .roleBoard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+      .roleBoard article { min-height: 145px; border: 1px solid #cbd5e1; background: #fff; padding: 14px; }
+      .pill { display: inline-flex; border: 1px solid #0e7490; background: #ecfeff; color: #075985; padding: 5px 8px; font-size: 12px; font-weight: 800; }
+      .audioCard audio { width: 100%; margin-top: 12px; }
+      .warning { border-left-color: #e11d48; background: #fff1f2; color: #3f1720; }
+      .scenarioGrid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 14px; margin-top: 20px; }
+      .voiceGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+      .voiceGrid article { border: 1px solid #cbd5e1; background: white; padding: 14px; min-height: 155px; }
+      .filledTable { display: grid; grid-template-columns: .42fr 1fr; margin-top: 18px; border: 1px solid #94a3b8; }
+      .filledTable div { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; padding: 13px; min-height: 58px; }
+      .filledTable div:nth-child(2n) { border-right: 0; }
+      .filledLabel { background: #07111f; color: white; font-weight: 800; }
+      .smallNote { margin-top: 14px; color: #475569; font-size: 12px; }
+      .scriptTable { display: grid; grid-template-columns: 0.55fr 0.95fr 1.7fr 1fr; margin-top: 18px; border: 1px solid #94a3b8; }
+      .scriptTable div { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; padding: 12px; min-height: 68px; }
+      .scriptTable div:nth-child(4n) { border-right: 0; }
+      .scriptTable .head { min-height: auto; background: #07111f; color: white; font-weight: 800; }
+      .printSet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .printTool { border: 2px solid #0e7490; background: #fffdf7; padding: 16px; min-height: 365px; }
+      .printTool ul { padding-left: 1.2em; }
+      .fieldGrid { display: grid; gap: 9px; margin-top: 14px; }
+      .fieldGrid div { display: grid; grid-template-columns: 0.42fr 1fr; align-items: end; gap: 10px; }
+      .fieldGrid strong { font-size: 12px; color: #075985; }
+      .fieldGrid span { display: block; height: 26px; border-bottom: 1px solid #94a3b8; }
+      .fieldLines { display: grid; gap: 11px; margin-top: 16px; }
+      .fieldLines span { display: block; height: 34px; border-bottom: 1px dashed #94a3b8; }
+      .deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+      .cardDeckItem { min-height: 230px; border: 2px solid #0e7490; background: white; padding: 18px; }
+      @media (max-width: 760px) {
+        main { padding: 16px; }
+        .cover, .grid2, .grid3, .bulletGrid, .roleBoard, .scenarioGrid, .voiceGrid, .printSet, .deck, .toolFlow, .roomSet { grid-template-columns: 1fr; }
+        .scriptTable, .filledTable { grid-template-columns: 1fr; }
+        .scriptTable div, .scriptTable div:nth-child(4n) { border-right: 0; }
+        .filledTable div, .filledTable div:nth-child(2n) { border-right: 0; }
+        .toc { grid-template-columns: repeat(2, 1fr); }
+        h1 { font-size: 32px; }
+      }
+      @media print {
+        @page { size: A4; margin: 12mm; }
+        body { background: white; }
+        main { max-width: none; padding: 0; }
+        .sheet { break-after: page; page-break-after: always; margin: 0; border: 0; box-shadow: none; }
+        .sheet.compact { break-after: auto; page-break-after: auto; }
+        .page, .box, .card, .printTool, .cardDeckItem, .voiceGrid article, .roleBoard article, .toolFlow article { break-inside: avoid; page-break-inside: avoid; }
+        .cover { min-height: auto; }
+        .dark { color: #07111f; background: white; border: 2px solid #07111f; }
+        .dark .eyebrow { color: #0e7490; }
+        h1 { font-size: 30px; }
+        h2 { font-size: 23px; }
+        h3 { font-size: 16px; }
+        p, li { font-size: 11px; line-height: 1.62; }
+        .lead { color: #07111f; font-size: 13px; }
+        .note, .quickStart { padding: 10px 12px; }
+        .coverVisual img, .box img { max-height: 250px; }
+        .toc a { color: #07111f; border-color: #94a3b8; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="sheet cover">
+        <div class="dark">
+          <p class="eyebrow">認知補助ツールキット / Package 06</p>
+          <h1>配慮名の前に、仕事を分解する</h1>
+          <p class="lead">合理的配慮を、名前当てや制度説明で終わらせると、実際の仕事のどこを変えるのかが見えにくくなります。このキットは、作業、時間、情報、評価、相談線へ分け、二週間で試せる仕事設計へ戻す道具です。</p>
+          <p class="note">使い方: 「どんな配慮が必要か」をいきなり聞かず、まず止まっている作業、時間、情報、評価、相談線を分けます。</p>
+        </div>
+        <div class="coverVisual">
+          <img src="/images/work-condition-lens-accommodation-work-design-v1.webp" alt="合理的配慮を仕事設計へ戻すインフォグラフィック" />
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">USE CASE / 使う場面</p>
+          <h2>このキットで、何を場に残すか。</h2>
+          <div class="grid3" style="margin-top:18px">
+            <article class="box"><h3>対象</h3><p>企業人事・上司、就労支援者、研修担当、合理的配慮の相談を受ける実務者</p></article>
+            <article class="box"><h3>時間</h3><p>30分相談整理 / 45分研修ワーク / 2週間実験設計</p></article>
+            <article class="box"><h3>持ち帰るもの</h3><p>配慮名の前に、作業、時間、情報、評価、相談線へ分解した仕事設計メモ</p></article>
+          </div>
+          <div class="quickStart">
+            <p class="eyebrow">QUICK START</p>
+            <h3>最初の一声: 配慮名を仮置きする</h3>
+            <p>「休憩」などの名前は書くが、正解扱いしない。</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">TOOL FLOW / 図解からワークへ</p>
+          <h2>図解で入口を開き、場面でそろえ、印刷3枚で一手を残す。</h2>
+          <div class="toolFlow">
+            <article>
+              <p class="pill">1. 図解</p>
+              <h3>合理的配慮を仕事設計へ戻すインフォグラフィック</h3>
+              <p>最初に全員が同じ絵を見て、話題の入口をそろえる。</p>
+            </article>
+            <article>
+              <p class="pill">2. 場面</p>
+              <h3>「休憩が必要です」と言われた。配慮名はあるが、何を変える話なのかが見えない。</h3>
+              <p>抽象語を、具体的な仕事場面と複数の声へ戻す。</p>
+            </article>
+            <article>
+              <p class="pill">3. ワーク</p>
+              <h3>仕事分解表 / 二週間実験シート / 合意メモ</h3>
+              <p>最後に、会議や研修で記入できる紙として持ち帰る。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">ROOM SET / 会場に置くもの</p>
+          <h2>説明を聞く前に、机の上に道具を置く。</h2>
+          <div class="roomSet">
+
+            <article>
+              <p class="pill">最初の5分</p>
+              <p>配慮名を仮置きし、正解扱いしないことを全員で確認する。</p>
+            </article>
+
+            <article>
+              <p class="pill">中央の表</p>
+              <p>作業、時間、情報、評価、相談線に分け、本人の困難と職場の不安を同じ表に置く。</p>
+            </article>
+
+            <article>
+              <p class="pill">出口</p>
+              <p>二週間だけ試す条件を一つ選び、見るサインと見直し日を決める。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">KIT MAP / このキットに入っているもの</p>
+          <h2>入口、比喩、場面、構造、ワーク、読み下しを一つにする。</h2>
+          <nav class="toc" aria-label="6機能ナビゲーション">
+            <a href="#open">注意</a>
+            <a href="#metaphor">比喩</a>
+            <a href="#scene">場面</a>
+            <a href="#structure">構造</a>
+            <a href="#work">ワーク</a>
+            <a href="#read">読み下し</a>
+          </nav>
+          <div class="roleBoard">
+            <article><p class="pill">読み 1</p><h3>止まりやすい見方</h3><p>「在宅勤務」「時短」「休憩」などの配慮名を先に探す。</p></article>
+            <article><p class="pill">読み 2</p><h3>専門チームの読み</h3><p>配慮名ではなく、作業、時間、情報、評価、相談線のどこで接触が詰まるかを見る。</p></article>
+            <article><p class="pill">読み 3</p><h3>道具の役割</h3><p>分解カードと二週間実験で、制度説明を小さな仕事設計へ変える。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">RELATED READS / 文章で読みたい人へ</p>
+          <h2>対応する記事と一緒に読む。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <a class="box" href="/preview/falcon-next-nbl/policy-research?article=reasonable-accommodation-work-design#article-reader"><h3>配慮名の前に、仕事を分解する。</h3><p>記事ライブラリで、背景となる考え方と対応図解を読む。</p></a>
+            <a class="box" href="/preview/falcon-next-nbl/policy-research?article=workplace-contact-decomposition#article-reader"><h3>職場の不安を、接触点に分けて読む。</h3><p>記事ライブラリで、背景となる考え方と対応図解を読む。</p></a>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">SCENE / 場面のリアリティ</p>
+          <h2>「休憩が必要です」と言われた。配慮名はあるが、何を変える話なのかが見えない。</h2>
+          <div class="scenarioGrid">
+            <article class="box warning"><h3>止まりやすい終わり方</h3><p>「休憩を認める / 認めない」だけで考えると、作業、時間、情報、評価の重なりが消える。</p></article>
+            <article class="box accent"><h3>読み替え</h3><p>配慮名をいったん脇に置き、どの作業で、どの時間帯に、どの情報・評価・相談線が詰まるかを見る。</p></article>
+          </div>
+          <div class="voiceGrid">
+            <article><p class="pill">本人</p><p>「午後の会議後に集中が切れ、報告ミスが増える」</p></article>
+            <article><p class="pill">上司</p><p>「休憩を入れると締切に間に合うのかが心配」</p></article>
+            <article><p class="pill">人事</p><p>「制度上どう扱うかは気になるが、まず実態を知りたい」</p></article>
+            <article><p class="pill">支援者</p><p>「休憩という名前より、負荷が重なる条件を分けたい」</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">FILLED SAMPLE / 記入例</p>
+          <h2>記入例: 午後の会議後にミスが増える</h2>
+          <div class="filledTable">
+
+            <div class="filledLabel">仮置きされた配慮名</div>
+            <div>休憩、会議時間の調整、報告方法の変更。まだ正解とは扱わない。</div>
+
+            <div class="filledLabel">仕事条件の分解</div>
+            <div>午後会議の直後に報告作業が重なり、変更情報の確認時間がない。</div>
+
+            <div class="filledLabel">職場側の不安</div>
+            <div>締切、顧客対応、他メンバーへの引き継ぎが読めない。</div>
+
+            <div class="filledLabel">二週間実験</div>
+            <div>会議後15分の確認時間を置き、報告ミス、本人負担、締切影響を見直す。</div>
+          </div>
+          <p class="smallNote">記入例は判断例ではありません。参加者が「どの粒度で書けばよいか」をつかむための人工的な例です。</p>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">FACILITATION / 進行台本</p>
+          <h2>進行者が、そのまま読んで進められる形にする。</h2>
+          <div class="scriptTable">
+            <div class="head">時間</div>
+            <div class="head">進行</div>
+            <div class="head">進行者の声かけ</div>
+            <div class="head">残すもの</div>
+
+            <div><strong>0-5分</strong></div>
+            <div>配慮名を仮置きする</div>
+            <div>「休憩」などの名前は書くが、正解扱いしない。</div>
+            <div>配慮名が仮置きされる</div>
+
+            <div><strong>5-15分</strong></div>
+            <div>仕事を5つに分ける</div>
+            <div>作業、時間、情報、評価、相談線へ分ける。</div>
+            <div>分解表が埋まる</div>
+
+            <div><strong>15-25分</strong></div>
+            <div>二週間で試す条件を選ぶ</div>
+            <div>変更する条件を一つだけ選び、観測サインを決める。</div>
+            <div>実験条件が決まる</div>
+
+            <div><strong>25-30分</strong></div>
+            <div>境界を確認する</div>
+            <div>医療・法的・雇用判断をこの場で決めないことを確認する。</div>
+            <div>安全な合意メモが残る</div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">PRINT SET / 印刷して使う3枚</p>
+          <h2>説明を、会議で書ける紙に変える。</h2>
+          <div class="printSet">
+
+            <article class="printTool">
+              <h3>仕事分解表</h3>
+              <p>配慮名の前に、実際の仕事を分ける。</p>
+              <div class="fieldGrid">
+
+                <div>
+                  <strong>作業</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>時間</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>情報</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>評価</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>相談線</strong>
+                  <span></span>
+                </div>
+              </div>
+              <div class="fieldLines" aria-label="仕事分解表の記入欄">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+
+            <article class="printTool">
+              <h3>二週間実験シート</h3>
+              <p>大きな制度判断に急がず、小さく試す条件を作る。</p>
+              <div class="fieldGrid">
+
+                <div>
+                  <strong>試す変更</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>見るサイン</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>本人の負担</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>職場の負担</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>見直し日</strong>
+                  <span></span>
+                </div>
+              </div>
+              <div class="fieldLines" aria-label="二週間実験シートの記入欄">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+
+            <article class="printTool">
+              <h3>合意メモ</h3>
+              <p>誰が何を共有し、どこまで共有しないかを残す。</p>
+              <div class="fieldGrid">
+
+                <div>
+                  <strong>共有する仕事条件</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>共有しない個人情報</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>相談先</strong>
+                  <span></span>
+                </div>
+
+                <div>
+                  <strong>見直し条件</strong>
+                  <span></span>
+                </div>
+              </div>
+              <div class="fieldLines" aria-label="合意メモの記入欄">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">CARD DECK / 場で使う問いカード</p>
+          <h2>迷った時に、場を戻す短い問い。</h2>
+          <div class="deck">
+
+            <article class="cardDeckItem">
+              <p class="pill">名前を仮置きする</p>
+              <h3>「その配慮名は、どの仕事条件を変える話ですか」</h3>
+              <p>配慮名を入口にするが、結論にしない。</p>
+            </article>
+
+            <article class="cardDeckItem">
+              <p class="pill">接触点を見る</p>
+              <h3>「本人の困難と職場の不安は、どの作業で接触していますか」</h3>
+              <p>人の評価ではなく条件を見る。</p>
+            </article>
+
+            <article class="cardDeckItem">
+              <p class="pill">小さく試す</p>
+              <h3>「二週間だけ変えるなら、何を変えますか」</h3>
+              <p>実験可能な設計へ落とす。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">VISUAL / 中心図解</p>
+          <h2>まず、見える形にする。</h2>
+          <div class="grid2" style="margin-top:18px">
+            <article class="box">
+              <img src="/images/work-condition-lens-accommodation-work-design-v1.webp" alt="合理的配慮を仕事設計へ戻すインフォグラフィック" />
+              <h3>合理的配慮を仕事設計へ戻すインフォグラフィック</h3>
+              <p>この図は判断ではなく、会議や研修で同じ場面を思い浮かべるための入口です。</p>
+              <p class="assetLinks"><a href="/images/work-condition-lens-accommodation-work-design-v1.webp">画像を開く</a></p>
+            </article>
+
+            <article class="box audioCard">
+              <img src="/songs/still/hairyo-ga-areba-hatarakeru.jpg" alt="配慮があれば働けるのジャケット画像" />
+              <h3>音の入口: 配慮があれば働ける</h3>
+              <p>文章を読む前に、テーマの空気を変える入口として使います。音は判断や助言ではなく、話し始めるための補助です。</p>
+              <audio controls preload="none" src="/songs/audio/hairyo-ga-areba-hatarakeru.mp3"><a href="/songs/audio/hairyo-ga-areba-hatarakeru.mp3">音声を開く</a></audio>
+            </article>
+            <article class="box">
+              <h3>読み下しテキスト</h3>
+              <p>図を見ない人にも、同じ意味が伝わるように、各ページに言葉で追える説明を置いています。</p>
+              <p>視覚情報だけに頼らず、会議で読み上げられる文章として使います。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="sheet compact">
+        <div class="page">
+          <p class="eyebrow">READ DOWN / 読み下し</p>
+          <h2>図・音・カードの意味を、言葉でも守る。</h2>
+          <p class="note">このパッケージは、合理的配慮の妥当性や法的義務を判定しません。配慮名を、現場で確認できる仕事条件へ分解し、次の相談を安全に進めるための道具です。</p>
+        </div>
+      </section>
+
+
+      <section id="open" class="sheet">
+        <div class="page">
+          <p class="eyebrow">注意を開く</p>
+          <h2>入口カード: 配慮名を探す前に、仕事を見る。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>「疲れやすいので配慮が必要です」で止めると、どの作業、どの時間、どの情報共有を変えるのかが見えない。</p></article>
+            <article class="card"><p>最初の問いは「何の仕事条件が重なっているか」。</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="metaphor" class="sheet">
+        <div class="page">
+          <p class="eyebrow">比喩でつかむ</p>
+          <h2>配慮はラベルではなく、摩擦を下げる設計。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>机の高さ、道具の置き場、締切の粒度、情報共有のタイミング。</p></article>
+            <article class="card"><p>摩擦は本人の中だけでなく、仕事と環境の接触点にある。</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="scene" class="sheet">
+        <div class="page">
+          <p class="eyebrow">場面で見る</p>
+          <h2>よくある相談を、仕事条件へ戻す。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>本人: 「午後になるとミスが増える」</p></article>
+            <article class="card"><p>上司: 「どこまで任せてよいか分からない」</p></article>
+            <article class="card"><p>人事: 「制度上どう説明すればよいか気になる」</p></article>
+            <article class="card"><p>支援者: 「配慮名より先に、作業条件を見たい」</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="structure" class="sheet">
+        <div class="page">
+          <p class="eyebrow">構造に置く</p>
+          <h2>5つに分ける。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>作業: 何をする仕事か</p></article>
+            <article class="card"><p>時間: いつ、どの長さで負荷が出るか</p></article>
+            <article class="card"><p>情報: 指示、変更、相談はどこを通るか</p></article>
+            <article class="card"><p>評価: 何を成果として見るか</p></article>
+            <article class="card"><p>相談線: 困った時に誰へ戻せるか</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="work" class="sheet">
+        <div class="page">
+          <p class="eyebrow">手を動かす</p>
+          <h2>二週間実験シート。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>変える条件を一つ選ぶ。</p></article>
+            <article class="card"><p>実験前に、本人、上司、支援者が見るサインを決める。</p></article>
+            <article class="card"><p>二週間後に、成果、負担、見落としを戻す。</p></article>
+            <article class="card"><p>うまくいったら標準化し、違ったら条件を変える。</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="read" class="sheet">
+        <div class="page">
+          <p class="eyebrow">読み下しで守る</p>
+          <h2>配慮の正解を、この場で決めない。</h2>
+          <div class="bulletGrid">
+            <article class="card"><p>このキットは、合理的配慮の法的妥当性を判定するものではありません。</p></article>
+            <article class="card"><p>医療情報の開示を求めるものでもありません。</p></article>
+            <article class="card"><p>目的は、職場で確認できる仕事条件を見つけることです。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet">
+        <div class="page">
+          <p class="eyebrow">BOUNDARY / 境界</p>
+          <h2>このキットは、判断ではなく場面共有の入口です。</h2>
+          <p class="note warning">個別の就労可否、医学判断、法的判断、合理的配慮の妥当性判断、公開承認済みの知識主張としては扱いません。実際の支援や職場判断では、本人、仕事、環境、支援、時間、制度の具体的文脈を別途確認します。</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

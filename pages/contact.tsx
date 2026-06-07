@@ -7,6 +7,37 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 
 const CONTACT_EMAIL = 'info@nextbeinglab.org';
 
+const CURRENT_RELATION_PROOF_PATHS = [
+  {
+    title: 'NBLについて',
+    desc: 'このサイトが何を約束し、何をまだ約束しないかを確認する。',
+    href: '/about',
+  },
+  {
+    title: 'What We Do',
+    desc: 'いま public に案内している current promise を確認する。',
+    href: '/what-we-do',
+  },
+  {
+    title: 'For Enterprise',
+    desc: '企業・組織向けの読み方を audience-specific に確認する。',
+    href: '/for-enterprise',
+  },
+];
+
+const SIDE_ENTRY_LINKS = [
+  {
+    title: 'Guide',
+    desc: '方法論の全体像を後から広げて読みたいときの入口です。',
+    href: '/guide',
+  },
+  {
+    title: 'Newsletter',
+    desc: '更新情報をあとから受け取りたいときの sidecar 入口です。',
+    href: '#newsletter',
+  },
+];
+
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#fffef8_0%,#f8fafc_50%,#eef2ff_100%)] text-slate-900">
@@ -50,22 +81,33 @@ export default function ContactPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/about"
-                className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
+                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
                 About を見る
               </Link>
               <Link
-                href="/guide"
-                className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950"
+                href="/what-we-do"
+                className="rounded-full border border-sky-300 bg-sky-50 px-5 py-3 text-sm font-semibold text-sky-900 transition hover:border-sky-400 hover:bg-sky-100"
               >
-                ガイドブックを見る
+                今の約束範囲を見る
               </Link>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-              >
-                メールで連絡する
-              </a>
+            </div>
+            <div className="mt-6 rounded-[1.6rem] border border-slate-200 bg-white/92 p-5 shadow-sm shadow-slate-200/60">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Relation-start proof path
+              </p>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                {CURRENT_RELATION_PROOF_PATHS.map(({ title, desc, href }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="rounded-[1.2rem] border border-slate-200 bg-slate-50 px-4 py-4 transition hover:border-sky-300 hover:bg-sky-50/70"
+                  >
+                    <p className="text-sm font-semibold text-slate-900">{title}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{desc}</p>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -82,6 +124,9 @@ export default function ContactPage() {
             <p className="mt-5 rounded-[1.4rem] border border-sky-200 bg-sky-50/70 px-4 py-4 text-sm leading-7 text-slate-700">
               「どんなテーマで話を始めやすいか」と「NBL
               がまだ固定していない約束」を先に確認できます。
+            </p>
+            <p className="mt-4 rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-700">
+              すぐに連絡先だけを見るより先に、About と What We Do で current promise を確認してから話を始める方が、この入口の役割に合います。
             </p>
           </aside>
         </section>
@@ -207,6 +252,45 @@ export default function ContactPage() {
         <section className="border-t border-slate-200 py-12">
           <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-slate-50 shadow-sm shadow-slate-300/50">
             <h2 className="text-2xl font-black">最初のやりとりの進め方</h2>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
+              このページでは、relation-start の boundary を先に返します。次は、current proof path を見てから連絡を始める流れと、あとから広げる sidecar を分けて置きます。
+            </p>
+            <div className="mt-6 grid gap-6 xl:grid-cols-[1.12fr,0.88fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  Current proof path
+                </p>
+                <div className="mt-4 grid gap-4 md:grid-cols-3">
+                  {CURRENT_RELATION_PROOF_PATHS.map(({ title, desc, href }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5 transition hover:border-sky-500/40"
+                    >
+                      <h3 className="text-xl font-black text-white">{title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-slate-200">{desc}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  あとから広げる入口
+                </p>
+                <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+                  {SIDE_ENTRY_LINKS.map(({ title, desc, href }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="rounded-[1.5rem] border border-slate-800 bg-slate-900 p-5 transition hover:border-slate-600"
+                    >
+                      <h3 className="text-lg font-black text-white">{title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-slate-200">{desc}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {contactEntry.steps.map((step) => (
                 <article
@@ -227,7 +311,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="border-t border-slate-200 py-12">
+        <section id="newsletter" className="border-t border-slate-200 py-12">
           <div className="mx-auto max-w-xl px-6">
             <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
               Newsletter

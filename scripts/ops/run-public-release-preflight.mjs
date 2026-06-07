@@ -4,14 +4,20 @@ import { PATHS, ROOT, formatTokyoDate, readText, writeText } from './shared.mjs'
 
 const REPORT_ROUTES = [
   '/',
-  '/what-we-do',
-  '/for-enterprise',
-  '/resources/work-design-foundations',
-  '/contact',
-  '/resources',
-  '/videos',
+  '/work-design-studio',
+  '/work-design-map',
+  '/work-design-tools',
+  '/policy-research',
+  '/partnership',
+  '/work-condition-window',
+  '/work-assessment-concept',
   '/about',
-  '/operating-model',
+  '/contact',
+  '/events',
+  '/events/work-condition-forum',
+  '/events/work-condition-forum/text/VF-01',
+  '/organizations/diagnosis',
+  '/resources/songs',
 ];
 const CONTACT_EMAIL = 'info@nextbeinglab.org';
 const CONTACT_ROUTE = '/contact';
@@ -27,9 +33,11 @@ const COMMANDS = [
     command: 'npx',
     args: [
       'jest',
-      '__tests__/home.test.tsx',
       '__tests__/contact.test.tsx',
-      '__tests__/resources.test.tsx',
+      '__tests__/falcon-next-nbl-static-site-candidate.test.tsx',
+      '__tests__/next-nbl-public-migration-routes.test.ts',
+      '__tests__/work-condition-forum-session-packages-page.test.tsx',
+      '__tests__/work-condition-forum-text-page.test.tsx',
       '--runInBand',
     ],
   },
@@ -50,24 +58,30 @@ const FILE_CHECKS = [
   'public/sitemap.xml',
   'pages/index.tsx',
   'pages/contact.tsx',
-  'pages/for-enterprise.tsx',
   'pages/about.tsx',
-  'pages/resources/work-design-foundations.tsx',
-  'pages/operating-model.tsx',
-  'pages/resources.tsx',
-  'pages/videos.tsx',
+  'pages/work-design-studio.tsx',
+  'pages/work-design-map.tsx',
+  'pages/work-design-tools.tsx',
+  'pages/policy-research.tsx',
+  'pages/partnership.tsx',
+  'pages/work-condition-window.tsx',
+  'pages/work-assessment-concept.tsx',
+  'pages/events/index.tsx',
+  'pages/events/work-condition-forum.tsx',
+  'pages/events/work-condition-forum/text/[id].tsx',
+  'pages/organizations/diagnosis.tsx',
   'pages/resources/songs/index.tsx',
-  'content/media/songs/campaigns.yml',
-  'content/media/songs/generated.json',
+  'components/falconLab/NextNblStaticSiteCandidate.tsx',
+  'components/falconLab/NextNblPublicRoute.tsx',
+  'lib/falconLab/nextNblPublicSiteFixtures.ts',
+  'lib/falconLab/workConditionForum.ts',
+  'public/images/next-nbl-work-design-hero-v1.webp',
+  'public/images/work-condition-forum-virtual-city-hero-v1.webp',
 ];
 
 const CONTACT_ROUTE_CHECKS = [
-  'components/TemporaryPublicHome.tsx',
-  'pages/about.tsx',
-  'pages/what-we-do.tsx',
-  'pages/for-enterprise.tsx',
-  'pages/resources/work-design-foundations.tsx',
-  'pages/operating-model.tsx',
+  'components/falconLab/NextNblStaticSiteCandidate.tsx',
+  'pages/contact.tsx',
 ];
 
 const EMAIL_CHECKS = ['pages/contact.tsx'];
@@ -190,6 +204,7 @@ async function main() {
     failedCommand
       ? '- preflight failed: do not treat as release-ready until the failing check is resolved'
       : '- preflight passed: public surface is separated from review/internal routes and founder yes/no on release is the remaining boundary',
+    '- public-release preflight is review evidence only, not founder release approval, merge approval, public-promise expansion, runtime/model adoption, or knowledge promotion',
     '- songs campaign lane remains internal and is not part of today’s public main lane',
     '',
   ];

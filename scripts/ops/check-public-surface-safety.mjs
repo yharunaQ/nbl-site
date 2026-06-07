@@ -8,14 +8,20 @@ const BASE_URL = `http://127.0.0.1:${PORT}`;
 
 const ROUTES = [
   '/',
-  '/what-we-do',
-  '/for-enterprise',
-  '/resources/work-design-foundations',
-  '/contact',
-  '/resources',
-  '/videos',
+  '/work-design-studio',
+  '/work-design-map',
+  '/work-design-tools',
+  '/policy-research',
+  '/partnership',
+  '/work-condition-window',
+  '/work-assessment-concept',
   '/about',
-  '/operating-model',
+  '/contact',
+  '/events',
+  '/events/work-condition-forum',
+  '/events/work-condition-forum/text/VF-01',
+  '/organizations/diagnosis',
+  '/resources/songs',
 ];
 
 const BLOCKED_PATTERNS = [
@@ -24,6 +30,15 @@ const BLOCKED_PATTERNS = [
   { label: 'showcase direction label', pattern: 'Showcase Direction' },
   { label: 'internal workspace path leak', pattern: 'docs/nbl-workspace' },
   { label: 'content-review path leak', pattern: 'content-review/' },
+  { label: 'falcon lab label leak', pattern: 'Falcon Lab' },
+  { label: 'unapproved status label leak', pattern: 'public未承認' },
+  { label: 'notebook production label leak', pattern: 'NotebookLM' },
+  { label: 'manual posting queue leak', pattern: '手動投稿キュー' },
+  { label: 'internal-ready status leak', pattern: 'internal-ready' },
+  { label: 'oauth ops leak', pattern: 'OAuth' },
+  { label: 'platform token ops leak', pattern: 'platform_access_tokens' },
+  { label: 'candidate pattern ops leak', pattern: 'candidate_pattern' },
+  { label: 'source validity ops leak', pattern: 'source/support validity' },
 ];
 
 function startServer() {

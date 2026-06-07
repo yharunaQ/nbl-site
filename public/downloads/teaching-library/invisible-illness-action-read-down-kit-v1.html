@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>見えない病気と働く 6機能キット</title>
+    <style>
+      :root {
+        color: #07111f;
+        background: #f6f1e7;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Hiragino Sans",
+          "Yu Gothic",
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f6f1e7;
+      }
+
+      main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px;
+      }
+
+      .sheet {
+        min-height: 760px;
+        margin-bottom: 28px;
+        border: 1px solid #b9c4cf;
+        background: #fffdfa;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      }
+
+      .sheet.compact {
+        min-height: auto;
+      }
+
+      .cover {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        min-height: 760px;
+      }
+
+      .coverText {
+        padding: 44px;
+        background: #07111f;
+        color: white;
+      }
+
+      .coverImages {
+        display: grid;
+        gap: 14px;
+        padding: 28px;
+        background: #fbfaf5;
+      }
+
+      .coverImages img {
+        width: 100%;
+        height: 200px;
+        border: 1px solid #d7e0e8;
+        background: white;
+        object-fit: contain;
+      }
+
+      .page {
+        padding: 32px;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: #0e7490;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .cover .eyebrow {
+        color: #9ce2f0;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        letter-spacing: 0;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 44px;
+        line-height: 1.12;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.22;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.35;
+      }
+
+      p,
+      li {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .lead {
+        margin-top: 24px;
+        color: #dbeafe;
+        font-size: 17px;
+      }
+
+      .note {
+        margin-top: 22px;
+        border-left: 5px solid #0e7490;
+        background: #ecfeff;
+        padding: 14px 16px;
+      }
+
+      .cover .note {
+        color: #07111f;
+      }
+
+      .warning {
+        border-left-color: #e11d48;
+        background: #fff1f2;
+      }
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .box {
+        border: 1px solid #c9d4df;
+        background: white;
+        padding: 16px;
+      }
+
+      .box img,
+      .scene img {
+        width: 100%;
+        border: 1px solid #d7e0e8;
+        background: #f8fafc;
+        object-fit: contain;
+      }
+
+      .box img {
+        height: auto;
+        max-height: 430px;
+      }
+
+      .scene img {
+        height: auto;
+        max-height: none;
+        object-position: center;
+      }
+
+      .toc {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .toc a,
+      .assetLinks a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        border: 1px solid #0e7490;
+        background: #ecfeff;
+        color: #075985;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .assetLinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .audioCard img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border: 1px solid #d7e0e8;
+        object-fit: cover;
+      }
+
+      .audioCard audio {
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .miniCards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .miniCard {
+        border: 1px solid #c9d4df;
+        background: #fbfaf5;
+        padding: 14px;
+      }
+
+      .scene {
+        border: 1px solid #c9d4df;
+        background: white;
+        padding: 14px;
+      }
+
+      .box.shaded {
+        background: #fbfaf5;
+      }
+
+      .field {
+        min-height: 72px;
+        margin-top: 10px;
+        border: 1px dashed #94a3b8;
+        background: white;
+      }
+
+      .table {
+        display: grid;
+        border: 1px solid #c9d4df;
+        background: white;
+      }
+
+      .week {
+        grid-template-columns: 120px repeat(5, 1fr);
+      }
+
+      .boundary {
+        grid-template-columns: 160px 1fr 1fr;
+      }
+
+      .roles {
+        grid-template-columns: 150px 1fr 1fr;
+      }
+
+      .cell {
+        min-height: 84px;
+        border-right: 1px solid #c9d4df;
+        border-bottom: 1px solid #c9d4df;
+        padding: 10px;
+      }
+
+      .cell.header {
+        min-height: auto;
+        background: #ecfeff;
+        color: #075985;
+        font-weight: 800;
+      }
+
+      .cell.rowHead {
+        background: #f8fafc;
+        font-weight: 800;
+      }
+
+      .cell:nth-child(6n) {
+        border-right: 0;
+      }
+
+      .boundary .cell:nth-child(3n),
+      .roles .cell:nth-child(3n) {
+        border-right: 0;
+      }
+
+      .lines {
+        min-height: 92px;
+        margin-top: 8px;
+        background-image: linear-gradient(#e2e8f0 1px, transparent 1px);
+        background-size: 100% 28px;
+      }
+
+      .script {
+        display: grid;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .scriptStep {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        border: 1px solid #c9d4df;
+        background: white;
+      }
+
+      .scriptStep strong {
+        padding: 14px;
+        border-right: 1px solid #c9d4df;
+        background: #ecfeff;
+        color: #075985;
+      }
+
+      .scriptStep p {
+        margin: 0;
+        padding: 14px;
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        main {
+          max-width: none;
+          padding: 0;
+        }
+
+        .sheet {
+          min-height: 100vh;
+          margin: 0;
+          page-break-after: always;
+          border: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="sheet cover" aria-labelledby="title">
+        <div class="coverText">
+          <p class="eyebrow">認知補助ツールキット / 6機能キット 01</p>
+          <h1 id="title">見えない病気と働く。</h1>
+          <p class="lead">
+            「元気そう」「疲れやすい」「通院が多い」で止めず、同じ一週間を見ながら、時間、情報共有、開示境界、相談線へ分けるための印刷用キットです。
+          </p>
+          <p class="note">
+            使い方: 注意を開き、比喩でつかみ、場面で見て、構造へ置き、手を動かし、最後に読み下し台本で誤読を防ぎます。結論を急がず、次に確認する仕事条件を一つ決めます。
+          </p>
+          <p class="note warning">
+            扱わないこと: 就労可否、医学判断、法的判断、合理的配慮の妥当性判断、個別ケースの正解判定。
+          </p>
+        </div>
+        <div class="coverImages" aria-label="見えない病気と働く図解">
+          <img src="/resources/invisible-disability/invisible-backpack.webp" alt="見えない負担を背負うバッグパックの図解" />
+          <img src="/fest/2026gw/stage2/karada-tenki.jpg" alt="体の中の天気予報の図解" />
+          <img src="/resources/invisible-disability/work-friction.webp" alt="見えにくい病気と仕事の摩擦を示す図解" />
+        </div>
+      </section>
+
+      <section class="sheet compact" aria-labelledby="kit-index">
+        <div class="page">
+          <p class="eyebrow">INDEX / 実物へ移動する</p>
+          <h2 id="kit-index">6つの機能を、実物で見る。</h2>
+          <p>
+            下の入口から、それぞれの実物へ移動できます。画像は切り抜きではなく全体が見える形で置き、必要に応じて元画像も開けるようにしています。
+          </p>
+          <nav class="toc" aria-label="6機能ナビゲーション">
+            <a href="#open-attention">注意</a>
+            <a href="#metaphor">比喩</a>
+            <a href="#scene">場面</a>
+            <a href="#structure">構造</a>
+            <a href="#week-map">ワーク</a>
+            <a href="#read-down">読み下し</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="open-attention">
+        <div class="page">
+          <p class="eyebrow">OPEN / 注意を開く</p>
+          <h2 id="open-attention">「元気そう」のあとに、何を見る？</h2>
+          <p>
+            最初の入口は、正しい知識を説明することではありません。よくある一言で判断を止めず、次に見る仕事条件を一つ増やすことです。
+          </p>
+          <div class="miniCards">
+            <article class="miniCard">
+              <h3>「元気そう」</h3>
+              <p>朝の移動、睡眠、痛み、薬、午前会議の負荷を、同じ一日の条件として見る。</p>
+            </article>
+            <article class="miniCard">
+              <h3>「通院が多い」</h3>
+              <p>欠勤回数だけで止めず、通院後の回復時間、締切、代替手順、連絡方法を見る。</p>
+            </article>
+            <article class="miniCard">
+              <h3>「また休み？」</h3>
+              <p>本人の意欲や職場の善悪に寄せず、週の負荷集中と相談線を見に行く。</p>
+            </article>
+          </div>
+          <div class="note">
+            入口の合図: ここでは結論を出さない。次に見る仕事条件を一つ増やす。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="metaphor">
+        <div class="page">
+          <p class="eyebrow">METAPHOR / 比喩でつかむ</p>
+          <h2 id="metaphor">見えない荷物と、からだの天気。</h2>
+          <p>
+            見えない負担や体調変動は、文章だけでは伝わりにくい。比喩は、本人の体験を軽く扱うためではなく、仕事条件へ戻すための足場です。
+          </p>
+          <div class="grid2" style="margin-top: 18px">
+            <article class="box">
+              <img src="/resources/invisible-disability/invisible-backpack.webp" alt="見えない負担を背負うバッグパックの図解" />
+              <h3>見えないバックパック</h3>
+              <p>通院、痛み、移動、説明疲れ、開示不安は、外から見えにくいまま同時に背負われる。</p>
+              <p><strong>仕事条件へ戻す問い:</strong> どの荷物は、手順、時間、情報共有、相談線で軽くできるか。</p>
+              <p class="assetLinks">
+                <a href="/resources/invisible-disability/invisible-backpack.webp">元画像を開く</a>
+              </p>
+            </article>
+            <article class="box">
+              <img src="/fest/2026gw/stage2/karada-tenki.jpg" alt="体の中の天気予報の図解" />
+              <h3>からだの中の天気予報</h3>
+              <p>晴れて見える日にも、体の中では痛み、疲労、乾き、感染不安、回復時間が動く。</p>
+              <p><strong>仕事条件へ戻す問い:</strong> 会議、移動、休憩、締切のどこで天気が荒れやすいか。</p>
+              <p class="assetLinks">
+                <a href="/fest/2026gw/stage2/karada-tenki.jpg">元画像を開く</a>
+              </p>
+            </article>
+          </div>
+          <div class="note warning">
+            比喩は診断説明ではありません。病名別に必要な配慮を引くためではなく、仕事条件を確認する入口として使います。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="sound-entry">
+        <div class="page">
+          <p class="eyebrow">SOUND / 注意を開く・比喩でつかむ</p>
+          <h2 id="sound-entry">音楽は、判断ではなく入口として使う。</h2>
+          <p>
+            音声とジャケット画像は、複雑なテーマを話し始めるための入口です。ここで結論を出さず、聞いたあとに場面カードやワークへ進みます。
+          </p>
+          <div class="grid3" style="margin-top: 18px">
+            <article class="box audioCard">
+              <img src="/songs/still/mienai-nimotsu-no-hero.jpg" alt="見えない荷物のヒーローのジャケット画像" />
+              <h3>見えない荷物のヒーロー</h3>
+              <p>見えない負担を、本人の努力物語だけにせず、周囲が気づく入口にする。</p>
+              <audio controls preload="none" src="/songs/audio/mienai-nimotsu-no-hero.mp3">
+                <a href="/songs/audio/mienai-nimotsu-no-hero.mp3">音声を開く</a>
+              </audio>
+            </article>
+            <article class="box audioCard">
+              <img src="/songs/still/karada-no-tenki-yoho.jpg" alt="からだの天気予報のジャケット画像" />
+              <h3>からだの天気予報</h3>
+              <p>体調変動を、予定、移動、休憩、回復時間の話へ戻す。</p>
+              <audio controls preload="none" src="/songs/audio/karada-no-tenki-yoho.mp3">
+                <a href="/songs/audio/karada-no-tenki-yoho.mp3">音声を開く</a>
+              </audio>
+            </article>
+            <article class="box audioCard">
+              <img src="/songs/still/tomei-na-ryukku.jpg" alt="透明なリュックのジャケット画像" />
+              <h3>透明なリュック</h3>
+              <p>見えない負担と開示境界を、話し始められる比喩として置く。</p>
+              <audio controls preload="none" src="/songs/audio/tomei-na-ryukku.mp3">
+                <a href="/songs/audio/tomei-na-ryukku.mp3">音声を開く</a>
+              </audio>
+            </article>
+          </div>
+          <div class="note warning">
+            音楽は助言、制度説明、個別判断ではありません。動画化する場合も、同じ読み下しと境界説明を添えて、場面カードやワークへ接続します。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="scene">
+        <div class="page">
+          <p class="eyebrow">SCENE / 場面で見る</p>
+          <h2 id="scene">本人、上司、人事、支援者が同じ場面を見る。</h2>
+          <p>
+            4コマは、病名を覚える教材ではありません。同じ場面を見ながら、本人の体験、職場の制約、支援者の翻訳、次に確認する条件を並べるための素材です。
+          </p>
+          <div class="grid3" style="margin-top: 18px">
+            <article class="scene">
+              <img src="/resources/teaching-library/heron-scenes/ibd-looks-fine-scene.webp" alt="元気そうに見える場面から見えない負担を考える4コマ教材" />
+              <h3>元気そうに見える</h3>
+              <p>見る点: 朝の移動、睡眠、痛み、午前会議、説明疲れ。</p>
+              <p class="assetLinks">
+                <a href="/resources/teaching-library/heron-scenes/ibd-looks-fine-scene.webp">4コマ全体を開く</a>
+              </p>
+            </article>
+            <article class="scene">
+              <img src="/resources/teaching-library/heron-scenes/ibd-commute-timing-scene.webp" alt="満員電車と体調のタイミングを考える4コマ教材" />
+              <h3>通勤とタイミング</h3>
+              <p>見る点: 移動、トイレ、開始時刻、遅刻連絡、在宅・時差の余地。</p>
+              <p class="assetLinks">
+                <a href="/resources/teaching-library/heron-scenes/ibd-commute-timing-scene.webp">4コマ全体を開く</a>
+              </p>
+            </article>
+            <article class="scene">
+              <img src="/resources/teaching-library/heron-scenes/collagen-hospital-visit-work-scene.webp" alt="通院も仕事の条件として考える4コマ教材" />
+              <h3>通院も仕事の一部</h3>
+              <p>見る点: 通院後の回復、締切、会議設定、評価、共有範囲。</p>
+              <p class="assetLinks">
+                <a href="/resources/teaching-library/heron-scenes/collagen-hospital-visit-work-scene.webp">4コマ全体を開く</a>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="structure">
+        <div class="page">
+          <p class="eyebrow">STRUCTURE / 構造に置く</p>
+          <h2 id="structure">人の問題でも、企業姿勢の問題でも止めない。</h2>
+          <p>
+            場面で見えた違和感を、作業、時間、情報、相談線、評価、支援接続へ置き直します。ここで初めて、次に動かせる条件が見えます。
+          </p>
+          <div class="grid2" style="margin-top: 18px">
+            <article class="box">
+              <img src="/resources/invisible-disability/work-friction.webp" alt="見えない病気と仕事の摩擦を示す構造図" />
+              <h3>仕事摩擦</h3>
+              <p>本人の体調と、会議、締切、移動、評価、情報共有がこすれる場所を見る。</p>
+              <p class="assetLinks">
+                <a href="/resources/invisible-disability/work-friction.webp">元画像を開く</a>
+              </p>
+            </article>
+            <article class="box">
+              <img src="/resources/invisible-disability/medical-care-is-work.webp" alt="治療と仕事を同時に見る構造図" />
+              <h3>治療・通院も仕事条件</h3>
+              <p>通院や治療を私生活の外側に追い出さず、勤務継続の時間設計として見る。</p>
+              <p class="assetLinks">
+                <a href="/resources/invisible-disability/medical-care-is-work.webp">元画像を開く</a>
+              </p>
+            </article>
+          </div>
+          <div class="note">
+            構造に置く目的は、説明を難しくすることではありません。次に確認する一点、次に試す小さな変更、戻って確認する日を決めるためです。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="week-map">
+        <div class="page">
+          <p class="eyebrow">WORK 01 / 手を動かす</p>
+          <h2 id="week-map">一週間の健康時間マップ</h2>
+          <p>
+            症状名や配慮名を先に決めず、同じ一週間の中で、通院、移動、会議、締切、休憩、回復時間がどこで重なるかを見ます。
+          </p>
+          <div class="table week" aria-label="一週間の健康時間マップ">
+            <div class="cell header">見ること</div>
+            <div class="cell header">月</div>
+            <div class="cell header">火</div>
+            <div class="cell header">水</div>
+            <div class="cell header">木</div>
+            <div class="cell header">金</div>
+            <div class="cell rowHead">通院・治療・薬</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell rowHead">移動・会議・対人負荷</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell rowHead">締切・評価・確認</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell rowHead">休憩・回復・生活余白</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+          </div>
+          <div class="note">
+            記入例: 月曜に通院、火曜に長時間会議、水曜に月末締切が重なるなら、「本人の疲れやすさ」ではなく、週前半に負荷が集中している可能性を見る。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="disclosure">
+        <div class="page">
+          <p class="eyebrow">WORK 02 / 手を動かす</p>
+          <h2 id="disclosure">開示境界シート</h2>
+          <p>
+            共有する目的は、病状を詳しく説明することではなく、仕事を進める条件をそろえることです。共有すること、共有しないこと、同意が必要なことを分けます。
+          </p>
+          <div class="table boundary" aria-label="開示境界シート">
+            <div class="cell header">区分</div>
+            <div class="cell header">この場で扱う情報</div>
+            <div class="cell header">言い換え例</div>
+            <div class="cell rowHead">仕事上共有する</div>
+            <div class="cell">会議後の回復時間、途中離席の扱い、連絡方法、締切の見直し時点。</div>
+            <div class="cell">「診断名ではなく、会議後に30分休めると午後の作業が安定します。」</div>
+            <div class="cell rowHead">本人に確認する</div>
+            <div class="cell">誰に、どこまで、いつ、どの表現で共有してよいか。</div>
+            <div class="cell">「この内容は上司だけでよいですか。人事にも共有しますか。」</div>
+            <div class="cell rowHead">この場で扱わない</div>
+            <div class="cell">詳細な病状、治療内容、本人が望まない私生活情報、就労可否の判断。</div>
+            <div class="cell">「ここでは病状の詳しい判断ではなく、仕事上の確認条件に分けます。」</div>
+          </div>
+          <div class="grid2" style="margin-top: 18px">
+            <div class="box shaded">
+              <h3>共有してよい仕事条件</h3>
+              <div class="lines"></div>
+            </div>
+            <div class="box shaded">
+              <h3>共有前に本人へ確認すること</h3>
+              <div class="lines"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="meeting">
+        <div class="page">
+          <p class="eyebrow">WORK 03 / 手を動かす</p>
+          <h2 id="meeting">同じ場面の会議カード</h2>
+          <p>
+            同じ一週間を見ても、本人、上司、人事、支援者で見えているものは違います。どれかを正解にせず、次に確認する条件をそろえます。
+          </p>
+          <div class="table roles" aria-label="同じ場面の会議カード">
+            <div class="cell header">役割</div>
+            <div class="cell header">まず見ること</div>
+            <div class="cell header">次に確認する問い</div>
+            <div class="cell rowHead">本人</div>
+            <div class="cell">体調、回復時間、通院、伝えられる範囲、困る場面。</div>
+            <div class="cell">「何があると仕事が安定し、何は共有したくないか。」</div>
+            <div class="cell rowHead">上司</div>
+            <div class="cell">締切、会議、役割、代替手順、日々の確認粒度。</div>
+            <div class="cell">「どの作業なら調整でき、どこはチームで補う必要があるか。」</div>
+            <div class="cell rowHead">人事</div>
+            <div class="cell">共有範囲、評価、労務管理、相談線、見直し時点。</div>
+            <div class="cell">「制度説明ではなく、職場が使える確認ルールにできているか。」</div>
+            <div class="cell rowHead">支援者</div>
+            <div class="cell">本人の言葉、医療生活情報、職場条件、制度・支援資源の翻訳。</div>
+            <div class="cell">「本人説明と職場の一手の間で、何を翻訳する必要があるか。」</div>
+          </div>
+          <div class="note">
+            会議の終点: 判断ではなく、次の二週間で試す条件を一つ選び、見直し日を決める。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="experiment">
+        <div class="page">
+          <p class="eyebrow">WORK 04 / 手を動かす</p>
+          <h2 id="experiment">二週間だけ試す変更</h2>
+          <p>
+            大きな制度変更や結論に飛ばず、仕事条件として試せる一つの変更を決めます。うまくいったかどうかも、本人の頑張りではなく観測点で見ます。
+          </p>
+          <div class="grid2">
+            <div class="box">
+              <h3>試す変更</h3>
+              <p>例: 月曜通院の翌朝は、最初の会議を30分遅らせる。</p>
+              <div class="field"></div>
+            </div>
+            <div class="box">
+              <h3>変えないこと</h3>
+              <p>例: 評価基準そのものは変えず、確認時点と作業順だけを変える。</p>
+              <div class="field"></div>
+            </div>
+            <div class="box">
+              <h3>見るサイン</h3>
+              <p>例: 午後の作業ミス、途中離席の回数、本人の回復時間、チームの代替負荷。</p>
+              <div class="field"></div>
+            </div>
+            <div class="box">
+              <h3>見直し日と参加者</h3>
+              <p>例: 二週間後の金曜、本人、上司、人事、必要に応じて支援者。</p>
+              <div class="field"></div>
+            </div>
+          </div>
+          <p class="note warning">
+            このシートは合意形成の補助です。本人同意、職場の安全、法務・労務・医療上の判断が必要な事項は、別途確認します。
+          </p>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="read-down">
+        <div class="page">
+          <p class="eyebrow">READ-DOWN / 読み下しで守る</p>
+          <h2 id="read-down">図解を、同じ意味のテキストで読む。</h2>
+          <div class="grid3" style="margin-top: 22px">
+            <article class="box">
+              <h3>バッグパック図</h3>
+              <p>
+                この図は、本人が弱いという説明ではありません。外から見えない通院、痛み、移動、説明疲れ、開示不安が、仕事条件と同時に動いていることを読む入口です。
+              </p>
+              <p><strong>守ること:</strong> 感動話、病状説明、本人責任への誤読を防ぐ。</p>
+            </article>
+            <article class="box">
+              <h3>天気予報図</h3>
+              <p>
+                この図は、体調を気分として扱うものではありません。晴れて見える日にも、会議、移動、休憩、感染不安、回復時間が重なることを、勤務の条件として確認するための図です。
+              </p>
+              <p><strong>守ること:</strong> 症状名の暗記や病名別配慮リストへの誤読を防ぐ。</p>
+            </article>
+            <article class="box">
+              <h3>仕事摩擦図</h3>
+              <p>
+                この図は、本人と職場のどちらが悪いかを決めるものではありません。作業、情報共有、相談先、評価、回復時間がこすれる場所を見て、次に確認する条件へ分けるための図です。
+              </p>
+              <p><strong>守ること:</strong> 個人攻撃や企業批判へ縮むことを防ぐ。</p>
+            </article>
+          </div>
+          <div class="note">
+            アクセシビリティ上も、研修上も、図だけで理解させない。図を見られない人、専門語が苦手な人、初めて参加する人が、同じ意味をテキストで追えるようにする。
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet" aria-labelledby="facilitator">
+        <div class="page">
+          <p class="eyebrow">FACILITATOR SCRIPT / 読み下しで守る</p>
+          <h2 id="facilitator">45分で使う進行台本</h2>
+          <div class="script">
+            <div class="scriptStep">
+              <strong>0-5分</strong>
+              <p>目的を確認する。今日は就労可否や配慮妥当性を決めず、同じ一週間を見て、次に確認する仕事条件を一つ選ぶ。</p>
+            </div>
+            <div class="scriptStep">
+              <strong>5-12分</strong>
+              <p>バッグパック図と天気予報図を読む。本人の説明努力ではなく、見えない負担と健康時間が仕事条件と重なることを確認する。</p>
+            </div>
+            <div class="scriptStep">
+              <strong>12-25分</strong>
+              <p>一週間の健康時間マップに、通院、会議、締切、移動、休憩、回復時間を書き込む。負荷が重なる場所を一つ選ぶ。</p>
+            </div>
+            <div class="scriptStep">
+              <strong>25-35分</strong>
+              <p>開示境界シートで、共有する仕事条件、本人に確認する情報、この場で扱わない情報を分ける。</p>
+            </div>
+            <div class="scriptStep">
+              <strong>35-45分</strong>
+              <p>二週間だけ試す変更、見るサイン、見直し日を決める。最後に、医学・法務・労務判断が必要な点を別枠に置く。</p>
+            </div>
+          </div>
+          <p class="note warning">
+            終了時の読み上げ文: 「今日決めたのは最終判断ではありません。次に確認する仕事条件と、二週間だけ試す小さな変更です。」
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
