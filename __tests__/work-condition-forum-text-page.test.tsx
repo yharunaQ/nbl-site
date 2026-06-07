@@ -83,6 +83,12 @@ Status: public未承認
       'href',
       '/preview/work-condition-forum-session-packages#session-1',
     );
+    expect(screen.getByRole('link', { name: 'NBLトップ' })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: '記事ライブラリ' })).toHaveAttribute(
+      'href',
+      '/policy-research',
+    );
+    expect(screen.getByRole('link', { name: 'イベント' })).toHaveAttribute('href', '/events');
 
     expect(screen.getByText('INFOGRAPHIC')).toBeInTheDocument();
     expect(

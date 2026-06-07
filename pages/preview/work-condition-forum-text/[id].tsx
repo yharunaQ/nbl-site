@@ -206,13 +206,28 @@ export default function WorkConditionForumTextPage({
           <div className="absolute inset-0 bg-slate-950/78" />
           <div className="relative mx-auto max-w-6xl px-4 py-6 sm:px-5 md:px-8 lg:px-10">
             <header className="flex flex-col gap-3 border-b border-white/18 pb-4 text-sm sm:flex-row sm:items-center sm:justify-between">
-              <a
-                href={forumSessionHref}
-                className="inline-flex w-fit items-center gap-2 font-semibold text-cyan-100"
+              <nav
+                className="flex flex-wrap items-center gap-3 text-white/78"
+                aria-label="フォーラム本文とNBLサイトのナビゲーション"
               >
-                <ArrowLeft size={16} aria-hidden="true" />
-                フォーラム一覧へ戻る
-              </a>
+                <a
+                  href={forumSessionHref}
+                  className="inline-flex w-fit items-center gap-2 font-semibold text-cyan-100 hover:text-white"
+                >
+                  <ArrowLeft size={16} aria-hidden="true" />
+                  フォーラム一覧へ戻る
+                </a>
+                <span className="hidden h-4 w-px bg-white/22 sm:inline-block" aria-hidden="true" />
+                <a href="/" className="hover:text-white">
+                  NBLトップ
+                </a>
+                <a href="/policy-research" className="hover:text-white">
+                  記事ライブラリ
+                </a>
+                <a href="/events" className="hover:text-white">
+                  イベント
+                </a>
+              </nav>
               <span className="w-fit border border-white/20 px-3 py-1 text-white/72">
                 {statusLabel}
               </span>

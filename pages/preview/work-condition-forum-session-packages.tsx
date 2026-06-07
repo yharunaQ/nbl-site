@@ -49,9 +49,19 @@ export default function WorkConditionForumSessionPackagesPage({
                 NBL Work Condition Design Virtual Forum
               </a>
               <nav
-                className="flex flex-wrap gap-3 text-white/80"
-                aria-label="ページ内ナビゲーション"
+                className="flex flex-wrap items-center gap-3 text-white/80"
+                aria-label="フォーラムとNBLサイトのナビゲーション"
               >
+                <a href="/" className="hover:text-white">
+                  NBLトップ
+                </a>
+                <a href="/policy-research" className="hover:text-white">
+                  記事ライブラリ
+                </a>
+                <a href="/events" className="hover:text-white">
+                  イベント
+                </a>
+                <span className="hidden h-4 w-px bg-white/24 sm:inline-block" aria-hidden="true" />
                 <a href="#sessions" className="hover:text-white">
                   Sessions
                 </a>
