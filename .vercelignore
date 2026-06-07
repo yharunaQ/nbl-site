@@ -2,6 +2,10 @@ content-inbox
 content-review
 references
 data
+!data/
+data/*
+!data/specs/
+!data/specs/**
 .next
 .tmp
 .swc
