@@ -372,21 +372,28 @@ describe('Falcon next NBL static site candidate', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        '障害者雇用や難病就労支援で蓄積されてきた知見を、人間の多様性を前提にした企業経営、雇用管理、専門支援、制度設計へ展開します。通して読めば未来の設計地図に、必要な場面で開けば取り組みガイドになります。',
+        '障害者雇用や難病就労支援で蓄積されてきた知見を、人間の多様性を前提にした企業経営、雇用管理、専門支援、制度設計へ展開します。21視点は、未来の仕事を設計するための全体地図です。',
       ),
     ).toBeInTheDocument();
     expect(screen.getAllByText('未来地図を見る').length).toBeGreaterThan(0);
     expect(
       screen.getByAltText(
-        '21視点で未来の仕事を設計するために、仕事条件と人間の多様性を中心に、健康時間と生活、入口・翻訳・支援、職場・参加・価値の3面から企業経営、雇用管理、専門支援、制度設計へ広げる図解',
+        '21視点で未来の仕事を設計するために、仕事条件と人間の多様性を中心に、健康時間と生活、入口・翻訳・支援、職場・参加・価値の3設計面と、企業経営、雇用管理、専門支援、制度設計の4実装領域へ展開する図解',
       ),
-    ).toHaveAttribute('src', '/images/next-nbl-future-design-21-view-map-v1.webp');
+    ).toHaveAttribute('src', '/images/next-nbl-future-design-21-view-map-v2.png');
     expect(screen.getAllByText('未来設計マップ').length).toBeGreaterThan(0);
     expect(screen.getByText('仕事条件から、未来の取り組みへ。')).toBeInTheDocument();
-    expect(screen.getByText('21個を、最初から全部読まない。')).toBeInTheDocument();
-    expect(screen.getByText('ひと目の使い方')).toBeInTheDocument();
-    expect(screen.getByText('一文を、3つの入口へ置いてみる。')).toBeInTheDocument();
-    expect(screen.getAllByText('必要な視点だけ開く').length).toBeGreaterThan(0);
+    expect(screen.getByText('未来の仕事を、21の問いで設計する。')).toBeInTheDocument();
+    expect(screen.getByText('全体像')).toBeInTheDocument();
+    expect(screen.getByText('3つの設計面が、7つの問いずつに開く。')).toBeInTheDocument();
+    expect(screen.getAllByText('21視点の全体像を見る').length).toBeGreaterThan(0);
+    expect(screen.getByText('設計対象')).toBeInTheDocument();
+    expect(screen.getByText('人間の多様性を前提に、仕事条件そのものを設計する。')).toBeInTheDocument();
+    expect(screen.getByText('3面 x 7問いで、取り組みを具体化する。')).toBeInTheDocument();
+    expect(screen.queryByText('21個を、最初から全部読まない。')).not.toBeInTheDocument();
+    expect(screen.queryByText('ひと目の使い方')).not.toBeInTheDocument();
+    expect(screen.queryByText('一文を、3つの入口へ置いてみる。')).not.toBeInTheDocument();
+    expect(screen.queryByText('必要な視点だけ開く')).not.toBeInTheDocument();
     expect(screen.queryByText('使う先、見る面、手元の問いを分ける。')).not.toBeInTheDocument();
     expect(screen.queryByText('このページの読み方')).not.toBeInTheDocument();
     expect(screen.queryByText('使う先 / 4つの実装領域')).not.toBeInTheDocument();
@@ -403,16 +410,18 @@ describe('Falcon next NBL static site candidate', () => {
     expect(screen.queryByText('ガイドの読み方')).not.toBeInTheDocument();
     expect(screen.queryByText('通して読めるガイドブックと、必要時に引ける道具箱を両立する。')).not.toBeInTheDocument();
     expect(screen.getAllByText('21視点ボード').length).toBeGreaterThan(0);
-    expect(screen.getByText('まず1面を選び、必要な問いだけ開く。')).toBeInTheDocument();
-    expect(screen.getByText('21項目を順番に読み切る必要はありません。場面に近い面を選び、そこで必要になった観測点だけを開きます。')).toBeInTheDocument();
-    expect(screen.getByText('今日の入口')).toBeInTheDocument();
-    expect(screen.getAllByText('復職後、短時間勤務なのに評価が曖昧で不安が強い。').length).toBeGreaterThan(1);
-    expect(screen.getByText('この一文を「本人の不安」で閉じず、仕事条件として見える場所へ置き直します。')).toBeInTheDocument();
-    expect(screen.getByText('健康時間')).toBeInTheDocument();
-    expect(screen.getByText('入口・翻訳')).toBeInTheDocument();
-    expect(screen.getByText('職場・価値')).toBeInTheDocument();
-    expect(screen.getByText('近い観測点へ進む')).toBeInTheDocument();
-    expect(screen.getByText('評価する成果、役割、見直し時点、収入への影響は分かれているか。')).toBeInTheDocument();
+    expect(screen.getByText('未来の仕事設計を、21の観測点へ開く。')).toBeInTheDocument();
+    expect(screen.getByText('人間の多様性を前提にした企業経営、雇用管理、専門支援、制度設計を、21の問いで組み立てるための全体地図です。')).toBeInTheDocument();
+    expect(screen.getByText('4つの実装領域')).toBeInTheDocument();
+    expect(screen.getByText('未来の取り組みに持ち込む。')).toBeInTheDocument();
+    expect(screen.getByText('どこへ持ち込むか')).toBeInTheDocument();
+    expect(screen.getByText('何を同時に見るか')).toBeInTheDocument();
+    expect(screen.getByText('何を問うか')).toBeInTheDocument();
+    expect(screen.queryByText('まず1面を選び、必要な問いだけ開く。')).not.toBeInTheDocument();
+    expect(screen.queryByText('今日の入口')).not.toBeInTheDocument();
+    expect(screen.queryByText('復職後、短時間勤務なのに評価が曖昧で不安が強い。')).not.toBeInTheDocument();
+    expect(screen.queryByText('この一文を「本人の不安」で閉じず、仕事条件として見える場所へ置き直します。')).not.toBeInTheDocument();
+    expect(screen.queryByText('近い観測点へ進む')).not.toBeInTheDocument();
     expect(screen.queryByText('21視点 構造ガイド')).not.toBeInTheDocument();
     expect(screen.queryByText('まず、構造をつかむ。')).not.toBeInTheDocument();
     expect(screen.queryByText('読む順番')).not.toBeInTheDocument();

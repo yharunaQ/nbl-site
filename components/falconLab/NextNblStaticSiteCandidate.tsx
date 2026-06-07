@@ -49,7 +49,7 @@ const publicHeroImage = '/images/next-nbl-work-design-hero-v1.webp';
 const publicLogicFlowImage = '/images/next-nbl-work-logic-flow-v1.webp';
 const publicWorkDesignMapVisualImage = '/images/next-nbl-work-design-map-visual-v1.webp';
 const publicConditionWindowHeroImage = '/images/next-nbl-condition-window-hero-v1.webp';
-const publicFutureDesign21ViewMapImage = '/images/next-nbl-future-design-21-view-map-v1.webp';
+const publicFutureDesign21ViewMapImage = '/images/next-nbl-future-design-21-view-map-v2.png';
 const publicKnowledgeNetworkTheoryImage = '/images/next-nbl-knowledge-network-theory-map-v2.webp';
 const publicKnowledgeNetworkTheoryMobileImage = '/images/next-nbl-knowledge-network-theory-map-mobile-v2.webp';
 const publicArticleLibraryHubImage = '/images/next-nbl-open-work-questions-article-hub-v1.webp';
@@ -839,9 +839,9 @@ const publicPageCopy: Record<
     eyebrow: '未来の設計地図',
     headline: '21視点で未来の仕事を設計する',
     lead:
-      '障害者雇用や難病就労支援で蓄積されてきた知見を、人間の多様性を前提にした企業経営、雇用管理、専門支援、制度設計へ展開します。通して読めば未来の設計地図に、必要な場面で開けば取り組みガイドになります。',
+      '障害者雇用や難病就労支援で蓄積されてきた知見を、人間の多様性を前提にした企業経営、雇用管理、専門支援、制度設計へ展開します。21視点は、未来の仕事を設計するための全体地図です。',
     primary: '未来地図を見る',
-    secondary: '相談事例集へ',
+    secondary: 'なぜ可能か',
     problem: '大切な知見が、制度、症状、配慮、支援ノウハウに分かれてしまうと、企業や支援者が組織全体の仕事設計を変える見取り図になりにくい。',
     promise:
       '21の視点を、企業経営、雇用管理、専門支援、研修で使える3章構成のガイドブックとして示し、必要な視点へ戻れる道具箱としても使える形にする。',
@@ -4649,7 +4649,7 @@ const publicDetailFlowPanels: Record<
     kicker: '未来設計マップ',
     title: 'インクルーシブな企業・支援・制度を設計する。',
     body:
-      '21視点は、相談事例集の詳細版ではありません。断片相談から得た読み方を、企業経営、雇用管理、専門支援、制度設計へ広げるための設計地図です。',
+      '21視点は、未来の企業経営、雇用管理、専門支援、制度設計を、同じ仕事条件の地図で組み立てるための設計図です。',
     steps: [
       {
         label: '経営',
@@ -4667,8 +4667,8 @@ const publicDetailFlowPanels: Record<
         body: '支援、地域資源、研修、政策を仕事条件へ翻訳する。',
       },
     ],
-    nextLabel: '相談事例集へ進む',
-    nextTargetId: 'NS-02',
+    nextLabel: 'なぜ可能かを読む',
+    nextTargetId: 'NS-07',
   },
   'NS-04': {
     kicker: '場面で読む順番',
@@ -6958,7 +6958,7 @@ function PublicHero({
             <div className="w-full max-w-full overflow-hidden border border-white/18 bg-[#f8f3e8] text-slate-950 shadow-2xl">
               <img
                 src={publicFutureDesign21ViewMapImage}
-                alt="21視点で未来の仕事を設計するために、仕事条件と人間の多様性を中心に、健康時間と生活、入口・翻訳・支援、職場・参加・価値の3面から企業経営、雇用管理、専門支援、制度設計へ広げる図解"
+                alt="21視点で未来の仕事を設計するために、仕事条件と人間の多様性を中心に、健康時間と生活、入口・翻訳・支援、職場・参加・価値の3設計面と、企業経営、雇用管理、専門支援、制度設計の4実装領域へ展開する図解"
                 className="aspect-[16/9] w-full bg-white object-contain"
               />
               <div className="border-t border-slate-200 bg-white p-5">
@@ -8432,28 +8432,42 @@ function PublicBoundaryPanel() {
 }
 
 function PublicToolsFutureDesignMap() {
-  const domains = ['企業経営', '雇用管理', '専門支援', '制度設計'];
+  const domains = [
+    {
+      label: '企業経営',
+      body: '人材戦略、事業継続、学習、評価の設計へ広げる。',
+    },
+    {
+      label: '雇用管理',
+      body: '採用、配置、OJT、評価、復職、異動の運用へ落とす。',
+    },
+    {
+      label: '専門支援',
+      body: '本人、職場、医療・生活、制度の言葉をつなぐ。',
+    },
+    {
+      label: '制度設計',
+      body: '地域資源、研修、政策評価を現場で使える形へ戻す。',
+    },
+  ];
   const planes = [
     {
       title: '健康時間と生活の自由度',
-      cue: '体調・治療・生活が仕事にぶつかる時',
-      body: '働く、休む、治療する、戻る、待つ余地を一緒に見る。',
+      body: '働く、休む、治療する、戻る、待つ余地を仕事設計へ入れる。',
       href: '#chapter-health-time',
       tone: 'border-cyan-200 bg-cyan-50 text-cyan-950',
       marker: 'bg-cyan-700 text-white',
     },
     {
       title: '入口・翻訳・支援の力',
-      cue: '伝え方・求人・相談線で詰まる時',
-      body: '本人の言葉、職場の言葉、支援の言葉を仕事で使える形に変える。',
+      body: '求人、開示、支援、情報、相談線を、仕事で使える言葉へ変える。',
       href: '#chapter-entry-translation',
       tone: 'border-amber-200 bg-amber-50 text-amber-950',
       marker: 'bg-amber-600 text-white',
     },
     {
       title: '職場・参加・価値',
-      cue: '配置・評価・成長が見えにくい時',
-      body: '作業、環境、評価、学び、役割を参加の質と組織価値へつなぐ。',
+      body: '作業、環境、評価、学び、役割を、参加の質と組織価値へつなぐ。',
       href: '#chapter-worksite-value',
       tone: 'border-emerald-200 bg-emerald-50 text-emerald-950',
       marker: 'bg-emerald-700 text-white',
@@ -8469,29 +8483,30 @@ function PublicToolsFutureDesignMap() {
               未来設計マップ
             </p>
             <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-normal text-slate-950 md:text-4xl">
-              21個を、最初から全部読まない。
+              未来の仕事を、21の問いで設計する。
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-700">
-              目の前の場面に近い面をひとつ選び、そこから必要な問いだけを開きます。21視点は暗記する表ではなく、取り組みを前へ進めるための視界です。
+              障害者雇用や難病就労支援で見えてきた知見を、個別配慮の表ではなく、人間の多様性を前提にした仕事条件の設計地図へ展開します。
             </p>
             <p className="mt-5 border-l-2 border-cyan-700 pl-4 text-sm leading-7 text-slate-700">
-              企業、雇用管理、支援、制度のどこから始めても、まず「何が閉じ、何が開けるか」を同じ地図で見ます。
+              21視点は、経営、雇用管理、専門支援、制度設計をばらばらに扱わず、同じ仕事条件の地図へ戻すための問いです。
             </p>
-            <div className="mt-6 flex flex-wrap gap-2" aria-label="21視点を持ち込む相手先">
+            <div className="mt-6 grid gap-2 sm:grid-cols-2" aria-label="21視点を展開する実装領域">
               {domains.map((domain) => (
-                <span
-                  key={domain}
+                <article
+                  key={domain.label}
                   className="border border-slate-300 bg-[#fbfaf5] px-3 py-1.5 text-sm font-semibold text-slate-800"
                 >
-                  {domain}
-                </span>
+                  <p>{domain.label}</p>
+                  <p className="mt-1 text-xs font-normal leading-5 text-slate-600">{domain.body}</p>
+                </article>
               ))}
             </div>
             <Link
               href="#work-design-board"
               className="mt-7 inline-flex items-center gap-2 rounded-md bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-cyan-900"
             >
-              必要な視点だけ開く
+              21視点の全体像を見る
               <ArrowRight size={15} />
             </Link>
           </div>
@@ -8499,20 +8514,33 @@ function PublicToolsFutureDesignMap() {
           <div className="overflow-hidden border border-slate-300 bg-white">
             <div className="border-b border-slate-300 bg-slate-950 p-5 text-white">
               <p className="text-xs font-semibold tracking-[0.12em] text-cyan-100">
-                ひと目の使い方
+                全体像
               </p>
               <h3 className="mt-2 text-3xl font-semibold leading-tight tracking-normal">
-                一文を、3つの入口へ置いてみる。
+                3つの設計面が、7つの問いずつに開く。
               </h3>
             </div>
             <div className="p-5">
-              <div className="border border-slate-300 bg-[#fbfaf5] p-4">
-                <p className="text-xs font-semibold tracking-[0.12em] text-slate-500">
-                  場面の一文
-                </p>
-                <p className="mt-2 text-xl font-semibold leading-8 tracking-normal text-slate-950">
-                  復職後、短時間勤務なのに評価が曖昧で不安が強い。
-                </p>
+              <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
+                <article className="border border-slate-300 bg-[#fbfaf5] p-4">
+                  <p className="text-xs font-semibold tracking-[0.12em] text-slate-500">
+                    設計対象
+                  </p>
+                  <p className="mt-2 text-lg font-semibold leading-7 text-slate-950">
+                    人間の多様性を前提に、仕事条件そのものを設計する。
+                  </p>
+                </article>
+                <div className="hidden items-center justify-center text-cyan-800 md:flex" aria-hidden="true">
+                  <ArrowRight size={22} />
+                </div>
+                <article className="border border-slate-950 bg-slate-950 p-4 text-white">
+                  <p className="text-xs font-semibold tracking-[0.12em] text-cyan-100">
+                    21視点
+                  </p>
+                  <p className="mt-2 text-lg font-semibold leading-7">
+                    3面 x 7問いで、取り組みを具体化する。
+                  </p>
+                </article>
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-3">
@@ -8520,14 +8548,14 @@ function PublicToolsFutureDesignMap() {
                   <a
                     key={plane.title}
                     href={plane.href}
-                    className={`group flex min-h-[15rem] flex-col justify-between border p-4 transition hover:-translate-y-0.5 hover:shadow-md ${plane.tone}`}
+                    className={`group flex min-h-[13rem] flex-col justify-between border p-4 transition hover:-translate-y-0.5 hover:shadow-md ${plane.tone}`}
                   >
                     <span>
                       <span className={`inline-grid h-10 w-10 place-items-center rounded-full text-sm font-semibold ${plane.marker}`}>
                         {index + 1}
                       </span>
-                      <span className="mt-4 block text-sm font-semibold leading-6 opacity-80">
-                        {plane.cue}
+                      <span className="mt-3 block text-sm font-semibold leading-6 opacity-80">
+                        7つの問い
                       </span>
                       <span className="mt-2 block text-xl font-semibold leading-snug tracking-normal">
                         {plane.title}
@@ -8540,26 +8568,13 @@ function PublicToolsFutureDesignMap() {
                 ))}
               </div>
 
-              <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
-                <article className="border border-slate-300 bg-[#fbfaf5] p-4">
-                  <p className="text-xs font-semibold tracking-[0.12em] text-slate-500">
-                    選んだ面
-                  </p>
-                  <p className="mt-2 text-base font-semibold leading-7 text-slate-950">
-                    近い入口を1つ選べば十分。迷う時だけ、隣の面も開く。
-                  </p>
-                </article>
-                <div className="hidden items-center justify-center text-cyan-800 md:flex" aria-hidden="true">
-                  <ArrowRight size={22} />
-                </div>
-                <article className="border border-slate-950 bg-slate-950 p-4 text-white">
-                  <p className="text-xs font-semibold tracking-[0.12em] text-cyan-100">
-                    21視点
-                  </p>
-                  <p className="mt-2 text-base font-semibold leading-7">
-                    選んだ面を7つの観測点へ広げ、確認問いに戻す。
-                  </p>
-                </article>
+              <div className="mt-4 border border-slate-300 bg-[#fbfaf5] p-4">
+                <p className="text-xs font-semibold tracking-[0.12em] text-slate-500">
+                  読み方
+                </p>
+                <p className="mt-2 text-base font-semibold leading-7 text-slate-950">
+                  3つの面は別々の章ではなく、未来の仕事設計を同時に見るためのレンズです。21視点は、そのレンズを実装の問いへ落とす道具です。
+                </p>
               </div>
             </div>
           </div>
@@ -9070,7 +9085,7 @@ const workDesignGuideChapters = [
     lead:
       '体調や治療を「本人の事情」として職場の外へ追い出すと、仕事は安定しません。働く時間、休む時間、回復する時間、生活を支える条件を、仕事設計の中に入れて考えます。',
     use:
-      '体調変動、通院、復職、短時間勤務、生活不安が絡む相談で、まず開く章です。',
+      '勤務時間、治療・回復、生活保障、評価を、継続可能な仕事条件として設計する面です。',
     structuralRole:
       '健康時間を就労能力の判定材料に戻さず、働く時間、治療、回復、生活保障、評価が互いにどう自由度を開閉するかを見る面です。',
     anchor:
@@ -9162,7 +9177,7 @@ const workDesignGuideChapters = [
     lead:
       '本人の状態と職場の条件は、そのままでは同じ言葉になりません。求人、面接、開示、支援計画、医療・生活情報を、仕事で確認できる言葉へ翻訳する力が必要です。',
     use:
-      '採用前、開示、支援機関連携、指示理解、相談経路、本人の説明負担が問題になる場面で使います。',
+      '求人、開示、支援連携、情報共有、相談経路を、実務で使える翻訳回路として設計する面です。',
     structuralRole:
       '本人の言葉、求人の言葉、職場の実務語、制度の言葉を、そのままぶつけず、仕事で確認できる条件へ翻訳し直す面です。',
     anchor:
@@ -9254,7 +9269,7 @@ const workDesignGuideChapters = [
     lead:
       '働けているかどうかだけでは、参加の質は分かりません。作業、道具、環境、役割、技能形成、評価、成長のつながりを見て、仕事が本人と組織の価値に変わる条件を整えます。',
     use:
-      '採用後の定着、OJT、作業分担、職場環境、評価、キャリア、チーム内の納得感を扱う章です。',
+      '作業、環境、評価、学び、役割を、参加の質と組織価値へつなぐ面です。',
     structuralRole:
       '翻訳された条件が、実際の作業、環境、情報、評価、役割、学びとして実装され、参加の質へ変わる面です。',
     anchor:
@@ -9654,29 +9669,24 @@ function WorkDesignSituationLevelStrip({ title }: { title: string }) {
 }
 
 function PublicToolsContent() {
-  const sampleTransform = {
-    fragment: '復職後、短時間勤務なのに評価が曖昧で不安が強い。',
-    lanes: [
-      {
-        label: '健康時間',
-        body: '短時間勤務、回復、収入、将来見通しがぶつかっていないかを見る。',
-      },
-      {
-        label: '入口・翻訳',
-        body: '不安を本人の気持ちだけにせず、相談線と共有範囲へ戻す。',
-      },
-      {
-        label: '職場・価値',
-        body: '役割、成果、評価基準が調整後の働き方と合っているかを見る。',
-      },
-    ],
-    viewpoints: [
-      { label: '評価・収入との衝突を見る', href: '#view-4' },
-      { label: '戻れる相談ルートを残す', href: '#view-12' },
-      { label: '成果の見方を合わせる', href: '#view-19' },
-    ],
-    question: '評価する成果、役割、見直し時点、収入への影響は分かれているか。',
-  };
+  const designTargets = ['企業経営', '雇用管理', '専門支援', '制度設計'];
+  const designPath = [
+    {
+      label: '実装領域',
+      title: 'どこへ持ち込むか',
+      body: '経営、雇用管理、専門支援、制度設計を、同じ仕事条件の地図で見る。',
+    },
+    {
+      label: '設計面',
+      title: '何を同時に見るか',
+      body: '健康時間、入口・翻訳、職場・価値の3面で、取り組みの抜けを減らす。',
+    },
+    {
+      label: '問い',
+      title: '何を問うか',
+      body: '各面を7つの問いへ開き、抽象的な理念を実装できる条件へ落とす。',
+    },
+  ];
 
   return (
     <section id="work-design-board" className="scroll-mt-24 bg-white py-14">
@@ -9689,16 +9699,16 @@ function PublicToolsContent() {
                   21視点ボード
                 </p>
                 <h2 className="mt-3 text-4xl font-semibold leading-tight tracking-normal md:text-5xl">
-                  まず1面を選び、必要な問いだけ開く。
+                  未来の仕事設計を、21の観測点へ開く。
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-8 text-white/78">
-                  21項目を順番に読み切る必要はありません。場面に近い面を選び、そこで必要になった観測点だけを開きます。
+                  人間の多様性を前提にした企業経営、雇用管理、専門支援、制度設計を、21の問いで組み立てるための全体地図です。
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-2 text-center">
                 {[
-                  ['1', '入口から'],
-                  ['3x7', '観測点へ'],
+                  ['3', '設計面'],
+                  ['21', '問い'],
                 ].map(([number, label]) => (
                   <div key={label} className="border border-white/15 bg-white/10 p-3">
                     <p className="text-3xl font-semibold leading-none text-cyan-100">{number}</p>
@@ -9709,58 +9719,41 @@ function PublicToolsContent() {
             </div>
           </div>
           <div className="border-b border-slate-300 bg-[#fbfaf5] p-5">
-            <div className="grid gap-4 lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="grid gap-4 lg:grid-cols-[0.72fr_1.28fr]">
               <article className="border border-cyan-200 bg-white p-5">
                 <p className="text-xs font-semibold tracking-[0.12em] text-cyan-800">
-                  今日の入口
+                  4つの実装領域
                 </p>
                 <p className="mt-3 text-2xl font-semibold leading-snug tracking-normal text-slate-950">
-                  {sampleTransform.fragment}
+                  未来の取り組みに持ち込む。
                 </p>
-                <p className="mt-4 text-sm leading-7 text-slate-700">
-                  この一文を「本人の不安」で閉じず、仕事条件として見える場所へ置き直します。
-                </p>
-              </article>
-              <div className="grid gap-3 md:grid-cols-3">
-                {sampleTransform.lanes.map((lane, index) => (
-                  <article key={lane.label} className="border border-slate-300 bg-white p-4">
-                    <span className="inline-grid h-8 w-8 place-items-center rounded-full bg-slate-950 text-xs font-semibold text-white">
-                      {index + 1}
-                    </span>
-                    <p className="mt-3 text-base font-semibold leading-snug text-slate-950">
-                      {lane.label}
-                    </p>
-                    <p className="mt-2 text-sm leading-7 text-slate-700">{lane.body}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-            <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_1.1fr]">
-              <article className="border border-slate-300 bg-white p-4">
-                <p className="text-xs font-semibold tracking-[0.12em] text-slate-500">
-                  近い観測点へ進む
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {sampleTransform.viewpoints.map((viewpoint) => (
-                    <a
-                      key={viewpoint.label}
-                      href={viewpoint.href}
-                      className="inline-flex items-center gap-2 border border-cyan-200 bg-cyan-50 px-3 py-2 text-xs font-semibold leading-5 text-cyan-900 transition hover:border-cyan-700"
+                <div className="mt-4 grid grid-cols-2 gap-2">
+                  {designTargets.map((target) => (
+                    <span
+                      key={target}
+                      className="border border-slate-300 bg-[#fbfaf5] px-3 py-2 text-sm font-semibold text-slate-800"
                     >
-                      {viewpoint.label}
-                      <ArrowRight size={13} aria-hidden="true" />
-                    </a>
+                      {target}
+                    </span>
                   ))}
                 </div>
               </article>
-              <article className="border border-slate-950 bg-slate-950 p-4 text-white">
-                <p className="text-xs font-semibold tracking-[0.12em] text-cyan-100">
-                  確認問いへ戻す
-                </p>
-                <p className="mt-2 text-base font-semibold leading-7 text-white/88">
-                  {sampleTransform.question}
-                </p>
-              </article>
+              <div className="grid gap-3 md:grid-cols-3">
+                {designPath.map((step, index) => (
+                  <article key={step.label} className="border border-slate-300 bg-white p-4">
+                    <span className="inline-grid h-8 w-8 place-items-center rounded-full bg-slate-950 text-xs font-semibold text-white">
+                      {index + 1}
+                    </span>
+                    <p className="mt-3 text-xs font-semibold tracking-[0.12em] text-cyan-800">
+                      {step.label}
+                    </p>
+                    <h3 className="mt-2 text-base font-semibold leading-snug text-slate-950">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-700">{step.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
           <div className="grid gap-0 lg:grid-cols-3">
