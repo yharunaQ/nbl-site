@@ -1,6 +1,7 @@
 import NextLink from 'next/link';
 import {
   createContext,
+  useEffect,
   useContext,
   useState,
   type AnchorHTMLAttributes,
@@ -13,8 +14,10 @@ import {
   BrainCircuit,
   BriefcaseBusiness,
   CalendarDays,
+  Check,
   ClipboardList,
   Clock3,
+  Copy,
   DoorOpen,
   Ear,
   Eye,
@@ -33,6 +36,7 @@ import {
   Puzzle,
   Route,
   SearchCheck,
+  Share2,
   Shield,
   ShieldCheck,
   Sparkles,
@@ -65,6 +69,7 @@ import {
   type AxiomAllLayerRebuiltReviewSubstructure,
 } from '@/lib/axiom/allLayerIntegratedDomainKnowledgeRebuild';
 import { type AxiomNextNblSiteSurface } from '@/lib/axiom/siteSurfaceSlotContract';
+import { SITE_URL } from '@/lib/siteMetadata';
 
 type AxiomPublicCandidatePageContext = FalconAxiomPublicSiteUpdatePlanRow & {
   icon: LucideIcon;
@@ -293,10 +298,30 @@ type AxiomNextNblSiteRouteMode = 'internal_candidate' | 'published';
 const AxiomNextNblRouteModeContext =
   createContext<AxiomNextNblSiteRouteMode>('internal_candidate');
 
+function resolveHrefForRouteMode(href: string, routeMode: AxiomNextNblSiteRouteMode) {
+  return routeMode === 'published' ? rewriteAxiomCandidateHrefToPublished(href) : href;
+}
+
+function buildAbsoluteShareUrl(href: string) {
+  if (/^https?:\/\//i.test(href)) {
+    return href;
+  }
+
+  return new URL(href, `${SITE_URL}/`).toString();
+}
+
+function replaceBrowserUrl(href: string, routeMode: AxiomNextNblSiteRouteMode) {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const resolvedHref = resolveHrefForRouteMode(href, routeMode);
+  window.history.replaceState(null, '', resolvedHref);
+}
+
 function Link({ children, href, ...props }: StableLinkProps) {
   const routeMode = useContext(AxiomNextNblRouteModeContext);
-  const resolvedHref =
-    routeMode === 'published' ? rewriteAxiomCandidateHrefToPublished(href) : href;
+  const resolvedHref = resolveHrefForRouteMode(href, routeMode);
 
   if (href.startsWith(AXIOM_NEXT_NBL_PUBLIC_CANDIDATE_ROUTE_BASE)) {
     return (
@@ -310,6 +335,74 @@ function Link({ children, href, ...props }: StableLinkProps) {
     <NextLink href={resolvedHref} {...props}>
       {children}
     </NextLink>
+  );
+}
+
+function ShareActionStrip({
+  contentHref,
+  intro,
+  shareHref,
+  shareText,
+}: {
+  contentHref: string;
+  intro: string;
+  shareHref: string;
+  shareText: string;
+}) {
+  const routeMode = useContext(AxiomNextNblRouteModeContext);
+  const [copied, setCopied] = useState(false);
+  const resolvedContentHref = resolveHrefForRouteMode(contentHref, routeMode);
+  const absoluteShareUrl = buildAbsoluteShareUrl(resolveHrefForRouteMode(shareHref, routeMode));
+  const xShareHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    shareText,
+  )}&url=${encodeURIComponent(absoluteShareUrl)}`;
+
+  async function copyShareUrl() {
+    try {
+      if (!navigator.clipboard) {
+        throw new Error('clipboard_unavailable');
+      }
+      await navigator.clipboard.writeText(absoluteShareUrl);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
+  }
+
+  return (
+    <div
+      className="mt-5 flex flex-col gap-3 rounded-lg border border-teal-100 bg-[#eef5f1] p-4 text-sm leading-6 text-slate-700 sm:flex-row sm:items-center sm:justify-between"
+      data-share-action-strip
+    >
+      <p className="font-semibold text-teal-950">{intro}</p>
+      <div className="flex flex-wrap gap-2">
+        <a
+          className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-white px-3 py-2 text-xs font-semibold text-teal-900 transition hover:border-teal-500 hover:text-teal-950"
+          href={xShareHref}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <Share2 size={14} />
+          Xで共有
+        </a>
+        <button
+          className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-teal-500 hover:text-teal-950"
+          onClick={copyShareUrl}
+          type="button"
+        >
+          {copied ? <Check size={14} /> : <Copy size={14} />}
+          {copied ? 'コピー済み' : 'URLコピー'}
+        </button>
+        <a
+          className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-teal-500 hover:text-teal-950"
+          href={resolvedContentHref}
+        >
+          本文で開く
+          <ArrowRight size={14} />
+        </a>
+      </div>
+    </div>
   );
 }
 
@@ -1736,6 +1829,50 @@ const toolkitSelectedInfographicCount = toolkitSelectedInfographicGroups.reduce(
   (sum, group) => sum + group.items.length,
   0,
 );
+
+function findToolkitSelectedInfographicById(itemId: string) {
+  for (const group of toolkitSelectedInfographicGroups) {
+    const item = group.items.find(
+      (candidate) => toolkitInfographicId(candidate.file) === itemId,
+    );
+
+    if (item) {
+      return item;
+    }
+  }
+
+  return null;
+}
+
+export type AxiomToolkitInfographicShareItem = {
+  id: string;
+  title: string;
+  description: string;
+  groupTitle: string;
+  imageSrc: string;
+  imageAlt: string;
+  targetPath: string;
+  sharePath: string;
+};
+
+export function buildAxiomToolkitInfographicShareItems(): readonly AxiomToolkitInfographicShareItem[] {
+  return toolkitSelectedInfographicGroups.flatMap((group) =>
+    group.items.map((item) => {
+      const id = toolkitInfographicId(item.file);
+
+      return {
+        id,
+        title: item.title,
+        description: `${item.lens} ${item.use}`,
+        groupTitle: group.title,
+        imageSrc: toolkitSelectedInfographicSrc(item.file),
+        imageAlt: item.alt,
+        targetPath: toolkitInfographicContentPath(id),
+        sharePath: toolkitInfographicSharePath(id),
+      };
+    }),
+  );
+}
 
 const deepPageModules: Record<AxiomNextNblSiteSurface, readonly DeepPageModule[]> = {
   reader_facing_top_home: [
@@ -3855,6 +3992,28 @@ const articleSocialQuestionFullArticles = buildArticleSocialQuestionFullArticles
   articleSocialQuestionDraftFullArticles,
 );
 
+export type AxiomNblReportShareItem = {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  targetPath: string;
+  sharePath: string;
+};
+
+export function buildAxiomNblReportShareItems(): readonly AxiomNblReportShareItem[] {
+  return articleSocialQuestionFullArticles.map((article) => ({
+    id: article.id,
+    title: article.title,
+    description: article.hook,
+    imageSrc: article.imageSrc,
+    imageAlt: article.imageAlt,
+    targetPath: nblReportArticleContentPath(article.id),
+    sharePath: nblReportArticleSharePath(article.id),
+  }));
+}
+
 export type AxiomNblReportArticleVisualQaItem = {
   articleId: string;
   articleNumber: number;
@@ -4933,6 +5092,49 @@ function candidateAnchorPath(slug: string, anchor: string) {
   return `${candidatePath(slug)}#${anchor}`;
 }
 
+function candidateQueryPath(
+  slug: string,
+  params: Record<string, string | undefined>,
+  anchor?: string,
+) {
+  const searchParams = new URLSearchParams();
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value) {
+      searchParams.set(key, value);
+    }
+  }
+
+  const query = searchParams.toString();
+  const hash = anchor ? `#${anchor}` : '';
+
+  return `${candidatePath(slug)}${query ? `?${query}` : ''}${hash}`;
+}
+
+function nblReportArticleContentPath(articleId: string, visual = false) {
+  return candidateQueryPath(
+    'articles-social-questions',
+    { article: articleId, visual: visual ? '1' : undefined },
+    visual ? 'article-visual' : 'full-article-reader',
+  );
+}
+
+function nblReportArticleSharePath(articleId: string) {
+  return `/share/nbl-report/${articleId}`;
+}
+
+function toolkitInfographicId(file: string) {
+  return file.replace(/\.[^.]+$/, '');
+}
+
+function toolkitInfographicContentPath(itemId: string) {
+  return candidateQueryPath('toolkit-studio', { image: itemId }, 'toolkit-selected-infographic-library');
+}
+
+function toolkitInfographicSharePath(itemId: string) {
+  return `/share/toolkit-infographic/${itemId}`;
+}
+
 const workDesignGeneratedVisualAssets = {
   hero: {
     src: '/images/axiom-work-design-guide/work-social-participation-hero-v1.png',
@@ -5932,6 +6134,7 @@ function PageExperienceSection({ experience }: { experience: PageExperience }) {
 }
 
 function ArticleSocialQuestionPublicContent() {
+  const routeMode = useContext(AxiomNextNblRouteModeContext);
   const [activeArticleCategory, setActiveArticleCategory] =
     useState<ArticleCatalogCategoryFilter>('すべて');
   const [activeArticleTheme, setActiveArticleTheme] = useState<ArticleCatalogThemeFilter>('すべて');
@@ -5973,6 +6176,28 @@ function ArticleSocialQuestionPublicContent() {
   const selectedVisualCorrespondence = selectedArticleCatalogEntry
     ? buildArticleVisualCorrespondence(selectedArticleCatalogEntry)
     : null;
+  const selectedArticleContentHref = nblReportArticleContentPath(selectedFullArticle.id);
+  const selectedArticleVisualHref = nblReportArticleContentPath(selectedFullArticle.id, true);
+  const selectedArticleShareHref = nblReportArticleSharePath(selectedFullArticle.id);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const articleId = params.get('article');
+    const linkedArticle = articleSocialQuestionFullArticles.find(
+      (article) => article.id === articleId,
+    );
+
+    if (linkedArticle) {
+      setSelectedFullArticleId(linkedArticle.id);
+    }
+    if (linkedArticle && params.get('visual') === '1') {
+      setIsArticleVisualExpanded(true);
+    }
+  }, []);
 
   return (
     <>
@@ -6183,6 +6408,7 @@ function ArticleSocialQuestionPublicContent() {
                         onClick={() => {
                           setSelectedFullArticleId(article.id);
                           setIsArticleVisualExpanded(false);
+                          replaceBrowserUrl(nblReportArticleContentPath(article.id), routeMode);
                         }}
                         type="button"
                       >
@@ -6227,6 +6453,12 @@ function ArticleSocialQuestionPublicContent() {
                 <p className="mt-5 border-l-4 border-teal-700 pl-5 text-lg font-semibold leading-8 text-slate-800">
                   {selectedFullArticle.hook}
                 </p>
+                <ShareActionStrip
+                  contentHref={selectedArticleContentHref}
+                  intro="この記事をSNSや会議メモで共有できます。"
+                  shareHref={selectedArticleShareHref}
+                  shareText={`NBLレポート「${selectedFullArticle.title}」`}
+                />
 
                 <div className="mt-7 grid gap-3 md:grid-cols-2">
                   <section className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-4">
@@ -6277,6 +6509,7 @@ function ArticleSocialQuestionPublicContent() {
                 <figure
                   className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
                   data-article-visual
+                  id="article-visual"
                 >
                   <button
                     aria-label={`${selectedFullArticle.title}の図解をページ上で拡大表示`}
@@ -6298,6 +6531,12 @@ function ArticleSocialQuestionPublicContent() {
                     図解をクリックすると、このページ上で拡大表示します。
                   </figcaption>
                 </figure>
+                <ShareActionStrip
+                  contentHref={selectedArticleVisualHref}
+                  intro="この図解を入口に共有できます。"
+                  shareHref={selectedArticleShareHref}
+                  shareText={`図解で読むNBLレポート「${selectedFullArticle.title}」`}
+                />
               </div>
 
               <div className="border-t border-slate-200 p-6 md:p-8">
@@ -6437,8 +6676,34 @@ function ArticleSocialQuestionPublicContent() {
 }
 
 function ToolkitStudioPublicContent() {
+  const routeMode = useContext(AxiomNextNblRouteModeContext);
   const [selectedToolkitInfographic, setSelectedToolkitInfographic] =
     useState<ToolkitSelectedInfographic | null>(null);
+  const selectedToolkitInfographicId = selectedToolkitInfographic
+    ? toolkitInfographicId(selectedToolkitInfographic.file)
+    : '';
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const itemId = params.get('image');
+    const linkedItem = itemId ? findToolkitSelectedInfographicById(itemId) : null;
+
+    if (linkedItem) {
+      setSelectedToolkitInfographic(linkedItem);
+    }
+  }, []);
+
+  function closeSelectedToolkitInfographic() {
+    setSelectedToolkitInfographic(null);
+    replaceBrowserUrl(
+      candidateAnchorPath('toolkit-studio', 'toolkit-selected-infographic-library'),
+      routeMode,
+    );
+  }
 
   return (
     <>
@@ -6648,7 +6913,11 @@ function ToolkitStudioPublicContent() {
                         className="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-teal-500 hover:shadow-md"
                         data-toolkit-infographic-card
                         key={`${group.id}-${item.file}`}
-                        onClick={() => setSelectedToolkitInfographic(item)}
+                        onClick={() => {
+                          const itemId = toolkitInfographicId(item.file);
+                          setSelectedToolkitInfographic(item);
+                          replaceBrowserUrl(toolkitInfographicContentPath(itemId), routeMode);
+                        }}
                         type="button"
                       >
                         <span className="grid h-44 w-full place-items-center overflow-hidden rounded-md bg-slate-100 p-2">
@@ -6756,7 +7025,7 @@ function ToolkitStudioPublicContent() {
           <button
             aria-label="背景を押して拡大図解を閉じる"
             className="absolute inset-0 cursor-zoom-out"
-            onClick={() => setSelectedToolkitInfographic(null)}
+            onClick={closeSelectedToolkitInfographic}
             type="button"
           />
           <div className="relative z-10 flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-lg bg-white shadow-2xl">
@@ -6772,7 +7041,7 @@ function ToolkitStudioPublicContent() {
               <button
                 aria-label="拡大図解を閉じる"
                 className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-700 transition hover:border-teal-500 hover:text-teal-900"
-                onClick={() => setSelectedToolkitInfographic(null)}
+                onClick={closeSelectedToolkitInfographic}
                 type="button"
               >
                 <X size={18} />
@@ -6798,6 +7067,14 @@ function ToolkitStudioPublicContent() {
                   {selectedToolkitInfographic.use}
                 </p>
               </div>
+              {selectedToolkitInfographicId ? (
+                <ShareActionStrip
+                  contentHref={toolkitInfographicContentPath(selectedToolkitInfographicId)}
+                  intro="この図解を単体で共有できます。"
+                  shareHref={toolkitInfographicSharePath(selectedToolkitInfographicId)}
+                  shareText={`NBLツールキット「${selectedToolkitInfographic.title}」`}
+                />
+              ) : null}
             </div>
           </div>
         </div>
