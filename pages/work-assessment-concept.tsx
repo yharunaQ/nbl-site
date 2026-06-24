@@ -1,10 +1,5 @@
-import { NextNblPublicDetailRoute } from '@/components/falconLab/NextNblPublicRoute';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
 export default function WorkAssessmentConceptPage() {
-  return (
-    <NextNblPublicDetailRoute
-      slug="work-assessment-concept"
-      path="/work-assessment-concept"
-    />
-  );
+  return <AxiomNextNblPublishedSitePage slug="theory-method-trust" />;
 }

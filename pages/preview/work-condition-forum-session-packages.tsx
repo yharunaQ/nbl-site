@@ -1,4 +1,5 @@
 import PageSeo from '@/components/PageSeo';
+import { NEXT_NBL_CARRYOVER_LINKS } from '@/lib/axiom/nextNblPublicCandidateCarryoverLinks';
 import {
   groupedWorkConditionForumPresentations,
   workConditionForumGroups,
@@ -13,6 +14,9 @@ type WorkConditionForumSessionPackagesPageProps = {
   noIndex?: boolean;
   presentationHrefBase?: string;
   footerStatus?: string;
+  siteHomeHref?: string;
+  reportHref?: string;
+  toolkitHref?: string;
 };
 
 export default function WorkConditionForumSessionPackagesPage({
@@ -20,6 +24,9 @@ export default function WorkConditionForumSessionPackagesPage({
   noIndex = true,
   presentationHrefBase = '/preview/work-condition-forum-text',
   footerStatus = 'このフォーラムは制作中の独立プレビューです。',
+  siteHomeHref = NEXT_NBL_CARRYOVER_LINKS.home,
+  reportHref = NEXT_NBL_CARRYOVER_LINKS.report,
+  toolkitHref = NEXT_NBL_CARRYOVER_LINKS.toolkit,
 }: WorkConditionForumSessionPackagesPageProps = {}) {
   const presentationHref = (id: string) => `${presentationHrefBase}/${encodeURIComponent(id)}`;
 
@@ -52,14 +59,14 @@ export default function WorkConditionForumSessionPackagesPage({
                 className="flex flex-wrap items-center gap-3 text-white/80"
                 aria-label="フォーラムとNBLサイトのナビゲーション"
               >
-                <a href="/" className="hover:text-white">
+                <a href={siteHomeHref} className="hover:text-white">
                   NBLトップ
                 </a>
-                <a href="/policy-research" className="hover:text-white">
-                  記事ライブラリ
+                <a href={reportHref} className="hover:text-white">
+                  NBLレポート
                 </a>
-                <a href="/events" className="hover:text-white">
-                  イベント
+                <a href={toolkitHref} className="hover:text-white">
+                  ツールキット
                 </a>
                 <span className="hidden h-4 w-px bg-white/24 sm:inline-block" aria-hidden="true" />
                 <a href="#sessions" className="hover:text-white">

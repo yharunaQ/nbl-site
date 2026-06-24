@@ -253,12 +253,12 @@ export default function OrganizationsDiagnosisPage() {
             <span className="text-sm font-semibold text-slate-950">Next Being Lab</span>
           </Link>
           <nav className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-600">
-            <Link href="/work-design-map" className="hover:text-slate-950">相談事例集</Link>
-            <Link href="/work-design-tools" className="hover:text-slate-950">21視点</Link>
-            <Link href="/policy-research" className="hover:text-slate-950">記事</Link>
-            <Link href="/partnership" className="font-semibold text-slate-950">ツールキット</Link>
-            <Link href="/events" className="hover:text-slate-950">イベント</Link>
-            <Link href="/about" className="hover:text-slate-950">このサイトについて</Link>
+            <Link href="/case-readings" className="hover:text-slate-950">相談事例</Link>
+            <Link href="/work-design-views-guide" className="hover:text-slate-950">設計ガイド</Link>
+            <Link href="/articles-social-questions" className="hover:text-slate-950">NBLレポート</Link>
+            <Link href="/toolkit-studio" className="font-semibold text-slate-950">ツールキット</Link>
+            <Link href="/events/work-condition-forum" className="hover:text-slate-950">フォーラム</Link>
+            <Link href="/about-boundary" className="hover:text-slate-950">サイト情報</Link>
           </nav>
         </div>
       </header>
@@ -268,7 +268,7 @@ export default function OrganizationsDiagnosisPage() {
 
           {/* Breadcrumb */}
           <nav className="text-xs text-slate-400">
-            <Link href="/partnership#prototype-a" className="hover:text-slate-700">
+            <Link href="/toolkit-studio" className="hover:text-slate-700">
               認知補助ツールキット
             </Link>
             <span className="mx-2">/</span>
@@ -552,13 +552,13 @@ export default function OrganizationsDiagnosisPage() {
                 {/* Next steps */}
                 <div className="mt-8 flex flex-wrap gap-4 items-center">
                   <Link
-                    href="/policy-research?article=support-organization-self-check#article-reader"
+                    href="/articles-social-questions?article=support-organization-self-check#article-reader"
                     className="text-sm font-semibold text-teal-700 hover:underline"
                   >
                     解説記事を読む →
                   </Link>
                   <Link
-                    href="/partnership#prototype-a"
+                    href="/toolkit-studio"
                     className="text-sm text-slate-500 hover:text-slate-800 hover:underline"
                   >
                     ツールキット一覧へ戻る →

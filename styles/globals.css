@@ -50,6 +50,152 @@ html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
   overflow-wrap: anywhere;
 }
 
+.axiom-public-candidate {
+  --nbl-ink: #111915;
+  --nbl-muted: #58645f;
+  --nbl-paper: #fffdf7;
+  --nbl-paper-soft: #f8f3e8;
+  --nbl-mist: #ecf7f2;
+  --nbl-line: rgba(35, 48, 42, 0.14);
+  --nbl-jade: #0f6f67;
+  --nbl-jade-deep: #123d39;
+  --nbl-blue: #355c9a;
+  --nbl-coral: #c2684d;
+  --nbl-shadow: 0 18px 48px rgba(25, 39, 34, 0.09);
+  --nbl-shadow-soft: 0 10px 28px rgba(25, 39, 34, 0.07);
+  background:
+    radial-gradient(circle at 10% -5%, rgba(15, 111, 103, 0.15), transparent 24rem),
+    radial-gradient(circle at 88% 8%, rgba(194, 104, 77, 0.12), transparent 22rem),
+    linear-gradient(180deg, #fffaf1 0%, #f8f4eb 42%, #f6f7f2 100%) !important;
+  color: var(--nbl-ink);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Sans",
+    "Yu Gothic",
+    "YuGothic",
+    "Noto Sans JP",
+    sans-serif;
+}
+
+.axiom-public-candidate h1,
+.axiom-public-candidate h2,
+.axiom-public-candidate h3 {
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.axiom-public-candidate p,
+.axiom-public-candidate li {
+  text-wrap: pretty;
+}
+
+.axiom-public-candidate > div:first-child {
+  background: linear-gradient(90deg, #17211d 0%, #24362f 55%, #34455e 100%) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.axiom-public-candidate > div:first-child p {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.axiom-public-candidate > div:first-child p:first-child {
+  color: #f7dfb8 !important;
+}
+
+.axiom-public-candidate > header {
+  background: rgba(255, 253, 247, 0.9) !important;
+  border-color: rgba(35, 48, 42, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(22, 35, 31, 0.08);
+}
+
+.axiom-public-candidate > header a {
+  text-decoration: none;
+}
+
+.axiom-public-candidate > header nav a {
+  border-bottom: 0 !important;
+  border-radius: 999px;
+  color: #394743 !important;
+  padding: 0.45rem 0.75rem;
+}
+
+.axiom-public-candidate > header nav a:hover {
+  background: rgba(15, 111, 103, 0.08);
+  color: var(--nbl-ink) !important;
+}
+
+.axiom-public-candidate > header nav a[aria-current="page"] {
+  background: linear-gradient(135deg, var(--nbl-jade-deep), #244d47);
+  box-shadow: 0 8px 18px rgba(18, 61, 57, 0.18);
+  color: #fffdf7 !important;
+}
+
+.axiom-public-candidate section[class*="bg-[#20251e]"] {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(96, 165, 250, 0.16), transparent 24rem),
+    radial-gradient(circle at 20% 0%, rgba(244, 190, 129, 0.16), transparent 22rem),
+    linear-gradient(135deg, #111a16 0%, #1c2c27 50%, #29334a 100%) !important;
+}
+
+.axiom-public-candidate section[class*="bg-[#f7f0df]"],
+.axiom-public-candidate section[class*="bg-[#f4ead8]"],
+.axiom-public-candidate section[class*="bg-[#f3eadb]"] {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(15, 111, 103, 0.1), transparent 24rem),
+    radial-gradient(circle at 84% 8%, rgba(194, 104, 77, 0.1), transparent 22rem),
+    linear-gradient(135deg, #fff9ee 0%, #f1f8f3 48%, #f8eee6 100%) !important;
+}
+
+.axiom-public-candidate :is(article, figure, div[class*="rounded-lg"], div[class*="rounded-xl"]):not([class*="rounded-full"]) {
+  border-color: var(--nbl-line) !important;
+  border-radius: 8px !important;
+}
+
+.axiom-public-candidate :is(article, figure, div[class*="bg-white"][class*="border"]):not([class*="rounded-full"]) {
+  background-color: rgba(255, 253, 247, 0.92) !important;
+  box-shadow: var(--nbl-shadow-soft);
+}
+
+.axiom-public-candidate figure {
+  box-shadow: var(--nbl-shadow) !important;
+}
+
+.axiom-public-candidate img {
+  color: var(--nbl-muted);
+}
+
+.axiom-public-candidate a[class*="bg-slate-950"],
+.axiom-public-candidate button[class*="bg-slate-950"] {
+  background: linear-gradient(135deg, #14231f 0%, #1f514b 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 24px rgba(18, 61, 57, 0.18);
+}
+
+.axiom-public-candidate a[class*="bg-slate-950"]:hover,
+.axiom-public-candidate button[class*="bg-slate-950"]:hover {
+  background: linear-gradient(135deg, #0f1b18 0%, #0f6f67 100%) !important;
+}
+
+.axiom-public-candidate a[class*="border"][class*="bg-white"] {
+  border-color: rgba(35, 48, 42, 0.18) !important;
+  box-shadow: 0 8px 18px rgba(25, 39, 34, 0.06);
+}
+
+.axiom-public-candidate .text-teal-800,
+.axiom-public-candidate .text-teal-900 {
+  color: var(--nbl-jade-deep) !important;
+}
+
+.axiom-public-candidate .border-teal-200,
+.axiom-public-candidate .border-teal-100 {
+  border-color: rgba(15, 111, 103, 0.24) !important;
+}
+
+.axiom-public-candidate .bg-teal-50 {
+  background-color: rgba(236, 247, 242, 0.88) !important;
+}
+
 html { scroll-behavior: smooth; }
 :focus-visible { outline: 2px solid #111827; outline-offset: 2px; }
 ::selection { background: #fde68a; color: #111827; } /* やさしいハイライト */

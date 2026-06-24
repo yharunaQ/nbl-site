@@ -1,5 +1,5 @@
-import { NextNblPublicHomeRoute } from '@/components/falconLab/NextNblPublicRoute';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
 export default function Home() {
-  return <NextNblPublicHomeRoute />;
+  return <AxiomNextNblPublishedSitePage slug="home" />;
 }

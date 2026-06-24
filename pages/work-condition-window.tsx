@@ -1,5 +1,5 @@
-import { NextNblPublicDetailRoute } from '@/components/falconLab/NextNblPublicRoute';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
 export default function WorkConditionWindowPage() {
-  return <NextNblPublicDetailRoute slug="work-condition-window" path="/work-condition-window" />;
+  return <AxiomNextNblPublishedSitePage slug="work-condition-window" />;
 }

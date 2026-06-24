@@ -1,4 +1,5 @@
 import PageSeo from '@/components/PageSeo';
+import { NEXT_NBL_CARRYOVER_LINKS } from '@/lib/axiom/nextNblPublicCandidateCarryoverLinks';
 import {
   getNextWorkConditionForumPresentation,
   getWorkConditionForumPresentationById,
@@ -44,6 +45,9 @@ export type WorkConditionForumTextPageProps = {
   forumHubHref?: string;
   textHrefBase?: string;
   statusLabel?: string;
+  siteHomeHref?: string;
+  reportHref?: string;
+  toolkitHref?: string;
 };
 
 type PendingBlock =
@@ -173,7 +177,10 @@ export default function WorkConditionForumTextPage({
   noIndex = true,
   forumHubHref = '/preview/work-condition-forum-session-packages',
   textHrefBase = '/preview/work-condition-forum-text',
-  statusLabel = 'text page / boundary noted',
+  statusLabel = '本文記事 / 境界確認',
+  siteHomeHref = NEXT_NBL_CARRYOVER_LINKS.home,
+  reportHref = NEXT_NBL_CARRYOVER_LINKS.report,
+  toolkitHref = NEXT_NBL_CARRYOVER_LINKS.toolkit,
 }: WorkConditionForumTextPageProps) {
   const [isInfographicOpen, setIsInfographicOpen] = useState(false);
   const group =
@@ -218,14 +225,14 @@ export default function WorkConditionForumTextPage({
                   フォーラム一覧へ戻る
                 </a>
                 <span className="hidden h-4 w-px bg-white/22 sm:inline-block" aria-hidden="true" />
-                <a href="/" className="hover:text-white">
+                <a href={siteHomeHref} className="hover:text-white">
                   NBLトップ
                 </a>
-                <a href="/policy-research" className="hover:text-white">
-                  記事ライブラリ
+                <a href={reportHref} className="hover:text-white">
+                  NBLレポート
                 </a>
-                <a href="/events" className="hover:text-white">
-                  イベント
+                <a href={toolkitHref} className="hover:text-white">
+                  ツールキット
                 </a>
               </nav>
               <span className="w-fit border border-white/20 px-3 py-1 text-white/72">
@@ -452,7 +459,7 @@ export default function WorkConditionForumTextPage({
             </p>
             <div className="grid gap-3 text-sm leading-7 text-white/72 md:grid-cols-3">
               <p className="border border-white/16 bg-white/8 p-4">
-                この本文は、仕事条件デザイン・バーチャルフォーラムの制作・レビュー中草稿を記事ページとして表示したものです。
+                この本文は、NBL仕事条件デザイン・バーチャルフォーラムの発表を、公開記事として読める形に整理したものです。
               </p>
               <p className="border border-white/16 bg-white/8 p-4">
                 公式見解、査読済み論文、法的・医学的・雇用上の助言、個別の合理的配慮判断ではありません。

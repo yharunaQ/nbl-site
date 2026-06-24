@@ -1,5 +1,5 @@
-import { NextNblPublicDetailRoute } from '@/components/falconLab/NextNblPublicRoute';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
 export default function AboutPage() {
-  return <NextNblPublicDetailRoute slug="about" path="/about" />;
+  return <AxiomNextNblPublishedSitePage slug="about-boundary" />;
 }

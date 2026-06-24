@@ -8,6 +8,7 @@ import ShareBar from '@/components/songs/ShareBar';
 import FavStar from '@/components/songs/FavStar';
 import ReactionCounter from '@/components/songs/ReactionCounter';
 import SongJsonLd from '@/components/songs/SongJsonLd';
+import { resolveNextNblCarryoverResourceLink } from '@/lib/axiom/nextNblPublicCandidateCarryoverLinks';
 import { getAllSongs, getPublicSongs, getSongBySlug } from '@/lib/songs';
 import { usePlayer } from '@/components/songs/PlayerProvider';
 import { SITE_URL } from '@/lib/siteMetadata';
@@ -176,15 +177,19 @@ export default function SongPage({ song, relatedSongs, campaignSongs }: Props) {
                   関連リソース
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {song.relatedResourcePaths.map((p) => (
-                    <Link
-                      key={p}
-                      href={p}
-                      className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
-                    >
-                      {p.replace('/resources/', '').replace(/-/g, ' ')}
-                    </Link>
-                  ))}
+                  {song.relatedResourcePaths.map((p) => {
+                    const link = resolveNextNblCarryoverResourceLink(p);
+
+                    return (
+                      <Link
+                        key={p}
+                        href={link.href}
+                        className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}

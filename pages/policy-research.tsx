@@ -1,5 +1,5 @@
-import { NextNblPublicDetailRoute } from '@/components/falconLab/NextNblPublicRoute';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
 export default function PolicyResearchPage() {
-  return <NextNblPublicDetailRoute slug="policy-research" path="/policy-research" />;
+  return <AxiomNextNblPublishedSitePage slug="articles-social-questions" />;
 }

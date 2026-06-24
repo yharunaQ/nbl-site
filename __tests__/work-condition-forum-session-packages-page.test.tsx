@@ -18,11 +18,14 @@ describe('Work condition forum session packages preview page', () => {
       screen.getByRole('link', { name: 'NBL Work Condition Design Virtual Forum' }),
     ).toHaveAttribute('href', '#forum-top');
     expect(screen.getByRole('link', { name: 'NBLトップ' })).toHaveAttribute('href', '/');
-    expect(screen.getByRole('link', { name: '記事ライブラリ' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'NBLレポート' })).toHaveAttribute(
       'href',
-      '/policy-research',
+      '/articles-social-questions',
     );
-    expect(screen.getByRole('link', { name: 'イベント' })).toHaveAttribute('href', '/events');
+    expect(screen.getByRole('link', { name: 'ツールキット' })).toHaveAttribute(
+      'href',
+      '/toolkit-studio',
+    );
     expect(screen.getByText('SESSIONS')).toBeInTheDocument();
     expect(screen.getByText('PROGRAM')).toBeInTheDocument();
     expect(screen.getByText('発表一覧')).toBeInTheDocument();

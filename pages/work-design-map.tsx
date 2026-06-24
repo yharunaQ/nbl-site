@@ -1,5 +1,5 @@
-import { NextNblPublicDetailRoute } from '@/components/falconLab/NextNblPublicRoute';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
 export default function WorkDesignMapPage() {
-  return <NextNblPublicDetailRoute slug="work-design-map" path="/work-design-map" />;
+  return <AxiomNextNblPublishedSitePage slug="case-readings" />;
 }
