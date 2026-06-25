@@ -30,6 +30,7 @@ import {
   Laptop,
   Map,
   Maximize2,
+  Menu,
   MessageCircle,
   MessagesSquare,
   Network,
@@ -297,6 +298,14 @@ type AxiomNextNblSiteRouteMode = 'internal_candidate' | 'published';
 
 const AxiomNextNblRouteModeContext =
   createContext<AxiomNextNblSiteRouteMode>('internal_candidate');
+
+const primaryDesktopNavSlugs = [
+  'home',
+  'scene-entry',
+  'case-readings',
+  'work-design-views-guide',
+  'articles-social-questions',
+] as const;
 
 function resolveHrefForRouteMode(href: string, routeMode: AxiomNextNblSiteRouteMode) {
   return routeMode === 'published' ? rewriteAxiomCandidateHrefToPublished(href) : href;
@@ -5422,25 +5431,29 @@ function PublicCandidateShell({
   currentRoute: AxiomReviewedKernelBackedCandidateRoute;
 }) {
   const [siteSearchQuery, setSiteSearchQuery] = useState('');
+  const allRoutes = publicCandidateRoutes();
+  const primaryDesktopRoutes = allRoutes.filter((item) =>
+    primaryDesktopNavSlugs.includes(item.slug as (typeof primaryDesktopNavSlugs)[number]),
+  );
 
   return (
     <div className="nbl-public-preview axiom-public-candidate min-h-screen w-full max-w-[100vw] overflow-x-hidden break-words bg-[#fbfaf5] text-slate-950 [overflow-wrap:anywhere] [&_*]:min-w-0">
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#fbfaf5]/94 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3">
-          <Link href={candidatePath('home')} className="flex flex-col leading-tight">
+          <Link href={candidatePath('home')} className="flex shrink-0 flex-col leading-tight">
             <span className="text-[11px] font-semibold tracking-[0.12em] text-teal-800">
               Next Being Lab
             </span>
             <span className="text-sm font-semibold text-slate-950">仕事条件で読む</span>
           </Link>
           <nav
-            className="hidden items-center gap-1 lg:flex"
+            className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex"
             aria-label="NBL site navigation"
           >
-            {publicCandidateRoutes().map((item) => (
+            {primaryDesktopRoutes.map((item) => (
               <Link
                 aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
-                className={`border-b-2 px-3 py-1.5 text-sm transition ${
+                className={`whitespace-nowrap border-b-2 px-2.5 py-1.5 text-[13px] transition xl:px-3 xl:text-sm ${
                   item.slug === currentRoute.slug
                     ? 'border-teal-800 text-slate-950'
                     : 'border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-950'
@@ -5452,38 +5465,57 @@ function PublicCandidateShell({
               </Link>
             ))}
           </nav>
-          <form
-            action="/search"
-            className="hidden min-w-[210px] items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm xl:flex"
-          >
-            <FileSearch className="shrink-0 text-teal-800" size={15} />
-            <input
-              aria-label="サイト内検索"
-              className="w-full bg-transparent text-sm font-semibold text-slate-800 outline-none placeholder:text-slate-400"
-              name="q"
-              onChange={(event) => setSiteSearchQuery(event.target.value)}
-              placeholder="サイト内検索"
-              type="search"
-              value={siteSearchQuery}
-            />
-            <button
-              className="shrink-0 rounded-full bg-teal-800 px-3 py-1 text-xs font-semibold text-white"
-              type="submit"
+          <div className="hidden shrink-0 items-center gap-2 lg:flex">
+            <form
+              action="/search"
+              className="flex w-[min(23vw,270px)] min-w-[190px] items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm"
             >
-              検索
-            </button>
-          </form>
-          <Link
-            className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-teal-500 hover:text-teal-950 lg:inline-flex xl:hidden"
-            href="/search"
-          >
-            <FileSearch size={14} />
-            検索
-          </Link>
+              <FileSearch className="shrink-0 text-teal-800" size={15} />
+              <input
+                aria-label="サイト内検索"
+                className="w-full bg-transparent text-sm font-semibold text-slate-800 outline-none placeholder:text-slate-400"
+                name="q"
+                onChange={(event) => setSiteSearchQuery(event.target.value)}
+                placeholder="サイト内検索"
+                type="search"
+                value={siteSearchQuery}
+              />
+              <button
+                className="shrink-0 rounded-full bg-teal-800 px-3 py-1 text-xs font-semibold text-white"
+                type="submit"
+              >
+                検索
+              </button>
+            </form>
+            <details className="group relative">
+              <summary className="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-teal-500 hover:text-teal-950 [&::-webkit-details-marker]:hidden">
+                <Menu size={15} />
+                全ページ
+              </summary>
+              <div className="absolute right-0 z-50 mt-2 w-72 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl">
+                <nav aria-label="NBL site all pages" className="grid p-2">
+                  {allRoutes.map((item) => (
+                    <Link
+                      aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
+                      className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                        item.slug === currentRoute.slug
+                          ? 'bg-teal-50 text-teal-950'
+                          : 'text-slate-700 hover:bg-[#fbfaf5] hover:text-teal-950'
+                      }`}
+                      href={candidatePath(item.slug)}
+                      key={item.routeId}
+                    >
+                      {item.context.navLabelJa}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            </details>
+          </div>
         </div>
         <nav
           aria-label="NBL site mobile navigation"
-          className="flex max-w-full flex-wrap gap-x-2 gap-y-1 overflow-x-hidden border-t border-slate-200 px-5 py-2 lg:hidden"
+          className="flex max-w-full gap-2 overflow-x-auto border-t border-slate-200 px-5 py-2 lg:hidden [scrollbar-width:none]"
         >
           <Link
             className="whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] font-semibold text-teal-800"
@@ -5491,7 +5523,7 @@ function PublicCandidateShell({
           >
             検索
           </Link>
-          {publicCandidateRoutes().map((item) => (
+          {allRoutes.map((item) => (
             <Link
               aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
               className={`whitespace-nowrap border-b-2 px-2 py-1.5 text-[13px] ${
