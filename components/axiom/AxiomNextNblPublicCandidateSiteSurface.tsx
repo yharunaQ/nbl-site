@@ -5421,6 +5421,8 @@ function PublicCandidateShell({
   children: ReactNode;
   currentRoute: AxiomReviewedKernelBackedCandidateRoute;
 }) {
+  const [siteSearchQuery, setSiteSearchQuery] = useState('');
+
   return (
     <div className="nbl-public-preview axiom-public-candidate min-h-screen w-full max-w-[100vw] overflow-x-hidden break-words bg-[#fbfaf5] text-slate-950 [overflow-wrap:anywhere] [&_*]:min-w-0">
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#fbfaf5]/94 backdrop-blur">
@@ -5450,11 +5452,45 @@ function PublicCandidateShell({
               </Link>
             ))}
           </nav>
+          <form
+            action="/search"
+            className="hidden min-w-[210px] items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm xl:flex"
+          >
+            <FileSearch className="shrink-0 text-teal-800" size={15} />
+            <input
+              aria-label="サイト内検索"
+              className="w-full bg-transparent text-sm font-semibold text-slate-800 outline-none placeholder:text-slate-400"
+              name="q"
+              onChange={(event) => setSiteSearchQuery(event.target.value)}
+              placeholder="サイト内検索"
+              type="search"
+              value={siteSearchQuery}
+            />
+            <button
+              className="shrink-0 rounded-full bg-teal-800 px-3 py-1 text-xs font-semibold text-white"
+              type="submit"
+            >
+              検索
+            </button>
+          </form>
+          <Link
+            className="hidden items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-teal-500 hover:text-teal-950 lg:inline-flex xl:hidden"
+            href="/search"
+          >
+            <FileSearch size={14} />
+            検索
+          </Link>
         </div>
         <nav
           aria-label="NBL site mobile navigation"
           className="flex max-w-full flex-wrap gap-x-2 gap-y-1 overflow-x-hidden border-t border-slate-200 px-5 py-2 lg:hidden"
         >
+          <Link
+            className="whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] font-semibold text-teal-800"
+            href="/search"
+          >
+            検索
+          </Link>
           {publicCandidateRoutes().map((item) => (
             <Link
               aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
