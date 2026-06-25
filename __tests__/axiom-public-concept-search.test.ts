@@ -37,6 +37,16 @@ describe('Axiom public concept search', () => {
     expect(joined).toContain('手順');
   });
 
+  it('connects open-close workplace wording to disclosure boundary results', () => {
+    const result = searchAxiomPublicConceptIndex('オープン/クローズ', { limit: 20 });
+    const joined = result.matches.map((match) => `${match.title} ${match.href}`).join('\n');
+
+    expect(result.expandedConcepts).toContain('開示を目的限定の情報共有として見る');
+    expect(result.expandedTerms).toContain('開示');
+    expect(result.expandedTerms).toContain('共有範囲');
+    expect(joined).toContain('開示・評価・役割・成長を設計する');
+  });
+
   it('wires the search entry into the published site header', () => {
     const surfaceSource = fs.readFileSync(
       path.join(process.cwd(), 'components/axiom/AxiomNextNblPublicCandidateSiteSurface.tsx'),

@@ -78,7 +78,7 @@ export default function AxiomPublicConceptSearchPage() {
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-white/78">
                 キーワードをそのまま探すだけでなく、関連する文脈へ広げて検索します。
-                たとえば「難病」は、治療、通院、健康時間、症状変動、開示、評価にも広げて探します。
+                たとえば「難病」は健康時間や治療へ、「オープン/クローズ」は開示や共有範囲へ広げて探します。
               </p>
             </div>
             <form
@@ -94,7 +94,7 @@ export default function AxiomPublicConceptSearchPage() {
                   id="nbl-search-query"
                   name="q"
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="例: 難病、合理的配慮、通勤、開示"
+                  placeholder="例: 難病、合理的配慮、通勤、オープン/クローズ"
                   type="search"
                   value={query}
                 />
@@ -219,7 +219,7 @@ export default function AxiomPublicConceptSearchPage() {
                     近い結果が見つかりませんでした
                   </h3>
                   <p className="mt-3 leading-8">
-                    語を短くするか、「難病」「通勤」「開示」「合理的配慮」のような入口語で試してください。
+                    語を短くするか、「難病」「通勤」「オープン/クローズ」「合理的配慮」のような入口語で試してください。
                     必要なら、今後この検索辞書に新しい言葉を追加できます。
                   </p>
                 </div>
