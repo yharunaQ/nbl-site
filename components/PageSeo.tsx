@@ -67,7 +67,7 @@ export default function PageSeo({
       <meta name="twitter:description" content={description} key="twitter:description" />
       <meta name="twitter:image" content={socialImageUrl} key="twitter:image" />
       <meta name="twitter:image:alt" content={imageAlt} key="twitter:image:alt" />
-      <meta name="theme-color" content="#0f172a" key="theme-color" />
+      <meta name="theme-color" content="#0f3d36" key="theme-color" />
       <meta name="format-detection" content="telephone=no" key="format-detection" />
     </Head>
   );

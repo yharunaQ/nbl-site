@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="nbl-favicon-title">
+  <title id="nbl-favicon-title">NBL</title>
+  <rect width="64" height="64" rx="15" fill="#0f3d36"/>
+  <path d="M10 49C17 42 22 42 28 45C36 49 43 42 54 35" stroke="#f2c36b" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M10 18C19 19 24 24 31 23C40 22 45 16 54 13" stroke="#8ed7c7" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="14" cy="48" r="3.5" fill="#fffaf1"/>
+  <circle cx="29" cy="45" r="3.5" fill="#8ed7c7"/>
+  <circle cx="44" cy="40" r="3.5" fill="#f2c36b"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="900" fill="#fffaf1" letter-spacing="0.5">NBL</text>
+</svg>
