@@ -9961,7 +9961,7 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
                 const ContextIcon = item.context.icon;
                 return (
                   <Link
-                    className={`group relative flex min-h-[268px] overflow-hidden rounded-lg border bg-gradient-to-br p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl ${entrance.accentClass} ${
+                    className={`group relative flex min-h-[280px] flex-col overflow-hidden rounded-lg border bg-gradient-to-br p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl ${entrance.accentClass} ${
                       item.slug === currentSlug ? 'border-slate-950' : 'border-slate-200'
                     }`}
                     href={candidatePath(item.slug)}
@@ -9987,10 +9987,10 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
                     <p className="relative mt-3 flex-1 text-sm leading-7 text-slate-700">
                       {entrance.body}
                     </p>
-                    <div className="relative mt-5 grid grid-cols-3 gap-2">
+                    <div className="relative mt-5 flex flex-wrap gap-2">
                       {entrance.visualWords.map((word, index) => (
                         <span
-                          className="flex min-h-16 items-center justify-center rounded-md border border-white/70 bg-white/72 px-2 text-center text-xs font-semibold leading-5 text-slate-800 shadow-sm"
+                          className="inline-flex items-center rounded-full border border-white/70 bg-white/75 px-3 py-1.5 text-xs font-semibold leading-5 text-slate-800 shadow-sm"
                           key={word}
                         >
                           <span className="sr-only">{index + 1}. </span>
@@ -9998,7 +9998,7 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
                         </span>
                       ))}
                     </div>
-                    <span className="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-900 group-hover:text-teal-700">
+                    <span className="relative mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-teal-900 group-hover:text-teal-700">
                       開く
                       <ArrowRight size={15} />
                     </span>
