@@ -5518,7 +5518,7 @@ function PublicCandidateShell({
           className="flex max-w-full gap-2 overflow-x-auto border-t border-slate-200 px-5 py-2 lg:hidden [scrollbar-width:none]"
         >
           <Link
-            className="whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] font-semibold text-teal-800"
+            className="shrink-0 whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] font-semibold text-teal-800"
             href="/search"
           >
             検索
@@ -5526,7 +5526,7 @@ function PublicCandidateShell({
           {allRoutes.map((item) => (
             <Link
               aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
-              className={`whitespace-nowrap border-b-2 px-2 py-1.5 text-[13px] ${
+              className={`shrink-0 whitespace-nowrap border-b-2 px-2 py-1.5 text-[13px] ${
                 item.slug === currentRoute.slug
                   ? 'border-teal-800 text-slate-950'
                   : 'border-transparent text-slate-600'
