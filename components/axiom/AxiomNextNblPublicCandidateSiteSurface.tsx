@@ -433,9 +433,9 @@ const pageExperiences: Record<AxiomNextNblSiteSurface, PageExperience> = {
     concreteTitle: '働きづらさを、人の問題で終わらせない。',
     concreteBody:
       '診断名や制度名だけで答えを探す前に、本人、仕事、環境、支援、時間、評価の関係を見える形にします。',
-    featureTitle: 'まず、読みたい入口を選ぶ',
+    featureTitle: '問いはばらばらでも、見る地図はひとつ。',
     featureLead:
-      'このサイトは説明を読むためだけの場所ではありません。近い課題、相談、仕事設計、記事、図解、障害種類の入口から、同じ仕事条件の地図へ進めます。',
+      '困りごと、相談、設計、記事、図解、障害種類。入口は違っても、NBLが見るのは本人、仕事、環境、支援、時間、評価の関係です。',
     cards: [
       {
         title: '課題でつかむ',
@@ -9849,38 +9849,62 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
     {
       slug: 'scene-entry',
       tag: '8つの課題',
-      title: '8つの課題',
-      body: '昔から語られてきたのに解けにくかった課題を、4コマと短い解説でつかむ。',
+      title: '古くて新しい課題を、4コマでつかむ',
+      body: '雇用率、診断名、制度、善意、検索結果。そこで止まりやすい問題を、仕事条件の問いへ戻す。',
+      visualWords: ['あるある', '誤読', '共通認識'],
+      accentClass: 'from-amber-100 via-white to-teal-50',
+      iconClass: 'bg-amber-500 text-white',
+      chipClass: 'bg-amber-50 text-amber-900 border-amber-200',
     },
     {
       slug: 'case-readings',
       tag: '相談事例',
-      title: '相談の一言を、仕事条件の対話へ',
-      body: 'まとまっていない相談の一言を、見立て、確認したいこと、支援計画の分岐へほどく。',
+      title: '一言の相談を、見立てと支援計画へほどく',
+      body: '短い相談をつぶさず、決めつけを外し、次に一緒に確認する条件へ進む。',
+      visualWords: ['一言', '見立て', '分岐'],
+      accentClass: 'from-rose-100 via-white to-amber-50',
+      iconClass: 'bg-rose-500 text-white',
+      chipClass: 'bg-rose-50 text-rose-900 border-rose-200',
     },
     {
       slug: 'work-design-views-guide',
       tag: '設計ガイド',
-      title: '未来の仕事・社会参加設計ガイド',
-      body: '障害者雇用の知見を、人間の多様性を前提にした仕事と参加の設計へ広げる。',
+      title: '誰もが活躍できる仕事・参加設計へ',
+      body: '障害や病気への対応で見えてきた知見を、これからの仕事と社会参加の設計原理として使う。',
+      visualWords: ['多様性', '設計領域', '予防'],
+      accentClass: 'from-teal-100 via-white to-emerald-50',
+      iconClass: 'bg-teal-600 text-white',
+      chipClass: 'bg-teal-50 text-teal-900 border-teal-200',
     },
     {
       slug: 'articles-social-questions',
       tag: 'NBLレポート',
-      title: '働き方の問いをひらくNBLレポート',
-      body: '現場の違和感、企業の迷い、支援者の翻訳負荷、政策議論を、仕事条件の問いとして読む。',
+      title: '社会の違和感を、読める論考へ',
+      body: '現場の切実な問い、企業の迷い、支援者の翻訳負荷、政策議論を、社会に広げられる論考にする。',
+      visualWords: ['問い', '論考', '共有'],
+      accentClass: 'from-sky-100 via-white to-teal-50',
+      iconClass: 'bg-sky-600 text-white',
+      chipClass: 'bg-sky-50 text-sky-900 border-sky-200',
     },
     {
       slug: 'toolkit-studio',
       tag: 'ツールキット',
-      title: '認知補助ツールキット',
-      body: '図解、4コマ、音楽、資料を、会議や研修で同じ地図を見ながら話せる素材にする。',
+      title: '図解・音楽・素材で、共通理解をつくる',
+      body: '文章だけでは届きにくい複雑な知識を、会議や研修で扱いやすい形へ変える。',
+      visualWords: ['図解', '音楽', '研修'],
+      accentClass: 'from-violet-100 via-white to-sky-50',
+      iconClass: 'bg-violet-600 text-white',
+      chipClass: 'bg-violet-50 text-violet-900 border-violet-200',
     },
     {
       slug: 'work-condition-window',
       tag: '障害種類から見る',
-      title: '障害種類・疾病名から見る入口',
-      body: '障害種類や疾病名から入り、例外対応ではなく、誰もが働きやすい職場設計へ進む。',
+      title: '障害種類を、職場設計の応用問題として読む',
+      body: '視覚、聴覚、肢体、内部、知的、精神、発達、高次脳、難病から、仕事条件の確認へ進む。',
+      visualWords: ['種類', '条件', '応用'],
+      accentClass: 'from-lime-100 via-white to-emerald-50',
+      iconClass: 'bg-lime-700 text-white',
+      chipClass: 'bg-lime-50 text-lime-950 border-lime-200',
     },
   ] as const;
   const businessUseCards = [
@@ -9908,20 +9932,26 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
     <>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 md:py-16">
-          <div className="grid gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
                 Start here
               </p>
               <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl md:leading-tight">
-                いま知りたい入口から、仕事条件の地図へ。
+                問いはばらばらでも、
+                <span className="block">見る地図はひとつ。</span>
               </h2>
             </div>
-            <p className="text-base leading-8 text-slate-700 md:text-lg md:leading-9">
-              このサイトは、専門体系を順番に読ませるためではなく、読者の現実の問いから入れるように作っています。課題、相談、設計、レポート、図解、障害種類のどこから入っても、仕事と参加の条件を一緒に見直すところへ戻ります。
-            </p>
+            <div className="rounded-lg border border-teal-100 bg-[#eef5f1] p-6">
+              <p className="text-lg font-semibold leading-8 tracking-normal text-slate-950 md:text-2xl md:leading-10">
+                働きづらさを、本人の弱さや職場の善意だけで終わらせない。
+              </p>
+              <p className="mt-4 text-base leading-8 text-slate-700">
+                課題、相談、設計、レポート、図解、障害種類。どこから入っても、本人・仕事・環境・支援・時間・評価の関係を見える形にしていきます。
+              </p>
+            </div>
           </div>
-          <div className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {primaryEntrances
               .map((entrance) => {
                 const item = publicCandidateRoutes().find((route) => route.slug === entrance.slug);
@@ -9931,27 +9961,44 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
                 const ContextIcon = item.context.icon;
                 return (
                   <Link
-                    className={`group flex min-h-[218px] flex-col rounded-xl border bg-[#fbfaf5] p-5 transition hover:-translate-y-0.5 hover:border-teal-300 hover:bg-white hover:shadow-md ${
+                    className={`group relative flex min-h-[268px] overflow-hidden rounded-lg border bg-gradient-to-br p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl ${entrance.accentClass} ${
                       item.slug === currentSlug ? 'border-slate-950' : 'border-slate-200'
                     }`}
                     href={candidatePath(item.slug)}
                     key={item.routeId}
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="grid h-11 w-11 place-items-center rounded-full bg-slate-950 text-white">
+                    <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/55" />
+                    <div className="pointer-events-none absolute -bottom-16 left-10 h-28 w-44 rounded-[50%] border border-white/70" />
+                    <div className="relative flex items-start justify-between gap-4">
+                      <span
+                        className={`grid h-12 w-12 place-items-center rounded-lg shadow-sm ${entrance.iconClass}`}
+                      >
                         <ContextIcon size={19} />
                       </span>
-                      <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-slate-600">
+                      <span
+                        className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${entrance.chipClass}`}
+                      >
                         {entrance.tag}
                       </span>
                     </div>
-                    <h3 className="mt-5 break-words text-xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere]">
+                    <h3 className="relative mt-5 break-words text-2xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere]">
                       {entrance.title}
                     </h3>
-                    <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                    <p className="relative mt-3 flex-1 text-sm leading-7 text-slate-700">
                       {entrance.body}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
+                    <div className="relative mt-5 grid grid-cols-3 gap-2">
+                      {entrance.visualWords.map((word, index) => (
+                        <span
+                          className="flex min-h-16 items-center justify-center rounded-md border border-white/70 bg-white/72 px-2 text-center text-xs font-semibold leading-5 text-slate-800 shadow-sm"
+                          key={word}
+                        >
+                          <span className="sr-only">{index + 1}. </span>
+                          {word}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-900 group-hover:text-teal-700">
                       開く
                       <ArrowRight size={15} />
                     </span>
