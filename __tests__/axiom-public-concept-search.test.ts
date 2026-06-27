@@ -16,6 +16,7 @@ describe('Axiom public concept search', () => {
     expect(kinds.has('condition_window')).toBe(true);
     expect(kinds.has('nbl_report')).toBe(true);
     expect(kinds.has('toolkit')).toBe(true);
+    expect(index.some((entry) => entry.id === 'projects' && entry.href === '/projects')).toBe(true);
   });
 
   it('expands 難病 into health-time and treatment-related public results', () => {
@@ -45,6 +46,17 @@ describe('Axiom public concept search', () => {
     expect(result.expandedTerms).toContain('開示');
     expect(result.expandedTerms).toContain('共有範囲');
     expect(joined).toContain('開示・評価・役割・成長を設計する');
+  });
+
+  it('surfaces the projects collaboration entrance from project and study-group searches', () => {
+    const projectResult = searchAxiomPublicConceptIndex('プロジェクト', { limit: 8 });
+    const studyGroupResult = searchAxiomPublicConceptIndex('研究会', { limit: 8 });
+
+    expect(projectResult.matches[0]).toMatchObject({
+      href: '/projects',
+      title: 'プロジェクト',
+    });
+    expect(studyGroupResult.matches.some((match) => match.href === '/projects')).toBe(true);
   });
 
   it('wires the search entry into the published site header', () => {

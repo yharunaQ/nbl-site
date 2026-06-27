@@ -14,6 +14,7 @@ const ROUTES = [
   '/policy-research',
   '/partnership',
   '/work-condition-window',
+  '/projects',
   '/work-assessment-concept',
   '/about',
   '/contact',

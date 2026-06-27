@@ -1,4 +1,5 @@
 import PageSeo from '@/components/PageSeo';
+import AxiomProjectsPublishedSurface from '@/components/axiom/AxiomProjectsPublishedSurface';
 import AxiomNextNblPublicCandidateSiteSurface from '@/components/axiom/AxiomNextNblPublicCandidateSiteSurface';
 import {
   getAxiomNextNblPublishedPath,
@@ -70,6 +71,13 @@ const pageSeoBySlug: Record<
     imagePath: '/images/next-nbl-method-trust-hero-reading-power-v1.png',
     imageAlt: 'NBLの専門性と専門知識ネットワークを示す図',
   },
+  projects: {
+    title: 'プロジェクト | Next Being Lab',
+    description:
+      '仕事と参加の条件デザイン、難病地域連携、福祉・医療・雇用の連携設計・人材育成に関心のある方へ。',
+    imagePath: '/images/nbl-projects-tom-sawyer-wall-painting-hero-v1.png',
+    imageAlt: '白い壁を楽しそうに塗る少年と、参加したくなる人々のイラスト',
+  },
   'about-boundary': {
     title: 'サイト情報 | Next Being Lab',
     description:
@@ -95,7 +103,11 @@ export default function AxiomNextNblPublishedSitePage({
         imagePath={seo.imagePath}
         imageAlt={seo.imageAlt}
       />
-      <AxiomNextNblPublicCandidateSiteSurface slug={slug} routeMode="published" />
+      {slug === 'projects' ? (
+        <AxiomProjectsPublishedSurface />
+      ) : (
+        <AxiomNextNblPublicCandidateSiteSurface slug={slug} routeMode="published" />
+      )}
     </>
   );
 }

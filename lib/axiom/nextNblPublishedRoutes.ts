@@ -9,6 +9,7 @@ export const AXIOM_NEXT_NBL_PUBLISHED_SLUGS = [
   'toolkit-studio',
   'work-condition-window',
   'theory-method-trust',
+  'projects',
   'about-boundary',
 ] as const;
 

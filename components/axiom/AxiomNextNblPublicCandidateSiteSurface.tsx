@@ -307,6 +307,11 @@ const primaryDesktopNavSlugs = [
   'articles-social-questions',
 ] as const;
 
+const publishedProjectsNavItem = {
+  href: '/projects',
+  label: 'プロジェクト',
+} as const;
+
 function resolveHrefForRouteMode(href: string, routeMode: AxiomNextNblSiteRouteMode) {
   return routeMode === 'published' ? rewriteAxiomCandidateHrefToPublished(href) : href;
 }
@@ -5430,6 +5435,7 @@ function PublicCandidateShell({
   children: ReactNode;
   currentRoute: AxiomReviewedKernelBackedCandidateRoute;
 }) {
+  const routeMode = useContext(AxiomNextNblRouteModeContext);
   const [siteSearchQuery, setSiteSearchQuery] = useState('');
   const allRoutes = publicCandidateRoutes();
   const primaryDesktopRoutes = allRoutes.filter((item) =>
@@ -5464,6 +5470,14 @@ function PublicCandidateShell({
                 {item.context.navLabelJa}
               </Link>
             ))}
+            {routeMode === 'published' ? (
+              <Link
+                className="whitespace-nowrap border-b-2 border-transparent px-2.5 py-1.5 text-[13px] text-slate-600 transition hover:border-slate-300 hover:text-slate-950 xl:px-3 xl:text-sm"
+                href={publishedProjectsNavItem.href}
+              >
+                {publishedProjectsNavItem.label}
+              </Link>
+            ) : null}
           </nav>
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
             <form
@@ -5508,6 +5522,14 @@ function PublicCandidateShell({
                       {item.context.navLabelJa}
                     </Link>
                   ))}
+                  {routeMode === 'published' ? (
+                    <Link
+                      className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#fbfaf5] hover:text-teal-950"
+                      href={publishedProjectsNavItem.href}
+                    >
+                      {publishedProjectsNavItem.label}
+                    </Link>
+                  ) : null}
                 </nav>
               </div>
             </details>
@@ -5537,6 +5559,14 @@ function PublicCandidateShell({
               {item.context.navLabelJa}
             </Link>
           ))}
+          {routeMode === 'published' ? (
+            <Link
+              className="shrink-0 whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] text-slate-600"
+              href={publishedProjectsNavItem.href}
+            >
+              {publishedProjectsNavItem.label}
+            </Link>
+          ) : null}
         </nav>
       </header>
       {children}

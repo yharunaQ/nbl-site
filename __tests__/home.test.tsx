@@ -34,6 +34,7 @@ describe('NBL Home', () => {
     expect(screen.getAllByText('設計ガイド').length).toBeGreaterThan(0);
     expect(screen.getAllByText('NBLレポート').length).toBeGreaterThan(0);
     expect(screen.getAllByText('ツールキット').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('プロジェクト').length).toBeGreaterThan(0);
     expect(screen.getAllByText('障害種類から見る').length).toBeGreaterThan(0);
     expect(screen.getAllByText('NBLの専門性').length).toBeGreaterThan(0);
     expect(screen.getAllByText('サイト情報').length).toBeGreaterThan(0);
@@ -53,6 +54,10 @@ describe('NBL Home', () => {
     expect(screen.getAllByRole('link', { name: 'NBLの専門性' })[0]).toHaveAttribute(
       'href',
       '/theory-method-trust',
+    );
+    expect(screen.getAllByRole('link', { name: 'プロジェクト' })[0]).toHaveAttribute(
+      'href',
+      '/projects',
     );
     expect(
       screen

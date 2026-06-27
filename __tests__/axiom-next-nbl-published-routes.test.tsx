@@ -30,6 +30,7 @@ describe('Axiom next NBL published routes', () => {
       'href',
       '/articles-social-questions',
     );
+    expect(screen.getAllByRole('link', { name: 'プロジェクト' }).length).toBeGreaterThan(0);
     expect(
       screen
         .getAllByRole('link')
@@ -42,8 +43,10 @@ describe('Axiom next NBL published routes', () => {
     ).toBe(true);
   });
 
-  it('defines all nine published public paths', () => {
-    expect(AXIOM_NEXT_NBL_PUBLISHED_SLUGS.map((slug) => getAxiomNextNblPublishedPath(slug))).toEqual([
+  it('defines all ten published public paths including projects', () => {
+    expect(
+      AXIOM_NEXT_NBL_PUBLISHED_SLUGS.map((slug) => getAxiomNextNblPublishedPath(slug)),
+    ).toEqual([
       '/',
       '/scene-entry',
       '/case-readings',
@@ -52,7 +55,37 @@ describe('Axiom next NBL published routes', () => {
       '/toolkit-studio',
       '/work-condition-window',
       '/theory-method-trust',
+      '/projects',
       '/about-boundary',
     ]);
+  });
+
+  it('renders the projects page inside the Axiom published page wrapper', () => {
+    render(<AxiomNextNblPublishedSitePage slug="projects" />);
+
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: '3つのプロジェクトを軸に、一緒に作る人を探しています。',
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: 'プロジェクト' })[0]).toHaveAttribute(
+      'href',
+      '/projects',
+    );
+    expect(screen.queryByText('この入口の位置づけ')).not.toBeInTheDocument();
+    expect(
+      screen.getByAltText('白い壁を楽しそうに塗る少年と、参加したくなる人々のイラスト'),
+    ).toHaveAttribute('src', '/images/nbl-projects-tom-sawyer-wall-painting-hero-v1.png');
+    expect(
+      screen
+        .getAllByRole('link')
+        .every(
+          (link) =>
+            !(link.getAttribute('href') ?? '').startsWith(
+              '/internal/axiom-next-nbl-public-candidate',
+            ),
+        ),
+    ).toBe(true);
   });
 });

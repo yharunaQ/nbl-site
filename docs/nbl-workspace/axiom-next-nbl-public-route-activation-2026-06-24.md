@@ -16,6 +16,7 @@ Published Axiom routes:
 - `/toolkit-studio`
 - `/work-condition-window`
 - `/theory-method-trust`
+- `/projects`
 - `/about-boundary`
 
 Carryover routes preserved:
@@ -30,6 +31,7 @@ Carryover routes preserved:
 - Internal candidate links are rewritten to public paths through `lib/axiom/nextNblPublishedRoutes.ts`.
 - Legacy Falcon public route names redirect or compatibility-render to the Axiom route set.
 - Music fest and forum pages remain available, but their navigation now returns to the Axiom public routes.
+- `/projects` is integrated as the Axiom public collaboration entrance for the three current project axes, with same-page email contact and no project-card detail transitions.
 - Published pages do not link to the internal candidate route.
 
 ## Verification
