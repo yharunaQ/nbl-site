@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 import {
   AXIOM_NEXT_NBL_PUBLISHED_SLUGS,
@@ -30,7 +30,17 @@ describe('Axiom next NBL published routes', () => {
       'href',
       '/articles-social-questions',
     );
-    expect(screen.getAllByRole('link', { name: 'プロジェクト' }).length).toBeGreaterThan(0);
+    const desktopNav = screen.getByRole('navigation', { name: 'NBL site navigation' });
+    expect(within(desktopNav).getByRole('link', { name: 'ツールキット' })).toHaveAttribute(
+      'href',
+      '/toolkit-studio',
+    );
+    expect(within(desktopNav).queryByRole('link', { name: 'プロジェクト' })).not.toBeInTheDocument();
+    expect(
+      within(
+        screen.getByRole('navigation', { name: 'NBL site all pages', hidden: true }),
+      ).queryByRole('link', { name: 'プロジェクト' }),
+    ).not.toBeInTheDocument();
     expect(
       screen
         .getAllByRole('link')
@@ -73,6 +83,12 @@ describe('Axiom next NBL published routes', () => {
       'href',
       '/projects',
     );
+    const desktopNav = screen.getByRole('navigation', { name: 'NBL site navigation' });
+    expect(within(desktopNav).getByRole('link', { name: 'ツールキット' })).toHaveAttribute(
+      'href',
+      '/toolkit-studio',
+    );
+    expect(within(desktopNav).queryByRole('link', { name: 'プロジェクト' })).not.toBeInTheDocument();
     expect(screen.queryByText('この入口の位置づけ')).not.toBeInTheDocument();
     expect(
       screen.getByAltText('白い壁を楽しそうに塗る少年と、参加したくなる人々のイラスト'),
