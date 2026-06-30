@@ -39,8 +39,14 @@ describe('Axiom next NBL published routes', () => {
     expect(
       within(
         screen.getByRole('navigation', { name: 'NBL site all pages', hidden: true }),
-      ).queryByRole('link', { name: 'プロジェクト' }),
-    ).not.toBeInTheDocument();
+      ).getByRole('link', { name: 'プロジェクト' }),
+    ).toHaveAttribute('href', '/projects');
+    expect(
+      within(screen.getByRole('navigation', { name: 'NBL site mobile navigation' })).getByRole(
+        'link',
+        { name: 'プロジェクト' },
+      ),
+    ).toHaveAttribute('href', '/projects');
     expect(
       screen
         .getAllByRole('link')

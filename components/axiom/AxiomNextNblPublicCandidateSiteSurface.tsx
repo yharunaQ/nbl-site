@@ -308,6 +308,11 @@ const primaryDesktopNavSlugs = [
   'toolkit-studio',
 ] as const;
 
+const publishedProjectsNavItem = {
+  href: '/projects',
+  label: 'プロジェクト',
+} as const;
+
 function resolveHrefForRouteMode(href: string, routeMode: AxiomNextNblSiteRouteMode) {
   return routeMode === 'published' ? rewriteAxiomCandidateHrefToPublished(href) : href;
 }
@@ -5510,6 +5515,14 @@ function PublicCandidateShell({
                       {item.context.navLabelJa}
                     </Link>
                   ))}
+                  {routeMode === 'published' ? (
+                    <Link
+                      className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#fbfaf5] hover:text-teal-950"
+                      href={publishedProjectsNavItem.href}
+                    >
+                      {publishedProjectsNavItem.label}
+                    </Link>
+                  ) : null}
                 </nav>
               </div>
             </details>
@@ -5539,6 +5552,14 @@ function PublicCandidateShell({
               {item.context.navLabelJa}
             </Link>
           ))}
+          {routeMode === 'published' ? (
+            <Link
+              className="shrink-0 whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] text-slate-600"
+              href={publishedProjectsNavItem.href}
+            >
+              {publishedProjectsNavItem.label}
+            </Link>
+          ) : null}
         </nav>
       </header>
       {children}
