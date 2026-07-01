@@ -1377,6 +1377,32 @@ const toolkitSelectedInfographicSrc = (file: string) =>
 
 const toolkitSelectedInfographicGroups: readonly ToolkitSelectedInfographicGroup[] = [
   {
+    id: 'toolkit-infographic-employment-support-expertise',
+    navLabel: '専門性の再整理',
+    title: '就労支援の専門知識リストを、現場で使う形に読み替える',
+    lead: '就労支援実務者向けに整理された65項目の知識・スキルを、支援の流れ、言葉の使い方、考え違いの予防として読み直す棚です。',
+    usefulFor:
+      'X投稿の単発図解で終わらせず、研修、会議、支援記録の読み方をそろえる入口として使う。',
+    items: [
+      {
+        title: '障害者就労支援の5つの核',
+        file: 'employment-support-five-core-v1.png',
+        alt: '障害者就労支援の専門知識とスキルを5つの核で整理した図解',
+        lens:
+          '知識・スキルの一覧を、構造的に読む、共同で把握する、設計する、実装する、学び直す流れとして見る。',
+        use: '支援者研修やチーム会議で、支援を病名別メニューや就職ゴールに閉じないために使う。',
+      },
+      {
+        title: '就労支援の言葉をアップデートする',
+        file: 'employment-support-vocabulary-update-v1.png',
+        alt: '就労支援で使う言葉を支援の質が上がる言い方へ更新する図解',
+        lens:
+          '障害特性、アセスメント、連携などの言葉を、本人、仕事、環境、支援条件が見える言い方へ変える。',
+        use: '記録、研修、会議資料の言葉が本人分類や配慮メニュー化に寄っていないかを点検する。',
+      },
+    ],
+  },
+  {
     id: 'toolkit-infographic-work-condition-map',
     navLabel: '全体地図',
     title: '仕事条件を一枚で見る',
