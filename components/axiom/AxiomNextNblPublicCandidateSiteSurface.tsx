@@ -584,7 +584,10 @@ const pageExperiences: Record<AxiomNextNblSiteSurface, PageExperience> = {
     featureLead:
       '同じ仕事条件の問いを、図解、4コマ、音楽、フォーラム資料、SNSカードなど複数の認知経路で扱います。',
     cards: [
-      { title: '選別図解', body: '全体地図、制度、支援接続、難病、疾患別場面を内容別に探す。' },
+      {
+        title: '選別図解',
+        body: 'ICFと就労支援プロセスを入口に、全体地図、制度、支援接続、難病、疾患別場面を内容別に探す。',
+      },
       { title: '疾患別4コマ', body: 'IBDや膠原病の見えにくい生活接点を、場面として共有する。' },
       { title: '音楽入口', body: '重くなりやすいテーマに、感覚的に入るきっかけを作る。' },
       { title: 'フォーラム資料', body: '研修、会議、地域連携で同じ素材を見ながら話す。' },
@@ -1145,7 +1148,7 @@ const toolkitShelves = [
     id: 'toolkit-shelf-infographics',
     eyebrow: 'Infographics',
     title: '選別図解',
-    body: '全体地図、偏見の読み替え、制度、支援接続、難病、疾患別場面を、内容から選ぶ棚です。',
+    body: 'ICFと就労支援プロセスで見方の土台をそろえてから、全体地図、偏見の読み替え、制度、支援接続、難病、疾患別場面を内容から選ぶ棚です。',
     image: '/images/axiom-toolkit-selected-infographics/top-13.png',
     imageAlt: '仕事のコンディションマップA3の図解',
     tags: ['図解', '拡大表示', '会議共有'],
@@ -1380,10 +1383,24 @@ const toolkitSelectedInfographicGroups: readonly ToolkitSelectedInfographicGroup
     id: 'toolkit-infographic-employment-support-expertise',
     navLabel: '専門性の再整理',
     title: '就労支援の専門知識リストを、現場で使う形に読み替える',
-    lead: '就労支援実務者向けに整理された65項目の知識・スキルを、支援の流れ、言葉の使い方、考え違いの予防として読み直す棚です。',
+    lead: 'ICFと就労支援のプロセスを最初に置き、専門知識を本人・仕事・環境・支援・時間の関係として読み直す棚です。',
     usefulFor:
-      'X投稿の単発図解で終わらせず、研修、会議、支援記録の読み方をそろえる入口として使う。',
+      '病名や配慮名で止まらず、相談、研修、会議、支援記録を同じ見方で読み始める入口として使う。',
     items: [
+      {
+        title: 'ICFで生活機能を読む',
+        file: 'top-22.png',
+        alt: 'ICFの生活機能と環境因子を示す図解',
+        lens: '健康状態だけでなく、活動、参加、環境、個人因子の関係を見る。',
+        use: '病名説明から相互作用の説明へ切り替える時に使う。',
+      },
+      {
+        title: '就労支援のプロセス',
+        file: 'top-15.png',
+        alt: '障害者就労支援のプロセスを示す図解',
+        lens: '相談、準備、職場理解、定着、見直しを一連の流れとして見る。',
+        use: '支援が単発助言で止まっている時、次の工程を確認する。',
+      },
       {
         title: '障害者就労支援の5つの核',
         file: 'employment-support-five-core-v1.png',
@@ -1406,7 +1423,7 @@ const toolkitSelectedInfographicGroups: readonly ToolkitSelectedInfographicGroup
     id: 'toolkit-infographic-work-condition-map',
     navLabel: '全体地図',
     title: '仕事条件を一枚で見る',
-    lead: '本人、仕事、環境、支援、時間、制度が別々に語られてしまう時、まず同じ地図を見ながら話すための棚です。',
+    lead: '本人、仕事、環境、支援、時間、制度が別々に語られてしまう時、同じ仕事条件の地図を見ながら話すための棚です。',
     usefulFor: '相談、会議、研修の冒頭で「どこを見ているのか」をそろえる。',
     items: [
       {
@@ -1417,25 +1434,11 @@ const toolkitSelectedInfographicGroups: readonly ToolkitSelectedInfographicGroup
         use: '複数の関係者が話す前に、共通地図として置く。',
       },
       {
-        title: 'ICFで生活機能を読む',
-        file: 'top-22.png',
-        alt: 'ICFの生活機能と環境因子を示す図解',
-        lens: '健康状態だけでなく、活動、参加、環境、個人因子の関係を見る。',
-        use: '病名説明から相互作用の説明へ切り替える時に使う。',
-      },
-      {
         title: '本人中心の就労支援の総合',
         file: 'top-16.png',
         alt: '本人中心の就労支援を総合的に示す図解',
         lens: '本人中心を、本人任せではなく支援と職場条件の連動として見る。',
         use: '支援者研修で、関係者の役割分担を話す時に使う。',
-      },
-      {
-        title: '就労支援のプロセス',
-        file: 'top-15.png',
-        alt: '障害者就労支援のプロセスを示す図解',
-        lens: '相談、準備、職場理解、定着、見直しを一連の流れとして見る。',
-        use: '支援が単発助言で止まっている時、次の工程を確認する。',
       },
       {
         title: '治療と仕事の両立',
