@@ -296,8 +296,7 @@ type StableLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 
 type AxiomNextNblSiteRouteMode = 'internal_candidate' | 'published';
 
-const AxiomNextNblRouteModeContext =
-  createContext<AxiomNextNblSiteRouteMode>('internal_candidate');
+const AxiomNextNblRouteModeContext = createContext<AxiomNextNblSiteRouteMode>('internal_candidate');
 
 const primaryDesktopNavSlugs = [
   'home',
@@ -1405,16 +1404,14 @@ const toolkitSelectedInfographicGroups: readonly ToolkitSelectedInfographicGroup
         title: '障害者就労支援の5つの核',
         file: 'employment-support-five-core-v1.png',
         alt: '障害者就労支援の専門知識とスキルを5つの核で整理した図解',
-        lens:
-          '知識・スキルの一覧を、構造的に読む、共同で把握する、設計する、実装する、学び直す流れとして見る。',
+        lens: '知識・スキルの一覧を、構造的に読む、共同で把握する、設計する、実装する、学び直す流れとして見る。',
         use: '支援者研修やチーム会議で、支援を病名別メニューや就職ゴールに閉じないために使う。',
       },
       {
         title: '就労支援の言葉をアップデートする',
         file: 'employment-support-vocabulary-update-v1.png',
         alt: '就労支援で使う言葉を支援の質が上がる言い方へ更新する図解',
-        lens:
-          '障害特性、アセスメント、連携などの言葉を、本人、仕事、環境、支援条件が見える言い方へ変える。',
+        lens: '障害特性、アセスメント、連携などの言葉を、本人、仕事、環境、支援条件が見える言い方へ変える。',
         use: '記録、研修、会議資料の言葉が本人分類や配慮メニュー化に寄っていないかを点検する。',
       },
     ],
@@ -1876,9 +1873,7 @@ const toolkitSelectedInfographicCount = toolkitSelectedInfographicGroups.reduce(
 
 function findToolkitSelectedInfographicById(itemId: string) {
   for (const group of toolkitSelectedInfographicGroups) {
-    const item = group.items.find(
-      (candidate) => toolkitInfographicId(candidate.file) === itemId,
-    );
+    const item = group.items.find((candidate) => toolkitInfographicId(candidate.file) === itemId);
 
     if (item) {
       return item;
@@ -3886,12 +3881,9 @@ function articleInfographicAlt(entry: ArticleCatalogEntry) {
 function buildArticleVisualCorrespondence(entry: ArticleCatalogEntry) {
   return {
     body: `${entry.readerQuestion}という読者の問いを、${entry.category}だけでなく、本人・仕事・環境・支援・時間・制度の関係として見るための図解です。`,
-    cues: Array.from(new Set([
-      entry.theme,
-      entry.category,
-      ...entry.tags.slice(0, 2),
-      entry.nextLabel,
-    ])),
+    cues: Array.from(
+      new Set([entry.theme, entry.category, ...entry.tags.slice(0, 2), entry.nextLabel]),
+    ),
   };
 }
 
@@ -4093,7 +4085,9 @@ const articleVisualHumanCheckJa = [
 ] as const;
 
 export function buildAxiomNblReportArticleVisualQaItems(): readonly AxiomNblReportArticleVisualQaItem[] {
-  const entryById = new globalThis.Map(axiomArticleCatalogEntries.map((entry) => [entry.id, entry]));
+  const entryById = new globalThis.Map(
+    axiomArticleCatalogEntries.map((entry) => [entry.id, entry]),
+  );
 
   return articleSocialQuestionFullArticles.map((article, index) => {
     const entry = entryById.get(article.id);
@@ -4377,6 +4371,12 @@ const sceneComics: readonly SceneComic[] = [
 const sceneIssueMapHero = {
   src: '/images/axiom-scene-comics/axiom-scene-old-new-issue-map-v2.png',
   alt: '見える数字、名前、健康時間、情報分断、制度、上司依存、検索SNSAI、学びの循環という8つの古くて新しい課題を仕事条件の地図へつなぐ図',
+} as const;
+
+const homeWhyHeroVisual = {
+  src: '/images/next-nbl-home-why-hero-imagegen-v1.png',
+  webpSrc: '/images/next-nbl-home-why-hero-imagegen-v1.webp',
+  alt: '障害者雇用・難病就労支援の断片的な情報を、AIの文脈読解補助と人間の確認を通して、本人・仕事・環境・支援・時間・評価の条件地図へ読み替える図',
 } as const;
 
 const homeHeroVisual = {
@@ -5172,7 +5172,11 @@ function toolkitInfographicId(file: string) {
 }
 
 function toolkitInfographicContentPath(itemId: string) {
-  return candidateQueryPath('toolkit-studio', { image: itemId }, 'toolkit-selected-infographic-library');
+  return candidateQueryPath(
+    'toolkit-studio',
+    { image: itemId },
+    'toolkit-selected-infographic-library',
+  );
 }
 
 function toolkitInfographicSharePath(itemId: string) {
@@ -5347,77 +5351,55 @@ function toReaderFacingWorkDesignSubstructure(
 }
 
 const workDesignPointHeadingBySubstructureId: Record<string, string> = {
-  health_time_fluctuation_relapse_and_fatigue:
-    '体調変動と仕事密度を同じ時間表で設計する',
+  health_time_fluctuation_relapse_and_fatigue: '体調変動と仕事密度を同じ時間表で設計する',
   health_time_recovery_margin_and_return_route: '休む・減らす・戻る手順を先に設計する',
-  health_time_commute_and_mobility_consumption:
-    '通勤・移動の消耗を仕事時間の条件として設計する',
-  health_time_income_evaluation_collision:
-    '健康を守る行動と評価・収入の関係を設計する',
-  regular_medical_time_dialysis_and_fixed_treatment:
-    '固定治療時間を勤務表の前提として設計する',
+  health_time_commute_and_mobility_consumption: '通勤・移動の消耗を仕事時間の条件として設計する',
+  health_time_income_evaluation_collision: '健康を守る行動と評価・収入の関係を設計する',
+  regular_medical_time_dialysis_and_fixed_treatment: '固定治療時間を勤務表の前提として設計する',
   regular_medical_time_checkups_and_continuous_monitoring:
     '定期検診と継続管理を働くリズムに組み込む',
   regular_medical_time_internal_disability_and_body_management:
     '身体管理時間を見える仕事条件として設計する',
   sensory_access_visual_information_format: '視覚情報と文書形式を届く形に設計する',
-  sensory_access_hearing_voice_meeting_information:
-    '音声・会議情報を参加できる形に設計する',
-  sensory_access_body_operation_and_tool_contact:
-    '身体操作と道具接点を使える条件として設計する',
-  sensory_access_emergency_and_informal_information:
-    '緊急連絡と非公式情報をこぼれない形に設計する',
-  cognitive_access_instruction_and_procedure_format:
-    '指示・手順・説明形式を分かる形に設計する',
-  cognitive_access_switching_priority_exception_load:
-    '切替・優先順位・例外対応の戻り道を設計する',
+  sensory_access_hearing_voice_meeting_information: '音声・会議情報を参加できる形に設計する',
+  sensory_access_body_operation_and_tool_contact: '身体操作と道具接点を使える条件として設計する',
+  sensory_access_emergency_and_informal_information: '緊急連絡と非公式情報をこぼれない形に設計する',
+  cognitive_access_instruction_and_procedure_format: '指示・手順・説明形式を分かる形に設計する',
+  cognitive_access_switching_priority_exception_load: '切替・優先順位・例外対応の戻り道を設計する',
   cognitive_access_memory_checking_and_error_tolerance:
     '記憶・確認・ミス許容度を支える道具を設計する',
   cognitive_access_implicit_rules_and_evaluation_feedback:
     '暗黙ルールと評価基準を見えるフィードバックにする',
-  disclosure_purpose_limited_information_sharing:
-    '共有目的と範囲を限定して情報共有を設計する',
-  disclosure_invisible_condition_and_stigma:
-    '見えにくい状態を説明負担にしない共有設計をする',
-  disclosure_evaluation_and_overmanagement_risk:
-    '評価・管理に使われすぎない境界を設計する',
-  pre_entry_no_work_experience_job_image_gap:
-    '働く前から仕事像を試せる条件を設計する',
+  disclosure_purpose_limited_information_sharing: '共有目的と範囲を限定して情報共有を設計する',
+  disclosure_invisible_condition_and_stigma: '見えにくい状態を説明負担にしない共有設計をする',
+  disclosure_evaluation_and_overmanagement_risk: '評価・管理に使われすぎない境界を設計する',
+  pre_entry_no_work_experience_job_image_gap: '働く前から仕事像を試せる条件を設計する',
   pre_entry_application_before_disclosure_and_condition_translation:
     '応募前に必要条件を言葉にできる準備を設計する',
   pre_entry_training_work_trial_and_experience_connection:
     '訓練・体験を仕事条件の検証機会として設計する',
   pre_entry_family_school_support_transition_handoff:
     '家族・学校・支援から職場への引き継ぎを設計する',
-  worksite_contact_task_decomposition_and_work_density:
-    '作業分解と仕事密度を接触点から設計する',
-  worksite_contact_tools_equipment_and_environment:
-    '道具・設備・環境を仕事の接触面として設計する',
-  worksite_contact_internal_external_mobility_and_commute:
-    '職場内外の移動と通勤接続を設計する',
-  worksite_contact_safety_risk_and_error_tolerance:
-    '安全とミス許容度を排除ではなく設計条件にする',
+  worksite_contact_task_decomposition_and_work_density: '作業分解と仕事密度を接触点から設計する',
+  worksite_contact_tools_equipment_and_environment: '道具・設備・環境を仕事の接触面として設計する',
+  worksite_contact_internal_external_mobility_and_commute: '職場内外の移動と通勤接続を設計する',
+  worksite_contact_safety_risk_and_error_tolerance: '安全とミス許容度を排除ではなく設計条件にする',
   worksite_contact_staffing_customer_and_coordination_margin:
     '人員余力・顧客接点・調整余地を設計する',
   worksite_contact_evaluation_role_and_feedback_connection:
     '評価・役割・フィードバックの接点を設計する',
   support_retranslation_between_person_medical_workplace_language:
     '本人・医療・職場の言葉を仕事条件へ翻訳する',
-  support_handoff_role_boundary_and_continuity:
-    'handoff・役割境界・継続接続を設計する',
+  support_handoff_role_boundary_and_continuity: 'handoff・役割境界・継続接続を設計する',
   support_reconnection_after_change_worsening_or_return:
     '悪化・復職・配置換え後に戻れる接続を設計する',
   role_value_growth_role_design_after_hiring: '就職後の役割を成長条件として設計する',
-  role_value_growth_evaluation_and_income_fairness:
-    '評価・処遇・収入の公正さを設計する',
-  role_value_growth_learning_career_and_rechoice:
-    '学習・キャリア・選び直しの道を設計する',
-  source_lens_dominant_nanbyo_loading_guard:
-    '多数データに埋もれる違いを残して設計する',
+  role_value_growth_evaluation_and_income_fairness: '評価・処遇・収入の公正さを設計する',
+  role_value_growth_learning_career_and_rechoice: '学習・キャリア・選び直しの道を設計する',
+  source_lens_dominant_nanbyo_loading_guard: '多数データに埋もれる違いを残して設計する',
   source_lens_historical_international_universal_structure_probe:
     '国や時代を越えて残る構造を設計知に使う',
-  source_lens_projection_brake_before_public_claim:
-    '発見候補と公開メッセージを分けて設計する',
+  source_lens_projection_brake_before_public_claim: '発見候補と公開メッセージを分けて設計する',
 };
 
 function toWorkDesignPointHeading(label: string, substructureId?: string) {
@@ -5619,16 +5601,16 @@ function CandidateHero({
       ? sceneIssueMapHero.src
       : isCaseReadingsHero
         ? consultationAssessmentHeroVisual.src
-      : isTheoryMethodTrustHero
-        ? theoryMethodHeroVisual.src
-        : context.visual.src,
+        : isTheoryMethodTrustHero
+          ? theoryMethodHeroVisual.src
+          : context.visual.src,
     alt: isSceneEntryHero
       ? sceneIssueMapHero.alt
       : isCaseReadingsHero
         ? consultationAssessmentHeroVisual.alt
-      : isTheoryMethodTrustHero
-        ? theoryMethodHeroVisual.alt
-        : context.visual.alt,
+        : isTheoryMethodTrustHero
+          ? theoryMethodHeroVisual.alt
+          : context.visual.alt,
   };
   const heroHeading = sceneHero ? (
     <>
@@ -5851,45 +5833,57 @@ function CandidateHero({
   );
 }
 
-function HomeTopHero({ context }: { context: AxiomPublicCandidatePageContext }) {
+function HomeTopHero() {
   return (
-    <section className="border-b border-slate-200 bg-[#f7f0df]">
-      <div className="mx-auto max-w-7xl px-5 py-8 md:py-10">
-        <h1 className="sr-only">働きづらさを、仕事条件の地図へ。</h1>
-        <figure className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl">
-          <img
-            alt={homeHeroVisual.alt}
-            className="block h-auto w-full bg-[#f7f0df]"
-            src={homeHeroVisual.src}
-          />
-        </figure>
-        <div className="mt-5 grid gap-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <p className="text-sm font-semibold tracking-[0.12em] text-teal-800">
-              Next Being Lab
-            </p>
-            <p className="mt-2 max-w-3xl text-base leading-8 text-slate-700 md:text-lg md:leading-9">
-              働きづらさを、本人の弱さや個別配慮の名前で終わらせず、仕事・環境・支援・時間・評価の関係として見直すための入口です。
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
+    <section
+      className="border-b border-teal-950 bg-[#071f1d] text-white"
+      aria-labelledby="home-why-title"
+    >
+      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 md:py-20 lg:grid-cols-2 lg:items-center">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold tracking-[0.16em] text-teal-200">Next Being Lab</p>
+          <h1
+            id="home-why-title"
+            aria-label="障害者雇用・難病就労支援から、AI時代の仕事設計へ。"
+            className="mt-4 text-[2.1rem] font-semibold leading-[1.05] tracking-normal text-white sm:text-[2.7rem] md:text-[3.45rem] xl:text-[3.75rem]"
+          >
+            <span className="block">障害者雇用・</span>
+            <span className="block">難病就労支援から、</span>
+            <span className="block sm:hidden">AI時代の</span>
+            <span className="block sm:hidden">仕事設計へ。</span>
+            <span className="hidden whitespace-nowrap sm:block">AI時代の仕事設計へ。</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 md:text-lg md:leading-9">
+            AIが仕事や社会を急速に変える時代には、人の多様性と、仕事・環境・支援の組み合わせから、働き方と社会参加を設計する力が重要になります。けれど、その関係は複雑で、理念や想いだけでは実装しきれません。NBLはAIで読み解く負担を下げ、障害者雇用・難病就労支援で見えてきた知見を、仕事・環境・支援・時間・評価の条件として読み直すラボです。
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
             <Link
-              className="inline-flex items-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-950"
-              href={candidatePath(context.primarySlug)}
+              className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_18px_50px_rgba(45,212,191,0.18)] transition hover:bg-teal-50"
+              href={candidatePath('about-boundary')}
             >
-              {context.primaryLabelJa}
+              サイト情報
               <ArrowRight size={16} />
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
-              href={candidatePath(context.secondarySlug)}
-            >
-              {context.secondaryLabelJa}
             </Link>
           </div>
         </div>
+        <HomeWhyHeroImage />
       </div>
     </section>
+  );
+}
+
+function HomeWhyHeroImage() {
+  return (
+    <figure className="aspect-[4/3] min-w-0 overflow-hidden rounded-xl border border-white/15 bg-white shadow-[0_34px_90px_rgba(13,148,136,0.28)] ring-1 ring-teal-200/20 lg:ml-auto lg:max-w-[560px]">
+      <picture className="block h-full w-full">
+        <source srcSet={homeWhyHeroVisual.webpSrc} type="image/webp" />
+        <img
+          alt={homeWhyHeroVisual.alt}
+          className="block h-full w-full max-w-full bg-[#f7f0df] object-cover object-center"
+          src={homeWhyHeroVisual.src}
+        />
+      </picture>
+    </figure>
   );
 }
 
@@ -5950,11 +5944,7 @@ function WorkDesignGeneratedImageHero({ context }: { context: AxiomPublicCandida
   );
 }
 
-function WorkConditionWindowHero({
-  context,
-}: {
-  context: AxiomPublicCandidatePageContext;
-}) {
+function WorkConditionWindowHero({ context }: { context: AxiomPublicCandidatePageContext }) {
   return (
     <section className="border-b border-slate-200 bg-[#f4ead8]">
       <div className="mx-auto grid min-h-[620px] max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:py-14">
@@ -5977,14 +5967,14 @@ function WorkConditionWindowHero({
               className="inline-flex items-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-950"
               href="#condition-window-categories"
             >
-                障害種類から読む
+              障害種類から読む
               <ArrowRight size={16} />
             </Link>
             <Link
               className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
               href={candidatePath(context.primarySlug)}
             >
-                設計ガイドへ
+              設計ガイドへ
             </Link>
           </div>
         </div>
@@ -6112,14 +6102,20 @@ function AboutSiteInfoContent() {
       <div className="mx-auto max-w-7xl px-5 py-14 md:py-16">
         <div className="grid gap-5 md:grid-cols-2">
           {infoSections.map((section) => (
-            <article className="rounded-xl border border-slate-200 bg-[#fbfaf5] p-6" key={section.title}>
+            <article
+              className="rounded-xl border border-slate-200 bg-[#fbfaf5] p-6"
+              key={section.title}
+            >
               <h2 className="text-2xl font-semibold tracking-normal text-slate-950">
                 {section.title}
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-700">{section.body}</p>
               <ul className="mt-5 grid gap-3">
                 {section.items.map((item, itemIndex) => (
-                  <li className="flex gap-3 text-sm leading-7 text-slate-700" key={`${section.title}-${itemIndex}`}>
+                  <li
+                    className="flex gap-3 text-sm leading-7 text-slate-700"
+                    key={`${section.title}-${itemIndex}`}
+                  >
                     <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-teal-700" />
                     <span>
                       {item === 'X: NBL｜仕事条件デザイン（@NBL_workdesign）' ? (
@@ -6159,9 +6155,7 @@ function AboutSiteInfoContent() {
           </p>
         </div>
         <div className="mt-8 rounded-xl border border-slate-200 bg-slate-950 p-6 text-white">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-100">
-            Note
-          </p>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-100">Note</p>
           <p className="mt-3 text-base leading-8 text-white/84">
             このページは、サイト情報として必要な基本事項を簡潔に示すものです。NBLの専門性については「NBLの専門性」、記事とSNS連動については「NBLレポート」を参照してください。
           </p>
@@ -6479,9 +6473,7 @@ function ArticleSocialQuestionPublicContent() {
                   </p>
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-4">
-                  <p className="text-sm font-semibold text-slate-950">
-                    図解と本文を対応させる
-                  </p>
+                  <p className="text-sm font-semibold text-slate-950">図解と本文を対応させる</p>
                   <p className="mt-2 text-sm leading-7 text-slate-700">
                     各記事の図解は、飾りではなく、本文で読む問いと設計の関係を先に見せる入口です。
                   </p>
@@ -7106,7 +7098,7 @@ function ToolkitStudioPublicContent() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-[#f8fbf9]">
         <div className="mx-auto max-w-7xl px-5 py-12">
           <div className="rounded-lg border border-slate-200 bg-slate-950 p-6 text-white md:p-8">
             <div className="grid gap-6 md:grid-cols-[0.7fr_1.3fr] md:items-start">
@@ -8487,14 +8479,9 @@ function WorkDesignPerspectiveShiftPanel({
           同じ現象を、本人側の詰まりで止めず、仕事条件として設計できる形に読み替えます。
         </p>
       </div>
-      <div
-        className="grid gap-4 lg:grid-cols-2"
-        data-work-design-perspective-comparison
-      >
+      <div className="grid gap-4 lg:grid-cols-2" data-work-design-perspective-comparison>
         <article className="rounded-lg border border-rose-100 bg-rose-50/70 p-5">
-          <p className="text-xs font-semibold tracking-[0.16em] text-rose-900">
-            詰まり・古い読み
-          </p>
+          <p className="text-xs font-semibold tracking-[0.16em] text-rose-900">詰まり・古い読み</p>
           <div className="mt-4 grid gap-4">
             <div>
               <p className="text-sm font-semibold text-slate-950">詰まり</p>
@@ -8511,9 +8498,7 @@ function WorkDesignPerspectiveShiftPanel({
           </div>
         </article>
         <article className={`rounded-lg border p-5 ${domain.panelClass}`}>
-          <p className="text-xs font-semibold tracking-[0.16em] text-teal-900">
-            設計・設計の読み
-          </p>
+          <p className="text-xs font-semibold tracking-[0.16em] text-teal-900">設計・設計の読み</p>
           <div className="mt-4 grid gap-4">
             <div>
               <p className="text-sm font-semibold text-slate-950">設計</p>
@@ -8746,9 +8731,7 @@ function WorkDesignGuidePublicContent({
                           />
                           <WorkDesignSituationScaleStrip section={section} />
                           <WorkDesignPerspectiveShiftPanel section={section} domain={domain} />
-                          <WorkDesignImplementationPointsPanel
-                            substructures={substructures}
-                          />
+                          <WorkDesignImplementationPointsPanel substructures={substructures} />
                         </article>
                       );
                     })}
@@ -8851,9 +8834,7 @@ function WorkConditionCategoryCard({
                   {category.designBridge}
                 </p>
               </div>
-              <p className="mt-4 text-sm leading-7 text-slate-700">
-                {category.overview}
-              </p>
+              <p className="mt-4 text-sm leading-7 text-slate-700">{category.overview}</p>
             </div>
           </aside>
         </div>
@@ -9748,9 +9729,7 @@ function ConsultationCaseReadingPublicContent() {
                       className="rounded-md border border-white bg-white/85 p-3"
                       key={step.title}
                     >
-                      <span className="text-xs font-semibold text-teal-900">
-                        {index + 1}
-                      </span>
+                      <span className="text-xs font-semibold text-teal-900">{index + 1}</span>
                       <p className="mt-1 text-sm font-semibold leading-snug text-slate-950">
                         {step.title}
                       </p>
@@ -9959,24 +9938,24 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
       chipClass: 'bg-lime-50 text-lime-950 border-lime-200',
     },
   ] as const;
-  const businessUseCards = [
+  const howSteps = [
     {
-      title: '企業・管理職研修',
-      body: '障害者雇用を例外対応に閉じず、管理職の判断負担、評価、手順、相談線を見直す教材として使う。',
-      href: 'work-design-views-guide',
-      icon: BriefcaseBusiness,
+      title: '断片とバイアスを、そのまま要約しない',
+      body: '障害者雇用・就労支援、難病就労支援の情報は膨大ですが、断片的で、偏見や制度側の見方も混ざります。単純要約では、問題を再生産してしまうことがあります。',
+      icon: ClipboardList,
+      tag: 'Source',
     },
     {
-      title: '行政・支援機関の共同検討',
-      body: '制度説明や支援メニューを、本人・職場・支援者が共有できる仕事条件の問いへ翻訳する。',
-      href: 'theory-method-trust',
-      icon: HeartHandshake,
+      title: '理念を、実践できる構造へ変える',
+      body: 'ICFの相互作用モデル、障害者権利条約の理念、合理的配慮などの政策概念を、本人・仕事・環境・支援・時間・評価の関係として扱います。',
+      icon: BrainCircuit,
+      tag: 'Frame',
     },
     {
-      title: '記事・図解・教材の活用',
-      body: 'NBLレポート、図解、4コマ、音楽、フォーラム素材を、会議や研修の共通資料として使う。',
-      href: 'toolkit-studio',
-      icon: Layers3,
+      title: 'AIで認知負荷を下げ、人間の実践を広げる',
+      body: 'AIの文脈読解を補助線に、総合的な読み、バイアス点検、問題構造の整理を進め、人が確認し、話し合い、試せる地図へ戻します。',
+      icon: Map,
+      tag: 'Practice',
     },
   ] as const;
 
@@ -9984,212 +9963,138 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
     <>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 md:py-16">
+          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">How</p>
+              <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-4xl">
+                膨大で偏りを含む情報を、実践できる仕事条件の地図へ。
+              </h2>
+              <p className="mt-5 text-base leading-8 text-slate-700">
+                NBLは、AIに判断を任せるのではなく、人だけでは追いきれなかった文脈の重なりを読みほどき、偏見や決めつけを点検しながら、人間が確認し、共有し、設計できる形へ戻します。
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  className="inline-flex items-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-950"
+                  href={candidatePath('theory-method-trust')}
+                >
+                  NBLの専門性
+                  <ArrowRight size={16} />
+                </Link>
+                <Link
+                  className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
+                  href="/projects"
+                >
+                  プロジェクト
+                </Link>
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {howSteps.map((step) => {
+                const Icon = step.icon;
+                return (
+                  <article
+                    className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
+                    key={step.title}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="grid h-11 w-11 place-items-center rounded-lg bg-[#071f1d] text-white">
+                        <Icon size={19} />
+                      </span>
+                      <span className="rounded-full border border-teal-100 bg-white px-2.5 py-1 text-xs font-semibold text-teal-800">
+                        {step.tag}
+                      </span>
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold tracking-normal text-slate-950">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-700">{step.body}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="border-y border-teal-100 bg-[#eef7f4]">
+        <div className="mx-auto max-w-7xl px-5 py-14 md:py-16">
           <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-                Start here
-              </p>
-              <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl md:leading-tight">
-                問いはばらばらでも、
-                <span className="block">見る地図はひとつ。</span>
-              </h2>
-            </div>
-            <div className="rounded-lg border border-teal-100 bg-[#eef5f1] p-6">
-              <p className="text-lg font-semibold leading-8 tracking-normal text-slate-950 md:text-2xl md:leading-10">
-                働きづらさを、本人の弱さや職場の善意だけで終わらせない。
-              </p>
-              <p className="mt-4 text-base leading-8 text-slate-700">
-                課題、相談、設計、レポート、図解、障害種類。どこから入っても、本人・仕事・環境・支援・時間・評価の関係を見える形にしていきます。
-              </p>
-            </div>
-          </div>
-          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {primaryEntrances
-              .map((entrance) => {
-                const item = publicCandidateRoutes().find((route) => route.slug === entrance.slug);
-                if (!item) {
-                  return null;
-                }
-                const ContextIcon = item.context.icon;
-                return (
-                  <Link
-                    className={`group relative flex min-h-[280px] flex-col overflow-hidden rounded-lg border bg-gradient-to-br p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl ${entrance.accentClass} ${
-                      item.slug === currentSlug ? 'border-slate-950' : 'border-slate-200'
-                    }`}
-                    href={candidatePath(item.slug)}
-                    key={item.routeId}
-                  >
-                    <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/55" />
-                    <div className="pointer-events-none absolute -bottom-16 left-10 h-28 w-44 rounded-[50%] border border-white/70" />
-                    <div className="relative flex items-start justify-between gap-4">
-                      <span
-                        className={`grid h-12 w-12 place-items-center rounded-lg shadow-sm ${entrance.iconClass}`}
-                      >
-                        <ContextIcon size={19} />
-                      </span>
-                      <span
-                        className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${entrance.chipClass}`}
-                      >
-                        {entrance.tag}
-                      </span>
-                    </div>
-                    <h3 className="relative mt-5 break-words text-2xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere]">
-                      {entrance.title}
-                    </h3>
-                    <p className="relative mt-3 flex-1 text-sm leading-7 text-slate-700">
-                      {entrance.body}
-                    </p>
-                    <div className="relative mt-5 flex flex-wrap gap-2">
-                      {entrance.visualWords.map((word, index) => (
-                        <span
-                          className="inline-flex items-center rounded-full border border-white/70 bg-white/75 px-3 py-1.5 text-xs font-semibold leading-5 text-slate-800 shadow-sm"
-                          key={word}
-                        >
-                          <span className="sr-only">{index + 1}. </span>
-                          {word}
-                        </span>
-                      ))}
-                    </div>
-                    <span className="relative mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-teal-900 group-hover:text-teal-700">
-                      開く
-                      <ArrowRight size={15} />
-                    </span>
-                  </Link>
-                );
-              })}
-          </div>
-        </div>
-      </section>
-      <section className="border-y border-slate-200 bg-[#eef5f1]">
-        <div className="mx-auto max-w-7xl px-5 py-12 md:py-14">
-          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-                For teams
+                What
               </p>
               <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-4xl">
-                企業・行政・支援機関の方へ。
+                未解決の働きづらさは、
+                <span className="block">仕事・社会参加設計の応用問題。</span>
               </h2>
-              <p className="mt-5 text-base leading-8 text-slate-700">
-                このサイトは個別相談の受付窓口ではありません。研修、教材づくり、共同検討、講演、調査研究、社会発信で、働きづらさを仕事条件として話すための共通土台として使えます。
+            </div>
+            <div className="rounded-lg border border-teal-200 bg-white p-6 shadow-sm">
+              <p className="text-lg font-semibold leading-8 tracking-normal text-slate-950 md:text-2xl md:leading-10">
+                問いはばらばらでも、見る地図はひとつ。
               </p>
-              <Link
-                className="mt-6 inline-flex items-center gap-2 rounded-md border border-teal-700 bg-white px-5 py-3 text-sm font-semibold text-teal-900 transition hover:bg-teal-50"
-                href={candidatePath('about-boundary')}
-              >
-                問い合わせ前に確認する
-                <ArrowRight size={15} />
-              </Link>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {businessUseCards.map((card) => {
-                const Icon = card.icon;
-                return (
-                  <Link
-                    className="group flex h-full flex-col rounded-xl border border-teal-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-700 hover:shadow-md"
-                    href={candidatePath(card.href)}
-                    key={card.title}
-                  >
-                    <span className="grid h-11 w-11 place-items-center rounded-full bg-slate-950 text-white">
-                      <Icon size={19} />
-                    </span>
-                    <span className="mt-5 text-lg font-semibold leading-7 tracking-normal text-slate-950">
-                      {card.title}
-                    </span>
-                    <span className="mt-3 flex-1 text-sm leading-7 text-slate-700">
-                      {card.body}
-                    </span>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
-                      関連ページへ
-                      <ArrowRight size={15} />
-                    </span>
-                  </Link>
-                );
-              })}
+              <p className="mt-4 text-base leading-8 text-slate-700">
+                さまざまな働きづらさは、多様な人間と社会・環境の相互作用を踏まえた仕事と社会参加の設計課題です。課題、相談、設計、レポート、図解、障害種類。どこから入っても、同じ地図へ進めます。
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="border-y border-slate-200 bg-[#f7f3e8]">
-        <div className="mx-auto max-w-7xl px-5 py-16">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-              What changes
-            </p>
-            <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-4xl">
-              見えにくかった関係を、話せる地図にする。
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-700">
-              このサイトの中心は、障害や病気を特別扱いの話に閉じることではありません。そこで見えてきた知見を、人間の多様性を前提にした仕事と参加の設計へ広げることです。
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6">
-            {deepPageModules.reader_facing_top_home.map((module) => (
-              <article
-                key={module.title}
-                className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-800">
-                  {module.eyebrow}
-                </p>
-                <h3 className="mt-3 break-words text-2xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere]">
-                  {module.title}
-                </h3>
-                <p className="mt-4 text-base leading-8 text-slate-700">{module.lead}</p>
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
-                  {module.cards.map((card) => (
-                    <div
-                      className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-5"
-                      key={card.title}
-                    >
-                      {card.tag ? (
-                        <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-teal-800">
-                          {card.tag}
-                        </span>
-                      ) : null}
-                      <h4 className="mt-4 text-lg font-semibold tracking-normal text-slate-950">
-                        {card.title}
-                      </h4>
-                      <p className="mt-3 text-sm leading-7 text-slate-600">{card.body}</p>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="border-y border-slate-200 bg-[#f3eadb]">
-        <div className="mx-auto grid max-w-7xl gap-5 px-5 py-10 md:grid-cols-2">
-          {publicCandidateRoutes()
-            .filter((item) => ['theory-method-trust', 'about-boundary'].includes(item.slug))
-            .map((item) => {
+          <figure className="mt-9 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl">
+            <img
+              alt={homeHeroVisual.alt}
+              className="block h-auto w-full bg-[#f7f0df]"
+              src={homeHeroVisual.src}
+            />
+          </figure>
+          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {primaryEntrances.map((entrance) => {
+              const item = publicCandidateRoutes().find((route) => route.slug === entrance.slug);
+              if (!item) {
+                return null;
+              }
               const ContextIcon = item.context.icon;
               return (
                 <Link
-                  className="group rounded-xl border border-slate-200 bg-white p-5 transition hover:border-teal-300 hover:shadow-md"
+                  className={`group relative flex min-h-[280px] flex-col overflow-hidden rounded-lg border bg-gradient-to-br p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl ${entrance.accentClass} ${
+                    item.slug === currentSlug ? 'border-slate-950' : 'border-slate-200'
+                  }`}
                   href={candidatePath(item.slug)}
                   key={item.routeId}
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-slate-950 text-white">
-                      <ContextIcon size={18} />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <span
+                      className={`grid h-12 w-12 place-items-center rounded-lg shadow-sm ${entrance.iconClass}`}
+                    >
+                      <ContextIcon size={19} />
                     </span>
-                    <span className="text-sm font-semibold text-teal-800">
-                      {item.context.navLabelJa}
+                    <span
+                      className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${entrance.chipClass}`}
+                    >
+                      {entrance.tag}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-xl font-semibold tracking-normal text-slate-950">
-                    {item.context.falconPageRoleJa}
+                  <h3 className="relative mt-5 break-words text-2xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere]">
+                    {entrance.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.context.leadJa}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
-                    読む
+                  <p className="relative mt-3 flex-1 text-sm leading-7 text-slate-700">
+                    {entrance.body}
+                  </p>
+                  <div className="relative mt-5 flex flex-wrap gap-2">
+                    {entrance.visualWords.map((word, index) => (
+                      <span
+                        className="inline-flex items-center rounded-full border border-white/70 bg-white/75 px-3 py-1.5 text-xs font-semibold leading-5 text-slate-800 shadow-sm"
+                        key={word}
+                      >
+                        <span className="sr-only">{index + 1}. </span>
+                        {word}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="relative mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-teal-900 group-hover:text-teal-700">
+                    開く
                     <ArrowRight size={15} />
                   </span>
                 </Link>
               );
             })}
+          </div>
         </div>
       </section>
     </>
@@ -10403,9 +10308,7 @@ function NextPagePanel({
       <div className="mx-auto max-w-7xl px-5 py-12">
         <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-800">
-              Next
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-800">Next</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-normal text-slate-950 md:text-3xl">
               このページから、次に進む。
             </h2>
@@ -10490,7 +10393,7 @@ export default function AxiomNextNblPublicCandidateSiteSurface({
       <PublicCandidateShell currentRoute={route}>
         <main>
           {isHome ? (
-            <HomeTopHero context={context} />
+            <HomeTopHero />
           ) : isAboutBoundary ? (
             <AboutSiteInfoHero />
           ) : (

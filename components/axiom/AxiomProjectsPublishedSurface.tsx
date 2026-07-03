@@ -40,7 +40,7 @@ const primaryNavItems = navItems.filter((item) =>
     '/case-readings',
     '/work-design-views-guide',
     '/articles-social-questions',
-    '/projects',
+    '/toolkit-studio',
   ].includes(item.href),
 );
 
@@ -130,14 +130,9 @@ export default function AxiomProjectsPublishedSurface() {
           >
             検索
           </NextLink>
-          {navItems.map((item) => (
+          {primaryNavItems.map((item) => (
             <NextLink
-              aria-current={item.href === '/projects' ? 'page' : undefined}
-              className={`shrink-0 whitespace-nowrap border-b-2 px-2 py-1.5 text-[13px] ${
-                item.href === '/projects'
-                  ? 'border-teal-800 text-slate-950'
-                  : 'border-transparent text-slate-600'
-              }`}
+              className="shrink-0 whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] text-slate-600"
               href={item.href}
               key={item.href}
             >

@@ -21,9 +21,8 @@ describe('Contact page', () => {
       'href',
       'https://researchmap.jp/yharuna',
     );
-    expect(screen.getByRole('link', { name: 'メールで連絡する' })).toHaveAttribute(
-      'href',
-      'mailto:info@nextbeinglab.org',
-    );
+    expect(
+      screen.getByRole('link', { name: 'info@nextbeinglab.org にメールする' }),
+    ).toHaveAttribute('href', 'mailto:info@nextbeinglab.org');
   });
 });
