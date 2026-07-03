@@ -73,6 +73,17 @@ Axiomの本当の中核はTypeScriptコードではなく、**証拠に接地し
 4. `data/original_secure/` の生データは新世代パイプラインから直接参照しない。カーネル（B）と統合ドメイン知識オブジェクトを唯一の入口とする。
 5. 凍結の解除・対象変更は、本ドキュメントの改訂版（v1以降）として明示的に行う。暗黙の例外は認めない。
 
+## 追記: 凍結の実体化（2026-07-03・タグ v1）
+
+v0タグ作成後の検証で、**凍結対象の大半がgit履歴に一度も入っていなかった**ことが判明した（`lib/axiom/` 78ファイル中HEADには31のみ、`data/specs/axiom/` フィクスチャ全体が未追跡、axiomテスト106本が未追跡）。Codex期に「ビルドに必要な分だけ都度コミット」した結果であり、これらを守っていたのはSynology Drive同期のみだった。
+
+対応: コミット `8223175` で凍結対象パスの未追跡ファイル401件（約14.8万行）をgit履歴に収録し、タグ `axiom-kernel-freeze-v1-2026-07-03` を打った。以下は容量のためgit外のまま残す（＝Synology同期が唯一の保全。別媒体バックアップ推奨）:
+
+- `references/social/`（384MB・収集キャッシュ）
+- `references/derived/`（135MB・派生データ）
+- `data/original_secure/`, `data/analysis_ready/`, `data/local_cache/`, `data/staging/`（従来どおり）
+- `docs/nbl-workspace/ops/archive/` 等の未追跡アーカイブ文書群（約6,000件・Codex期の歴史的ops文書。凍結目録の対象外だが未コミットである事実をここに記録する）
+
 ## 境界
 
 本ドキュメントは凍結宣言であり、公開承認・publication・runtime/model/schema変更・source/support validity判断・candidate_pattern昇格・学習更新のいずれでもない。
