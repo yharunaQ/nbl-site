@@ -1,0 +1,244 @@
+{
+  "source_model_id": "employment_survey_3000.figure-4-1-1.v1",
+  "version": "v1",
+  "artifact_status": "provisional",
+  "prior_granularity": "figure_or_model",
+  "source_family": "employment_survey_3000",
+  "source_document": {
+    "title": "Disability Employment.pdf",
+    "path": "data/original_secure/structured/employment_survey_3000/Disability Employment.pdf",
+    "figure_or_model_ref": "図 4-1-1",
+    "figure_or_model_title": "ICF における生活機能の概念枠組"
+  },
+  "questionnaire_artifacts": [
+    "docs/nbl-workspace/FCHMA_調査データ取込プロファイル_患者調査_v1.md",
+    "docs/nbl-workspace/FCHMA_Survey_Ingestion_Profile_Disability_Nanbyo_v1.md",
+    "data/specs/response-type-maps/employment_survey_3000.response-type-map.json"
+  ],
+  "model_scope": "Patient-side ICF-framed structural prior for employment difficulties, supports, and personal/environment factors in employment_survey_3000.",
+  "intended_analytic_role": "Bounded offline prior for the first Falcon packet on case 01010.",
+  "execution_modes_supported": [
+    "reproduce_original_model",
+    "prior_guided_fchma",
+    "open_fchma_discovery"
+  ],
+  "runtime_visibility": "none",
+  "nodes": [
+    {
+      "node_id": "health_condition",
+      "label": "健康状態 / 心身機能・構造",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問3",
+        "障害・疾患"
+      ],
+      "source_block": "health_condition",
+      "common_domain_candidates": [
+        "health_condition_profile"
+      ],
+      "icf_anchor_candidates": [
+        "b",
+        "s"
+      ],
+      "local_frame_candidates": [
+        "impairment_profile"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "Source prior treats health condition and body function/structure as the medical side of the occupational difficulty structure."
+    },
+    {
+      "node_id": "occupational_challenges",
+      "label": "活動 / 参加 / 職業的課題",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問7",
+        "問8",
+        "問9",
+        "問11",
+        "問12",
+        "問13",
+        "問14",
+        "問16",
+        "問18",
+        "問19"
+      ],
+      "source_block": "activity_participation",
+      "common_domain_candidates": [
+        "work_participation",
+        "occupational_problem_profile"
+      ],
+      "icf_anchor_candidates": [
+        "d"
+      ],
+      "local_frame_candidates": [
+        "pre_employment_tasks",
+        "post_employment_tasks",
+        "subjective_life_function"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The source distinguishes pre-employment and post-employment occupational challenges and also includes subjective satisfaction and confidence."
+    },
+    {
+      "node_id": "environmental_factors",
+      "label": "環境因子 / 取組",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問5",
+        "問6",
+        "問10",
+        "問12"
+      ],
+      "source_block": "environment",
+      "common_domain_candidates": [
+        "support_access",
+        "workplace_accommodation"
+      ],
+      "icf_anchor_candidates": [
+        "e"
+      ],
+      "local_frame_candidates": [
+        "support_utilization",
+        "accommodation_operations"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "Source prioritizes enabling factors and support arrangements rather than focusing only on barriers."
+    },
+    {
+      "node_id": "personal_factors",
+      "label": "個人因子",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問15",
+        "問17",
+        "問2"
+      ],
+      "source_block": "personal_factors",
+      "common_domain_candidates": [
+        "motivation",
+        "cognitive_style",
+        "life_context"
+      ],
+      "icf_anchor_candidates": [],
+      "local_frame_candidates": [
+        "meaning_of_work",
+        "coping_orientation"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "ICF does not classify personal factors, but the source explicitly treats work meaning and cognitive orientation as relevant."
+    }
+  ],
+  "edges": [
+    {
+      "relation_id": "rel-health-to-occupational-challenges",
+      "from_node_id": "health_condition",
+      "to_node_id": "occupational_challenges",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Disability Employment.pdf: 図 4-1-1 surrounding text"
+      ],
+      "source_page_refs": [
+        "図 4-1-1",
+        "printed pp. 117-119"
+      ],
+      "review_notes": "Source describes occupational problems as affected by health condition and function/structure but not determined by them alone."
+    },
+    {
+      "relation_id": "rel-environment-to-occupational-challenges",
+      "from_node_id": "environmental_factors",
+      "to_node_id": "occupational_challenges",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Disability Employment.pdf: 図 4-1-1 surrounding text"
+      ],
+      "source_page_refs": [
+        "図 4-1-1",
+        "printed pp. 117-119"
+      ],
+      "review_notes": "Source explicitly treats support and accommodation as enabling factors shaping occupational outcomes."
+    },
+    {
+      "relation_id": "rel-personal-to-occupational-challenges",
+      "from_node_id": "personal_factors",
+      "to_node_id": "occupational_challenges",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Disability Employment.pdf: personal-factor explanation"
+      ],
+      "source_page_refs": [
+        "printed pp. 119-120"
+      ],
+      "review_notes": "Source positions work meaning and cognitive orientation as factors that may influence how occupational difficulties are experienced and addressed."
+    }
+  ],
+  "hyperedges": [],
+  "allowed_mapping_to_common_domains": [
+    "health_condition_profile",
+    "occupational_problem_profile",
+    "support_access",
+    "workplace_accommodation",
+    "motivation",
+    "life_context"
+  ],
+  "icf_anchor_policy": "ICF remains the main common structural frame. This prior is interpreted as a source-authored structural guide inside the ICF outer frame.",
+  "icd_support_policy": "ICD is not used as an explanatory frame here and remains limited to health-condition normalization support when later needed.",
+  "semantic_state_dependencies": [
+    "problem_experienced",
+    "resolution_state",
+    "support_present",
+    "support_needed",
+    "unmet_need",
+    "not_needed",
+    "domain_relevant",
+    "currently_unresolved",
+    "phase"
+  ],
+  "provenance": {
+    "reconstruction_method": "Local PDF text extraction plus bounded manual reconstruction of the source-authored figure/model.",
+    "source_page_refs": [
+      "図 4-1-1",
+      "printed pp. 117-119"
+    ],
+    "reconstruction_note": "The prior is reconstructed from the figure title and surrounding explanatory prose. It is not treated as an exhaustive truth graph.",
+    "packet_id": "falcon-offline-patient-case-rg3-rg4-2026-04-14"
+  }
+}

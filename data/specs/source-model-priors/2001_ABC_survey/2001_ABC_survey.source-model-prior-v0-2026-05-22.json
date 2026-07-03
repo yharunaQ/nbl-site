@@ -1,0 +1,157 @@
+{
+  "dataset_id": "2001_ABC_survey",
+  "source_model_prior_id": "2001_ABC_survey_historical_linked_triangular_prior_v0_2026_05_22",
+  "status": "unreviewed_source_model_prior",
+  "source_family": "historical_linked_triangular_source_family",
+  "created_at": "2026-05-22",
+  "allowed_role": [
+    "historical contrast layer",
+    "linked perspective-gap evidence layer",
+    "A-table independent establishment and HR-labor management evidence layer",
+    "B-table independent workplace-perspective evidence layer",
+    "C-table independent worker-side function, support-need, participation, and satisfaction evidence layer",
+    "restricted narrative evidence layer after redaction and narrative-unit staging",
+    "worksite-contact and support-state aggregate profiling",
+    "Stage 1 structure stress-test input"
+  ],
+  "disallowed_role_without_separate_review": [
+    "current policy proof",
+    "current accommodation standard",
+    "support validity decision",
+    "case-level employment or accommodation judgment",
+    "rare-disease evidence substitute",
+    "runtime knowledge object",
+    "public approved claim"
+  ],
+  "strengths": [
+    {
+      "id": "triadic_linkage",
+      "description": "A/B/C tables allow establishment, supervisor, and disabled-worker perspectives to be compared for many pairs."
+    },
+    {
+      "id": "A_independent_establishment_burden_context",
+      "description": "A alone has establishment and HR-labor-management coverage, including accommodation burden perception, employment reasons, employment challenges, and external expert advice/consultation use."
+    },
+    {
+      "id": "worksite_contact_density",
+      "description": "B and C include dense structured items on worksite contact points, supports, task performance, communication, mobility, commuting, health/self-care, interpersonal relations, emergency preparedness, and daily living."
+    },
+    {
+      "id": "B_independent_workplace_perspective_density",
+      "description": "B alone has unusually detailed supervisor/workplace-side structured coverage of support states, task-contact problems, occupational-life constraints, assistive devices, job context, and external support context; it should be preserved as a workplace-perspective layer, not only as a B/C contrast source."
+    },
+    {
+      "id": "support_state_vs_need_usefulness",
+      "description": "B support implementation/needed/not-needed states can be contrasted with C need/usefulness states after category and item alignment QA."
+    },
+    {
+      "id": "C_independent_worker_function_participation_satisfaction",
+      "description": "C alone has worker-side detailed function-condition windows, support need/usefulness ratings, job-content context, response-method flags, assistive-device use, and job satisfaction."
+    },
+    {
+      "id": "narrative_layer_density",
+      "description": "A/B/C include substantial narrative fields: A establishment added context and employment-management notes, B work-content/support-practice/external-support narratives, and C work-content/support-method/open-need narratives. These should enter SCIMA/FCHMA only through redaction and narrative-unit staging."
+    },
+    {
+      "id": "participation_quality_signal",
+      "description": "B constraints/problems plus C job satisfaction and support usefulness can test participation quality without treating job continuation as sufficient."
+    },
+    {
+      "id": "physical_intellectual_depth",
+      "description": "Physical, sensory, internal, and intellectual disability windows appear rich enough for diversity-conditioned structural comparison."
+    }
+  ],
+  "blind_spots": [
+    {
+      "id": "historical_era",
+      "description": "The data reflects 2001 labor-market, policy, support-service, and workplace-design contexts."
+    },
+    {
+      "id": "rare_disease_absence",
+      "description": "No rare-disease source family is present; health-time claims must not be generalized to current rare-disease employment support."
+    },
+    {
+      "id": "mental_disability_context_limit",
+      "description": "Mental disability appears only in a pre-employment-obligation historical context and should be treated as a limited condition window."
+    },
+    {
+      "id": "establishment_selection_bias",
+      "description": "The request scheme asked establishments to select up to three disabled workers, generally prioritizing heavier disability degree and diversity when needed."
+    },
+    {
+      "id": "linkage_uncertainty",
+      "description": "The local README cautions that disabled-worker-number linkage is not necessarily certain; B/C disability and severity mismatch must be QA flags."
+    },
+    {
+      "id": "perspective_asymmetry",
+      "description": "Supervisor and worker responses are different actor perspectives, not interchangeable measurements of one truth."
+    },
+    {
+      "id": "sensitive_text",
+      "description": "C includes diagnosis/health-condition text and A/B/C include free text; row-level text must not be quoted or exported."
+    }
+  ],
+  "noise_policy": {
+    "hard_repair_before_analysis": [
+      "missing establishment or target identifiers",
+      "duplicate linkage keys",
+      "coded values outside dictionary labels unless recoded by documented missing/other-code policy",
+      "unreviewed item-number matching between B and C support items"
+    ],
+    "soft_flag_not_default_exclusion": [
+      "B/C main-disability code mismatch",
+      "B/C severity code mismatch",
+      "B+C pairs without A context",
+      "C non-self or assisted answer method",
+      "intellectual-disability special questionnaire flag",
+      "mental-disability code in historical context"
+    ],
+    "preserve_as_signal": [
+      "supervisor-worker support need differences after alignment QA",
+      "resolved vs unresolved task/contact problems",
+      "participation-quality differences between constraints, support usefulness, and satisfaction",
+      "condition-window-specific worksite contact forms"
+    ]
+  },
+  "initial_network_integration_stance": {
+    "integration_layer": "evidence_and_contrast_layer_only",
+    "candidate_object_types": [
+      "historical_triadic_contrast_card",
+      "A_establishment_burden_context_card",
+      "A_external_advice_use_context_card",
+      "A_employment_reason_challenge_context_card",
+      "A_establishment_narrative_context_card",
+      "B_worksite_contact_atlas_card",
+      "B_support_state_landscape_card",
+      "B_occupational_life_constraint_card",
+      "B_work_content_contact_narrative_card",
+      "B_support_practice_narrative_card",
+      "C_function_condition_window_card",
+      "C_worker_support_need_usefulness_card",
+      "C_participation_satisfaction_modifier_card",
+      "C_worker_work_content_narrative_card",
+      "C_worker_need_policy_narrative_card",
+      "worksite_contact_alignment_card",
+      "support_state_need_gap_card",
+      "participation_quality_contrast_card",
+      "condition_window_contact_variant_card"
+    ],
+    "required_before_scima_fchma_interpretation": [
+      "linkage QA profile",
+      "response-type map review",
+      "A/B/C single-perspective value profile preservation",
+      "narrative field readiness profile",
+      "redaction and content-hash staging for narrative units before LLM reading",
+      "B/C support-item alignment review",
+      "coded-value recode policy",
+      "free-text and diagnosis-text redaction plan",
+      "era limitation note"
+    ],
+    "required_before_knowledge_network_merge": [
+      "Stage 1 structure comparison note",
+      "bias and missing-context flags",
+      "human review or explicit unreviewed contrast status",
+      "no public/current-policy claim"
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "spec_type": "nanbyo_workplace_web_raw0324_branch_eligibility_and_missingness_taxonomy_v0",
+  "generated_at": "2026-05-07T15:25:00+09:00",
+  "dataset_id": "nanbyo_workplace_2022_2023_web_raw0324",
+  "source_branch_review": "data/specs/response-type-maps/nanbyo_workplace_2022_2023_web_raw0324.missingness-branch-review-v1.json",
+  "status": "rules_scaffold_not_analysis_ready",
+  "missingness_status_taxonomy": [
+    {
+      "status": "observed_value",
+      "meaning": "cell contains a source response value retained in sanitized staging"
+    },
+    {
+      "status": "not_selected_pending_export_confirmation",
+      "meaning": "candidate status for blank or zero-like multi-select option after export semantics are confirmed"
+    },
+    {
+      "status": "unanswered_eligible",
+      "meaning": "respondent was eligible for the item but did not answer"
+    },
+    {
+      "status": "structural_skip_branch_ineligible",
+      "meaning": "respondent was not eligible due to survey branch route"
+    },
+    {
+      "status": "item_level_followup_skip_ineligible",
+      "meaning": "follow-up item was not asked because the corresponding implementation item did not meet the trigger"
+    },
+    {
+      "status": "not_applicable_no_multiple_case",
+      "meaning": "low-support-needed case block not applicable because multiple cases were not present or not established"
+    },
+    {
+      "status": "excluded_quarantine",
+      "meaning": "column excluded due to identifiable, free-text, disease-name, or system-wrapper risk"
+    },
+    {
+      "status": "no_analysis_wrapper",
+      "meaning": "web survey wrapper, section marker, or row anchor; not an analysis variable"
+    },
+    {
+      "status": "unresolved_missingness",
+      "meaning": "blank semantics not yet safe to classify"
+    }
+  ],
+  "branch_rules": [
+    {
+      "rule_id": "all_respondents_core",
+      "applies_to_blocks": [
+        "respondent_visibility_scope",
+        "establishment_context",
+        "nanbyo_information_recognition",
+        "organization_policy_posture",
+        "desired_supports"
+      ],
+      "eligibility": "all respondent rows unless column is quarantine or wrapper",
+      "status": "rule_scaffold_pending_export_semantics"
+    },
+    {
+      "rule_id": "q6_recognized_employee_route",
+      "applies_to_blocks": [
+        "recognized_employment_state"
+      ],
+      "eligibility": "all respondent rows answer Q6 recognized employment state items",
+      "status": "rule_scaffold_pending_domain_review"
+    },
+    {
+      "rule_id": "q6_1a_high_support_case_route",
+      "applies_to_blocks": [
+        "high_support_case_implementation",
+        "high_support_case_certificate"
+      ],
+      "eligibility": "rows where Q6 indicates recognized/current-or-past nanbyo employee route; exact trigger pending domain review",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_1a_high_support_burden_followup",
+      "applies_to_blocks": [
+        "high_support_case_burden_if_implemented"
+      ],
+      "eligibility": "item-level eligibility where corresponding AG:AO implementation item is implemented",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_1a_high_support_necessity_followup",
+      "applies_to_blocks": [
+        "high_support_case_necessity_if_not_implemented"
+      ],
+      "eligibility": "item-level eligibility where corresponding AG:AO implementation item is not implemented",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_1a_low_support_case_route",
+      "applies_to_blocks": [
+        "low_support_case_implementation",
+        "low_support_case_certificate"
+      ],
+      "eligibility": "rows with multiple nanbyo employees where low-support-needed comparison case is applicable; exact trigger pending domain review",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_1a_low_support_burden_followup",
+      "applies_to_blocks": [
+        "low_support_case_burden_if_implemented"
+      ],
+      "eligibility": "item-level eligibility where corresponding BO:BW implementation item is implemented",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_1a_low_support_necessity_followup",
+      "applies_to_blocks": [
+        "low_support_case_necessity_if_not_implemented"
+      ],
+      "eligibility": "item-level eligibility where corresponding BO:BW implementation item is not implemented",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_2a_q6_3a_support_route",
+      "applies_to_blocks": [
+        "grant_or_subsidy_use",
+        "external_support_use"
+      ],
+      "eligibility": "recognized nanbyo employee support route; exact trigger pending domain review",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "q6_1b_hypothetical_burden_route",
+      "applies_to_blocks": [
+        "imagined_support_burden_no_recognized_experience"
+      ],
+      "eligibility": "rows routed to hypothetical/no-recognized-experience burden block; exact trigger pending domain review",
+      "status": "pending_machine_checkable_condition"
+    },
+    {
+      "rule_id": "quarantine_exclusion_rule",
+      "applies_to_blocks": [
+        "establishment_context_other_text",
+        "recognized_employment_state_other_text",
+        "high_support_case_disease_text",
+        "low_support_case_disease_text",
+        "free_text_opinion",
+        "completion_or_confirmation_wrappers"
+      ],
+      "eligibility": "never analysis-ready in this pipeline; separate de-identification/review required",
+      "status": "active_stop_rule"
+    }
+  ],
+  "analysis_ready_gate": {
+    "status": "not_ready",
+    "reason": "rules are named but not yet machine-checkable against reviewed value-domain labels",
+    "next_required_step": "convert pending_machine_checkable_condition rules into deterministic checks after questionnaire/domain review"
+  },
+  "boundary": {
+    "analysis_ready_created": false,
+    "substantive_findings_created": false,
+    "free_text_processed": false,
+    "disease_names_normalized": false,
+    "public_use_approved": false,
+    "runtime_updated": false,
+    "knowledge_promoted": false,
+    "d_and_e_values_not_copied": true
+  }
+}

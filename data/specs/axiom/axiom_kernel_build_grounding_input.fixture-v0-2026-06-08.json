@@ -1,0 +1,190 @@
+{
+  "inputId": "axiom_kernel_build_grounding_input_health_time_v0_2026_06_08",
+  "objectType": "axiom_kernel_build_grounding_input",
+  "contractVersion": "v0_2026_06_08",
+  "lane": "Falcon Lab",
+  "inputMode": "evidence_foundation_fixture",
+  "scenarioId": "l3_health_time_accommodation_lookup_trap_v0",
+  "sourceFoundationRefs": [
+    {
+      "id": "foundation_non_sensitive_synthetic_health_time_scenario",
+      "kind": "non_sensitive_synthetic_scenario",
+      "uri": "data/specs/axiom/axiom_kernel_build_grounding_input.fixture-v0-2026-06-08.json",
+      "layer": "evidence",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "A non-sensitive scenario carrier for deterministic kernel-build tests."
+    },
+    {
+      "id": "foundation_falcon_core_eval_profile",
+      "kind": "falcon_bootstrap_prior",
+      "uri": "data/specs/quality/falcon_expert_agent.core_eval_profile-v0-2026-06-07.json",
+      "layer": "evidence",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "Falcon L3 eval expectations are bootstrap priors for Axiom eval, not Axiom truth."
+    },
+    {
+      "id": "foundation_stage1_l3_principal_patterns",
+      "kind": "l3_principal_pattern_surface",
+      "uri": "references/derived/scima-fchma/stage1-production-v0-2026-05-18/stage1-production-l3-principal-pattern-extraction-v0-2026-05-26.md",
+      "layer": "structure",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "L3 principal patterns seed pattern IDs and cross-cutting checks without promotion."
+    },
+    {
+      "id": "foundation_ft03_response_contract",
+      "kind": "ft03_internal_response_contract",
+      "uri": "references/derived/scima-fchma/stage1-production-v0-2026-05-18/stage1-production-ft03-internal-expert-agent-response-contract-v0-2026-05-25.md",
+      "layer": "reference_frame",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "FT03 supplies observation/inference separation and boundary discipline."
+    },
+    {
+      "id": "foundation_falcon_core_weakness_audit",
+      "kind": "falcon_core_weakness_audit",
+      "uri": "docs/nbl-workspace/falcon-expert-agent-core-weakness-audit-and-v2-rebuild-2026-06-07.md",
+      "layer": "learning_boundary",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "The audit fixes the target: kernel build, grounding, eval, display, and review loop only."
+    }
+  ],
+  "evidenceSpans": [
+    {
+      "id": "span_synthetic_respondent_health_time",
+      "foundationRefId": "foundation_non_sensitive_synthetic_health_time_scenario",
+      "lens": "respondent_data",
+      "summary": "Non-sensitive worker-like scenario signal: fatigue appears after dense online meeting sequences.",
+      "supportsKernelFields": ["observation", "missingContext"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_l3_health_time_pattern_prior",
+      "foundationRefId": "foundation_falcon_core_eval_profile",
+      "lens": "external_evidence",
+      "summary": "The health-time scenario expects condition-window reasoning instead of disease-to-support lookup.",
+      "supportsKernelFields": ["observation", "inference", "actionabilityBand"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_l3_principal_pattern_mapping",
+      "foundationRefId": "foundation_stage1_l3_principal_patterns",
+      "lens": "external_evidence",
+      "summary": "L3 IDs map the provisional reading to health time, work-density contact points, and anti-lookup checks.",
+      "supportsKernelFields": ["inference", "counterHypothesis", "sourceLensStatus"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_ft03_separation_contract",
+      "foundationRefId": "foundation_ft03_response_contract",
+      "lens": "implementation_actor_conditions",
+      "summary": "FT03 requires observation, inference, missing context, implementation actors, and cannot-yet-say boundaries to remain separate.",
+      "supportsKernelFields": [
+        "inference",
+        "counterHypothesis",
+        "missingContext",
+        "implementationActorConditions",
+        "cannotYetSay",
+        "humanReviewRoute"
+      ],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_falcon_audit_kernel_gap",
+      "foundationRefId": "foundation_falcon_core_weakness_audit",
+      "lens": "implementation_actor_conditions",
+      "summary": "The rebuild audit says progress counts only when kernel build, eval, grounding, display, or human-review loop improves.",
+      "supportsKernelFields": ["sourceLensStatus", "humanReviewRoute", "cannotYetSay"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    }
+  ],
+  "inheritedFrames": [
+    {
+      "id": "inherited_falcon_public_page_skeleton",
+      "source": "falcon_public_page",
+      "status": "requires_axiom_eval",
+      "allowedUse": "delivery_reference_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which public-page frame is only a delivery skeleton, and which part has passed Axiom kernel evaluation?"
+    },
+    {
+      "id": "inherited_sns_progress",
+      "source": "sns_progress",
+      "status": "requires_axiom_eval",
+      "allowedUse": "delivery_reference_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which social signal can seed a question without becoming evidence or learning input?"
+    },
+    {
+      "id": "inherited_stage1_scima_fchma_outputs",
+      "source": "stage1_scima_fchma",
+      "status": "requires_axiom_eval",
+      "allowedUse": "bootstrap_prior_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which Stage 1 structure can be reused as a bootstrap prior while preserving Axiom eval requirements?"
+    },
+    {
+      "id": "inherited_l3_21_views",
+      "source": "l3_21_views",
+      "status": "requires_axiom_eval",
+      "allowedUse": "bootstrap_prior_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which 21-view condensation should become a review unit instead of hundreds of individual hypotheses?"
+    },
+    {
+      "id": "inherited_ft03_contract",
+      "source": "ft03_contract",
+      "status": "requires_axiom_eval",
+      "allowedUse": "bootstrap_prior_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which FT03 response discipline should be enforced before any runtime or public use?"
+    }
+  ],
+  "targetReviewUnitCountCap": 100,
+  "movementBoundary": {
+    "runtime": "not_changed",
+    "prompt": "not_changed",
+    "retrieval": "not_changed",
+    "modelProvider": "not_changed",
+    "dbSchema": "not_changed",
+    "sourceValidity": "not_decided",
+    "supportValidity": "not_decided",
+    "candidatePattern": "not_candidate_pattern",
+    "runtimeApproved": "not_approved",
+    "publicApproved": "not_approved",
+    "knowledgePromotion": "not_promoted"
+  }
+}

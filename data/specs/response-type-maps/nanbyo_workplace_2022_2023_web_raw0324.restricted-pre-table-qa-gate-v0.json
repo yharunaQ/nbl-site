@@ -1,0 +1,93 @@
+{
+  "spec_type": "nanbyo_workplace_web_raw0324_restricted_pre_table_qa_gate_v0",
+  "generated_at": "2026-05-07T14:03:41+09:00",
+  "dataset_id": "nanbyo_workplace_2022_2023_web_raw0324",
+  "status": "pre_table_qa_gate_spec_no_table_created",
+  "source_manifest_shape": "data/specs/response-type-maps/nanbyo_workplace_2022_2023_web_raw0324.restricted-analysis-ready-manifest-shape-v0.json",
+  "checks": [
+    {
+      "check_id": "manifest_shape_status_only",
+      "severity": "error",
+      "expected": "manifest status is manifest_shape_only_no_table_created"
+    },
+    {
+      "check_id": "manifest_total_source_columns_154",
+      "severity": "error",
+      "expected": "manifest has exactly 154 source fields"
+    },
+    {
+      "check_id": "manifest_first_table_candidate_columns_105",
+      "severity": "error",
+      "expected": "first restricted table candidate columns are 105 including one technical key"
+    },
+    {
+      "check_id": "manifest_candidate_analysis_fields_104",
+      "severity": "error",
+      "expected": "candidate analysis fields are 104"
+    },
+    {
+      "check_id": "manifest_held_low_support_fields_33",
+      "severity": "error",
+      "expected": "33 BO:CU fields are hold_unresolved_low_support_route"
+    },
+    {
+      "check_id": "manifest_quarantine_fields_10",
+      "severity": "error",
+      "expected": "10 quarantined fields are excluded"
+    },
+    {
+      "check_id": "manifest_wrapper_fields_6",
+      "severity": "error",
+      "expected": "6 web wrapper fields are excluded"
+    },
+    {
+      "check_id": "manifest_d_and_e_excluded",
+      "severity": "error",
+      "expected": "D and E are exclude_quarantine"
+    },
+    {
+      "check_id": "manifest_no_held_or_excluded_in_candidate_set",
+      "severity": "error",
+      "expected": "no held/excluded field is marked include_candidate_closed_field or include_technical_key except A technical key"
+    },
+    {
+      "check_id": "manifest_included_fields_have_missingness_policy",
+      "severity": "error",
+      "expected": "all included candidate fields have a non-empty missingness policy"
+    },
+    {
+      "check_id": "manifest_low_support_not_in_first_table",
+      "severity": "error",
+      "expected": "BO:CU are not emitted by first restricted-table candidate shape"
+    },
+    {
+      "check_id": "manifest_boundary_no_analysis_ready",
+      "severity": "error",
+      "expected": "analysis_ready_created remains false"
+    },
+    {
+      "check_id": "manifest_boundary_no_public_runtime_promotion",
+      "severity": "error",
+      "expected": "public/runtime/retrieval/knowledge-promotion flags remain false"
+    },
+    {
+      "check_id": "manifest_required_pre_table_qa_present",
+      "severity": "error",
+      "expected": "required_pre_table_qa list is present and non-empty"
+    }
+  ],
+  "pass_condition": "all checks pass and no analysis-ready table is created in this slice",
+  "hard_stop_if_failed": "do not create or design the table further; repair manifest shape first",
+  "post_pass_boundary": "passing this gate does not itself authorize table creation; table creation remains a separate yellow-boundary implementation decision",
+  "boundary": {
+    "analysis_ready_created": false,
+    "substantive_findings_created": false,
+    "free_text_processed": false,
+    "disease_names_normalized": false,
+    "icf_mapping_created": false,
+    "public_use_approved": false,
+    "runtime_updated": false,
+    "knowledge_promoted": false,
+    "d_and_e_values_not_copied": true
+  }
+}

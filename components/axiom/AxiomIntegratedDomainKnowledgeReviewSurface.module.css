@@ -1,0 +1,1074 @@
+.domainReview {
+  --axiom-bg: #f4f1e8;
+  --axiom-paper: #fffdf7;
+  --axiom-paper-warm: #fff7e8;
+  --axiom-ink: #17201a;
+  --axiom-muted: #516055;
+  --axiom-soft: #eef1e8;
+  --axiom-line: #d8ded1;
+  --axiom-line-strong: #a9b5a5;
+  --axiom-accent: #42684c;
+  --axiom-accent-dark: #213f2b;
+  --axiom-warning: #8b6721;
+
+  background:
+    linear-gradient(180deg, rgba(244, 241, 232, 0.92), rgba(250, 248, 241, 0.98)),
+    var(--axiom-bg);
+  color: var(--axiom-ink);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  min-height: 100vh;
+  padding: 40px 24px 72px;
+}
+
+.domainReview :global(.hero),
+.domainReview :global(.boundary),
+.domainReview :global(.coverageAudit),
+.domainReview :global(.reanalysisNotice),
+.domainReview :global(.rebuiltDiscoveryStack),
+.domainReview :global(.discoveryStack),
+.domainReview :global(.auditDisclosure) {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1180px;
+}
+
+.domainReview :global(.hero),
+.domainReview :global(.boundary),
+.domainReview :global(.reanalysisNotice),
+.domainReview :global(.discoveryCard),
+.domainReview :global(.axisCard),
+.domainReview :global(.coverageAudit),
+.domainReview :global(.rebuiltReviewCard),
+.domainReview :global(.receiptShell),
+.domainReview :global(.facetCoverage),
+.domainReview :global(.contrast),
+.domainReview :global(.auditDisclosure) {
+  background: var(--axiom-paper);
+  border: 1px solid var(--axiom-line);
+  border-radius: 8px;
+  box-shadow: 0 18px 46px rgba(35, 48, 38, 0.08);
+}
+
+.domainReview :global(.hero) {
+  padding: 30px;
+}
+
+.domainReview :global(h1),
+.domainReview :global(h2),
+.domainReview :global(h3),
+.domainReview :global(h4),
+.domainReview :global(p) {
+  margin: 0;
+}
+
+.domainReview :global(h1) {
+  color: #111a15;
+  font-size: clamp(2.1rem, 5vw, 4.3rem);
+  line-height: 1;
+  margin-top: 10px;
+  max-width: 980px;
+}
+
+.domainReview :global(h2) {
+  color: #17241d;
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+
+.domainReview :global(h3) {
+  color: #24362b;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.domainReview :global(h4) {
+  color: #2f4236;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.domainReview :global(h5) {
+  color: #5f6d5d;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin: 10px 0 5px;
+  text-transform: uppercase;
+}
+
+.domainReview :global(.eyebrow) {
+  color: #647363;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.domainReview :global(.hero > p:last-of-type) {
+  color: var(--axiom-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-top: 18px;
+  max-width: 980px;
+}
+
+.domainReview :global(.heroMeta),
+.domainReview :global(.chips) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.domainReview :global(.heroMeta) {
+  margin-top: 22px;
+}
+
+.domainReview :global(.heroMeta span),
+.domainReview :global(.chips span),
+.domainReview :global(.contrastRows header span) {
+  background: var(--axiom-soft);
+  border: 1px solid var(--axiom-line);
+  border-radius: 999px;
+  color: #294633;
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 7px 11px;
+}
+
+.domainReview :global(.boundary) {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
+  margin-top: 18px;
+  padding: 24px;
+}
+
+.domainReview :global(.boundary p),
+.domainReview :global(.sectionIntro p:last-child),
+.domainReview :global(.axisCard p),
+.domainReview :global(.contrastRows p),
+.domainReview :global(.reviewPanel p),
+.domainReview :global(.facetDetailGrid p),
+.domainReview :global(.residualGrid p) {
+  color: var(--axiom-muted);
+  line-height: 1.7;
+}
+
+.domainReview :global(.boundary h2),
+.domainReview :global(.sectionIntro h2) {
+  margin-top: 4px;
+}
+
+.domainReview :global(dl) {
+  margin: 0;
+}
+
+.domainReview :global(dt) {
+  color: #6c796c;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.domainReview :global(dd) {
+  color: #213428;
+  font-size: 0.88rem;
+  font-weight: 750;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.domainReview :global(.boundary dl),
+.domainReview :global(.axisMeta),
+.domainReview :global(.receiptMeta),
+.domainReview :global(.movementGrid),
+.domainReview :global(.coverageAuditGrid) {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.domainReview :global(.boundary dl div),
+.domainReview :global(.axisMeta div),
+.domainReview :global(.receiptMeta div),
+.domainReview :global(.movementGrid div),
+.domainReview :global(.coverageAuditGrid div),
+.domainReview :global(.reviewUnitGrid article dl div) {
+  background: var(--axiom-soft);
+  border: 1px solid var(--axiom-line);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.domainReview :global(.reanalysisNotice) {
+  background: #fff9ed;
+  border-color: #d8bd7a;
+  margin-top: 22px;
+  padding: 24px;
+}
+
+.domainReview :global(.reanalysisNotice > .sectionIntro) {
+  border-bottom: 1px solid #e6d5ad;
+  padding-bottom: 16px;
+}
+
+.domainReview :global(.reanalysisGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.8fr);
+  margin-top: 16px;
+}
+
+.domainReview :global(.reanalysisGrid article),
+.domainReview :global(.longTailPanel),
+.domainReview :global(.longTailPanel article),
+.domainReview :global(.layerProtectionGrid section),
+.domainReview :global(.layerProtectionGrid article),
+.domainReview :global(.signalGrid article),
+.domainReview :global(.rebuiltUnits article) {
+  background: #fffdf7;
+  border: 1px solid #e3d5b2;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.domainReview :global(.reanalysisGrid h3),
+.domainReview :global(.rebuiltUnits h3) {
+  margin-bottom: 8px;
+}
+
+.domainReview :global(.reanalysisGrid p),
+.domainReview :global(.longTailPanel > p),
+.domainReview :global(.layerProtectionGrid article p),
+.domainReview :global(.signalGrid p:last-child),
+.domainReview :global(.rebuiltUnits article p:last-child) {
+  color: var(--axiom-muted);
+  line-height: 1.7;
+}
+
+.domainReview :global(.reanalysisGrid dl),
+.domainReview :global(.signalGrid dl) {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.domainReview :global(.signalGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.longTailPanel) {
+  margin-top: 14px;
+}
+
+.domainReview :global(.longTailPanel header) {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.domainReview :global(.longTailPanel header span) {
+  background: #fff0d4;
+  border: 1px solid #d8bd7a;
+  border-radius: 999px;
+  color: #7a581f;
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 7px 10px;
+}
+
+.domainReview :global(.longTailPanel > p) {
+  margin-top: 10px;
+}
+
+.domainReview :global(.longTailPanel > div) {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.domainReview :global(.longTailPanel article) {
+  padding: 12px;
+}
+
+.domainReview :global(.longTailPanel article p) {
+  color: #7d6a37;
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-top: 4px;
+}
+
+.domainReview :global(.longTailPanel ul) {
+  color: var(--axiom-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.domainReview :global(.layerProtectionGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.layerProtectionGrid section) {
+  display: grid;
+  gap: 10px;
+}
+
+.domainReview :global(.layerProtectionGrid section > div) {
+  display: grid;
+  gap: 10px;
+}
+
+.domainReview :global(.layerProtectionGrid article) {
+  padding: 12px;
+}
+
+.domainReview :global(.layerProtectionGrid h4) {
+  margin-bottom: 5px;
+}
+
+.domainReview :global(.layerProtectionGrid article p:first-of-type) {
+  color: #7d6a37;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.domainReview :global(.signalGrid article > p:first-child),
+.domainReview :global(.rebuiltUnits article > p:first-child) {
+  color: #7d6a37;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.domainReview :global(.signalGrid h3) {
+  margin: 4px 0 10px;
+}
+
+.domainReview :global(.rebuiltUnits) {
+  margin-top: 16px;
+}
+
+.domainReview :global(.allLayerRebuild) {
+  border-top: 1px solid #e6d5ad;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.domainReview :global(.rebuiltUnits > div) {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+.domainReview :global(.rebuiltUnits h4) {
+  font-size: 0.96rem;
+  margin: 5px 0 7px;
+}
+
+.domainReview :global(.rebuiltUnits > p) {
+  color: var(--axiom-muted);
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+.domainReview :global(.discoveryStack) {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.domainReview :global(.rebuiltDiscoveryStack) {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.domainReview :global(.coverageAudit) {
+  background: #f7fbf4;
+  border-color: #b8c8b2;
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.domainReview :global(.preFounderReview) {
+  background: #f4f8fb;
+  border-color: #b5c8d7;
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.domainReview :global(.founderResultPanel) {
+  background: #f4fbf7;
+  border-color: #a8cdb7;
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.domainReview :global(.founderResultPanel > .sectionIntro) {
+  border-bottom: 1px solid #cfdfd4;
+  padding-bottom: 14px;
+}
+
+.domainReview :global(.founderResultGrid) {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.founderResultGrid div) {
+  background: #ffffff;
+  border: 1px solid #d7e7dd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.domainReview :global(.founderResultColumns) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: 14px;
+}
+
+.domainReview :global(.founderResultColumns section) {
+  background: #ffffff;
+  border: 1px solid #d7e7dd;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.domainReview :global(.preFounderReview > .sectionIntro) {
+  border-bottom: 1px solid #d6e3ec;
+  padding-bottom: 14px;
+}
+
+.domainReview :global(.preFounderSummary) {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.preFounderSummary div) {
+  background: #ffffff;
+  border: 1px solid #d6e3ec;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.domainReview :global(.preFounderGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.domainReview :global(.preFounderGrid article),
+.domainReview :global(.preFounderCompression) {
+  background: #ffffff;
+  border: 1px solid #d6e3ec;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.domainReview :global(.preFounderGrid h3) {
+  color: #183244;
+  font-size: 1rem;
+  line-height: 1.35;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.domainReview :global(.preFounderGrid dl) {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.domainReview :global(.preFounderGrid dl div) {
+  border-top: 1px solid #e2edf3;
+  padding-top: 10px;
+}
+
+.domainReview :global(.preFounderGrid dd) {
+  color: var(--axiom-muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.domainReview :global(.preFounderCompression) {
+  margin-top: 14px;
+}
+
+.domainReview :global(.preFounderCompression h3) {
+  font-size: 1rem;
+  margin-top: 12px;
+}
+
+.domainReview :global(.preFounderCompression h3:first-child) {
+  margin-top: 0;
+}
+
+.domainReview :global(.preFounderCompression p) {
+  color: var(--axiom-muted);
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+.domainReview :global(.coverageAuditGrid) {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.coverageAuditGrid dd) {
+  font-size: 1.1rem;
+}
+
+.domainReview :global(.coverageAuditColumns) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  margin-top: 14px;
+}
+
+.domainReview :global(.coverageAuditColumns section),
+.domainReview :global(.substructureGrid article) {
+  background: var(--axiom-paper);
+  border: 1px solid #dfe8d8;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.domainReview :global(.coverageAuditColumns p) {
+  color: var(--axiom-muted);
+  line-height: 1.7;
+}
+
+.domainReview :global(.sectionIntro) {
+  padding: 2px 2px 0;
+}
+
+.domainReview :global(.sectionIntro p:last-child) {
+  margin-top: 8px;
+}
+
+.domainReview :global(.discoveryCard) {
+  border-color: var(--axiom-line-strong);
+  overflow: hidden;
+  padding: 0;
+}
+
+.domainReview :global(.rebuiltReviewCard) {
+  border-color: #8fa68f;
+  overflow: hidden;
+  padding: 0;
+}
+
+.domainReview :global(.discoveryCard > .discoveryHeader) {
+  background: linear-gradient(135deg, #f8faf2, #fff7e8);
+  border-bottom: 1px solid var(--axiom-line);
+  padding: 22px 24px;
+}
+
+.domainReview :global(.rebuiltReviewCard > .rebuiltReviewHeader) {
+  background: linear-gradient(135deg, #edf4ed, #fff8e8);
+  border-bottom: 1px solid var(--axiom-line);
+  padding: 22px 24px;
+}
+
+.domainReview :global(.discoveryHeader),
+.domainReview :global(.rebuiltReviewHeader) {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.domainReview :global(.discoveryHeader p),
+.domainReview :global(.rebuiltReviewHeader p),
+.domainReview :global(.axisCard header p),
+.domainReview :global(.contrastRows header p),
+.domainReview :global(.facetGroups header p),
+.domainReview :global(.reviewUnitGrid header p) {
+  color: #667568;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.domainReview :global(.discoveryHeader span),
+.domainReview :global(.rebuiltReviewHeader span) {
+  background: #ecf0e7;
+  border: 1px solid var(--axiom-line);
+  border-radius: 999px;
+  color: #24452f;
+  flex: 0 0 auto;
+  font-size: 0.76rem;
+  font-weight: 850;
+  padding: 7px 11px;
+}
+
+.domainReview :global(.discoveryCard h2) {
+  font-size: 1.55rem;
+  margin-top: 4px;
+}
+
+.domainReview :global(.rebuiltReviewCard h2) {
+  font-size: 1.58rem;
+  margin-top: 4px;
+}
+
+.domainReview :global(.discoveryLead) {
+  color: #203228;
+  font-size: 1.08rem;
+  font-weight: 760;
+  line-height: 1.75;
+  padding: 18px 24px 0;
+}
+
+.domainReview :global(.rebuiltLead) {
+  color: #203228;
+  font-size: 1.05rem;
+  font-weight: 760;
+  line-height: 1.75;
+}
+
+.domainReview :global(.plainStatement) {
+  background: #edf2e9;
+  border-left: 5px solid var(--axiom-accent);
+  margin: 18px 24px 0;
+  padding: 14px 16px;
+}
+
+.domainReview :global(.rebuiltPlainFinding) {
+  background: #e8f0e5;
+  border-left: 5px solid var(--axiom-accent);
+  margin: 18px 24px 0;
+  padding: 14px 16px;
+}
+
+.domainReview :global(.plainStatement h3),
+.domainReview :global(.rebuiltPlainFinding h3),
+.domainReview :global(.hypothesisBody h3),
+.domainReview :global(.reviewPanel h3),
+.domainReview :global(.rebuiltReviewBody h3),
+.domainReview :global(.rebuiltReviewPanel h3),
+.domainReview :global(.rebuiltTraceGrid h3),
+.domainReview :global(.facetDetail h3) {
+  color: #304137;
+  font-size: 0.88rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.domainReview :global(.plainStatement p) {
+  color: #13241a;
+  font-size: 1.16rem;
+  font-weight: 850;
+  line-height: 1.7;
+}
+
+.domainReview :global(.rebuiltPlainFinding p) {
+  color: #13241a;
+  font-size: 1.16rem;
+  font-weight: 850;
+  line-height: 1.7;
+}
+
+.domainReview :global(.hypothesisLayout),
+.domainReview :global(.rebuiltReviewLayout) {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.48fr);
+  margin: 18px 24px 0;
+}
+
+.domainReview :global(.hypothesisBody),
+.domainReview :global(.reviewPanel),
+.domainReview :global(.rebuiltReviewBody),
+.domainReview :global(.rebuiltReviewPanel),
+.domainReview :global(.rebuiltTraceGrid section),
+.domainReview :global(.axisGrid section),
+.domainReview :global(.reviewUnitGrid article),
+.domainReview :global(.receiptDetails section),
+.domainReview :global(.facetGroups article),
+.domainReview :global(.residualGrid article),
+.domainReview :global(.contrastRows article) {
+  background: #f8f7f1;
+  border: 1px solid #e2e6dc;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.domainReview :global(.hypothesisBody h3:not(:first-child)),
+.domainReview :global(.reviewPanel h3:not(:first-child)),
+.domainReview :global(.rebuiltReviewBody h3:not(:first-child)),
+.domainReview :global(.rebuiltReviewPanel h3:not(:first-child)) {
+  margin-top: 18px;
+}
+
+.domainReview :global(.reviewPanel),
+.domainReview :global(.rebuiltReviewPanel) {
+  background: var(--axiom-paper-warm);
+  border-color: #e4d6b8;
+}
+
+.domainReview :global(.reviewPanel ol),
+.domainReview :global(.rebuiltReviewPanel ol) {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.domainReview :global(.reviewPanel ol li),
+.domainReview :global(.rebuiltReviewPanel ol li) {
+  background: var(--axiom-paper);
+  border: 1px solid #e5d9bd;
+  border-radius: 8px;
+  color: #3f4c43;
+  line-height: 1.55;
+  padding: 10px 12px;
+}
+
+.domainReview :global(.rebuiltReviewBody p),
+.domainReview :global(.rebuiltReviewPanel p),
+.domainReview :global(.rebuiltTraceGrid p) {
+  color: var(--axiom-muted);
+  line-height: 1.7;
+}
+
+.domainReview :global(.rebuiltReviewCard details) {
+  background: #fbfaf4;
+  border-top: 1px solid var(--axiom-line);
+  margin-top: 20px;
+  padding: 18px 24px 22px;
+}
+
+.domainReview :global(.substructurePanel) {
+  background: #fbfaf4;
+  border-top: 1px solid var(--axiom-line);
+  margin-top: 20px;
+  padding: 20px 24px 22px;
+}
+
+.domainReview :global(.substructurePanel header) {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.domainReview :global(.substructurePanel header span) {
+  background: #e7efe3;
+  border: 1px solid #c6d4c0;
+  border-radius: 999px;
+  color: #254533;
+  flex: 0 0 auto;
+  font-size: 0.74rem;
+  font-weight: 900;
+  padding: 7px 10px;
+}
+
+.domainReview :global(.substructureGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.substructureGrid article > p:first-child) {
+  color: #61765d;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.domainReview :global(.substructureGrid h4) {
+  color: #183426;
+  font-size: 1rem;
+  margin: 4px 0 10px;
+}
+
+.domainReview :global(.substructureGrid p) {
+  color: var(--axiom-muted);
+  line-height: 1.65;
+}
+
+.domainReview :global(.rebuiltTraceGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.domainReview :global(.facetDetail) {
+  background: #fbfaf4;
+  border-top: 1px solid var(--axiom-line);
+  margin-top: 22px;
+  padding: 22px 24px 24px;
+}
+
+.domainReview :global(.facetDetailGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.domainReview :global(.facetDetailGrid article) {
+  background: var(--axiom-paper);
+  border: 1px solid #dfe5dc;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.domainReview :global(.facetDetailGrid h4) {
+  color: #21382a;
+  font-size: 0.94rem;
+  margin-bottom: 7px;
+}
+
+.domainReview :global(.role),
+.domainReview :global(.axisMeta),
+.domainReview :global(.axisGrid),
+.domainReview :global(details) {
+  margin-top: 12px;
+}
+
+.domainReview :global(ul) {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.domainReview :global(li) {
+  color: #3f4c43;
+  line-height: 1.58;
+}
+
+.domainReview :global(summary) {
+  color: #254533;
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.domainReview :global(details p),
+.domainReview :global(details ul) {
+  margin-top: 8px;
+}
+
+.domainReview :global(.auditDisclosure) {
+  margin-top: 22px;
+  padding: 18px 20px;
+}
+
+.domainReview :global(.auditDisclosure > summary) {
+  font-size: 1rem;
+}
+
+.domainReview :global(.auditBody) {
+  margin-top: 16px;
+}
+
+.domainReview :global(.axisStack),
+.domainReview :global(.receiptShell),
+.domainReview :global(.facetCoverage),
+.domainReview :global(.contrast) {
+  margin-top: 18px;
+}
+
+.domainReview :global(.axisStack) {
+  display: grid;
+  gap: 14px;
+}
+
+.domainReview :global(.axisCard),
+.domainReview :global(.receiptShell),
+.domainReview :global(.facetCoverage),
+.domainReview :global(.contrast) {
+  padding: 20px;
+}
+
+.domainReview :global(.axisCard h2) {
+  font-size: 1.42rem;
+  margin-top: 4px;
+}
+
+.domainReview :global(.axisGrid) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.domainReview :global(.axisGrid h3),
+.domainReview :global(.receiptShell h3),
+.domainReview :global(.facetGroups h3),
+.domainReview :global(.residualGrid h3),
+.domainReview :global(.contrastRows h3) {
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+}
+
+.domainReview :global(.receiptShell h4) {
+  font-size: 0.86rem;
+  margin: 14px 0 7px;
+}
+
+.domainReview :global(.movementGrid) {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.movementGrid dd) {
+  font-size: 1.3rem;
+}
+
+.domainReview :global(.movementGrid p) {
+  color: #4e5c51;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.domainReview :global(.facetGroups),
+.domainReview :global(.reviewUnitGrid),
+.domainReview :global(.residualGrid),
+.domainReview :global(.contrastRows) {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.domainReview :global(.reviewUnitGrid article dl),
+.domainReview :global(.receiptDetails) {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.domainReview :global(.residualGrid p) {
+  margin-bottom: 10px;
+}
+
+.domainReview :global(.contrastRows header) {
+  align-items: flex-start;
+  display: grid;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.domainReview :global(.question) {
+  border-left: 3px solid #78876f;
+  margin-top: 8px;
+  padding-left: 10px;
+}
+
+.domainReview :global(.chips) {
+  margin-top: 10px;
+}
+
+.domainReview :global(.chips span) {
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 980px) {
+  .domainReview {
+    padding: 26px 14px 56px;
+  }
+
+  .domainReview :global(.hero) {
+    padding: 22px;
+  }
+
+  .domainReview :global(.boundary),
+  .domainReview :global(.boundary dl),
+  .domainReview :global(.coverageAuditGrid),
+  .domainReview :global(.coverageAuditColumns),
+  .domainReview :global(.founderResultGrid),
+  .domainReview :global(.founderResultColumns),
+  .domainReview :global(.preFounderSummary),
+  .domainReview :global(.preFounderGrid),
+  .domainReview :global(.reanalysisGrid),
+  .domainReview :global(.longTailPanel > div),
+  .domainReview :global(.layerProtectionGrid),
+  .domainReview :global(.signalGrid),
+  .domainReview :global(.rebuiltUnits > div),
+  .domainReview :global(.axisMeta),
+  .domainReview :global(.hypothesisLayout),
+  .domainReview :global(.rebuiltReviewLayout),
+  .domainReview :global(.rebuiltTraceGrid),
+  .domainReview :global(.substructureGrid),
+  .domainReview :global(.facetDetailGrid),
+  .domainReview :global(.axisGrid),
+  .domainReview :global(.movementGrid),
+  .domainReview :global(.facetGroups),
+  .domainReview :global(.reviewUnitGrid),
+  .domainReview :global(.receiptDetails),
+  .domainReview :global(.residualGrid),
+  .domainReview :global(.contrastRows) {
+    grid-template-columns: 1fr;
+  }
+
+  .domainReview :global(.discoveryHeader),
+  .domainReview :global(.rebuiltReviewHeader) {
+    display: grid;
+  }
+
+  .domainReview :global(.discoveryCard > .discoveryHeader),
+  .domainReview :global(.rebuiltReviewCard > .rebuiltReviewHeader),
+  .domainReview :global(.discoveryLead),
+  .domainReview :global(.rebuiltPlainFinding),
+  .domainReview :global(.substructurePanel),
+  .domainReview :global(.plainStatement),
+  .domainReview :global(.hypothesisLayout),
+  .domainReview :global(.rebuiltReviewLayout),
+  .domainReview :global(.facetDetail) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .domainReview :global(.discoveryCard > .discoveryHeader),
+  .domainReview :global(.rebuiltReviewCard > .rebuiltReviewHeader),
+  .domainReview :global(.discoveryLead),
+  .domainReview :global(.rebuiltReviewCard details),
+  .domainReview :global(.substructurePanel),
+  .domainReview :global(.facetDetail) {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .domainReview :global(.plainStatement),
+  .domainReview :global(.rebuiltPlainFinding),
+  .domainReview :global(.hypothesisLayout),
+  .domainReview :global(.rebuiltReviewLayout) {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+}

@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionPayloadShellSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionPayloadShellSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionPayloadShellPage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionPayloadShellSurface />;
+}

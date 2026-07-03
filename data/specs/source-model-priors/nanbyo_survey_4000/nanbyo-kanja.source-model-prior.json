@@ -1,0 +1,289 @@
+{
+  "source_model_id": "nanbyo_survey_4000.nanbyo-kanja.source-document-prior.v1",
+  "version": "v1",
+  "artifact_status": "provisional",
+  "prior_granularity": "source_document",
+  "source_family": "nanbyo_survey_4000",
+  "source_document": {
+    "title": "Nanbyo Kanja.pdf",
+    "path": "data/original_secure/structured/nanbyo_survey_4000/Nanbyo Kanja.pdf",
+    "figure_or_model_ref": null,
+    "figure_or_model_title": null,
+    "granularity_exception_reason": "Local review could not identify one stable separable figure/model boundary, so this packet uses the explicit source_document exception allowed by FCHMA_source_model_priors_v1.md."
+  },
+  "questionnaire_artifacts": [
+    "docs/nbl-workspace/FCHMA_調査データ取込プロファイル_患者調査_v1.md",
+    "docs/nbl-workspace/FCHMA_Survey_Ingestion_Profile_Disability_Nanbyo_v1.md",
+    "data/specs/response-type-maps/nanbyo_survey_4000.response-type-map.json"
+  ],
+  "model_scope": "Patient-side rare-disease respondent structural prior for treatment burden, communication/function limits, job-search barriers, workplace accommodation, and support-access fit in nanbyo_survey_4000.",
+  "intended_analytic_role": "Bounded offline prior for the first Falcon sibling respondent packet on case 00001.",
+  "execution_modes_supported": [
+    "reproduce_source_document_structure",
+    "prior_guided_fchma",
+    "open_fchma_discovery"
+  ],
+  "runtime_visibility": "none",
+  "nodes": [
+    {
+      "node_id": "health_condition_and_treatment_burden",
+      "label": "健康状態 / 治療・通院負担",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問5",
+        "問6",
+        "問7",
+        "問8"
+      ],
+      "source_block": "health_condition",
+      "common_domain_candidates": [
+        "health_condition_profile",
+        "treatment_burden"
+      ],
+      "icf_anchor_candidates": [
+        "b",
+        "s"
+      ],
+      "local_frame_candidates": [
+        "disease_management_burden"
+      ],
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The source family treats disease profile and treatment burden as part of the work-participation structure rather than background only."
+    },
+    {
+      "node_id": "functioning_and_communication_limitations",
+      "label": "機能制限 / コミュニケーション制約",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問9",
+        "問10"
+      ],
+      "source_block": "functioning_limitations",
+      "common_domain_candidates": [
+        "activity_participation_difficulty",
+        "communication_limitations"
+      ],
+      "icf_anchor_candidates": [
+        "b",
+        "d"
+      ],
+      "local_frame_candidates": [
+        "hearing_communication_burden"
+      ],
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The source explicitly captures symptom and function limits that shape communication and social participation, not only diagnostic status."
+    },
+    {
+      "node_id": "employment_participation_and_job_search",
+      "label": "就労参加 / 就職活動 / 就業継続課題",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問11",
+        "問15",
+        "問16"
+      ],
+      "source_block": "work_participation",
+      "common_domain_candidates": [
+        "work_participation",
+        "employment_entry_barriers",
+        "retention_strain"
+      ],
+      "icf_anchor_candidates": [
+        "d"
+      ],
+      "local_frame_candidates": [
+        "job_search_barriers",
+        "workplace_fit"
+      ],
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The patient-side source combines current employment status, job-search barriers, disclosure choices, and recent work difficulties into one occupational-participation frame."
+    },
+    {
+      "node_id": "environmental_support_and_accommodation",
+      "label": "環境因子 / 支援利用 / 職場配慮",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問15-2",
+        "問15-3",
+        "問15-4",
+        "問16-5",
+        "問17",
+        "問18",
+        "問19"
+      ],
+      "source_block": "environment_support",
+      "common_domain_candidates": [
+        "support_access",
+        "workplace_accommodation",
+        "service_navigation"
+      ],
+      "icf_anchor_candidates": [
+        "e"
+      ],
+      "local_frame_candidates": [
+        "disclosure_operations",
+        "support_fit"
+      ],
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The source distinguishes accommodation presence, needed-but-absent support, disclosure content, consulted sources, and support preferences instead of collapsing them into one support score."
+    },
+    {
+      "node_id": "personal_context_and_future_orientation",
+      "label": "個人因子 / キャリア志向 / 将来展望",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問20",
+        "問21"
+      ],
+      "source_block": "personal_factors",
+      "common_domain_candidates": [
+        "self_efficacy_and_future_outlook",
+        "life_context"
+      ],
+      "icf_anchor_candidates": [],
+      "local_frame_candidates": [
+        "career_identity",
+        "qualification_path"
+      ],
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "ICF does not classify personal factors, but the source family clearly treats qualifications, aspirations, and service-perception context as relevant to work participation."
+    }
+  ],
+  "edges": [
+    {
+      "relation_id": "rel-health-to-functioning",
+      "from_node_id": "health_condition_and_treatment_burden",
+      "to_node_id": "functioning_and_communication_limitations",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Nanbyo Kanja.pdf: patient-side question blocks on disease, treatment, and functioning"
+      ],
+      "source_page_refs": [
+        "source_document scope"
+      ],
+      "review_notes": "The source family positions symptom and treatment burden as shaping the functional and communication limits that matter in work and daily life."
+    },
+    {
+      "relation_id": "rel-functioning-to-employment",
+      "from_node_id": "functioning_and_communication_limitations",
+      "to_node_id": "employment_participation_and_job_search",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Nanbyo Kanja.pdf: patient-side question blocks on functioning limits, job search, and recent work experience"
+      ],
+      "source_page_refs": [
+        "source_document scope"
+      ],
+      "review_notes": "The source architecture implies that participation barriers are mediated through concrete communication, stamina, and self-management constraints."
+    },
+    {
+      "relation_id": "rel-environment-to-employment",
+      "from_node_id": "environmental_support_and_accommodation",
+      "to_node_id": "employment_participation_and_job_search",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Nanbyo Kanja.pdf: patient-side question blocks on disclosure, workplace accommodation, support use, consultation sources, and preferred supports"
+      ],
+      "source_page_refs": [
+        "source_document scope"
+      ],
+      "review_notes": "The source does not treat support as a single positive count. It distinguishes fit, unmet need, and navigation barriers around work participation."
+    },
+    {
+      "relation_id": "rel-personal-to-employment",
+      "from_node_id": "personal_context_and_future_orientation",
+      "to_node_id": "employment_participation_and_job_search",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_source_document_structure",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "Nanbyo Kanja.pdf: patient-side question blocks on work motivation, training, and qualification context"
+      ],
+      "source_page_refs": [
+        "source_document scope"
+      ],
+      "review_notes": "The source family allows personal future orientation and qualification path to shape employment strategy and support fit without replacing environmental or health factors."
+    }
+  ],
+  "hyperedges": [],
+  "allowed_mapping_to_common_domains": [
+    "health_condition_profile",
+    "activity_participation_difficulty",
+    "work_participation",
+    "support_access",
+    "workplace_accommodation",
+    "self_efficacy_and_future_outlook",
+    "life_context"
+  ],
+  "icf_anchor_policy": "ICF remains the main common structural frame. This source-document prior is interpreted as a bounded source-authored guide inside the ICF outer frame.",
+  "icd_support_policy": "ICD is not used as an explanatory frame here and remains limited to later health-condition normalization support when needed.",
+  "semantic_state_dependencies": [
+    "problem_experienced",
+    "resolution_state",
+    "support_present",
+    "support_needed",
+    "unmet_need",
+    "not_needed",
+    "domain_relevant",
+    "currently_unresolved",
+    "phase"
+  ],
+  "provenance": {
+    "reconstruction_method": "Local bounded reconstruction from Nanbyo Kanja.pdf plus the patient-survey ingestion profile and response-type map.",
+    "source_page_refs": [
+      "source_document scope"
+    ],
+    "reconstruction_note": "The prior is reconstructed at source-document granularity because a stable separable figure/model boundary was not available in local review. It is not treated as an exhaustive truth graph.",
+    "packet_id": "falcon-nanbyo-sibling-respondent-onboarding-packet-2026-04-17"
+  }
+}

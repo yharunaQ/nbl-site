@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionPayloadValidationReceiptShellSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionPayloadValidationReceiptShellSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionPayloadValidationReceiptShellPage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionPayloadValidationReceiptShellSurface />;
+}

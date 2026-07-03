@@ -1,0 +1,189 @@
+{
+  "version": "v0",
+  "purpose": "Adapter-required PostgreSQL tables and columns for the opt-in FCHMA /cases repository.",
+  "boundaryNote": "This file records repository adapter compatibility requirements only. It is not schema expansion, migration execution, tenant approval, audit-log activation, runtime adoption, retrieval-method implementation, promotion, or public release approval.",
+  "notNow": [
+    "no_schema_expansion",
+    "no_migration_execution",
+    "no_backfill",
+    "no_dual_write",
+    "no_cutover",
+    "no_auth_change",
+    "no_tenant_model",
+    "no_audit_log_activation",
+    "no_retention_policy",
+    "no_runtime_adoption",
+    "no_retrieval_method",
+    "no_promotion",
+    "no_public_release"
+  ],
+  "tables": [
+    {
+      "tableName": "organizations",
+      "columns": ["id", "name", "settings_json"],
+      "adapterUse": ["default_organization_seed"]
+    },
+    {
+      "tableName": "cases",
+      "columns": [
+        "id",
+        "organization_id",
+        "case_code",
+        "title",
+        "status",
+        "primary_goal",
+        "source_dataset_id",
+        "current_snapshot_json",
+        "created_by",
+        "created_at",
+        "updated_at"
+      ],
+      "adapterUse": ["case_read", "case_upsert", "api_shape_rehydration"]
+    },
+    {
+      "tableName": "case_inputs",
+      "columns": [
+        "id",
+        "case_id",
+        "input_type",
+        "source_label",
+        "raw_text",
+        "structured_answers_json",
+        "provenance_json",
+        "created_by",
+        "created_at"
+      ],
+      "adapterUse": ["runtime_projection"]
+    },
+    {
+      "tableName": "case_input_fields",
+      "columns": [
+        "id",
+        "case_input_id",
+        "field_key",
+        "source_dataset_id",
+        "canonical_concept",
+        "response_type",
+        "raw_value_text",
+        "value_json",
+        "created_at"
+      ],
+      "adapterUse": ["runtime_projection"]
+    },
+    {
+      "tableName": "narrative_units",
+      "columns": [
+        "id",
+        "case_id",
+        "case_input_id",
+        "source_field_key",
+        "sequence_no",
+        "unit_type",
+        "raw_text",
+        "normalized_text",
+        "embedding_model",
+        "embedding_version",
+        "embedding_json",
+        "provenance_json",
+        "created_at"
+      ],
+      "adapterUse": ["runtime_projection_without_embedding_generation"]
+    },
+    {
+      "tableName": "health_conditions",
+      "columns": [
+        "id",
+        "case_id",
+        "case_input_id",
+        "raw_label",
+        "normalized_label",
+        "health_condition_group",
+        "icd_code",
+        "icd_version",
+        "normalization_confidence",
+        "source_type",
+        "reviewer_status",
+        "metadata_json",
+        "created_by_ai",
+        "created_at",
+        "updated_at"
+      ],
+      "adapterUse": ["runtime_projection"]
+    },
+    {
+      "tableName": "structural_hypotheses",
+      "columns": [
+        "id",
+        "case_id",
+        "hypothesis_label",
+        "rationale",
+        "supporting_chain_ids",
+        "competing_hypotheses_json",
+        "amplifiers_json",
+        "protectors_json",
+        "intervention_points_json",
+        "confidence",
+        "origin",
+        "reviewer_decision",
+        "ai_run_id",
+        "created_at",
+        "updated_at"
+      ],
+      "adapterUse": ["runtime_projection_without_review_approval"]
+    },
+    {
+      "tableName": "intervention_hypotheses",
+      "columns": [
+        "id",
+        "case_id",
+        "linked_hypothesis_id",
+        "intervention_type",
+        "target_relation_or_node",
+        "rationale",
+        "expected_effect",
+        "implementation_steps_json",
+        "priority",
+        "feasibility",
+        "risk_note",
+        "selected_status",
+        "owner_role",
+        "ai_run_id",
+        "created_at",
+        "updated_at"
+      ],
+      "adapterUse": ["runtime_projection_without_intervention_approval"]
+    },
+    {
+      "tableName": "feedback_records",
+      "columns": [
+        "id",
+        "case_id",
+        "intervention_id",
+        "implemented",
+        "implementation_notes",
+        "observed_effect",
+        "unresolved_issues",
+        "side_effects",
+        "updated_structure_notes",
+        "reviewer_summary",
+        "created_by",
+        "created_at"
+      ],
+      "adapterUse": ["runtime_projection_without_learning_promotion"]
+    },
+    {
+      "tableName": "outcome_measures",
+      "columns": [
+        "id",
+        "feedback_record_id",
+        "measure_name",
+        "measure_type",
+        "baseline_value",
+        "observed_value",
+        "interpretation",
+        "created_at"
+      ],
+      "adapterUse": ["runtime_projection_without_learning_promotion"]
+    }
+  ]
+}

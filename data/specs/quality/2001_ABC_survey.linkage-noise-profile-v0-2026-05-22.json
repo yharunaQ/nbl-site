@@ -1,0 +1,4028 @@
+{
+  "dataset_id": "2001_ABC_survey",
+  "generated_at": "2026-05-22",
+  "status": "aggregate_linkage_noise_profile_unreviewed_no_row_text",
+  "raw_free_text_read": false,
+  "row_level_text_exported": false,
+  "linkage_summary": {
+    "A_rows": 1582,
+    "B_rows": 3875,
+    "C_rows": 3891,
+    "A_unique_establishments": 1582,
+    "B_unique_pairs": 3875,
+    "C_unique_pairs": 3891,
+    "link_class_counts": {
+      "A_B_C": 3318,
+      "A_C_no_B": 451,
+      "A_B_no_C": 455,
+      "B_only_no_A_C": 20,
+      "C_only_no_A_B": 40,
+      "B_C_no_A": 82
+    },
+    "B_target_id_distribution": {
+      "1": 1500,
+      "2": 1319,
+      "3": 1056
+    },
+    "C_target_id_distribution": {
+      "1": 1339,
+      "2": 1195,
+      "3": 938,
+      "4": 202,
+      "5": 136,
+      "6": 14,
+      "7": 8,
+      "8": 5,
+      "9": 53
+    },
+    "B_records_per_establishment_distribution": {
+      "1": 211,
+      "2": 332,
+      "3": 1000
+    },
+    "C_records_per_establishment_distribution": {
+      "1": 199,
+      "2": 338,
+      "3": 743,
+      "4": 58,
+      "5": 111
+    }
+  },
+  "BC_consistency": {
+    "main_disability": {
+      "match": 2951,
+      "mismatch": 366,
+      "missing_or_blank": 83
+    },
+    "severity": {
+      "match": 2628,
+      "mismatch": 548,
+      "missing_or_blank": 224
+    },
+    "top_main_disability_mismatch_code_pairs": [
+      [
+        "6->5",
+        29
+      ],
+      [
+        "17->16",
+        29
+      ],
+      [
+        "4->2",
+        25
+      ],
+      [
+        "6->7",
+        23
+      ],
+      [
+        "5->6",
+        22
+      ],
+      [
+        "7->6",
+        20
+      ],
+      [
+        "7->5",
+        10
+      ],
+      [
+        "5->7",
+        9
+      ],
+      [
+        "2->4",
+        9
+      ],
+      [
+        "16->17",
+        9
+      ],
+      [
+        "2->16",
+        8
+      ],
+      [
+        "5->8",
+        7
+      ],
+      [
+        "5->99",
+        7
+      ],
+      [
+        "6->8",
+        6
+      ],
+      [
+        "6->16",
+        6
+      ],
+      [
+        "6->11",
+        5
+      ],
+      [
+        "1->2",
+        5
+      ],
+      [
+        "16->10",
+        4
+      ],
+      [
+        "6->99",
+        4
+      ],
+      [
+        "6->10",
+        4
+      ]
+    ]
+  },
+  "coded_value_domain_audit": {
+    "variables_with_invalid_values_count": 6,
+    "invalid_rows_total": 286,
+    "variables_with_invalid_values": [
+      {
+        "source_table": "B",
+        "variable": "当該障害者の勤務形態",
+        "content": "勤務形態",
+        "allowed_codes": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "9"
+        ],
+        "nonempty_rows": 3823,
+        "invalid_rows": 15,
+        "top_invalid_codes": [
+          [
+            "5",
+            10
+          ],
+          [
+            "6",
+            3
+          ],
+          [
+            "7",
+            2
+          ]
+        ],
+        "multivalue_rows": 0
+      },
+      {
+        "source_table": "B",
+        "variable": "合併障害2つ目",
+        "content": "合併障害2つ目",
+        "allowed_codes": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "99"
+        ],
+        "nonempty_rows": 123,
+        "invalid_rows": 2,
+        "top_invalid_codes": [
+          [
+            "62",
+            1
+          ],
+          [
+            "0",
+            1
+          ]
+        ],
+        "multivalue_rows": 0
+      },
+      {
+        "source_table": "B",
+        "variable": "当該障害者の程度",
+        "content": "障害程度",
+        "allowed_codes": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "nonempty_rows": 3739,
+        "invalid_rows": 80,
+        "top_invalid_codes": [
+          [
+            "9",
+            80
+          ]
+        ],
+        "multivalue_rows": 0
+      },
+      {
+        "source_table": "C",
+        "variable": "合併障害1",
+        "content": "合併障害1",
+        "allowed_codes": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "99"
+        ],
+        "nonempty_rows": 917,
+        "invalid_rows": 15,
+        "top_invalid_codes": [
+          [
+            "20",
+            15
+          ]
+        ],
+        "multivalue_rows": 0
+      },
+      {
+        "source_table": "C",
+        "variable": "合併障害2",
+        "content": "合併障害2",
+        "allowed_codes": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "99"
+        ],
+        "nonempty_rows": 211,
+        "invalid_rows": 21,
+        "top_invalid_codes": [
+          [
+            "20",
+            21
+          ]
+        ],
+        "multivalue_rows": 0
+      },
+      {
+        "source_table": "C",
+        "variable": "問5　手帳の障害程度",
+        "content": "障害程度",
+        "allowed_codes": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "nonempty_rows": 3735,
+        "invalid_rows": 153,
+        "top_invalid_codes": [
+          [
+            "9",
+            153
+          ]
+        ],
+        "multivalue_rows": 0
+      }
+    ]
+  },
+  "open_text_and_sensitive_field_counts": [
+    {
+      "source_table": "A",
+      "variable": "問１その他",
+      "content": "事業内容(その他）",
+      "nonempty_rows": 64,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問３具体的に",
+      "content": "その他（具体的に）",
+      "nonempty_rows": 37,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "５－１その他",
+      "content": "その他の雇用理由",
+      "nonempty_rows": 32,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "５－２その他",
+      "content": "その他の雇用課題",
+      "nonempty_rows": 28,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　３４",
+      "content": "相談先や相談内容（建築物の改造）",
+      "nonempty_rows": 67,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　３５",
+      "content": "相談先や相談内容（作業設備の改善）",
+      "nonempty_rows": 57,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　３６",
+      "content": "相談先や相談内容（支援機器の整備）",
+      "nonempty_rows": 50,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　３７",
+      "content": "相談先や相談内容（専任の職場支援・介護者の配置）",
+      "nonempty_rows": 63,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　３８",
+      "content": "相談先や相談内容（他の従業員による支援・介助の促進）",
+      "nonempty_rows": 45,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　３９",
+      "content": "相談先や相談内容（管理職への障害者雇用啓発）",
+      "nonempty_rows": 51,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４０",
+      "content": "相談先や相談内容（従業員への障害者雇用啓発）",
+      "nonempty_rows": 47,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４１",
+      "content": "相談先や相談内容（障害者の特性に応じた職場配置）",
+      "nonempty_rows": 66,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４２",
+      "content": "相談先や相談内容（教育・訓練）",
+      "nonempty_rows": 85,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４３",
+      "content": "相談先や相談内容（安全面の配慮や環境改善）",
+      "nonempty_rows": 70,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４４",
+      "content": "相談先や相談内容（健康管理）",
+      "nonempty_rows": 101,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４５",
+      "content": "相談先や相談内容（給与・労働条件の改善）",
+      "nonempty_rows": 40,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４６",
+      "content": "相談先や相談内容（障害者の勤務時間外の自立生活支援）",
+      "nonempty_rows": 38,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "問６　４７",
+      "content": "相談先や相談内容（家族や学校・福祉施設との連携）",
+      "nonempty_rows": 89,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "自由記述欄",
+      "content": "自由記述",
+      "nonempty_rows": 293,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "事業の取り扱い品",
+      "content": "事業の取り扱い品",
+      "nonempty_rows": 1580,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "定着推進活動状況",
+      "content": "定着推進活動状況",
+      "nonempty_rows": 1298,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "障害者雇用留意事項1",
+      "content": "障害者雇用留意事項1",
+      "nonempty_rows": 1433,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "障害者雇用留意事項2",
+      "content": "障害者雇用留意事項2",
+      "nonempty_rows": 790,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "障害者雇用留意事項3",
+      "content": "障害者雇用留意事項3",
+      "nonempty_rows": 237,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "A",
+      "variable": "障害者雇用留意事項4",
+      "content": "障害者雇用留意事項4",
+      "nonempty_rows": 50,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ａ－２　その他の勤務形態",
+      "content": "その他の勤務形態",
+      "nonempty_rows": 198,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ａ－３　その他",
+      "content": "その他の障害",
+      "nonempty_rows": 24,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ａ－５　その他",
+      "content": "具体的補助具等",
+      "nonempty_rows": 89,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ａ－６　大分類その他",
+      "content": "大分類その他",
+      "nonempty_rows": 154,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "具体的職種",
+      "content": "具体的職種",
+      "nonempty_rows": 3029,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ａ－６　実際の作業内容",
+      "content": "実際の作業内容",
+      "nonempty_rows": 2203,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ｂ－１１",
+      "content": "その他の有効な配慮や支援",
+      "nonempty_rows": 466,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ｂ－１２",
+      "content": "現在利用している外部支援機関",
+      "nonempty_rows": 278,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "Ｃ－５",
+      "content": "作業・業務遂行状況(特に有効であった支援機器等)",
+      "nonempty_rows": 236,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "B",
+      "variable": "自由記述欄",
+      "content": "その他の課題や支援上のニーズ等",
+      "nonempty_rows": 345,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問１　回答者その他",
+      "content": "その他の回答方法",
+      "nonempty_rows": 14,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問１　代理者その他",
+      "content": "その他の代理回答者",
+      "nonempty_rows": 10,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問４　あなたの障害その他",
+      "content": "その他具体的に",
+      "nonempty_rows": 51,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問５　不明の場合の等級",
+      "content": "不明等級",
+      "nonempty_rows": 104,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問６　具体的に",
+      "content": "その他具体的に",
+      "nonempty_rows": 105,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問９　診断名など",
+      "content": "具体的診断名",
+      "nonempty_rows": 1973,
+      "sensitivity": "sensitive_health_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問１０　仕事内容",
+      "content": "具体的仕事内容",
+      "nonempty_rows": 2141,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問１２　支援方法",
+      "content": "その他の配慮や支援",
+      "nonempty_rows": 584,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "問１３　支援機器その他",
+      "content": "支援機器その他",
+      "nonempty_rows": 63,
+      "sensitivity": "open_text"
+    },
+    {
+      "source_table": "C",
+      "variable": "自由記述欄",
+      "content": "自由記述",
+      "nonempty_rows": 965,
+      "sensitivity": "open_text"
+    }
+  ],
+  "candidate_number_aligned_B_support_to_C_need_items": {
+    "candidate_item_count": 58,
+    "interpretation": "Number-aligned only. Some B/C items with the same group-number are not semantically identical; use category-level alignment first and require item-level content review before perspective-gap claims. Do not treat B support states or C need/usefulness states as support validity judgments.",
+    "items": [
+      {
+        "key": "1-1",
+        "B_variable": "B-1-1",
+        "C_variable": "問11　1-1",
+        "B_content": "マンツーマンで個別に実務指導している",
+        "C_content": "実際の仕事をしながらのマンツーマン指導",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2915,
+        "missing_either_side_pairs": 485,
+        "worker_need_without_supervisor_need_count": 535,
+        "supervisor_support_but_worker_unneeded_count": 203,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            679
+          ],
+          [
+            "B1_C2",
+            369
+          ],
+          [
+            "B3_C2",
+            365
+          ],
+          [
+            "B3_C3",
+            354
+          ],
+          [
+            "B1_C1",
+            311
+          ],
+          [
+            "B1_C3",
+            246
+          ],
+          [
+            "B1_C4",
+            172
+          ],
+          [
+            "B3_C1",
+            170
+          ],
+          [
+            "B3_C5",
+            129
+          ],
+          [
+            "B2_C2",
+            36
+          ]
+        ]
+      },
+      {
+        "key": "1-2",
+        "B_variable": "B-1-2",
+        "C_variable": "1-2",
+        "B_content": "研修の場所や時間、介助などを配慮している",
+        "C_content": "研修の場所や時間、介助などの配慮",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2809,
+        "missing_either_side_pairs": 591,
+        "worker_need_without_supervisor_need_count": 635,
+        "supervisor_support_but_worker_unneeded_count": 134,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            821
+          ],
+          [
+            "B3_C2",
+            502
+          ],
+          [
+            "B3_C3",
+            499
+          ],
+          [
+            "B1_C2",
+            213
+          ],
+          [
+            "B3_C5",
+            141
+          ],
+          [
+            "B3_C1",
+            133
+          ],
+          [
+            "B1_C3",
+            118
+          ],
+          [
+            "B1_C4",
+            112
+          ],
+          [
+            "B1_C1",
+            89
+          ],
+          [
+            "B2_C2",
+            59
+          ]
+        ]
+      },
+      {
+        "key": "1-3",
+        "B_variable": "B-1-3",
+        "C_variable": "1-3",
+        "B_content": "作業手順マニュアルや研修用テキストを作成している",
+        "C_content": "一般的な作業手順マニュアルや研修用テキストの作成",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2831,
+        "missing_either_side_pairs": 569,
+        "worker_need_without_supervisor_need_count": 661,
+        "supervisor_support_but_worker_unneeded_count": 153,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            734
+          ],
+          [
+            "B3_C2",
+            492
+          ],
+          [
+            "B3_C3",
+            412
+          ],
+          [
+            "B1_C2",
+            258
+          ],
+          [
+            "B1_C3",
+            176
+          ],
+          [
+            "B3_C1",
+            169
+          ],
+          [
+            "B1_C1",
+            155
+          ],
+          [
+            "B1_C4",
+            124
+          ],
+          [
+            "B3_C5",
+            115
+          ],
+          [
+            "B2_C2",
+            61
+          ]
+        ]
+      },
+      {
+        "key": "1-4",
+        "B_variable": "B-1-4",
+        "C_variable": "1-4",
+        "B_content": "作業手順マニュアルや研修用テキストを障害者対応にしている",
+        "C_content": "自分（回答者）の障害に合わせた作業手順マニュアルや研修用テキストの作成",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2824,
+        "missing_either_side_pairs": 576,
+        "worker_need_without_supervisor_need_count": 663,
+        "supervisor_support_but_worker_unneeded_count": 61,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1026
+          ],
+          [
+            "B3_C3",
+            552
+          ],
+          [
+            "B3_C2",
+            479
+          ],
+          [
+            "B3_C1",
+            184
+          ],
+          [
+            "B3_C5",
+            167
+          ],
+          [
+            "B2_C2",
+            76
+          ],
+          [
+            "B2_C3",
+            59
+          ],
+          [
+            "B2_C4",
+            56
+          ],
+          [
+            "B1_C2",
+            55
+          ],
+          [
+            "B1_C4",
+            46
+          ]
+        ]
+      },
+      {
+        "key": "2-1",
+        "B_variable": "B-2-1",
+        "C_variable": "2-1",
+        "B_content": "障害者の能力を活かせるように職務内容を組み立てた",
+        "C_content": "作業機器の整備・変更・改造",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2815,
+        "missing_either_side_pairs": 585,
+        "worker_need_without_supervisor_need_count": 347,
+        "supervisor_support_but_worker_unneeded_count": 478,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            560
+          ],
+          [
+            "B1_C4",
+            436
+          ],
+          [
+            "B1_C3",
+            379
+          ],
+          [
+            "B1_C2",
+            351
+          ],
+          [
+            "B3_C3",
+            341
+          ],
+          [
+            "B3_C2",
+            240
+          ],
+          [
+            "B1_C1",
+            178
+          ],
+          [
+            "B3_C1",
+            107
+          ],
+          [
+            "B3_C5",
+            88
+          ],
+          [
+            "B1_C5",
+            42
+          ]
+        ]
+      },
+      {
+        "key": "2-2",
+        "B_variable": "B-2-2",
+        "C_variable": "2-2",
+        "B_content": "作業や職務内容を簡易化した",
+        "C_content": "色、図、絵などによる作業手順等の分かりやすい表示",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2799,
+        "missing_either_side_pairs": 601,
+        "worker_need_without_supervisor_need_count": 485,
+        "supervisor_support_but_worker_unneeded_count": 310,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            835
+          ],
+          [
+            "B3_C3",
+            387
+          ],
+          [
+            "B3_C2",
+            369
+          ],
+          [
+            "B1_C4",
+            282
+          ],
+          [
+            "B1_C2",
+            268
+          ],
+          [
+            "B1_C3",
+            189
+          ],
+          [
+            "B3_C5",
+            117
+          ],
+          [
+            "B3_C1",
+            116
+          ],
+          [
+            "B1_C1",
+            103
+          ],
+          [
+            "B2_C2",
+            37
+          ]
+        ]
+      },
+      {
+        "key": "2-3",
+        "B_variable": "B-2-3",
+        "C_variable": "2-3",
+        "B_content": "同僚や上司が、必要に応じて作業補助している",
+        "C_content": "同僚や上司による、必要に応じた作業補助",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2893,
+        "missing_either_side_pairs": 507,
+        "worker_need_without_supervisor_need_count": 456,
+        "supervisor_support_but_worker_unneeded_count": 333,
+        "top_state_pairs": [
+          [
+            "B1_C2",
+            697
+          ],
+          [
+            "B3_C4",
+            456
+          ],
+          [
+            "B3_C2",
+            353
+          ],
+          [
+            "B1_C3",
+            321
+          ],
+          [
+            "B1_C4",
+            284
+          ],
+          [
+            "B1_C1",
+            277
+          ],
+          [
+            "B3_C3",
+            245
+          ],
+          [
+            "B3_C1",
+            103
+          ],
+          [
+            "B3_C5",
+            79
+          ],
+          [
+            "B1_C5",
+            49
+          ]
+        ]
+      },
+      {
+        "key": "2-4",
+        "B_variable": "B-2-4",
+        "C_variable": "2-4",
+        "B_content": "専任の作業補助者や指導員を配置している",
+        "C_content": "専任の作業補助者や指導員の配置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2814,
+        "missing_either_side_pairs": 586,
+        "worker_need_without_supervisor_need_count": 549,
+        "supervisor_support_but_worker_unneeded_count": 93,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1012
+          ],
+          [
+            "B3_C3",
+            557
+          ],
+          [
+            "B3_C2",
+            440
+          ],
+          [
+            "B3_C5",
+            165
+          ],
+          [
+            "B1_C2",
+            139
+          ],
+          [
+            "B3_C1",
+            109
+          ],
+          [
+            "B1_C3",
+            96
+          ],
+          [
+            "B1_C4",
+            86
+          ],
+          [
+            "B1_C1",
+            71
+          ],
+          [
+            "B2_C2",
+            43
+          ]
+        ]
+      },
+      {
+        "key": "2-5",
+        "B_variable": "B-2-5",
+        "C_variable": "2-5",
+        "B_content": "業務計画や作業環境の改善に障害者の意見を取り入れた",
+        "C_content": "業務計画や作業環境の改善に自分（回答者）の意見を取り入れてくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2808,
+        "missing_either_side_pairs": 592,
+        "worker_need_without_supervisor_need_count": 691,
+        "supervisor_support_but_worker_unneeded_count": 133,
+        "top_state_pairs": [
+          [
+            "B3_C2",
+            545
+          ],
+          [
+            "B3_C4",
+            512
+          ],
+          [
+            "B3_C3",
+            484
+          ],
+          [
+            "B1_C2",
+            323
+          ],
+          [
+            "B1_C3",
+            204
+          ],
+          [
+            "B3_C1",
+            146
+          ],
+          [
+            "B1_C1",
+            145
+          ],
+          [
+            "B1_C4",
+            117
+          ],
+          [
+            "B2_C2",
+            99
+          ],
+          [
+            "B3_C5",
+            79
+          ]
+        ]
+      },
+      {
+        "key": "2-6",
+        "B_variable": "B-2-6",
+        "C_variable": "2-6",
+        "B_content": "関係者（医師、教師、技術者、家族等）を含めて職務内容を検討した",
+        "C_content": "関係者（医師、教師、技術者、家族等）を含めた職務内容の検討",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2758,
+        "missing_either_side_pairs": 642,
+        "worker_need_without_supervisor_need_count": 518,
+        "supervisor_support_but_worker_unneeded_count": 157,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            810
+          ],
+          [
+            "B3_C3",
+            640
+          ],
+          [
+            "B3_C2",
+            400
+          ],
+          [
+            "B1_C2",
+            155
+          ],
+          [
+            "B1_C4",
+            142
+          ],
+          [
+            "B1_C3",
+            137
+          ],
+          [
+            "B3_C5",
+            132
+          ],
+          [
+            "B3_C1",
+            118
+          ],
+          [
+            "B2_C3",
+            56
+          ],
+          [
+            "B2_C2",
+            51
+          ]
+        ]
+      },
+      {
+        "key": "3-1",
+        "B_variable": "B-3-1",
+        "C_variable": "3-1",
+        "B_content": "本人の体力や集中力に合わせて職務を割り当てた",
+        "C_content": "自分（回答者）の体力や集中力に合わせた職務の割り当て",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2892,
+        "missing_either_side_pairs": 508,
+        "worker_need_without_supervisor_need_count": 449,
+        "supervisor_support_but_worker_unneeded_count": 290,
+        "top_state_pairs": [
+          [
+            "B1_C2",
+            801
+          ],
+          [
+            "B1_C3",
+            380
+          ],
+          [
+            "B3_C2",
+            330
+          ],
+          [
+            "B1_C1",
+            309
+          ],
+          [
+            "B3_C4",
+            280
+          ],
+          [
+            "B3_C3",
+            256
+          ],
+          [
+            "B1_C4",
+            247
+          ],
+          [
+            "B3_C1",
+            119
+          ],
+          [
+            "B3_C5",
+            59
+          ],
+          [
+            "B1_C5",
+            43
+          ]
+        ]
+      },
+      {
+        "key": "3-2",
+        "B_variable": "B-3-2",
+        "C_variable": "3-2",
+        "B_content": "機器類に安全装置を取り付け、危険を防止している",
+        "C_content": "機器類に安全装置を取り付けることによる危険の防止",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2815,
+        "missing_either_side_pairs": 585,
+        "worker_need_without_supervisor_need_count": 752,
+        "supervisor_support_but_worker_unneeded_count": 110,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            592
+          ],
+          [
+            "B3_C2",
+            496
+          ],
+          [
+            "B3_C3",
+            476
+          ],
+          [
+            "B1_C2",
+            321
+          ],
+          [
+            "B3_C1",
+            256
+          ],
+          [
+            "B1_C1",
+            223
+          ],
+          [
+            "B1_C3",
+            177
+          ],
+          [
+            "B1_C4",
+            102
+          ],
+          [
+            "B3_C5",
+            86
+          ],
+          [
+            "B2_C2",
+            32
+          ]
+        ]
+      },
+      {
+        "key": "3-3",
+        "B_variable": "B-3-3",
+        "C_variable": "3-3",
+        "B_content": "危険性のある作業を行わせない",
+        "C_content": "障害により危険性のある作業から除外してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2844,
+        "missing_either_side_pairs": 556,
+        "worker_need_without_supervisor_need_count": 409,
+        "supervisor_support_but_worker_unneeded_count": 362,
+        "top_state_pairs": [
+          [
+            "B1_C2",
+            609
+          ],
+          [
+            "B1_C3",
+            433
+          ],
+          [
+            "B1_C1",
+            367
+          ],
+          [
+            "B3_C4",
+            320
+          ],
+          [
+            "B1_C4",
+            319
+          ],
+          [
+            "B3_C2",
+            265
+          ],
+          [
+            "B3_C3",
+            253
+          ],
+          [
+            "B3_C1",
+            144
+          ],
+          [
+            "B3_C5",
+            58
+          ],
+          [
+            "B1_C5",
+            43
+          ]
+        ]
+      },
+      {
+        "key": "3-4",
+        "B_variable": "B-3-4",
+        "C_variable": "3-4",
+        "B_content": "不良品が出やすい工程、ミスが起こりうる業務を行わせない",
+        "C_content": "不良品が出やすい工程、ミスが起こりうる業務から除外してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2791,
+        "missing_either_side_pairs": 609,
+        "worker_need_without_supervisor_need_count": 432,
+        "supervisor_support_but_worker_unneeded_count": 197,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            650
+          ],
+          [
+            "B3_C3",
+            611
+          ],
+          [
+            "B3_C2",
+            316
+          ],
+          [
+            "B1_C3",
+            296
+          ],
+          [
+            "B1_C2",
+            294
+          ],
+          [
+            "B1_C4",
+            168
+          ],
+          [
+            "B3_C5",
+            116
+          ],
+          [
+            "B3_C1",
+            116
+          ],
+          [
+            "B1_C1",
+            115
+          ],
+          [
+            "B2_C3",
+            29
+          ]
+        ]
+      },
+      {
+        "key": "3-5",
+        "B_variable": "B-3-5",
+        "C_variable": "3-5",
+        "B_content": "短時間勤務を認めたり、残業を規制している",
+        "C_content": "短時間勤務の許可、あるいは、残業の規制",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2825,
+        "missing_either_side_pairs": 575,
+        "worker_need_without_supervisor_need_count": 500,
+        "supervisor_support_but_worker_unneeded_count": 221,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            677
+          ],
+          [
+            "B3_C3",
+            648
+          ],
+          [
+            "B3_C2",
+            371
+          ],
+          [
+            "B1_C3",
+            243
+          ],
+          [
+            "B1_C2",
+            225
+          ],
+          [
+            "B1_C4",
+            186
+          ],
+          [
+            "B3_C5",
+            133
+          ],
+          [
+            "B3_C1",
+            129
+          ],
+          [
+            "B1_C1",
+            107
+          ],
+          [
+            "B1_C5",
+            35
+          ]
+        ]
+      },
+      {
+        "key": "4-1",
+        "B_variable": "B-4-1",
+        "C_variable": "4-1",
+        "B_content": "ゆっくりと時間をかけたコミュニケーションを心がけている",
+        "C_content": "ゆっくりと時間をかけてコミュニケーションしてくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2902,
+        "missing_either_side_pairs": 498,
+        "worker_need_without_supervisor_need_count": 448,
+        "supervisor_support_but_worker_unneeded_count": 186,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            524
+          ],
+          [
+            "B1_C2",
+            446
+          ],
+          [
+            "B3_C2",
+            339
+          ],
+          [
+            "B3_C3",
+            330
+          ],
+          [
+            "B1_C1",
+            319
+          ],
+          [
+            "B1_C3",
+            248
+          ],
+          [
+            "B1_C4",
+            162
+          ],
+          [
+            "B2_C2",
+            113
+          ],
+          [
+            "B3_C1",
+            109
+          ],
+          [
+            "B3_C5",
+            96
+          ]
+        ]
+      },
+      {
+        "key": "4-2",
+        "B_variable": "B-4-2",
+        "C_variable": "4-2",
+        "B_content": "コミュニケーション支援者（手話通訳者、代筆・代読者、資料作成補助者、相談員等）を配置している",
+        "C_content": "コミュニケーション支援者（手話通訳者、代筆・代読者、点訳者、資料作成補助者、相談員等）の配置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2856,
+        "missing_either_side_pairs": 544,
+        "worker_need_without_supervisor_need_count": 624,
+        "supervisor_support_but_worker_unneeded_count": 74,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            975
+          ],
+          [
+            "B3_C3",
+            465
+          ],
+          [
+            "B3_C2",
+            433
+          ],
+          [
+            "B3_C1",
+            191
+          ],
+          [
+            "B3_C5",
+            166
+          ],
+          [
+            "B1_C2",
+            139
+          ],
+          [
+            "B1_C1",
+            129
+          ],
+          [
+            "B1_C3",
+            76
+          ],
+          [
+            "B2_C1",
+            64
+          ],
+          [
+            "B1_C4",
+            63
+          ]
+        ]
+      },
+      {
+        "key": "4-3",
+        "B_variable": "B-4-3",
+        "C_variable": "4-3",
+        "B_content": "コミュニケーション支援機器（画面音声化ソフト、OCRを使った読書機、拡大読書器、音声認識ソフト、触覚読書器、拡声装置付き電話、ノートテイカー等）を導入した",
+        "C_content": "コミュニケーション支援機器（画面音声化ソフト、OCRを使った読書機、拡大読書器、音声認識ソフト、触覚読書器、拡声装置付き電話、ノートテイカー等）を導入してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2787,
+        "missing_either_side_pairs": 613,
+        "worker_need_without_supervisor_need_count": 509,
+        "supervisor_support_but_worker_unneeded_count": 18,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1188
+          ],
+          [
+            "B3_C3",
+            672
+          ],
+          [
+            "B3_C2",
+            343
+          ],
+          [
+            "B3_C5",
+            199
+          ],
+          [
+            "B3_C1",
+            166
+          ],
+          [
+            "B2_C4",
+            55
+          ],
+          [
+            "B2_C3",
+            43
+          ],
+          [
+            "B2_C2",
+            39
+          ],
+          [
+            "B2_C1",
+            22
+          ],
+          [
+            "B1_C1",
+            17
+          ]
+        ]
+      },
+      {
+        "key": "4-4",
+        "B_variable": "B-4-4",
+        "C_variable": "4-4",
+        "B_content": "連絡や会合などで、ﾒﾓ、黒板、ﾎﾜｲﾄﾎﾞｰﾄﾞ、OHPなどを重点的に使っている",
+        "C_content": "連絡や会合などで、メモ、黒板、ホワイトボード、OHPなどを重点的に使ってくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2844,
+        "missing_either_side_pairs": 556,
+        "worker_need_without_supervisor_need_count": 485,
+        "supervisor_support_but_worker_unneeded_count": 136,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            861
+          ],
+          [
+            "B3_C3",
+            481
+          ],
+          [
+            "B3_C2",
+            354
+          ],
+          [
+            "B1_C2",
+            274
+          ],
+          [
+            "B1_C1",
+            247
+          ],
+          [
+            "B3_C5",
+            139
+          ],
+          [
+            "B1_C3",
+            137
+          ],
+          [
+            "B3_C1",
+            131
+          ],
+          [
+            "B1_C4",
+            116
+          ],
+          [
+            "B2_C2",
+            22
+          ]
+        ]
+      },
+      {
+        "key": "4-5",
+        "B_variable": "B-4-5",
+        "C_variable": "4-5",
+        "B_content": "連絡に、ファックス、電子メールを使用している",
+        "C_content": "連絡に、ファックス、電子メールを使用してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2828,
+        "missing_either_side_pairs": 572,
+        "worker_need_without_supervisor_need_count": 506,
+        "supervisor_support_but_worker_unneeded_count": 69,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            962
+          ],
+          [
+            "B3_C3",
+            577
+          ],
+          [
+            "B3_C2",
+            340
+          ],
+          [
+            "B1_C1",
+            222
+          ],
+          [
+            "B3_C5",
+            170
+          ],
+          [
+            "B1_C2",
+            167
+          ],
+          [
+            "B3_C1",
+            166
+          ],
+          [
+            "B1_C3",
+            85
+          ],
+          [
+            "B1_C4",
+            57
+          ],
+          [
+            "B2_C1",
+            19
+          ]
+        ]
+      },
+      {
+        "key": "5-1",
+        "B_variable": "B-5-1",
+        "C_variable": "5-1",
+        "B_content": "移動の必要性を解消／軽減するため、職場配置を変更したり、インターフォン・電話・ファックス等を設置した",
+        "C_content": "移動の必要性を解消／軽減するため、職場配置を変更したり、インターフォン・電話・ファックス等を設置してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2800,
+        "missing_either_side_pairs": 600,
+        "worker_need_without_supervisor_need_count": 675,
+        "supervisor_support_but_worker_unneeded_count": 80,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            988
+          ],
+          [
+            "B3_C3",
+            644
+          ],
+          [
+            "B3_C2",
+            450
+          ],
+          [
+            "B3_C1",
+            225
+          ],
+          [
+            "B3_C5",
+            132
+          ],
+          [
+            "B1_C2",
+            90
+          ],
+          [
+            "B1_C3",
+            78
+          ],
+          [
+            "B1_C4",
+            71
+          ],
+          [
+            "B1_C1",
+            52
+          ],
+          [
+            "B2_C2",
+            18
+          ]
+        ]
+      },
+      {
+        "key": "5-2",
+        "B_variable": "B-5-2",
+        "C_variable": "5-2",
+        "B_content": "階段／廊下等に手すりをつけたり、開閉が軽いドア・自動ドアを設置した",
+        "C_content": "階段／廊下等の手すり、開閉が軽いドア・自動ドアの設置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2803,
+        "missing_either_side_pairs": 597,
+        "worker_need_without_supervisor_need_count": 618,
+        "supervisor_support_but_worker_unneeded_count": 72,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            922
+          ],
+          [
+            "B3_C3",
+            581
+          ],
+          [
+            "B3_C2",
+            472
+          ],
+          [
+            "B1_C2",
+            178
+          ],
+          [
+            "B3_C1",
+            146
+          ],
+          [
+            "B1_C1",
+            123
+          ],
+          [
+            "B3_C5",
+            100
+          ],
+          [
+            "B1_C3",
+            80
+          ],
+          [
+            "B1_C4",
+            68
+          ],
+          [
+            "B2_C2",
+            44
+          ]
+        ]
+      },
+      {
+        "key": "5-3",
+        "B_variable": "B-5-3",
+        "C_variable": "5-3",
+        "B_content": "床面を平坦化したり、職場の整理整頓、通路を広くした",
+        "C_content": "床面を平坦化したり、職場の整理整頓、通路を広くすること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2786,
+        "missing_either_side_pairs": 614,
+        "worker_need_without_supervisor_need_count": 607,
+        "supervisor_support_but_worker_unneeded_count": 104,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            802
+          ],
+          [
+            "B3_C3",
+            551
+          ],
+          [
+            "B3_C2",
+            435
+          ],
+          [
+            "B1_C2",
+            217
+          ],
+          [
+            "B3_C1",
+            172
+          ],
+          [
+            "B1_C1",
+            169
+          ],
+          [
+            "B1_C3",
+            131
+          ],
+          [
+            "B1_C4",
+            95
+          ],
+          [
+            "B3_C5",
+            85
+          ],
+          [
+            "B2_C2",
+            50
+          ]
+        ]
+      },
+      {
+        "key": "5-4",
+        "B_variable": "B-5-4",
+        "C_variable": "5-4",
+        "B_content": "スロープを設置するなど、段差を解消した",
+        "C_content": "スロープを設置するなど、段差を解消すること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2766,
+        "missing_either_side_pairs": 634,
+        "worker_need_without_supervisor_need_count": 527,
+        "supervisor_support_but_worker_unneeded_count": 52,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            984
+          ],
+          [
+            "B3_C3",
+            666
+          ],
+          [
+            "B3_C2",
+            388
+          ],
+          [
+            "B3_C1",
+            139
+          ],
+          [
+            "B1_C1",
+            125
+          ],
+          [
+            "B1_C2",
+            124
+          ],
+          [
+            "B3_C5",
+            100
+          ],
+          [
+            "B1_C3",
+            58
+          ],
+          [
+            "B1_C4",
+            45
+          ],
+          [
+            "B2_C2",
+            37
+          ]
+        ]
+      },
+      {
+        "key": "5-5",
+        "B_variable": "B-5-5",
+        "C_variable": "5-5",
+        "B_content": "点字ブロックを設置したり、通路等に点字表示を設置した",
+        "C_content": "点字ブロックの設置、通路等の点字表示",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2533,
+        "missing_either_side_pairs": 867,
+        "worker_need_without_supervisor_need_count": 279,
+        "supervisor_support_but_worker_unneeded_count": 12,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1333
+          ],
+          [
+            "B3_C3",
+            671
+          ],
+          [
+            "B3_C2",
+            198
+          ],
+          [
+            "B3_C5",
+            149
+          ],
+          [
+            "B3_C1",
+            81
+          ],
+          [
+            "B2_C3",
+            18
+          ],
+          [
+            "B1_C2",
+            15
+          ],
+          [
+            "B2_C2",
+            14
+          ],
+          [
+            "B2_C4",
+            14
+          ],
+          [
+            "B1_C1",
+            10
+          ]
+        ]
+      },
+      {
+        "key": "5-6",
+        "B_variable": "B-5-6",
+        "C_variable": "5-6",
+        "B_content": "エレベータを設置したり、階段に昇降用リフトを設置した",
+        "C_content": "エレベータの設置、階段への昇降用リフトの設置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2756,
+        "missing_either_side_pairs": 644,
+        "worker_need_without_supervisor_need_count": 509,
+        "supervisor_support_but_worker_unneeded_count": 42,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1141
+          ],
+          [
+            "B3_C3",
+            651
+          ],
+          [
+            "B3_C2",
+            357
+          ],
+          [
+            "B3_C1",
+            152
+          ],
+          [
+            "B3_C5",
+            130
+          ],
+          [
+            "B1_C1",
+            82
+          ],
+          [
+            "B1_C2",
+            67
+          ],
+          [
+            "B1_C3",
+            53
+          ],
+          [
+            "B1_C4",
+            38
+          ],
+          [
+            "B2_C4",
+            33
+          ]
+        ]
+      },
+      {
+        "key": "5-7",
+        "B_variable": "B-5-7",
+        "C_variable": "5-7",
+        "B_content": "エレベータ階を音声でも知らせるようにしている",
+        "C_content": "エレベータ階が音声でも分かるようにすること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2746,
+        "missing_either_side_pairs": 654,
+        "worker_need_without_supervisor_need_count": 348,
+        "supervisor_support_but_worker_unneeded_count": 16,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1394
+          ],
+          [
+            "B3_C3",
+            722
+          ],
+          [
+            "B3_C2",
+            247
+          ],
+          [
+            "B3_C5",
+            164
+          ],
+          [
+            "B3_C1",
+            101
+          ],
+          [
+            "B2_C4",
+            22
+          ],
+          [
+            "B2_C3",
+            18
+          ],
+          [
+            "B1_C2",
+            17
+          ],
+          [
+            "B2_C2",
+            15
+          ],
+          [
+            "B1_C4",
+            14
+          ]
+        ]
+      },
+      {
+        "key": "6-1",
+        "B_variable": "B-6-1",
+        "C_variable": "6-1",
+        "B_content": "採用時などに通勤訓練を実施した",
+        "C_content": "採用時などの通勤訓練の実施",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2764,
+        "missing_either_side_pairs": 636,
+        "worker_need_without_supervisor_need_count": 295,
+        "supervisor_support_but_worker_unneeded_count": 80,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1388
+          ],
+          [
+            "B3_C3",
+            666
+          ],
+          [
+            "B3_C2",
+            231
+          ],
+          [
+            "B3_C5",
+            156
+          ],
+          [
+            "B1_C4",
+            66
+          ],
+          [
+            "B3_C1",
+            64
+          ],
+          [
+            "B1_C2",
+            63
+          ],
+          [
+            "B1_C3",
+            52
+          ],
+          [
+            "B1_C1",
+            31
+          ],
+          [
+            "B2_C4",
+            15
+          ]
+        ]
+      },
+      {
+        "key": "6-2",
+        "B_variable": "B-6-2",
+        "C_variable": "6-2",
+        "B_content": "ラッシュ時を避けて通勤時間を設定している",
+        "C_content": "ラッシュ時を避けた通勤時間の設定",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2763,
+        "missing_either_side_pairs": 637,
+        "worker_need_without_supervisor_need_count": 499,
+        "supervisor_support_but_worker_unneeded_count": 44,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1265
+          ],
+          [
+            "B3_C3",
+            695
+          ],
+          [
+            "B3_C2",
+            410
+          ],
+          [
+            "B3_C5",
+            129
+          ],
+          [
+            "B3_C1",
+            89
+          ],
+          [
+            "B1_C4",
+            39
+          ],
+          [
+            "B1_C3",
+            32
+          ],
+          [
+            "B1_C2",
+            32
+          ],
+          [
+            "B2_C3",
+            19
+          ],
+          [
+            "B2_C2",
+            16
+          ]
+        ]
+      },
+      {
+        "key": "6-3",
+        "B_variable": "B-6-3",
+        "C_variable": "6-3",
+        "B_content": "職場に近い住居を確保している",
+        "C_content": "職場に近い住居を確保してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2753,
+        "missing_either_side_pairs": 647,
+        "worker_need_without_supervisor_need_count": 433,
+        "supervisor_support_but_worker_unneeded_count": 118,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1148
+          ],
+          [
+            "B3_C3",
+            661
+          ],
+          [
+            "B3_C2",
+            356
+          ],
+          [
+            "B3_C5",
+            131
+          ],
+          [
+            "B1_C4",
+            110
+          ],
+          [
+            "B1_C2",
+            93
+          ],
+          [
+            "B1_C3",
+            87
+          ],
+          [
+            "B3_C1",
+            77
+          ],
+          [
+            "B1_C1",
+            37
+          ],
+          [
+            "B2_C4",
+            14
+          ]
+        ]
+      },
+      {
+        "key": "6-4",
+        "B_variable": "B-6-4",
+        "C_variable": "6-4",
+        "B_content": "自家用車通勤を許可している",
+        "C_content": "自家用車通勤の許可",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2795,
+        "missing_either_side_pairs": 605,
+        "worker_need_without_supervisor_need_count": 355,
+        "supervisor_support_but_worker_unneeded_count": 220,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            687
+          ],
+          [
+            "B1_C1",
+            542
+          ],
+          [
+            "B3_C3",
+            365
+          ],
+          [
+            "B1_C2",
+            282
+          ],
+          [
+            "B1_C3",
+            253
+          ],
+          [
+            "B3_C2",
+            208
+          ],
+          [
+            "B1_C4",
+            194
+          ],
+          [
+            "B3_C1",
+            147
+          ],
+          [
+            "B3_C5",
+            80
+          ],
+          [
+            "B1_C5",
+            26
+          ]
+        ]
+      },
+      {
+        "key": "6-5",
+        "B_variable": "B-6-5",
+        "C_variable": "6-5",
+        "B_content": "専用の駐車スペースを設置している",
+        "C_content": "専用の駐車スペースの設置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2746,
+        "missing_either_side_pairs": 654,
+        "worker_need_without_supervisor_need_count": 490,
+        "supervisor_support_but_worker_unneeded_count": 171,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            867
+          ],
+          [
+            "B3_C3",
+            450
+          ],
+          [
+            "B3_C2",
+            325
+          ],
+          [
+            "B1_C1",
+            282
+          ],
+          [
+            "B1_C2",
+            213
+          ],
+          [
+            "B3_C1",
+            165
+          ],
+          [
+            "B1_C4",
+            154
+          ],
+          [
+            "B1_C3",
+            146
+          ],
+          [
+            "B3_C5",
+            95
+          ],
+          [
+            "B1_C5",
+            17
+          ]
+        ]
+      },
+      {
+        "key": "6-6",
+        "B_variable": "B-6-6",
+        "C_variable": "6-6",
+        "B_content": "通勤が同方向の従業員が同行・援助している",
+        "C_content": "通勤が同方向の従業員が同行・援助してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2735,
+        "missing_either_side_pairs": 665,
+        "worker_need_without_supervisor_need_count": 288,
+        "supervisor_support_but_worker_unneeded_count": 28,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1404
+          ],
+          [
+            "B3_C3",
+            699
+          ],
+          [
+            "B3_C2",
+            227
+          ],
+          [
+            "B3_C5",
+            215
+          ],
+          [
+            "B3_C1",
+            61
+          ],
+          [
+            "B1_C2",
+            32
+          ],
+          [
+            "B1_C3",
+            28
+          ],
+          [
+            "B1_C4",
+            28
+          ],
+          [
+            "B1_C1",
+            14
+          ],
+          [
+            "B2_C4",
+            10
+          ]
+        ]
+      },
+      {
+        "key": "6-7",
+        "B_variable": "B-6-7",
+        "C_variable": "6-7",
+        "B_content": "送迎バス、タクシーで送迎している",
+        "C_content": "送迎バス、タクシーでの送迎",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2783,
+        "missing_either_side_pairs": 617,
+        "worker_need_without_supervisor_need_count": 366,
+        "supervisor_support_but_worker_unneeded_count": 27,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1386
+          ],
+          [
+            "B3_C3",
+            591
+          ],
+          [
+            "B3_C2",
+            288
+          ],
+          [
+            "B3_C5",
+            189
+          ],
+          [
+            "B1_C1",
+            90
+          ],
+          [
+            "B1_C2",
+            83
+          ],
+          [
+            "B3_C1",
+            78
+          ],
+          [
+            "B1_C4",
+            25
+          ],
+          [
+            "B1_C3",
+            24
+          ],
+          [
+            "B2_C4",
+            13
+          ]
+        ]
+      },
+      {
+        "key": "6-8",
+        "B_variable": "B-6-8",
+        "C_variable": "6-8",
+        "B_content": "雨天や冬季など天候条件に応じた通勤の配慮を行っている",
+        "C_content": "雨天や冬季など天候条件に応じた通勤の配慮",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2774,
+        "missing_either_side_pairs": 626,
+        "worker_need_without_supervisor_need_count": 687,
+        "supervisor_support_but_worker_unneeded_count": 57,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1099
+          ],
+          [
+            "B3_C3",
+            593
+          ],
+          [
+            "B3_C2",
+            541
+          ],
+          [
+            "B3_C1",
+            146
+          ],
+          [
+            "B3_C5",
+            118
+          ],
+          [
+            "B1_C2",
+            83
+          ],
+          [
+            "B1_C3",
+            54
+          ],
+          [
+            "B1_C4",
+            51
+          ],
+          [
+            "B1_C1",
+            27
+          ],
+          [
+            "B2_C2",
+            20
+          ]
+        ]
+      },
+      {
+        "key": "6-9",
+        "B_variable": "B-6-9",
+        "C_variable": "6-9",
+        "B_content": "在宅勤務によって、通勤負担を解消／軽減している",
+        "C_content": "在宅勤務による、通勤負担の解消／軽減",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2733,
+        "missing_either_side_pairs": 667,
+        "worker_need_without_supervisor_need_count": 413,
+        "supervisor_support_but_worker_unneeded_count": 10,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1364
+          ],
+          [
+            "B3_C3",
+            739
+          ],
+          [
+            "B3_C2",
+            329
+          ],
+          [
+            "B3_C5",
+            170
+          ],
+          [
+            "B3_C1",
+            84
+          ],
+          [
+            "B1_C4",
+            10
+          ],
+          [
+            "B2_C2",
+            9
+          ],
+          [
+            "B1_C1",
+            5
+          ],
+          [
+            "B2_C4",
+            5
+          ],
+          [
+            "B1_C2",
+            5
+          ]
+        ]
+      },
+      {
+        "key": "7-1",
+        "B_variable": "B-7-1",
+        "C_variable": "7-1",
+        "B_content": "顔色や作業態度によって毎日の健康状態をチェックしている",
+        "C_content": "顔色や作業態度をみて健康状態に気をつかってくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2874,
+        "missing_either_side_pairs": 526,
+        "worker_need_without_supervisor_need_count": 492,
+        "supervisor_support_but_worker_unneeded_count": 260,
+        "top_state_pairs": [
+          [
+            "B1_C2",
+            605
+          ],
+          [
+            "B3_C4",
+            395
+          ],
+          [
+            "B3_C2",
+            355
+          ],
+          [
+            "B1_C3",
+            337
+          ],
+          [
+            "B3_C3",
+            300
+          ],
+          [
+            "B1_C1",
+            291
+          ],
+          [
+            "B1_C4",
+            222
+          ],
+          [
+            "B3_C1",
+            137
+          ],
+          [
+            "B3_C5",
+            58
+          ],
+          [
+            "B2_C2",
+            56
+          ]
+        ]
+      },
+      {
+        "key": "7-2",
+        "B_variable": "B-7-2",
+        "C_variable": "7-2",
+        "B_content": "食事、運動、休養など生活習慣の指導を行っている",
+        "C_content": "食事、運動、休養など生活習慣の指導を行ってくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2824,
+        "missing_either_side_pairs": 576,
+        "worker_need_without_supervisor_need_count": 489,
+        "supervisor_support_but_worker_unneeded_count": 185,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            838
+          ],
+          [
+            "B3_C3",
+            622
+          ],
+          [
+            "B3_C2",
+            379
+          ],
+          [
+            "B1_C2",
+            179
+          ],
+          [
+            "B1_C4",
+            159
+          ],
+          [
+            "B1_C3",
+            154
+          ],
+          [
+            "B3_C5",
+            111
+          ],
+          [
+            "B3_C1",
+            110
+          ],
+          [
+            "B1_C1",
+            86
+          ],
+          [
+            "B2_C2",
+            51
+          ]
+        ]
+      },
+      {
+        "key": "7-3",
+        "B_variable": "B-7-3",
+        "C_variable": "7-3",
+        "B_content": "医師などによる健康相談を実施している",
+        "C_content": "医師などによる健康相談",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2829,
+        "missing_either_side_pairs": 571,
+        "worker_need_without_supervisor_need_count": 709,
+        "supervisor_support_but_worker_unneeded_count": 213,
+        "top_state_pairs": [
+          [
+            "B3_C2",
+            518
+          ],
+          [
+            "B3_C4",
+            486
+          ],
+          [
+            "B1_C2",
+            419
+          ],
+          [
+            "B3_C3",
+            389
+          ],
+          [
+            "B1_C3",
+            260
+          ],
+          [
+            "B3_C1",
+            191
+          ],
+          [
+            "B1_C4",
+            187
+          ],
+          [
+            "B1_C1",
+            158
+          ],
+          [
+            "B2_C2",
+            61
+          ],
+          [
+            "B3_C5",
+            60
+          ]
+        ]
+      },
+      {
+        "key": "7-4",
+        "B_variable": "B-7-4",
+        "C_variable": "7-4",
+        "B_content": "通院や治療、服薬に便宜をはかっている",
+        "C_content": "通院や治療、服薬に便宜をはかってくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2810,
+        "missing_either_side_pairs": 590,
+        "worker_need_without_supervisor_need_count": 614,
+        "supervisor_support_but_worker_unneeded_count": 224,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            514
+          ],
+          [
+            "B1_C2",
+            454
+          ],
+          [
+            "B3_C2",
+            430
+          ],
+          [
+            "B3_C3",
+            414
+          ],
+          [
+            "B1_C1",
+            241
+          ],
+          [
+            "B1_C3",
+            240
+          ],
+          [
+            "B1_C4",
+            201
+          ],
+          [
+            "B3_C1",
+            184
+          ],
+          [
+            "B3_C5",
+            68
+          ],
+          [
+            "B1_C5",
+            23
+          ]
+        ]
+      },
+      {
+        "key": "7-5",
+        "B_variable": "B-7-5",
+        "C_variable": "7-5",
+        "B_content": "事業所内に診療所や治療用の設備を設置した",
+        "C_content": "事業所内での診療所や治療用設備の設置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2771,
+        "missing_either_side_pairs": 629,
+        "worker_need_without_supervisor_need_count": 706,
+        "supervisor_support_but_worker_unneeded_count": 74,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            816
+          ],
+          [
+            "B3_C3",
+            651
+          ],
+          [
+            "B3_C2",
+            540
+          ],
+          [
+            "B3_C1",
+            166
+          ],
+          [
+            "B1_C2",
+            135
+          ],
+          [
+            "B1_C3",
+            98
+          ],
+          [
+            "B3_C5",
+            92
+          ],
+          [
+            "B1_C4",
+            69
+          ],
+          [
+            "B1_C1",
+            63
+          ],
+          [
+            "B2_C2",
+            46
+          ]
+        ]
+      },
+      {
+        "key": "7-6",
+        "B_variable": "B-7-6",
+        "C_variable": "7-6",
+        "B_content": "冷房・暖房・湿度調節・空気清浄の設備を整えた",
+        "C_content": "冷房・暖房・湿度調節・空気清浄の設備の整備",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2827,
+        "missing_either_side_pairs": 573,
+        "worker_need_without_supervisor_need_count": 923,
+        "supervisor_support_but_worker_unneeded_count": 136,
+        "top_state_pairs": [
+          [
+            "B3_C2",
+            643
+          ],
+          [
+            "B1_C2",
+            426
+          ],
+          [
+            "B3_C4",
+            378
+          ],
+          [
+            "B3_C3",
+            365
+          ],
+          [
+            "B3_C1",
+            280
+          ],
+          [
+            "B1_C1",
+            230
+          ],
+          [
+            "B1_C3",
+            183
+          ],
+          [
+            "B1_C4",
+            121
+          ],
+          [
+            "B2_C2",
+            68
+          ],
+          [
+            "B3_C5",
+            55
+          ]
+        ]
+      },
+      {
+        "key": "7-7",
+        "B_variable": "B-7-7",
+        "C_variable": "7-7",
+        "B_content": "障害者用／車椅子用トイレを設置した",
+        "C_content": "障害者用／車椅子用トイレの設置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2764,
+        "missing_either_side_pairs": 636,
+        "worker_need_without_supervisor_need_count": 530,
+        "supervisor_support_but_worker_unneeded_count": 58,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1024
+          ],
+          [
+            "B3_C3",
+            609
+          ],
+          [
+            "B3_C2",
+            372
+          ],
+          [
+            "B1_C1",
+            178
+          ],
+          [
+            "B3_C1",
+            158
+          ],
+          [
+            "B3_C5",
+            124
+          ],
+          [
+            "B1_C2",
+            91
+          ],
+          [
+            "B1_C3",
+            56
+          ],
+          [
+            "B1_C4",
+            54
+          ],
+          [
+            "B2_C3",
+            29
+          ]
+        ]
+      },
+      {
+        "key": "7-8",
+        "B_variable": "B-7-8",
+        "C_variable": "7-8",
+        "B_content": "洋式トイレ、手すり、蛇口、前傾鏡等、トイレ・洗面所を改造した",
+        "C_content": "洋式トイレ、手すり、蛇口、前傾鏡等、トイレ・洗面所の改造",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2781,
+        "missing_either_side_pairs": 619,
+        "worker_need_without_supervisor_need_count": 653,
+        "supervisor_support_but_worker_unneeded_count": 73,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            880
+          ],
+          [
+            "B3_C3",
+            589
+          ],
+          [
+            "B3_C2",
+            454
+          ],
+          [
+            "B3_C1",
+            199
+          ],
+          [
+            "B1_C1",
+            150
+          ],
+          [
+            "B1_C2",
+            148
+          ],
+          [
+            "B3_C5",
+            95
+          ],
+          [
+            "B1_C3",
+            75
+          ],
+          [
+            "B1_C4",
+            65
+          ],
+          [
+            "B2_C2",
+            40
+          ]
+        ]
+      },
+      {
+        "key": "8-1",
+        "B_variable": "B-8-1",
+        "C_variable": "8-1",
+        "B_content": "あいさつ、返事、その他の社会的ルールを指導している",
+        "C_content": "あいさつ、返事、その他の社会的ルールを指導してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2928,
+        "missing_either_side_pairs": 472,
+        "worker_need_without_supervisor_need_count": 433,
+        "supervisor_support_but_worker_unneeded_count": 284,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            552
+          ],
+          [
+            "B1_C2",
+            509
+          ],
+          [
+            "B3_C3",
+            387
+          ],
+          [
+            "B1_C3",
+            325
+          ],
+          [
+            "B1_C1",
+            309
+          ],
+          [
+            "B3_C2",
+            291
+          ],
+          [
+            "B1_C4",
+            260
+          ],
+          [
+            "B3_C1",
+            142
+          ],
+          [
+            "B3_C5",
+            77
+          ],
+          [
+            "B1_C5",
+            24
+          ]
+        ]
+      },
+      {
+        "key": "8-2",
+        "B_variable": "B-8-2",
+        "C_variable": "8-2",
+        "B_content": "従業員から積極的に対話を心がけたり、声かけをするようにしている",
+        "C_content": "他の従業員が積極的に対話してきたり、声をかけてくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2908,
+        "missing_either_side_pairs": 492,
+        "worker_need_without_supervisor_need_count": 439,
+        "supervisor_support_but_worker_unneeded_count": 215,
+        "top_state_pairs": [
+          [
+            "B1_C2",
+            668
+          ],
+          [
+            "B3_C4",
+            421
+          ],
+          [
+            "B1_C3",
+            359
+          ],
+          [
+            "B3_C3",
+            351
+          ],
+          [
+            "B1_C1",
+            334
+          ],
+          [
+            "B3_C2",
+            321
+          ],
+          [
+            "B1_C4",
+            190
+          ],
+          [
+            "B3_C1",
+            118
+          ],
+          [
+            "B3_C5",
+            66
+          ],
+          [
+            "B1_C5",
+            25
+          ]
+        ]
+      },
+      {
+        "key": "8-3",
+        "B_variable": "B-8-3",
+        "C_variable": "8-3",
+        "B_content": "専任の相談担当者を配置した",
+        "C_content": "専任の相談担当者の配置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2839,
+        "missing_either_side_pairs": 561,
+        "worker_need_without_supervisor_need_count": 655,
+        "supervisor_support_but_worker_unneeded_count": 66,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            807
+          ],
+          [
+            "B3_C3",
+            616
+          ],
+          [
+            "B3_C2",
+            482
+          ],
+          [
+            "B1_C2",
+            175
+          ],
+          [
+            "B3_C1",
+            173
+          ],
+          [
+            "B1_C3",
+            136
+          ],
+          [
+            "B3_C5",
+            111
+          ],
+          [
+            "B1_C1",
+            97
+          ],
+          [
+            "B2_C3",
+            61
+          ],
+          [
+            "B2_C2",
+            58
+          ]
+        ]
+      },
+      {
+        "key": "8-4",
+        "B_variable": "B-8-4",
+        "C_variable": "8-4",
+        "B_content": "管理職や職員に対して障害者雇用について啓蒙したり、障害者についての偏見を解消する教育を行っている",
+        "C_content": "管理職や職員に対して障害者雇用について啓蒙したり、障害者についての偏見を解消する教育を行うこと",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2849,
+        "missing_either_side_pairs": 551,
+        "worker_need_without_supervisor_need_count": 713,
+        "supervisor_support_but_worker_unneeded_count": 160,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            491
+          ],
+          [
+            "B3_C2",
+            469
+          ],
+          [
+            "B3_C3",
+            468
+          ],
+          [
+            "B1_C2",
+            309
+          ],
+          [
+            "B3_C1",
+            244
+          ],
+          [
+            "B1_C3",
+            222
+          ],
+          [
+            "B1_C1",
+            172
+          ],
+          [
+            "B1_C4",
+            141
+          ],
+          [
+            "B2_C2",
+            85
+          ],
+          [
+            "B2_C3",
+            71
+          ]
+        ]
+      },
+      {
+        "key": "8-5",
+        "B_variable": "B-8-5",
+        "C_variable": "8-5",
+        "B_content": "レクリエーションや懇親会、クラブ活動、点字・手話サークル等で親睦をはかっている",
+        "C_content": "レクリエーションや懇親会、クラブ活動、点字・手話サークル等での親睦",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2856,
+        "missing_either_side_pairs": 544,
+        "worker_need_without_supervisor_need_count": 469,
+        "supervisor_support_but_worker_unneeded_count": 214,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            545
+          ],
+          [
+            "B3_C3",
+            423
+          ],
+          [
+            "B1_C2",
+            414
+          ],
+          [
+            "B3_C2",
+            375
+          ],
+          [
+            "B1_C3",
+            292
+          ],
+          [
+            "B1_C1",
+            213
+          ],
+          [
+            "B1_C4",
+            183
+          ],
+          [
+            "B3_C1",
+            94
+          ],
+          [
+            "B2_C2",
+            83
+          ],
+          [
+            "B3_C5",
+            72
+          ]
+        ]
+      },
+      {
+        "key": "8-6",
+        "B_variable": "B-8-6",
+        "C_variable": "8-6",
+        "B_content": "障害者が多い職場に配置している",
+        "C_content": "障害者が多い職場に配置してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2834,
+        "missing_either_side_pairs": 566,
+        "worker_need_without_supervisor_need_count": 308,
+        "supervisor_support_but_worker_unneeded_count": 130,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            914
+          ],
+          [
+            "B3_C3",
+            737
+          ],
+          [
+            "B1_C3",
+            239
+          ],
+          [
+            "B3_C2",
+            221
+          ],
+          [
+            "B3_C5",
+            186
+          ],
+          [
+            "B1_C2",
+            182
+          ],
+          [
+            "B1_C4",
+            112
+          ],
+          [
+            "B3_C1",
+            87
+          ],
+          [
+            "B1_C1",
+            86
+          ],
+          [
+            "B2_C3",
+            26
+          ]
+        ]
+      },
+      {
+        "key": "9-1",
+        "B_variable": "B-9-1",
+        "C_variable": "9-1",
+        "B_content": "職務中の事故発生時に備えて、対処手順や器具等の整備を行った",
+        "C_content": "職務中の事故発生時にとるべき手順を検討し、訓練や器具等の整備を行ってくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2843,
+        "missing_either_side_pairs": 557,
+        "worker_need_without_supervisor_need_count": 898,
+        "supervisor_support_but_worker_unneeded_count": 101,
+        "top_state_pairs": [
+          [
+            "B3_C2",
+            640
+          ],
+          [
+            "B3_C4",
+            460
+          ],
+          [
+            "B3_C3",
+            417
+          ],
+          [
+            "B1_C2",
+            292
+          ],
+          [
+            "B3_C1",
+            258
+          ],
+          [
+            "B1_C1",
+            168
+          ],
+          [
+            "B1_C3",
+            155
+          ],
+          [
+            "B2_C2",
+            124
+          ],
+          [
+            "B1_C4",
+            89
+          ],
+          [
+            "B2_C3",
+            62
+          ]
+        ]
+      },
+      {
+        "key": "9-2",
+        "B_variable": "B-9-2",
+        "C_variable": "9-2",
+        "B_content": "避難設備を障害者対応にした（スロープ、車椅子用すべり台、非常口の改善、火災報知サイレン／ランプ、標識の改善等）",
+        "C_content": "避難設備を障害者対応にすること（スロープ、車椅子用すべり台、非常口の改善、火災報知サイレン／ランプ、標識の改善等）",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2789,
+        "missing_either_side_pairs": 611,
+        "worker_need_without_supervisor_need_count": 841,
+        "supervisor_support_but_worker_unneeded_count": 47,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            657
+          ],
+          [
+            "B3_C2",
+            581
+          ],
+          [
+            "B3_C3",
+            549
+          ],
+          [
+            "B3_C1",
+            260
+          ],
+          [
+            "B1_C2",
+            128
+          ],
+          [
+            "B1_C1",
+            118
+          ],
+          [
+            "B2_C2",
+            116
+          ],
+          [
+            "B1_C3",
+            81
+          ],
+          [
+            "B2_C1",
+            67
+          ],
+          [
+            "B3_C5",
+            66
+          ]
+        ]
+      },
+      {
+        "key": "9-3",
+        "B_variable": "B-9-3",
+        "C_variable": "9-3",
+        "B_content": "避難時の介助担当者を指定した",
+        "C_content": "避難時の介助担当者を指定してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2781,
+        "missing_either_side_pairs": 619,
+        "worker_need_without_supervisor_need_count": 717,
+        "supervisor_support_but_worker_unneeded_count": 71,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            709
+          ],
+          [
+            "B3_C3",
+            552
+          ],
+          [
+            "B3_C2",
+            520
+          ],
+          [
+            "B3_C1",
+            197
+          ],
+          [
+            "B1_C2",
+            177
+          ],
+          [
+            "B1_C1",
+            110
+          ],
+          [
+            "B2_C2",
+            101
+          ],
+          [
+            "B1_C3",
+            98
+          ],
+          [
+            "B3_C5",
+            89
+          ],
+          [
+            "B1_C4",
+            63
+          ]
+        ]
+      },
+      {
+        "key": "10-1",
+        "B_variable": "B-10-1",
+        "C_variable": "10-1",
+        "B_content": "障害者の家族と頻繁に連絡する（連絡を密にする）",
+        "C_content": "自分（回答者）の家族との頻繁な連絡（連絡を密にする）",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2838,
+        "missing_either_side_pairs": 562,
+        "worker_need_without_supervisor_need_count": 496,
+        "supervisor_support_but_worker_unneeded_count": 76,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            884
+          ],
+          [
+            "B3_C3",
+            599
+          ],
+          [
+            "B3_C2",
+            344
+          ],
+          [
+            "B1_C2",
+            159
+          ],
+          [
+            "B3_C5",
+            159
+          ],
+          [
+            "B3_C1",
+            152
+          ],
+          [
+            "B1_C3",
+            121
+          ],
+          [
+            "B1_C1",
+            102
+          ],
+          [
+            "B2_C3",
+            89
+          ],
+          [
+            "B1_C4",
+            66
+          ]
+        ]
+      },
+      {
+        "key": "10-2",
+        "B_variable": "B-10-2",
+        "C_variable": "10-2",
+        "B_content": "社宅や寮を改造する（トイレ、風呂、手すり、専用ファックス、等）",
+        "C_content": "社宅や寮の改造（トイレ、風呂、手すり、専用ファックス、等）",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2733,
+        "missing_either_side_pairs": 667,
+        "worker_need_without_supervisor_need_count": 463,
+        "supervisor_support_but_worker_unneeded_count": 21,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1171
+          ],
+          [
+            "B3_C3",
+            796
+          ],
+          [
+            "B3_C2",
+            332
+          ],
+          [
+            "B3_C1",
+            131
+          ],
+          [
+            "B3_C5",
+            124
+          ],
+          [
+            "B1_C2",
+            28
+          ],
+          [
+            "B1_C1",
+            28
+          ],
+          [
+            "B1_C3",
+            26
+          ],
+          [
+            "B2_C3",
+            24
+          ],
+          [
+            "B2_C2",
+            21
+          ]
+        ]
+      },
+      {
+        "key": "10-3",
+        "B_variable": "B-10-3",
+        "C_variable": "10-3",
+        "B_content": "事業主などがアパートを一緒に探したり、入居時に身元保証する",
+        "C_content": "会社の人がアパートを一緒に探したり、入居時に身元保証してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2735,
+        "missing_either_side_pairs": 665,
+        "worker_need_without_supervisor_need_count": 429,
+        "supervisor_support_but_worker_unneeded_count": 27,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1250
+          ],
+          [
+            "B3_C3",
+            748
+          ],
+          [
+            "B3_C2",
+            328
+          ],
+          [
+            "B3_C5",
+            154
+          ],
+          [
+            "B3_C1",
+            101
+          ],
+          [
+            "B1_C3",
+            32
+          ],
+          [
+            "B1_C2",
+            30
+          ],
+          [
+            "B1_C4",
+            22
+          ],
+          [
+            "B1_C1",
+            18
+          ],
+          [
+            "B2_C4",
+            17
+          ]
+        ]
+      },
+      {
+        "key": "10-4",
+        "B_variable": "B-10-4",
+        "C_variable": "10-4",
+        "B_content": "通勤寮、障害者共同施設と連携して、自立生活を支援する",
+        "C_content": "通勤寮、障害者共同施設と共同で、自立生活を支援してくれること",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2748,
+        "missing_either_side_pairs": 652,
+        "worker_need_without_supervisor_need_count": 477,
+        "supervisor_support_but_worker_unneeded_count": 44,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            1155
+          ],
+          [
+            "B3_C3",
+            728
+          ],
+          [
+            "B3_C2",
+            366
+          ],
+          [
+            "B3_C5",
+            135
+          ],
+          [
+            "B3_C1",
+            111
+          ],
+          [
+            "B1_C2",
+            57
+          ],
+          [
+            "B1_C3",
+            49
+          ],
+          [
+            "B1_C4",
+            38
+          ],
+          [
+            "B1_C1",
+            33
+          ],
+          [
+            "B2_C3",
+            26
+          ]
+        ]
+      },
+      {
+        "key": "10-5",
+        "B_variable": "B-10-5",
+        "C_variable": "10-5",
+        "B_content": "生活全般に関する相談員を配置する",
+        "C_content": "生活全般に関する相談員の配置",
+        "content_alignment_status": "candidate_number_alignment_needs_content_review",
+        "usable_overlap_pairs": 2792,
+        "missing_either_side_pairs": 608,
+        "worker_need_without_supervisor_need_count": 584,
+        "supervisor_support_but_worker_unneeded_count": 89,
+        "top_state_pairs": [
+          [
+            "B3_C4",
+            949
+          ],
+          [
+            "B3_C3",
+            618
+          ],
+          [
+            "B3_C2",
+            462
+          ],
+          [
+            "B1_C2",
+            123
+          ],
+          [
+            "B3_C1",
+            122
+          ],
+          [
+            "B3_C5",
+            116
+          ],
+          [
+            "B1_C3",
+            92
+          ],
+          [
+            "B1_C4",
+            78
+          ],
+          [
+            "B1_C1",
+            58
+          ],
+          [
+            "B2_C3",
+            52
+          ]
+        ]
+      }
+    ]
+  },
+  "category_level_B_support_to_C_need_gap_candidates": {
+    "interpretation": "Category-level aggregate perspective-gap candidates across B supervisor support-state blocks and C worker need/usefulness blocks. These are safer for first-pass profiling than item-number matches.",
+    "groups": [
+      {
+        "group": "1",
+        "category": "training_skill_education",
+        "B_item_count": 4,
+        "C_item_count": 4,
+        "usable_overlap_pairs": 2994,
+        "counts": {
+          "worker_need_any_without_supervisor_support_any": 674,
+          "worker_need_any_when_supervisor_group_not_needed_only": 609,
+          "support_any_and_worker_need_any": 1115,
+          "both_sides_need_or_gap_any": 272,
+          "missing_either_group": 406,
+          "supervisor_support_any_worker_unneeded_only": 311
+        }
+      },
+      {
+        "group": "2",
+        "category": "job_task_performance",
+        "B_item_count": 6,
+        "C_item_count": 6,
+        "usable_overlap_pairs": 2984,
+        "counts": {
+          "worker_need_any_without_supervisor_support_any": 408,
+          "worker_need_any_when_supervisor_group_not_needed_only": 383,
+          "supervisor_support_any_worker_unneeded_only": 440,
+          "missing_either_group": 416,
+          "support_any_and_worker_need_any": 1640,
+          "both_sides_need_or_gap_any": 353
+        }
+      },
+      {
+        "group": "3",
+        "category": "stress_responsibility_safety",
+        "B_item_count": 5,
+        "C_item_count": 5,
+        "usable_overlap_pairs": 2985,
+        "counts": {
+          "support_any_and_worker_need_any": 1805,
+          "worker_need_any_without_supervisor_support_any": 352,
+          "both_sides_need_or_gap_any": 200,
+          "supervisor_support_any_worker_unneeded_only": 383,
+          "missing_either_group": 415,
+          "worker_need_any_when_supervisor_group_not_needed_only": 328
+        }
+      },
+      {
+        "group": "4",
+        "category": "information_communication",
+        "B_item_count": 5,
+        "C_item_count": 5,
+        "usable_overlap_pairs": 2992,
+        "counts": {
+          "worker_need_any_without_supervisor_support_any": 562,
+          "worker_need_any_when_supervisor_group_not_needed_only": 469,
+          "support_any_and_worker_need_any": 1225,
+          "both_sides_need_or_gap_any": 397,
+          "missing_either_group": 408,
+          "supervisor_support_any_worker_unneeded_only": 299
+        }
+      },
+      {
+        "group": "5",
+        "category": "within_workplace_mobility",
+        "B_item_count": 7,
+        "C_item_count": 7,
+        "usable_overlap_pairs": 2888,
+        "counts": {
+          "support_any_and_worker_need_any": 653,
+          "worker_need_any_without_supervisor_support_any": 932,
+          "worker_need_any_when_supervisor_group_not_needed_only": 851,
+          "missing_either_group": 512,
+          "both_sides_need_or_gap_any": 206,
+          "supervisor_support_any_worker_unneeded_only": 169
+        }
+      },
+      {
+        "group": "6",
+        "category": "commuting",
+        "B_item_count": 9,
+        "C_item_count": 9,
+        "usable_overlap_pairs": 2954,
+        "counts": {
+          "support_any_and_worker_need_any": 1436,
+          "missing_either_group": 446,
+          "supervisor_support_any_worker_unneeded_only": 394,
+          "worker_need_any_without_supervisor_support_any": 525,
+          "worker_need_any_when_supervisor_group_not_needed_only": 509,
+          "both_sides_need_or_gap_any": 119
+        }
+      },
+      {
+        "group": "7",
+        "category": "health_time_self_care",
+        "B_item_count": 8,
+        "C_item_count": 8,
+        "usable_overlap_pairs": 2982,
+        "counts": {
+          "support_any_and_worker_need_any": 1866,
+          "both_sides_need_or_gap_any": 462,
+          "missing_either_group": 418,
+          "supervisor_support_any_worker_unneeded_only": 263,
+          "worker_need_any_without_supervisor_support_any": 494,
+          "worker_need_any_when_supervisor_group_not_needed_only": 451
+        }
+      },
+      {
+        "group": "8",
+        "category": "interpersonal_relations",
+        "B_item_count": 6,
+        "C_item_count": 6,
+        "usable_overlap_pairs": 3010,
+        "counts": {
+          "support_any_and_worker_need_any": 1621,
+          "missing_either_group": 390,
+          "both_sides_need_or_gap_any": 401,
+          "worker_need_any_without_supervisor_support_any": 450,
+          "worker_need_any_when_supervisor_group_not_needed_only": 418,
+          "supervisor_support_any_worker_unneeded_only": 352
+        }
+      },
+      {
+        "group": "9",
+        "category": "emergency_disaster",
+        "B_item_count": 3,
+        "C_item_count": 3,
+        "usable_overlap_pairs": 2894,
+        "counts": {
+          "support_any_and_worker_need_any": 733,
+          "worker_need_any_without_supervisor_support_any": 1055,
+          "both_sides_need_or_gap_any": 370,
+          "missing_either_group": 506,
+          "worker_need_any_when_supervisor_group_not_needed_only": 846,
+          "supervisor_support_any_worker_unneeded_only": 156
+        }
+      },
+      {
+        "group": "10",
+        "category": "offwork_daily_living",
+        "B_item_count": 5,
+        "C_item_count": 5,
+        "usable_overlap_pairs": 2905,
+        "counts": {
+          "worker_need_any_without_supervisor_support_any": 861,
+          "worker_need_any_when_supervisor_group_not_needed_only": 743,
+          "missing_either_group": 495,
+          "support_any_and_worker_need_any": 538,
+          "supervisor_support_any_worker_unneeded_only": 187,
+          "both_sides_need_or_gap_any": 216
+        }
+      }
+    ]
+  },
+  "B_problem_and_constraint_blocks": {
+    "C-1": {
+      "variables": 15,
+      "nonempty_cells": 53933,
+      "state_counts": {
+        "1": 1244,
+        "2": 1881,
+        "3": 50808
+      }
+    },
+    "C-2": {
+      "variables": 12,
+      "nonempty_cells": 44086,
+      "state_counts": {
+        "1": 2680,
+        "2": 3455,
+        "3": 37951
+      }
+    },
+    "C-3": {
+      "variables": 11,
+      "nonempty_cells": 39556,
+      "state_counts": {
+        "1": 1273,
+        "2": 1915,
+        "3": 36368
+      }
+    },
+    "C-4": {
+      "variables": 9,
+      "nonempty_cells": 32829,
+      "state_counts": {
+        "1": 1502,
+        "2": 1983,
+        "3": 29344
+      }
+    },
+    "D": {
+      "variables": 12,
+      "nonempty_cells": 44487,
+      "state_counts": {
+        "1": 28831,
+        "2": 5162,
+        "3": 1447,
+        "4": 8237,
+        "9": 810
+      }
+    }
+  },
+  "noise_processing_flags": {
+    "hard_exclude_or_repair_before_pair_analysis": {
+      "missing_establishment_id_B": 0,
+      "missing_target_id_B": 0,
+      "missing_establishment_id_C": 0,
+      "missing_target_id_C": 1,
+      "duplicate_A_establishment_ids": 0,
+      "duplicate_B_pairs": 0,
+      "duplicate_C_pairs": 0,
+      "coded_value_invalid_rows_total": 286
+    },
+    "soft_flags_not_automatic_exclusion": {
+      "B_C_main_disability_mismatch_pairs": 366,
+      "B_C_severity_mismatch_pairs": 548,
+      "B_C_overlap_without_A_pairs": 82,
+      "B_only_pairs_no_C": 475,
+      "C_only_pairs_no_B": 491,
+      "C_non_self_or_assisted_answer_method_rows": 956,
+      "C_intellectual_special_form_rows": 622,
+      "B_main_mental_disability_rows_code_17": 64,
+      "C_main_mental_disability_rows_code_17": 23
+    },
+    "preserve_as_signal_not_noise": [
+      "B/C support-need perspective gaps only after category or item alignment is reviewed",
+      "B problem resolved/unresolved states in C-1 through C-4 blocks",
+      "B work participation constraint states in D-1 through D-12 blocks",
+      "C job satisfaction as one participation-quality signal, never as proof of job quality",
+      "B/C disability-code differences after linkage QA as possible coding-perspective signal, not automatic error"
+    ]
+  },
+  "recommended_analysis_sets": {
+    "strict_triad_set": "A+B+C pairs with non-missing keys; keep disability/severity mismatch as flags, not default exclusion.",
+    "B_C_pair_set": "B+C overlap pairs for supervisor-person perspective gap analysis; use A context when present.",
+    "B_only_set": "Supervisor-only records for worksite-contact distribution, not perspective-gap claims.",
+    "C_only_set": "Worker-only records for need/usefulness and satisfaction distribution, not supervisor-person mismatch claims.",
+    "A_establishment_only_set": "Organization context and burden/advice-use distribution; never individual outcome evidence."
+  }
+}

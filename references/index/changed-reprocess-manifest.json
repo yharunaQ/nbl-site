@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-04-26T00:07:13.814Z",
+  "startedAt": "2026-04-26T00:01:42.916Z",
+  "previousFetchGeneratedAt": "2026-04-25T00:10:06.925Z",
+  "fetchManifestPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/web-cache/web-fetch-manifest.json",
+  "normalizedManifestPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/index/normalized-manifest.json",
+  "claimsManifestPath": "/Users/YuichiroHARUNA/SynologyDrive/NBL/nbl-site-starter/references/index/knowledge-claims-manifest.json",
+  "status": "reprocessed_changed_sources",
+  "changedSourceIds": [
+    "mhlw_disability_employment_policy",
+    "mhlw_disability_welfare_work_support",
+    "mhlw_employment_reasonable_accommodation"
+  ],
+  "fetchSummary": {
+    "generatedAt": "2026-04-26T00:07:13.799Z",
+    "sourcesProcessed": 22,
+    "tasksPrepared": 434,
+    "pagesFetched": 7,
+    "pagesSkipped": 427,
+    "pagesCreated": 0,
+    "pagesUpdated": 7,
+    "pagesUnchanged": 427,
+    "failures": 0,
+    "changedSourceIds": [
+      "mhlw_disability_employment_policy",
+      "mhlw_disability_welfare_work_support",
+      "mhlw_employment_reasonable_accommodation"
+    ]
+  },
+  "downstreamActions": [
+    {
+      "name": "build-normalized-records",
+      "status": "completed",
+      "manifest": {
+        "generatedAt": "2026-04-26T00:07:19.456Z",
+        "recordCount": 4910,
+        "fileCount": 838,
+        "bySourceId": {
+          "nbl_local_research": 3552,
+          "nbl_guidelines": 491,
+          "disabilityin_disability_index_guide_pdf": 17,
+          "mhlw_treatment_work_mental_manual_pdf": 61,
+          "mhlw_treatment_work_occhealth_10q_pdf": 8,
+          "mhlw_treatment_work_practical_hints_pdf": 22,
+          "askearn_employer_guidance": 79,
+          "askearn_framework_process_trio": 3,
+          "askjan_website": 159,
+          "australia_jobaccess_guidance": 24,
+          "canada_duty_to_accommodate": 20,
+          "disabilityin_disability_index_guide": 1,
+          "egov_disabled_persons_employment_act": 1,
+          "eu_reasonable_accommodation": 3,
+          "germany_agg_legal": 4,
+          "germany_antidiscrimination_work": 24,
+          "jeed_employer_q_and_a": 15,
+          "jeed_hearing_manual": 9,
+          "jeed_hokkaido_rework_center": 1,
+          "jeed_low_adoption_industry_casebook": 6,
+          "jeed_reference": 282,
+          "jeed_regional_vocational_centers": 8,
+          "jeed_regional_vocational_centers_exact_pair": 2,
+          "jeed_retention_utilization_casebook": 6,
+          "mhlw_disability_employment_policy": 10,
+          "mhlw_disability_welfare_work_support": 3,
+          "mhlw_employment_reasonable_accommodation": 1,
+          "mhlw_long_term_treatment_job_support": 1,
+          "mhlw_nakapo_centers": 1,
+          "mhlw_treatment_work_balance": 1,
+          "mhlw_treatment_work_balance_navi": 1,
+          "mhlw_treatment_work_consultable_support": 1,
+          "mhlw_treatment_work_consultation_map": 1,
+          "mhlw_treatment_work_fee_subsidy": 1,
+          "nivr_publications": 61,
+          "nivr_rehadat_japanese_translations": 3,
+          "uk_gov_disability_employment": 9,
+          "uk_headway_brain_injury_work": 18
+        }
+      }
+    },
+    {
+      "name": "build-claims",
+      "status": "completed",
+      "manifest": {
+        "generatedAt": "2026-04-26T00:07:21.721Z",
+        "claimCount": 2970,
+        "eligibleRecordCount": 1573,
+        "bySourceId": {
+          "askjan_website": 517,
+          "nbl_local_research": 685,
+          "uk_headway_brain_injury_work": 40,
+          "canada_duty_to_accommodate": 13,
+          "nbl_guidelines": 855,
+          "jeed_employer_q_and_a": 27,
+          "askearn_employer_guidance": 13,
+          "jeed_reference": 608,
+          "australia_jobaccess_guidance": 15,
+          "uk_gov_disability_employment": 1,
+          "mhlw_treatment_work_balance": 1,
+          "mhlw_disability_welfare_work_support": 2,
+          "mhlw_long_term_treatment_job_support": 2,
+          "jeed_hearing_manual": 21,
+          "jeed_low_adoption_industry_casebook": 7,
+          "nivr_publications": 144,
+          "jeed_regional_vocational_centers": 3,
+          "jeed_retention_utilization_casebook": 10,
+          "nivr_rehadat_japanese_translations": 5,
+          "askearn_framework_process_trio": 1
+        }
+      }
+    }
+  ]
+}

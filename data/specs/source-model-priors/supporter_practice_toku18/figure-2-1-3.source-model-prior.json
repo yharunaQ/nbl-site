@@ -1,0 +1,258 @@
+{
+  "source_model_id": "supporter_practice_toku18.figure-2-1-3.v1",
+  "version": "v1",
+  "artifact_status": "provisional",
+  "prior_granularity": "figure_or_model",
+  "source_family": "supporter_practice_toku18",
+  "source_document": {
+    "title": "toku18_supporters_structure.pdf",
+    "path": "data/original_secure/structured/supporter_practice/toku18_supporters_structure.pdf",
+    "figure_or_model_ref": "図 2-1-3",
+    "figure_or_model_title": "ICF 国際生活機能分類の概念枠組に基づく、本調査における問題状況と支援の調査内容の設計"
+  },
+  "questionnaire_artifacts": [
+    "docs/nbl-workspace/FCHMA_調査データ取込プロファイル_支援者調査_toku18_v1.md",
+    "docs/nbl-workspace/FCHMA_調査データ取込プロファイル_支援者調査_toku18_v2.md",
+    "data/specs/response-type-maps/supporter_practice_toku18.response-type-map.json",
+    "data/specs/source-manifests/supporter_practice_toku18.source-manifest.json"
+  ],
+  "model_scope": "Supporter-side ICF-framed structural prior for toku18 question-block relations among user-population context, occupational challenges, support implementation locus, and challenge resolution states.",
+  "intended_analytic_role": "Bounded offline prior for the first Falcon supporter-practice packet on vignette 10012.",
+  "execution_modes_supported": [
+    "reproduce_original_model",
+    "prior_guided_fchma",
+    "open_fchma_discovery"
+  ],
+  "runtime_visibility": "none",
+  "nodes": [
+    {
+      "node_id": "user_population_and_disability_context",
+      "label": "利用者層 / 障害種類",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問6"
+      ],
+      "source_block": "context",
+      "common_domain_candidates": [
+        "client_exposure",
+        "target_population"
+      ],
+      "icf_anchor_candidates": [
+        "e"
+      ],
+      "local_frame_candidates": [
+        "supporter_client_mix"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The source figure treats who the supporter is seeing and which disability groups are in scope as structural context rather than background noise."
+    },
+    {
+      "node_id": "occupational_challenge_presence",
+      "label": "職業的課題の存在",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問7"
+      ],
+      "source_block": "occupational_challenges",
+      "common_domain_candidates": [
+        "occupational_problem_profile",
+        "employment_phase_challenges"
+      ],
+      "icf_anchor_candidates": [
+        "d"
+      ],
+      "local_frame_candidates": [
+        "problem_present",
+        "supporter_problem_view"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "In the original model, Q7 codes 1 and 2 indicate that a challenge is present and should not be flattened into a naive severity score."
+    },
+    {
+      "node_id": "support_implementation_locus",
+      "label": "支援の実施 locus",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問8"
+      ],
+      "source_block": "support_implementation",
+      "common_domain_candidates": [
+        "support_implementation_locus",
+        "support_function"
+      ],
+      "icf_anchor_candidates": [
+        "e"
+      ],
+      "local_frame_candidates": [
+        "support_in_focal_practice",
+        "support_other_dept",
+        "support_external_only",
+        "support_absent_or_unknown"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The source figure privileges Q8 values 1 and 2 for focal support exposure, but FCHMA must still preserve 3, 4, and 5 as distinct support-supply states."
+    },
+    {
+      "node_id": "challenge_resolution_state",
+      "label": "課題の解決・改善 / 未解決",
+      "node_type": "source_prior_domain",
+      "source_question_refs": [
+        "問7"
+      ],
+      "source_block": "resolution_state",
+      "common_domain_candidates": [
+        "resolution_state",
+        "currently_unresolved"
+      ],
+      "icf_anchor_candidates": [
+        "d"
+      ],
+      "local_frame_candidates": [
+        "problem_resolvable",
+        "problem_hard_to_solve"
+      ],
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "notes": "The original figure explicitly distinguishes Q7 code 2 as resolved/improvable and Q7 code 1 as unresolved/hard to solve."
+    }
+  ],
+  "edges": [
+    {
+      "relation_id": "rel-context-to-challenges",
+      "from_node_id": "user_population_and_disability_context",
+      "to_node_id": "occupational_challenge_presence",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "toku18_supporters_structure.pdf: printed p. 36 / 図 2-1-3"
+      ],
+      "source_page_refs": [
+        "printed p. 36",
+        "図 2-1-3"
+      ],
+      "review_notes": "The figure places Q6 on the left as context that shapes which occupational challenges appear in the supporter's practice."
+    },
+    {
+      "relation_id": "rel-context-to-support-locus",
+      "from_node_id": "user_population_and_disability_context",
+      "to_node_id": "support_implementation_locus",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "toku18_supporters_structure.pdf: printed p. 36 / 図 2-1-3"
+      ],
+      "source_page_refs": [
+        "printed p. 36",
+        "図 2-1-3"
+      ],
+      "review_notes": "The figure implies that the user population and disability mix shape which support functions become focal, collaborative, delegated, external, or absent."
+    },
+    {
+      "relation_id": "rel-challenges-to-resolution",
+      "from_node_id": "occupational_challenge_presence",
+      "to_node_id": "challenge_resolution_state",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "toku18_supporters_structure.pdf: printed p. 36 / 図 2-1-3"
+      ],
+      "source_page_refs": [
+        "printed p. 36",
+        "図 2-1-3"
+      ],
+      "review_notes": "The figure treats challenge presence as a prerequisite condition for later resolution or non-resolution states."
+    },
+    {
+      "relation_id": "rel-support-to-resolution",
+      "from_node_id": "support_implementation_locus",
+      "to_node_id": "challenge_resolution_state",
+      "relation_type": "influences",
+      "directionality": "directed",
+      "origin": "source_model",
+      "status": "hypothesized",
+      "allowed_in_modes": [
+        "reproduce_original_model",
+        "prior_guided_fchma",
+        "open_fchma_discovery"
+      ],
+      "evidence_links": [
+        "toku18_supporters_structure.pdf: printed p. 36 / 図 2-1-3"
+      ],
+      "source_page_refs": [
+        "printed p. 36",
+        "図 2-1-3"
+      ],
+      "review_notes": "The figure explicitly analyzes whether focal support implementation is associated with challenge resolution or continued non-resolution."
+    }
+  ],
+  "hyperedges": [],
+  "allowed_mapping_to_common_domains": [
+    "client_exposure",
+    "target_population",
+    "occupational_problem_profile",
+    "employment_phase_challenges",
+    "support_implementation_locus",
+    "support_function",
+    "resolution_state"
+  ],
+  "icf_anchor_policy": "ICF remains the outer structural frame. This prior is a supporter-side source-authored guide for mapping challenge presence, support locus, and resolution states inside that outer frame.",
+  "icd_support_policy": "ICD is not an explanatory frame here and remains secondary if later health-condition normalization is needed in cross-lane work.",
+  "semantic_state_dependencies": [
+    "problem_present",
+    "problem_resolvable",
+    "problem_hard_to_solve",
+    "problem_rare",
+    "problem_unknown",
+    "support_in_focal_practice",
+    "support_internal_primary",
+    "support_collaborative",
+    "support_other_dept",
+    "support_external_only",
+    "support_absent_or_unknown"
+  ],
+  "provenance": {
+    "reconstruction_method": "Local PDF extraction with bundled Python runtime plus bounded manual reconstruction of the source-authored figure/model.",
+    "source_page_refs": [
+      "printed p. 36",
+      "図 2-1-3"
+    ],
+    "reconstruction_note": "The prior is reconstructed from the figure label and surrounding explanatory prose on the same PDF page. It is a bounded structural guide, not an exhaustive truth graph.",
+    "packet_id": "falcon-supporter-practice-toku18-first-packet-2026-04-17"
+  }
+}

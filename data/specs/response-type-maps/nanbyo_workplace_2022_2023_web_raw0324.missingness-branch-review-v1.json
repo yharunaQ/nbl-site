@@ -1,0 +1,387 @@
+{
+  "spec_type": "nanbyo_workplace_web_raw0324_missingness_branch_review_v1",
+  "generated_at": "2026-05-07T15:10:00+09:00",
+  "dataset_id": "nanbyo_workplace_2022_2023_web_raw0324",
+  "source_crosswalk": "data/specs/response-type-maps/nanbyo_workplace_2022_2023_web_raw0324.canonical-column-crosswalk-v1.json",
+  "source_value_domain_mapping": "data/specs/response-type-maps/nanbyo_workplace_2022_2023_web_raw0324.value-domain-mapping-v1.json",
+  "status": "branch_logic_review_packet_not_analysis_ready",
+  "blocks": [
+    {
+      "block_id": "row_anchor",
+      "columns": [
+        "A"
+      ],
+      "analysis_use": "no_analysis_identifier",
+      "blank_policy": "not_applicable",
+      "branch_rule": "none"
+    },
+    {
+      "block_id": "web_section_markers",
+      "columns": [
+        "C",
+        "K",
+        "P",
+        "W",
+        "DG",
+        "EC"
+      ],
+      "analysis_use": "no_analysis_web_wrapper",
+      "blank_policy": "not_applicable",
+      "branch_rule": "none"
+    },
+    {
+      "block_id": "respondent_visibility_scope",
+      "columns": [
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_verify_multiselect_export_semantics",
+      "branch_rule": "all_respondents"
+    },
+    {
+      "block_id": "establishment_context",
+      "columns": [
+        "L",
+        "M",
+        "N"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_closed_field_missingness_review",
+      "branch_rule": "all_respondents"
+    },
+    {
+      "block_id": "establishment_context_other_text",
+      "columns": [
+        "O"
+      ],
+      "analysis_use": "quarantine",
+      "blank_policy": "not_applicable_excluded",
+      "branch_rule": "other_text_quarantine"
+    },
+    {
+      "block_id": "nanbyo_information_recognition",
+      "columns": [
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_matrix_missingness_review",
+      "branch_rule": "all_respondents"
+    },
+    {
+      "block_id": "recognized_employment_state",
+      "columns": [
+        "X",
+        "Y",
+        "Z",
+        "AA",
+        "AB",
+        "AC",
+        "AD",
+        "AE"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_matrix_missingness_review",
+      "branch_rule": "all_respondents; determines Q6-1a versus Q6-1b route"
+    },
+    {
+      "block_id": "recognized_employment_state_other_text",
+      "columns": [
+        "AF"
+      ],
+      "analysis_use": "quarantine",
+      "blank_policy": "not_applicable_excluded",
+      "branch_rule": "other_text_quarantine"
+    },
+    {
+      "block_id": "high_support_case_implementation",
+      "columns": [
+        "AG",
+        "AH",
+        "AI",
+        "AJ",
+        "AK",
+        "AL",
+        "AM",
+        "AN",
+        "AO"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_structural_skip_review",
+      "branch_rule": "eligible when Q6 indicates recognized/current-or-past nanbyo employee route; high-support-needed case"
+    },
+    {
+      "block_id": "high_support_case_burden_if_implemented",
+      "columns": [
+        "AP",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AV",
+        "AW",
+        "AX"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_item_level_structural_skip_review",
+      "branch_rule": "asked only for items marked implemented in AG:AO"
+    },
+    {
+      "block_id": "high_support_case_necessity_if_not_implemented",
+      "columns": [
+        "AY",
+        "AZ",
+        "BA",
+        "BB",
+        "BC",
+        "BD",
+        "BE",
+        "BF",
+        "BG"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_item_level_structural_skip_review",
+      "branch_rule": "asked only for items marked not implemented in AG:AO"
+    },
+    {
+      "block_id": "high_support_case_certificate",
+      "columns": [
+        "BH",
+        "BI",
+        "BJ",
+        "BK",
+        "BL",
+        "BM"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_structural_skip_review",
+      "branch_rule": "high-support-needed case; disease text excluded separately"
+    },
+    {
+      "block_id": "high_support_case_disease_text",
+      "columns": [
+        "BN"
+      ],
+      "analysis_use": "quarantine",
+      "blank_policy": "not_applicable_excluded",
+      "branch_rule": "disease_name_text_quarantine"
+    },
+    {
+      "block_id": "low_support_case_implementation",
+      "columns": [
+        "BO",
+        "BP",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BU",
+        "BV",
+        "BW"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_structural_skip_review",
+      "branch_rule": "eligible only when multiple nanbyo employees exist; low-support-needed case"
+    },
+    {
+      "block_id": "low_support_case_burden_if_implemented",
+      "columns": [
+        "BX",
+        "BY",
+        "BZ",
+        "CA",
+        "CB",
+        "CC",
+        "CD",
+        "CE",
+        "CF"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_item_level_structural_skip_review",
+      "branch_rule": "asked only for items marked implemented in BO:BW"
+    },
+    {
+      "block_id": "low_support_case_necessity_if_not_implemented",
+      "columns": [
+        "CG",
+        "CH",
+        "CI",
+        "CJ",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_item_level_structural_skip_review",
+      "branch_rule": "asked only for items marked not implemented in BO:BW"
+    },
+    {
+      "block_id": "low_support_case_certificate",
+      "columns": [
+        "CP",
+        "CQ",
+        "CR",
+        "CS",
+        "CT",
+        "CU"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_structural_skip_review",
+      "branch_rule": "low-support-needed case; disease text excluded separately"
+    },
+    {
+      "block_id": "low_support_case_disease_text",
+      "columns": [
+        "CV"
+      ],
+      "analysis_use": "quarantine",
+      "blank_policy": "not_applicable_excluded",
+      "branch_rule": "disease_name_text_quarantine"
+    },
+    {
+      "block_id": "grant_or_subsidy_use",
+      "columns": [
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DA",
+        "DB",
+        "DC",
+        "DD",
+        "DE",
+        "DF"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_multiselect_and_branch_review",
+      "branch_rule": "recognized nanbyo employee support route; source-period policy label restriction"
+    },
+    {
+      "block_id": "external_support_use",
+      "columns": [
+        "DH",
+        "DI",
+        "DJ",
+        "DK",
+        "DL",
+        "DM",
+        "DN",
+        "DO",
+        "DP",
+        "DQ",
+        "DR",
+        "DS"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_multiselect_and_branch_review",
+      "branch_rule": "recognized nanbyo employee support route; source-period service label restriction"
+    },
+    {
+      "block_id": "imagined_support_burden_no_recognized_experience",
+      "columns": [
+        "DT",
+        "DU",
+        "DV",
+        "DW",
+        "DX",
+        "DY",
+        "DZ",
+        "EA",
+        "EB"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_structural_skip_review",
+      "branch_rule": "Q6 no-recognized-experience route / hypothetical support burden"
+    },
+    {
+      "block_id": "organization_policy_posture",
+      "columns": [
+        "ED",
+        "EE",
+        "EF",
+        "EG",
+        "EH",
+        "EI"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_matrix_missingness_review",
+      "branch_rule": "all respondents; not compliance judgment"
+    },
+    {
+      "block_id": "desired_supports",
+      "columns": [
+        "EJ",
+        "EK",
+        "EL",
+        "EM",
+        "EN",
+        "EO",
+        "EP",
+        "EQ",
+        "ER",
+        "ES",
+        "ET",
+        "EU"
+      ],
+      "analysis_use": "candidate_closed_fields",
+      "blank_policy": "pending_multiselect_export_semantics",
+      "branch_rule": "all respondents; public/product use requires separate wording-risk review"
+    },
+    {
+      "block_id": "free_text_opinion",
+      "columns": [
+        "EV"
+      ],
+      "analysis_use": "quarantine",
+      "blank_policy": "not_applicable_excluded",
+      "branch_rule": "free_text_quarantine"
+    },
+    {
+      "block_id": "completion_or_confirmation_wrappers",
+      "columns": [
+        "EW",
+        "EX"
+      ],
+      "analysis_use": "quarantine",
+      "blank_policy": "not_applicable_excluded",
+      "branch_rule": "system_wrapper_excluded"
+    }
+  ],
+  "summary": {
+    "blocks": 25,
+    "candidate_closed_field_blocks": 17,
+    "quarantine_blocks": 6,
+    "no_analysis_blocks": 2
+  },
+  "analysis_ready_gate": {
+    "status": "not_ready",
+    "open_items": [
+      "verify multiselect export semantics",
+      "define structural skip rules for Q6 routing",
+      "define item-level skip rules for burden and necessity follow-ups",
+      "separate no-answer from not-applicable and not-selected",
+      "keep source-period policy labels out of current-policy/public claims"
+    ]
+  },
+  "boundary": {
+    "analysis_ready_created": false,
+    "substantive_findings_created": false,
+    "free_text_processed": false,
+    "disease_names_normalized": false,
+    "public_use_approved": false,
+    "runtime_updated": false,
+    "knowledge_promoted": false,
+    "d_and_e_values_not_copied": true
+  }
+}

@@ -1,0 +1,2596 @@
+{
+  "spec_type": "nanbyo_workplace_web_raw0324_canonical_column_crosswalk_v1",
+  "generated_at": "2026-05-07T15:00:00+09:00",
+  "dataset_id": "nanbyo_workplace_2022_2023_web_raw0324",
+  "source_manifest": "data/specs/source-manifests/nanbyo_workplace_2022_2023_web_raw0324.source-manifest.json",
+  "source_workbook_sha256": "ab0c0422886c1356fac29672b13e3733e3426ddcafda9931e3c722771645afd7",
+  "header_rows": [
+    1,
+    2,
+    3
+  ],
+  "data_start_row": 4,
+  "source_column_span": 154,
+  "entries": [
+    {
+      "column_ref": "A",
+      "field_name": "col_A",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "A"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "row_or_response_identifier",
+      "group_label": "",
+      "item_label": "USER No.",
+      "response_type": "identifier_anchor",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "B",
+      "field_name": "col_B",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "respondent_or_web_survey_entry_metadata",
+      "group_label": "[redacted]",
+      "item_label": "[redacted]",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "survey-introduction / header-sensitive / long-text wrapper",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "C",
+      "field_name": "col_C",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "respondent_or_web_survey_entry_metadata",
+      "group_label": "１　回答者さまについて",
+      "item_label": "*未設定",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "D",
+      "field_name": "col_D",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "force_quarantine_identifiable_risk",
+      "family_id": "respondent_or_web_survey_entry_metadata",
+      "group_label": "[redacted]",
+      "item_label": "[redacted]",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "forced identifiable-risk quarantine",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "E",
+      "field_name": "col_E",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "force_quarantine_identifiable_risk",
+      "family_id": "respondent_or_web_survey_entry_metadata",
+      "group_label": "[redacted]",
+      "item_label": "[redacted]",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "forced identifiable-risk quarantine",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "F",
+      "field_name": "col_F",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "D"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "respondent_visibility_scope",
+      "group_label": "問2回答者さまのお立場では、貴事業所の従業員の次のような状況を把握されていますか。あてはまるものすべてを選択してください。",
+      "item_label": "１\t障害者雇用状況",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "G",
+      "field_name": "col_G",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "E"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "respondent_visibility_scope",
+      "group_label": "",
+      "item_label": "２\t疾病（メンタルを含む）による休職者の状況",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "H",
+      "field_name": "col_H",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "F"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "respondent_visibility_scope",
+      "group_label": "",
+      "item_label": "３\t各障害者の合理的配慮の要望や対応状況",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "I",
+      "field_name": "col_I",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "G"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "respondent_visibility_scope",
+      "group_label": "",
+      "item_label": "４\t難病のある方等の合理的配慮の要望や対応状況",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "J",
+      "field_name": "col_J",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "H"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "respondent_visibility_scope",
+      "group_label": "",
+      "item_label": "５ 上記いずれもない",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "K",
+      "field_name": "col_K",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "I"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "establishment_context",
+      "group_label": "２　事業所の属性について",
+      "item_label": "*未設定",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "L",
+      "field_name": "col_L",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "J"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "establishment_context",
+      "group_label": "問3貴事業所の令和4年６月1日現在の事業所の①事業所単位及び②企業単位の従業員数について、プルダウンより選択してください（企業に事業所が複数ある場合のみ②に回答してください）。",
+      "item_label": "①事業所単位",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "M",
+      "field_name": "col_M",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "K"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "establishment_context",
+      "group_label": "",
+      "item_label": "②企業単位（事業所が複数ある場合）",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "N",
+      "field_name": "col_N",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "L"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "establishment_context",
+      "group_label": "問4貴事業所の主たる事業の産業区分について、該当する番号１つを選択してください。",
+      "item_label": "*SA",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "O",
+      "field_name": "col_O",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "M"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "establishment_context",
+      "group_label": "「その他」の具体的な内容を教えてください。",
+      "item_label": "*未設定",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "other-text / free-text candidate",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "P",
+      "field_name": "col_P",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "N"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "３　難病・難病のある方に関する情報の普及状況について",
+      "item_label": "*未設定",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "Q",
+      "field_name": "col_Q",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "O"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "問5難病のある方の就労を困難とする一因として、一般の方に対する難病や難病のある方に関する情報提供の不足が指摘されています。そこで、今後の情報提供のあり方の検討に資するため、回答者さまの以下の情報に関してご存じの情報について、最も近いものを１つ選択してください。",
+      "item_label": "①多くの事業所で、治療と仕事を両立させながら、働いている人が増えている",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "R",
+      "field_name": "col_R",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "P"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "",
+      "item_label": "②身体的負荷が低く、比較的柔軟に休憩がとりやすい専門・技術職や事務職、あるいは短時間のパート等で働く人が多い",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "S",
+      "field_name": "col_S",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "Q"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "",
+      "item_label": "③難病全般に共通する症状として「全身的な体調の崩れやすさ」があり、疲労や痛みなど外見からわかりにくい症状として表れる",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "T",
+      "field_name": "col_T",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "R"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "",
+      "item_label": "④多くの人は難病や必要な配慮事項について職場に伝えておらず、理解を得て働いている人は少数派である",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "U",
+      "field_name": "col_U",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "S"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "",
+      "item_label": "⑤難病は、多様な身体障害の原因疾患となっており、難病のある方の３分の１程度の人は障害者手帳を所持している",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "V",
+      "field_name": "col_V",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "T"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "",
+      "item_label": "⑥難病のある方は、企業の障害者差別禁止と合理的配慮提供義務の対象である",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "W",
+      "field_name": "col_W",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "U"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "nanbyo_information_recognition",
+      "group_label": "4　難病のある従業員の雇用状況について",
+      "item_label": "*未設定",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "X",
+      "field_name": "col_X",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "V"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "disease_name_text_quarantine",
+      "group_label": "問6貴事業所では、最近5年以内で、次のような難病のある従業員がいたことがありますか。（診断書等に記載された疾病名が難病かもしれないと思われる場合は「いる（いた）かもしれない」を選択してください。）",
+      "item_label": "①難病により、定期通院や個別の業務調整についての必要のある人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "Y",
+      "field_name": "col_Y",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "W"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②難病により、職場で治療と仕事の両立支援に取り組んでいる人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "Z",
+      "field_name": "col_Z",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "X"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③難病により、休職をした人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AA",
+      "field_name": "col_AA",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "Y"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④難病が進行し、業務遂行が困難となり退職となった人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AB",
+      "field_name": "col_AB",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "Z"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤難病により、休職期間満了で、退職となった人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AC",
+      "field_name": "col_AC",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AA"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥障害者の原因疾病を確認した際に難病であることが判明した人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AD",
+      "field_name": "col_AD",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AB"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦特に支援の必要はないが、本人が難病であることを開示した人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AE",
+      "field_name": "col_AE",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AC"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧その他の状況で、難病のあることが把握された人",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AF",
+      "field_name": "col_AF",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AD"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "難病のある従業員を把握したその他の状況について、教えてください。",
+      "item_label": "*未設定",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "other-text / free-text candidate",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AG",
+      "field_name": "col_AG",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AE"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1a①雇用している又は雇用していた難病のある従業員に対する配慮や支援の実施経験についてご回答ください。複数名いる場合は、最も配慮や支援が必要だった方について、ご回答ください。",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AH",
+      "field_name": "col_AH",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AF",
+        "AO",
+        "AX",
+        "BN",
+        "BW",
+        "CF",
+        "DS"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AI",
+      "field_name": "col_AI",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AG",
+        "AP",
+        "AY",
+        "BO",
+        "BX",
+        "CG",
+        "DT"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AJ",
+      "field_name": "col_AJ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AH",
+        "AQ",
+        "AZ",
+        "BP",
+        "BY",
+        "CH",
+        "DU"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AK",
+      "field_name": "col_AK",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AI",
+        "AR",
+        "BA",
+        "BQ",
+        "BZ",
+        "CI",
+        "DV"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AL",
+      "field_name": "col_AL",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AJ",
+        "AS",
+        "BB",
+        "BR",
+        "CA",
+        "CJ",
+        "DW"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AM",
+      "field_name": "col_AM",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AK",
+        "AT",
+        "BC",
+        "BS",
+        "CB",
+        "CK",
+        "DX"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AN",
+      "field_name": "col_AN",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AL",
+        "BD",
+        "BT",
+        "CC",
+        "CL"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等を見据えた長期的なキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AO",
+      "field_name": "col_AO",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AM",
+        "AV",
+        "BE",
+        "BU",
+        "CD",
+        "CM",
+        "DZ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AP",
+      "field_name": "col_AP",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AN"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1a①で配慮や支援の実施経験について、「実施したことがある」と回答された項目についてお伺いします。困難や負担をどの程度感じますか？",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AQ",
+      "field_name": "col_AQ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AR",
+      "field_name": "col_AR",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AS",
+      "field_name": "col_AS",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AT",
+      "field_name": "col_AT",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AU",
+      "field_name": "col_AU",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AV",
+      "field_name": "col_AV",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AW",
+      "field_name": "col_AW",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AU"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等を見据えたキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AX",
+      "field_name": "col_AX",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AY",
+      "field_name": "col_AY",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "AW"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1a①で配慮や支援の実施経験について、「実施したことはない」と回答された項目についてお伺いします。それぞれの項目について配慮や支援の必要性を感じますか？",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "AZ",
+      "field_name": "col_AZ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BA",
+      "field_name": "col_BA",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BB",
+      "field_name": "col_BB",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BC",
+      "field_name": "col_BC",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BD",
+      "field_name": "col_BD",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BE",
+      "field_name": "col_BE",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BF",
+      "field_name": "col_BF",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等を見据えた長期的なキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BG",
+      "field_name": "col_BG",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BH",
+      "field_name": "col_BH",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BF"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "その方がお持ちの障害者手帳等があれば、選択してください。",
+      "item_label": "１　身体障害者手帳",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BI",
+      "field_name": "col_BI",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BG",
+        "CO"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "２　療育手帳・愛の手帳等（知的障害者の認定）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BJ",
+      "field_name": "col_BJ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BH",
+        "CP"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "３　精神障害者保健福祉手帳",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BK",
+      "field_name": "col_BK",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BI",
+        "CQ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "４　障害者手帳は無い",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BL",
+      "field_name": "col_BL",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BJ",
+        "CR"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "５　不明",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BM",
+      "field_name": "col_BM",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BK"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "身体障害者手帳で認定されている等級を選択してください。",
+      "item_label": "*SA",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BN",
+      "field_name": "col_BN",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BL"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "disease_name_text_quarantine",
+      "group_label": "その方の疾病名がおわかりになればご記入ください。",
+      "item_label": "疾病名",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "disease-name / sensitive text candidate",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BO",
+      "field_name": "col_BO",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BM"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1a②雇用している又は雇用していた難病のある従業員が複数名である場合、最も配慮や支援が必要でなかった方に対する配慮や支援の実施経験等についてご回答ください。（複数名いない場合は無回答で次に進んでください。）",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BP",
+      "field_name": "col_BP",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BQ",
+      "field_name": "col_BQ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BR",
+      "field_name": "col_BR",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BS",
+      "field_name": "col_BS",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BT",
+      "field_name": "col_BT",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BU",
+      "field_name": "col_BU",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BV",
+      "field_name": "col_BV",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等を見据えた長期的なキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BW",
+      "field_name": "col_BW",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BX",
+      "field_name": "col_BX",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "BV"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1a②で配慮や支援の実施経験について、「実施したことがある」と回答された項目についてお伺いします。困難や負担をどの程度感じますか？",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BY",
+      "field_name": "col_BY",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "BZ",
+      "field_name": "col_BZ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CA",
+      "field_name": "col_CA",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CB",
+      "field_name": "col_CB",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CC",
+      "field_name": "col_CC",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CD",
+      "field_name": "col_CD",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CE",
+      "field_name": "col_CE",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等を見据えた長期的なキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CF",
+      "field_name": "col_CF",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CG",
+      "field_name": "col_CG",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CE"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1a②で配慮や支援の実施経験について、「実施したことはない」と回答された項目についてお伺いします。それぞれの項目について配慮や支援の必要性を感じますか？",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CH",
+      "field_name": "col_CH",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CI",
+      "field_name": "col_CI",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CJ",
+      "field_name": "col_CJ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CK",
+      "field_name": "col_CK",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CL",
+      "field_name": "col_CL",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CM",
+      "field_name": "col_CM",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CN",
+      "field_name": "col_CN",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等を見据えた長期的なキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CO",
+      "field_name": "col_CO",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CP",
+      "field_name": "col_CP",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CN"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "その方がお持ちの障害者手帳等があれば、選択してください。（複数名いない場合は無回答で次に進んでください。）",
+      "item_label": "１　身体障害者手帳",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CQ",
+      "field_name": "col_CQ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "２　療育手帳・愛の手帳等（知的障害者の認定）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CR",
+      "field_name": "col_CR",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "３　精神障害者保健福祉手帳",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CS",
+      "field_name": "col_CS",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "４　障害者手帳は無い",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CT",
+      "field_name": "col_CT",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "５　不明",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CU",
+      "field_name": "col_CU",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CS"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "身体障害者手帳で認定されている等級を選択してください。（複数名いない場合は無回答で次に進んでください。）",
+      "item_label": "*SA",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CV",
+      "field_name": "col_CV",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CT"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "disease_name_text_quarantine",
+      "group_label": "その方の疾病名がおわかりになればご記入ください。（複数名いない場合は無回答で次に進んでください。）",
+      "item_label": "疾病名",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "disease-name / sensitive text candidate",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CW",
+      "field_name": "col_CW",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CU"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "問6-2a　難病のある従業員への就労支援において、活用した支援・助成制度をすべて選択してください。",
+      "item_label": "１　特定求職者雇用開発助成金（発達障害者・難治性疾患患者雇用開発コース）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CX",
+      "field_name": "col_CX",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CV"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "",
+      "item_label": "２　キャリアアップ助成金（障害者正社員化コース）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CY",
+      "field_name": "col_CY",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CW"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "",
+      "item_label": "３　障害者介助等助成金（職場支援員の配置助成金）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "CZ",
+      "field_name": "col_CZ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CX"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "",
+      "item_label": "４　障害者介助等助成金（職場復帰支援助成金）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DA",
+      "field_name": "col_DA",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CY"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "",
+      "item_label": "５　職場適応援助者助成金",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DB",
+      "field_name": "col_DB",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "CZ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "６　障害者トライアル雇用事業",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DC",
+      "field_name": "col_DC",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DA"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "７　職場適応援助者（ジョブコーチ）支援事業",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DD",
+      "field_name": "col_DD",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DB"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "",
+      "item_label": "８　障害者雇用安定助成金（障害者職場定着支援コース）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DE",
+      "field_name": "col_DE",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DC"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "",
+      "item_label": "９　障害者雇用安定助成金（障害者職場適応援助コース）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DF",
+      "field_name": "col_DF",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DD",
+        "DQ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "10　上記のいずれも活用していない",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DG",
+      "field_name": "col_DG",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DE"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "grant_or_subsidy_use",
+      "group_label": "支援・助成制度についての概要は以下のリンクをご参照ください(PDFが開きます）。1~6の支援制度の説明7の職場適応援助者支援事業の説明※8、9については令和3年3月までのもの（令和3年度以降「障害者雇用安定助成金（障害者職場定着支援コース・障害者職場適応援助コース）」が変更されています)",
+      "item_label": "*未設定",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DH",
+      "field_name": "col_DH",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DF"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "問6-3a難病のある従業員への就労支援において、活用した支援機関等についてすべて選択してください。",
+      "item_label": "１　ハローワーク",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DI",
+      "field_name": "col_DI",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DG"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "２　地域障害者職業センター",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DJ",
+      "field_name": "col_DJ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DH"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "３　中央障害者雇用情報センター",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DK",
+      "field_name": "col_DK",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DI"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "４　障害者就業・生活支援センター",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DL",
+      "field_name": "col_DL",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DJ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "５　職業能力開発・職業訓練校",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DM",
+      "field_name": "col_DM",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DK"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "６　 難病相談支援センター",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DN",
+      "field_name": "col_DN",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DL"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "７　産業保健総合支援センター",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DO",
+      "field_name": "col_DO",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DM"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "８　本人の主治医のいる医療機関等",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DP",
+      "field_name": "col_DP",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DN"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "９　難病情報センター（オンライン）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DQ",
+      "field_name": "col_DQ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DO"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "10　就労系障害福祉サービス（就労移行支援、就労継続支援A型等）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DR",
+      "field_name": "col_DR",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DP"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "11　難病のある人の雇用管理マニュアル（オンラインダウンロード）",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DS",
+      "field_name": "col_DS",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "12　上記のいずれも活用していない",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DT",
+      "field_name": "col_DT",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DR"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問6-1b障害や疾病のある方に対する一般的な配慮として、次の配慮、調整や支援を実施する必要があると仮定した場合、それぞれについて、貴事業所ではどの程度の困難や負担を感じますか。最も近いものをそれぞれ1つ選択してください。",
+      "item_label": "①身体的負荷の低いデスクワーク等の職務の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DU",
+      "field_name": "col_DU",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "②体調変動に応じた業務量の設定・調整",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DV",
+      "field_name": "col_DV",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "③通院や体調管理のしやすい勤務時間・日数、休憩時間への配慮",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DW",
+      "field_name": "col_DW",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④急な欠勤等に対応できる職場体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DX",
+      "field_name": "col_DX",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤障害や難病に対する情報提供・研修の実施等による周囲の理解の促進",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DY",
+      "field_name": "col_DY",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥職場内のコミュニケーションの円滑化や相談体制の整備",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "DZ",
+      "field_name": "col_DZ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑦職場の施設や設備等の環境（ハード）面の改善",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EA",
+      "field_name": "col_EA",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "DY"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑧病気の進行等見据えた長期的なキャリアプランの策定",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EB",
+      "field_name": "col_EB",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "⑨医療機関等と連携した復職支援",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EC",
+      "field_name": "col_EC",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EA"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "５　障害や疾病のある方の雇用や支援に関するお考えについて",
+      "item_label": "*未設定",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "ED",
+      "field_name": "col_ED",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EB"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "organization_policy_posture",
+      "group_label": "問7貴事業所の障害や疾病のある方を雇用する方針や貴事業所の状況として、それぞれはどの程度当てはまりますか。最も近いもの１つを選択してください。",
+      "item_label": "①障害の有無にかかわらず、仕事の適性や意欲を基準にして採用・評価する",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EE",
+      "field_name": "col_EE",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EC"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "organization_policy_posture",
+      "group_label": "",
+      "item_label": "②障害や疾病、配慮の申し出により、職場で差別を受けることはない方針を明確に示している",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EF",
+      "field_name": "col_EF",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "ED"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "organization_policy_posture",
+      "group_label": "",
+      "item_label": "③合理的配慮については、特定の個人や部署等のみの負担となることのないよう、全社的取組として実施し、実施に要するコスト等を負担している",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EG",
+      "field_name": "col_EG",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EE"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "④必要な環境整備や支援機器等の導入を行う",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EH",
+      "field_name": "col_EH",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EF"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑤勤務時間や休日、テレワーク等を本人の都合に合わせて柔軟に調整しやすい職場である",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EI",
+      "field_name": "col_EI",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EG"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "⑥障害や疾病のある社員の上司や同僚に、必要に応じて適切な理解や配慮を実施するための情報提供や訓練等を受ける機会を設けている",
+      "response_type": "closed_label_text_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EJ",
+      "field_name": "col_EJ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EH"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "問8難病のある方が、治療と仕事を両立しやすい社会や職場づくりのために、企業のお立場から、必要と思われる支援等について全て選択してください。（選択肢は12項目あります。）",
+      "item_label": "１　難病のある方の雇用に関する広報・啓発",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EK",
+      "field_name": "col_EK",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EI"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "external_support_use",
+      "group_label": "",
+      "item_label": "２　支援機関・支援制度・支援機器等に関する情報提供",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EL",
+      "field_name": "col_EL",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EJ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "３　具体的な労働条件、職務内容、環境整備などに関する相談",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EM",
+      "field_name": "col_EM",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EK"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "４　雇用管理に役立つマニュアル、研修等の提供",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EN",
+      "field_name": "col_EN",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EL"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "５　定期的なフォローアップ",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EO",
+      "field_name": "col_EO",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EM"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "６　病状や障害の進行時等の相談・助言、対応等",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EP",
+      "field_name": "col_EP",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EN"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "７　仕事と治療の両立支援に対する助言等",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EQ",
+      "field_name": "col_EQ",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EO"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "*未設定",
+      "item_label": "８　経済的負担に対する経済的補償",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "ER",
+      "field_name": "col_ER",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EP"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "９　障害者手帳の無い難病のある方について、個別の認定により障害者雇用率制度への算定を可能とすること",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "ES",
+      "field_name": "col_ES",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EQ"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "10　障害者手帳の有無によらない難病のある方の雇用義務化",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "ET",
+      "field_name": "col_ET",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "ER"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "*未設定",
+      "item_label": "11　職種変更時等に必要なスキル習得のための研修等",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EU",
+      "field_name": "col_EU",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "ES"
+      ],
+      "use_status": "sanitized_usable",
+      "family_id": "survey_response_field_pending_review",
+      "group_label": "",
+      "item_label": "12　難病のある方に対する経済的な支援",
+      "response_type": "coded_numeric_pending_domain_review",
+      "quarantine_reason": null,
+      "missingness_rule": "pending_block_policy",
+      "value_domain_status": "pending_questionnaire_alignment",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EV",
+      "field_name": "col_EV",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "ET"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "free_text_quarantine",
+      "group_label": "問9難病のある方への就労支援について、現状、課題、ご意見等、ご自由にご記載ください（任意）。",
+      "item_label": "*未設定",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "free-text opinion / issues / concerns",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EW",
+      "field_name": "col_EW",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EU"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "disease_name_text_quarantine",
+      "group_label": "これまでの回答に間違いがなければ、「回答を完了する」を選択してください。（訂正する場合は、下の［戻る］ボタンを選択して再度該当箇所の回答をお願いします。）【ご回答いただいた内容】問１　回答者さまの所属部署・役職等をお答えください。問1所属する部署無回答・役職／職種等無回答問２　回答者さまのお立場では、貴事業所の従業員の次のような状況を把握されていますか。あてはまるものすべてを選択してください。問２無回答問３　貴事業所の令和4年６月1日現在の従業員数について、お答えください（企業の形態が、企業に複数の事業所がある場合は、事業所及び企業全体のそれぞれの従業員数についてお答えください）。事業所単位・企業単位：問３-1無回答問４　貴事業所の主たる事業の産業区分について、該当する番号１つを選択してください。問４無回答（その他無回答）問５　難病のある方の就労を困難とする一因として、一般の方に対する難病や難病のある方に関する情報提供の不足が指摘されています。そこで、今後の情報提供のあり方の検討に資するため、回答者さまの以下の情報に関してご存じの情報について、最も近いものを１つ選択してください。問５無回答問６　貴事業所では、最近5年以内で、次のような難病のある従業員がいたことがありますか。診断書等に記載された疾病名が難病かもしれないと思われる場合は「いる（いた）かもしれない」を選択してください。）。※「いない」のみを選択された方は問６-1ｂへ、それ以外の方は問６-1aへお進みください。問６無回答【把握されたその他の状況　；無回答】問６-1a①　雇用している又は雇用していた難病のある従業員に対する配慮や支援の実施経験等について配慮や支援が最も必要だった方についてご回答ください。1名の場合は、本欄にご回答ください。問６-1a①無回答（問６-1a①障害者手帳無回答・問６-1a①身体障害者手帳の等級無回答・問６-1a①疾病名無回答）問6-1a①で配慮や支援の実施経験について、「実施したことがある」と回答された項目についてお伺いします。困難や負担をどの程度感じますか？問6-1a①困難や負担：無回答問6-1a①で配慮や支援の実施経験について、「実施したことはない」と回答された項目についてお伺いします。それぞれの項目について配慮や支援の必要性を感じますか？問6-1a①配慮や支援の必要性：無回答問６-1a②　雇用している又は雇用していた難病のある従業員が複数名である場合、最も配慮や支援が必要でなかった従業員に対する配慮や支援の実施経験等についてご回答ください。（複数名いない場合は無回答で次に進んでください。）問６-1a②無回答（問６-1a②障害者手帳無回答・問６-1a②身体障害者手帳の等級無回答・問６-1a②疾病名無回答）問6-1a②で配慮や支援の実施経験について、「実施したことがある」と回答された項目についてお伺いします。困難や負担をどの程度感じますか？問6-1a②困難や負担：無回答問6-1a②で配慮や支援の実施経験について、「実施したことはない」と回答された項目についてお伺いします。それぞれの項目について配慮や支援の必要性を感じますか？問6-1a②配慮や支援の必要性：無回答問６-2a　難病のある従業員への就労支援において、活用した支援・助成制度をすべて選択してください。問６-2a無回答問６-3a　難病のある従業員への就労支援において、活用した支援機関等についてすべて選択してください。（回答後は問７にお進みください。）問６-3a無回答問６-1b　障害や難病のある従業員に対する一般的な配慮として、次の配慮、調整や支援を実施する必要がある場合、それぞれについて、貴事業所ではどの程度の困難や負担が生じますか。最も近いものをそれぞれ1つ選択してください。問６-1b無回答問７　貴事業所の障害や疾病のある方を雇用する方針や貴事業所の状況として、それぞれはどの程度当てはまりますか。最も近いもの１つを選択してください。問７無回答問８　難病のある方が、治療と仕事を両立しやすい社会や職場づくりのために、事業所のお立場から、必要と思われる支援等について全て選択してください。【事業主と難病のある方に対する支援等：無回答】、【事業主に対する支援等：無回答】、【難病のある方に対する支援等：無回答】問９　難病のある方への就労支援について、現状、課題、ご意見等、ご自由にご記載ください（任意）。問９無回答",
+      "item_label": "*未設定",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "confirmation summary / system wrapper with long repeated response text",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    },
+    {
+      "column_ref": "EX",
+      "field_name": "col_EX",
+      "canonical_source": "web_raw0324",
+      "prior_extracted_columns": [
+        "EV"
+      ],
+      "use_status": "quarantine_or_review_required",
+      "family_id": "disease_name_text_quarantine",
+      "group_label": "本調査のために貴重なお時間をいただきまして、まことにありがとうございました。【ご回答いただいた内容】問１　回答者さまの所属部署・役職等をお答えください。問1所属する部署無回答・役職／職種等無回答問２　回答者さまのお立場では、貴事業所の従業員の次のような状況を把握されていますか。あてはまるものすべてを選択してください。問２無回答問３　貴事業所の令和4年６月1日現在の従業員数について、お答えください（企業に事業所が複数ある場合は、事業所及び企業全体のそれぞれの従業員数についてお答えください）。事業所単位・企業単位：問３-1無回答問４　貴事業所の主たる事業の産業区分について、該当する番号１つを選択してください。問４無回答（その他無回答）問５　難病のある方の就労を困難とする一因として、一般の方に対する難病や難病のある方に関する情報提供の不足が指摘されています。そこで、今後の情報提供のあり方の検討に資するため、回答者さまの以下の情報に関してご存じの情報について、最も近いものを１つ選択してください。問５無回答問６　貴事業所では、最近5年以内で、次のような難病のある従業員がいたことがありますか。診断書等に記載された疾病名が難病かもしれないと思われる場合は「いる（いた）かもしれない」を選択してください。）。※「いない」のみを選択された方は問６-1ｂへ、それ以外の方は問６-1aへお進みください。問６無回答【把握されたその他の状況　；無回答】問６-1a①　雇用している又は雇用していた難病のある従業員に対する配慮や支援の実施経験等について配慮や支援が最も必要だった方についてご回答ください。1名の場合は、本欄にご回答ください。問６-1a①無回答（問６-1a①障害者手帳無回答・問６-1a①身体障害者手帳の等級無回答・問６-1a①疾病名無回答）問6-1a①で配慮や支援の実施経験について、「実施したことがある」と回答された項目についてお伺いします。困難や負担をどの程度感じますか？問6-1a①困難や負担：無回答問6-1a①で配慮や支援の実施経験について、「実施したことはない」と回答された項目についてお伺いします。それぞれの項目について配慮や支援の必要性を感じますか？問6-1a①配慮や支援の必要性：無回答問６-1a②　雇用している又は雇用していた難病のある方が複数名である場合、最も配慮や支援が必要でなかった方に対する配慮や支援の実施経験等についてご回答ください。（複数名いない場合は無回答で次に進んでください。）問６-1a②無回答（問６-1a②障害者手帳無回答・問６-1a②身体障害者手帳の等級無回答・問６-1a②疾病名無回答）問6-1a②で配慮や支援の実施経験について、「実施したことがある」と回答された項目についてお伺いします。困難や負担をどの程度感じますか？問6-1a②困難や負担：無回答問6-1a②で配慮や支援の実施経験について、「実施したことはない」と回答された項目についてお伺いします。それぞれの項目について配慮や支援の必要性を感じますか？問6-1a②配慮や支援の必要性：無回答問６-2a　難病のある従業員への就労支援において、活用した支援・助成制度をすべて選択してください。問６-2a無回答問６-3a　難病のある従業員への就労支援において、活用した支援機関等についてすべて選択してください。（回答後は問７にお進みください。）問６-3a無回答問６-1b　特に障害者雇用義務の対象に限らず、障害や難病のある方に対する一般的な配慮として、次の配慮、調整や支援を実施する必要がある場合、それぞれについて、貴事業所ではどの程度の困難や負担が生じますか。最も近いものをそれぞれ1つ選択してください。問６-1b無回答問７　貴事業所の障害や疾病のある方を雇用する方針や貴事業所の状況として、それぞれはどの程度当てはまりますか。最も近いもの１つを選択してください。問７無回答問８　難病のある方が、治療と仕事を両立しやすい社会や職場づくりのために、事業所のお立場から、必要と思われる支援等について全て選択してください。【事業主と難病のある方に対する支援等：無回答】、【事業主に対する支援等：無回答】、【難病のある方に対する支援等：無回答】問９　難病のある方への就労支援について、現状、課題、ご意見等、ご自由にご記載ください（任意）。問９無回答",
+      "item_label": "*未設定",
+      "response_type": "excluded_or_quarantined",
+      "quarantine_reason": "completion / system wrapper with long repeated response text",
+      "missingness_rule": "not_applicable_excluded",
+      "value_domain_status": "not_applicable_excluded",
+      "manual_review_required": true
+    }
+  ],
+  "summary": {
+    "total_columns": 154,
+    "sanitized_usable": 144,
+    "force_quarantine_identifiable_risk": 2,
+    "quarantine_or_review_required": 8,
+    "pending_review_excluded": 0,
+    "recovered_closed_fields": [
+      "AE",
+      "EL"
+    ]
+  },
+  "boundary": {
+    "analysis_ready_created": false,
+    "free_text_processed": false,
+    "disease_names_normalized": false,
+    "public_use_approved": false,
+    "runtime_updated": false,
+    "knowledge_promoted": false,
+    "d_and_e_values_not_copied": true,
+    "b_d_e_headers_redacted_in_this_spec": true
+  }
+}

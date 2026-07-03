@@ -1,0 +1,140 @@
+{
+  "source_id": "nanbyo_workplace_web_raw0324_workbook",
+  "dataset_id": "nanbyo_workplace_2022_2023_web_raw0324",
+  "source_role": "canonical_web_survey_raw_workplace_source_for_questionnaire_alignment",
+  "source_type": "xlsx_workbook",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data_or_identifiable_risk": true,
+  "contains_free_text": true,
+  "contains_sensitive_health_condition_text": true,
+  "row_unit": "establishment_response",
+  "respondent_unit": "establishment_respondent",
+  "sample_unit": "establishment",
+  "population": "rare disease workplace / employer web survey",
+  "file_path": "nanbyo_workplace_2022_2023/事業所調査（ローデータ0324のみ抽出）.xlsx",
+  "sha256": {
+    "workbook": "ab0c0422886c1356fac29672b13e3733e3426ddcafda9931e3c722771645afd7"
+  },
+  "sheet_names": [
+    "事業所調査（回答者ローデータ0324）"
+  ],
+  "data_sheet": "事業所調査（回答者ローデータ0324）",
+  "excel_dimension": "A1:EX761",
+  "header_rows": [
+    1,
+    2,
+    3
+  ],
+  "data_start_row": 4,
+  "row_count": 758,
+  "column_span_count": 154,
+  "forced_identifiable_risk_columns": [
+    {
+      "column_ref": "D",
+      "reason": "possible identifiable information flagged by Founder"
+    },
+    {
+      "column_ref": "E",
+      "reason": "possible identifiable information flagged by Founder"
+    }
+  ],
+  "quarantine_columns": [
+    {
+      "column_ref": "B",
+      "reason": "survey-introduction / header-sensitive / long-text candidate",
+      "nonempty_count": 758,
+      "numeric_count": 758,
+      "text_count": 0,
+      "max_observed_length": 0
+    },
+    {
+      "column_ref": "D",
+      "reason": "forced identifiable-risk quarantine",
+      "nonempty_count": 746,
+      "numeric_count": 0,
+      "text_count": 746,
+      "max_observed_length": 47
+    },
+    {
+      "column_ref": "E",
+      "reason": "forced identifiable-risk quarantine",
+      "nonempty_count": 749,
+      "numeric_count": 0,
+      "text_count": 749,
+      "max_observed_length": 22
+    },
+    {
+      "column_ref": "O",
+      "reason": "other-text / free-text candidate",
+      "nonempty_count": 37,
+      "numeric_count": 0,
+      "text_count": 37,
+      "max_observed_length": 58
+    },
+    {
+      "column_ref": "AF",
+      "reason": "other-text / free-text candidate",
+      "nonempty_count": 88,
+      "numeric_count": 1,
+      "text_count": 87,
+      "max_observed_length": 75
+    },
+    {
+      "column_ref": "BN",
+      "reason": "disease-name / sensitive text candidate",
+      "nonempty_count": 287,
+      "numeric_count": 0,
+      "text_count": 287,
+      "max_observed_length": 31
+    },
+    {
+      "column_ref": "CV",
+      "reason": "disease-name / sensitive text candidate",
+      "nonempty_count": 290,
+      "numeric_count": 0,
+      "text_count": 290,
+      "max_observed_length": 31
+    },
+    {
+      "column_ref": "EV",
+      "reason": "free-text opinion / issues / concerns",
+      "nonempty_count": 747,
+      "numeric_count": 0,
+      "text_count": 747,
+      "max_observed_length": 541
+    },
+    {
+      "column_ref": "EW",
+      "reason": "system or free-text adjacent review-required candidate",
+      "nonempty_count": 758,
+      "numeric_count": 758,
+      "text_count": 0,
+      "max_observed_length": 0
+    },
+    {
+      "column_ref": "EX",
+      "reason": "system or free-text adjacent review-required candidate",
+      "nonempty_count": 758,
+      "numeric_count": 758,
+      "text_count": 0,
+      "max_observed_length": 0
+    }
+  ],
+  "known_structure_notes": [
+    "This workbook is the more original web-survey raw source designated by the Founder after questionnaire-result correspondence issues were detected in the earlier workbook.",
+    "Rows 1-3 contain survey item / web-survey metadata headers; respondent data starts at row 4.",
+    "D and E are force-quarantined for possible identifiable information.",
+    "Sanitized staging excludes D/E and additional header-sensitive, free-text, disease-text, and system-wrapper columns.",
+    "AE and EL were recovered as closed fields after review and are not quarantine columns.",
+    "No quarantined raw values are copied into tracked artifacts."
+  ],
+  "boundary": {
+    "ingestion_status": "sanitized_staging_created",
+    "analysis_ready_status": "not_created",
+    "runtime_status": "not_approved",
+    "public_use_status": "not_approved",
+    "knowledge_promotion_status": "not_promoted"
+  },
+  "generated_at": "2026-05-07T13:25:00+09:00"
+}

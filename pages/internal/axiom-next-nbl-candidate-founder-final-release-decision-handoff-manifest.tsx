@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionHandoffManifestSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionHandoffManifestSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionHandoffManifestPage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionHandoffManifestSurface />;
+}

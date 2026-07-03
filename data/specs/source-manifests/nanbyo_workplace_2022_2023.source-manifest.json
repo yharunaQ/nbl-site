@@ -1,0 +1,80 @@
+{
+  "source_id": "nanbyo_workplace_2022_2023_workbook",
+  "dataset_id": "nanbyo_workplace_2022_2023",
+  "source_role": "workplace_recognition_and_implementation_source",
+  "source_type": "xlsx_workbook",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_free_text": true,
+  "contains_sensitive_health_condition_text": true,
+  "row_unit": "establishment_response",
+  "respondent_unit": "establishment_respondent",
+  "sample_unit": "establishment",
+  "population": "rare disease workplace / employer survey",
+  "file_path": "nanbyo_workplace_2022_2023/難病職場調査.xlsx",
+  "questionnaire_files": [
+    "nanbyo_workplace_2022_2023/難病職場調査調査票.pdf"
+  ],
+  "sha256": {
+    "workbook": "e9820903f32dc2fe8c3454eb30056932d70cc88e1da3147473bd7cb76fb0b387",
+    "questionnaire_pdf": "cddb1054f9064321153ac3185e4c29b344102988ff0868fcd212bdf1ba223046"
+  },
+  "sheet_names": [
+    "ローデータ数値化"
+  ],
+  "data_sheet": "ローデータ数値化",
+  "dictionary_sheet": null,
+  "excel_dimension": "A1:EV760",
+  "row_count": 758,
+  "column_span_count": 152,
+  "top_header_cell_count": 35,
+  "free_text_or_sensitive_columns": [
+    {
+      "column_ref": "M",
+      "reason": "industry other text",
+      "nonempty_count": 37,
+      "max_observed_length": 58
+    },
+    {
+      "column_ref": "AD",
+      "reason": "other recognition situation text",
+      "nonempty_count": 88,
+      "max_observed_length": 75
+    },
+    {
+      "column_ref": "BL",
+      "reason": "disease name text for most-support-needed case",
+      "nonempty_count": 287,
+      "max_observed_length": 31
+    },
+    {
+      "column_ref": "CT",
+      "reason": "disease name text for least-support-needed case",
+      "nonempty_count": 290,
+      "max_observed_length": 31
+    },
+    {
+      "column_ref": "ET",
+      "reason": "free text opinion / issues / concerns",
+      "nonempty_count": 747,
+      "max_observed_length": 547
+    }
+  ],
+  "known_structure_notes": [
+    "Workbook has one sheet and no separate dictionary sheet.",
+    "Row 1 uses grouped question headers and row 2 uses item labels; respondent data starts at row 3.",
+    "Top row uses grouped question headers; 117 nonempty data columns do not have direct top-row header text.",
+    "Questionnaire PDF is present in the same source folder and should be treated as the primary instrument for codebook alignment.",
+    "No plus-delimited cells were detected in the initial metadata pass.",
+    "Free text and disease-name columns must remain quarantined until de-identification and human review are planned."
+  ],
+  "boundary": {
+    "ingestion_status": "not_ingested",
+    "analysis_ready_status": "not_created",
+    "runtime_status": "not_approved",
+    "public_use_status": "not_approved",
+    "knowledge_promotion_status": "not_promoted"
+  },
+  "generated_at": "2026-05-07T00:10:00+09:00"
+}

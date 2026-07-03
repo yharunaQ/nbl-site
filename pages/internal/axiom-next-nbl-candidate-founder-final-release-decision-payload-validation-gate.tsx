@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionPayloadValidationGateSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionPayloadValidationGateSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionPayloadValidationGatePage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionPayloadValidationGateSurface />;
+}

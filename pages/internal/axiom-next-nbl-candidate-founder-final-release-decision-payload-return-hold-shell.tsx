@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionPayloadReturnHoldShellSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionPayloadReturnHoldShellSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionPayloadReturnHoldShellPage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionPayloadReturnHoldShellSurface />;
+}

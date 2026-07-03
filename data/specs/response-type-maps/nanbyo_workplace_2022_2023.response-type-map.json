@@ -1,0 +1,219 @@
+{
+  "dataset_id": "nanbyo_workplace_2022_2023",
+  "source_id": "nanbyo_workplace_2022_2023_workbook",
+  "file_path": "nanbyo_workplace_2022_2023/難病職場調査.xlsx",
+  "generated_at": "2026-05-07T00:10:00+09:00",
+  "taxonomy_version": "v0_intake_only",
+  "status": "source_designated_metadata_only",
+  "raw_data_read_scope": "sheet_names_headers_dimensions_counts_only",
+  "response_types": [
+    "identifier_or_row_index",
+    "nominal",
+    "ordinal",
+    "multi_column_multiselect",
+    "composite_state",
+    "free_text_quarantined",
+    "sensitive_text_quarantined",
+    "confirmation_or_system_column",
+    "unknown_pending_codebook_alignment"
+  ],
+  "critical_decode_rules": [
+    "recognized_present_recognized_possible_and_recognized_absent_must_remain_separate",
+    "recognized_absent_does_not_mean_worker_absence",
+    "actual_support_implementation_must_remain_separate_from_actual_support_burden",
+    "actual_burden_must_remain_separate_from_imagined_burden",
+    "support_route_not_used_does_not_mean_support_not_needed",
+    "organization_policy_posture_is_not_a_legal_compliance_score",
+    "disease_name_text_and_free_text_are_quarantined_until_deidentified_and_reviewed"
+  ],
+  "column_families": [
+    {
+      "family_id": "row_or_response_identifier",
+      "column_refs": "A",
+      "response_type_guess": "identifier_or_row_index",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "respondent_role",
+      "column_refs": "B:C",
+      "instrument_block": "問1",
+      "response_type_guess": "nominal_or_sensitive_text_coded",
+      "manual_review_required": true,
+      "quarantine_required": true
+    },
+    {
+      "family_id": "respondent_visibility_scope",
+      "column_refs": "D:H",
+      "instrument_block": "問2",
+      "response_type_guess": "multi_column_multiselect",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "establishment_context",
+      "column_refs": "I:M",
+      "instrument_block": "問3-問4",
+      "response_type_guess": "nominal_and_ordinal_with_other_text",
+      "manual_review_required": true,
+      "quarantine_columns": [
+        "M"
+      ]
+    },
+    {
+      "family_id": "nanbyo_information_recognition",
+      "column_refs": "N:T",
+      "instrument_block": "問5",
+      "response_type_guess": "ordinal_recognition_state",
+      "manual_review_required": true,
+      "current_policy_verification_required_before_public_use": true
+    },
+    {
+      "family_id": "recognized_employment_state",
+      "column_refs": "U:AD",
+      "instrument_block": "問6",
+      "response_type_guess": "three_state_categorical_by_trigger",
+      "semantic_atoms": [
+        "recognized_present",
+        "recognized_possible",
+        "recognized_absent",
+        "recognition_trigger_other_text"
+      ],
+      "manual_review_required": true,
+      "quarantine_columns": [
+        "AD"
+      ]
+    },
+    {
+      "family_id": "actual_support_implementation_high_support_need_case",
+      "column_refs": "AE:AM",
+      "instrument_block": "問6-1a_1",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "actual_support_burden_high_support_need_case",
+      "column_refs": "AN:AV",
+      "instrument_block": "問6-1a_1_burden",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "support_necessity_high_support_need_case",
+      "column_refs": "AW:BE",
+      "instrument_block": "問6-1a_1_necessity_if_not_implemented",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "certificate_and_disease_high_support_need_case",
+      "column_refs": "BF:BL",
+      "instrument_block": "問6-1a_1_certificate_disease",
+      "response_type_guess": "nominal_and_sensitive_text",
+      "manual_review_required": true,
+      "quarantine_columns": [
+        "BL"
+      ]
+    },
+    {
+      "family_id": "actual_support_implementation_low_support_need_case",
+      "column_refs": "BM:BU",
+      "instrument_block": "問6-1a_2",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "actual_support_burden_low_support_need_case",
+      "column_refs": "BV:CD",
+      "instrument_block": "問6-1a_2_burden",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "support_necessity_low_support_need_case",
+      "column_refs": "CE:CM",
+      "instrument_block": "問6-1a_2_necessity_if_not_implemented",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "certificate_and_disease_low_support_need_case",
+      "column_refs": "CN:CT",
+      "instrument_block": "問6-1a_2_certificate_disease",
+      "response_type_guess": "nominal_and_sensitive_text",
+      "manual_review_required": true,
+      "quarantine_columns": [
+        "CT"
+      ]
+    },
+    {
+      "family_id": "grant_or_subsidy_use",
+      "column_refs": "CU:DE",
+      "instrument_block": "問6-2a",
+      "response_type_guess": "multi_column_multiselect",
+      "manual_review_required": true,
+      "current_policy_verification_required_before_public_use": true
+    },
+    {
+      "family_id": "external_support_use",
+      "column_refs": "DF:DQ",
+      "instrument_block": "問6-3a",
+      "response_type_guess": "multi_column_multiselect",
+      "manual_review_required": true,
+      "current_policy_verification_required_before_public_use": true
+    },
+    {
+      "family_id": "imagined_support_burden_no_recognized_experience",
+      "column_refs": "DR:DZ",
+      "instrument_block": "問6-1b",
+      "response_type_guess": "domain_scale",
+      "manual_review_required": true
+    },
+    {
+      "family_id": "organization_policy_posture",
+      "column_refs": "EA:EG",
+      "instrument_block": "問7",
+      "response_type_guess": "agreement_scale",
+      "manual_review_required": true,
+      "blocked_use": [
+        "legal_compliance_score",
+        "public_maturity_score_without_review"
+      ]
+    },
+    {
+      "family_id": "desired_employer_support",
+      "column_refs": "EH:ES",
+      "instrument_block": "問8",
+      "response_type_guess": "multi_column_multiselect",
+      "manual_review_required": true,
+      "current_policy_verification_required_before_public_use": true
+    },
+    {
+      "family_id": "free_text_opinion",
+      "column_refs": "ET",
+      "instrument_block": "問9",
+      "response_type_guess": "free_text_quarantined",
+      "manual_review_required": true,
+      "quarantine_required": true,
+      "blocked_use": [
+        "direct_public_quote",
+        "unreviewed_training_input",
+        "automatic_core_skill_update"
+      ]
+    },
+    {
+      "family_id": "confirmation_or_system_columns",
+      "column_refs": "EU:EV",
+      "instrument_block": "completion_confirmation",
+      "response_type_guess": "confirmation_or_system_column",
+      "manual_review_required": true,
+      "recommended_default_use": "exclude_from_analysis_ready_until_reviewed"
+    }
+  ],
+  "boundary": {
+    "schema_status": "not_implemented",
+    "ingestion_status": "not_ingested",
+    "analysis_ready_status": "not_created",
+    "runtime_status": "not_approved",
+    "public_use_status": "not_approved",
+    "knowledge_promotion_status": "not_promoted"
+  }
+}

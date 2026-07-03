@@ -1,0 +1,1383 @@
+{
+  "dataset_id": "2001_ABC_survey",
+  "profile_id": "2001_ABC_survey_narrative_field_readiness_profile_v0_2026_05_22",
+  "generated_at": "2026-05-22",
+  "lane": "Falcon Lab",
+  "status": "aggregate_narrative_field_readiness_profile_no_raw_text_export_no_row_text_export",
+  "raw_text_values_exported": false,
+  "raw_text_examples_exported": false,
+  "individual_ids_exported": false,
+  "processing_note": "The script counted nonempty open-text cells and length distributions. It did not write respondent text, examples, row-level text, or individual IDs.",
+  "tables": {
+    "A": {
+      "source_workbook": "data/original_secure/structured/2001_ABC_survey/A_data.xlsx",
+      "data_sheet": "A全て",
+      "rows": 1582,
+      "candidate_narrative_fields_count": 25,
+      "candidate_narrative_nonempty_cells_total": 6711,
+      "fields": [
+        {
+          "column": 3,
+          "variable": "問１その他",
+          "content": "事業内容(その他）",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 64,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0405,
+          "length_stats": {
+            "min": 2,
+            "median": 6,
+            "p90": 13,
+            "max": 33,
+            "total_chars": 470
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 23,
+          "variable": "問３具体的に",
+          "content": "その他（具体的に）",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 37,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0234,
+          "length_stats": {
+            "min": 4,
+            "median": 11,
+            "p90": 24,
+            "max": 47,
+            "total_chars": 500
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 59,
+          "variable": "５－１その他",
+          "content": "その他の雇用理由",
+          "question_label": "同上",
+          "narrative_role": "A_employment_reason_challenge_narrative",
+          "nonempty_cells": 32,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0202,
+          "length_stats": {
+            "min": 11,
+            "median": 25,
+            "p90": 45,
+            "max": 50,
+            "total_chars": 868
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_employment_reason_challenge_context_card"
+        },
+        {
+          "column": 64,
+          "variable": "５－２その他",
+          "content": "その他の雇用課題",
+          "question_label": "同上",
+          "narrative_role": "A_employment_reason_challenge_narrative",
+          "nonempty_cells": 28,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0177,
+          "length_stats": {
+            "min": 3,
+            "median": 27,
+            "p90": 36,
+            "max": 50,
+            "total_chars": 724
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_employment_reason_challenge_context_card"
+        },
+        {
+          "column": 66,
+          "variable": "問６　３４",
+          "content": "相談先や相談内容（建築物の改造）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 67,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0424,
+          "length_stats": {
+            "min": 3,
+            "median": 15,
+            "p90": 37,
+            "max": 50,
+            "total_chars": 1185
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 68,
+          "variable": "問６　３５",
+          "content": "相談先や相談内容（作業設備の改善）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 57,
+          "table_rows": 1582,
+          "nonempty_rate": 0.036,
+          "length_stats": {
+            "min": 2,
+            "median": 15,
+            "p90": 37,
+            "max": 50,
+            "total_chars": 996
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 70,
+          "variable": "問６　３６",
+          "content": "相談先や相談内容（支援機器の整備）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 50,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0316,
+          "length_stats": {
+            "min": 4,
+            "median": 15,
+            "p90": 37,
+            "max": 50,
+            "total_chars": 891
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 72,
+          "variable": "問６　３７",
+          "content": "相談先や相談内容（専任の職場支援・介護者の配置）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 63,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0398,
+          "length_stats": {
+            "min": 4,
+            "median": 15,
+            "p90": 27,
+            "max": 50,
+            "total_chars": 1098
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 74,
+          "variable": "問６　３８",
+          "content": "相談先や相談内容（他の従業員による支援・介助の促進）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 45,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0284,
+          "length_stats": {
+            "min": 2,
+            "median": 16,
+            "p90": 27,
+            "max": 50,
+            "total_chars": 764
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 76,
+          "variable": "問６　３９",
+          "content": "相談先や相談内容（管理職への障害者雇用啓発）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 51,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0322,
+          "length_stats": {
+            "min": 6,
+            "median": 15,
+            "p90": 22,
+            "max": 50,
+            "total_chars": 801
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 78,
+          "variable": "問６　４０",
+          "content": "相談先や相談内容（従業員への障害者雇用啓発）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 47,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0297,
+          "length_stats": {
+            "min": 4,
+            "median": 13,
+            "p90": 26,
+            "max": 50,
+            "total_chars": 721
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 80,
+          "variable": "問６　４１",
+          "content": "相談先や相談内容（障害者の特性に応じた職場配置）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 66,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0417,
+          "length_stats": {
+            "min": 2,
+            "median": 12,
+            "p90": 24,
+            "max": 50,
+            "total_chars": 938
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 82,
+          "variable": "問６　４２",
+          "content": "相談先や相談内容（教育・訓練）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 85,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0537,
+          "length_stats": {
+            "min": 3,
+            "median": 15,
+            "p90": 25,
+            "max": 50,
+            "total_chars": 1303
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 84,
+          "variable": "問６　４３",
+          "content": "相談先や相談内容（安全面の配慮や環境改善）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 70,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0442,
+          "length_stats": {
+            "min": 2,
+            "median": 11,
+            "p90": 32,
+            "max": 50,
+            "total_chars": 1021
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 86,
+          "variable": "問６　４４",
+          "content": "相談先や相談内容（健康管理）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 101,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0638,
+          "length_stats": {
+            "min": 1,
+            "median": 11,
+            "p90": 24,
+            "max": 50,
+            "total_chars": 1352
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 88,
+          "variable": "問６　４５",
+          "content": "相談先や相談内容（給与・労働条件の改善）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 40,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0253,
+          "length_stats": {
+            "min": 1,
+            "median": 13,
+            "p90": 20,
+            "max": 50,
+            "total_chars": 554
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 90,
+          "variable": "問６　４６",
+          "content": "相談先や相談内容（障害者の勤務時間外の自立生活支援）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 38,
+          "table_rows": 1582,
+          "nonempty_rate": 0.024,
+          "length_stats": {
+            "min": 3,
+            "median": 16,
+            "p90": 37,
+            "max": 50,
+            "total_chars": 718
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 92,
+          "variable": "問６　４７",
+          "content": "相談先や相談内容（家族や学校・福祉施設との連携）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 89,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0563,
+          "length_stats": {
+            "min": 2,
+            "median": 15,
+            "p90": 28,
+            "max": 50,
+            "total_chars": 1437
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 93,
+          "variable": "自由記述欄",
+          "content": "自由記述",
+          "question_label": "自由記述欄",
+          "narrative_role": "general_open_narrative",
+          "nonempty_cells": 293,
+          "table_rows": 1582,
+          "nonempty_rate": 0.1852,
+          "length_stats": {
+            "min": 4,
+            "median": 119,
+            "p90": 355,
+            "max": 906,
+            "total_chars": 46966
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "open_need_policy_narrative_card"
+        },
+        {
+          "column": 94,
+          "variable": "事業の取り扱い品",
+          "content": "事業の取り扱い品",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 1580,
+          "table_rows": 1582,
+          "nonempty_rate": 0.9987,
+          "length_stats": {
+            "min": 2,
+            "median": 13,
+            "p90": 27,
+            "max": 30,
+            "total_chars": 22551
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 98,
+          "variable": "定着推進活動状況",
+          "content": "定着推進活動状況",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 1298,
+          "table_rows": 1582,
+          "nonempty_rate": 0.8205,
+          "length_stats": {
+            "min": 1,
+            "median": 42,
+            "p90": 59,
+            "max": 60,
+            "total_chars": 53149
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 99,
+          "variable": "障害者雇用留意事項1",
+          "content": "障害者雇用留意事項1",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 1433,
+          "table_rows": 1582,
+          "nonempty_rate": 0.9058,
+          "length_stats": {
+            "min": 8,
+            "median": 125,
+            "p90": 125,
+            "max": 125,
+            "total_chars": 146061
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 100,
+          "variable": "障害者雇用留意事項2",
+          "content": "障害者雇用留意事項2",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 790,
+          "table_rows": 1582,
+          "nonempty_rate": 0.4994,
+          "length_stats": {
+            "min": 1,
+            "median": 78,
+            "p90": 125,
+            "max": 125,
+            "total_chars": 59517
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 101,
+          "variable": "障害者雇用留意事項3",
+          "content": "障害者雇用留意事項3",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 237,
+          "table_rows": 1582,
+          "nonempty_rate": 0.1498,
+          "length_stats": {
+            "min": 1,
+            "median": 70,
+            "p90": 125,
+            "max": 125,
+            "total_chars": 16299
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 102,
+          "variable": "障害者雇用留意事項4",
+          "content": "障害者雇用留意事項4",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 50,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0316,
+          "length_stats": {
+            "min": 1,
+            "median": 19,
+            "p90": 25,
+            "max": 25,
+            "total_chars": 828
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        }
+      ],
+      "strongest_fields_by_nonempty": [
+        {
+          "column": 94,
+          "variable": "事業の取り扱い品",
+          "content": "事業の取り扱い品",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 1580,
+          "table_rows": 1582,
+          "nonempty_rate": 0.9987,
+          "length_stats": {
+            "min": 2,
+            "median": 13,
+            "p90": 27,
+            "max": 30,
+            "total_chars": 22551
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 99,
+          "variable": "障害者雇用留意事項1",
+          "content": "障害者雇用留意事項1",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 1433,
+          "table_rows": 1582,
+          "nonempty_rate": 0.9058,
+          "length_stats": {
+            "min": 8,
+            "median": 125,
+            "p90": 125,
+            "max": 125,
+            "total_chars": 146061
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 98,
+          "variable": "定着推進活動状況",
+          "content": "定着推進活動状況",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 1298,
+          "table_rows": 1582,
+          "nonempty_rate": 0.8205,
+          "length_stats": {
+            "min": 1,
+            "median": 42,
+            "p90": 59,
+            "max": 60,
+            "total_chars": 53149
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 100,
+          "variable": "障害者雇用留意事項2",
+          "content": "障害者雇用留意事項2",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 790,
+          "table_rows": 1582,
+          "nonempty_rate": 0.4994,
+          "length_stats": {
+            "min": 1,
+            "median": 78,
+            "p90": 125,
+            "max": 125,
+            "total_chars": 59517
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 93,
+          "variable": "自由記述欄",
+          "content": "自由記述",
+          "question_label": "自由記述欄",
+          "narrative_role": "general_open_narrative",
+          "nonempty_cells": 293,
+          "table_rows": 1582,
+          "nonempty_rate": 0.1852,
+          "length_stats": {
+            "min": 4,
+            "median": 119,
+            "p90": 355,
+            "max": 906,
+            "total_chars": 46966
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "open_need_policy_narrative_card"
+        },
+        {
+          "column": 101,
+          "variable": "障害者雇用留意事項3",
+          "content": "障害者雇用留意事項3",
+          "question_label": "設問外の追加情報",
+          "narrative_role": "A_added_establishment_context_narrative",
+          "nonempty_cells": 237,
+          "table_rows": 1582,
+          "nonempty_rate": 0.1498,
+          "length_stats": {
+            "min": 1,
+            "median": 70,
+            "p90": 125,
+            "max": 125,
+            "total_chars": 16299
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "A_establishment_context_narrative_card"
+        },
+        {
+          "column": 86,
+          "variable": "問６　４４",
+          "content": "相談先や相談内容（健康管理）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 101,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0638,
+          "length_stats": {
+            "min": 1,
+            "median": 11,
+            "p90": 24,
+            "max": 50,
+            "total_chars": 1352
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 92,
+          "variable": "問６　４７",
+          "content": "相談先や相談内容（家族や学校・福祉施設との連携）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 89,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0563,
+          "length_stats": {
+            "min": 2,
+            "median": 15,
+            "p90": 28,
+            "max": 50,
+            "total_chars": 1437
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 82,
+          "variable": "問６　４２",
+          "content": "相談先や相談内容（教育・訓練）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 85,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0537,
+          "length_stats": {
+            "min": 3,
+            "median": 15,
+            "p90": 25,
+            "max": 50,
+            "total_chars": 1303
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 84,
+          "variable": "問６　４３",
+          "content": "相談先や相談内容（安全面の配慮や環境改善）",
+          "question_label": "同上",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 70,
+          "table_rows": 1582,
+          "nonempty_rate": 0.0442,
+          "length_stats": {
+            "min": 2,
+            "median": 11,
+            "p90": 32,
+            "max": 50,
+            "total_chars": 1021
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        }
+      ]
+    },
+    "B": {
+      "source_workbook": "data/original_secure/structured/2001_ABC_survey/B_data.xlsx",
+      "data_sheet": "B全て",
+      "rows": 3875,
+      "candidate_narrative_fields_count": 8,
+      "candidate_narrative_nonempty_cells_total": 3757,
+      "fields": [
+        {
+          "column": 7,
+          "variable": "Ａ－２　その他の勤務形態",
+          "content": "その他の勤務形態",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 198,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0511,
+          "length_stats": {
+            "min": 1,
+            "median": 8,
+            "p90": 12,
+            "max": 25,
+            "total_chars": 1493
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 11,
+          "variable": "Ａ－３　その他",
+          "content": "その他の障害",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 24,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0062,
+          "length_stats": {
+            "min": 1,
+            "median": 5,
+            "p90": 9,
+            "max": 11,
+            "total_chars": 124
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 21,
+          "variable": "Ａ－５　その他",
+          "content": "具体的補助具等",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 89,
+          "table_rows": 3875,
+          "nonempty_rate": 0.023,
+          "length_stats": {
+            "min": 2,
+            "median": 7,
+            "p90": 9,
+            "max": 22,
+            "total_chars": 557
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 23,
+          "variable": "Ａ－６　大分類その他",
+          "content": "大分類その他",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 154,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0397,
+          "length_stats": {
+            "min": 2,
+            "median": 8,
+            "p90": 19,
+            "max": 43,
+            "total_chars": 1463
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 25,
+          "variable": "Ａ－６　実際の作業内容",
+          "content": "実際の作業内容",
+          "question_label": "同上",
+          "narrative_role": "work_content_narrative",
+          "nonempty_cells": 2203,
+          "table_rows": 3875,
+          "nonempty_rate": 0.5685,
+          "length_stats": {
+            "min": 2,
+            "median": 15,
+            "p90": 42,
+            "max": 152,
+            "total_chars": 45030
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "work_content_contact_narrative_card"
+        },
+        {
+          "column": 84,
+          "variable": "Ｂ－１１",
+          "content": "その他の有効な配慮や支援",
+          "question_label": "当該障害者の職業生活全般に関して、上記以外の有効な配慮や支援がある場合は、具体的にご記入下さい。",
+          "narrative_role": "support_practice_narrative",
+          "nonempty_cells": 466,
+          "table_rows": 3875,
+          "nonempty_rate": 0.1203,
+          "length_stats": {
+            "min": 2,
+            "median": 33,
+            "p90": 104,
+            "max": 210,
+            "total_chars": 20649
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "support_practice_narrative_card"
+        },
+        {
+          "column": 85,
+          "variable": "Ｂ－１２",
+          "content": "現在利用している外部支援機関",
+          "question_label": "当該障害者の雇用管理上、現在利用している外部支援機関（医療・福祉・教育等）がありましたら、具体的にご記入下さい。",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 278,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0717,
+          "length_stats": {
+            "min": 2,
+            "median": 8,
+            "p90": 44,
+            "max": 153,
+            "total_chars": 5078
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 146,
+          "variable": "自由記述欄",
+          "content": "その他の課題や支援上のニーズ等",
+          "question_label": "その他の課題や支援上のニーズ等",
+          "narrative_role": "general_open_narrative",
+          "nonempty_cells": 345,
+          "table_rows": 3875,
+          "nonempty_rate": 0.089,
+          "length_stats": {
+            "min": 2,
+            "median": 55,
+            "p90": 167,
+            "max": 377,
+            "total_chars": 25985
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "open_need_policy_narrative_card"
+        }
+      ],
+      "strongest_fields_by_nonempty": [
+        {
+          "column": 25,
+          "variable": "Ａ－６　実際の作業内容",
+          "content": "実際の作業内容",
+          "question_label": "同上",
+          "narrative_role": "work_content_narrative",
+          "nonempty_cells": 2203,
+          "table_rows": 3875,
+          "nonempty_rate": 0.5685,
+          "length_stats": {
+            "min": 2,
+            "median": 15,
+            "p90": 42,
+            "max": 152,
+            "total_chars": 45030
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "work_content_contact_narrative_card"
+        },
+        {
+          "column": 84,
+          "variable": "Ｂ－１１",
+          "content": "その他の有効な配慮や支援",
+          "question_label": "当該障害者の職業生活全般に関して、上記以外の有効な配慮や支援がある場合は、具体的にご記入下さい。",
+          "narrative_role": "support_practice_narrative",
+          "nonempty_cells": 466,
+          "table_rows": 3875,
+          "nonempty_rate": 0.1203,
+          "length_stats": {
+            "min": 2,
+            "median": 33,
+            "p90": 104,
+            "max": 210,
+            "total_chars": 20649
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "support_practice_narrative_card"
+        },
+        {
+          "column": 146,
+          "variable": "自由記述欄",
+          "content": "その他の課題や支援上のニーズ等",
+          "question_label": "その他の課題や支援上のニーズ等",
+          "narrative_role": "general_open_narrative",
+          "nonempty_cells": 345,
+          "table_rows": 3875,
+          "nonempty_rate": 0.089,
+          "length_stats": {
+            "min": 2,
+            "median": 55,
+            "p90": 167,
+            "max": 377,
+            "total_chars": 25985
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "open_need_policy_narrative_card"
+        },
+        {
+          "column": 85,
+          "variable": "Ｂ－１２",
+          "content": "現在利用している外部支援機関",
+          "question_label": "当該障害者の雇用管理上、現在利用している外部支援機関（医療・福祉・教育等）がありましたら、具体的にご記入下さい。",
+          "narrative_role": "external_support_advice_narrative",
+          "nonempty_cells": 278,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0717,
+          "length_stats": {
+            "min": 2,
+            "median": 8,
+            "p90": 44,
+            "max": 153,
+            "total_chars": 5078
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "external_support_connection_narrative_card"
+        },
+        {
+          "column": 7,
+          "variable": "Ａ－２　その他の勤務形態",
+          "content": "その他の勤務形態",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 198,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0511,
+          "length_stats": {
+            "min": 1,
+            "median": 8,
+            "p90": 12,
+            "max": 25,
+            "total_chars": 1493
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 23,
+          "variable": "Ａ－６　大分類その他",
+          "content": "大分類その他",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 154,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0397,
+          "length_stats": {
+            "min": 2,
+            "median": 8,
+            "p90": 19,
+            "max": 43,
+            "total_chars": 1463
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 21,
+          "variable": "Ａ－５　その他",
+          "content": "具体的補助具等",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 89,
+          "table_rows": 3875,
+          "nonempty_rate": 0.023,
+          "length_stats": {
+            "min": 2,
+            "median": 7,
+            "p90": 9,
+            "max": 22,
+            "total_chars": 557
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 11,
+          "variable": "Ａ－３　その他",
+          "content": "その他の障害",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 24,
+          "table_rows": 3875,
+          "nonempty_rate": 0.0062,
+          "length_stats": {
+            "min": 1,
+            "median": 5,
+            "p90": 9,
+            "max": 11,
+            "total_chars": 124
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        }
+      ]
+    },
+    "C": {
+      "source_workbook": "data/original_secure/structured/2001_ABC_survey/C_data.xlsx",
+      "data_sheet": "C全て",
+      "rows": 3891,
+      "candidate_narrative_fields_count": 9,
+      "candidate_narrative_nonempty_cells_total": 5906,
+      "fields": [
+        {
+          "column": 5,
+          "variable": "問１　回答者その他",
+          "content": "その他の回答方法",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 14,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0036,
+          "length_stats": {
+            "min": 2,
+            "median": 4,
+            "p90": 10,
+            "max": 11,
+            "total_chars": 79
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 7,
+          "variable": "問１　代理者その他",
+          "content": "その他の代理回答者",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 10,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0026,
+          "length_stats": {
+            "min": 3,
+            "median": 6,
+            "p90": 12,
+            "max": 12,
+            "total_chars": 72
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 19,
+          "variable": "問４　あなたの障害その他",
+          "content": "その他具体的に",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 51,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0131,
+          "length_stats": {
+            "min": 1,
+            "median": 5,
+            "p90": 8,
+            "max": 12,
+            "total_chars": 267
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 37,
+          "variable": "問６　具体的に",
+          "content": "その他具体的に",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 105,
+          "table_rows": 3891,
+          "nonempty_rate": 0.027,
+          "length_stats": {
+            "min": 1,
+            "median": 11,
+            "p90": 28,
+            "max": 50,
+            "total_chars": 1469
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 39,
+          "variable": "問９　診断名など",
+          "content": "具体的診断名",
+          "question_label": "問９．障害の原因となった具体的な診断名など",
+          "narrative_role": "sensitive_health_condition_text",
+          "nonempty_cells": 1973,
+          "table_rows": 3891,
+          "nonempty_rate": 0.5071,
+          "length_stats": {
+            "min": 1,
+            "median": 9,
+            "p90": 31,
+            "max": 206,
+            "total_chars": 29577
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "sensitive_health_text_redaction_required"
+        },
+        {
+          "column": 43,
+          "variable": "問１０　仕事内容",
+          "content": "具体的仕事内容",
+          "question_label": "同上",
+          "narrative_role": "work_content_narrative",
+          "nonempty_cells": 2141,
+          "table_rows": 3891,
+          "nonempty_rate": 0.5502,
+          "length_stats": {
+            "min": 2,
+            "median": 11,
+            "p90": 32,
+            "max": 193,
+            "total_chars": 33620
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "work_content_contact_narrative_card"
+        },
+        {
+          "column": 102,
+          "variable": "問１２　支援方法",
+          "content": "その他の配慮や支援",
+          "question_label": "配慮・支援の必要・有用性(その他)",
+          "narrative_role": "support_practice_narrative",
+          "nonempty_cells": 584,
+          "table_rows": 3891,
+          "nonempty_rate": 0.1501,
+          "length_stats": {
+            "min": 2,
+            "median": 42,
+            "p90": 137,
+            "max": 436,
+            "total_chars": 34800
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "support_practice_narrative_card"
+        },
+        {
+          "column": 104,
+          "variable": "問１３　支援機器その他",
+          "content": "支援機器その他",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 63,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0162,
+          "length_stats": {
+            "min": 1,
+            "median": 5,
+            "p90": 12,
+            "max": 39,
+            "total_chars": 436
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 106,
+          "variable": "自由記述欄",
+          "content": "自由記述",
+          "question_label": "あなたの職業生活をより充実し、満足のいくものとするために、必要な支援や制度のあり方など、ご自由にご意見をご記入下されば幸いです。",
+          "narrative_role": "general_open_narrative",
+          "nonempty_cells": 965,
+          "table_rows": 3891,
+          "nonempty_rate": 0.248,
+          "length_stats": {
+            "min": 2,
+            "median": 57,
+            "p90": 186,
+            "max": 1082,
+            "total_chars": 79608
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "open_need_policy_narrative_card"
+        }
+      ],
+      "strongest_fields_by_nonempty": [
+        {
+          "column": 43,
+          "variable": "問１０　仕事内容",
+          "content": "具体的仕事内容",
+          "question_label": "同上",
+          "narrative_role": "work_content_narrative",
+          "nonempty_cells": 2141,
+          "table_rows": 3891,
+          "nonempty_rate": 0.5502,
+          "length_stats": {
+            "min": 2,
+            "median": 11,
+            "p90": 32,
+            "max": 193,
+            "total_chars": 33620
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "work_content_contact_narrative_card"
+        },
+        {
+          "column": 39,
+          "variable": "問９　診断名など",
+          "content": "具体的診断名",
+          "question_label": "問９．障害の原因となった具体的な診断名など",
+          "narrative_role": "sensitive_health_condition_text",
+          "nonempty_cells": 1973,
+          "table_rows": 3891,
+          "nonempty_rate": 0.5071,
+          "length_stats": {
+            "min": 1,
+            "median": 9,
+            "p90": 31,
+            "max": 206,
+            "total_chars": 29577
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "sensitive_health_text_redaction_required"
+        },
+        {
+          "column": 106,
+          "variable": "自由記述欄",
+          "content": "自由記述",
+          "question_label": "あなたの職業生活をより充実し、満足のいくものとするために、必要な支援や制度のあり方など、ご自由にご意見をご記入下されば幸いです。",
+          "narrative_role": "general_open_narrative",
+          "nonempty_cells": 965,
+          "table_rows": 3891,
+          "nonempty_rate": 0.248,
+          "length_stats": {
+            "min": 2,
+            "median": 57,
+            "p90": 186,
+            "max": 1082,
+            "total_chars": 79608
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "open_need_policy_narrative_card"
+        },
+        {
+          "column": 102,
+          "variable": "問１２　支援方法",
+          "content": "その他の配慮や支援",
+          "question_label": "配慮・支援の必要・有用性(その他)",
+          "narrative_role": "support_practice_narrative",
+          "nonempty_cells": 584,
+          "table_rows": 3891,
+          "nonempty_rate": 0.1501,
+          "length_stats": {
+            "min": 2,
+            "median": 42,
+            "p90": 137,
+            "max": 436,
+            "total_chars": 34800
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "support_practice_narrative_card"
+        },
+        {
+          "column": 37,
+          "variable": "問６　具体的に",
+          "content": "その他具体的に",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 105,
+          "table_rows": 3891,
+          "nonempty_rate": 0.027,
+          "length_stats": {
+            "min": 1,
+            "median": 11,
+            "p90": 28,
+            "max": 50,
+            "total_chars": 1469
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 104,
+          "variable": "問１３　支援機器その他",
+          "content": "支援機器その他",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 63,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0162,
+          "length_stats": {
+            "min": 1,
+            "median": 5,
+            "p90": 12,
+            "max": 39,
+            "total_chars": 436
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 19,
+          "variable": "問４　あなたの障害その他",
+          "content": "その他具体的に",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 51,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0131,
+          "length_stats": {
+            "min": 1,
+            "median": 5,
+            "p90": 8,
+            "max": 12,
+            "total_chars": 267
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 5,
+          "variable": "問１　回答者その他",
+          "content": "その他の回答方法",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 14,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0036,
+          "length_stats": {
+            "min": 2,
+            "median": 4,
+            "p90": 10,
+            "max": 11,
+            "total_chars": 79
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        },
+        {
+          "column": 7,
+          "variable": "問１　代理者その他",
+          "content": "その他の代理回答者",
+          "question_label": "同上",
+          "narrative_role": "condition_or_other_specification_text",
+          "nonempty_cells": 10,
+          "table_rows": 3891,
+          "nonempty_rate": 0.0026,
+          "length_stats": {
+            "min": 3,
+            "median": 6,
+            "p90": 12,
+            "max": 12,
+            "total_chars": 72
+          },
+          "raw_text_exported": false,
+          "recommended_scima_fchma_use": "condition_window_qualifier_hold"
+        }
+      ]
+    }
+  },
+  "field_roles_summary": {
+    "condition_or_other_specification_text": 11,
+    "A_employment_reason_challenge_narrative": 2,
+    "external_support_advice_narrative": 15,
+    "general_open_narrative": 3,
+    "A_added_establishment_context_narrative": 6,
+    "work_content_narrative": 2,
+    "support_practice_narrative": 2,
+    "sensitive_health_condition_text": 1
+  },
+  "recommended_analysis_route": {
+    "step_1": "field-level inventory and quarantine",
+    "step_2": "redacted/content-hash staging for narrative units if raw reading is explicitly opened",
+    "step_3": "SCIMA/FCHMA narrative unit coding with source role and perspective flags",
+    "step_4": "single-perspective narrative cards before linked contrast cards",
+    "step_5": "human review before knowledge promotion"
+  },
+  "not_allowed": [
+    "raw quotation",
+    "PII export",
+    "diagnosis-to-support lookup",
+    "support validity judgment",
+    "case-level judgment",
+    "public/current-policy claim",
+    "knowledge promotion without review"
+  ]
+}

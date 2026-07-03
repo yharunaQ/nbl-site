@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionReceiptShellSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionReceiptShellSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionReceiptShellPage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionReceiptShellSurface />;
+}

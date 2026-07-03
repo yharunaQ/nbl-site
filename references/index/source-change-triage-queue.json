@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-04-26T00:07:21.822Z",
+  "status": "needs_triage",
+  "queueScope": "official_source_change_monitoring",
+  "boundary": "source_change_triage_queue_is_detection_inventory_not_truth_refresh_or_knowledge_promotion",
+  "notNow": [
+    "no_truth_refresh",
+    "no_runtime_approval",
+    "no_public_approval",
+    "no_founder_approval",
+    "no_knowledge_promotion",
+    "no_runtime_pack_selection",
+    "no_public_promise_change"
+  ],
+  "changeBasis": "changed_reprocess_manifest",
+  "changedSourceIds": [
+    "mhlw_disability_employment_policy",
+    "mhlw_disability_welfare_work_support",
+    "mhlw_employment_reasonable_accommodation"
+  ],
+  "itemCount": 4,
+  "byPriority": {
+    "high": 4,
+    "medium": 0,
+    "low": 0
+  },
+  "items": [
+    {
+      "id": "watch:mhlw_treatment_work_support_guideline_stack",
+      "queueType": "local_pdf_precedence",
+      "status": "needs_triage",
+      "priority": "high",
+      "triageHint": "structural_candidate",
+      "sourceId": "mhlw_treatment_work_support_guideline_stack",
+      "sourceName": "MHLW treatment-work support guideline integrated PDF precedence",
+      "sourceFamily": "MHLW Treatment and Work Balance",
+      "operator": "MHLW Treatment and Work Balance Navi",
+      "sourceRole": "public_guidance",
+      "country": "JP",
+      "jurisdictionScope": [
+        "JP public guidance"
+      ],
+      "collectionStage": "manual_watch",
+      "reviewPacketHint": "local replacement precedence memo / source-boundary refresh",
+      "reasons": [
+        "canonical and legacy local packets coexist",
+        "Integrated guideline replacement can reflect scope, coordination, and role-split updates rather than wording drift only."
+      ],
+      "evidence": {
+        "canonicalPath": "references/documents/support_guideline_full.pdf",
+        "canonicalExists": true,
+        "legacyPaths": [
+          "references/documents/治療と仕事の両立支援ガイドライン.pdf"
+        ],
+        "sourcePage": "https://chiryoutoshigoto.mhlw.go.jp/download/"
+      }
+    },
+    {
+      "id": "web:mhlw_disability_employment_policy",
+      "queueType": "web_source_change",
+      "status": "needs_triage",
+      "priority": "high",
+      "triageHint": "structural_candidate",
+      "sourceId": "mhlw_disability_employment_policy",
+      "sourceName": "MHLW Disability Employment Policy Hub",
+      "sourceFamily": "MHLW Disability Employment Policy",
+      "operator": "厚生労働省",
+      "sourceRole": "public_guidance",
+      "country": "JP",
+      "jurisdictionScope": [
+        "JP disability employment policy",
+        "JP public guidance"
+      ],
+      "collectionStage": "pilot",
+      "reviewPacketHint": "source-boundary refresh / role-split refresh memo",
+      "reasons": [
+        "changed-only rebuild detected content drift in active source family",
+        "official/public/legal/service layer may contain role or scope changes"
+      ],
+      "evidence": {
+        "generatedAt": "2026-04-26T00:07:13.799Z",
+        "created": 0,
+        "updated": 4,
+        "unchanged": 6,
+        "failures": 0,
+        "sampleTitles": [
+          "障害者雇用対策 ｜厚生労働省",
+          "障害者雇用促進法の概要 ｜厚生労働省",
+          "令和４年障害者雇用促進法の改正等について｜厚生労働省"
+        ]
+      }
+    },
+    {
+      "id": "web:mhlw_disability_welfare_work_support",
+      "queueType": "web_source_change",
+      "status": "needs_triage",
+      "priority": "high",
+      "triageHint": "structural_candidate",
+      "sourceId": "mhlw_disability_welfare_work_support",
+      "sourceName": "MHLW Disability Welfare Work Support",
+      "sourceFamily": "MHLW Disability Welfare Work Support",
+      "operator": "厚生労働省",
+      "sourceRole": "public_guidance",
+      "country": "JP",
+      "jurisdictionScope": [
+        "JP disability welfare employment support",
+        "JP障害者総合支援法 related work support"
+      ],
+      "collectionStage": "candidate",
+      "reviewPacketHint": "source-boundary refresh / role-split refresh memo",
+      "reasons": [
+        "changed-only rebuild detected content drift in active source family",
+        "official/public/legal/service layer may contain role or scope changes"
+      ],
+      "evidence": {
+        "generatedAt": "2026-04-26T00:07:13.799Z",
+        "created": 0,
+        "updated": 2,
+        "unchanged": 1,
+        "failures": 0,
+        "sampleTitles": [
+          "障害者の就労支援対策の状況｜厚生労働省",
+          "就労選択支援について｜厚生労働省",
+          "障害福祉サービスの内容 ｜厚生労働省"
+        ]
+      }
+    },
+    {
+      "id": "web:mhlw_employment_reasonable_accommodation",
+      "queueType": "web_source_change",
+      "status": "needs_triage",
+      "priority": "high",
+      "triageHint": "operational_candidate",
+      "sourceId": "mhlw_employment_reasonable_accommodation",
+      "sourceName": "MHLW Employment Reasonable Accommodation Guidance",
+      "sourceFamily": "MHLW Employment Reasonable Accommodation Guidance",
+      "operator": "厚生労働省",
+      "sourceRole": "public_guidance",
+      "country": "JP",
+      "jurisdictionScope": [
+        "JP employment discrimination prohibition",
+        "JP reasonable accommodation guidance"
+      ],
+      "collectionStage": "pilot",
+      "reviewPacketHint": "source-boundary refresh / role-split refresh memo",
+      "reasons": [
+        "changed-only rebuild detected content drift in active source family",
+        "official/public/legal/service layer may contain role or scope changes"
+      ],
+      "evidence": {
+        "generatedAt": "2026-04-26T00:07:13.799Z",
+        "created": 0,
+        "updated": 1,
+        "unchanged": 0,
+        "failures": 0,
+        "sampleTitles": [
+          "雇用分野における障害者への差別禁止・合理的配慮｜厚生労働省"
+        ]
+      }
+    }
+  ]
+}

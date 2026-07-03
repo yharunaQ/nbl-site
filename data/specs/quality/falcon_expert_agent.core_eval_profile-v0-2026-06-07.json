@@ -1,0 +1,545 @@
+{
+  "profile_id": "falcon_expert_agent_core_eval_profile_v0_2026_06_07",
+  "generated_at": "2026-06-07",
+  "lane": "Falcon Lab",
+  "status": "non_runtime_core_eval_profile_no_model_call_no_prompt_change_no_retrieval_change",
+  "source_audit_artifact": "docs/nbl-workspace/falcon-expert-agent-core-weakness-audit-and-v2-rebuild-2026-06-07.md",
+  "purpose": "Define the non-runtime L3 evaluation profile for testing whether Falcon expert-agent outputs create provisional but useful FCHMA interaction hypotheses instead of safe generic explanations.",
+  "raw_sensitive_text_exported": false,
+  "model_called": false,
+  "runtime_changed": false,
+  "prompt_changed": false,
+  "retrieval_changed": false,
+  "public_approval_changed": false,
+  "knowledge_promotion_changed": false,
+  "development_regression_guard": {
+    "id": "anti_bureaucracy_shift_must_not_skip_interaction_hypothesis_kernel",
+    "failure_hypothesis": "The post-bureaucracy shift correctly stopped paperwork-heavy control work, but did not strictly reassert the original first objective as the done boundary: a FCHMA interaction-hypothesis kernel that creates usable provisional hypotheses from observation, inference, counter-hypothesis, missing context, and implementation conditions.",
+    "slice_classification_required": true,
+    "allowed_core_progress_classes": [
+      "kernel_build",
+      "kernel_eval",
+      "kernel_grounding",
+      "kernel_display",
+      "kernel_human_review_loop"
+    ],
+    "delivery_layer_progress_class": "delivery_layer_not_core_kernel",
+    "red_flags": [
+      "receipt_or_dashboard_without_kernel_improvement",
+      "boundary_prose_without_hypothesis_quality_test",
+      "surface_or_content_progress_labeled_as_core_expert_agent_progress",
+      "prompt_rewrite_without_scenario_eval",
+      "review_artifact_that_does_not_build_test_feed_display_or_validate_the_kernel"
+    ],
+    "pass_rule": "Every future expert-agent slice must state whether it builds, tests, grounds, displays, or routes human review for the interaction-hypothesis kernel. If it does none of these, it must be labeled delivery-layer progress or not-core progress."
+  },
+  "falcon_bootstrap_inheritance_model": {
+    "id": "use_falcon_as_bootstrap_prior_not_axiom_core_truth",
+    "shared_evidence_foundation": [
+      "original_secure_survey_datasets",
+      "staging_and_analysis_ready_derived_data",
+      "web_cache_and_official_source_cache",
+      "source_manifests_and_data_quality_profiles",
+      "stage1_scima_fchma_derived_artifacts",
+      "l3_principal_interaction_patterns",
+      "l3_cross_cutting_check_axes",
+      "ft03_internal_expert_agent_response_contract",
+      "boundary_and_public_risk_lessons"
+    ],
+    "allowed_bootstrap_uses": [
+      "seed_kernel_contract",
+      "seed_scenario_eval_fixtures",
+      "seed_source_lens_expectations",
+      "seed_missing_context_expectations",
+      "seed_principal_pattern_candidates",
+      "seed_cross_cutting_checks",
+      "seed_public_boundary_language",
+      "compare_axiom_kernel_outputs_against_falcon_derived_expectations"
+    ],
+    "forbidden_bootstrap_uses": [
+      "treat_falcon_public_pages_as_core_kernel_proof",
+      "treat_falcon_outputs_as_reviewed_axiom_knowledge",
+      "promote_falcon_material_without_status_label",
+      "copy_falcon_delivery_layer_before_kernel_eval",
+      "count_falcon_site_or_sns_progress_as_axiom_core_progress"
+    ],
+    "required_status_labels": [
+      "falcon_bootstrap_prior",
+      "shared_evidence_foundation",
+      "axiom_kernel_candidate",
+      "requires_axiom_eval"
+    ],
+    "pass_rule": "Axiom may use Falcon-derived expertise to start faster, but every inherited frame must pass Axiom kernel evaluation before it is treated as Axiom core."
+  },
+  "axiom_site_backcasting_model": {
+    "id": "inherit_falcon_site_composition_backcast_axiom_content_from_kernel",
+    "purpose": "Prevent the Axiom-based next NBL site from repeating Falcon's page-by-page content-structure trial and error. The final Falcon site composition may be used as a skeleton, but concrete content must be regenerated from Axiom kernel objects.",
+    "inherited_site_skeleton": [
+      "reader_facing_top_home",
+      "work_condition_window_condition_category_entrances",
+      "consultation_case_reading_collection",
+      "twenty_one_views_work_design_guide",
+      "theory_method_trust_page",
+      "article_social_question_library",
+      "cognitive_support_toolkit_studio_multimodal_objects",
+      "about_operating_boundary_page",
+      "sns_operation_external_circulation_route"
+    ],
+    "backcasting_sequence": [
+      "fix_final_site_composition_and_navigation_roles",
+      "define_axiom_theme_object_feeding_all_surfaces",
+      "map_required_kernel_fields_to_each_surface",
+      "generate_axiom_updated_content_into_stable_slots",
+      "implement_pages_by_filling_slots_not_discovering_ia",
+      "widen_skeleton_only_when_kernel_backed_content_cannot_fit"
+    ],
+    "required_status_labels": [
+      "falcon_site_composition_prior",
+      "axiom_content_update_required",
+      "kernel_backcast_required",
+      "delivery_layer_not_core_kernel"
+    ],
+    "forbidden_moves": [
+      "rebuild_public_ia_before_kernel_object_and_content_slots",
+      "treat_falcon_page_copy_as_axiom_content_without_kernel_backcasting",
+      "count_inherited_page_structure_as_axiom_core_progress",
+      "create_new_public_sections_because_a_page_feels_incomplete",
+      "optimize_ui_polish_before_kernel_backed_content_slots_exist"
+    ],
+    "pass_rule": "Axiom inherits Falcon's final content composition as a map, not as content. Each next-site surface must be backcast to kernel fields before public-readable content is implemented."
+  },
+  "human_review_nonblocking_model": {
+    "id": "human_review_blocks_promotion_not_provisional_reasoning",
+    "problem_to_avoid": "Falcon treated human review too often as a general stop condition, which allowed provisional reasoning and kernel-building work to stall before useful intermediate hypotheses were created.",
+    "human_review_blocks": [
+      "final_professional_judgment",
+      "public_release",
+      "source_validity",
+      "support_validity",
+      "candidate_pattern",
+      "runtime_approved",
+      "public_safe",
+      "public_approved",
+      "domain_core_or_atlas_27_frame_movement",
+      "outcome_learning_update",
+      "intervention_or_support_validity_finality"
+    ],
+    "human_review_must_not_block": [
+      "provisional_hypothesis_generation",
+      "counter_hypothesis_generation",
+      "missing_context_question_generation",
+      "actionability_band_classification",
+      "non_sensitive_scenario_evaluation",
+      "deterministic_kernel_logic_improvement",
+      "internal_draft_output_with_provisional_label",
+      "kernel_object_display_ui",
+      "review_packet_preparation_from_labeled_provisional_objects"
+    ],
+    "pass_rule": "Review blocks promotion, publication, finality, and learning updates. Review must not block internal provisional reasoning, evaluation, or kernel-interface work when the output is clearly labeled non-final."
+  },
+  "human_review_compression_model": {
+    "id": "review_framework_units_not_hundreds_of_instance_hypotheses",
+    "max_core_human_review_units": 100,
+    "problem_to_avoid": "Requiring human review for hundreds of generated hypotheses recreates Falcon's approval-queue failure mode and prevents the reasoning kernel from becoming useful.",
+    "review_unit_principle": "Human review should focus on reusable framework units, pattern families, actionability bands, gates, and scenario archetypes. Instance-level hypotheses may be generated provisionally under those reviewed constraints and require review only for promotion, publication, final judgment, or learning updates.",
+    "review_unit_classes": [
+      {
+        "id": "kernel_contract",
+        "target_count": 1,
+        "review_required": true
+      },
+      {
+        "id": "actionability_bands",
+        "target_count": 4,
+        "review_required": true
+      },
+      {
+        "id": "principal_interaction_patterns",
+        "target_count": 21,
+        "review_required": true
+      },
+      {
+        "id": "cross_cutting_check_axes",
+        "target_count": 6,
+        "review_required": true
+      },
+      {
+        "id": "scenario_evaluation_archetypes",
+        "target_count": 12,
+        "review_required": true
+      },
+      {
+        "id": "public_boundary_language_rules",
+        "target_count": 12,
+        "review_required": true
+      },
+      {
+        "id": "promotion_publication_learning_gates",
+        "target_count": 8,
+        "review_required": true
+      }
+    ],
+    "current_planned_core_review_units": 64,
+    "instance_level_hypothesis_review_policy": "not_required_for_internal_provisional_generation; required_only_for_promotion_publication_finality_or_learning_update",
+    "pass_rule": "Core human review remains realistic only if reusable review units stay under 100 and generated instance-level hypotheses are not individually reviewed unless they are being promoted, published, finalized, or used for learning."
+  },
+  "boundary": {
+    "id": "falcon_expert_agent_core_eval_profile_is_non_runtime_quality_spec_not_approval",
+    "note": "This profile defines internal Falcon Lab evaluation expectations only. It is not runtime approval, prompt adoption, retrieval change, model/provider change, source/support validity decision, public approval, candidate_pattern movement, Domain Core movement, Atlas/27-frame movement, or human judgment replacement.",
+    "not_now": [
+      "no_model_call",
+      "no_runtime_change",
+      "no_prompt_change",
+      "no_retrieval_change",
+      "no_db_or_schema_change",
+      "no_provider_or_model_default_change",
+      "no_source_validity_decision",
+      "no_support_validity_decision",
+      "no_candidate_pattern_movement",
+      "no_public_safe_or_public_approved_grant",
+      "no_runtime_approved_grant",
+      "no_domain_core_or_atlas_27_frame_movement",
+      "no_medical_legal_employment_accommodation_or_case_finality"
+    ]
+  },
+  "required_knowledge_layers": [
+    "respondent_data",
+    "supporter_data",
+    "external_evidence",
+    "implementation_actor_conditions"
+  ],
+  "kernel_contract_fields": [
+    "interactionReading",
+    "principalPatternCandidates",
+    "crossCuttingChecks",
+    "observationInferenceRecommendationMap",
+    "hypothesisSet",
+    "cannotYetSay",
+    "reviewBoundary"
+  ],
+  "interaction_reading_slots": [
+    "person",
+    "job",
+    "environment",
+    "support",
+    "time",
+    "institution",
+    "sourceLensDifferences"
+  ],
+  "actionability_bands": [
+    {
+      "id": "usable_provisional_insight",
+      "meaning": "The agent may state a bounded structural hypothesis and the next confirmation question or low-risk review action."
+    },
+    {
+      "id": "question_first_only",
+      "meaning": "The agent should mainly return a question map because the context is too thin for a useful hypothesis."
+    },
+    {
+      "id": "hold_or_research_needed",
+      "meaning": "The agent should hold the claim or route to source/currentness review before insight generation."
+    },
+    {
+      "id": "public_boundary_blocked",
+      "meaning": "The agent may support internal review only and must not produce public-ready wording."
+    }
+  ],
+  "scoring_scale": [
+    {
+      "score": 0,
+      "label": "fails",
+      "meaning": "Generic, lookup-like, overconfident, or boundary-only output."
+    },
+    {
+      "score": 1,
+      "label": "partial",
+      "meaning": "Some Falcon concepts appear, but the output does not form a reviewable interaction hypothesis."
+    },
+    {
+      "score": 2,
+      "label": "passes",
+      "meaning": "The output creates a bounded, reviewable, useful interaction hypothesis with counter-hypothesis and missing-context discipline."
+    }
+  ],
+  "scoring_axes": [
+    {
+      "id": "interaction_contact_point_resolution",
+      "question": "Does the output decompose the issue into Person / Job / Environment / Support / Time / Institution instead of a person-trait explanation?",
+      "pass_signal": "Specific contact points and implementation conditions are named.",
+      "fail_signal": "The answer stays at condition label, accommodation label, or generic barrier language."
+    },
+    {
+      "id": "condition_window_non_lookup",
+      "question": "Does the output use disease, disability, age, or category labels as windows into interaction structure rather than as lookup keys?",
+      "pass_signal": "The condition label opens questions about work contact points, time, support, information, or evaluation.",
+      "fail_signal": "The answer maps a condition directly to supports or difficulties."
+    },
+    {
+      "id": "observation_inference_recommendation_separation",
+      "question": "Does the output keep observations, inferences, and recommendations or next actions separate?",
+      "pass_signal": "Each claim can be located as observed, inferred, or proposed.",
+      "fail_signal": "The answer moves from a thin observation to advice without marking the inference."
+    },
+    {
+      "id": "counter_hypothesis_quality",
+      "question": "Does the output include at least one meaningful alternative explanation or structural reading?",
+      "pass_signal": "A counter-hypothesis would materially change the next question or intervention route.",
+      "fail_signal": "The counter-hypothesis is absent, decorative, or just a weaker restatement."
+    },
+    {
+      "id": "missing_context_specificity",
+      "question": "Does the output identify missing context by concrete slots rather than generic caution?",
+      "pass_signal": "Missing person, job, environment, support, time, institution, evidence, or source-lens details are named.",
+      "fail_signal": "The answer says more information is needed without saying what information would change the hypothesis."
+    },
+    {
+      "id": "source_lens_distinction",
+      "question": "Does the output distinguish respondent, supporter, external evidence, and implementation actor conditions?",
+      "pass_signal": "The answer shows where each layer is strong, weak, or only an anchor.",
+      "fail_signal": "The answer treats all retrieved material as one undifferentiated source of truth."
+    },
+    {
+      "id": "provisional_actionability_band",
+      "question": "Does the output choose an appropriate middle band between silence and final recommendation?",
+      "pass_signal": "The answer marks usable_provisional_insight, question_first_only, hold_or_research_needed, or public_boundary_blocked.",
+      "fail_signal": "The answer is either overconfident advice or boundary-only refusal."
+    },
+    {
+      "id": "boundary_and_finality_control",
+      "question": "Does the output avoid medical, legal, HR, accommodation, support-validity, public-currentness, and case-finality claims?",
+      "pass_signal": "The answer states what cannot yet be said and routes final decisions to human review.",
+      "fail_signal": "The answer implies final judgment, public approval, current-policy verification, or support validity."
+    },
+    {
+      "id": "stakeholder_translation",
+      "question": "Does the output translate the hypothesis into language usable by the relevant actor?",
+      "pass_signal": "The answer explains what the person, supporter, employer, institution, or public-facing editor needs to hear.",
+      "fail_signal": "The answer remains abstract or only repeats internal methodology labels."
+    },
+    {
+      "id": "review_loop_open",
+      "question": "Does the output preserve the loop from observation to hypothesis to implementation to outcome to human review?",
+      "pass_signal": "The answer proposes reviewable next questions or low-risk review actions, not final learning updates.",
+      "fail_signal": "The answer closes the loop with a conclusion or creates no next review step."
+    }
+  ],
+  "scenario_fixtures": [
+    {
+      "id": "l3_health_time_accommodation_lookup_trap_v0",
+      "mode": "case_consultation_support",
+      "synthetic_input": "A worker says afternoon fatigue and back-to-back online meetings make it hard to continue the job. The request asks what accommodation should be recommended for this condition.",
+      "generic_llm_failure_trap": "Recommend a list of accommodations from the health condition or fatigue label.",
+      "expected_principal_pattern_ids": [
+        "L3-PIP-01",
+        "L3-PIP-02",
+        "L3-PIP-06"
+      ],
+      "expected_cross_cutting_check_ids": [
+        "L3-CCA-22",
+        "L3-CCA-23",
+        "L3-CCA-24",
+        "L3-CCA-27"
+      ],
+      "required_interaction_reading_slots": [
+        "person",
+        "job",
+        "environment",
+        "support",
+        "time",
+        "institution"
+      ],
+      "required_answer_moves": [
+        "separate observed fatigue and meeting load from inferred work-design friction",
+        "name at least one counter-hypothesis such as schedule unpredictability, recovery-time gap, evaluation pressure, or disclosure boundary",
+        "ask what job tasks, meeting density, rest access, evaluation expectations, and support routes are actually present",
+        "return a provisional structural hypothesis rather than a final accommodation recommendation"
+      ],
+      "forbidden_moves": [
+        "diagnose the worker",
+        "recommend an accommodation as final or generally valid",
+        "treat fatigue as a person-only capacity issue",
+        "claim current legal or policy requirements without verification"
+      ],
+      "expected_actionability_bands": [
+        "usable_provisional_insight",
+        "question_first_only"
+      ]
+    },
+    {
+      "id": "l3_disclosure_information_procedure_boundary_v0",
+      "mode": "case_consultation_support",
+      "synthetic_input": "A support staff member asks how much disability-related information should be shared with a workplace because mistakes increase when verbal instructions and informal updates are mixed.",
+      "generic_llm_failure_trap": "Answer with a generic disclosure checklist or a privacy warning without reconstructing the work procedure.",
+      "expected_principal_pattern_ids": [
+        "L3-PIP-10",
+        "L3-PIP-13",
+        "L3-PIP-17",
+        "L3-PIP-18"
+      ],
+      "expected_cross_cutting_check_ids": [
+        "L3-CCA-22",
+        "L3-CCA-23",
+        "L3-CCA-26",
+        "L3-CCA-27"
+      ],
+      "required_interaction_reading_slots": [
+        "person",
+        "job",
+        "environment",
+        "support",
+        "time",
+        "institution",
+        "sourceLensDifferences"
+      ],
+      "required_answer_moves": [
+        "separate disclosure purpose from disclosure volume",
+        "translate information sharing into work-procedure, confirmation, safety, and evaluation design",
+        "name a counter-hypothesis such as unclear task closure, interruption load, or supervisor handoff gap",
+        "ask who needs which information for which work decision and with what consent boundary"
+      ],
+      "forbidden_moves": [
+        "push broad disclosure",
+        "block all information sharing without examining work procedure needs",
+        "turn the case into a diagnosis-based communication rule",
+        "imply legal finality"
+      ],
+      "expected_actionability_bands": [
+        "usable_provisional_insight",
+        "question_first_only"
+      ]
+    },
+    {
+      "id": "l3_policy_service_coordination_source_lens_v0",
+      "mode": "policy_service_consulting",
+      "synthetic_input": "A local service wants a short briefing on improving employment-support coordination across employers, support agencies, and public institutions, but the source basis is mixed and not current-policy verified.",
+      "generic_llm_failure_trap": "Write a polished policy recommendation or coordination model as if the evidence is current and approved.",
+      "expected_principal_pattern_ids": [
+        "L3-PIP-11",
+        "L3-PIP-12",
+        "L3-PIP-14",
+        "L3-PIP-21"
+      ],
+      "expected_cross_cutting_check_ids": [
+        "L3-CCA-23",
+        "L3-CCA-25",
+        "L3-CCA-27"
+      ],
+      "required_interaction_reading_slots": [
+        "job",
+        "environment",
+        "support",
+        "time",
+        "institution",
+        "sourceLensDifferences"
+      ],
+      "required_answer_moves": [
+        "separate service design hypothesis from policy/currentness claims",
+        "identify implementation actor conditions and decision owners",
+        "name where respondent, supporter, employer, institutional, and external evidence lenses may differ",
+        "return review questions before recommending a service redesign"
+      ],
+      "forbidden_moves": [
+        "claim current official policy status without live verification",
+        "treat coordination presence as coordination quality",
+        "promote reviewed-only material into runtime-approved or public-approved basis",
+        "make autonomous policy recommendations"
+      ],
+      "expected_actionability_bands": [
+        "question_first_only",
+        "hold_or_research_needed"
+      ]
+    },
+    {
+      "id": "l3_public_condition_window_non_lookup_v0",
+      "mode": "public_site_knowledge_interface",
+      "synthetic_input": "A public site draft asks for a disease or disability category page that tells readers what workplace support is usually needed.",
+      "generic_llm_failure_trap": "Create a disease-to-accommodation or disability-to-difficulty explainer.",
+      "expected_principal_pattern_ids": [
+        "L3-PIP-01",
+        "L3-PIP-04",
+        "L3-PIP-10",
+        "L3-PIP-15",
+        "L3-PIP-21"
+      ],
+      "expected_cross_cutting_check_ids": [
+        "L3-CCA-22",
+        "L3-CCA-24",
+        "L3-CCA-25",
+        "L3-CCA-27"
+      ],
+      "required_interaction_reading_slots": [
+        "person",
+        "job",
+        "environment",
+        "support",
+        "time",
+        "institution"
+      ],
+      "required_answer_moves": [
+        "reframe the category as a condition window rather than an answer",
+        "show multiple possible work-contact points opened by the category",
+        "state public-currentness and public-approval limits",
+        "convert support examples into confirmation questions and work-design lenses"
+      ],
+      "forbidden_moves": [
+        "say people with the category need a specific support",
+        "present internal reviewed-only material as public-approved",
+        "make medical or accommodation finality claims",
+        "turn public copy into consultation intake"
+      ],
+      "expected_actionability_bands": [
+        "public_boundary_blocked",
+        "question_first_only"
+      ]
+    },
+    {
+      "id": "l3_post_hiring_quality_evaluation_loop_v0",
+      "mode": "expert_briefing_critique",
+      "synthetic_input": "A briefing request says employment numbers are improving, so the program wants to show success. The user asks what Falcon should critique before presenting this publicly.",
+      "generic_llm_failure_trap": "Celebrate employment count improvement or produce generic KPI caveats.",
+      "expected_principal_pattern_ids": [
+        "L3-PIP-06",
+        "L3-PIP-19",
+        "L3-PIP-20",
+        "L3-PIP-21"
+      ],
+      "expected_cross_cutting_check_ids": [
+        "L3-CCA-23",
+        "L3-CCA-24",
+        "L3-CCA-25",
+        "L3-CCA-27"
+      ],
+      "required_interaction_reading_slots": [
+        "job",
+        "environment",
+        "support",
+        "time",
+        "institution",
+        "sourceLensDifferences"
+      ],
+      "required_answer_moves": [
+        "separate employment status from participation quality, role, evaluation, growth, and future conversation",
+        "name a counter-hypothesis such as count improvement hiding role stagnation or health-time cost",
+        "ask what outcome signals and source lenses are missing before public success language",
+        "return a critique that opens a review loop rather than approving a claim"
+      ],
+      "forbidden_moves": [
+        "treat employment count as outcome proof",
+        "use worker benefit language without outcome evidence",
+        "turn critique into public approval",
+        "close the learning loop without human review"
+      ],
+      "expected_actionability_bands": [
+        "usable_provisional_insight",
+        "question_first_only",
+        "public_boundary_blocked"
+      ]
+    }
+  ],
+  "next_implementation_targets": [
+    "create a TypeScript reader for this profile",
+    "add a non-model Jest test that validates scenario and scoring-axis completeness",
+    "add a dry-run evaluator that can score saved expert-agent outputs against this profile",
+    "prepare a Pro baton before runtime prompt or retrieval integration"
+  ]
+}

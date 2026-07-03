@@ -1,0 +1,748 @@
+{
+  "spec_type": "nanbyo_workplace_web_raw0324_deterministic_qa_checks_v0",
+  "generated_at": "2026-05-07T13:56:37+09:00",
+  "dataset_id": "nanbyo_workplace_2022_2023_web_raw0324",
+  "source_branch_taxonomy": "data/specs/response-type-maps/nanbyo_workplace_2022_2023_web_raw0324.branch-eligibility-missingness-taxonomy-v0.json",
+  "source_staging_csv": "data/staging/normalized/nanbyo_workplace_2022_2023_web_raw0324/workplace_web_raw0324_sanitized_responses.normalized.csv",
+  "status": "deterministic_qa_spec_not_analysis_ready",
+  "normalization_policy": {
+    "trim_ascii_and_japanese_space": true,
+    "normalize_nbsp": true,
+    "recognized_or_possible_values": [
+      "いる（いた）",
+      "いる（いた）かもしれない"
+    ],
+    "implemented_value": "実施したことがある",
+    "not_implemented_value": "実施したことはない",
+    "placeholder_value": "*",
+    "blank_value": ""
+  },
+  "checks": [
+    {
+      "check_id": "staging_forbidden_columns_absent",
+      "family": "sanitization_boundary",
+      "severity": "error",
+      "condition": "staging header is inspected",
+      "expected": "force-quarantined / free-text / disease-name / wrapper columns are absent from sanitized CSV",
+      "columns": [
+        "col_B",
+        "col_D",
+        "col_E",
+        "col_O",
+        "col_AF",
+        "col_BN",
+        "col_CV",
+        "col_EV",
+        "col_EW",
+        "col_EX"
+      ],
+      "missingness_status_when_false": null,
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "staging_row_count_matches_source_manifest",
+      "family": "source_integrity",
+      "severity": "error",
+      "condition": "sanitized CSV is inspected",
+      "expected": "respondent row count remains 758",
+      "columns": [],
+      "missingness_status_when_false": null,
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "q2_multiselect_values_are_0_1",
+      "family": "export_semantics",
+      "severity": "error",
+      "condition": "F:J are inspected",
+      "expected": "all retained values are 0/1 after export; 0 is retained as not-selected pending questionnaire confirmation",
+      "columns": [
+        "col_F",
+        "col_G",
+        "col_H",
+        "col_I",
+        "col_J"
+      ],
+      "missingness_status_when_false": "not_selected_pending_export_confirmation",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "support_multiselect_values_blank_or_0_1",
+      "family": "export_semantics",
+      "severity": "error",
+      "condition": "CW:DF and DH:DS are inspected",
+      "expected": "all retained values are blank/0/1; blanks remain branch-aware pending analysis conversion",
+      "columns": [
+        "col_CW",
+        "col_CX",
+        "col_CY",
+        "col_CZ",
+        "col_DA",
+        "col_DB",
+        "col_DC",
+        "col_DD",
+        "col_DE",
+        "col_DF",
+        "col_DH",
+        "col_DI",
+        "col_DJ",
+        "col_DK",
+        "col_DL",
+        "col_DM",
+        "col_DN",
+        "col_DO",
+        "col_DP",
+        "col_DQ",
+        "col_DR",
+        "col_DS"
+      ],
+      "missingness_status_when_false": "unresolved_missingness",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "q6_recognized_route_high_block_present",
+      "family": "q6_structural_route",
+      "severity": "error",
+      "condition": "any X:AE value is recognized/possible",
+      "expected": "AG:AO high-support implementation fields are all populated",
+      "columns": [
+        "col_X",
+        "col_Y",
+        "col_Z",
+        "col_AA",
+        "col_AB",
+        "col_AC",
+        "col_AD",
+        "col_AE",
+        "col_AG",
+        "col_AH",
+        "col_AI",
+        "col_AJ",
+        "col_AK",
+        "col_AL",
+        "col_AM",
+        "col_AN",
+        "col_AO"
+      ],
+      "missingness_status_when_false": null,
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "q6_unrecognized_route_high_block_blank",
+      "family": "q6_structural_route",
+      "severity": "error",
+      "condition": "no X:AE value is recognized/possible",
+      "expected": "AG:AO high-support implementation fields are blank",
+      "columns": [
+        "col_X",
+        "col_Y",
+        "col_Z",
+        "col_AA",
+        "col_AB",
+        "col_AC",
+        "col_AD",
+        "col_AE",
+        "col_AG",
+        "col_AH",
+        "col_AI",
+        "col_AJ",
+        "col_AK",
+        "col_AL",
+        "col_AM",
+        "col_AN",
+        "col_AO"
+      ],
+      "missingness_status_when_false": "structural_skip_branch_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "q6_unrecognized_route_hypothetical_block_present",
+      "family": "q6_structural_route",
+      "severity": "error",
+      "condition": "no X:AE value is recognized/possible",
+      "expected": "DT:EB hypothetical burden fields are all populated",
+      "columns": [
+        "col_X",
+        "col_Y",
+        "col_Z",
+        "col_AA",
+        "col_AB",
+        "col_AC",
+        "col_AD",
+        "col_AE",
+        "col_DT",
+        "col_DU",
+        "col_DV",
+        "col_DW",
+        "col_DX",
+        "col_DY",
+        "col_DZ",
+        "col_EA",
+        "col_EB"
+      ],
+      "missingness_status_when_false": null,
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "q6_recognized_route_hypothetical_block_blank",
+      "family": "q6_structural_route",
+      "severity": "error",
+      "condition": "any X:AE value is recognized/possible",
+      "expected": "DT:EB hypothetical burden fields are blank",
+      "columns": [
+        "col_X",
+        "col_Y",
+        "col_Z",
+        "col_AA",
+        "col_AB",
+        "col_AC",
+        "col_AD",
+        "col_AE",
+        "col_DT",
+        "col_DU",
+        "col_DV",
+        "col_DW",
+        "col_DX",
+        "col_DY",
+        "col_DZ",
+        "col_EA",
+        "col_EB"
+      ],
+      "missingness_status_when_false": "structural_skip_branch_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_01_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AG == 実施したことがある",
+      "expected": "col_AP is populated and col_AY is blank",
+      "columns": [
+        "col_AG",
+        "col_AP",
+        "col_AY"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_01_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AG == 実施したことはない",
+      "expected": "col_AY is populated and col_AP is blank",
+      "columns": [
+        "col_AG",
+        "col_AP",
+        "col_AY"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_02_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AH == 実施したことがある",
+      "expected": "col_AQ is populated and col_AZ is blank",
+      "columns": [
+        "col_AH",
+        "col_AQ",
+        "col_AZ"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_02_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AH == 実施したことはない",
+      "expected": "col_AZ is populated and col_AQ is blank",
+      "columns": [
+        "col_AH",
+        "col_AQ",
+        "col_AZ"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_03_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AI == 実施したことがある",
+      "expected": "col_AR is populated and col_BA is blank",
+      "columns": [
+        "col_AI",
+        "col_AR",
+        "col_BA"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_03_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AI == 実施したことはない",
+      "expected": "col_BA is populated and col_AR is blank",
+      "columns": [
+        "col_AI",
+        "col_AR",
+        "col_BA"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_04_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AJ == 実施したことがある",
+      "expected": "col_AS is populated and col_BB is blank",
+      "columns": [
+        "col_AJ",
+        "col_AS",
+        "col_BB"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_04_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AJ == 実施したことはない",
+      "expected": "col_BB is populated and col_AS is blank",
+      "columns": [
+        "col_AJ",
+        "col_AS",
+        "col_BB"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_05_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AK == 実施したことがある",
+      "expected": "col_AT is populated and col_BC is blank",
+      "columns": [
+        "col_AK",
+        "col_AT",
+        "col_BC"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_05_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AK == 実施したことはない",
+      "expected": "col_BC is populated and col_AT is blank",
+      "columns": [
+        "col_AK",
+        "col_AT",
+        "col_BC"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_06_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AL == 実施したことがある",
+      "expected": "col_AU is populated and col_BD is blank",
+      "columns": [
+        "col_AL",
+        "col_AU",
+        "col_BD"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_06_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AL == 実施したことはない",
+      "expected": "col_BD is populated and col_AU is blank",
+      "columns": [
+        "col_AL",
+        "col_AU",
+        "col_BD"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_07_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AM == 実施したことがある",
+      "expected": "col_AV is populated and col_BE is blank",
+      "columns": [
+        "col_AM",
+        "col_AV",
+        "col_BE"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_07_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AM == 実施したことはない",
+      "expected": "col_BE is populated and col_AV is blank",
+      "columns": [
+        "col_AM",
+        "col_AV",
+        "col_BE"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_08_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AN == 実施したことがある",
+      "expected": "col_AW is populated and col_BF is blank",
+      "columns": [
+        "col_AN",
+        "col_AW",
+        "col_BF"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_08_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AN == 実施したことはない",
+      "expected": "col_BF is populated and col_AW is blank",
+      "columns": [
+        "col_AN",
+        "col_AW",
+        "col_BF"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_09_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AO == 実施したことがある",
+      "expected": "col_AX is populated and col_BG is blank",
+      "columns": [
+        "col_AO",
+        "col_AX",
+        "col_BG"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "high_item_09_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_AO == 実施したことはない",
+      "expected": "col_BG is populated and col_AX is blank",
+      "columns": [
+        "col_AO",
+        "col_AX",
+        "col_BG"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_01_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BO == 実施したことがある",
+      "expected": "col_BX is populated and col_CG is blank",
+      "columns": [
+        "col_BO",
+        "col_BX",
+        "col_CG"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_01_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BO == 実施したことはない",
+      "expected": "col_CG is populated and col_BX is blank",
+      "columns": [
+        "col_BO",
+        "col_BX",
+        "col_CG"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_02_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BP == 実施したことがある",
+      "expected": "col_BY is populated and col_CH is blank",
+      "columns": [
+        "col_BP",
+        "col_BY",
+        "col_CH"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_02_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BP == 実施したことはない",
+      "expected": "col_CH is populated and col_BY is blank",
+      "columns": [
+        "col_BP",
+        "col_BY",
+        "col_CH"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_03_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BQ == 実施したことがある",
+      "expected": "col_BZ is populated and col_CI is blank",
+      "columns": [
+        "col_BQ",
+        "col_BZ",
+        "col_CI"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_03_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BQ == 実施したことはない",
+      "expected": "col_CI is populated and col_BZ is blank",
+      "columns": [
+        "col_BQ",
+        "col_BZ",
+        "col_CI"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_04_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BR == 実施したことがある",
+      "expected": "col_CA is populated and col_CJ is blank",
+      "columns": [
+        "col_BR",
+        "col_CA",
+        "col_CJ"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_04_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BR == 実施したことはない",
+      "expected": "col_CJ is populated and col_CA is blank",
+      "columns": [
+        "col_BR",
+        "col_CA",
+        "col_CJ"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_05_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BS == 実施したことがある",
+      "expected": "col_CB is populated and col_CK is blank",
+      "columns": [
+        "col_BS",
+        "col_CB",
+        "col_CK"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_05_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BS == 実施したことはない",
+      "expected": "col_CK is populated and col_CB is blank",
+      "columns": [
+        "col_BS",
+        "col_CB",
+        "col_CK"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_06_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BT == 実施したことがある",
+      "expected": "col_CC is populated and col_CL is blank",
+      "columns": [
+        "col_BT",
+        "col_CC",
+        "col_CL"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_06_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BT == 実施したことはない",
+      "expected": "col_CL is populated and col_CC is blank",
+      "columns": [
+        "col_BT",
+        "col_CC",
+        "col_CL"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_07_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BU == 実施したことがある",
+      "expected": "col_CD is populated and col_CM is blank",
+      "columns": [
+        "col_BU",
+        "col_CD",
+        "col_CM"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_07_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BU == 実施したことはない",
+      "expected": "col_CM is populated and col_CD is blank",
+      "columns": [
+        "col_BU",
+        "col_CD",
+        "col_CM"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_08_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BV == 実施したことがある",
+      "expected": "col_CE is populated and col_CN is blank",
+      "columns": [
+        "col_BV",
+        "col_CE",
+        "col_CN"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_08_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BV == 実施したことはない",
+      "expected": "col_CN is populated and col_CE is blank",
+      "columns": [
+        "col_BV",
+        "col_CE",
+        "col_CN"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_09_implemented_burden_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BW == 実施したことがある",
+      "expected": "col_CF is populated and col_CO is blank",
+      "columns": [
+        "col_BW",
+        "col_CF",
+        "col_CO"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    },
+    {
+      "check_id": "low_item_09_not_implemented_necessity_only",
+      "family": "item_followup_consistency",
+      "severity": "error",
+      "condition": "col_BW == 実施したことはない",
+      "expected": "col_CO is populated and col_CF is blank",
+      "columns": [
+        "col_BW",
+        "col_CF",
+        "col_CO"
+      ],
+      "missingness_status_when_false": "item_level_followup_skip_ineligible",
+      "status": "active_deterministic_qa"
+    }
+  ],
+  "open_items": [
+    {
+      "open_item_id": "low_support_case_route_condition",
+      "status": "unresolved_requires_questionnaire_domain_review",
+      "reason": "BO:CU contains both source placeholders and actual implementation/follow-up values across recognized Q6 patterns; Q6/AD alone is not sufficient to determine actual low-support case eligibility.",
+      "safe_current_use": "Only item-level consistency checks are active for non-placeholder low-support implementation values. Do not classify low-support blanks or placeholders as substantive data yet."
+    },
+    {
+      "open_item_id": "source_period_policy_label_boundary",
+      "status": "hold_for_analysis_ready_schema",
+      "reason": "Grant/support-agency labels reflect the source period and must not be reused as current-policy or public guidance claims.",
+      "safe_current_use": "QA may verify export domain only; public/current-policy interpretation requires a later reviewed layer."
+    }
+  ],
+  "analysis_ready_gate": {
+    "status": "not_ready",
+    "reason": "deterministic QA checks now cover core route and item-followup consistency, but low-support case eligibility and analysis missingness conversion remain unresolved.",
+    "next_required_step": "run the deterministic QA report and then perform a separate analysis-ready conversion preflight update; do not create analysis-ready data in this slice."
+  },
+  "boundary": {
+    "analysis_ready_created": false,
+    "substantive_findings_created": false,
+    "free_text_processed": false,
+    "disease_names_normalized": false,
+    "icf_mapping_created": false,
+    "public_use_approved": false,
+    "runtime_updated": false,
+    "knowledge_promoted": false,
+    "d_and_e_values_not_copied": true
+  }
+}

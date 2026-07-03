@@ -1,0 +1,5 @@
+import AxiomCandidateFounderFinalReleaseDecisionIngestionContractSurface from '@/components/axiom/AxiomCandidateFounderFinalReleaseDecisionIngestionContractSurface';
+
+export default function AxiomNextNblCandidateFounderFinalReleaseDecisionIngestionContractPage() {
+  return <AxiomCandidateFounderFinalReleaseDecisionIngestionContractSurface />;
+}

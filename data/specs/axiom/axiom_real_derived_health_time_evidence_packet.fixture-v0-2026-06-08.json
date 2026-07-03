@@ -1,0 +1,370 @@
+{
+  "packetId": "axiom_real_derived_evidence_packet_cr01_health_time_v0_2026_06_08",
+  "objectType": "axiom_real_derived_evidence_packet",
+  "contractVersion": "v0_2026_06_08",
+  "lane": "Falcon Lab",
+  "status": "real_derived_non_sensitive_packet_ready_for_deterministic_kernel_build",
+  "scenarioId": "l3_health_time_accommodation_lookup_trap_v0",
+  "dataPolicy": {
+    "inputLayer": "references_derived_and_docs_only",
+    "rawOriginalOpened": false,
+    "sourceTextExported": false,
+    "redactedTextExported": false,
+    "fieldValueExported": false,
+    "containsSensitiveRawText": false,
+    "sourceSupportValidityDecision": "not_decided",
+    "publicUse": "not_public_approved",
+    "note": "This packet uses derived summaries and source references only. It does not read or export raw source text."
+  },
+  "sourceFoundationRefs": [
+    {
+      "id": "foundation_stage1_cr01_health_time_life_security_context_reading",
+      "kind": "stage1_scima_fchma_output",
+      "uri": "references/derived/scima-fchma/stage1-production-v0-2026-05-18/stage1-production-cr01-health-time-life-security-context-reading-v0-2026-05-23.md",
+      "layer": "evidence",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "Derived CR01 context reading summary only; raw original and redacted text are not exported."
+    },
+    {
+      "id": "foundation_falcon_core_eval_profile",
+      "kind": "falcon_bootstrap_prior",
+      "uri": "data/specs/quality/falcon_expert_agent.core_eval_profile-v0-2026-06-07.json",
+      "layer": "evidence",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "Used only to check the first real-derived packet against the existing health-time L3 evaluation expectations."
+    },
+    {
+      "id": "foundation_stage1_l3_principal_patterns",
+      "kind": "l3_principal_pattern_surface",
+      "uri": "references/derived/scima-fchma/stage1-production-v0-2026-05-18/stage1-production-l3-principal-pattern-extraction-v0-2026-05-26.md",
+      "layer": "structure",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "L3 PIP and CCA IDs are used as bootstrap pattern candidates, not promoted Axiom doctrine."
+    },
+    {
+      "id": "foundation_ft03_response_contract",
+      "kind": "ft03_internal_response_contract",
+      "uri": "references/derived/scima-fchma/stage1-production-v0-2026-05-18/stage1-production-ft03-internal-expert-agent-response-contract-v0-2026-05-25.md",
+      "layer": "reference_frame",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "FT03 gives the response shape and brakes for observation/inference separation, missing context, counter hypotheses, and cannot-yet-say limits."
+    },
+    {
+      "id": "foundation_falcon_core_weakness_audit",
+      "kind": "falcon_core_weakness_audit",
+      "uri": "docs/nbl-workspace/falcon-expert-agent-core-weakness-audit-and-v2-rebuild-2026-06-07.md",
+      "layer": "learning_boundary",
+      "status": "available_as_bootstrap_prior_requires_axiom_eval",
+      "containsSensitiveRawText": false,
+      "allowedAsAxiomCoreTruth": false,
+      "requiresAxiomEval": true,
+      "note": "The audit is used to keep progress centered on kernel build, grounding, eval, display, and review loop."
+    }
+  ],
+  "evidenceSpans": [
+    {
+      "id": "span_cr01_health_time_context_counts",
+      "foundationRefId": "foundation_stage1_cr01_health_time_life_security_context_reading",
+      "lens": "respondent_data",
+      "summary": "CR01 derived context reading covers 16 records without raw text export; redacted context type counts include health_time, life_security, sequence_or_choice, support_bridge, and work_time_design.",
+      "supportsKernelFields": ["observation", "missingContext", "sourceLensStatus"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_cr01_core_reading_interacting_freedoms",
+      "foundationRefId": "foundation_stage1_cr01_health_time_life_security_context_reading",
+      "lens": "respondent_data",
+      "summary": "CR01 core reading keeps C01/C06 active only when health time, work design, life security, support, or sequence are read as interacting freedoms.",
+      "supportsKernelFields": ["observation", "inference", "actionabilityBand"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_l3_health_time_actionability_prior",
+      "foundationRefId": "foundation_stage1_l3_principal_patterns",
+      "lens": "external_evidence",
+      "summary": "L3 PIP-01, PIP-02, and PIP-06 frame health-time signals as workload, recovery, evaluation, income, and handoff questions rather than accommodation lookup.",
+      "supportsKernelFields": ["observation", "inference", "actionabilityBand"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_l3_health_time_counter_mapping",
+      "foundationRefId": "foundation_stage1_l3_principal_patterns",
+      "lens": "external_evidence",
+      "summary": "L3 CCA-22, CCA-23, CCA-24, and CCA-27 require anti-lookup, counter-structure, no support-validity finality, and review-loop separation.",
+      "supportsKernelFields": ["inference", "counterHypothesis", "sourceLensStatus"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_ft03_health_time_response_shape",
+      "foundationRefId": "foundation_ft03_response_contract",
+      "lens": "implementation_actor_conditions",
+      "summary": "FT03 V1 requires health, treatment, fatigue, rest, and return-to-work issues to be translated into work time, workload, and evaluation questions while preserving observation/inference separation.",
+      "supportsKernelFields": [
+        "inference",
+        "counterHypothesis",
+        "missingContext",
+        "implementationActorConditions",
+        "cannotYetSay",
+        "humanReviewRoute"
+      ],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    },
+    {
+      "id": "span_falcon_audit_real_derived_kernel_gap",
+      "foundationRefId": "foundation_falcon_core_weakness_audit",
+      "lens": "implementation_actor_conditions",
+      "summary": "The weakness audit identifies the missing typed interaction-hypothesis kernel as the core rebuild target and rejects delivery-layer progress as core progress unless it strengthens kernel build, grounding, eval, display, or review loop.",
+      "supportsKernelFields": ["sourceLensStatus", "humanReviewRoute", "cannotYetSay"],
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "promotionStatus": "not_promoted",
+      "containsSensitiveRawText": false
+    }
+  ],
+  "inheritedFrames": [
+    {
+      "id": "inherited_stage1_cr01_context_reading",
+      "source": "stage1_scima_fchma",
+      "status": "requires_axiom_eval",
+      "allowedUse": "bootstrap_prior_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Does CR01 context reading support a grounded provisional kernel without becoming source/support validity?"
+    },
+    {
+      "id": "inherited_l3_health_time_21_view_prior",
+      "source": "l3_21_views",
+      "status": "requires_axiom_eval",
+      "allowedUse": "bootstrap_prior_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which L3 health-time pattern IDs are usable as review units rather than promoted truth?"
+    },
+    {
+      "id": "inherited_ft03_response_contract_real_derived",
+      "source": "ft03_contract",
+      "status": "requires_axiom_eval",
+      "allowedUse": "bootstrap_prior_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Does the real-derived kernel preserve FT03 observation/inference/missing-context/counter-hypothesis brakes?"
+    },
+    {
+      "id": "inherited_falcon_public_page_skeleton_real_derived",
+      "source": "falcon_public_page",
+      "status": "requires_axiom_eval",
+      "allowedUse": "delivery_reference_only",
+      "allowedAsAxiomCoreTruth": false,
+      "reviewerQuestion": "Which public skeleton elements can display this kernel only after Axiom eval and public review?"
+    }
+  ],
+  "observationCandidates": [
+    {
+      "id": "obs_real_cr01_context_counts",
+      "lens": "respondent_data",
+      "text": "CR01 derived context reading reports a non-sensitive 16-record health-time/life-security corridor with health_time, life_security, sequence_or_choice, support_bridge, and work_time_design context types; raw originals and source text were not exported.",
+      "evidencePointer": "span_cr01_health_time_context_counts",
+      "statusLabel": "shared_evidence_foundation"
+    },
+    {
+      "id": "obs_real_cr01_interacting_freedoms",
+      "lens": "respondent_data",
+      "text": "CR01 core reading says C01/C06 should stay active only when health time, work design, life security, support, or sequence are read as interacting freedoms.",
+      "evidencePointer": "span_cr01_core_reading_interacting_freedoms",
+      "statusLabel": "shared_evidence_foundation"
+    },
+    {
+      "id": "obs_real_l3_health_time_prior",
+      "lens": "external_evidence",
+      "text": "L3 health-time patterns and cross-cutting checks require the kernel to avoid condition-to-accommodation lookup and keep counter-structure, support-validity brakes, and review-loop separation visible.",
+      "evidencePointer": "span_l3_health_time_actionability_prior",
+      "statusLabel": "falcon_bootstrap_prior"
+    }
+  ],
+  "inferenceCandidate": {
+    "id": "inf_real_health_time_work_design_kernel",
+    "text": "The first real-derived Axiom reading is a health-time/work-time/life-security interaction kernel: health-time signals should be translated into workload rhythm, recovery access, support bridge, evaluation/income, and sequence questions, not into a final accommodation recommendation.",
+    "observationIds": [
+      "obs_real_cr01_context_counts",
+      "obs_real_cr01_interacting_freedoms",
+      "obs_real_l3_health_time_prior"
+    ],
+    "principalPatternCandidateIds": ["L3-PIP-01", "L3-PIP-02", "L3-PIP-06"],
+    "crossCuttingCheckIds": ["L3-CCA-22", "L3-CCA-23", "L3-CCA-24", "L3-CCA-27"],
+    "confidence": "medium",
+    "statusLabel": "provisional_not_reviewed"
+  },
+  "counterHypothesis": [
+    {
+      "id": "counter_real_health_time_life_security_sequence",
+      "text": "The primary contact point may be life-security constraint, sequence/choice loss, support-bridge gap, or evaluation/income conflict rather than workload rhythm itself.",
+      "wouldChange": [
+        "missing context would move toward income, contract, treatment timing, support continuity, and return-route questions",
+        "implementation actor conditions would require public/institutional and employer review before actionability rises"
+      ],
+      "nextQuestionIds": ["mc_real_time_001", "mc_real_institution_001", "mc_real_support_001"]
+    }
+  ],
+  "missingContext": [
+    {
+      "id": "mc_real_person_001",
+      "slot": "person",
+      "question": "Which health-time contact point is actually difficult for the person: fatigue, treatment timing, recovery, uncertainty, income pressure, or return route?",
+      "whyItMatters": "The derived corridor cannot be turned into a person-trait or capacity explanation without the person-defined contact point."
+    },
+    {
+      "id": "mc_real_job_001",
+      "slot": "job",
+      "question": "Which workload rhythm, meeting density, task handoff, deadline, or role expectation creates the health-time contact point?",
+      "whyItMatters": "Health-time only becomes work-design knowledge when the concrete job condition is visible."
+    },
+    {
+      "id": "mc_real_environment_001",
+      "slot": "environment",
+      "question": "Which workplace environment, tools, meeting format, rest access, commute, or informal rule changes the health-time burden?",
+      "whyItMatters": "The same health-time signal can mean physical access, information load, rest-place absence, or social participation pressure."
+    },
+    {
+      "id": "mc_real_support_001",
+      "slot": "support",
+      "question": "Who can translate health, life-security, support-bridge, and work-time information into shared work-condition questions?",
+      "whyItMatters": "Support cannot be treated as valid merely because it exists; the translation function must be visible."
+    },
+    {
+      "id": "mc_real_time_001",
+      "slot": "time",
+      "question": "What sequence matters: treatment, recovery, work start/end, income pressure, return route, review timing, or future change?",
+      "whyItMatters": "CR01 explicitly treats health time and life security as sequence and freedom issues, not static traits."
+    },
+    {
+      "id": "mc_real_institution_001",
+      "slot": "institution",
+      "question": "Which employer, support, medical, welfare, or public actor can change the relevant time, workload, evaluation, or income constraint?",
+      "whyItMatters": "A provisional kernel is not actionable until implementation authority and institutional constraints are visible."
+    },
+    {
+      "id": "mc_real_evidence_001",
+      "slot": "evidence",
+      "question": "Which parts are CR01 derived counts, which are L3/FT03 bootstrap priors, and which would need source/support validity review?",
+      "whyItMatters": "Axiom must not promote derived context reading or bootstrap priors into core truth without review."
+    },
+    {
+      "id": "mc_real_source_lens_001",
+      "slot": "source_lens",
+      "question": "How would respondent, supporter, employer, health actor, public actor, and derived research lenses differ on the same health-time signal?",
+      "whyItMatters": "Source-lens differences are a translation stop point, not noise to average away."
+    }
+  ],
+  "implementationActorConditions": [
+    {
+      "actor": "worker",
+      "condition": "Can name the lived health-time contact point without being forced into diagnosis proof or accommodation menu selection.",
+      "requiredBeforeAction": true,
+      "missingContextIds": ["mc_real_person_001", "mc_real_time_001"]
+    },
+    {
+      "actor": "employer_manager",
+      "condition": "Can inspect workload rhythm, rest access, role expectations, evaluation treatment, and income/contract effects.",
+      "requiredBeforeAction": true,
+      "missingContextIds": ["mc_real_job_001", "mc_real_environment_001", "mc_real_institution_001"]
+    },
+    {
+      "actor": "support_staff",
+      "condition": "Can translate health-time, life-security, and support-bridge information into shared work-condition questions while preserving consent and boundaries.",
+      "requiredBeforeAction": true,
+      "missingContextIds": ["mc_real_support_001", "mc_real_source_lens_001"]
+    },
+    {
+      "actor": "reviewer",
+      "condition": "Must decide whether this real-derived packet can remain an internal grounded kernel fixture before any promotion, public copy, or learning update.",
+      "requiredBeforeAction": true,
+      "missingContextIds": ["mc_real_evidence_001", "mc_real_source_lens_001"]
+    }
+  ],
+  "sourceLensStatus": {
+    "respondent_data": {
+      "lens": "respondent_data",
+      "status": "present_in_evidence_foundation_fixture",
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "note": "CR01 is derived from respondent-related context reading counts and core reading only; raw source text is not exported."
+    },
+    "supporter_data": {
+      "lens": "supporter_data",
+      "status": "thin_or_missing",
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "note": "The first real-derived packet does not include a direct supporter-lens packet and routes this to missing context."
+    },
+    "external_evidence": {
+      "lens": "external_evidence",
+      "status": "bootstrap_prior_only",
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "note": "L3, FT03, Falcon eval profile, and weakness audit are bootstrap priors requiring Axiom eval before core truth."
+    },
+    "implementation_actor_conditions": {
+      "lens": "implementation_actor_conditions",
+      "status": "present_in_evidence_foundation_fixture",
+      "sourceValidity": "not_decided",
+      "supportValidity": "not_decided",
+      "publicUse": "not_public_approved",
+      "note": "Actor conditions are generated as implementation visibility requirements, not recommendations."
+    }
+  },
+  "actionabilityBand": "usable_provisional_insight",
+  "cannotYetSay": [
+    "No medical conclusion can be drawn from this real-derived packet.",
+    "No legal or employment judgment is made.",
+    "No accommodation recommendation or support validity decision is approved.",
+    "No public approval, runtime approval, candidate_pattern, knowledge promotion, or learning update is granted.",
+    "No source/support validity decision is made from CR01, L3, FT03, or audit materials."
+  ],
+  "targetReviewUnitCountCap": 100,
+  "movementBoundary": {
+    "runtime": "not_changed",
+    "prompt": "not_changed",
+    "retrieval": "not_changed",
+    "modelProvider": "not_changed",
+    "dbSchema": "not_changed",
+    "sourceValidity": "not_decided",
+    "supportValidity": "not_decided",
+    "candidatePattern": "not_candidate_pattern",
+    "runtimeApproved": "not_approved",
+    "publicApproved": "not_approved",
+    "knowledgePromotion": "not_promoted"
+  }
+}

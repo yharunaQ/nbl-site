@@ -1,0 +1,132 @@
+{
+  "source_id": "2001_ABC_survey",
+  "dataset_id": "2001_ABC_survey",
+  "source_role": "historical_linked_triangular_source_family",
+  "source_type": "structured_survey_with_questionnaires",
+  "owner": "NBL",
+  "sensitivity": "restricted",
+  "contains_personal_data": true,
+  "contains_sensitive_disability_data": true,
+  "contains_diagnosis_or_health_condition_text": true,
+  "contains_free_text": true,
+  "raw_text_externalization_allowed": false,
+  "row_units": {
+    "A_data.xlsx": "establishment / HR-labor respondent",
+    "B_data.xlsx": "supervisor response about an individual disabled worker within an establishment",
+    "C_data.xlsx": "disabled worker self or assisted response within an establishment"
+  },
+  "linkage_keys": {
+    "A_to_B": ["事業所番号"],
+    "A_to_C": ["事業所番号"],
+    "B_to_C": ["事業所番号", "調査対象者番号"],
+    "caution": "README notes that linkage by disabled-worker number is not necessarily certain and requires re-checking."
+  },
+  "source_directory": "data/original_secure/structured/2001_ABC_survey",
+  "source_files": [
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/ABC_schime.pdf",
+      "format": "pdf",
+      "role": "survey_request_scheme",
+      "pages": 1,
+      "sha256": "cc501b79409d2c9366beccac208dcd696290858d6329e9ccfa10c37110c2290e"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/A_Employer_Questionaire.pdf",
+      "format": "pdf",
+      "role": "A_questionnaire",
+      "pages": 4,
+      "sha256": "a28122cf14058151c8b20fc72a7f1fea11c002fb9ff203113b284ef053b3ef85"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/A_data.xlsx",
+      "format": "xlsx",
+      "role": "A_data",
+      "data_sheet": "A全て",
+      "dictionary_sheet": "データ一覧",
+      "row_count_after_header": 1582,
+      "column_count": 102,
+      "unique_establishment_ids": 1582,
+      "sha256": "423dd4b93ca789ffe8ad284dfb92e1fb0e5a123afdb0daa43304844437f00205"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/B_Superviser_Questionaire.pdf",
+      "format": "pdf",
+      "role": "B_questionnaire",
+      "pages": 7,
+      "sha256": "c645cbf87f6f25587f27edb4748c088033bb5dfadaf7756a3508f99b2de75009"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/B_data.xlsx",
+      "format": "xlsx",
+      "role": "B_data",
+      "data_sheet": "B全て",
+      "dictionary_sheet": "データ一覧",
+      "row_count_after_header": 3875,
+      "column_count": 146,
+      "unique_establishment_target_pairs": 3875,
+      "sha256": "1c2fd7a9853551e8662d9a9a960ddd70d9a1225b5127e64e46eef041bdbec4ed"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/C_Employee_Questionaire.pdf",
+      "format": "pdf",
+      "role": "C_questionnaire",
+      "pages": 5,
+      "sha256": "23ee1ba0f006efe7a353cddd31c6517ecf997691dccb06b261af489940936e48"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/C_data.xlsx",
+      "format": "xlsx",
+      "role": "C_data",
+      "data_sheet": "C全て",
+      "dictionary_sheet": "データ一覧",
+      "row_count_after_header": 3891,
+      "column_count": 106,
+      "unique_establishment_target_pairs": 3891,
+      "sha256": "01b9f6f6b546f7404a7b958fdd0cdcd100ff2769df487babb715fdc3855cf934"
+    },
+    {
+      "path": "data/original_secure/structured/2001_ABC_survey/README.md",
+      "format": "markdown",
+      "role": "local_source_note",
+      "sha256": "9aa503844e5a1775ce76261816adb06f7ae599efc2acbcbe38a8863899548428"
+    }
+  ],
+  "observed_linkage_counts": {
+    "A_establishments_with_B": 1500,
+    "A_establishments_with_C": 1404,
+    "B_C_pair_overlap": 3400,
+    "B_pairs_without_C": 475,
+    "C_pairs_without_B": 491,
+    "triad_pairs_with_A_B_C": 3318,
+    "B_establishments_not_in_A": 43,
+    "C_establishments_not_in_A": 45,
+    "C_missing_target_id_rows": 1
+  },
+  "known_limitations": [
+    "Historical 2001 context; do not treat as current policy or current workplace-practice authority.",
+    "Mental disability employment-obligation context is historically limited; rare disease data are absent.",
+    "The survey scheme asked establishments to select up to three disabled workers, generally prioritizing heavier disability degree, so selection bias must be explicit.",
+    "B/C linkage by disabled-worker number requires QA before any triad-level analysis.",
+    "A and B workbook row counts differ from the currently remembered 1502 / 3375 counts; reconcile before treating counts as final.",
+    "C includes diagnosis/health-condition text and multiple free-text fields; row-level text must not be quoted or externalized."
+  ],
+  "first_allowed_use": [
+    "source inventory",
+    "questionnaire/codebook review",
+    "linkage QA",
+    "response-type map draft",
+    "era limitation note",
+    "non-text aggregate profiling"
+  ],
+  "not_allowed_without_separate_gate": [
+    "raw free-text quotation",
+    "PII or sensitive row export",
+    "case-level judgment",
+    "source/support/intervention validity decision",
+    "knowledge promotion",
+    "runtime or retrieval integration",
+    "public copy or current-policy claim"
+  ],
+  "generated_at": "2026-05-22",
+  "generated_by": "Codex"
+}
