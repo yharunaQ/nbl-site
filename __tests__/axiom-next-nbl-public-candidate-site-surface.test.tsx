@@ -184,10 +184,11 @@ describe('Axiom next NBL public candidate site surface', () => {
     ).not.toBeInTheDocument();
     expect(screen.queryByText('MASTER PLAN')).not.toBeInTheDocument();
     expect(screen.queryByText('Master plan')).not.toBeInTheDocument();
-    expect(screen.getAllByText(/図解1｜具体設計項目/).length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('図解2｜状況レベル4コマ').length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('視点転換のポイント').length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('具体設計項目と設計ポイント').length).toBeGreaterThanOrEqual(10);
+    expect(container.innerHTML).not.toContain('図解1｜具体設計項目');
+    expect(container.innerHTML).not.toContain('図解1を一枚');
     expect(screen.queryByText('具体設計項目ごとのポイント')).not.toBeInTheDocument();
     expect(screen.queryByText('メイン図解')).not.toBeInTheDocument();
     expect(screen.queryByText('軸:', { exact: false })).not.toBeInTheDocument();
@@ -302,9 +303,12 @@ describe('Axiom next NBL public candidate site surface', () => {
       container.querySelector('#work-design-domain-support-institution-learning'),
     ).not.toBeNull();
     const firstSectionIndex = renderedText.indexOf('変動する健康時間・仕事密度・回復余地');
-    const firstConcreteIndex = renderedText.indexOf('図解1｜具体設計項目', firstSectionIndex + 1);
     const firstSituationIndex = renderedText.indexOf('図解2｜状況レベル4コマ', firstSectionIndex);
     const firstPerspectiveIndex = renderedText.indexOf('視点転換のポイント', firstSectionIndex);
+    const firstConcreteIndex = renderedText.indexOf(
+      '具体設計項目と設計ポイント',
+      firstSituationIndex,
+    );
     expect(firstSectionIndex).toBeGreaterThanOrEqual(0);
     expect(firstPerspectiveIndex).toBeGreaterThan(firstSectionIndex);
     expect(firstSituationIndex).toBeGreaterThan(firstPerspectiveIndex);

@@ -8352,7 +8352,7 @@ function WorkDesignConcreteItemsPanel({
         <div>
           <p className="text-sm font-semibold text-slate-950">具体設計項目と設計ポイント</p>
           <p className="mt-1 text-sm leading-7 text-slate-600">
-            図解1を一枚のボードで見る代わりに、項目ごとに分けて、説明と設計ポイントを同じ場所で読みます。
+            一枚のまとめボードで見る代わりに、項目ごとに分けて、説明と設計ポイントを同じ場所で読みます。
             {itemsAsset ? ` ${itemsAsset.caption}` : ''}
           </p>
         </div>
@@ -8383,13 +8383,13 @@ function WorkDesignConcreteItemsPanel({
               data-work-design-item-image-diagram
             >
               <img
-                alt={`図解1｜具体設計項目、${item.labelJa}。${item.inferenceFocusJa}`}
+                alt={`具体設計項目、${item.labelJa}。${item.inferenceFocusJa}`}
                 className="block h-auto w-full bg-[#f8f4e8]"
                 loading="lazy"
                 src={workDesignConcreteItemDiagramSrc(item.substructureId)}
               />
               <figcaption className="sr-only">
-                図解1｜具体設計項目 {index + 1}: {item.labelJa}
+                具体設計項目 {index + 1}: {item.labelJa}
               </figcaption>
             </figure>
 
