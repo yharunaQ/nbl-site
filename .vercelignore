@@ -3,6 +3,9 @@ content-review
 references
 !references/
 references/*
+!references/axiom/
+references/axiom/*
+!references/axiom/axiom-gate8-preflight-runner-receipt-v0-2026-06-07.json
 !references/jac/
 references/jac/*
 !references/jac/card-tier-policy.json

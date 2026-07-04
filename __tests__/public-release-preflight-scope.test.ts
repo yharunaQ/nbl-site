@@ -66,4 +66,13 @@ describe('public release preflight scope', () => {
 
     expect(sitemap).toContain('https://nextbeinglab.org/work-design-views-guide');
   });
+
+  it('keeps Axiom runtime-imported receipt artifacts available to Vercel builds', () => {
+    const vercelIgnore = readFileSync(path.join(process.cwd(), '.vercelignore'), 'utf8');
+
+    expect(vercelIgnore).toContain('!references/axiom/');
+    expect(vercelIgnore).toContain(
+      '!references/axiom/axiom-gate8-preflight-runner-receipt-v0-2026-06-07.json',
+    );
+  });
 });
