@@ -3,6 +3,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 export const EXECUTION_ROOT = process.cwd();
+export const EXPLICIT_ROOT_ENV = 'NBL_OPS_ROOT';
 
 function parseWorktreeEntries(output) {
   return output
@@ -20,6 +21,11 @@ function parseWorktreeEntries(output) {
 }
 
 function resolvePrimaryWorkspaceRoot(startCwd) {
+  const explicitRoot = process.env[EXPLICIT_ROOT_ENV];
+  if (explicitRoot) {
+    return path.resolve(explicitRoot);
+  }
+
   try {
     const output = execFileSync('git', ['worktree', 'list', '--porcelain'], {
       cwd: startCwd,

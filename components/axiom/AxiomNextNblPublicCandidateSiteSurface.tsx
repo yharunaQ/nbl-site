@@ -5601,16 +5601,20 @@ function CandidateHero({
       ? sceneIssueMapHero.src
       : isCaseReadingsHero
         ? consultationAssessmentHeroVisual.src
-        : isTheoryMethodTrustHero
-          ? theoryMethodHeroVisual.src
-          : context.visual.src,
+        : isWorkDesignGuideHero
+          ? workDesignGeneratedVisualAssets.hero.src
+          : isTheoryMethodTrustHero
+            ? theoryMethodHeroVisual.src
+            : context.visual.src,
     alt: isSceneEntryHero
       ? sceneIssueMapHero.alt
       : isCaseReadingsHero
         ? consultationAssessmentHeroVisual.alt
-        : isTheoryMethodTrustHero
-          ? theoryMethodHeroVisual.alt
-          : context.visual.alt,
+        : isWorkDesignGuideHero
+          ? workDesignGeneratedVisualAssets.hero.alt
+          : isTheoryMethodTrustHero
+            ? theoryMethodHeroVisual.alt
+            : context.visual.alt,
   };
   const heroHeading = sceneHero ? (
     <>
@@ -5632,9 +5636,9 @@ function CandidateHero({
     <>
       未来の仕事・
       <br />
-      社会参加設計を
+      社会参加
       <br />
-      ひとつの地図に
+      設計ガイド
     </>
   ) : isTheoryMethodTrustHero ? (
     <>
@@ -5737,10 +5741,6 @@ function CandidateHero({
             ? 'ツールキット'
             : context.falconPageRoleJa;
 
-  if (isWorkDesignGuideHero) {
-    return <WorkDesignGeneratedImageHero context={context} />;
-  }
-
   if (isWorkConditionWindowHero) {
     return <WorkConditionWindowHero context={context} />;
   }
@@ -5756,7 +5756,10 @@ function CandidateHero({
           <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-amber-100">
             {heroSubLabel}
           </p>
-          <h1 className="mt-5 max-w-full break-all text-[31px] font-semibold leading-[1.1] tracking-normal [overflow-wrap:anywhere] md:break-normal md:text-[62px] md:leading-[1.04]">
+          <h1
+            aria-label={isWorkDesignGuideHero ? '未来の仕事・社会参加設計ガイド' : undefined}
+            className="mt-5 max-w-full break-all text-[31px] font-semibold leading-[1.1] tracking-normal [overflow-wrap:anywhere] md:break-normal md:text-[62px] md:leading-[1.04]"
+          >
             {heroHeading}
           </h1>
           <p className="mt-7 max-w-2xl text-base leading-8 text-white/86 md:text-lg md:leading-9">
@@ -5800,9 +5803,7 @@ function CandidateHero({
         </div>
         <div className="relative z-10 w-full max-w-[330px] min-w-0 lg:max-w-none">
           <div className="min-w-0 overflow-hidden rounded-lg border border-white/18 bg-white shadow-2xl">
-            {isWorkDesignGuideHero ? (
-              <WorkDesignHeroVisual />
-            ) : isArticlesHero ? (
+            {isArticlesHero ? (
               <ArticleReportHeroVisual />
             ) : isToolkitHero ? (
               <ToolkitHeroVisual />
@@ -5810,7 +5811,10 @@ function CandidateHero({
               <img
                 alt={heroVisual.alt}
                 className={`h-[240px] w-full bg-slate-100 md:h-[330px] ${
-                  sceneHero || isCaseReadingsHero || isTheoryMethodTrustHero
+                  sceneHero ||
+                  isCaseReadingsHero ||
+                  isWorkDesignGuideHero ||
+                  isTheoryMethodTrustHero
                     ? 'object-contain'
                     : 'object-cover'
                 }`}
@@ -5904,43 +5908,6 @@ function ToolkitHeroVisual() {
       className="block h-auto w-full bg-[#f7f0df]"
       src={toolkitHeroVisual.src}
     />
-  );
-}
-
-function WorkDesignGeneratedImageHero({ context }: { context: AxiomPublicCandidatePageContext }) {
-  return (
-    <section className="border-b border-slate-200 bg-[#f7f0df]">
-      <div className="mx-auto max-w-7xl px-5 py-8 md:py-10">
-        <h1 className="sr-only">未来の仕事・社会参加設計ガイド</h1>
-        <figure className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xl">
-          <img
-            alt={workDesignGeneratedVisualAssets.hero.alt}
-            className="block h-auto w-full"
-            src={workDesignGeneratedVisualAssets.hero.src}
-          />
-        </figure>
-        <div className="mt-5 grid gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-[1fr_auto] md:items-center md:p-5">
-          <p className="text-sm leading-7 text-slate-700 md:text-base">
-            障害者雇用や難病就労支援で見えてきた課題を、人間の多様性を前提にした仕事と社会参加の設計図へ広げます。
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              className="inline-flex items-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-950"
-              href={candidatePath(context.primarySlug)}
-            >
-              {context.primaryLabelJa}
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
-              href={candidatePath(context.secondarySlug)}
-            >
-              {context.secondaryLabelJa}
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -7790,6 +7757,9 @@ const workDesignConcreteItemsAssetsByUnit: Record<
   },
 };
 
+const workDesignConcreteItemDiagramSrc = (substructureId: string) =>
+  `/images/axiom-work-design-guide/item-diagrams/${substructureId}-v1.png`;
+
 const workDesignSectionImplementationPoints: Record<string, readonly string[]> = {
   rebuilt_unit_fluctuating_health_time_work_density: [
     '締切、勤務密度、体調変動、回復時間を同じ時間表に置いて見る。',
@@ -8111,95 +8081,30 @@ const workDesignDomains: readonly WorkDesignDomain[] = [
 ] as const;
 
 const workDesignDomainSectionId = (domainId: string) => `work-design-domain-${domainId}`;
+const workDesignTopicSectionId = (sectionId: string) => `work-design-topic-${sectionId}`;
 
-function WorkDesignHeroVisual() {
-  const mapNodes = [
-    {
-      label: '仕事・職場',
-      icon: BriefcaseBusiness,
-      className: 'left-[8%] top-[12%] bg-sky-50 border-sky-200 text-sky-950',
-    },
-    {
-      label: '暮らし・生活',
-      icon: Home,
-      className: 'right-[7%] top-[10%] bg-amber-50 border-amber-200 text-amber-950',
-    },
-    {
-      label: '健康・医療',
-      icon: Stethoscope,
-      className: 'left-[5%] bottom-[18%] bg-emerald-50 border-emerald-200 text-emerald-950',
-    },
-    {
-      label: '道具・情報',
-      icon: Laptop,
-      className: 'right-[6%] bottom-[22%] bg-blue-50 border-blue-200 text-blue-950',
-    },
-    {
-      label: '支援・制度',
-      icon: HeartHandshake,
-      className: 'left-[34%] bottom-[6%] bg-teal-50 border-teal-200 text-teal-950',
-    },
-  ] as const;
-
-  return (
-    <div
-      aria-label="未来の仕事・社会参加設計ガイドの全体地図"
-      className="relative min-h-[340px] overflow-hidden bg-[#f2ead8] p-5 md:min-h-[420px] md:p-7"
-      role="img"
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(20,83,45,0.14),transparent_23%),radial-gradient(circle_at_84%_18%,rgba(180,83,9,0.16),transparent_22%),radial-gradient(circle_at_52%_82%,rgba(15,118,110,0.14),transparent_22%)]" />
-      <div className="absolute left-[8%] top-[44%] h-28 w-[84%] rounded-[50%] border border-dashed border-teal-700/35" />
-      <div className="absolute left-[24%] top-[24%] h-40 w-[52%] rounded-[50%] border border-dashed border-amber-700/30" />
-
-      <div className="relative mx-auto h-full min-h-[300px] max-w-2xl md:min-h-[380px]">
-        <div className="absolute left-1/2 top-[42%] z-10 w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-lg border border-slate-900 bg-white p-4 text-center text-slate-950 shadow-xl md:w-[270px]">
-          <div className="mx-auto flex justify-center -space-x-3">
-            <span className="grid h-12 w-12 place-items-center rounded-full border-2 border-white bg-teal-800 text-white">
-              <UsersRound size={22} />
-            </span>
-            <span className="grid h-12 w-12 place-items-center rounded-full border-2 border-white bg-amber-500 text-white">
-              <Sparkles size={21} />
-            </span>
-          </div>
-          <p className="mt-3 text-base font-semibold leading-snug md:text-lg">
-            多様性を力に変える
-            <br />
-            仕事と社会のしくみへ
-          </p>
-          <p className="mt-2 text-xs leading-5 text-slate-600">
-            人・仕事・暮らし・支援を同じ地図に置く
-          </p>
-        </div>
-
-        {mapNodes.map((node) => {
-          const Icon = node.icon;
-          return (
-            <div
-              className={`absolute z-20 flex w-[132px] items-center gap-2 rounded-lg border bg-white/88 p-3 shadow-sm backdrop-blur ${node.className}`}
-              key={node.label}
-            >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white shadow-sm">
-                <Icon size={17} />
-              </span>
-              <span className="text-sm font-semibold leading-5">{node.label}</span>
-            </div>
-          );
-        })}
-
-        <div className="absolute bottom-3 left-1/2 z-20 grid w-[92%] -translate-x-1/2 gap-2 rounded-lg border border-white/80 bg-white/88 p-3 text-xs leading-5 text-slate-700 shadow-sm backdrop-blur md:grid-cols-3">
-          <span>入口を開く</span>
-          <span>毎日の条件を整える</span>
-          <span>支援と制度へつなぐ</span>
-        </div>
-
-        <div className="absolute left-[12%] top-[54%] h-2 w-2 rounded-full bg-teal-700/70" />
-        <div className="absolute right-[22%] top-[34%] h-2 w-2 rounded-full bg-amber-600/70" />
-        <div className="absolute left-[58%] top-[62%] h-2 w-2 rounded-full bg-blue-700/60" />
-        <div className="absolute right-[12%] top-[48%] h-2 w-2 rounded-full bg-emerald-700/60" />
-      </div>
-    </div>
-  );
-}
+const workDesignPremiseMoves = [
+  {
+    title: '対応',
+    body: 'いま止まっている参加を、時間、情報、手順、評価、支援の条件に分ける。',
+    icon: ClipboardList,
+  },
+  {
+    title: '早期発見',
+    body: '同じ衝突が繰り返される前に、どの接点で詰まり始めるかを見る。',
+    icon: SearchCheck,
+  },
+  {
+    title: '予防',
+    body: '破綻してから個別対応するのではなく、先に戻り方と相談線を置く。',
+    icon: ShieldCheck,
+  },
+  {
+    title: '成長',
+    body: '続けるだけで終わらせず、役割、評価、学び、選び直しへつなぐ。',
+    icon: Network,
+  },
+] as const;
 
 function WorkDesignDomainTileGrid({
   guideSections,
@@ -8228,9 +8133,14 @@ function WorkDesignDomainTileGrid({
               <p className="mt-4 text-xs font-semibold tracking-[0.12em] text-slate-500">
                 {domain.label}
               </p>
-              <h3 className="mt-2 break-words text-xl font-semibold leading-snug text-slate-950 [overflow-wrap:anywhere]">
-                {domain.shortTitle}
+              <h3 className="mt-2 break-words text-[17px] font-semibold leading-snug text-slate-950 [overflow-wrap:anywhere]">
+                {domain.title}
               </h3>
+              <p
+                className={`mt-3 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${domain.badgeClass}`}
+              >
+                {domain.shortTitle}
+              </p>
               <p className="mt-3 text-sm leading-7 text-slate-700">{domain.aim}</p>
               <p className="mt-4 inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 {sectionCount}論点
@@ -8246,42 +8156,65 @@ function WorkDesignDomainTileGrid({
   );
 }
 
+function WorkDesignDomainTopicLinks({
+  domain,
+  sections,
+}: {
+  domain: WorkDesignDomain;
+  sections: readonly AxiomIntegratedDomainKnowledgePageBodySection[];
+}) {
+  return (
+    <div className="mt-5 rounded-lg border border-white bg-white/70 p-4">
+      <p className="text-xs font-semibold tracking-[0.16em] text-slate-600">この領域の設計論点</p>
+      <div className="mt-3 grid gap-2 md:grid-cols-2">
+        {sections.map((section) => (
+          <a
+            className="group flex min-h-[76px] items-start justify-between gap-3 rounded-lg border border-white bg-white px-3 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-offset-2"
+            data-work-design-domain-topic-link
+            href={`#${workDesignTopicSectionId(section.sectionId)}`}
+            key={section.sectionId}
+          >
+            <span className="min-w-0">
+              <span
+                className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${domain.badgeClass}`}
+              >
+                {section.substructureCount}項目
+              </span>
+              <span className="mt-2 block break-words text-sm font-semibold leading-6 text-slate-950 [overflow-wrap:anywhere]">
+                {toReaderFacingText(section.headingJa)}
+              </span>
+            </span>
+            <ArrowRight
+              className="mt-1 shrink-0 text-slate-500 group-hover:text-teal-800"
+              size={17}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function WorkDesignSituationScaleStrip({
   section,
 }: {
   section: AxiomIntegratedDomainKnowledgePageBodySection;
 }) {
-  const scale = axiomWorkDesignSituationScales[section.sourceRebuiltUnitId];
   const story = getWorkDesignVisualStory(section);
   const generatedCard = workDesignGeneratedCardAssetsByUnit[section.sourceRebuiltUnitId];
 
-  if (!scale) {
-    return null;
-  }
-
   return (
     <div className="border-t border-slate-200 bg-[#fbfaf5] p-5 md:p-6">
-      <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-        <div>
-          <p className="text-sm font-semibold text-slate-950">図解2｜状況レベル4コマ</p>
-          <p className="mt-1 text-sm leading-7 text-slate-600">
-            軸: <span className="font-semibold text-slate-950">{scale.axis}</span>
-          </p>
-        </div>
-        <div className="rounded-lg border border-teal-100 bg-white px-4 py-3 text-sm font-semibold leading-6 text-teal-950">
-          {story.conclusion}
-        </div>
-      </div>
-
+      <span className="sr-only">図解2｜状況レベル4コマ</span>
       {generatedCard ? (
-        <figure className="mt-5 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+        <figure className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
           <img alt={generatedCard.alt} className="block h-auto w-full" src={generatedCard.src} />
           <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm leading-7 text-slate-600">
             {generatedCard.caption}
           </figcaption>
         </figure>
       ) : (
-        <div className="mt-5 grid gap-3 lg:grid-cols-4">
+        <div className="grid gap-3 lg:grid-cols-4">
           {workDesignSituationLevels.map((level, index) => {
             const storyLevel = story.levels[index];
             const SceneIcon = storyLevel.icon;
@@ -8335,8 +8268,8 @@ function WorkDesignMasterMap() {
   return (
     <section className="border-y border-slate-200 bg-white">
       <div className="mx-auto max-w-[330px] px-0 py-14 md:max-w-7xl md:px-5 md:py-16">
-        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="min-w-0">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
               このガイドの前提
             </p>
@@ -8346,7 +8279,10 @@ function WorkDesignMasterMap() {
             <p className="mt-5 text-base leading-8 text-slate-700">
               多くの人が感じる漠然とした生きづらさや働きづらさの奥には、狭い「標準的な職業人」像へ人を押し込む構造があります。障害や難病の就労問題は、その無理が以前からはっきり現れてきた領域です。
             </p>
-            <div className="mt-6 grid gap-3 text-sm leading-6 text-slate-700 md:grid-cols-2">
+          </div>
+
+          <div className="min-w-0">
+            <div className="grid gap-3 text-sm leading-6 text-slate-700 md:grid-cols-2">
               <div className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-4">
                 <p className="font-semibold text-slate-950">連続した課題として見る</p>
                 <p className="mt-2">
@@ -8360,29 +8296,31 @@ function WorkDesignMasterMap() {
                 </p>
               </div>
             </div>
-            <div className="mt-6 rounded-xl border border-amber-200 bg-[#fff8e8] p-5">
+            <div className="mt-5 border-l-4 border-amber-500 bg-[#fff8e8] py-4 pl-4 pr-3">
               <p className="text-sm font-semibold text-slate-950">
                 個人の問題ではなく、仕事条件の設計へ。
               </p>
-              <div className="mt-4 grid gap-2 text-sm font-semibold text-slate-700 sm:grid-cols-4">
-                {['対応', '早期発見', '予防', '成長'].map((label) => (
-                  <span
-                    className="rounded-full border border-amber-200 bg-white px-3 py-2 text-center"
-                    key={label}
-                  >
-                    {label}
-                  </span>
-                ))}
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                {workDesignPremiseMoves.map((move) => {
+                  const Icon = move.icon;
+                  return (
+                    <div className="flex gap-3" key={move.title}>
+                      <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-amber-800 shadow-sm">
+                        <Icon size={17} />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-semibold leading-6 text-slate-950">
+                          {move.title}
+                        </span>
+                        <span className="mt-1 block text-sm leading-6 text-slate-700">
+                          {move.body}
+                        </span>
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
-
-          <div className="overflow-hidden rounded-xl border border-slate-200 bg-[#f2ead8] shadow-sm">
-            <img
-              alt={workDesignGeneratedVisualAssets.premiseMap.alt}
-              className="h-auto w-full bg-[#f2ead8]"
-              src={workDesignGeneratedVisualAssets.premiseMap.src}
-            />
           </div>
         </div>
       </div>
@@ -8399,146 +8337,7 @@ function WorkDesignConcreteItemsPanel({
   domain: WorkDesignDomain;
   substructures: readonly AxiomAllLayerRebuiltReviewSubstructure[];
 }) {
-  const DomainIcon = domain.icon;
   const itemsAsset = workDesignConcreteItemsAssetsByUnit[section.sourceRebuiltUnitId];
-  const readerFacingItems = substructures.map((substructure) =>
-    toReaderFacingWorkDesignSubstructure(substructure),
-  );
-
-  return (
-    <section className="border-t border-slate-200 bg-white p-5 md:p-6">
-      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-sm font-semibold text-slate-950">図解1｜具体設計項目</p>
-          <p className="mt-1 text-sm leading-7 text-slate-600">
-            この論点で実際に設計する部品を、先に図でつかみます。
-          </p>
-        </div>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-          {section.substructureCount}項目
-        </span>
-      </div>
-
-      {itemsAsset ? (
-        <figure className="mt-4 overflow-hidden rounded-lg border border-slate-200 bg-[#fbfaf5] shadow-sm">
-          <img alt={itemsAsset.alt} className="block h-auto w-full" src={itemsAsset.src} />
-          <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm leading-7 text-slate-600">
-            {itemsAsset.caption}
-          </figcaption>
-        </figure>
-      ) : null}
-
-      <div className="sr-only">
-        <p>具体設計項目のテキスト版</p>
-        <ul>
-          {readerFacingItems.map((item) => (
-            <li key={item.labelJa}>
-              {item.labelJa}: {item.inferenceFocusJa}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {!itemsAsset ? (
-        <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-          {readerFacingItems.map((item) => (
-            <div className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-4" key={item.labelJa}>
-              <div className="flex items-center gap-2">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-teal-900 shadow-sm">
-                  <DomainIcon size={15} />
-                </span>
-                <p className="text-xs font-semibold tracking-[0.14em] text-slate-500">設計部品</p>
-              </div>
-              <p className="mt-3 text-sm font-semibold leading-6 text-slate-950">{item.labelJa}</p>
-              <p className="mt-2 text-sm leading-6 text-slate-700">{item.inferenceFocusJa}</p>
-            </div>
-          ))}
-        </div>
-      ) : null}
-    </section>
-  );
-}
-
-function WorkDesignPerspectiveShiftPanel({
-  section,
-  domain,
-}: {
-  section: AxiomIntegratedDomainKnowledgePageBodySection;
-  domain: WorkDesignDomain;
-}) {
-  const scale = axiomWorkDesignSituationScales[section.sourceRebuiltUnitId];
-  const sectionPoints = workDesignSectionImplementationPoints[section.sourceRebuiltUnitId] ?? [
-    toReaderFacingText(section.readerFacingSummaryJa),
-  ];
-
-  return (
-    <section className="border-t border-slate-200 bg-[#fbfaf5] p-5 md:p-6">
-      <div className="mb-4">
-        <p className="text-sm font-semibold text-slate-950">視点転換のポイント</p>
-        <p className="mt-1 text-sm leading-7 text-slate-600">
-          同じ現象を、本人側の詰まりで止めず、仕事条件として設計できる形に読み替えます。
-        </p>
-      </div>
-      <div className="grid gap-4 lg:grid-cols-2" data-work-design-perspective-comparison>
-        <article className="rounded-lg border border-rose-100 bg-rose-50/70 p-5">
-          <p className="text-xs font-semibold tracking-[0.16em] text-rose-900">詰まり・古い読み</p>
-          <div className="mt-4 grid gap-4">
-            <div>
-              <p className="text-sm font-semibold text-slate-950">詰まり</p>
-              <p className="mt-2 text-sm leading-7 text-slate-700">
-                {scale?.high ?? '同じ支障が、本人の努力や周囲の個別対応として繰り返される。'}
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-950">古い読み</p>
-              <p className="mt-2 text-sm leading-7 text-slate-700">
-                本人の努力、診断名、配慮名、職場の善意だけで考えてしまう。
-              </p>
-            </div>
-          </div>
-        </article>
-        <article className={`rounded-lg border p-5 ${domain.panelClass}`}>
-          <p className="text-xs font-semibold tracking-[0.16em] text-teal-900">設計・設計の読み</p>
-          <div className="mt-4 grid gap-4">
-            <div>
-              <p className="text-sm font-semibold text-slate-950">設計</p>
-              <p className="mt-2 text-sm leading-7 text-slate-700">
-                {scale?.stable ?? '続ける、戻る、育つために必要な条件を仕事の側へ置く。'}
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-950">設計の読み</p>
-              <p className="mt-2 text-sm leading-7 text-slate-700">
-                {toReaderFacingText(section.changesReadingJa[0] ?? section.readerFacingSummaryJa)}
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-950">設計ポイント</p>
-              <ul className="mt-3 grid gap-2">
-                {sectionPoints.map((point) => (
-                  <li
-                    className="flex gap-2 text-sm leading-7 text-slate-700"
-                    data-work-design-section-point
-                    key={point}
-                  >
-                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-800" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  );
-}
-
-function WorkDesignImplementationPointsPanel({
-  substructures,
-}: {
-  substructures: readonly AxiomAllLayerRebuiltReviewSubstructure[];
-}) {
   const readerFacingItems = substructures.map((substructure) => ({
     ...toReaderFacingWorkDesignSubstructure(substructure),
     substructureId: substructure.substructureId,
@@ -8549,45 +8348,131 @@ function WorkDesignImplementationPointsPanel({
 
   return (
     <section className="border-t border-slate-200 bg-white p-5 md:p-6">
-      <div>
-        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-slate-950">具体設計項目ごとのポイント</p>
-            <p className="mt-1 text-sm leading-7 text-slate-600">
-              図解1の各項目を、問題名ではなく、整える仕事条件として読みます。
-            </p>
-          </div>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-            {readerFacingItems.length}項目
-          </span>
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-slate-950">具体設計項目と設計ポイント</p>
+          <p className="mt-1 text-sm leading-7 text-slate-600">
+            図解1を一枚のボードで見る代わりに、項目ごとに分けて、説明と設計ポイントを同じ場所で読みます。
+            {itemsAsset ? ` ${itemsAsset.caption}` : ''}
+          </p>
         </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          {readerFacingItems.map((item) => (
-            <article
-              className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-4"
-              data-work-design-item-point-card
-              key={item.substructureId}
+        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+          {section.substructureCount}項目
+        </span>
+      </div>
+
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        {readerFacingItems.map((item, index) => (
+          <article
+            className="grid gap-4 rounded-lg border border-slate-200 bg-[#fbfaf5] p-4"
+            data-work-design-item-point-card
+            key={item.substructureId}
+          >
+            <div className="flex items-start gap-3">
+              <span className={`mt-2 h-2.5 w-2.5 shrink-0 rounded-full ${domain.railClass}`} />
+              <div>
+                <h5 className="text-lg font-semibold leading-7 text-slate-950 md:text-xl md:leading-8">
+                  {toWorkDesignPointHeading(item.labelJa, item.substructureId)}
+                </h5>
+                <p className="mt-2 text-sm leading-7 text-slate-700">{item.inferenceFocusJa}</p>
+              </div>
+            </div>
+
+            <figure
+              className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+              data-work-design-item-image-diagram
             >
-              <p className="text-sm font-semibold leading-6 text-slate-950">
-                {toWorkDesignPointHeading(item.labelJa, item.substructureId)}
-              </p>
-              <ul className="mt-3 grid gap-2">
-                {item.points.map((point) => (
-                  <li
-                    className="flex gap-2 text-sm leading-7 text-slate-700"
-                    data-work-design-item-point
-                    key={point}
-                  >
-                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-500" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+              <img
+                alt={`図解1｜具体設計項目、${item.labelJa}。${item.inferenceFocusJa}`}
+                className="block h-auto w-full bg-[#f8f4e8]"
+                loading="lazy"
+                src={workDesignConcreteItemDiagramSrc(item.substructureId)}
+              />
+              <figcaption className="sr-only">
+                図解1｜具体設計項目 {index + 1}: {item.labelJa}
+              </figcaption>
+            </figure>
+
+            <ul className="mt-3 grid gap-2">
+              {item.points.map((point) => (
+                <li
+                  className="flex gap-2 text-sm leading-7 text-slate-700"
+                  data-work-design-item-point
+                  key={point}
+                >
+                  <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-500" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
+  );
+}
+
+function WorkDesignPerspectiveShiftPanel({
+  section,
+}: {
+  section: AxiomIntegratedDomainKnowledgePageBodySection;
+}) {
+  const scale = axiomWorkDesignSituationScales[section.sourceRebuiltUnitId];
+  const story = getWorkDesignVisualStory(section);
+  const sectionPoints = workDesignSectionImplementationPoints[section.sourceRebuiltUnitId] ?? [
+    toReaderFacingText(section.readerFacingSummaryJa),
+  ];
+
+  return (
+    <div
+      className="mt-5 border-l-4 border-teal-700 bg-[#fbfaf5] py-4 pl-4 pr-3"
+      data-work-design-perspective-comparison
+    >
+      <p className="text-sm font-semibold text-slate-950">視点転換のポイント</p>
+      <div className="mt-3 grid gap-3 text-sm leading-7 text-slate-700">
+        <p>
+          問題状況は固定ではなく、
+          {scale?.axis ? (
+            <>
+              <span className="font-semibold text-slate-950">{scale.axis}</span>を分けて設計すると
+            </>
+          ) : (
+            '条件を分けて設計すると'
+          )}
+          変わります。図解2は、その変化を「破綻・停止」から「安定・予防」へ動く流れとして読みます。
+          {story.conclusion}
+        </p>
+        <p>
+          <span className="font-semibold text-rose-900">詰まり・古い読み: </span>
+          {scale?.high ?? '同じ支障が、本人の努力や周囲の個別対応として繰り返される。'}{' '}
+          本人の努力、診断名、配慮名、職場の善意だけで考えてしまう。
+        </p>
+        <p>
+          <span className="font-semibold text-teal-900">設計・設計の読み: </span>
+          {scale?.stable ?? '続ける、戻る、育つために必要な条件を仕事の側へ置く。'}{' '}
+          {toReaderFacingText(section.changesReadingJa[0] ?? section.readerFacingSummaryJa)}
+        </p>
+        <div className="rounded-lg border border-teal-100 bg-white/80 p-3">
+          <p className="text-xs font-semibold tracking-[0.14em] text-teal-900">
+            この論点で見るポイント
+          </p>
+          <ul className="mt-3 grid gap-2">
+            {sectionPoints.map((point, index) => (
+              <li
+                className="grid grid-cols-[auto_1fr] gap-3 rounded-md bg-teal-50/70 px-3 py-2 text-sm leading-7 text-slate-700"
+                data-work-design-section-point
+                key={point}
+              >
+                <span className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-teal-800 text-[11px] font-semibold leading-none text-white">
+                  {index + 1}
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -8687,6 +8572,7 @@ function WorkDesignGuidePublicContent({
                         </div>
                       </div>
                     </div>
+                    <WorkDesignDomainTopicLinks domain={domain} sections={sections} />
                   </div>
 
                   <div className="grid gap-6 p-5 md:p-6">
@@ -8702,7 +8588,8 @@ function WorkDesignGuidePublicContent({
                         );
                       return (
                         <article
-                          className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+                          className="scroll-mt-24 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+                          id={workDesignTopicSectionId(section.sectionId)}
                           key={section.sectionId}
                         >
                           <div className="p-5 md:p-6">
@@ -8722,16 +8609,15 @@ function WorkDesignGuidePublicContent({
                             <p className="mt-4 max-w-4xl text-base leading-8 text-slate-700">
                               {toReaderFacingText(section.readerFacingSummaryJa)}
                             </p>
+                            <WorkDesignPerspectiveShiftPanel section={section} />
                           </div>
 
+                          <WorkDesignSituationScaleStrip section={section} />
                           <WorkDesignConcreteItemsPanel
                             domain={domain}
                             section={section}
                             substructures={substructures}
                           />
-                          <WorkDesignSituationScaleStrip section={section} />
-                          <WorkDesignPerspectiveShiftPanel section={section} domain={domain} />
-                          <WorkDesignImplementationPointsPanel substructures={substructures} />
                         </article>
                       );
                     })}

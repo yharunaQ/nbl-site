@@ -36,8 +36,8 @@ export function verifyEbookDownloadToken(
   if (!encoded || !signature) return null;
   const expectedSignature = sign(encoded, secret);
 
-  const a = Buffer.from(signature);
-  const b = Buffer.from(expectedSignature);
+  const a = new Uint8Array(Buffer.from(signature));
+  const b = new Uint8Array(Buffer.from(expectedSignature));
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
 
   try {

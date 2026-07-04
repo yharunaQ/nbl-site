@@ -1,9 +1,10 @@
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
-import { PATHS, ROOT, formatTokyoDate, readText, writeText } from './shared.mjs';
+import { EXECUTION_ROOT, PATHS, ROOT, formatTokyoDate, readText, writeText } from './shared.mjs';
 
 const REPORT_ROUTES = [
   '/',
+  '/work-design-views-guide',
   '/work-design-studio',
   '/work-design-map',
   '/work-design-tools',
@@ -13,6 +14,12 @@ const REPORT_ROUTES = [
   '/projects',
   '/work-assessment-concept',
   '/about',
+  '/about/knowledge-base',
+  '/about/data',
+  '/knowledge',
+  '/knowledge/practice',
+  '/knowledge/evidence',
+  '/knowledge/network',
   '/contact',
   '/events',
   '/events/work-condition-forum',
@@ -58,8 +65,15 @@ const FILE_CHECKS = [
   'public/robots.txt',
   'public/sitemap.xml',
   'pages/index.tsx',
+  'pages/work-design-views-guide.tsx',
   'pages/contact.tsx',
   'pages/about.tsx',
+  'pages/about/knowledge-base.tsx',
+  'pages/about/data.tsx',
+  'pages/knowledge/index.tsx',
+  'pages/knowledge/practice.tsx',
+  'pages/knowledge/evidence.tsx',
+  'pages/knowledge/network.tsx',
   'pages/work-design-studio.tsx',
   'pages/work-design-map.tsx',
   'pages/work-design-tools.tsx',
@@ -176,6 +190,9 @@ async function main() {
     `更新日: ${today}`,
     '',
     '## Scope',
+    '',
+    `- execution root: \`${EXECUTION_ROOT}\``,
+    `- checked root: \`${ROOT}\``,
     '',
     ...REPORT_ROUTES.map((route) => `- ${route}`),
     '',

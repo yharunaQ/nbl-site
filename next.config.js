@@ -21,6 +21,8 @@ const nextConfig = {
   },
   // Allow local cross-origin dev access (e.g. 127.0.0.1 -> localhost for /_next/* assets)
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
+  // Hide the Next.js dev indicator drawer so local page review is not covered by its bottom panel.
+  devIndicators: false,
   turbopack: {
     root: path.resolve(__dirname),
   },

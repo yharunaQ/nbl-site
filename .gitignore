@@ -23,6 +23,9 @@ references/index/embeddings.jsonl
 # Runtime cache
 .tmp/
 
+# Local Claude tool configuration
+.claude/
+
 # Internal workspace assets not required for public deployment
 content-inbox/
 

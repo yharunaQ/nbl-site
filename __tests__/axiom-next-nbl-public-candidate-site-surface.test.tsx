@@ -98,13 +98,16 @@ describe('Axiom next NBL public candidate site surface', () => {
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '狭い標準像から多様性を前提にした仕事・社会参加設計へ読み替える図。障害・難病就労で見えてきた無理を、健康時間、情報形式、移動、支援、評価の仕事条件として整理する。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(screen.getByText('連続した課題として見る')).toBeInTheDocument();
     expect(screen.getByText('仕事の意味が変わる時代の設計知にする')).toBeInTheDocument();
     expect(screen.getByText('個人の問題ではなく、仕事条件の設計へ。')).toBeInTheDocument();
+    expect(
+      screen.getByText('いま止まっている参加を、時間、情報、手順、評価、支援の条件に分ける。'),
+    ).toBeInTheDocument();
     expect(screen.getByText('早期発見')).toBeInTheDocument();
     expect(screen.getByText('5つの設計領域へ進む')).toBeInTheDocument();
     expect(
@@ -119,8 +122,9 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getByText('5つの入口から、詳しい設計カードへ。')).toBeInTheDocument();
     expect(screen.getAllByText('設計領域 A').length).toBeGreaterThan(0);
     expect(screen.getAllByText('設計領域 E').length).toBeGreaterThan(0);
-    expect(screen.getByText('就職前・入口・移行を設計する')).toBeInTheDocument();
-    expect(screen.getByText('情報・手順・接触点を設計する')).toBeInTheDocument();
+    expect(screen.getAllByText('就職前・入口・移行を設計する').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('情報・手順・接触点を設計する').length).toBeGreaterThan(1);
+    expect(container.querySelectorAll('[data-work-design-domain-topic-link]')).toHaveLength(10);
     expect(
       screen.queryByText('「個人の問題」に見える時ほど、仕事条件を見る。'),
     ).not.toBeInTheDocument();
@@ -134,68 +138,60 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.queryByText(/Step 1/)).not.toBeInTheDocument();
     expect(screen.getAllByText('図解2｜状況レベル4コマ').length).toBeGreaterThan(0);
     expect(screen.getAllByText('5領域 / 10論点 / 37項目').length).toBeGreaterThan(0);
-    expect(screen.getByText('変動する健康時間・仕事密度・回復余地')).toBeInTheDocument();
+    expect(screen.getAllByText('変動する健康時間・仕事密度・回復余地').length).toBeGreaterThan(1);
     expect(
-      screen.getByText('視覚・聴覚・身体条件を含む情報形式/コミュニケーションアクセス'),
-    ).toBeInTheDocument();
+      screen.getAllByText('視覚・聴覚・身体条件を含む情報形式/コミュニケーションアクセス').length,
+    ).toBeGreaterThan(1);
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、健康時間。変動・再燃・疲労、回復余地・戻り方、通勤・移動の消耗、収入・評価との衝突を示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
-        '具体設計項目、治療・検診時間。透析・固定治療時間、定期検診・継続管理、内部障害・身体管理を示す図解ボード。',
-      ),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、情報形式。視覚情報・文書形式、聴覚・音声・会議進行、身体操作・道具操作、緊急連絡・非公式情報を示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
-        '具体設計項目、手順と切替。指示・手順・説明形式、切替・優先順位・例外対応、記憶・確認・ミス許容度、暗黙ルール・評価基準を示す図解ボード。',
-      ),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、就職前・移行。非就労・未就業層の仕事像、応募前の条件言語化、訓練・職場体験・試行機会、家族・学校・支援から職場へを示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、職場接触点。作業分解・仕事密度、道具・設備・環境、職場内外の移動、安全・ミス許容度、人員余力・顧客接点、評価・役割・フィードバックを示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、伝える情報。目的限定の情報共有、見えにくさとスティグマ、不利益評価・過剰管理リスクを示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、支援の接続。言葉を仕事条件へ翻訳、handoff・役割境界、悪化・復職・配置換え後を示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、評価と成長。就職後の役割設計、評価・処遇・収入の公正さ、学習・キャリア・選び直しを示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(
-      screen.getByAltText(
+      screen.queryByAltText(
         '具体設計項目、資料の読み方。多数データを過大代表させない、歴史・国際資料から構造を探す、公開前の過剰一般化ブレーキを示す図解ボード。',
       ),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     expect(screen.queryByText('MASTER PLAN')).not.toBeInTheDocument();
     expect(screen.queryByText('Master plan')).not.toBeInTheDocument();
-    expect(screen.getAllByText('図解1｜具体設計項目').length).toBeGreaterThanOrEqual(10);
+    expect(screen.getAllByText(/図解1｜具体設計項目/).length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('図解2｜状況レベル4コマ').length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('視点転換のポイント').length).toBeGreaterThanOrEqual(10);
-    expect(screen.getAllByText('設計ポイント').length).toBeGreaterThanOrEqual(10);
-    expect(screen.getAllByText('具体設計項目ごとのポイント').length).toBeGreaterThanOrEqual(10);
-    expect(screen.getAllByText('軸:', { exact: false }).length).toBeGreaterThanOrEqual(10);
+    expect(screen.getAllByText('具体設計項目と設計ポイント').length).toBeGreaterThanOrEqual(10);
+    expect(screen.queryByText('具体設計項目ごとのポイント')).not.toBeInTheDocument();
+    expect(screen.queryByText('メイン図解')).not.toBeInTheDocument();
+    expect(screen.queryByText('軸:', { exact: false })).not.toBeInTheDocument();
+    expect(screen.getAllByText(/問題状況は固定ではなく/).length).toBeGreaterThanOrEqual(10);
     expect(
       screen.getByAltText(
         '健康時間を設計する。破綻・停止、高頻度支障、要調整、安定・予防の4つの状況レベルを示す図解カード。',
@@ -246,8 +242,8 @@ describe('Axiom next NBL public candidate site surface', () => {
         '多様な資料から全体像を設計する。一つの資料で一般化する状態から、共通構造と保留を分けて伝える状態までを示す図解カード。',
       ),
     ).toBeInTheDocument();
-    expect(screen.getAllByText('詰まり・古い読み').length).toBeGreaterThanOrEqual(10);
-    expect(screen.getAllByText('設計・設計の読み').length).toBeGreaterThanOrEqual(10);
+    expect(screen.getAllByText(/詰まり・古い読み/).length).toBeGreaterThanOrEqual(10);
+    expect(screen.getAllByText(/設計・設計の読み/).length).toBeGreaterThanOrEqual(10);
     expect(screen.queryByText('絡まり')).not.toBeInTheDocument();
     expect(screen.queryByText('今日から使う設計部品')).not.toBeInTheDocument();
     expect(screen.getAllByText(/具体設計項目/).length).toBeGreaterThan(0);
@@ -255,11 +251,12 @@ describe('Axiom next NBL public candidate site surface', () => {
       screen.getAllByText('締切、勤務密度、体調変動、回復時間を同じ時間表に置いて見る。').length,
     ).toBeGreaterThan(0);
     expect(
-      screen.getByText('端末、作業台、照明、音、温度、休憩場所を仕事の接触面として点検する。'),
-    ).toBeInTheDocument();
+      screen.getAllByText('端末、作業台、照明、音、温度、休憩場所を仕事の接触面として点検する。')
+        .length,
+    ).toBeGreaterThan(0);
     expect(
-      screen.getByText('発見候補をそのまま公開主張にせず、言える範囲を確認する。'),
-    ).toBeInTheDocument();
+      screen.getAllByText('発見候補をそのまま公開主張にせず、言える範囲を確認する。').length,
+    ).toBeGreaterThan(0);
     expect(screen.getAllByText('体調変動と仕事密度を同じ時間表で設計する').length).toBeGreaterThan(
       0,
     );
@@ -278,7 +275,20 @@ describe('Axiom next NBL public candidate site surface', () => {
       10,
     );
     expect(container.querySelectorAll('[data-work-design-section-point]')).toHaveLength(30);
+    expect(container.querySelector('[data-work-design-section-point]')?.className).toContain(
+      'grid-cols-[auto_1fr]',
+    );
     expect(container.querySelectorAll('[data-work-design-item-point-card]')).toHaveLength(37);
+    expect(screen.queryByText('設計項目')).not.toBeInTheDocument();
+    const itemDiagramImages = Array.from(
+      container.querySelectorAll<HTMLImageElement>('[data-work-design-item-image-diagram] img'),
+    );
+    expect(itemDiagramImages).toHaveLength(37);
+    for (const image of itemDiagramImages) {
+      const src = image.getAttribute('src') ?? '';
+      expect(src).toMatch(/^\/images\/axiom-work-design-guide\/item-diagrams\/.+-v1\.png$/);
+      expect(existsSync(path.join(process.cwd(), 'public', src))).toBe(true);
+    }
     expect(container.querySelectorAll('[data-work-design-item-point]')).toHaveLength(74);
     expect(container.querySelector('#work-design-domain-pre-entry-transition')).not.toBeNull();
     expect(container.querySelector('#work-design-domain-health-time-livelihood')).not.toBeNull();
@@ -296,9 +306,9 @@ describe('Axiom next NBL public candidate site surface', () => {
     const firstSituationIndex = renderedText.indexOf('図解2｜状況レベル4コマ', firstSectionIndex);
     const firstPerspectiveIndex = renderedText.indexOf('視点転換のポイント', firstSectionIndex);
     expect(firstSectionIndex).toBeGreaterThanOrEqual(0);
-    expect(firstConcreteIndex).toBeGreaterThan(firstSectionIndex);
-    expect(firstSituationIndex).toBeGreaterThan(firstConcreteIndex);
-    expect(firstPerspectiveIndex).toBeGreaterThan(firstSituationIndex);
+    expect(firstPerspectiveIndex).toBeGreaterThan(firstSectionIndex);
+    expect(firstSituationIndex).toBeGreaterThan(firstPerspectiveIndex);
+    expect(firstConcreteIndex).toBeGreaterThan(firstSituationIndex);
     expect(screen.queryByText('Page experience')).not.toBeInTheDocument();
     expect(screen.queryByText(/旧21視点を固定継承せず/)).not.toBeInTheDocument();
     expect(screen.queryByText('視点 10')).not.toBeInTheDocument();
@@ -306,7 +316,7 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.queryByText('このページで扱う中核発見')).not.toBeInTheDocument();
     expect(screen.queryByText(/Axiom coreの発見候補/)).not.toBeInTheDocument();
     expect(screen.queryByText(/source\/support validityとpublic approval/)).not.toBeInTheDocument();
-    expect(screen.getAllByText(/発見候補と公開メッセージを分ける/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/発見候補と公開メッセージ/).length).toBeGreaterThan(0);
   });
 
   it('renders the restored scene-entry page as an 8-issue comic use-case showcase', () => {

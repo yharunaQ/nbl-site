@@ -1,13 +1,14 @@
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
-import { PATHS, ROOT, formatTokyoDate, writeText } from './shared.mjs';
+import { EXECUTION_ROOT, PATHS, ROOT, formatTokyoDate, writeText } from './shared.mjs';
 
 const PORT = 3210;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 
 const ROUTES = [
   '/',
+  '/work-design-views-guide',
   '/work-design-studio',
   '/work-design-map',
   '/work-design-tools',
@@ -17,6 +18,12 @@ const ROUTES = [
   '/projects',
   '/work-assessment-concept',
   '/about',
+  '/about/knowledge-base',
+  '/about/data',
+  '/knowledge',
+  '/knowledge/practice',
+  '/knowledge/evidence',
+  '/knowledge/network',
   '/contact',
   '/events',
   '/events/work-condition-forum',
@@ -127,6 +134,9 @@ async function main() {
       `更新日: ${today}`,
       '',
       '## Scope',
+      '',
+      `- execution root: \`${EXECUTION_ROOT}\``,
+      `- checked root: \`${ROOT}\``,
       '',
       ...ROUTES.map((route) => `- ${route}`),
       '',
