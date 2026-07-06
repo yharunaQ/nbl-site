@@ -184,11 +184,10 @@ describe('Axiom next NBL public candidate site surface', () => {
     ).not.toBeInTheDocument();
     expect(screen.queryByText('MASTER PLAN')).not.toBeInTheDocument();
     expect(screen.queryByText('Master plan')).not.toBeInTheDocument();
+    expect(screen.getAllByText(/図解1｜具体設計項目/).length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('図解2｜状況レベル4コマ').length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('視点転換のポイント').length).toBeGreaterThanOrEqual(10);
     expect(screen.getAllByText('具体設計項目と設計ポイント').length).toBeGreaterThanOrEqual(10);
-    expect(container.innerHTML).not.toContain('図解1｜具体設計項目');
-    expect(container.innerHTML).not.toContain('図解1を一枚');
     expect(screen.queryByText('具体設計項目ごとのポイント')).not.toBeInTheDocument();
     expect(screen.queryByText('メイン図解')).not.toBeInTheDocument();
     expect(screen.queryByText('軸:', { exact: false })).not.toBeInTheDocument();
@@ -303,12 +302,9 @@ describe('Axiom next NBL public candidate site surface', () => {
       container.querySelector('#work-design-domain-support-institution-learning'),
     ).not.toBeNull();
     const firstSectionIndex = renderedText.indexOf('変動する健康時間・仕事密度・回復余地');
+    const firstConcreteIndex = renderedText.indexOf('図解1｜具体設計項目', firstSectionIndex + 1);
     const firstSituationIndex = renderedText.indexOf('図解2｜状況レベル4コマ', firstSectionIndex);
     const firstPerspectiveIndex = renderedText.indexOf('視点転換のポイント', firstSectionIndex);
-    const firstConcreteIndex = renderedText.indexOf(
-      '具体設計項目と設計ポイント',
-      firstSituationIndex,
-    );
     expect(firstSectionIndex).toBeGreaterThanOrEqual(0);
     expect(firstPerspectiveIndex).toBeGreaterThan(firstSectionIndex);
     expect(firstSituationIndex).toBeGreaterThan(firstPerspectiveIndex);
@@ -764,27 +760,45 @@ describe('Axiom next NBL public candidate site surface', () => {
     ).toBeInTheDocument();
     expect(screen.getAllByText('言葉以外の入口').length).toBeGreaterThan(0);
     expect(
-      screen.getByText('図解、4コマ、音楽、フォーラムを、', { exact: false }),
-    ).toBeInTheDocument();
+      screen.getAllByText('図解、バーチャルニュース、', { exact: false }).length,
+    ).toBeGreaterThan(0);
     expect(
       screen.getByAltText(
-        'ツールキット。言葉だけでは届きにくいことを、選別図解、4コマ・マンガ、音楽、フォーラム、チェックリストという別の形で手渡す素材棚の図解。',
+        'ツールキット。言葉だけでは届きにくいことを、選別図解、NBLバーチャル・ニュース、4コマ・マンガ、音楽、フォーラム、ウェブアプリという別の形で手渡す素材棚の図解。',
       ),
     ).toHaveAttribute('src', '/images/next-nbl-toolkit-hero-image2-v1.png');
     expect(screen.getByRole('link', { name: /図解棚を見る/ })).toHaveAttribute(
       'href',
       '#toolkit-selected-infographic-library',
     );
-    expect(screen.getByRole('link', { name: /音楽・資料へ/ })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /バーチャルニュースへ/ })).toHaveAttribute(
       'href',
-      '#toolkit-shelf-music',
+      '#toolkit-virtual-news-library',
+    );
+    expect(screen.getByRole('link', { name: /ウェブアプリ一覧へ/ })).toHaveAttribute(
+      'href',
+      '#toolkit-web-app-library',
     );
     expect(screen.getByText('見る、読む、聞く、話す素材を選ぶ。')).toBeInTheDocument();
     expect(screen.queryByText('選別図解・4コマ')).not.toBeInTheDocument();
     expect(screen.queryByText('57枚')).not.toBeInTheDocument();
     expect(screen.queryByText('30曲')).not.toBeInTheDocument();
     expect(screen.queryByText('22本')).not.toBeInTheDocument();
-    expect(toolkit.container.querySelectorAll('[data-toolkit-shelf-card]')).toHaveLength(5);
+    expect(toolkit.container.querySelectorAll('[data-toolkit-shelf-card]')).toHaveLength(6);
+    expect(toolkit.container.querySelector('#toolkit-shelf-virtual-news')).not.toBeNull();
+    expect(toolkit.container.querySelector('#toolkit-virtual-news-library')).not.toBeNull();
+    expect(screen.getAllByText('NBLバーチャル・ニュース').length).toBeGreaterThan(0);
+    expect(screen.getByText('本当のニュースになってほしい実装を、先に読む。')).toBeInTheDocument();
+    expect(toolkit.container.querySelectorAll('[data-toolkit-virtual-news-card]')).toHaveLength(15);
+    expect(screen.getByText('障害のある社員への配慮、上司任せにしない。架空企業A社、専門窓口と共通予算で全社対応へ')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /障害のある社員への配慮/ })).toHaveAttribute(
+      'href',
+      '/toolkit-studio/virtual-news/reasonable-accommodation-system-design',
+    );
+    expect(
+      toolkit.container.querySelector('#toolkit-virtual-news-library')?.textContent,
+    ).not.toContain('公開準備中');
+    expect(screen.getAllByText('記事を読む')).toHaveLength(15);
     expect(screen.getByText('使う場面から、素材を組み合わせる。')).toBeInTheDocument();
     expect(toolkit.container.querySelectorAll('[data-toolkit-use-package-card]')).toHaveLength(4);
     expect(screen.getByText('初回相談・初回会議で、同じ地図を見る')).toBeInTheDocument();
@@ -846,7 +860,47 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getAllByText('4コマ・マンガ').length).toBeGreaterThan(0);
     expect(screen.getAllByText('音楽').length).toBeGreaterThan(0);
     expect(screen.getAllByText('フォーラム').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('就労支援機関チェックリスト').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('ウェブアプリ').length).toBeGreaterThan(0);
+    expect(toolkit.container.querySelector('#toolkit-shelf-web-apps')).not.toBeNull();
+    expect(
+      screen.getByRole('link', { name: /アプリ一覧を見る/ }),
+    ).toHaveAttribute('href', '#toolkit-web-app-library');
+    expect(toolkit.container.querySelector('#toolkit-web-app-library')).not.toBeNull();
+    expect(
+      toolkit.container.querySelector('#toolkit-shelf-web-apps [data-toolkit-web-app-card]'),
+    ).toBeNull();
+    expect(toolkit.container.querySelector('[data-toolkit-web-app-smartphone-use]')).not.toBeNull();
+    expect(screen.getByText('記録と確認を、相談や会議に持ち込める形へ。')).toBeInTheDocument();
+    expect(screen.getByText('ナミノートをスマホで使う前に')).toBeInTheDocument();
+    expect(screen.getAllByText(/ホーム画面に追加/).length).toBeGreaterThan(1);
+    expect(toolkit.container.querySelectorAll('[data-toolkit-web-app-card]')).toHaveLength(3);
+    const webAppCards = Array.from(
+      toolkit.container.querySelectorAll('[data-toolkit-web-app-card]'),
+    ).map((card) => card.textContent ?? '');
+    expect(webAppCards[0]).toContain('就労支援機関チェックリスト');
+    expect(webAppCards[1]).toContain('ナミノート');
+    expect(webAppCards[2]).toContain('ナミノート支援者用ツール');
+    expect(screen.getByRole('link', { name: /チェックリストを開く/ })).toHaveAttribute(
+      'href',
+      '/organizations/diagnosis',
+    );
+    expect(screen.getByRole('link', { name: /ナミノートを開く/ })).toHaveAttribute(
+      'href',
+      'https://yharunaq.github.io/naminote/',
+    );
+    expect(screen.getByRole('link', { name: /ナミノートを開く/ })).toHaveAttribute(
+      'target',
+      '_blank',
+    );
+    expect(
+      screen.getByText(/医療、就労、合理的配慮の判断や助言は行いません/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/第三者の個人情報を書かず/),
+    ).toBeInTheDocument();
+    expect(screen.queryByText('リンク準備中')).not.toBeInTheDocument();
+    expect(screen.getAllByText('公開準備中')).toHaveLength(1);
+    expect(screen.queryByRole('link', { name: /公開準備中/ })).not.toBeInTheDocument();
     expect(screen.queryByText('短い問いを、次の図解や記事へ戻す')).not.toBeInTheDocument();
     expect(screen.queryByText('設計ボードで、確認項目を具体化する')).not.toBeInTheDocument();
     expect(
@@ -872,7 +926,7 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(toolkit.container.querySelector('[data-toolkit-infographic-lightbox]')).not.toBeNull();
     expect(screen.getByText('図解を拡大表示')).toBeInTheDocument();
     expect(
-      screen.getByText('音楽や図解は、助言や判定の代わりではありません。'),
+      screen.getByText('音楽、図解、バーチャルニュース、ウェブアプリは、助言や判定の代わりではありません。'),
     ).toBeInTheDocument();
     expect(screen.queryByText('Page content')).not.toBeInTheDocument();
     expect(screen.queryByText(/Axiomの見立て/)).not.toBeInTheDocument();
@@ -883,7 +937,15 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getByText('素材の背景を読む')).toBeInTheDocument();
     expect(
       existsSync(
-        path.join(process.cwd(), 'public/images/work-condition-lens-treatment-work-time-v1.webp'),
+        path.join(process.cwd(), 'public/favicon-512x512.png'),
+      ),
+    ).toBe(true);
+    expect(
+      existsSync(
+        path.join(
+          process.cwd(),
+          'public/images/nbl-virtual-news/cap-caf-accommodation-center-hero-v1.webp',
+        ),
       ),
     ).toBe(true);
     expect(

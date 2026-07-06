@@ -49,9 +49,10 @@ const pageSeoBySlug: Record<
   },
   'toolkit-studio': {
     title: 'ツールキット | Next Being Lab',
-    description: '図解、4コマ、音楽、フォーラム、資料を、会議や研修で使える形に並べた入口。',
+    description:
+      '図解、NBLバーチャル・ニュース、4コマ、音楽、フォーラム、ウェブアプリを、記録、会議、研修で使える形に並べた入口。',
     imagePath: '/images/next-nbl-toolkit-hero-image2-v1.png',
-    imageAlt: '図解や音楽などのツールキットを示す図',
+    imageAlt: '図解、架空ニュース、音楽、ウェブアプリなどのツールキットを示す図',
   },
   'work-condition-window': {
     title: '障害種類から見る | Next Being Lab',
