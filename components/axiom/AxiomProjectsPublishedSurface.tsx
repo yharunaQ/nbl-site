@@ -22,9 +22,9 @@ const projectsHeroImage = {
 
 const navItems = [
   { href: '/', label: 'トップ' },
-  { href: '/scene-entry', label: '8つの課題' },
-  { href: '/case-readings', label: '相談事例' },
+  { href: '/virtual-news', label: 'バーチャルニュース' },
   { href: '/work-design-views-guide', label: '設計ガイド' },
+  { href: '/case-readings', label: '相談事例' },
   { href: '/articles-social-questions', label: 'NBLレポート' },
   { href: '/toolkit-studio', label: 'ツールキット' },
   { href: '/work-condition-window', label: '障害種類から見る' },
@@ -36,9 +36,9 @@ const navItems = [
 const primaryNavItems = navItems.filter((item) =>
   [
     '/',
-    '/scene-entry',
-    '/case-readings',
+    '/virtual-news',
     '/work-design-views-guide',
+    '/case-readings',
     '/articles-social-questions',
     '/toolkit-studio',
   ].includes(item.href),

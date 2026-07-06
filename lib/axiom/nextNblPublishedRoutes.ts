@@ -2,9 +2,10 @@ import { AXIOM_NEXT_NBL_PUBLIC_CANDIDATE_ROUTE_BASE } from './falconAxiomPublicS
 
 export const AXIOM_NEXT_NBL_PUBLISHED_SLUGS = [
   'home',
+  'virtual-news',
   'scene-entry',
-  'case-readings',
   'work-design-views-guide',
+  'case-readings',
   'articles-social-questions',
   'toolkit-studio',
   'work-condition-window',

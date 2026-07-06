@@ -1,6 +1,7 @@
 import PageSeo from '@/components/PageSeo';
 import AxiomProjectsPublishedSurface from '@/components/axiom/AxiomProjectsPublishedSurface';
 import AxiomNextNblPublicCandidateSiteSurface from '@/components/axiom/AxiomNextNblPublicCandidateSiteSurface';
+import AxiomVirtualNewsHubPage from '@/components/axiom/AxiomVirtualNewsHubPage';
 import {
   getAxiomNextNblPublishedPath,
   type AxiomNextNblPublishedSlug,
@@ -19,11 +20,17 @@ const pageSeoBySlug: Record<
     title: 'Next Being Lab | 障害者雇用・難病就労支援から、AI時代の仕事設計へ',
     description:
       '多様な人間と社会・環境の相互作用を踏まえ、AIの助けで認知負荷を下げながら、働きづらさを仕事・環境・支援・時間・評価の条件として読み直すNext Being Labの入口。',
-    imagePath: '/images/next-nbl-home-hero-image2-v1.png',
-    imageAlt: 'Next Being Labの全体入口を示す図',
+    imagePath: '/images/next-nbl-home-why-hero-imagegen-v1.png',
+    imageAlt: '障害者雇用・難病就労支援の断片的な情報を仕事条件の地図へ読み替える図',
+  },
+  'virtual-news': {
+    title: 'NBLバーチャル・ニュース | Next Being Lab',
+    description: '現実の課題を、仕事条件のニュース像として先に読むNBLバーチャル・ニュースの入口。',
+    imagePath: '/images/nbl-virtual-news/cap-caf-accommodation-center-hero-v1.webp',
+    imageAlt: 'CAPとCAF型の社内配慮センターを運用する架空企業の職場風景',
   },
   'scene-entry': {
-    title: '8つの課題 | Next Being Lab',
+    title: '8つの課題の地図 | Next Being Lab',
     description:
       '昔から語られてきたが解けにくかった働きづらさの課題を、仕事条件から読み直すページ。',
     imagePath: '/images/next-nbl-work-design-scene-month-end-v1.png',
@@ -76,8 +83,8 @@ const pageSeoBySlug: Record<
   'about-boundary': {
     title: 'サイト情報 | Next Being Lab',
     description: 'Next Being Labの運営目的、責任者、問い合わせ、免責、著作権、SNS発信の扱い。',
-    imagePath: '/images/next-nbl-home-hero-image2-v1.png',
-    imageAlt: 'Next Being Labのサイト情報を示す図',
+    imagePath: '/images/next-nbl-home-why-hero-imagegen-v1.png',
+    imageAlt: 'Next Being Labの読み替え方を示す図',
   },
 };
 
@@ -99,6 +106,8 @@ export default function AxiomNextNblPublishedSitePage({
       />
       {slug === 'projects' ? (
         <AxiomProjectsPublishedSurface />
+      ) : slug === 'virtual-news' ? (
+        <AxiomVirtualNewsHubPage />
       ) : (
         <AxiomNextNblPublicCandidateSiteSurface slug={slug} routeMode="published" />
       )}

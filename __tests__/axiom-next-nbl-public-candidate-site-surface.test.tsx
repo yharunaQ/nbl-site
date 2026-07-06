@@ -1,11 +1,23 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import AxiomNextNblPublicCandidateHomePage from '@/pages/internal/axiom-next-nbl-public-candidate';
 import AxiomNextNblPublicCandidatePage, {
   getServerSideProps,
 } from '@/pages/internal/axiom-next-nbl-public-candidate/[slug]';
 import { buildAxiomReviewedKernelBackedCandidateRouteMap } from '@/lib/axiom/reviewedKernelBackedCandidateRouteMap';
+
+function expectDesignGuideBeforeConsultation(nav: HTMLElement) {
+  const labels = Array.from(nav.querySelectorAll('a')).map((link) => link.textContent);
+
+  expect(labels.indexOf('設計ガイド')).toBeGreaterThanOrEqual(0);
+  expect(labels.indexOf('相談事例')).toBeGreaterThanOrEqual(0);
+  expect(labels.indexOf('設計ガイド')).toBeLessThan(labels.indexOf('相談事例'));
+}
+
+function expectNoIssueMapInMenu(nav: HTMLElement) {
+  expect(within(nav).queryByRole('link', { name: '課題地図' })).not.toBeInTheDocument();
+}
 
 describe('Axiom next NBL public candidate site surface', () => {
   it('renders the home page as a public-like Founder review candidate', () => {
@@ -24,30 +36,62 @@ describe('Axiom next NBL public candidate site surface', () => {
         '障害者雇用・難病就労支援の断片的な情報を、AIの文脈読解補助と人間の確認を通して、本人・仕事・環境・支援・時間・評価の条件地図へ読み替える図',
       ),
     ).toHaveAttribute('src', '/images/next-nbl-home-why-hero-imagegen-v1.png');
-    expect(
-      screen.getByAltText(
-        '働きづらさを仕事条件の地図へ変換し、8つの課題、相談事例、設計ガイド、NBLレポート、ツールキット、障害種類から見る入口へつなぐ図解',
-      ),
-    ).toHaveAttribute('src', '/images/next-nbl-home-hero-image2-v1.png');
+    expect(screen.queryByAltText(/働きづらさを仕事条件の地図へ変換/)).not.toBeInTheDocument();
     expect(
       screen.getByRole('navigation', {
         name: 'NBL site navigation',
       }),
     ).toBeInTheDocument();
+    expectDesignGuideBeforeConsultation(
+      screen.getByRole('navigation', {
+        name: 'NBL site navigation',
+      }),
+    );
+    expectDesignGuideBeforeConsultation(
+      screen.getByRole('navigation', { name: 'NBL site all pages', hidden: true }),
+    );
+    expectNoIssueMapInMenu(
+      screen.getByRole('navigation', { name: 'NBL site all pages', hidden: true }),
+    );
+    expectDesignGuideBeforeConsultation(
+      screen.getByRole('navigation', { name: 'NBL site mobile navigation' }),
+    );
+    expectNoIssueMapInMenu(screen.getByRole('navigation', { name: 'NBL site mobile navigation' }));
     expect(
       screen.getByRole('heading', {
         level: 2,
         name: '膨大で偏りを含む情報を、実践できる仕事条件の地図へ。',
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText('問いはばらばらでも、見る地図はひとつ。')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: '6つの入口で、NBLが扱う問題空間を見渡す。',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('関心のある入口から、働きづらさの見え方を変える。'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /現実の課題を、ニュース像として先に読む/ }),
+    ).toHaveAttribute('href', '/virtual-news');
+    expect((container.textContent ?? '').indexOf('誰もが活躍できる仕事・参加設計へ')).toBeLessThan(
+      (container.textContent ?? '').indexOf('一言の相談を、見立てと支援計画へほどく'),
+    );
+    expect(screen.queryByText('8つの課題の地図で、問題空間を見渡す')).not.toBeInTheDocument();
+    expect(screen.queryByText('ハブを開く')).not.toBeInTheDocument();
     expect(screen.getAllByText('相談事例').length).toBeGreaterThan(0);
     expect(screen.getAllByText('NBLレポート').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('NBLの専門性').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('サイト情報').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('プロジェクト').length).toBeGreaterThan(0);
+    expect(screen.getByText('NBLを一緒に育てる実装テーマ', { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText('さまざまな働きづらさは、多様な人間と社会・環境の相互作用', {
+      screen.getByText('現実課題、相談、設計、レポート、共有素材、障害種類。', {
         exact: false,
       }),
     ).toBeInTheDocument();
+    expect(screen.queryByText('入口カード自体が地図になる。')).not.toBeInTheDocument();
     expect(screen.queryByText('9つの入口を、Axiom統合知識で作り直す。')).not.toBeInTheDocument();
     expect(screen.queryByText('次に読む')).not.toBeInTheDocument();
     expect(screen.queryByText('このページで扱う中核発見')).not.toBeInTheDocument();
@@ -328,10 +372,10 @@ describe('Axiom next NBL public candidate site surface', () => {
         name: /古くて新しい\s*課題を、\s*仕事条件の地図へ/,
       }),
     ).toBeInTheDocument();
-    expect(screen.getAllByText('8つの課題').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('8つの課題の地図').length).toBeGreaterThan(0);
     expect(screen.queryByText('場面から入る')).not.toBeInTheDocument();
     expect(screen.queryByText('課題ショーケース')).not.toBeInTheDocument();
-    expect(screen.getAllByText('古くて新しい課題を4コマで見る').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('8つの課題の地図').length).toBeGreaterThan(0);
     expect(
       screen.getByRole('heading', {
         level: 2,
@@ -362,7 +406,7 @@ describe('Axiom next NBL public candidate site surface', () => {
     );
     expect(
       screen.getAllByAltText(
-        '相談、研修、会議、政策で生まれた誤読、沈黙、質問を記事、図解、相談事例、仕事設計、研修ワークへ循環させる4コマ',
+        '相談、研修、会議、政策で生まれた誤読、沈黙、質問を記事、図解、仕事設計、相談事例、研修ワークへ循環させる4コマ',
       )[0],
     ).toHaveAttribute('src', '/images/axiom-scene-comics/axiom-scene-old-new-learning-loop-v1.png');
     expect(
@@ -759,22 +803,23 @@ describe('Axiom next NBL public candidate site surface', () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getAllByText('言葉以外の入口').length).toBeGreaterThan(0);
-    expect(
-      screen.getAllByText('図解、バーチャルニュース、', { exact: false }).length,
-    ).toBeGreaterThan(0);
+    expect(screen.getAllByText('図解、課題地図、', { exact: false }).length).toBeGreaterThan(0);
     expect(
       screen.getByAltText(
-        'ツールキット。言葉だけでは届きにくいことを、選別図解、NBLバーチャル・ニュース、4コマ・マンガ、音楽、フォーラム、ウェブアプリという別の形で手渡す素材棚の図解。',
+        'ツールキット。言葉だけでは届きにくいことを、選別図解、課題地図、4コマ・マンガ、音楽、フォーラム、ウェブアプリという別の形で手渡す素材棚の図解。',
       ),
     ).toHaveAttribute('src', '/images/next-nbl-toolkit-hero-image2-v1.png');
     expect(screen.getByRole('link', { name: /図解棚を見る/ })).toHaveAttribute(
       'href',
       '#toolkit-selected-infographic-library',
     );
-    expect(screen.getByRole('link', { name: /バーチャルニュースへ/ })).toHaveAttribute(
-      'href',
-      '#toolkit-virtual-news-library',
-    );
+    expect(
+      screen.getAllByRole('link', { name: /課題地図を見る/ }).some((link) => {
+        return (
+          link.getAttribute('href') === '/internal/axiom-next-nbl-public-candidate/scene-entry'
+        );
+      }),
+    ).toBe(true);
     expect(screen.getByRole('link', { name: /ウェブアプリ一覧へ/ })).toHaveAttribute(
       'href',
       '#toolkit-web-app-library',
@@ -785,22 +830,35 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.queryByText('30曲')).not.toBeInTheDocument();
     expect(screen.queryByText('22本')).not.toBeInTheDocument();
     expect(toolkit.container.querySelectorAll('[data-toolkit-shelf-card]')).toHaveLength(6);
-    expect(toolkit.container.querySelector('#toolkit-shelf-virtual-news')).not.toBeNull();
-    expect(toolkit.container.querySelector('#toolkit-virtual-news-library')).not.toBeNull();
-    expect(screen.getAllByText('NBLバーチャル・ニュース').length).toBeGreaterThan(0);
-    expect(screen.getByText('本当のニュースになってほしい実装を、先に読む。')).toBeInTheDocument();
-    expect(toolkit.container.querySelectorAll('[data-toolkit-virtual-news-card]')).toHaveLength(15);
-    expect(screen.getByText('障害のある社員への配慮、上司任せにしない。架空企業A社、専門窓口と共通予算で全社対応へ')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /障害のある社員への配慮/ })).toHaveAttribute(
-      'href',
-      '/toolkit-studio/virtual-news/reasonable-accommodation-system-design',
-    );
+    expect(toolkit.container.querySelector('#toolkit-shelf-issue-map')).not.toBeNull();
+    expect(toolkit.container.querySelector('#toolkit-shelf-virtual-news')).toBeNull();
+    expect(toolkit.container.querySelector('#toolkit-issue-map-library')).toBeNull();
+    expect(screen.getAllByText('8つの課題の地図').length).toBeGreaterThan(0);
+    expect(screen.queryByText('8つの課題を、会議で使える地図へ。')).not.toBeInTheDocument();
+    expect(toolkit.container.querySelectorAll('[data-toolkit-issue-map-card]')).toHaveLength(0);
+    expect(toolkit.container.querySelector('#toolkit-virtual-news-library')).toBeNull();
+    expect(screen.queryByText('Virtual news bridge')).not.toBeInTheDocument();
+    expect(screen.queryByText('バーチャルニュースは、上位ハブで読む。')).not.toBeInTheDocument();
+    expect(toolkit.container.querySelectorAll('[data-toolkit-virtual-news-card]')).toHaveLength(0);
     expect(
-      toolkit.container.querySelector('#toolkit-virtual-news-library')?.textContent,
-    ).not.toContain('公開準備中');
-    expect(screen.getAllByText('記事を読む')).toHaveLength(15);
+      screen.queryByText(
+        '障害のある社員への配慮、上司任せにしない。架空企業A社、専門窓口と共通予算で全社対応へ',
+      ),
+    ).not.toBeInTheDocument();
+    expect(screen.queryAllByText('記事を読む')).toHaveLength(0);
     expect(screen.getByText('使う場面から、素材を組み合わせる。')).toBeInTheDocument();
     expect(toolkit.container.querySelectorAll('[data-toolkit-use-package-card]')).toHaveLength(4);
+    expect(screen.queryByText('使い方は、時間と場面から選ぶ。')).not.toBeInTheDocument();
+    const toolkitText = toolkit.container.textContent ?? '';
+    expect(toolkitText.indexOf('選別済みの図解を、内容で探す。')).toBeGreaterThan(-1);
+    expect(toolkitText.indexOf('記録と確認を、相談や会議に持ち込める形へ。')).toBeGreaterThan(-1);
+    expect(toolkitText.indexOf('使う場面から、素材を組み合わせる。')).toBeGreaterThan(-1);
+    expect(toolkitText.indexOf('選別済みの図解を、内容で探す。')).toBeLessThan(
+      toolkitText.indexOf('記録と確認を、相談や会議に持ち込める形へ。'),
+    );
+    expect(toolkitText.indexOf('記録と確認を、相談や会議に持ち込める形へ。')).toBeLessThan(
+      toolkitText.indexOf('使う場面から、素材を組み合わせる。'),
+    );
     expect(screen.getByText('初回相談・初回会議で、同じ地図を見る')).toBeInTheDocument();
     expect(screen.getByText('管理職・人事研修で、個人問題化を止める')).toBeInTheDocument();
     expect(screen.getByText('難病・慢性疾患の健康時間を話す')).toBeInTheDocument();
@@ -862,9 +920,10 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getAllByText('フォーラム').length).toBeGreaterThan(0);
     expect(screen.getAllByText('ウェブアプリ').length).toBeGreaterThan(0);
     expect(toolkit.container.querySelector('#toolkit-shelf-web-apps')).not.toBeNull();
-    expect(
-      screen.getByRole('link', { name: /アプリ一覧を見る/ }),
-    ).toHaveAttribute('href', '#toolkit-web-app-library');
+    expect(screen.getByRole('link', { name: /アプリ一覧を見る/ })).toHaveAttribute(
+      'href',
+      '#toolkit-web-app-library',
+    );
     expect(toolkit.container.querySelector('#toolkit-web-app-library')).not.toBeNull();
     expect(
       toolkit.container.querySelector('#toolkit-shelf-web-apps [data-toolkit-web-app-card]'),
@@ -873,13 +932,17 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getByText('記録と確認を、相談や会議に持ち込める形へ。')).toBeInTheDocument();
     expect(screen.getByText('ナミノートをスマホで使う前に')).toBeInTheDocument();
     expect(screen.getAllByText(/ホーム画面に追加/).length).toBeGreaterThan(1);
-    expect(toolkit.container.querySelectorAll('[data-toolkit-web-app-card]')).toHaveLength(3);
+    expect(toolkit.container.querySelectorAll('[data-toolkit-web-app-card]')).toHaveLength(2);
     const webAppCards = Array.from(
       toolkit.container.querySelectorAll('[data-toolkit-web-app-card]'),
     ).map((card) => card.textContent ?? '');
     expect(webAppCards[0]).toContain('就労支援機関チェックリスト');
     expect(webAppCards[1]).toContain('ナミノート');
-    expect(webAppCards[2]).toContain('ナミノート支援者用ツール');
+    expect(screen.queryByText('ナミノート支援者用ツール')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('支援者との共同レビューは、無料アプリでは提供しません。'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('事業化後の専門サービス設計', { exact: false })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /チェックリストを開く/ })).toHaveAttribute(
       'href',
       '/organizations/diagnosis',
@@ -892,14 +955,10 @@ describe('Axiom next NBL public candidate site surface', () => {
       'target',
       '_blank',
     );
-    expect(
-      screen.getByText(/医療、就労、合理的配慮の判断や助言は行いません/),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/第三者の個人情報を書かず/),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/医療、就労、合理的配慮の判断や助言は行いません/)).toBeInTheDocument();
+    expect(screen.getByText(/第三者の個人情報を書かず/)).toBeInTheDocument();
     expect(screen.queryByText('リンク準備中')).not.toBeInTheDocument();
-    expect(screen.getAllByText('公開準備中')).toHaveLength(1);
+    expect(screen.queryByText('公開準備中')).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /公開準備中/ })).not.toBeInTheDocument();
     expect(screen.queryByText('短い問いを、次の図解や記事へ戻す')).not.toBeInTheDocument();
     expect(screen.queryByText('設計ボードで、確認項目を具体化する')).not.toBeInTheDocument();
@@ -926,7 +985,9 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(toolkit.container.querySelector('[data-toolkit-infographic-lightbox]')).not.toBeNull();
     expect(screen.getByText('図解を拡大表示')).toBeInTheDocument();
     expect(
-      screen.getByText('音楽、図解、バーチャルニュース、ウェブアプリは、助言や判定の代わりではありません。'),
+      screen.getByText(
+        '音楽、図解、課題地図、4コマ、ウェブアプリは、助言や判定の代わりではありません。',
+      ),
     ).toBeInTheDocument();
     expect(screen.queryByText('Page content')).not.toBeInTheDocument();
     expect(screen.queryByText(/Axiomの見立て/)).not.toBeInTheDocument();
@@ -935,11 +996,7 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getByText('素材を課題共有に使う')).toBeInTheDocument();
     expect(screen.getByText('素材を相談に戻す')).toBeInTheDocument();
     expect(screen.getByText('素材の背景を読む')).toBeInTheDocument();
-    expect(
-      existsSync(
-        path.join(process.cwd(), 'public/favicon-512x512.png'),
-      ),
-    ).toBe(true);
+    expect(existsSync(path.join(process.cwd(), 'public/favicon-512x512.png'))).toBe(true);
     expect(
       existsSync(
         path.join(
@@ -1081,10 +1138,11 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(method.container.textContent ?? '').toContain('AIの読む力を、');
     expect(method.container.textContent ?? '').toContain('関係を見抜く力として使う。');
     expect(
-      screen.getByAltText(
-        '読む力を支援の専門性へ変える流れ。部分的な情報を相互作用として読み、人に届く形へ翻訳する図解。',
-      ),
-    ).toHaveAttribute('src', '/images/next-nbl-method-trust-hero-reading-power-v1.png');
+      screen.getByRole('group', { name: 'NBLの専門性を伝える約1分のデモ' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('人間は、現実の「影」しか見られない')).toBeInTheDocument();
+    expect(screen.getByText('週3回の透析がある')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'デモを一時停止' })).toBeInTheDocument();
     expect(
       screen.getByText('人間の多様性は、単純な支援メニューでは扱えない。'),
     ).toBeInTheDocument();
@@ -1104,7 +1162,7 @@ describe('Axiom next NBL public candidate site surface', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByAltText(
-        '調査データ、ワークショップ記録、実務資料、制度政策資料、国内外の公開情報を相互作用として読み、多様な専門知識ネットワークを作ってから場面、相談事例、設計ガイド、記事、図解ツールへ活用する流れを示す図解',
+        '調査データ、ワークショップ記録、実務資料、制度政策資料、国内外の公開情報を相互作用として読み、多様な専門知識ネットワークを作ってから場面、設計ガイド、相談事例、記事、図解ツールへ活用する流れを示す図解',
       ),
     ).toHaveAttribute('src', '/images/next-nbl-knowledge-network-method-v3.png');
     expect(

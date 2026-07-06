@@ -69,11 +69,8 @@ import {
   buildAxiomAllLayerIntegratedDomainKnowledgeRebuild,
   type AxiomAllLayerRebuiltReviewSubstructure,
 } from '@/lib/axiom/allLayerIntegratedDomainKnowledgeRebuild';
-import {
-  buildToolkitVirtualNewsArticleHref,
-  toolkitVirtualNewsArticles,
-} from '@/lib/axiom/toolkitVirtualNewsArticles';
 import { type AxiomNextNblSiteSurface } from '@/lib/axiom/siteSurfaceSlotContract';
+import TheoryMethodTrustHeroDemoMovie from '@/components/axiom/TheoryMethodTrustHeroDemoMovie';
 import { SITE_URL } from '@/lib/siteMetadata';
 
 type AxiomPublicCandidatePageContext = FalconAxiomPublicSiteUpdatePlanRow & {
@@ -304,12 +301,32 @@ const AxiomNextNblRouteModeContext = createContext<AxiomNextNblSiteRouteMode>('i
 
 const primaryDesktopNavSlugs = [
   'home',
-  'scene-entry',
-  'case-readings',
   'work-design-views-guide',
+  'case-readings',
   'articles-social-questions',
   'toolkit-studio',
 ] as const;
+
+const publicSiteNavigationSlugOrder = [
+  'home',
+  'scene-entry',
+  'work-design-views-guide',
+  'case-readings',
+  'articles-social-questions',
+  'toolkit-studio',
+  'work-condition-window',
+  'theory-method-trust',
+  'about-boundary',
+] as const;
+
+const publicSiteNavigationSlugRank = new globalThis.Map<string, number>(
+  publicSiteNavigationSlugOrder.map((slug, index) => [slug, index]),
+);
+
+const virtualNewsNavItem = {
+  href: '/virtual-news',
+  label: 'バーチャルニュース',
+} as const;
 
 const publishedProjectsNavItem = {
   href: '/projects',
@@ -447,9 +464,9 @@ const pageExperiences: Record<AxiomNextNblSiteSurface, PageExperience> = {
       '困りごと、相談、設計、記事、図解、障害種類。入口は違っても、NBLが見るのは本人、仕事、環境、支援、時間、評価の関係です。',
     cards: [
       {
-        title: '課題でつかむ',
-        body: '昔から言われてきたのに解けにくかった課題を、4コマと短い読み替えで見る。',
-        tag: 'Issue',
+        title: 'ニュースでつかむ',
+        body: '現実に起きてほしい実装を架空ニュースとして読み、仕事条件のどこを変えるかを見る。',
+        tag: 'News',
       },
       {
         title: '相談をほどく',
@@ -464,20 +481,21 @@ const pageExperiences: Record<AxiomNextNblSiteSurface, PageExperience> = {
     ],
     stepsTitle: '迷ったら',
     steps: [
-      '8つの課題で全体像を見る',
+      'バーチャルニュースで現実課題を見る',
       '近い相談事例を開く',
+      '課題地図で問題空間を確認する',
       '設計ガイドで整理する',
-      'レポートやツールで共有する',
+      'レポートやツールで深める',
     ],
   },
   scene_entry_use_cases: {
-    eyebrow: '古くて新しい課題を4コマで見る',
+    eyebrow: '8つの課題の地図',
     concreteTitle: '昔から言われてきたのに解けなかった課題を、仕事条件の地図へ。',
     concreteBody:
       '雇用率、診断名、制度、善意、検索結果など、見えやすい入口だけでは解けない問題を、関係者で扱える仕事条件へ読み替えます。',
     featureTitle: 'このページの役割',
     featureLead:
-      '抽象説明の前に、本人・職場・支援者・政策検討の場が同じ課題を見ながら、どこで詰まり、何を変えられるのかを話せる入口にします。',
+      '現実接点の入口はバーチャルニュースに譲り、このページではNBLが扱う問題空間を体系的な課題地図として確認できるようにします。',
     cards: [
       {
         title: '見えやすい入口',
@@ -580,25 +598,29 @@ const pageExperiences: Record<AxiomNextNblSiteSurface, PageExperience> = {
   },
   cognitive_support_toolkit_studio_multimodal_objects: {
     eyebrow: '言葉以外の入口',
-    concreteTitle: '図解、バーチャルニュース、4コマ、音楽、ウェブアプリで、感じ取りにくい仕事条件を使える形へ。',
+    concreteTitle:
+      '図解、課題地図、4コマ、音楽、ウェブアプリで、感じ取りにくい仕事条件を使える形へ。',
     concreteBody:
       '文章だけでは届きにくい働きづらさや職場設計の話を、見る、聞く、並べる、話すための素材として選べます。',
     featureTitle: '素材棚に入るもの',
     featureLead:
-      '同じ仕事条件の問いを、図解、架空ニュース、4コマ、音楽、フォーラム資料、ウェブアプリなど複数の認知経路で扱います。',
+      '同じ仕事条件の問いを、図解、課題地図、4コマ、音楽、フォーラム資料、ウェブアプリなど複数の認知経路で扱います。',
     cards: [
       {
         title: '選別図解',
         body: 'ICFと就労支援プロセスを入口に、全体地図、制度、支援接続、難病、疾患別場面を内容別に探す。',
       },
       {
-        title: 'NBLバーチャル・ニュース',
-        body: '本当のニュースになってほしい実装を、公開前の架空記事候補として読む。',
+        title: '8つの課題の地図',
+        body: 'NBLが扱う古くて新しい問題空間を、体系地図として共有する。',
       },
       { title: '疾患別4コマ', body: 'IBDや膠原病の見えにくい生活接点を、場面として共有する。' },
       { title: '音楽入口', body: '重くなりやすいテーマに、感覚的に入るきっかけを作る。' },
       { title: 'フォーラム資料', body: '研修、会議、地域連携で同じ素材を見ながら話す。' },
-      { title: 'ウェブアプリ', body: '本人の記録、支援者との接続、支援機関チェックを別々の道具として置く。' },
+      {
+        title: 'ウェブアプリ',
+        body: '本人の記録、支援者との接続、支援機関チェックを別々の道具として置く。',
+      },
     ],
     stepsTitle: '素材の選び方',
     steps: [
@@ -999,8 +1021,8 @@ const workConditionRoutes: readonly WorkConditionRoute[] = [
   },
   {
     label: '課題を共有したい',
-    title: '8つの課題を見る',
-    body: '古くて新しい課題を4コマで見て、仕事条件の地図へ読み替える。',
+    title: '8つの課題の地図を見る',
+    body: '古くて新しい課題を体系地図として見て、仕事条件の問いへ読み替える。',
     slug: 'scene-entry',
     icon: MessagesSquare,
   },
@@ -1052,7 +1074,7 @@ const theoryMethodKnowledgeLayerCards = [
   {
     label: 'Layer 2',
     title: '読み取ってまとめた仕事・社会参加の知識',
-    body: 'その読み方で、健康時間、情報形式、職場接触点、開示、評価、支援接続などの関係をまとめます。これはサイト全体で、場面、相談事例、設計ガイド、記事、図解・ツールとして提供します。',
+    body: 'その読み方で、健康時間、情報形式、職場接触点、開示、評価、支援接続などの関係をまとめます。これはサイト全体で、場面、設計ガイド、相談事例、記事、図解・ツールとして提供します。',
     points: [
       '障害種類や病名だけで閉じず、仕事条件の関係として読む',
       '個別判断ではなく、問いと設計の材料として使う',
@@ -1099,25 +1121,30 @@ const theoryMethodKernelSteps = [
   },
   {
     title: '5. 人間が読める形に翻訳する',
-    body: '専門知識ネットワークはそのままでは複雑すぎます。場面、相談事例、仕事設計ガイド、記事、ツール、障害種類別入口に分け、読者の目的に合わせて出し直します。',
+    body: '専門知識ネットワークはそのままでは複雑すぎます。場面、仕事設計ガイド、相談事例、記事、ツール、障害種類別入口に分け、読者の目的に合わせて出し直します。',
   },
 ] as const;
 
 const theoryMethodInterfaceCards = [
   {
-    title: '8つの課題',
-    body: '8つの古くて新しい課題を4コマで見て、問題が本人の中だけでなく仕事条件の衝突として見えることを直感的に伝える。',
-    href: 'scene-entry',
+    title: 'NBLバーチャル・ニュース',
+    body: '現実の制度・職場・地域連携の課題を、仕事条件のニュース像として先に読む。',
+    href: '/virtual-news',
   },
   {
-    title: '相談事例集',
-    body: '断片的な相談を、当初見立て、追加確認、支援計画の分岐へほどく。',
-    href: 'case-readings',
+    title: '8つの課題の地図',
+    body: '8つの古くて新しい課題を体系地図として見て、問題が本人の中だけでなく仕事条件の衝突として見えることを確認する。',
+    href: 'scene-entry',
   },
   {
     title: '仕事設計ガイド',
     body: '個別相談を超えて、AI時代の仕事・社会参加設計のマスタープランとして読む。',
     href: 'work-design-views-guide',
+  },
+  {
+    title: '相談事例集',
+    body: '断片的な相談を、当初見立て、追加確認、支援計画の分岐へほどく。',
+    href: 'case-readings',
   },
   {
     title: 'NBLレポート',
@@ -1164,15 +1191,16 @@ const toolkitShelves = [
     action: '選別図解を見る',
   },
   {
-    id: 'toolkit-shelf-virtual-news',
-    eyebrow: 'Virtual News',
-    title: 'NBLバーチャル・ニュース',
-    body: '本当のニュースになってほしい実装を、架空記事として先に読む棚です。働き方の調整、地域連携、企業運用を、共通認識をつくる具体的なニュース像へ変えます。',
-    image: '/images/nbl-virtual-news/cap-caf-accommodation-center-hero-v1.webp',
-    imageAlt: 'CAPとCAF型の社内配慮センターを運用する架空企業の職場風景',
-    tags: ['架空記事', 'ビジョン共有', '実装手順'],
-    href: '#toolkit-virtual-news-library',
-    action: '記事棚を見る',
+    id: 'toolkit-shelf-issue-map',
+    eyebrow: 'Issue map',
+    title: '8つの課題の地図',
+    body: 'NBLが扱う古くて新しい問題空間を、会議や研修で共有できる体系地図として置く棚です。数字、診断名、制度、善意、検索結果で止まりやすい議論を、仕事条件の問いへ戻します。',
+    image: '/images/axiom-scene-comics/axiom-scene-old-new-issue-map-v2.png',
+    imageAlt:
+      '見える数字、名前、健康時間、情報分断、制度、上司依存、検索SNSAI、学びの循環という8つの古くて新しい課題を仕事条件の地図へつなぐ図',
+    tags: ['課題地図', '8課題', '体系共有'],
+    href: candidatePath('scene-entry'),
+    action: '課題地図を見る',
   },
   {
     id: 'toolkit-shelf-scenes',
@@ -1215,7 +1243,7 @@ const toolkitShelves = [
     body: '記録する、確認する、相談に持ち込む。仕事条件を自分たちで扱うための小さなウェブアプリをまとめています。',
     image: '/favicon-512x512.png',
     imageAlt: 'Next Being Labのウェブアプリ棚を示すアイコン',
-    tags: ['チェックリスト', 'ナミノート', '準備中'],
+    tags: ['チェックリスト', 'ナミノート', '個人記録'],
     href: '#toolkit-web-app-library',
     action: 'アプリ一覧を見る',
   },
@@ -1247,28 +1275,6 @@ const toolkitWebApps = [
     action: 'ナミノートを開く',
     external: true,
     icon: Laptop,
-  },
-  {
-    title: 'ナミノート支援者用ツール',
-    status: '準備中',
-    body: '本人が共有した記録を、次の相談に持ち込む前に整理するための支援者向けツールです。見る範囲、本人の同意、まだ確認していない点を分けて扱える形として準備しています。',
-    action: '公開準備中',
-    icon: UsersRound,
-  },
-] as const;
-
-const toolkitUseModes = [
-  {
-    title: '5分でつかむ',
-    body: '図解、SNSカード、4コマを一つ選び、何が本人問題に見えていたかだけを話す。',
-  },
-  {
-    title: '30分で話す',
-    body: '場面カードと設計ボードを並べ、時間、情報、動線、評価、支援のどこを見るかに分ける。',
-  },
-  {
-    title: '研修・イベントで使う',
-    body: '音楽、フォーラム資料、記事、設計ガイドを組み合わせ、感覚的入口から仕事条件の議論へ進む。',
   },
 ] as const;
 
@@ -1406,7 +1412,7 @@ const toolkitUsePackages: readonly ToolkitUsePackage[] = [
 ] as const;
 
 const toolkitBoundaryNotes = [
-  '音楽、図解、バーチャルニュース、ウェブアプリは、助言や判定の代わりではありません。',
+  '音楽、図解、課題地図、4コマ、ウェブアプリは、助言や判定の代わりではありません。',
   '個別相談、医学・法務・雇用判断、合理的配慮の最終判断には使いません。',
   '反応数や盛り上がりは、知識の正しさの証拠ではなく、次に直す説明・図解・教材の手がかりとして扱います。',
 ] as const;
@@ -2005,8 +2011,8 @@ const deepPageModules: Record<AxiomNextNblSiteSurface, readonly DeepPageModule[]
       cards: [
         {
           title: '状況を直感的につかみたい',
-          body: 'まずは「8つの課題」で、何が古くて新しい問題なのかを4コマで見る。',
-          tag: '8課題',
+          body: 'まずは「NBLバーチャル・ニュース」で、実装されたら何が変わるのかを読む。',
+          tag: 'ニュース',
         },
         {
           title: '相談に近いものを探したい',
@@ -2164,7 +2170,7 @@ const deepPageModules: Record<AxiomNextNblSiteSurface, readonly DeepPageModule[]
           title: '深い解説',
           body: '総合知識に基づき、別の読み、まだ分からないこと、越えない境界を本文で示す。',
         },
-        { title: '次の導線', body: '記事だけで終わらせず、相談事例、設計ガイド、ツールへ戻す。' },
+        { title: '次の導線', body: '記事だけで終わらせず、設計ガイド、相談事例、ツールへ戻す。' },
       ],
     },
     {
@@ -2350,7 +2356,7 @@ const deepPageModules: Record<AxiomNextNblSiteSurface, readonly DeepPageModule[]
       title: '公開面は、専門知識ネットワークを社会に渡す翻訳面である。',
       lead: 'SNSや記事は目的地ではなく、社会の問いを受け取り、知識ネットワークへ戻す循環として扱います。',
       cards: [
-        { title: '読む', body: '場面、相談事例、視点、記事、ツールから入る。' },
+        { title: '読む', body: '場面、設計ガイド、相談事例、記事、ツールから入る。' },
         { title: '話す', body: '本人・職場・支援者が同じ対象を見ながら対話する。' },
         {
           title: '見直す',
@@ -4406,10 +4412,10 @@ const sceneComics: readonly SceneComic[] = [
     title: '学びが育たない',
     subtitle: '研修・政策・相談の問いが、改稿や教材化の循環に残りにくい。',
     image: '/images/axiom-scene-comics/axiom-scene-old-new-learning-loop-v1.png',
-    alt: '相談、研修、会議、政策で生まれた誤読、沈黙、質問を記事、図解、相談事例、仕事設計、研修ワークへ循環させる4コマ',
+    alt: '相談、研修、会議、政策で生まれた誤読、沈黙、質問を記事、図解、仕事設計、相談事例、研修ワークへ循環させる4コマ',
     commonMisread: '相談、研修、会議、政策資料を、その場で終わる個別イベントとして扱う。',
     axiomRead:
-      '誤読、沈黙、追加質問、言いづらい反応を、次の相談事例、記事、図解、仕事設計、研修ワークへ戻す学習資産として読む。',
+      '誤読、沈黙、追加質問、言いづらい反応を、次の仕事設計、相談事例、記事、図解、研修ワークへ戻す学習資産として読む。',
     nextMove:
       '一回の発信や相談の後に、残った問い、誤解された点、追加で必要な図解や事例を短く記録して改稿へ回す。',
     whyThisScene:
@@ -4435,11 +4441,6 @@ const homeWhyHeroVisual = {
   alt: '障害者雇用・難病就労支援の断片的な情報を、AIの文脈読解補助と人間の確認を通して、本人・仕事・環境・支援・時間・評価の条件地図へ読み替える図',
 } as const;
 
-const homeHeroVisual = {
-  src: '/images/next-nbl-home-hero-image2-v1.png',
-  alt: '働きづらさを仕事条件の地図へ変換し、8つの課題、相談事例、設計ガイド、NBLレポート、ツールキット、障害種類から見る入口へつなぐ図解',
-} as const;
-
 const consultationAssessmentHeroVisual = {
   src: '/images/next-nbl-consultation-assessment-loop-hero-v1.png',
   alt: '相談の一言を受け止め、条件を一緒に確認し、仕事・環境・支援・時間・評価を見ながら支援計画を組み直す対話型アセスメントの循環図',
@@ -4452,7 +4453,7 @@ const articleReportHeroVisual = {
 
 const toolkitHeroVisual = {
   src: '/images/next-nbl-toolkit-hero-image2-v1.png',
-  alt: 'ツールキット。言葉だけでは届きにくいことを、選別図解、NBLバーチャル・ニュース、4コマ・マンガ、音楽、フォーラム、ウェブアプリという別の形で手渡す素材棚の図解。',
+  alt: 'ツールキット。言葉だけでは届きにくいことを、選別図解、課題地図、4コマ・マンガ、音楽、フォーラム、ウェブアプリという別の形で手渡す素材棚の図解。',
 } as const;
 
 const workConditionWindowHeroVisual = {
@@ -5188,6 +5189,10 @@ function candidatePath(slug: string) {
   return `${AXIOM_NEXT_NBL_PUBLIC_CANDIDATE_ROUTE_BASE}/${slug}`;
 }
 
+function candidateOrPublicPath(slug: string) {
+  return slug === 'virtual-news' ? '/virtual-news' : candidatePath(slug);
+}
+
 function candidateAnchorPath(slug: string, anchor: string) {
   return `${candidatePath(slug)}#${anchor}`;
 }
@@ -5330,11 +5335,6 @@ const workDesignGeneratedVisualAssets = {
   },
 } as const;
 
-const theoryMethodHeroVisual = {
-  src: '/images/next-nbl-method-trust-hero-reading-power-v1.png',
-  alt: '読む力を支援の専門性へ変える流れ。部分的な情報を相互作用として読み、人に届く形へ翻訳する図解。',
-} as const;
-
 function routeContext(route: AxiomReviewedKernelBackedCandidateRoute) {
   const row = getFalconAxiomPublicSiteUpdatePlanRowBySurface(route.surface, updatePlan);
   if (!row) {
@@ -5355,6 +5355,14 @@ function publicCandidateRoutes() {
     ...route,
     context: routeContext(route),
   }));
+}
+
+function publicNavigationRoutes() {
+  return [...publicCandidateRoutes()].sort(
+    (a, b) =>
+      (publicSiteNavigationSlugRank.get(a.slug) ?? Number.MAX_SAFE_INTEGER) -
+      (publicSiteNavigationSlugRank.get(b.slug) ?? Number.MAX_SAFE_INTEGER),
+  );
 }
 
 function toReaderFacingText(text: string) {
@@ -5505,9 +5513,16 @@ function PublicCandidateShell({
 }) {
   const routeMode = useContext(AxiomNextNblRouteModeContext);
   const [siteSearchQuery, setSiteSearchQuery] = useState('');
-  const allRoutes = publicCandidateRoutes();
+  const allRoutes = publicNavigationRoutes();
   const primaryDesktopRoutes = allRoutes.filter((item) =>
     primaryDesktopNavSlugs.includes(item.slug as (typeof primaryDesktopNavSlugs)[number]),
+  );
+  const primaryDesktopNavItems = primaryDesktopRoutes.flatMap((item) =>
+    item.slug === 'home' ? [item, virtualNewsNavItem] : [item],
+  );
+  const menuRoutes = allRoutes.filter((item) => item.slug !== 'scene-entry');
+  const allNavItems = menuRoutes.flatMap((item) =>
+    item.slug === 'home' ? [item, virtualNewsNavItem] : [item],
   );
 
   return (
@@ -5524,20 +5539,25 @@ function PublicCandidateShell({
             className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex"
             aria-label="NBL site navigation"
           >
-            {primaryDesktopRoutes.map((item) => (
-              <Link
-                aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
-                className={`whitespace-nowrap border-b-2 px-2.5 py-1.5 text-[13px] transition xl:px-3 xl:text-sm ${
-                  item.slug === currentRoute.slug
-                    ? 'border-teal-800 text-slate-950'
-                    : 'border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-950'
-                }`}
-                href={candidatePath(item.slug)}
-                key={item.routeId}
-              >
-                {item.context.navLabelJa}
-              </Link>
-            ))}
+            {primaryDesktopNavItems.map((item) => {
+              const isVirtualNewsItem = 'href' in item;
+              const isCurrent = !isVirtualNewsItem && item.slug === currentRoute.slug;
+
+              return (
+                <Link
+                  aria-current={isCurrent ? 'page' : undefined}
+                  className={`whitespace-nowrap border-b-2 px-2.5 py-1.5 text-[13px] transition xl:px-3 xl:text-sm ${
+                    isCurrent
+                      ? 'border-teal-800 text-slate-950'
+                      : 'border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-950'
+                  }`}
+                  href={isVirtualNewsItem ? item.href : candidatePath(item.slug)}
+                  key={isVirtualNewsItem ? item.href : item.routeId}
+                >
+                  {isVirtualNewsItem ? item.label : item.context.navLabelJa}
+                </Link>
+              );
+            })}
           </nav>
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
             <form
@@ -5568,20 +5588,25 @@ function PublicCandidateShell({
               </summary>
               <div className="absolute right-0 z-50 mt-2 w-72 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl">
                 <nav aria-label="NBL site all pages" className="grid p-2">
-                  {allRoutes.map((item) => (
-                    <Link
-                      aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
-                      className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                        item.slug === currentRoute.slug
-                          ? 'bg-teal-50 text-teal-950'
-                          : 'text-slate-700 hover:bg-[#fbfaf5] hover:text-teal-950'
-                      }`}
-                      href={candidatePath(item.slug)}
-                      key={item.routeId}
-                    >
-                      {item.context.navLabelJa}
-                    </Link>
-                  ))}
+                  {allNavItems.map((item) => {
+                    const isVirtualNewsItem = 'href' in item;
+                    const isCurrent = !isVirtualNewsItem && item.slug === currentRoute.slug;
+
+                    return (
+                      <Link
+                        aria-current={isCurrent ? 'page' : undefined}
+                        className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                          isCurrent
+                            ? 'bg-teal-50 text-teal-950'
+                            : 'text-slate-700 hover:bg-[#fbfaf5] hover:text-teal-950'
+                        }`}
+                        href={isVirtualNewsItem ? item.href : candidatePath(item.slug)}
+                        key={isVirtualNewsItem ? item.href : item.routeId}
+                      >
+                        {isVirtualNewsItem ? item.label : item.context.navLabelJa}
+                      </Link>
+                    );
+                  })}
                   {routeMode === 'published' ? (
                     <Link
                       className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#fbfaf5] hover:text-teal-950"
@@ -5605,20 +5630,23 @@ function PublicCandidateShell({
           >
             検索
           </Link>
-          {allRoutes.map((item) => (
-            <Link
-              aria-current={item.slug === currentRoute.slug ? 'page' : undefined}
-              className={`shrink-0 whitespace-nowrap border-b-2 px-2 py-1.5 text-[13px] ${
-                item.slug === currentRoute.slug
-                  ? 'border-teal-800 text-slate-950'
-                  : 'border-transparent text-slate-600'
-              }`}
-              href={candidatePath(item.slug)}
-              key={item.routeId}
-            >
-              {item.context.navLabelJa}
-            </Link>
-          ))}
+          {allNavItems.map((item) => {
+            const isVirtualNewsItem = 'href' in item;
+            const isCurrent = !isVirtualNewsItem && item.slug === currentRoute.slug;
+
+            return (
+              <Link
+                aria-current={isCurrent ? 'page' : undefined}
+                className={`shrink-0 whitespace-nowrap border-b-2 px-2 py-1.5 text-[13px] ${
+                  isCurrent ? 'border-teal-800 text-slate-950' : 'border-transparent text-slate-600'
+                }`}
+                href={isVirtualNewsItem ? item.href : candidatePath(item.slug)}
+                key={isVirtualNewsItem ? item.href : item.routeId}
+              >
+                {isVirtualNewsItem ? item.label : item.context.navLabelJa}
+              </Link>
+            );
+          })}
           {routeMode === 'published' ? (
             <Link
               className="shrink-0 whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] text-slate-600"
@@ -5659,18 +5687,14 @@ function CandidateHero({
         ? consultationAssessmentHeroVisual.src
         : isWorkDesignGuideHero
           ? workDesignGeneratedVisualAssets.hero.src
-          : isTheoryMethodTrustHero
-            ? theoryMethodHeroVisual.src
-            : context.visual.src,
+          : context.visual.src,
     alt: isSceneEntryHero
       ? sceneIssueMapHero.alt
       : isCaseReadingsHero
         ? consultationAssessmentHeroVisual.alt
         : isWorkDesignGuideHero
           ? workDesignGeneratedVisualAssets.hero.alt
-          : isTheoryMethodTrustHero
-            ? theoryMethodHeroVisual.alt
-            : context.visual.alt,
+          : context.visual.alt,
   };
   const heroHeading = sceneHero ? (
     <>
@@ -5765,7 +5789,7 @@ function CandidateHero({
     </>
   ) : isToolkitHero ? (
     <>
-      図解、バーチャルニュース、
+      図解、課題地図、
       <br />
       4コマ、音楽、フォーラム、
       <br />
@@ -5785,7 +5809,7 @@ function CandidateHero({
         : isArticlesHero
           ? 'NBLレポートは、現場の困りごと、企業の迷い、支援者の翻訳負荷、政策議論の違和感を、仕事条件の問いとして読み直す論考の入口です。読者の問いから入り、構造、別解、まだ確認したいことへ進みます。'
           : isToolkitHero
-            ? '文書だけでは伝わりにくい働きづらさや参加の条件を、図解、架空ニュース、4コマ、音楽、フォーラム資料、ウェブアプリとして扱える形にします。読む前に、見て、聞いて、記録し、会議に持ち込める素材棚です。'
+            ? '文書だけでは伝わりにくい働きづらさや参加の条件を、図解、課題地図、4コマ、音楽、フォーラム資料、ウェブアプリとして扱える形にします。読む前に、見て、聞いて、記録し、会議に持ち込める素材棚です。'
             : isTheoryMethodTrustHero
               ? '障害や病気に関する情報には、重要な手がかりと偏りが同時に含まれます。このサイトでは、それをそのまま要約せず、本人、仕事、環境、支援、時間、制度の関係として読み直し、仮説、反対仮説、確認したいことへ変換します。'
               : pageBody.openingThesisJa;
@@ -5835,12 +5859,12 @@ function CandidateHero({
                   図解棚を見る
                   <ArrowRight size={16} />
                 </a>
-                <a
+                <Link
                   className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
-                  href="#toolkit-virtual-news-library"
+                  href={candidatePath('scene-entry')}
                 >
-                  バーチャルニュースへ
-                </a>
+                  課題地図を見る
+                </Link>
                 <a
                   className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
                   href="#toolkit-web-app-library"
@@ -5852,14 +5876,14 @@ function CandidateHero({
               <>
                 <Link
                   className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-50"
-                  href={candidatePath(context.primarySlug)}
+                  href={candidateOrPublicPath(context.primarySlug)}
                 >
                   {context.primaryLabelJa}
                   <ArrowRight size={16} />
                 </Link>
                 <Link
                   className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
-                  href={candidatePath(context.secondarySlug)}
+                  href={candidateOrPublicPath(context.secondarySlug)}
                 >
                   {context.secondaryLabelJa}
                 </Link>
@@ -5873,14 +5897,13 @@ function CandidateHero({
               <ArticleReportHeroVisual />
             ) : isToolkitHero ? (
               <ToolkitHeroVisual />
+            ) : isTheoryMethodTrustHero ? (
+              <TheoryMethodTrustHeroDemoMovie />
             ) : (
               <img
                 alt={heroVisual.alt}
                 className={`h-[240px] w-full bg-slate-100 md:h-[330px] ${
-                  sceneHero ||
-                  isCaseReadingsHero ||
-                  isWorkDesignGuideHero ||
-                  isTheoryMethodTrustHero
+                  sceneHero || isCaseReadingsHero || isWorkDesignGuideHero
                     ? 'object-contain'
                     : 'object-cover'
                 }`}
@@ -5929,10 +5952,16 @@ function HomeTopHero() {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_18px_50px_rgba(45,212,191,0.18)] transition hover:bg-teal-50"
+              href="/virtual-news"
+            >
+              バーチャルニュース
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
               href={candidatePath('about-boundary')}
             >
               サイト情報
-              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -6005,7 +6034,7 @@ function WorkConditionWindowHero({ context }: { context: AxiomPublicCandidatePag
             </Link>
             <Link
               className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
-              href={candidatePath(context.primarySlug)}
+              href={candidateOrPublicPath(context.primarySlug)}
             >
               設計ガイドへ
             </Link>
@@ -6086,7 +6115,7 @@ function AboutSiteInfoContent() {
       items: [
         '働きづらさを、人だけの問題で終わらせない視点を広げる',
         '本人、企業、支援者、政策・研究の対話に使える言葉と図を作る',
-        '記事、相談事例、設計ガイド、図解・ツールとして届ける',
+        '記事、設計ガイド、相談事例、図解・ツールとして届ける',
       ],
     },
     {
@@ -6121,7 +6150,7 @@ function AboutSiteInfoContent() {
     },
     {
       title: 'SNS発信',
-      body: 'NBLでは、記事、図解、相談事例、設計ガイドにつながる問いを、Xの専用アカウントでも発信します。投稿は個別相談の回答ではなく、サイトの内容を社会の問いへ届けるためのものです。',
+      body: 'NBLでは、記事、図解、設計ガイド、相談事例につながる問いを、Xの専用アカウントでも発信します。投稿は個別相談の回答ではなく、サイトの内容を社会の問いへ届けるためのものです。',
       items: [
         'X: NBL｜仕事条件デザイン（@NBL_workdesign）',
         '投稿の紹介、引用、感想、議論のきっかけとしての共有を歓迎します',
@@ -6862,7 +6891,7 @@ function ToolkitStudioPublicContent() {
               見る、読む、聞く、話す素材を選ぶ。
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-700 md:text-lg">
-              仕事条件の複雑さを、文章だけでなく、図解、架空ニュース、4コマ、音楽、フォーラム、ウェブアプリとして使える棚に並べます。
+              仕事条件の複雑さを、図解・4コマで見て、ウェブアプリで記録や確認に移し、最後に会議・研修・相談の場面へ組み合わせます。
             </p>
           </div>
 
@@ -6915,256 +6944,6 @@ function ToolkitStudioPublicContent() {
                     </Link>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-slate-200 bg-white" id="toolkit-virtual-news-library">
-        <div className="mx-auto max-w-7xl px-5 py-14 md:py-18">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-                Virtual news
-              </p>
-              <h2 className="mt-3 max-w-3xl break-words text-3xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl">
-                本当のニュースになってほしい実装を、先に読む。
-              </h2>
-            </div>
-            <p className="text-base leading-8 text-slate-700 md:text-lg">
-              架空ニュースの形式を使い、まだ実現していない取り組みを具体的な検討素材として置いています。
-              関係者の共通認識、役割分担、予算、相談線がそろったら自然に始まりそうな実装を、
-              ニュース記事として先に具体化します。
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {[
-              {
-                title: '架空の形で、実装条件を具体化する。',
-                body: '制度運用、職場設計、地域連携の課題を、登場人物、手順、予算、相談線が見えるニュース像へ整理します。',
-              },
-              {
-                title: '「できそう」に見える落差を見る。',
-                body: '記事になると当たり前に見えることが、現実には政策や現場の難問として残っている。その差を話し合いの入口にします。',
-              },
-              {
-                title: '読んだあと、確かめられるようにする。',
-                body: '各記事は、背景資料や関連ガイドへの入口を置く前提で整えます。個別の制度判断や職場対応は、この記事だけで決めません。',
-              },
-            ].map((card) => (
-              <div className="rounded-lg border border-slate-200 bg-[#fbfaf5] p-5" key={card.title}>
-                <h3 className="text-lg font-semibold leading-7 text-slate-950">{card.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-700">{card.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {toolkitVirtualNewsArticles.map((article) => (
-              <article
-                className="overflow-hidden rounded-lg border border-slate-200 bg-[#fbfaf5] shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md"
-                data-toolkit-virtual-news-card
-                key={article.slug}
-              >
-                <Link className="group block h-full" href={buildToolkitVirtualNewsArticleHref(article)}>
-                  <img
-                    alt={article.imageAlt}
-                    className="aspect-[16/9] w-full object-cover"
-                    loading="lazy"
-                    src={article.image}
-                  />
-                  <div className="flex h-full flex-col p-5">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="rounded-full border border-teal-100 bg-white px-3 py-1 text-xs font-semibold text-teal-900">
-                        {article.label}
-                      </span>
-                      <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600">
-                        {article.duration}
-                      </span>
-                      <span className="rounded-full border border-teal-100 bg-white px-3 py-1 text-xs font-semibold text-teal-900">
-                        公開中
-                      </span>
-                    </div>
-                    <h3 className="mt-4 break-words text-xl font-semibold leading-tight text-slate-950 [overflow-wrap:anywhere]">
-                      {article.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-700">{article.body}</p>
-                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
-                      記事を読む
-                      <ArrowRight size={15} />
-                    </span>
-                  </div>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-slate-200 bg-[#fbfaf5]" id="toolkit-web-app-library">
-        <div className="mx-auto max-w-7xl px-5 py-14 md:py-18">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-                Web app library
-              </p>
-              <h2 className="mt-3 max-w-3xl break-words text-3xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl">
-                記録と確認を、相談や会議に持ち込める形へ。
-              </h2>
-            </div>
-            <p className="text-base leading-8 text-slate-700 md:text-lg">
-              支援機関を探す前の確認、日々の波の記録、支援者と一緒に見直す準備。
-              それぞれの場面で使うウェブアプリを、使う順番が分かるように並べています。
-            </p>
-          </div>
-
-          <div
-            className="mt-8 rounded-lg border border-teal-100 bg-white p-5 shadow-sm"
-            data-toolkit-web-app-smartphone-use
-          >
-            <div className="flex items-start gap-3">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-teal-50 text-teal-800">
-                <Home size={18} />
-              </span>
-              <div>
-                <h3 className="text-lg font-semibold leading-7 text-teal-950">
-                  {toolkitWebAppSmartphoneUse.title}
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-slate-700">
-                  {toolkitWebAppSmartphoneUse.body}
-                </p>
-              </div>
-            </div>
-            <ol className="mt-4 grid gap-2 pl-5 text-sm leading-7 text-slate-700 md:grid-cols-2">
-              {toolkitWebAppSmartphoneUse.steps.map((step) => (
-                <li className="list-decimal pl-1" key={step}>
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {toolkitWebApps.map((app) => {
-              const AppIcon = app.icon;
-              const appCardClass =
-                'group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-teal-500 hover:bg-white';
-              const appContent = (
-                <>
-                  <div className="flex items-start gap-3">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-teal-50 text-teal-800">
-                      <AppIcon size={19} />
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="break-words text-lg font-semibold leading-7 text-slate-950 [overflow-wrap:anywhere]">
-                        {app.title}
-                      </h3>
-                      <span className="mt-2 inline-flex rounded-full border border-teal-100 bg-[#fbfaf5] px-3 py-1 text-xs font-semibold text-teal-900">
-                        {app.status}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-7 text-slate-700">{app.body}</p>
-                  <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
-                    {app.action}
-                    {'href' in app && app.href ? <ArrowRight size={15} /> : null}
-                  </span>
-                </>
-              );
-
-              return 'href' in app && app.href ? (
-                <Link
-                  className={appCardClass}
-                  data-toolkit-web-app-card
-                  href={app.href}
-                  key={app.title}
-                  rel={'external' in app && app.external ? 'noreferrer' : undefined}
-                  target={'external' in app && app.external ? '_blank' : undefined}
-                >
-                  {appContent}
-                </Link>
-              ) : (
-                <article
-                  className={`${appCardClass} cursor-default opacity-90 hover:border-slate-200`}
-                  data-toolkit-web-app-card
-                  key={app.title}
-                >
-                  {appContent}
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-slate-200 bg-[#eef5f1]" id="toolkit-use-packages">
-        <div className="mx-auto max-w-7xl px-5 py-14 md:py-18">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-                Use packages
-              </p>
-              <h2 className="mt-3 max-w-3xl break-words text-3xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl">
-                使う場面から、素材を組み合わせる。
-              </h2>
-            </div>
-            <p className="text-base leading-8 text-slate-700 md:text-lg">
-              図解、架空ニュース、4コマ、音楽、フォーラム資料、ウェブアプリは、単体で眺めるだけでは力を出しきれません。
-              初回相談、管理職研修、健康時間の話し合い、フォーラム後の実装など、場面ごとに組み合わせて使える形にします。
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {toolkitUsePackages.map((usePackage) => (
-              <article
-                className="rounded-lg border border-teal-100 bg-white p-6 shadow-sm"
-                data-toolkit-use-package-card
-                id={usePackage.id}
-                key={usePackage.id}
-              >
-                <p className="inline-flex rounded-full border border-teal-100 bg-[#eef5f1] px-3 py-1 text-xs font-semibold text-teal-900">
-                  {usePackage.scene}
-                </p>
-                <h3 className="mt-4 break-words text-2xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere]">
-                  {usePackage.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-700">{usePackage.lead}</p>
-
-                <div className="mt-5 grid gap-3">
-                  {usePackage.materials.map((material) => {
-                    const MaterialIcon = material.icon;
-
-                    return (
-                      <Link
-                        className="group grid gap-3 rounded-lg border border-slate-200 bg-[#fbfaf5] p-4 transition hover:border-teal-500 hover:bg-white sm:grid-cols-[auto_1fr_auto] sm:items-center"
-                        href={material.href}
-                        key={`${usePackage.id}-${material.label}`}
-                      >
-                        <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-teal-800 shadow-sm">
-                          <MaterialIcon size={18} />
-                        </span>
-                        <span>
-                          <span className="block break-words text-sm font-semibold leading-snug text-slate-950 [overflow-wrap:anywhere]">
-                            {material.label}
-                          </span>
-                          <span className="mt-1 block text-sm leading-6 text-slate-700">
-                            {material.detail}
-                          </span>
-                        </span>
-                        <ArrowRight
-                          className="text-teal-700 transition group-hover:translate-x-0.5"
-                          size={16}
-                        />
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                <p className="mt-5 rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm leading-7 text-amber-950">
-                  {usePackage.outcome}
-                </p>
               </article>
             ))}
           </div>
@@ -7280,30 +7059,176 @@ function ToolkitStudioPublicContent() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-[#eef5f1]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 md:grid-cols-[0.78fr_1.22fr] md:items-start">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-              How to use
-            </p>
-            <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-4xl">
-              使い方は、時間と場面から選ぶ。
-            </h2>
-            <p className="mt-4 text-base leading-8 text-slate-700">
-              素材を全部読む必要はありません。短くつかむ、対話に使う、研修やイベントに持ち込む、という三つの使い方で選べます。
+      <section className="border-b border-slate-200 bg-[#fbfaf5]" id="toolkit-web-app-library">
+        <div className="mx-auto max-w-7xl px-5 py-14 md:py-18">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
+                Web app library
+              </p>
+              <h2 className="mt-3 max-w-3xl break-words text-3xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl">
+                記録と確認を、相談や会議に持ち込める形へ。
+              </h2>
+            </div>
+            <p className="text-base leading-8 text-slate-700 md:text-lg">
+              支援機関を探す前の確認、日々の波の記録、相談に持ち込む準備。
+              無料で使える範囲を、判断や助言に見えないように分けています。
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {toolkitUseModes.map((mode) => (
-              <div
-                key={mode.title}
-                className="rounded-lg border border-teal-100 bg-white p-5 shadow-sm"
-              >
-                <h3 className="break-words text-xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere]">
-                  {mode.title}
+
+          <div
+            className="mt-8 rounded-lg border border-teal-100 bg-white p-5 shadow-sm"
+            data-toolkit-web-app-smartphone-use
+          >
+            <div className="flex items-start gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-teal-50 text-teal-800">
+                <Home size={18} />
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold leading-7 text-teal-950">
+                  {toolkitWebAppSmartphoneUse.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-700">{mode.body}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  {toolkitWebAppSmartphoneUse.body}
+                </p>
               </div>
+            </div>
+            <ol className="mt-4 grid gap-2 pl-5 text-sm leading-7 text-slate-700 md:grid-cols-2">
+              {toolkitWebAppSmartphoneUse.steps.map((step) => (
+                <li className="list-decimal pl-1" key={step}>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {toolkitWebApps.map((app) => {
+              const AppIcon = app.icon;
+              const appCardClass =
+                'group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-teal-500 hover:bg-white';
+              const appContent = (
+                <>
+                  <div className="flex items-start gap-3">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-teal-50 text-teal-800">
+                      <AppIcon size={19} />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="break-words text-lg font-semibold leading-7 text-slate-950 [overflow-wrap:anywhere]">
+                        {app.title}
+                      </h3>
+                      <span className="mt-2 inline-flex rounded-full border border-teal-100 bg-[#fbfaf5] px-3 py-1 text-xs font-semibold text-teal-900">
+                        {app.status}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-7 text-slate-700">{app.body}</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
+                    {app.action}
+                    <ArrowRight size={15} />
+                  </span>
+                </>
+              );
+
+              return (
+                <Link
+                  className={appCardClass}
+                  data-toolkit-web-app-card
+                  href={app.href}
+                  key={app.title}
+                  rel={'external' in app && app.external ? 'noreferrer' : undefined}
+                  target={'external' in app && app.external ? '_blank' : undefined}
+                >
+                  {appContent}
+                </Link>
+              );
+            })}
+          </div>
+          <div className="mt-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="flex items-start gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-slate-100 text-slate-700">
+                <UsersRound size={18} />
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold leading-7 text-slate-950">
+                  支援者との共同レビューは、無料アプリでは提供しません。
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-slate-700">
+                  本人が共有した記録を支援者と深く読み合わせるには、同意、データ取扱い、専門家レビュー、記録の監査性が必要です。ここでは無料アプリとして公開せず、事業化後の専門サービス設計として扱います。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-200 bg-[#eef5f1]" id="toolkit-use-packages">
+        <div className="mx-auto max-w-7xl px-5 py-14 md:py-18">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
+                Use packages
+              </p>
+              <h2 className="mt-3 max-w-3xl break-words text-3xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl">
+                使う場面から、素材を組み合わせる。
+              </h2>
+            </div>
+            <p className="text-base leading-8 text-slate-700 md:text-lg">
+              図解、課題地図、4コマ、音楽、フォーラム資料、ウェブアプリは、単体で眺めるだけでは力を出しきれません。
+              初回相談、管理職研修、健康時間の話し合い、フォーラム後の実装など、場面ごとに組み合わせて使える形にします。
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            {toolkitUsePackages.map((usePackage) => (
+              <article
+                className="rounded-lg border border-teal-100 bg-white p-6 shadow-sm"
+                data-toolkit-use-package-card
+                id={usePackage.id}
+                key={usePackage.id}
+              >
+                <p className="inline-flex rounded-full border border-teal-100 bg-[#eef5f1] px-3 py-1 text-xs font-semibold text-teal-900">
+                  {usePackage.scene}
+                </p>
+                <h3 className="mt-4 break-words text-2xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere]">
+                  {usePackage.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-slate-700">{usePackage.lead}</p>
+
+                <div className="mt-5 grid gap-3">
+                  {usePackage.materials.map((material) => {
+                    const MaterialIcon = material.icon;
+
+                    return (
+                      <Link
+                        className="group grid gap-3 rounded-lg border border-slate-200 bg-[#fbfaf5] p-4 transition hover:border-teal-500 hover:bg-white sm:grid-cols-[auto_1fr_auto] sm:items-center"
+                        href={material.href}
+                        key={`${usePackage.id}-${material.label}`}
+                      >
+                        <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-teal-800 shadow-sm">
+                          <MaterialIcon size={18} />
+                        </span>
+                        <span>
+                          <span className="block break-words text-sm font-semibold leading-snug text-slate-950 [overflow-wrap:anywhere]">
+                            {material.label}
+                          </span>
+                          <span className="mt-1 block text-sm leading-6 text-slate-700">
+                            {material.detail}
+                          </span>
+                        </span>
+                        <ArrowRight
+                          className="text-teal-700 transition group-hover:translate-x-0.5"
+                          size={16}
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                <p className="mt-5 rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm leading-7 text-amber-950">
+                  {usePackage.outcome}
+                </p>
+              </article>
             ))}
           </div>
         </div>
@@ -9236,7 +9161,7 @@ function TheoryMethodTrustPublicContent() {
                 読み方の専門知識こそ、NBLの専門性の土台です。
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-700 md:text-lg md:leading-9">
-                NBLサイトで見えている相談事例、設計ガイド、記事、図解は、読み取った専門知識の提供面です。その前に、障害や病気の情報を、人の問題、職場の責任、制度名の答え、検索結果の要約へ閉じないための基礎専門性があります。
+                NBLサイトで見えている設計ガイド、相談事例、記事、図解は、読み取った専門知識の提供面です。その前に、障害や病気の情報を、人の問題、職場の責任、制度名の答え、検索結果の要約へ閉じないための基礎専門性があります。
               </p>
               <p className="mt-4 rounded-lg border border-teal-100 bg-[#eff7f4] p-4 text-sm font-semibold leading-7 text-slate-800">
                 この第一層があるから、大量の資料とAIの読解力を、偏見の再生産ではなく、よりよい問いと仕事・社会参加設計へ向けられます。
@@ -9305,12 +9230,12 @@ function TheoryMethodTrustPublicContent() {
 
           <figure className="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-[#fbfaf5] shadow-sm">
             <img
-              alt="調査データ、ワークショップ記録、実務資料、制度政策資料、国内外の公開情報を相互作用として読み、多様な専門知識ネットワークを作ってから場面、相談事例、設計ガイド、記事、図解ツールへ活用する流れを示す図解"
+              alt="調査データ、ワークショップ記録、実務資料、制度政策資料、国内外の公開情報を相互作用として読み、多様な専門知識ネットワークを作ってから場面、設計ガイド、相談事例、記事、図解ツールへ活用する流れを示す図解"
               className="block h-auto w-full"
               src="/images/next-nbl-knowledge-network-method-v3.png"
             />
             <figcaption className="border-t border-slate-200 bg-white px-5 py-4 text-sm leading-7 text-slate-700">
-              重要なのは、知識を作る材料と、知識を使う場面を混ぜないことです。調査データ、ワークショップ記録、実務資料、制度・政策資料、国内外の公開情報から専門知識ネットワークを作り、その後に、場面、相談事例、設計ガイド、記事、図解・ツールとして活用します。
+              重要なのは、知識を作る材料と、知識を使う場面を混ぜないことです。調査データ、ワークショップ記録、実務資料、制度・政策資料、国内外の公開情報から専門知識ネットワークを作り、その後に、場面、設計ガイド、相談事例、記事、図解・ツールとして活用します。
             </figcaption>
           </figure>
 
@@ -9414,7 +9339,7 @@ function TheoryMethodTrustPublicContent() {
             {theoryMethodInterfaceCards.map((card) => (
               <Link
                 className="group flex h-full flex-col rounded-lg border border-slate-200 bg-[#fbfaf5] p-5 transition hover:-translate-y-0.5 hover:border-teal-700 hover:bg-white hover:shadow-md"
-                href={candidatePath(card.href)}
+                href={card.href.startsWith('/') ? card.href : candidatePath(card.href)}
                 key={card.title}
               >
                 <span className="text-lg font-semibold leading-7 tracking-normal text-slate-950">
@@ -9582,14 +9507,14 @@ function SceneEntryPublicContent() {
         <div className="mx-auto grid max-w-[330px] gap-6 px-0 py-14 md:max-w-7xl md:grid-cols-3 md:px-5">
           {[
             {
-              title: '相談事例へ進む',
-              body: '場面に近い相談文を選び、観察、暫定見立て、反対仮説、確認質問へ分ける。',
-              slug: 'case-readings',
-            },
-            {
               title: '仕事設計へ進む',
               body: '場面で見えた衝突を、時間、情報、動線、手順、評価、支援接続の設計に変える。',
               slug: 'work-design-views-guide',
+            },
+            {
+              title: '相談事例へ進む',
+              body: '場面に近い相談文を選び、観察、暫定見立て、反対仮説、確認質問へ分ける。',
+              slug: 'case-readings',
             },
             {
               title: 'ツールで共有する',
@@ -10008,27 +9933,21 @@ function ConsultationCaseReadingPublicContent() {
 function HomePublicContent({ currentSlug }: { currentSlug: string }) {
   const primaryEntrances = [
     {
-      slug: 'scene-entry',
-      tag: '8つの課題',
-      title: '古くて新しい課題を、4コマでつかむ',
-      body: '雇用率、診断名、制度、善意、検索結果。そこで止まりやすい問題を、仕事条件の問いへ戻す。',
-      visualWords: ['あるある', '誤読', '共通認識'],
-      accentClass: 'from-amber-100 via-white to-teal-50',
-      iconClass: 'bg-amber-500 text-white',
-      chipClass: 'bg-amber-50 text-amber-900 border-amber-200',
-    },
-    {
-      slug: 'case-readings',
-      tag: '相談事例',
-      title: '一言の相談を、見立てと支援計画へほどく',
-      body: '短い相談をつぶさず、決めつけを外し、次に一緒に確認する条件へ進む。',
-      visualWords: ['一言', '見立て', '分岐'],
-      accentClass: 'from-rose-100 via-white to-amber-50',
-      iconClass: 'bg-rose-500 text-white',
-      chipClass: 'bg-rose-50 text-rose-900 border-rose-200',
+      slug: 'virtual-news',
+      href: candidateOrPublicPath('virtual-news'),
+      icon: MessageCircle,
+      tag: 'バーチャルニュース',
+      title: '現実の課題を、ニュース像として先に読む',
+      body: '企業運用、地域連携、制度の詰まりを、本人・仕事・環境・支援・時間・評価の関係へ戻す。',
+      visualWords: ['実装条件', '役割分担', '相談線'],
+      accentClass: 'from-teal-100 via-white to-amber-50',
+      iconClass: 'bg-teal-700 text-white',
+      chipClass: 'bg-teal-50 text-teal-950 border-teal-200',
     },
     {
       slug: 'work-design-views-guide',
+      href: candidatePath('work-design-views-guide'),
+      icon: Network,
       tag: '設計ガイド',
       title: '誰もが活躍できる仕事・参加設計へ',
       body: '障害や病気への対応で見えてきた知見を、これからの仕事と社会参加の設計原理として使う。',
@@ -10038,7 +9957,21 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
       chipClass: 'bg-teal-50 text-teal-900 border-teal-200',
     },
     {
+      slug: 'case-readings',
+      href: candidatePath('case-readings'),
+      icon: ClipboardList,
+      tag: '相談事例',
+      title: '一言の相談を、見立てと支援計画へほどく',
+      body: '短い相談をつぶさず、決めつけを外し、次に一緒に確認する条件へ進む。',
+      visualWords: ['一言', '見立て', '分岐'],
+      accentClass: 'from-rose-100 via-white to-amber-50',
+      iconClass: 'bg-rose-500 text-white',
+      chipClass: 'bg-rose-50 text-rose-900 border-rose-200',
+    },
+    {
       slug: 'articles-social-questions',
+      href: candidatePath('articles-social-questions'),
+      icon: FileSearch,
       tag: 'NBLレポート',
       title: '社会の違和感を、読める論考へ',
       body: '現場の切実な問い、企業の迷い、支援者の翻訳負荷、政策議論を、社会に広げられる論考にする。',
@@ -10049,6 +9982,8 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
     },
     {
       slug: 'toolkit-studio',
+      href: candidatePath('toolkit-studio'),
+      icon: Layers3,
       tag: 'ツールキット',
       title: '図解・音楽・素材で、共通理解をつくる',
       body: '文章だけでは届きにくい複雑な知識を、会議や研修で扱いやすい形へ変える。',
@@ -10059,6 +9994,8 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
     },
     {
       slug: 'work-condition-window',
+      href: candidatePath('work-condition-window'),
+      icon: SearchCheck,
       tag: '障害種類から見る',
       title: '障害種類を、職場設計の応用問題として読む',
       body: '視覚、聴覚、肢体、内部、知的、精神、発達、高次脳、難病から、仕事条件の確認へ進む。',
@@ -10086,6 +10023,26 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
       body: 'AIの文脈読解を補助線に、総合的な読み、バイアス点検、問題構造の整理を進め、人が確認し、話し合い、試せる地図へ戻します。',
       icon: Map,
       tag: 'Practice',
+    },
+  ] as const;
+  const supportEntrances = [
+    {
+      href: candidatePath('theory-method-trust'),
+      title: 'NBLの専門性',
+      body: '情報をそのまま要約せず、本人・仕事・環境・支援の関係として読み替える理由を確認します。',
+      icon: BrainCircuit,
+    },
+    {
+      href: candidatePath('about-boundary'),
+      title: 'サイト情報',
+      body: '運営者、問い合わせ先、免責、著作権、SNS発信の扱いを確認できます。',
+      icon: ShieldCheck,
+    },
+    {
+      href: '/projects',
+      title: 'プロジェクト',
+      body: '研究会、地域連携、人材育成など、NBLを一緒に育てる実装テーマを見ます。',
+      icon: HeartHandshake,
     },
   ] as const;
 
@@ -10150,43 +10107,31 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
           <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-teal-800">
-                What
+                What map
               </p>
               <h2 className="mt-3 break-words text-3xl font-semibold tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-4xl">
-                未解決の働きづらさは、
-                <span className="block">仕事・社会参加設計の応用問題。</span>
+                6つの入口で、NBLが扱う問題空間を見渡す。
               </h2>
             </div>
             <div className="rounded-lg border border-teal-200 bg-white p-6 shadow-sm">
               <p className="text-lg font-semibold leading-8 tracking-normal text-slate-950 md:text-2xl md:leading-10">
-                問いはばらばらでも、見る地図はひとつ。
+                関心のある入口から、働きづらさの見え方を変える。
               </p>
               <p className="mt-4 text-base leading-8 text-slate-700">
-                さまざまな働きづらさは、多様な人間と社会・環境の相互作用を踏まえた仕事と社会参加の設計課題です。課題、相談、設計、レポート、図解、障害種類。どこから入っても、同じ地図へ進めます。
+                現実課題、相談、設計、レポート、共有素材、障害種類。どこから入っても、本人・仕事・環境・支援・時間・評価の条件を一緒に見直せます。
               </p>
             </div>
           </div>
-          <figure className="mt-9 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl">
-            <img
-              alt={homeHeroVisual.alt}
-              className="block h-auto w-full bg-[#f7f0df]"
-              src={homeHeroVisual.src}
-            />
-          </figure>
-          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {primaryEntrances.map((entrance) => {
-              const item = publicCandidateRoutes().find((route) => route.slug === entrance.slug);
-              if (!item) {
-                return null;
-              }
-              const ContextIcon = item.context.icon;
+              const ContextIcon = entrance.icon;
               return (
                 <Link
                   className={`group relative flex min-h-[280px] flex-col overflow-hidden rounded-lg border bg-gradient-to-br p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-xl ${entrance.accentClass} ${
-                    item.slug === currentSlug ? 'border-slate-950' : 'border-slate-200'
+                    entrance.slug === currentSlug ? 'border-slate-950' : 'border-slate-200'
                   }`}
-                  href={candidatePath(item.slug)}
-                  key={item.routeId}
+                  href={entrance.href}
+                  key={entrance.slug}
                 >
                   <div className="relative flex items-start justify-between gap-4">
                     <span
@@ -10227,6 +10172,38 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
           </div>
         </div>
       </section>
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-5 py-10 md:py-12">
+          <div className="grid gap-4 md:grid-cols-3">
+            {supportEntrances.map((entrance) => {
+              const Icon = entrance.icon;
+              return (
+                <Link
+                  className="group flex h-full items-start gap-4 rounded-lg border border-slate-200 bg-[#fbfaf5] p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:bg-white hover:shadow-md"
+                  href={entrance.href}
+                  key={entrance.title}
+                >
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-slate-950 text-white">
+                    <Icon size={18} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-base font-semibold tracking-normal text-slate-950">
+                      {entrance.title}
+                    </span>
+                    <span className="mt-2 block text-sm leading-7 text-slate-700">
+                      {entrance.body}
+                    </span>
+                    <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal-800 group-hover:text-teal-950">
+                      開く
+                      <ArrowRight size={15} />
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
@@ -10242,18 +10219,18 @@ type CandidateNextStep = {
 const smartNextStepsBySlug: Partial<Record<string, readonly CandidateNextStep[]>> = {
   'scene-entry': [
     {
-      slug: 'case-readings',
-      title: '自分の相談に近づけて読む',
-      body: '8つの課題で見えた構造を、相談の一言、見立て、確認したい条件へほどきます。',
-      label: '相談事例へ',
-      icon: ClipboardList,
-    },
-    {
       slug: 'work-design-views-guide',
       title: '仕事・参加設計へ広げる',
       body: '古くて新しい課題を、健康時間、情報形式、評価、支援接続などの設計領域へ展開します。',
       label: '設計ガイドへ',
       icon: Network,
+    },
+    {
+      slug: 'case-readings',
+      title: '自分の相談に近づけて読む',
+      body: '課題地図で見えた構造を、相談の一言、見立て、確認したい条件へほどきます。',
+      label: '相談事例へ',
+      icon: ClipboardList,
     },
     {
       slug: 'toolkit-studio',
@@ -10311,18 +10288,18 @@ const smartNextStepsBySlug: Partial<Record<string, readonly CandidateNextStep[]>
   ],
   'articles-social-questions': [
     {
-      slug: 'case-readings',
-      title: '論点を相談に戻す',
-      body: '記事で見えた社会の問いを、本人、企業、支援者の具体的な相談へ戻して読みます。',
-      label: '相談事例へ',
-      icon: ClipboardList,
-    },
-    {
       slug: 'work-design-views-guide',
       title: '仕事・参加設計に戻す',
       body: '記事の論点を、5つの設計領域、10論点、具体設計項目へ接続します。',
       label: '設計ガイドへ',
       icon: Network,
+    },
+    {
+      slug: 'case-readings',
+      title: '論点を相談に戻す',
+      body: '記事で見えた社会の問いを、本人、企業、支援者の具体的な相談へ戻して読みます。',
+      label: '相談事例へ',
+      icon: ClipboardList,
     },
     {
       slug: 'toolkit-studio',
@@ -10337,7 +10314,7 @@ const smartNextStepsBySlug: Partial<Record<string, readonly CandidateNextStep[]>
       slug: 'scene-entry',
       title: '素材を課題共有に使う',
       body: '図解や4コマを、8つの古くて新しい課題を共有する入口として使います。',
-      label: '8つの課題へ',
+      label: '課題地図へ',
       icon: MessagesSquare,
     },
     {
@@ -10357,18 +10334,18 @@ const smartNextStepsBySlug: Partial<Record<string, readonly CandidateNextStep[]>
   ],
   'work-condition-window': [
     {
-      slug: 'case-readings',
-      title: '近い相談として読む',
-      body: '障害種類から見えた条件を、断片的な相談の一言としてほどきます。',
-      label: '相談事例へ',
-      icon: ClipboardList,
-    },
-    {
       slug: 'work-design-views-guide',
       title: '職場設計へ広げる',
       body: '障害種類の入口から見えた課題を、誰もが活躍できる仕事・参加設計へ広げます。',
       label: '設計ガイドへ',
       icon: Network,
+    },
+    {
+      slug: 'case-readings',
+      title: '近い相談として読む',
+      body: '障害種類から見えた条件を、断片的な相談の一言としてほどきます。',
+      label: '相談事例へ',
+      icon: ClipboardList,
     },
     {
       slug: 'theory-method-trust',

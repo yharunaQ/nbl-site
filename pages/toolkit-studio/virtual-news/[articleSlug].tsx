@@ -110,17 +110,10 @@ export function NblVirtualNewsArticlePage({ article }: NblVirtualNewsArticlePage
             <nav aria-label="記事周辺リンク" className="flex flex-wrap gap-2 text-sm font-semibold">
               <NextLink
                 className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-slate-700 transition hover:border-teal-500 hover:text-teal-900"
-                href="/toolkit-studio"
+                href="/virtual-news"
               >
                 <ArrowLeft size={15} />
-                ツールキット
-              </NextLink>
-              <NextLink
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-slate-700 transition hover:border-teal-500 hover:text-teal-900"
-                href="/toolkit-studio#toolkit-virtual-news-library"
-              >
-                <FileText size={15} />
-                記事一覧
+                バーチャルニュース
               </NextLink>
               <NextLink
                 className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-slate-700 transition hover:border-teal-500 hover:text-teal-900"
