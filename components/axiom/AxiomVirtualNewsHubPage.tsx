@@ -55,8 +55,12 @@ const roleCards = [
   },
 ] as const;
 
-const hubHeroCaption =
-  '社内の配慮相談窓口で、支援機器、調達書類、実装記録を確認する場面。職場の困りごとを、道具、予算、手順、支援線の問題として読み直す。';
+const hubHeroImage = {
+  src: '/images/nbl-virtual-news/virtual-news-field-reporting-hero-v1.png',
+  alt: '現場で記者とカメラマンが仕事条件の変化を取材しているNBLバーチャルニュースの写真',
+  caption:
+    '現場で記者とカメラマンが、仕事の手順、道具、情報共有、参加の変化を取材する場面。相談室ではなく、社会の現場から問いを受け取り、仕事条件として読み直す。',
+} as const;
 
 const boundaryCards = [
   {
@@ -74,9 +78,9 @@ const boundaryCards = [
 ] as const;
 
 const priorityVirtualNewsArticleSlugs = [
-  'team-fairness-work-allocation-redesign',
-  'medical-information-work-condition-translation',
-  'information-access-meeting-emergency-standard',
+  'public-awareness-employment-campaign',
+  'employment-burden-assessment-subsidy-special-zone',
+  'japanese-ips-integrated-employment-support',
 ] as const;
 
 const priorityVirtualNewsArticles = priorityVirtualNewsArticleSlugs
@@ -302,12 +306,12 @@ export default function AxiomVirtualNewsHubPage() {
             </div>
             <figure className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl">
               <img
-                alt={nblVirtualNewsArticles[0].heroImage.alt}
+                alt={hubHeroImage.alt}
                 className="aspect-[16/10] w-full object-cover"
-                src={nblVirtualNewsArticles[0].heroImage.src}
+                src={hubHeroImage.src}
               />
               <figcaption className="border-t border-slate-200 px-5 py-4 text-sm leading-7 text-slate-600">
-                {hubHeroCaption}
+                {hubHeroImage.caption}
               </figcaption>
             </figure>
           </div>
@@ -346,12 +350,12 @@ export default function AxiomVirtualNewsHubPage() {
                   Priority themes
                 </p>
                 <h2 className="mt-3 break-words text-3xl font-semibold leading-tight tracking-normal text-slate-950 [overflow-wrap:anywhere] md:text-5xl">
-                  いま現場に近い3つの未解決接点。
+                  雇用から、企業経営と社会設計へ広がる3本。
                 </h2>
               </div>
               <p className="text-base leading-8 text-slate-700 md:text-lg">
-                制度や専門窓口だけでは拾いきれない、日々の仕事の中で摩擦が起きる場所を先に読みます。
-                同僚の納得、医療情報の翻訳、会議と緊急連絡の情報アクセスを、仕事条件として扱う3本です。
+                18本の中から、障害者雇用を人数や個別対応に閉じず、企業の経営改善、社会の認識、
+                地域の支援線の設計へ発展させるビジョンが見える記事を先に置きます。
               </p>
             </div>
 

@@ -148,6 +148,51 @@ Cons:
 - Updated Final QA visual/copy contract wording for the new home alt and `8つの課題の地図`.
 - Verification: targeted and related Jest suites passed; `npm run typecheck` passed.
 
+## 2026-07-07 Founder Recheck Adjustment
+
+Founder reviewed the whole site and corrected three Virtual News presentation points.
+
+### Hub Hero
+
+- The previous `/virtual-news` hero borrowed the first article's support-desk / accommodation-consultation image, which made the hub feel like an individual consultation page.
+- The hub now uses a dedicated generated field-reporting image: `public/images/nbl-virtual-news/virtual-news-field-reporting-hero-v1.png`.
+- Direction: reporter, camera operator, and field participants documenting work conditions in a bright workplace / community setting.
+- Intended meaning: `NBLバーチャル・ニュース` receives questions from social and workplace scenes, not private consultation rooms.
+- Avoided: downcast consultation posture, hospital / therapy feel, sticky-note workshop sameness, dark abstract imagery, institutional or legal-certification symbolism.
+
+### Article 7 Headline
+
+- Founder noted that 第7弾's headline was unclear.
+- Revised focus: disability employment moves from numeric compliance / headcount management to concrete quality measures, and those measures can connect to company-wide work design and business improvement.
+- New headline: `障害者雇用を、数から質へ。架空企業G社、仕事設計チームが経営改善を動かす`
+
+### Priority Themes
+
+- The previous priority shelf highlighted articles 15, 16, and 17 as daily work-contact issues.
+- Founder suggested a stronger pickup logic: choose articles that show the vision expanding from disability employment into company management and social design.
+- The priority shelf now highlights:
+  - 第12弾: `public-awareness-employment-campaign`
+  - 第13弾: `employment-burden-assessment-subsidy-special-zone`
+  - 第2弾: `japanese-ips-integrated-employment-support`
+- Articles 15, 16, and 17 remain in the full Article library; they are not deleted or downgraded as content.
+
+Boundary: this is a delivery-layer presentation and editorial-priority adjustment. It is not real-news verification, public approval, legal / medical / employment / accommodation finality, official-source adoption, runtime movement, or knowledge promotion.
+
+## 2026-07-07 No-Handbook Rare Disease Article Addition
+
+別スレの追加分として、手帳のない難病患者の就労困難性を扱う同一テーマを、NBLレポートとバーチャルニュースの両方に追加した。
+
+- NBLレポート: `no-handbook-rare-disease-work-difficulty` を37本目の本格論考として追加。
+- バーチャルニュース: `no-handbook-rare-disease-work-difficulty` を第18弾から続く第19本目のフル記事として追加。
+- Public image assets:
+  - `public/images/axiom-article-image2-infographics/no-handbook-rare-disease-work-difficulty-v1.png`
+  - `public/images/nbl-virtual-news/no-handbook-rare-disease-work-difficulty-field-hero-v1.png`
+  - `public/images/nbl-virtual-news/no-handbook-rare-disease-work-difficulty-diagram-v1.png`
+- Source role: MHLW研究会ページ、e-Gov法令、NIVR報告書ページは背景参照として使う。本文は現行制度の確定解説、個別障害認定、実雇用率算定、合理的配慮の妥当性判断、医療・法務・雇用判断をしない。
+- Official-source triage: these links remain in `evidence_layer` / `source_readiness` territory. They do not become reviewed knowledge, public approval, current-policy finality, or source adoption.
+
+Boundary: this is a public delivery-layer article addition and visual addition only. It is not legal / medical / employment / accommodation finality, source/support validity, runtime/provider/schema movement, candidate-pattern promotion, or knowledge-network learning update.
+
 Still not done:
 
 - No full URL migration to `/virtual-news/[articleSlug]`.
@@ -216,3 +261,4 @@ Founder合意後に完了した実装:
 7. Reorder toolkit content as selected infographics / 4-koma -> web apps -> use packages -> boundary.
 8. Add tests for nav visibility, hub article count, old path continuity, direct toolkit issue-map routing, toolkit ordering, and boundary wording.
 9. Make the home six entrance cards the What map itself: replace the first `8つの課題` entrance with `バーチャルニュース` and remove the redundant map image / standalone virtual-news card above it.
+10. Add `no-handbook-rare-disease-work-difficulty` as the 37th NBLレポート item and 19th Virtual News article, with article-specific images and count/asset tests.

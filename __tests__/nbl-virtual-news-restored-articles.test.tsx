@@ -10,16 +10,17 @@ import {
 } from '@/lib/content/nblVirtualNews';
 
 describe('NBL virtual news restored articles', () => {
-  it('keeps all 18 restored full article bodies available through one catalog', () => {
+  it('keeps all 19 restored full article bodies available through one catalog', () => {
     const slugs = nblVirtualNewsArticles.map((article) => article.slug);
 
-    expect(nblVirtualNewsArticles).toHaveLength(18);
-    expect(new Set(slugs).size).toBe(18);
+    expect(nblVirtualNewsArticles).toHaveLength(19);
+    expect(new Set(slugs).size).toBe(19);
     expect(slugs).toEqual(
       expect.arrayContaining([
         'team-fairness-work-allocation-redesign',
         'medical-information-work-condition-translation',
         'information-access-meeting-emergency-standard',
+        'no-handbook-rare-disease-work-difficulty',
       ]),
     );
     for (const article of nblVirtualNewsArticles) {
@@ -121,7 +122,7 @@ describe('NBL virtual news restored articles', () => {
     const paths = getStaticPaths({});
 
     expect(paths).toMatchObject({ fallback: false });
-    expect('paths' in paths ? paths.paths : []).toHaveLength(18);
+    expect('paths' in paths ? paths.paths : []).toHaveLength(19);
 
     const propsResult = await Promise.resolve(
       getStaticProps({

@@ -327,10 +327,10 @@ export default function AxiomNextNblPublicCandidateFinalQaSurface() {
             report article visuals
           </p>
           <h2 className="mt-2 text-3xl font-semibold tracking-normal text-slate-950">
-            NBLレポート36記事・図解対応表
+            NBLレポート37記事・図解対応表
           </h2>
           <p className="mt-3 max-w-3xl text-base leading-8 text-slate-650">
-            NBLレポートはHeroだけでなく、各記事の図解が本文の入口になります。ここでは36本すべてについて、記事の問い、図解、alt、図解対応、本文見出しの一致を確認します。
+            NBLレポートはHeroだけでなく、各記事の図解が本文の入口になります。ここでは37本すべてについて、記事の問い、図解、alt、図解対応、本文見出しの一致を確認します。
           </p>
           <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 text-sm leading-7 text-slate-700">
             <strong>validation:</strong> {reportArticleValidation.validationStatus} / error count:{' '}

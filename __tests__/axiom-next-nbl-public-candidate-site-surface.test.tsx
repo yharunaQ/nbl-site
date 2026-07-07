@@ -33,9 +33,12 @@ describe('Axiom next NBL public candidate site surface', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByAltText(
-        '障害者雇用・難病就労支援の断片的な情報を、AIの文脈読解補助と人間の確認を通して、本人・仕事・環境・支援・時間・評価の条件地図へ読み替える図',
+        '明るい場で多様な人々の仕事、生活、移動、支援の関係がAI時代のmanifoldとして重なって見えるビジュアル',
       ),
-    ).toHaveAttribute('src', '/images/next-nbl-home-why-hero-imagegen-v1.png');
+    ).toHaveAttribute(
+      'src',
+      '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png',
+    );
     expect(screen.queryByAltText(/働きづらさを仕事条件の地図へ変換/)).not.toBeInTheDocument();
     expect(
       screen.getByRole('navigation', {
@@ -61,6 +64,11 @@ describe('Axiom next NBL public candidate site surface', () => {
       screen.getByRole('heading', {
         level: 2,
         name: '膨大で偏りを含む情報を、実践できる仕事条件の地図へ。',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('国内外には障害者就労支援の膨大な情報がありますが、そのまま要約することは危険です。', {
+        exact: false,
       }),
     ).toBeInTheDocument();
     expect(
@@ -603,7 +611,7 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getByText('テーマで広げる')).toBeInTheDocument();
     expect(screen.getByText('図解と本文を対応させる')).toBeInTheDocument();
     expect(article.container.querySelector('[data-article-editorial-map]')).not.toBeNull();
-    expect(article.container.querySelectorAll('[data-full-article-selector]')).toHaveLength(36);
+    expect(article.container.querySelectorAll('[data-full-article-selector]')).toHaveLength(37);
     expect(article.container.querySelector('[data-full-article-reader]')).not.toBeNull();
     expect(article.container.querySelector('[data-article-visual-correspondence]')).not.toBeNull();
     expect(screen.getByText('この図解で先に見ること')).toBeInTheDocument();
@@ -679,6 +687,10 @@ describe('Axiom next NBL public candidate site surface', () => {
     expect(screen.getAllByText('支援はある。翻訳が続くかを見る。').length).toBeGreaterThan(0);
     expect(
       screen.getAllByText('政策・研究・AI時代の資料を、仕事条件の問いへ戻す。').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText('手帳のない難病患者の就労困難性を、判定と支援設計に分けて読む。')
+        .length,
     ).toBeGreaterThan(0);
     expect(screen.queryByText('一撃の図解')).not.toBeInTheDocument();
     expect(screen.queryByText('見出しだけで読む')).not.toBeInTheDocument();
@@ -768,7 +780,7 @@ describe('Axiom next NBL public candidate site surface', () => {
       36,
     );
     fireEvent.click(screen.getByRole('button', { name: '絞り込みを戻す' }));
-    expect(article.container.querySelectorAll('[data-full-article-selector]')).toHaveLength(36);
+    expect(article.container.querySelectorAll('[data-full-article-selector]')).toHaveLength(37);
     fireEvent.click(screen.getByRole('button', { name: '本格テーマ 雇用の質 で絞り込む' }));
     expect(article.container.querySelectorAll('[data-full-article-selector]')).toHaveLength(3);
     expect(screen.getAllByText('持続可能な雇用成果とは何か。').length).toBeGreaterThan(0);

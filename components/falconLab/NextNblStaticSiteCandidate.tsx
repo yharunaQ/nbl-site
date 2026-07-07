@@ -46,6 +46,8 @@ import { nextNblPublicSocialAccount } from '@/lib/falconLab/nextNblPublicSocialA
 
 const previewBase = '/preview/falcon-next-nbl';
 const publicHeroImage = '/images/next-nbl-work-design-hero-v1.webp';
+const publicHomeHeroImage =
+  '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png';
 const publicLogicFlowImage = '/images/next-nbl-work-logic-flow-v1.webp';
 const publicWorkDesignMapVisualImage = '/images/next-nbl-work-design-map-visual-v1.webp';
 const publicConditionWindowHeroImage = '/images/next-nbl-condition-window-hero-v1.webp';
@@ -6823,14 +6825,37 @@ function PublicHero({
       : 'max-w-[22rem] sm:max-w-3xl';
 
   return (
-    <section className="relative overflow-hidden bg-[#11130f] text-white">
-      <div className="absolute inset-0 opacity-[0.18] [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:48px_48px]" />
+    <section
+      className={`relative overflow-hidden ${
+        overview ? 'bg-[#f7fbf7] text-slate-950' : 'bg-[#11130f] text-white'
+      }`}
+    >
+      {overview ? (
+        <>
+          <img
+            src={publicHomeHeroImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover object-[58%_center]"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.98)_0%,rgba(255,255,255,0.93)_36%,rgba(255,255,255,0.64)_58%,rgba(255,255,255,0.16)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#fbfaf5] via-[#fbfaf5]/58 to-transparent" />
+        </>
+      ) : (
+        <div className="absolute inset-0 opacity-[0.18] [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:48px_48px]" />
+      )}
       <div
         className={`mx-auto grid min-h-[560px] w-full items-center gap-10 px-5 py-16 lg:grid-cols-[0.88fr_1.12fr] ${heroShellWidthClass}`}
         style={{ boxSizing: 'border-box' }}
       >
         <div className={`relative z-10 min-w-0 ${heroTextWidthClass}`}>
-          <p className="text-sm font-semibold tracking-[0.18em] text-cyan-100">{copy.eyebrow}</p>
+          <p
+            className={`text-sm font-semibold tracking-[0.18em] ${
+              overview ? 'text-cyan-800' : 'text-cyan-100'
+            }`}
+          >
+            {copy.eyebrow}
+          </p>
           <h1
             aria-label={overview || page.id === 'NS-03' || page.id === 'NS-05' || page.id === 'NS-06' || page.id === 'NS-07' || page.id === 'NS-08' || page.id === 'NS-09' ? copy.headline : undefined}
             className="mt-5 max-w-full break-all text-[32px] font-semibold leading-[1.08] tracking-normal [overflow-wrap:anywhere] md:break-normal md:text-[60px]"
@@ -6877,45 +6902,44 @@ function PublicHero({
               copy.headline
             )}
           </h1>
-          <p className="mt-7 max-w-2xl break-all text-base leading-8 text-white/82 [overflow-wrap:anywhere] md:break-normal md:text-lg md:leading-9">{copy.lead}</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href={primaryHref}
-              className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-50"
-            >
-              {primaryLabel}
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              href={secondaryHref}
-              className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
-            >
-              {secondaryLabel}
-            </Link>
-          </div>
-        </div>
-        <div className={`relative z-10 min-w-0 ${page.id === 'NS-02' || page.id === 'NS-03' || page.id === 'NS-04' || page.id === 'NS-06' || page.id === 'NS-07' || page.id === 'NS-08' || page.id === 'NS-09' ? 'block' : 'hidden lg:block'}`}>
-          {overview ? (
-          <div className="w-full max-w-full overflow-hidden border border-white/18 bg-[#f8f3e8] text-slate-950 shadow-2xl">
-            <div>
-              <img
-                src={publicHeroImage}
-                alt="企業担当者、支援者、産業保健職が仕事の条件を同じ場面で整理しているイラスト"
-                className="aspect-[16/9] w-full object-cover"
-              />
-              <div className="border-t border-slate-200 bg-white p-5 text-slate-950">
-                <p className="text-xs font-semibold tracking-[0.14em] text-cyan-800">
-                  古くて新しい課題
-                </p>
-                <h2 className="mt-2 text-3xl font-semibold leading-tight tracking-normal">
-                  関係を読めると、支援の形が変わる。
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  本人、仕事、環境、支援、時間、制度を同じ地図に置き、相談、学習、記事、教材へ渡します。
-                </p>
-              </div>
+          <p
+            className={`mt-7 max-w-2xl break-all text-base leading-8 [overflow-wrap:anywhere] md:break-normal md:text-lg md:leading-9 ${
+              overview ? 'text-slate-700' : 'text-white/82'
+            }`}
+          >
+            {copy.lead}
+          </p>
+          {overview ? null : (
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href={primaryHref}
+                className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-50"
+              >
+                {primaryLabel}
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                href={secondaryHref}
+                className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
+              >
+                {secondaryLabel}
+              </Link>
             </div>
-          </div>
+          )}
+        </div>
+        <div className={`relative z-10 min-w-0 ${overview ? 'hidden lg:block' : page.id === 'NS-02' || page.id === 'NS-03' || page.id === 'NS-04' || page.id === 'NS-06' || page.id === 'NS-07' || page.id === 'NS-08' || page.id === 'NS-09' ? 'block' : 'hidden lg:block'}`}>
+          {overview ? (
+            <div className="ml-auto w-full max-w-sm border border-white/70 bg-white/82 p-5 text-slate-950 shadow-2xl backdrop-blur-md">
+              <p className="text-xs font-semibold tracking-[0.14em] text-cyan-800">
+                古くて新しい課題
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold leading-tight tracking-normal">
+                関係を読めると、支援の形が変わる。
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-slate-700">
+                本人、仕事、環境、支援、時間、制度を同じ地図に置き、相談、学習、記事、教材へ渡します。
+              </p>
+            </div>
           ) : page.id === 'NS-02' ? (
             <div className="w-full max-w-full overflow-hidden border border-white/18 bg-[#f8f3e8] text-slate-950 shadow-2xl">
               <img

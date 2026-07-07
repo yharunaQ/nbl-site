@@ -27,14 +27,8 @@ describe('Falcon next NBL static site candidate', () => {
     expect(
       screen.getByText('障害者雇用や難病就労支援に長く残る難しさを、本人、仕事、環境、支援、時間、制度の相互作用として読み直します。診断名や配慮名で止めず、社会で使える相談事例、21視点、記事、場面、認知補助ツールへ変換する入口です。'),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /課題の地図を見る/ })).toHaveAttribute(
-      'href',
-      '/preview/falcon-next-nbl#old-new-problems',
-    );
-    expect(screen.getByRole('link', { name: /5つの入口を見る/ })).toHaveAttribute(
-      'href',
-      '/preview/falcon-next-nbl#product-map',
-    );
+    expect(screen.queryByRole('link', { name: /課題の地図を見る/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /5つの入口を見る/ })).not.toBeInTheDocument();
     expect(screen.getByText('関係を読めると、支援の形が変わる。')).toBeInTheDocument();
     expect(screen.getAllByText('古くて新しい課題').length).toBeGreaterThan(0);
     expect(

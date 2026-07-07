@@ -3031,6 +3031,82 @@ const articleSocialQuestionDraftFullArticles: readonly ArticleSocialQuestionFull
       },
     ],
   },
+  {
+    id: 'no-handbook-rare-disease-work-difficulty',
+    featureLabel: '本格論考 07',
+    readingTime: '約9分',
+    title: '手帳のない難病患者の就労困難性を、判定と支援設計に分けて読む。',
+    category: '政策・制度・難病就労',
+    reader: '本人・家族・企業・支援者・行政・政策・研究',
+    hook: '障害者手帳がないから対象外、では現場の困難が消えてしまいます。一方で、困っていれば全員を雇用率に算定する、でも制度境界は保てません。必要なのは、一つの合否ではなく、算定判定、配慮の話合い、支援ルート接続を分けて残す評価です。',
+    imageSrc: '/images/axiom-article-image2-infographics/no-handbook-rare-disease-work-difficulty-v1.png',
+    imageAlt:
+      '手帳のない難病患者の就労困難性について、広い対象と狭い入口のズレ、評価プロセス、三つの接続先を示す図解',
+    sections: [
+      {
+        heading: '手帳は、就労困難性そのものを測る物差しではない',
+        body: '日本の雇用率制度では、障害者手帳が対象範囲の明確な入口として使われてきました。しかし、手帳の有無と職業生活上の困難は一対一には対応しません。難病では、疲労、痛み、通院、体調変動、回復時間、感染リスク、通勤負荷などが仕事条件とぶつかっても、手帳がないために制度上見えにくくなることがあります。',
+      },
+      {
+        heading: '合理的配慮・差別禁止と、雇用率算定の入口はずれている',
+        body: '合理的配慮や差別禁止の考え方は、手帳所持者だけに閉じるものではありません。一方、雇用率算定は企業の数値義務に関わるため、実務上は手帳で可視化される範囲が中心になります。他の障害種別ではこの二つが重なって見えやすいのに対し、手帳のない難病患者では、広いはずの権利保護と狭い算定入口のズレが現場の断絶として表れます。',
+      },
+      {
+        heading: '厳しすぎても、ゆるすぎても制度は壊れる',
+        body: '基準を厳しくしすぎると、ほとんど働けない人だけが対象になり、働く入口を開く制度目的から外れます。ゆるくしすぎると、難病があり配慮が必要なら全員算定という形になり、制度境界が崩れます。中間を取ればよいわけでもありません。見るべきなのは、通常の職場条件のままでは求職、採用、定着に相当の不利益があり、仕事条件設計と支援があれば参加可能性が残る層です。',
+      },
+      {
+        heading: '評価結果は、三つの接続先へ分けて残す',
+        body: '第一に、実雇用率算定に入るかどうか。第二に、算定対象ではない場合でも、合理的配慮・差別禁止の話合いを始めるために何を確認するか。第三に、本人と支援者をどの支援窓口や相談線につなぐか。この三つは同じ閾値では処理できません。だから、評価は「認定／不認定」の一枚判定ではなく、判定と支援設計を分け、三つの接続先を残す仕組みにする必要があります。',
+      },
+    ],
+    oldReading:
+      '手帳があれば雇用率や配慮の対象で、手帳がなければ一般求人・一般対応として扱う。',
+    designReading:
+      '手帳を行政上の入口指標として扱いつつ、職業生活上の制限を仕事・環境・支援・時間・制度の接点で評価し、算定、話合い、支援接続を分ける。',
+    firstMove:
+      '同じケースについて、実雇用率算定、配慮・差別禁止の話合い、支援ルート接続の三列で、必要な確認資料と支援者を分けて書く。',
+    discussionQuestions: [
+      '雇用率算定の判断と、配慮の話合いを始める入口を同じ基準で扱っていないか。',
+      '疲労、痛み、通院、体調変動、回復時間を、職務や通勤、評価の条件として整理できているか。',
+      '個別判定で補える穴と、手帳中心制度そのものの見直し課題を分けて残しているか。',
+    ],
+    nextUseGroups: [
+      {
+        title: '近い相談で読む',
+        intent: '手帳がないことで相談が止まる場面を、架空地域C県のモデル評価として読む。',
+        href: '/toolkit-studio/virtual-news/no-handbook-rare-disease-work-difficulty',
+        items: [
+          '「手帳がない」で止まる相談を、実務上の信号不足として読む。',
+          'A票は制度判定、B票は仕事条件設計として分ける。',
+          '認定結果ではなく接続結果として残す。',
+        ],
+      },
+      {
+        title: '設計ガイドで見る',
+        intent: '難病の就労困難性を、健康時間と支援制度の設計領域へ戻す。',
+        href: candidateAnchorPath(
+          'work-design-views-guide',
+          'work-design-domain-health-time-livelihood',
+        ),
+        items: [
+          '健康時間、回復余地、通院、勤務密度を同じ地図に置く。',
+          '本人、仕事、環境、支援、時間、制度の接点で見る。',
+          '支援ニーズを、病名ではなく職業生活上の制限として翻訳する。',
+        ],
+      },
+      {
+        title: 'ツールにする',
+        intent: '評価を、落とす道具ではなく次の確認へ進む道具にする。',
+        href: candidateAnchorPath('toolkit-studio', 'toolkit-studio-modules'),
+        items: [
+          '三列メモ: 算定するか、話合いの材料、支援窓口。',
+          '共有範囲メモ: 職場に伝える情報、伝えない情報、支援者が補う情報。',
+          '地域差点検: 判定理由、根拠、異議申立て、アウトカムを残す。',
+        ],
+      },
+    ],
+  },
 ];
 
 const axiomArticleCatalogEntries: readonly ArticleCatalogEntry[] = [
@@ -3638,6 +3714,23 @@ const axiomArticleCatalogEntries: readonly ArticleCatalogEntry[] = [
     tags: ['政策研究', 'AI時代', '国際資料', '資料の読み方'],
     depth: '深く読む',
   },
+  {
+    id: 'no-handbook-rare-disease-work-difficulty',
+    title: '手帳のない難病患者の就労困難性を、判定と支援設計に分けて読む。',
+    category: '支援・制度',
+    theme: '政策・研究',
+    audiences: ['本人・家族', '企業・管理職', '支援者', '行政・政策', '研究・発信'],
+    readerQuestion:
+      '障害者手帳がない難病患者の就労困難性を、雇用率算定と合理的配慮の間でどう扱えばよいのか。',
+    argument:
+      '手帳を就労困難性の物差しとは見なさず、算定判定、配慮の話合い、支援ルート接続を分けて残す。',
+    firstUse:
+      '実雇用率算定、配慮・差別禁止の話合い、支援ルート接続の三列で、必要な確認資料と支援者を分けて書く。',
+    nextHref: '/toolkit-studio/virtual-news/no-handbook-rare-disease-work-difficulty',
+    nextLabel: 'バーチャルニュースで読む',
+    tags: ['難病', '障害者手帳', '雇用率', '合理的配慮', '支援接続'],
+    depth: '深く読む',
+  },
 ];
 
 type ArticleExpansionProfile = {
@@ -4184,8 +4277,8 @@ export function validateAxiomNblReportArticleVisualQaItems(
   const errors: string[] = [];
   const ids = new Set<string>();
 
-  if (items.length !== 36) {
-    errors.push(`article_visual_qa_must_cover_36_articles:${items.length}`);
+  if (items.length !== 37) {
+    errors.push(`article_visual_qa_must_cover_37_articles:${items.length}`);
   }
 
   for (const item of items) {
@@ -4436,9 +4529,8 @@ const sceneIssueMapHero = {
 } as const;
 
 const homeWhyHeroVisual = {
-  src: '/images/next-nbl-home-why-hero-imagegen-v1.png',
-  webpSrc: '/images/next-nbl-home-why-hero-imagegen-v1.webp',
-  alt: '障害者雇用・難病就労支援の断片的な情報を、AIの文脈読解補助と人間の確認を通して、本人・仕事・環境・支援・時間・評価の条件地図へ読み替える図',
+  src: '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png',
+  alt: '明るい場で多様な人々の仕事、生活、移動、支援の関係がAI時代のmanifoldとして重なって見えるビジュアル',
 } as const;
 
 const consultationAssessmentHeroVisual = {
@@ -5929,16 +6021,16 @@ function CandidateHero({
 function HomeTopHero() {
   return (
     <section
-      className="border-b border-teal-950 bg-[#071f1d] text-white"
+      className="overflow-hidden border-b border-teal-100 bg-[#f6fbf7] text-slate-950"
       aria-labelledby="home-why-title"
     >
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 md:py-20 lg:grid-cols-2 lg:items-center">
-        <div className="min-w-0">
-          <p className="text-sm font-semibold tracking-[0.16em] text-teal-200">Next Being Lab</p>
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-14 md:py-20 lg:grid-cols-2 lg:items-center">
+        <div className="w-full min-w-0 max-w-full">
+          <p className="text-sm font-semibold tracking-[0.16em] text-teal-800">Next Being Lab</p>
           <h1
             id="home-why-title"
             aria-label="障害者雇用・難病就労支援から、AI時代の仕事設計へ。"
-            className="mt-4 text-[2.1rem] font-semibold leading-[1.05] tracking-normal text-white sm:text-[2.7rem] md:text-[3.45rem] xl:text-[3.75rem]"
+            className="mt-4 max-w-full break-all text-[2.1rem] font-semibold leading-[1.05] tracking-normal text-slate-950 [overflow-wrap:anywhere] sm:text-[2.7rem] md:break-normal md:text-[3.45rem] xl:text-[3.75rem]"
           >
             <span className="block">障害者雇用・</span>
             <span className="block">難病就労支援から、</span>
@@ -5946,24 +6038,9 @@ function HomeTopHero() {
             <span className="block sm:hidden">仕事設計へ。</span>
             <span className="hidden whitespace-nowrap sm:block">AI時代の仕事設計へ。</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 md:text-lg md:leading-9">
+          <p className="mt-6 max-w-2xl break-all text-base leading-8 text-slate-700 [overflow-wrap:anywhere] md:break-normal md:text-lg md:leading-9">
             AIが仕事や社会を急速に変える時代には、人の多様性と、仕事・環境・支援の組み合わせから、働き方と社会参加を設計する力が重要になります。けれど、その関係は複雑で、理念や想いだけでは実装しきれません。NBLはAIで読み解く負担を下げ、障害者雇用・難病就労支援で見えてきた知見を、仕事・環境・支援・時間・評価の条件として読み直すラボです。
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Link
-              className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-[0_18px_50px_rgba(45,212,191,0.18)] transition hover:bg-teal-50"
-              href="/virtual-news"
-            >
-              バーチャルニュース
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
-              href={candidatePath('about-boundary')}
-            >
-              サイト情報
-            </Link>
-          </div>
         </div>
         <HomeWhyHeroImage />
       </div>
@@ -5973,15 +6050,12 @@ function HomeTopHero() {
 
 function HomeWhyHeroImage() {
   return (
-    <figure className="aspect-[4/3] min-w-0 overflow-hidden rounded-xl border border-white/15 bg-white shadow-[0_34px_90px_rgba(13,148,136,0.28)] ring-1 ring-teal-200/20 lg:ml-auto lg:max-w-[560px]">
-      <picture className="block h-full w-full">
-        <source srcSet={homeWhyHeroVisual.webpSrc} type="image/webp" />
-        <img
-          alt={homeWhyHeroVisual.alt}
-          className="block h-full w-full max-w-full bg-[#f7f0df] object-cover object-center"
-          src={homeWhyHeroVisual.src}
-        />
-      </picture>
+    <figure className="aspect-[5/4] w-full min-w-0 max-w-full overflow-hidden rounded-lg border border-white bg-white shadow-[0_34px_90px_rgba(13,148,136,0.22)] ring-1 ring-teal-200/35 lg:ml-auto lg:max-w-[560px] xl:max-w-[580px]">
+      <img
+        alt={homeWhyHeroVisual.alt}
+        className="block h-full w-full max-w-full bg-[#f7f0df] object-cover object-[51%_center]"
+        src={homeWhyHeroVisual.src}
+      />
     </figure>
   );
 }
@@ -10057,23 +10131,17 @@ function HomePublicContent({ currentSlug }: { currentSlug: string }) {
                 膨大で偏りを含む情報を、実践できる仕事条件の地図へ。
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-700">
+                国内外には障害者就労支援の膨大な情報がありますが、そのまま要約することは危険です。
                 NBLは、AIに判断を任せるのではなく、人だけでは追いきれなかった文脈の重なりを読みほどき、偏見や決めつけを点検しながら、人間が確認し、共有し、設計できる形へ戻します。
               </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  className="inline-flex items-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-950"
-                  href={candidatePath('theory-method-trust')}
-                >
-                  NBLの専門性
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  className="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-50"
-                  href="/projects"
-                >
-                  プロジェクト
-                </Link>
-              </div>
+              <Link
+                className="mt-7 inline-flex items-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-teal-950 hover:shadow-md"
+                href={candidatePath('theory-method-trust')}
+              >
+                <BrainCircuit size={16} />
+                NBLの専門性
+                <ArrowRight size={15} />
+              </Link>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               {howSteps.map((step) => {

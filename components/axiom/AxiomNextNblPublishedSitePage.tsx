@@ -20,8 +20,9 @@ const pageSeoBySlug: Record<
     title: 'Next Being Lab | 障害者雇用・難病就労支援から、AI時代の仕事設計へ',
     description:
       '多様な人間と社会・環境の相互作用を踏まえ、AIの助けで認知負荷を下げながら、働きづらさを仕事・環境・支援・時間・評価の条件として読み直すNext Being Labの入口。',
-    imagePath: '/images/next-nbl-home-why-hero-imagegen-v1.png',
-    imageAlt: '障害者雇用・難病就労支援の断片的な情報を仕事条件の地図へ読み替える図',
+    imagePath: '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png',
+    imageAlt:
+      '明るい場で多様な人々の仕事、生活、移動、支援の関係がAI時代のmanifoldとして重なって見えるビジュアル',
   },
   'virtual-news': {
     title: 'NBLバーチャル・ニュース | Next Being Lab',

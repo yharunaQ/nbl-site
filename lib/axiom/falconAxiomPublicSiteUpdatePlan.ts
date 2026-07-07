@@ -152,18 +152,18 @@ export const FALCON_AXIOM_PUBLIC_SITE_UPDATE_DEFINITIONS = [
     falconContextLabelJa: 'NBLトップページ',
     eyebrowJa: '働きづらさを仕事条件の地図へ',
     leadJa:
-      'サイト全体のコンセプトを一撃で示し、8つの課題、相談事例、設計ガイド、NBLレポート、ツールキット、障害種類別入口へ進めるトップページです。',
+      'サイト全体のコンセプトを一撃で示し、バーチャルニュース、設計ガイド、相談事例、NBLレポート、ツールキット、障害種類別入口へ進めるトップページです。',
     problemJa:
       '診断名、障害の種類、配慮名、制度説明だけでは、本人、支援者、企業、制度のあいだで何を話せばよいかが見えにくい。',
     promiseJa: '働きづらさを人の問題で終わらせず、仕事と参加を設計する入口へ翻訳する。',
     notThisJa: '個別相談、法的・医療判断、診断名別の配慮判定は行いません。',
-    primarySlug: 'scene-entry',
-    primaryLabelJa: '8つの課題',
-    secondarySlug: 'case-readings',
-    secondaryLabelJa: '相談事例を見る',
+    primarySlug: 'virtual-news',
+    primaryLabelJa: 'バーチャルニュース',
+    secondarySlug: 'work-design-views-guide',
+    secondaryLabelJa: '設計ガイドを見る',
     visual: {
-      src: '/images/next-nbl-home-hero-image2-v1.png',
-      alt: '働きづらさを仕事条件の地図へ変換し、8つの課題、相談事例、設計ガイド、NBLレポート、ツールキット、障害種類から見る入口へつなぐ図解',
+      src: '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png',
+      alt: '明るい場で多様な人々の仕事、生活、移動、支援の関係がAI時代のmanifoldとして重なって見えるビジュアル',
     },
     inheritedFalconLayoutModules: [
       'public_shell_header_navigation',
@@ -292,8 +292,8 @@ export const FALCON_AXIOM_PUBLIC_SITE_UPDATE_DEFINITIONS = [
     promiseJa: '社会の違和感を、記事、図解、読後に話す問い、相談事例集や設計ガイドへの導線にする。',
     notThisJa:
       '個別相談への回答、現行制度、法令解釈、公式見解、統計評価をこのページだけで断定しません。',
-    primarySlug: 'scene-entry',
-    primaryLabelJa: '場面で見る',
+    primarySlug: 'virtual-news',
+    primaryLabelJa: 'バーチャルニュースへ',
     secondarySlug: 'work-design-views-guide',
     secondaryLabelJa: '設計ガイドへ',
     visual: {
@@ -357,10 +357,10 @@ export const FALCON_AXIOM_PUBLIC_SITE_UPDATE_DEFINITIONS = [
   {
     surface: 'scene_entry_use_cases',
     falconPageRoleId: 'NS-04',
-    falconPageRoleJa: '8つの課題',
-    navLabelJa: '8つの課題',
-    falconContextLabelJa: '8つの課題',
-    eyebrowJa: '古くて新しい課題を4コマで見る',
+    falconPageRoleJa: '8つの課題の地図',
+    navLabelJa: '課題地図',
+    falconContextLabelJa: '8つの課題の地図',
+    eyebrowJa: '8つの課題の地図',
     leadJa:
       '抽象的な説明に入る前に、昔から理念や制度では語られてきたのに解けなかった8つの課題を4コマで見て、何が数字・名前・制度・善意・検索結果に見え、どの仕事条件を共有すれば共通認識に進めるのかをつかみます。',
     problemJa:

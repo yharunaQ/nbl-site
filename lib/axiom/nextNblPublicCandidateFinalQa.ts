@@ -96,7 +96,8 @@ export const AXIOM_NEXT_NBL_PUBLIC_LANGUAGE_RISK_TERMS: readonly AxiomNextNblPub
     {
       term: 'Axiom',
       readerRiskJa: '開発コードネームが漏れると、公開ページではなく内部説明に見える。',
-      replacementPrincipleJa: '読者向けには「NBL」「このサイト」「専門知識ネットワーク」などの公開語へ置換する。',
+      replacementPrincipleJa:
+        '読者向けには「NBL」「このサイト」「専門知識ネットワーク」などの公開語へ置換する。',
       status: 'blocked_in_reader_copy',
     },
     {
@@ -108,13 +109,15 @@ export const AXIOM_NEXT_NBL_PUBLIC_LANGUAGE_RISK_TERMS: readonly AxiomNextNblPub
     {
       term: 'runtime',
       readerRiskJa: 'システム実装や運用内部の話に見える。',
-      replacementPrincipleJa: '公開面では原則出さず、必要なら「公開運用」「個別相談機能は当面使わない」と言う。',
+      replacementPrincipleJa:
+        '公開面では原則出さず、必要なら「公開運用」「個別相談機能は当面使わない」と言う。',
       status: 'blocked_in_reader_copy',
     },
     {
       term: 'publication',
       readerRiskJa: '公開承認プロセスの内部語に見える。',
-      replacementPrincipleJa: '内部候補表示以外では「公開」「掲載」「共有」など文脈に合う日本語を使う。',
+      replacementPrincipleJa:
+        '内部候補表示以外では「公開」「掲載」「共有」など文脈に合う日本語を使う。',
       status: 'allowed_only_in_internal_candidate_chrome',
     },
     {
@@ -149,13 +152,12 @@ export const AXIOM_NEXT_NBL_VISUAL_QA_MATRIX: readonly AxiomNextNblVisualQaMatri
     pageSlug: 'home',
     pagePath: route('home'),
     assetKind: 'hero',
-    imageSrc: '/images/next-nbl-home-hero-image2-v1.png',
+    imageSrc: '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png',
     imageAlt:
-      '働きづらさを仕事条件の地図へ変換し、8つの課題、相談事例、設計ガイド、NBLレポート、ツールキット、障害種類から見る入口へつなぐ図解',
-    surroundingCopyJa:
-      '働きづらさを、本人の弱さや個別配慮の名前で終わらせず、仕事・環境・支援・時間・評価の関係として見直す。',
+      '明るい場で多様な人々の仕事、生活、移動、支援の関係がAI時代のmanifoldとして重なって見えるビジュアル',
+    surroundingCopyJa: '障害者雇用・難病就労支援から、AI時代の仕事設計へ。',
     intendedReaderUnderstandingJa:
-      'このサイトは一つの説明ページではなく、課題、相談、設計、記事、素材、障害種類の入口を同じ仕事条件の地図へつなぐ場所だと分かる。',
+      'トップの主画像で、NBLが抽象的なAIサービスではなく、人間の生活、仕事、支援、移動、参加の関係を明るく読み直す知識ネットワークであることをつかめる。',
     status: 'code_contract_passed_visual_human_check_needed',
     humanVisualCheckJa: commonHumanVisualCheck,
   },
@@ -167,8 +169,7 @@ export const AXIOM_NEXT_NBL_VISUAL_QA_MATRIX: readonly AxiomNextNblVisualQaMatri
     imageSrc: '/images/axiom-scene-comics/axiom-scene-old-new-issue-map-v2.png',
     imageAlt:
       '見える数字、名前、健康時間、情報分断、制度、上司依存、検索SNSAI、学びの循環という8つの古くて新しい課題を仕事条件の地図へつなぐ図',
-    surroundingCopyJa:
-      '昔から言われてきたのに解けなかった課題を、仕事条件の地図へ戻す。',
+    surroundingCopyJa: '昔から言われてきたのに解けなかった課題を、仕事条件の地図へ戻す。',
     intendedReaderUnderstandingJa:
       '8課題が普通の現場あるあるではなく、NBLが挑む「古くて新しい課題」の全体像として見える。',
     status: 'code_contract_passed_visual_human_check_needed',
@@ -468,8 +469,8 @@ export function buildAxiomNextNblPublicCandidateFinalQaRun(): AxiomNextNblPublic
     pageCoverage: AXIOM_NEXT_NBL_FINAL_QA_PAGE_SLUGS,
     qaConclusionsJa: [
       '主要画像は、本文・alt・画像内日本語の三点一致を人間が最終確認できる単位に整理した。',
-      '設計ガイドと8つの課題は画像点数が多く、公開前QAの主対象である。',
-      'NBLレポートはHeroに加え、36本の記事別インフォグラフィック一致をFinal QA surface上の全記事対応表で確認できる。',
+      '設計ガイドと8つの課題の地図は画像点数が多く、公開前QAの主対象である。',
+      'NBLレポートはHeroに加え、37本の記事別インフォグラフィック一致をFinal QA surface上の全記事対応表で確認できる。',
       '内部語は公開本文ではブロックし、内部候補表示だけに閉じる。',
     ],
     notNow: [
@@ -502,7 +503,11 @@ export function validateAxiomNextNblPublicCandidateFinalQaRun(
     errors,
     'object_type_must_match',
   );
-  pushIf(run.version !== AXIOM_NEXT_NBL_PUBLIC_CANDIDATE_FINAL_QA_VERSION, errors, 'version_must_match');
+  pushIf(
+    run.version !== AXIOM_NEXT_NBL_PUBLIC_CANDIDATE_FINAL_QA_VERSION,
+    errors,
+    'version_must_match',
+  );
   pushIf(run.lane !== 'Falcon Lab', errors, 'lane_must_remain_falcon_lab');
   pushIf(
     run.status !== 'internal_final_qa_contract_ready_not_public_approval',
@@ -535,8 +540,16 @@ export function validateAxiomNextNblPublicCandidateFinalQaRun(
   for (const item of run.visualQaMatrix) {
     pushIf(qaIds.has(item.qaId), errors, `duplicate_qa_id:${item.qaId}`);
     qaIds.add(item.qaId);
-    pushIf(!item.pagePath.startsWith(run.candidateRouteBase), errors, `qa_path_must_remain_internal:${item.qaId}`);
-    pushIf(!item.imageSrc.startsWith('/images/'), errors, `qa_image_must_be_local_image:${item.qaId}`);
+    pushIf(
+      !item.pagePath.startsWith(run.candidateRouteBase),
+      errors,
+      `qa_path_must_remain_internal:${item.qaId}`,
+    );
+    pushIf(
+      !item.imageSrc.startsWith('/images/'),
+      errors,
+      `qa_image_must_be_local_image:${item.qaId}`,
+    );
     pushIf(item.imageAlt.length < 24, errors, `qa_alt_too_short:${item.qaId}`);
     pushIf(item.surroundingCopyJa.length < 20, errors, `qa_copy_too_short:${item.qaId}`);
     pushIf(
@@ -546,8 +559,19 @@ export function validateAxiomNextNblPublicCandidateFinalQaRun(
     );
   }
 
-  for (const requiredTerm of ['Axiom', 'kernel', 'runtime', 'source lens', 'missing context', 'Founder']) {
-    pushIf(!riskTerms.has(requiredTerm), errors, `missing_public_language_risk_term:${requiredTerm}`);
+  for (const requiredTerm of [
+    'Axiom',
+    'kernel',
+    'runtime',
+    'source lens',
+    'missing context',
+    'Founder',
+  ]) {
+    pushIf(
+      !riskTerms.has(requiredTerm),
+      errors,
+      `missing_public_language_risk_term:${requiredTerm}`,
+    );
   }
 
   for (const requiredBoundary of [

@@ -130,14 +130,21 @@ describe('Axiom next NBL published routes', () => {
     const hero = screen.getByRole('region', {
       name: /障害者雇用・\s*難病就労支援から、\s*AI時代の仕事設計へ。/,
     });
-    expect(within(hero).getByRole('link', { name: /サイト情報/ })).toHaveAttribute(
-      'href',
-      '/about-boundary',
-    );
+    expect(within(hero).queryByRole('link', { name: /サイト情報/ })).not.toBeInTheDocument();
+    expect(within(hero).queryByRole('link', { name: /バーチャルニュース/ })).not.toBeInTheDocument();
     expect(within(hero).queryByRole('link', { name: /プロジェクト/ })).not.toBeInTheDocument();
-    expect(within(hero).getByRole('img', { name: /断片的な情報/ })).toHaveAttribute(
+    expect(within(hero).getByRole('img', { name: /多様な人々の仕事、生活、移動/ })).toHaveAttribute(
       'src',
-      '/images/next-nbl-home-why-hero-imagegen-v1.png',
+      '/images/nbl-home-hero-candidates/next-nbl-home-hero-diverse-manifold-image2-v2.png',
+    );
+    expect(
+      screen.getByText('国内外には障害者就労支援の膨大な情報がありますが、そのまま要約することは危険です。', {
+        exact: false,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /NBLの専門性/ })[0]).toHaveAttribute(
+      'href',
+      '/theory-method-trust',
     );
     expect(
       screen.queryByRole('img', { name: /働きづらさを仕事条件の地図へ変換/ }),
@@ -183,10 +190,14 @@ describe('Axiom next NBL published routes', () => {
       screen.getByText('制度、職場運用、地域連携、相談線、予算、評価。', { exact: false }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText('職場の困りごとを、道具、予算、手順、支援線の問題として読み直す。', {
+      screen.getByText('相談室ではなく、社会の現場から問いを受け取り、仕事条件として読み直す。', {
         exact: false,
       }),
     ).toBeInTheDocument();
+    const heroImage = container.querySelector(
+      'img[src="/images/nbl-virtual-news/virtual-news-field-reporting-hero-v1.png"]',
+    );
+    expect(heroImage).not.toBeNull();
     expect(
       screen.queryByText('記事の焦点は付箋を囲む会議ではなく', { exact: false }),
     ).not.toBeInTheDocument();
@@ -196,15 +207,15 @@ describe('Axiom next NBL published routes', () => {
     ).toBeLessThan(
       (container.textContent ?? '').indexOf('バーチャルニュースに近づいた実ニュース。'),
     );
-    expect(screen.getByText('いま現場に近い3つの未解決接点。')).toBeInTheDocument();
+    expect(screen.getByText('雇用から、企業経営と社会設計へ広がる3本。')).toBeInTheDocument();
     const priorityCards = Array.from(
       container.querySelectorAll('[data-virtual-news-priority-card]'),
     );
     expect(priorityCards).toHaveLength(3);
     expect(priorityCards.map((card) => card.querySelector('a')?.getAttribute('href'))).toEqual([
-      '/toolkit-studio/virtual-news/team-fairness-work-allocation-redesign',
-      '/toolkit-studio/virtual-news/medical-information-work-condition-translation',
-      '/toolkit-studio/virtual-news/information-access-meeting-emergency-standard',
+      '/toolkit-studio/virtual-news/public-awareness-employment-campaign',
+      '/toolkit-studio/virtual-news/employment-burden-assessment-subsidy-special-zone',
+      '/toolkit-studio/virtual-news/japanese-ips-integrated-employment-support',
     ]);
     expect(container.querySelectorAll('[data-virtual-news-reality-signal]')).toHaveLength(
       nblVirtualNewsRealitySignals.length,

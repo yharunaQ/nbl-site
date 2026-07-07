@@ -51,10 +51,7 @@ describe('Falcon to Axiom public site update plan', () => {
       'twenty_one_views_work_design_guide',
       plan,
     );
-    const scene = getFalconAxiomPublicSiteUpdatePlanRowBySurface(
-      'scene_entry_use_cases',
-      plan,
-    );
+    const scene = getFalconAxiomPublicSiteUpdatePlanRowBySurface('scene_entry_use_cases', plan);
     const toolkit = getFalconAxiomPublicSiteUpdatePlanRowBySurface(
       'cognitive_support_toolkit_studio_multimodal_objects',
       plan,
@@ -84,12 +81,12 @@ describe('Falcon to Axiom public site update plan', () => {
       navLabelJa: '設計ガイド',
       falconContextLabelJa: '未来の仕事・社会参加設計ガイド',
       promiseJa:
-        'Founderレビュー済みの統合知識を、仕事・社会参加設計のマスタープランと状況レベルに再編集する。',
+        '障害者雇用や難病就労支援で見えてきた知見を、仕事・社会参加設計のマスタープランと状況レベルに再編集する。',
     });
     expect(scene).toMatchObject({
       falconPageRoleId: 'NS-04',
-      falconPageRoleJa: '8つの課題',
-      navLabelJa: '8つの課題',
+      falconPageRoleJa: '8つの課題の地図',
+      navLabelJa: '課題地図',
     });
     expect(scene?.inheritedFalconLayoutModules).toEqual(
       expect.arrayContaining(['scene_comic_use_case_panel']),
@@ -101,10 +98,7 @@ describe('Falcon to Axiom public site update plan', () => {
 
     for (const row of plan.rows) {
       expect(row.inheritedFalconLayoutModules).toEqual(
-        expect.arrayContaining([
-          'hero_visual_with_action_pair',
-          'surface_specific_content_body',
-        ]),
+        expect.arrayContaining(['hero_visual_with_action_pair', 'surface_specific_content_body']),
       );
       expect(
         row.inheritedFalconLayoutModules.some((module) =>

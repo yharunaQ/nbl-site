@@ -28,6 +28,17 @@ The first hero image is generated as `public/images/next-nbl-home-why-hero-image
 
 The home page now ends after the what / entrance-card grid and the shared boundary footer. The earlier bottom "For teams" band and the two-card "NBLの専門性 / サイト情報" reminder were removed from the home page to keep the top page focused on why -> how -> what. Those destinations remain available through the header, hero / how calls to action, and their own pages.
 
+## 2026-07-07 Founder Recheck Adjustment
+
+Founder reviewed the whole site and corrected the `How` section.
+
+- Keep the `How` headline as `膨大で偏りを含む情報を、実践できる仕事条件の地図へ。`
+- Add the explicit warning that domestic and international disability-employment-support information is vast, but direct summarization is dangerous.
+- Restore the `NBLの専門性` link directly under the `How` explanation. This link is useful here because the warning naturally asks why NBL can read information differently, and the answer belongs on the expertise page.
+- Do not restore the top hero's earlier `バーチャルニュース` / `サイト情報` button noise. The correction is only for the `How` explanation link.
+
+Boundary: this is a public-surface copy / navigation refinement only. It is not public approval, source validity, legal / medical / employment / accommodation judgment, runtime movement, or knowledge promotion.
+
 Visual direction: keep the page trustworthy and readable, but avoid an overly muted beige / ivory surface. The first hero uses a deep teal / ink lab tone so the site has a visible advanced-research core, while the how and what sections stay light for scanning and content entry. This is a visual hierarchy adjustment only; it does not change public approval status, IA, promises, or product scope.
 
 ## Boundary

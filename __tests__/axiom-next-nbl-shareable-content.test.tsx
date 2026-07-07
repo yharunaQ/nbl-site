@@ -14,7 +14,7 @@ describe('Axiom next NBL shareable content', () => {
   it('builds shareable NBL report URLs with article deep links and image cards', async () => {
     const items = buildAxiomNblReportShareItems();
 
-    expect(items).toHaveLength(36);
+    expect(items).toHaveLength(37);
     expect(items[0].sharePath).toMatch(/^\/share\/nbl-report\//);
     expect(items[0].targetPath).toContain('/articles-social-questions?article=');
     expect(items[0].imageSrc).toMatch(/^\/images\/axiom-article-image2-infographics\//);
