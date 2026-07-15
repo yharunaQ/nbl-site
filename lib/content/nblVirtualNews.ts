@@ -1987,7 +1987,7 @@ export const nblVirtualNewsArticles = [
       },
       {
         afterSection: 5,
-        src: '/resources/work-support-transformation/foundational-training.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-10.png',
         alt: '基礎的研修から始まることを示した図解',
         caption:
           '基礎的研修は、地域の支援者が同じ言葉で仕事条件、支援条件、企業支援を話すための共通基盤になる。',
