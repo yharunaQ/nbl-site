@@ -1959,7 +1959,7 @@ export const nblVirtualNewsArticles = [
     images: [
       {
         afterSection: 1,
-        src: '/resources/work-support-transformation/job-choice-support.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-08.png',
         alt: '就労選択支援の重要性を示した図解',
         caption:
           '就労選択支援を、就職可否の判定ではなく、本人の希望、作業体験、仕事条件、地域資源をつなぐ入口として使う。',

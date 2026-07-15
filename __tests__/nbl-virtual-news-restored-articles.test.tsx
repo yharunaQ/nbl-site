@@ -102,6 +102,21 @@ describe('NBL virtual news restored articles', () => {
     expect(screen.queryByText('ツールキット内の棚')).not.toBeInTheDocument();
   });
 
+  it('uses the current shared infographic for the regional employment article', () => {
+    const article = getNblVirtualNewsArticleBySlug(
+      'regional-employment-continuity-council',
+    );
+
+    expect(article?.images).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          src: '/images/axiom-toolkit-selected-infographics/top-08.png',
+          alt: '就労選択支援の重要性を示した図解',
+        }),
+      ]),
+    );
+  });
+
   it('keeps the medical information article framed as news copy, not Axiom promotion copy', () => {
     const article = getNblVirtualNewsArticleBySlug(
       'medical-information-work-condition-translation',
