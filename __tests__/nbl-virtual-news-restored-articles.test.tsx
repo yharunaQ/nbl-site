@@ -121,6 +121,29 @@ describe('NBL virtual news restored articles', () => {
     );
   });
 
+  it('does not reference PNG assets excluded from the public deployment', () => {
+    const articleImagePaths = nblVirtualNewsArticles.flatMap((article) => [
+      article.heroImage.src,
+      ...article.images.map((image) => image.src),
+    ]);
+
+    expect(articleImagePaths).not.toEqual(
+      expect.arrayContaining([
+        expect.stringMatching(
+          /^\/resources\/work-support-transformation\/.*\.png$/,
+        ),
+      ]),
+    );
+    expect(articleImagePaths).toEqual(
+      expect.arrayContaining([
+        '/images/axiom-toolkit-selected-infographics/top-17.png',
+        '/images/axiom-toolkit-selected-infographics/top-21.png',
+        '/resources/work-support-transformation/inclusive-employment.webp',
+        '/resources/work-support-transformation/japan-vs-world.webp',
+      ]),
+    );
+  });
+
   it('keeps the medical information article framed as news copy, not Axiom promotion copy', () => {
     const article = getNblVirtualNewsArticleBySlug(
       'medical-information-work-condition-translation',

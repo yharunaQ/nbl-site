@@ -1994,7 +1994,7 @@ export const nblVirtualNewsArticles = [
       },
       {
         afterSection: 6,
-        src: '/resources/work-support-transformation/global-three-layers.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-17.png',
         alt: '諸外国における障害者就労支援の3層構造を示した図解',
         caption:
           '海外制度をそのまま輸入するのではなく、一般雇用、専門支援、生活・医療・福祉の層を、本人と企業の仕事場面に合わせてつなぎ直す発想として読む。',
@@ -2207,7 +2207,7 @@ export const nblVirtualNewsArticles = [
     images: [
       {
         afterSection: 1,
-        src: '/resources/work-support-transformation/inclusive-employment.png',
+        src: '/resources/work-support-transformation/inclusive-employment.webp',
         alt: 'インクルーシブ雇用を社会的投資として示す図解',
         caption:
           'キャンペーンの中心は、障害や病気のある人を負担として見るのではなく、条件を整えることで参加と活躍を広げる視点に置くこと。',
@@ -2221,14 +2221,14 @@ export const nblVirtualNewsArticles = [
       },
       {
         afterSection: 4,
-        src: '/resources/work-support-transformation/employment-frame.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-21.png',
         alt: '障害者雇用を仕事条件の枠組みで見直す図解',
         caption:
           '企業向け素材は、広報メッセージから、相談窓口、管理職研修、仕事条件の見直しへ接続する。',
       },
       {
         afterSection: 5,
-        src: '/resources/work-support-transformation/japan-vs-world.png',
+        src: '/resources/work-support-transformation/japan-vs-world.webp',
         alt: '日本と諸外国の障害者就労支援の前提差を示す図解',
         caption:
           '海外キャンペーンは制度輸入ではなく、社会の前提認識と職場の対話を更新するヒントとして読む。',
@@ -2430,7 +2430,7 @@ export const nblVirtualNewsArticles = [
     images: [
       {
         afterSection: 0,
-        src: '/resources/work-support-transformation/employment-frame.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-21.png',
         alt: '障害者雇用の枠組みを仕事条件から見直す図解',
         caption: '重度判定を個人属性で固定せず、仕事、環境、支援、時間、制度の相互作用として見る。',
       },
@@ -2449,7 +2449,7 @@ export const nblVirtualNewsArticles = [
       },
       {
         afterSection: 6,
-        src: '/resources/work-support-transformation/global-three-layers.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-17.png',
         alt: '諸外国における障害者就労支援の3層構造を示した図解',
         caption:
           '海外制度はそのまま輸入せず、配慮、専門支援、経済的調整をどう重ねるかを考えるヒントとして読む。',
@@ -2681,7 +2681,7 @@ export const nblVirtualNewsArticles = [
       },
       {
         afterSection: 6,
-        src: '/resources/work-support-transformation/global-three-layers.png',
+        src: '/images/axiom-toolkit-selected-infographics/top-17.png',
         alt: '諸外国における障害者就労支援の3層構造を示した図解',
         caption:
           '海外の社会的雇用や援助付き就業は、制度輸入ではなく、地域の支援、事業性、一般雇用接続を考える補助線として読む。',
