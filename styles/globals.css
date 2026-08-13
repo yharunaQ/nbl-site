@@ -68,14 +68,7 @@ html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
     radial-gradient(circle at 88% 8%, rgba(194, 104, 77, 0.12), transparent 22rem),
     linear-gradient(180deg, #fffaf1 0%, #f8f4eb 42%, #f6f7f2 100%) !important;
   color: var(--nbl-ink);
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Hiragino Sans",
-    "Yu Gothic",
-    "YuGothic",
-    "Noto Sans JP",
-    sans-serif;
+  font-family: inherit;
 }
 
 .axiom-public-candidate h1,
