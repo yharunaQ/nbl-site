@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import PageSeo from '@/components/PageSeo';
 import { NEXT_NBL_CARRYOVER_LINKS } from '@/lib/axiom/nextNblPublicCandidateCarryoverLinks';
 import {
@@ -49,7 +48,6 @@ export type WorkConditionForumTextPageProps = {
   siteHomeHref?: string;
   reportHref?: string;
   toolkitHref?: string;
-  followup?: ReactNode;
 };
 
 type PendingBlock =
@@ -183,7 +181,6 @@ export default function WorkConditionForumTextPage({
   siteHomeHref = NEXT_NBL_CARRYOVER_LINKS.home,
   reportHref = NEXT_NBL_CARRYOVER_LINKS.report,
   toolkitHref = NEXT_NBL_CARRYOVER_LINKS.toolkit,
-  followup,
 }: WorkConditionForumTextPageProps) {
   const [isInfographicOpen, setIsInfographicOpen] = useState(false);
   const group =
@@ -453,8 +450,6 @@ export default function WorkConditionForumTextPage({
             )}
           </div>
         </section>
-
-        {followup && <div className="px-4 sm:px-5">{followup}</div>}
 
         <section className="bg-slate-950 py-10 text-white">
           <div className="mx-auto grid max-w-4xl gap-5 px-4 sm:px-5 md:px-8">

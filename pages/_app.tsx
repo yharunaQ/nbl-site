@@ -1,4 +1,3 @@
-import { AxiomNextSiteCandidateProvider } from '@/components/axiom/AxiomNextSiteCandidateContext';
 // pages/_app.tsx
 import type { AppProps } from 'next/app';
 import '@/styles/globals.css';
@@ -74,17 +73,13 @@ function RouteScrollRestoration() {
 }
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const { pathname } = useRouter();
-  const ownsMain = pathname === '/' || pathname.startsWith('/materials') || pathname.startsWith('/events') ||
-    ['/projects','/search','/case-readings','/work-design-views-guide','/public-collaboration','/practice-workbook','/support-organization-checklist','/first-day-assistance','/edition-ict','/edition-inspection','/articles-social-questions','/toolkit-studio','/theory-method-trust','/about-boundary','/work-condition-window','/scene-entry'].includes(pathname);
-  const Content = ownsMain ? 'div' : 'main';
   return (
     <PlayerProvider>
-      <AxiomNextSiteCandidateProvider><Content className={noto.className}>
+      <main className={noto.className}>
         <RouteScrollRestoration />
         <Component {...pageProps} />
         <MiniPlayer />
-      </Content></AxiomNextSiteCandidateProvider>
+      </main>
     </PlayerProvider>
   );
 }

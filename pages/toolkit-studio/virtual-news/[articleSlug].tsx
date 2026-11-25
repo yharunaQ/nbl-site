@@ -1,4 +1,3 @@
-import AxiomArchiveFollowup, { archiveArticleFollowup } from '@/components/axiom/AxiomArchiveFollowup';
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import NextLink from 'next/link';
 import {
@@ -258,11 +257,6 @@ export function NblVirtualNewsArticlePage({ article }: NblVirtualNewsArticlePage
                 ))}
               </ul>
             </section>
-            <AxiomArchiveFollowup
-              heading="読んだ話を現場で確かめる"
-              links={[archiveArticleFollowup(article.slug)]}
-              proposal="この記事の前提への異論や別案を提案する"
-            />
           </article>
 
           <aside className="space-y-5 lg:sticky lg:top-5">

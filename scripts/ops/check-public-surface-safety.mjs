@@ -8,12 +8,6 @@ const BASE_URL = `http://127.0.0.1:${PORT}`;
 
 const ROUTES = [
   '/',
-  '/case-readings',
-  '/support-organization-checklist',
-  '/public-collaboration',
-  '/first-day-assistance',
-  '/materials',
-  '/events/work-choice-forum',
   '/work-design-views-guide',
   '/work-design-studio',
   '/work-design-map',

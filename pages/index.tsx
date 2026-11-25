@@ -1,5 +1,5 @@
-import NblEcosystemPage from '@/components/axiom/NblEcosystemPage';
+import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
 
-export default function Page() {
-  return <NblEcosystemPage slug="home" />;
+export default function Home() {
+  return <AxiomNextNblPublishedSitePage slug="home" />;
 }

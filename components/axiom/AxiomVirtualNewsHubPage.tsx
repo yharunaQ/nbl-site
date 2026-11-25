@@ -1,4 +1,3 @@
-import AxiomArchiveFollowup, { archiveFollowups } from '@/components/axiom/AxiomArchiveFollowup';
 import NextLink from 'next/link';
 import {
   ArrowRight,
@@ -486,14 +485,6 @@ export default function AxiomVirtualNewsHubPage() {
             </div>
           </div>
         </section>
-
-        <div className="px-5">
-          <AxiomArchiveFollowup
-            heading="記事で見つけた課題を会議に持ち帰る"
-            links={[archiveFollowups.team]}
-            proposal="続けて読みたい議題や、記事の別案を提案する"
-          />
-        </div>
 
         <section className="bg-slate-950 text-white">
           <div className="mx-auto grid max-w-7xl gap-6 px-5 py-10 md:grid-cols-3">
