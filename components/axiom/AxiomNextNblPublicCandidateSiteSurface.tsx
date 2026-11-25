@@ -1,3 +1,6 @@
+import AxiomArchiveFollowup from './AxiomArchiveFollowup';
+import { AxiomNextSiteHeader, AxiomNextSiteFooter } from './AxiomNextSiteChrome';
+import { AxiomNextSiteLinksProvider } from './AxiomNextSiteLinks';
 import NextLink from 'next/link';
 import {
   createContext,
@@ -5617,6 +5620,13 @@ function PublicCandidateShell({
     item.slug === 'home' ? [item, virtualNewsNavItem] : [item],
   );
 
+  if (routeMode === 'published') {
+    return <AxiomNextSiteLinksProvider mode="isolated_root" published>
+      <AxiomNextSiteHeader currentPath={`/${currentRoute.slug}`} />
+      <div className="axiom-public-candidate">{children}</div>
+      <AxiomNextSiteFooter />
+    </AxiomNextSiteLinksProvider>;
+  }
   return (
     <div className="nbl-public-preview axiom-public-candidate min-h-screen w-full max-w-[100vw] overflow-x-hidden break-words bg-[#fbfaf5] text-slate-950 [overflow-wrap:anywhere] [&_*]:min-w-0">
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#fbfaf5]/94 backdrop-blur">
@@ -5699,14 +5709,7 @@ function PublicCandidateShell({
                       </Link>
                     );
                   })}
-                  {routeMode === 'published' ? (
-                    <Link
-                      className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-[#fbfaf5] hover:text-teal-950"
-                      href={publishedProjectsNavItem.href}
-                    >
-                      {publishedProjectsNavItem.label}
-                    </Link>
-                  ) : null}
+
                 </nav>
               </div>
             </details>
@@ -5739,14 +5742,7 @@ function PublicCandidateShell({
               </Link>
             );
           })}
-          {routeMode === 'published' ? (
-            <Link
-              className="shrink-0 whitespace-nowrap border-b-2 border-transparent px-2 py-1.5 text-[13px] text-slate-600"
-              href={publishedProjectsNavItem.href}
-            >
-              {publishedProjectsNavItem.label}
-            </Link>
-          ) : null}
+
         </nav>
       </header>
       {children}
@@ -7389,6 +7385,16 @@ function ToolkitStudioPublicContent() {
                   {selectedToolkitInfographic.use}
                 </p>
               </div>
+              {selectedToolkitInfographicId === 'ibd-02' && (
+                <AxiomArchiveFollowup
+                  heading="初出勤の動線を確かめたら"
+                  links={[{
+                    href: '/work-design-views-guide?system=WDG2-04#time-prepare',
+                    label: '必要なときに席を外せるよう、休憩と仕事の段取りを考える',
+                  }]}
+                  proposal="この四コマに足したい初日の工夫を提案する"
+                />
+              )}
               {selectedToolkitInfographicId ? (
                 <ShareActionStrip
                   contentHref={toolkitInfographicContentPath(selectedToolkitInfographicId)}

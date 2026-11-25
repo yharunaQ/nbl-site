@@ -1,0 +1,189 @@
+.scenario {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0 0 28px;
+  color: #263c34;
+  font-size: 16px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.scenario h3 {
+  margin: 0 0 12px;
+  color: #193c31;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.scenario .scene {
+  margin: 0 0 18px;
+}
+.card {
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: 22px 24px;
+  border: 1px solid #d9dfd2;
+  border-radius: 12px;
+  background: #faf6ec;
+}
+.exampleLabel {
+  display: block;
+  margin-bottom: 7px;
+  color: #3b6252;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+.card h4 {
+  margin: 0 0 12px;
+  color: #193c31;
+  font-size: 19px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.card .exampleIntro {
+  margin: 0 0 18px;
+  font-size: 15px;
+}
+.cues {
+  margin: 0;
+}
+.cues > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 8px 20px;
+  padding: 13px 0;
+  border-top: 1px solid #d9dfd2;
+}
+.cues dt {
+  min-width: 0;
+  color: #315e4d;
+  font-size: 14px;
+  font-weight: 750;
+}
+.cues dd {
+  min-width: 0;
+  margin: 0;
+  font-size: 15px;
+}
+.card .takeaway {
+  margin: 6px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid #bbcdbd;
+  color: #234f3e;
+  font-size: 15px;
+  font-weight: 650;
+}
+.comparison {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 15px;
+  text-align: left;
+}
+.comparison th,
+.comparison td {
+  padding: 13px 12px;
+  border-top: 1px solid #d9dfd2;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.comparison thead th {
+  color: #315e4d;
+  font-size: 14px;
+}
+.comparison th:first-child {
+  width: 23%;
+}
+.comparison tbody th {
+  color: #315e4d;
+  font-size: 14px;
+  font-weight: 750;
+}
+.comparison td:last-child {
+  background: #edf3e9;
+}
+.columnLabel {
+  display: none;
+}
+/* Explicit table roles in the markup preserve its relationships when rows stack. */
+@media screen and (max-width: 520px) {
+  .comparison,
+  .comparison tbody,
+  .comparison tbody tr,
+  .comparison tbody th,
+  .comparison tbody td {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+  }
+  .comparison thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .comparison tbody th:first-child {
+    width: 100%;
+  }
+  .comparison tbody tr {
+    border-top: 1px solid #bbcdbd;
+    padding: 10px 0;
+  }
+  .comparison tbody th,
+  .comparison tbody td {
+    border: 0;
+    padding: 8px 10px;
+  }
+  .columnLabel {
+    display: block;
+    margin-bottom: 4px;
+    color: #315e4d;
+    font-size: 13px;
+    font-weight: 750;
+  }
+}
+@media (max-width: 520px) {
+  .card {
+    padding: 18px 16px;
+  }
+  .cues > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+@media print {
+  .scenario {
+    color: #111;
+    font-size: 11pt;
+  }
+  .card {
+    background: transparent;
+    border-color: #777;
+    break-inside: auto;
+  }
+  .scenario h3,
+  .card figcaption {
+    break-after: avoid;
+  }
+  .cues > div {
+    break-inside: avoid;
+  }
+  .comparison tr {
+    break-inside: avoid;
+  }
+  .comparison th,
+  .comparison td {
+    padding: 9px;
+    color: #111;
+  }
+  .comparison thead {
+    display: table-header-group;
+  }
+}

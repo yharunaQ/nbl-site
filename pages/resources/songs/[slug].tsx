@@ -1,3 +1,4 @@
+import AxiomArchiveFollowup, { archiveFollowups } from '@/components/axiom/AxiomArchiveFollowup';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Play, Pause } from 'lucide-react';
@@ -219,6 +220,12 @@ export default function SongPage({ song, relatedSongs, campaignSongs }: Props) {
             </a>
             {' '}（CC-BY-NC / Next Being Lab）
           </p>
+        )}
+        {song.slug === 'mienai-nimotsu-no-hero' && (
+          <AxiomArchiveFollowup
+            heading="曲に出てくる「見えない荷物」から、初日の準備へ"
+            links={[archiveFollowups.comic, archiveFollowups.start]}
+          />
         )}
       </main>
     </div>

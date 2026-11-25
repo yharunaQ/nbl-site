@@ -1,5 +1,5 @@
-import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
+import NblEcosystemPage from '@/components/axiom/NblEcosystemPage';
 
-export default function WorkDesignViewsGuidePage() {
-  return <AxiomNextNblPublishedSitePage slug="work-design-views-guide" />;
+export default function Page() {
+  return <NblEcosystemPage slug="work-design-views-guide" />;
 }

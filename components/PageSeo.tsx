@@ -16,6 +16,8 @@ type PageSeoProps = {
   path?: string;
   imagePath?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   noIndex?: boolean;
   type?: 'website' | 'article';
 };
@@ -26,6 +28,8 @@ export default function PageSeo({
   path = '/',
   imagePath,
   imageAlt = DEFAULT_SOCIAL_IMAGE_ALT,
+  imageWidth = DEFAULT_SOCIAL_IMAGE_WIDTH,
+  imageHeight = DEFAULT_SOCIAL_IMAGE_HEIGHT,
   noIndex = false,
   type = 'website',
 }: PageSeoProps) {
@@ -53,12 +57,12 @@ export default function PageSeo({
       <meta property="og:image" content={socialImageUrl} key="og:image" />
       <meta
         property="og:image:width"
-        content={String(DEFAULT_SOCIAL_IMAGE_WIDTH)}
+        content={String(imageWidth)}
         key="og:image:width"
       />
       <meta
         property="og:image:height"
-        content={String(DEFAULT_SOCIAL_IMAGE_HEIGHT)}
+        content={String(imageHeight)}
         key="og:image:height"
       />
       <meta property="og:image:alt" content={imageAlt} key="og:image:alt" />

@@ -6,6 +6,14 @@ import Link from 'next/link';
 const events = [
   {
     label: 'Virtual Forum',
+    title: '働く場を、選び直せるか',
+    body: '働く本人、企業、福祉、行政の立場から、今の仕事を続ける条件と新しい仕事を選ぶ条件を考える、架空の講演と共同討議です。',
+    href: '/events/work-choice-forum',
+    image: '/images/work-condition-forum-virtual-stage-v1.webp',
+    icon: PanelsTopLeft,
+  },
+  {
+    label: 'Virtual Forum',
     title: '仕事条件デザイン・バーチャルフォーラム',
     body: '6セッション、22発表の仮想フォーラムとして、雇用率、ラベル、観察、見えない障害・難病、AI活用を仕事条件デザインの問いで読み直します。',
     href: '/events/work-condition-forum#forum-top',
@@ -27,7 +35,7 @@ export default function EventsIndexPage() {
     <>
       <PageSeo
         title="イベント | Next Being Lab"
-        description="Next Being Labのイベント型コンテンツ。仕事条件デザイン・バーチャルフォーラムとWORK UPDATE FEST 2026をまとめた入口です。"
+        description="Next Being Labのイベント型コンテンツ。架空の講演・共同討議を読むフォーラムと、WORK UPDATE FEST 2026の入口です。"
         path="/events"
       />
       <SiteNav />

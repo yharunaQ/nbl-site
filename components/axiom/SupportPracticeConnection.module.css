@@ -1,0 +1,38 @@
+.connection {
+  margin: 32px 0;
+  padding: clamp(22px, 4vw, 32px);
+  border: 1px solid #e2d7bb;
+  border-radius: 20px;
+  background: #fff8e9;
+  color: #243a30;
+}
+.connection h3 {
+  margin: 8px 0 14px;
+  font-size: clamp(20px, 3vw, 25px);
+  line-height: 1.55;
+}
+.connection p {
+  margin: 12px 0;
+  line-height: 1.85;
+}
+.connection div > p:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  color: #71602f;
+}
+.connection .note {
+  font-size: 13px;
+  color: #5b635a;
+}
+.connection a {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 10px 0;
+  color: #22513e;
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+.connection a:focus-visible {
+  outline: 3px solid #326d53;
+  outline-offset: 4px;
+}

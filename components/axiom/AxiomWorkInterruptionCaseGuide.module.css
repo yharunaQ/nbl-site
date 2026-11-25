@@ -1,0 +1,127 @@
+.example {
+  scroll-margin-top: var(--anchor-clearance, 100px);
+  margin: 30px 0;
+  padding: clamp(18px, 3vw, 28px);
+  border-left: 4px solid #60876e;
+  border-radius: 0 12px 12px 0;
+  background: #f1f5ef;
+  color: #263c34;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.example h3 {
+  margin: 0 0 18px;
+  color: #193c31;
+  font-size: clamp(22px, 2.5vw, 28px);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.example p {
+  margin: 0 0 16px;
+}
+.details {
+  margin: 16px 0;
+  padding: 17px;
+  border: 1px solid #d4ded7;
+  border-radius: 8px;
+  background: #fff;
+}
+.details summary {
+  cursor: pointer;
+  color: #285840;
+  font-weight: 700;
+}
+.details summary:focus-visible,
+.example a:focus-visible {
+  outline: 3px solid #477c59;
+  outline-offset: 5px;
+}
+.details[open] > summary {
+  margin-bottom: 20px;
+}
+.taskDetails {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #bdcdbf;
+}
+.taskDetails[open] > summary {
+  margin-bottom: 14px;
+}
+.example .interruptionBoundary {
+  padding-top: 16px;
+  font-weight: 600;
+}
+.handoverOptions {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+}
+.handoverOptions > div {
+  padding: 16px 18px;
+  border-left: 3px solid #8b9e88;
+  background: #f6f7f2;
+}
+.handoverOptions dt {
+  margin-bottom: 8px;
+  color: #254a39;
+  font-size: 17px;
+  font-weight: 750;
+}
+.handoverOptions dd {
+  margin: 0;
+}
+.handoverOptions strong {
+  font-weight: 650;
+}
+.taskConditions {
+  margin: 18px 0;
+  border-top: 1px solid #bdcdbf;
+}
+.taskConditions > div {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.8fr) minmax(0, 2fr);
+  gap: 12px 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #bdcdbf;
+}
+.taskConditions p {
+  margin: 0;
+}
+.example .keyDistinction {
+  padding: 14px 16px;
+  border-left: 3px solid #9c7842;
+  background: #fffaed;
+}
+.foundationLink {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #bdcdbf;
+}
+@media (max-width: 700px) {
+  .example {
+    padding: 18px 10px;
+  }
+  .details {
+    padding: 15px 10px;
+  }
+  .handoverOptions > div {
+    padding: 16px 0;
+    border-left: 0;
+    border-top: 1px solid #bdcdbf;
+    background: transparent;
+  }
+  .example .keyDistinction {
+    padding: 12px 10px;
+  }
+  .taskConditions > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+.example a {
+  text-underline-offset: 4px;
+}
+.example a svg {
+  display: inline;
+  vertical-align: middle;
+}

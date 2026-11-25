@@ -1,5 +1,5 @@
-import AxiomNextNblPublishedSitePage from '@/components/axiom/AxiomNextNblPublishedSitePage';
+import NblEcosystemPage from '@/components/axiom/NblEcosystemPage';
 
-export default function ProjectsIndexPage() {
-  return <AxiomNextNblPublishedSitePage slug="projects" />;
+export default function Page() {
+  return <NblEcosystemPage slug="projects" />;
 }

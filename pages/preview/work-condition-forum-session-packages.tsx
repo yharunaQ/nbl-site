@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import PageSeo from '@/components/PageSeo';
 import { NEXT_NBL_CARRYOVER_LINKS } from '@/lib/axiom/nextNblPublicCandidateCarryoverLinks';
 import {
@@ -17,6 +18,7 @@ type WorkConditionForumSessionPackagesPageProps = {
   siteHomeHref?: string;
   reportHref?: string;
   toolkitHref?: string;
+  followup?: ReactNode;
 };
 
 export default function WorkConditionForumSessionPackagesPage({
@@ -27,6 +29,7 @@ export default function WorkConditionForumSessionPackagesPage({
   siteHomeHref = NEXT_NBL_CARRYOVER_LINKS.home,
   reportHref = NEXT_NBL_CARRYOVER_LINKS.report,
   toolkitHref = NEXT_NBL_CARRYOVER_LINKS.toolkit,
+  followup,
 }: WorkConditionForumSessionPackagesPageProps = {}) {
   const presentationHref = (id: string) => `${presentationHrefBase}/${encodeURIComponent(id)}`;
 
@@ -248,6 +251,8 @@ export default function WorkConditionForumSessionPackagesPage({
             ))}
           </div>
         </section>
+
+        {followup && <div className="px-4 sm:px-5">{followup}</div>}
 
         <footer className="border-t border-slate-300 bg-slate-950 py-8 text-white">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-sm leading-7 text-white/70 sm:px-5 md:flex-row md:items-center md:justify-between md:px-8 lg:px-10">

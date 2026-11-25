@@ -1,3 +1,4 @@
+import AxiomArchiveFollowup, { archiveForumFollowup } from '@/components/axiom/AxiomArchiveFollowup';
 import WorkConditionForumTextPage, {
   type WorkConditionForumTextPageProps,
 } from '@/pages/preview/work-condition-forum-text/[id]';
@@ -17,6 +18,13 @@ export default function WorkConditionForumEventTextPage(props: WorkConditionForu
       siteHomeHref={NEXT_NBL_CARRYOVER_LINKS.home}
       reportHref={NEXT_NBL_CARRYOVER_LINKS.report}
       toolkitHref={NEXT_NBL_CARRYOVER_LINKS.toolkit}
+      followup={
+        <AxiomArchiveFollowup
+          heading="発表の論点を、自分の現場で確かめる"
+          links={[archiveForumFollowup(props.presentation.id)]}
+          proposal="発表の前提への異論や、現場の別案を提案する"
+        />
+      }
     />
   );
 }

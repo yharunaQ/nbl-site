@@ -4,6 +4,12 @@ import { EXECUTION_ROOT, PATHS, ROOT, formatTokyoDate, readText, writeText } fro
 
 const REPORT_ROUTES = [
   '/',
+  '/case-readings',
+  '/support-organization-checklist',
+  '/public-collaboration',
+  '/first-day-assistance',
+  '/materials',
+  '/events/work-choice-forum',
   '/work-design-views-guide',
   '/work-design-studio',
   '/work-design-map',
@@ -42,6 +48,9 @@ const COMMANDS = [
     args: [
       'jest',
       '__tests__/contact.test.tsx',
+      '__tests__/axiom-public-collaboration.test.tsx',
+      '__tests__/flagship-decision-note.test.tsx',
+      '__tests__/axiom-practice-workbook.test.tsx',
       '__tests__/falcon-next-nbl-static-site-candidate.test.tsx',
       '__tests__/next-nbl-public-migration-routes.test.ts',
       '__tests__/work-condition-forum-session-packages-page.test.tsx',

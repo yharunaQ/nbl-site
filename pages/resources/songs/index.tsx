@@ -1,3 +1,4 @@
+import AxiomArchiveFollowup, { archiveFollowups } from '@/components/axiom/AxiomArchiveFollowup';
 /**
  * /resources/songs — WORK UPDATE FEST 2026
  *
@@ -835,6 +836,11 @@ export default function FestPage({ songs, campaigns, weeklyPicks }: Props) {
               </div>
             </section>
           )}
+
+          <AxiomArchiveFollowup
+            heading="聴いた曲から、仕事を始める日のことを考える"
+            links={[archiveFollowups.song, archiveFollowups.comic]}
+          />
 
           {/* ── Hosted by NBL footer ───────────────────────────────────── */}
           <section className="mt-16 rounded-3xl border border-emerald-300/20 bg-emerald-500/5 p-6 backdrop-blur md:p-8">
